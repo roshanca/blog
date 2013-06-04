@@ -1,0 +1,12 @@
+---
+layout: page
+title: Page Not Found
+sharing: false
+---
+
+##404 了
+
+您所访问的页面并不存在，请您核对 URL 后重新访问。<br>
+The page u r looking for is not found, pls check out the URl and visit again.
+
+去[一览](/archives/)找找？

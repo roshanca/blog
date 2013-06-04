@@ -1,0 +1,18 @@
+body > footer {
+  @extend .sans;
+  font-size: 90%;
+  color: $site-meta-color;
+  a {
+    @include link-colors($footer-link-color, $footer-link-color-hover, $visited: $footer-link-color);
+  }
+  p:last-child { margin-bottom: 0; }
+  hr.end {
+    display: block;
+    margin: 30px 0;
+    clear: both;
+    border: 0 none;
+    height: 10px;
+    text-align: center;
+    background: url("../images/end.png") no-repeat 50% 50%;
+	}
+}

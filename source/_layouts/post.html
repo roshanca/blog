@@ -1,0 +1,16 @@
+---
+layout: default
+single: true
+---
+
+<article class="hentry {% if linklog %}linklog{% endif %}" role="article">
+  {% include article.html %}
+  <footer>
+    <p class="meta">
+      {% include post/meta.html %}
+      {% include custom/post_meta.html %}
+    </p>
+  </footer>
+</article>
+{% include custom/after_post.html %}
+{% if page.comments == true %}{% include comments.html %}{% endif %}
