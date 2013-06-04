@@ -1,0 +1,318 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="zh-CN"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>用 AppleScript 创建工作流 - 肉山·察</title>
+  <meta name="author" content="Roshan Wu">
+  <meta name="Generator" content="Jekyll & Octopress (http://octopress.org)">
+
+  
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://roshanca.com/applescript-workflow/">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/octopress.min.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="肉山·察" type="application/atom+xml">
+  
+
+<!--Fonts from Google's Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-15720258-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+  
+  <link href="/favicon.png" rel="icon">
+</head>
+
+<body>
+  <header role="banner">
+    <hgroup>
+  <h1><a href="/">肉山·察</a></h1>
+  
+    <h2>用 Mac 写前端的男人</h2>
+  
+</hgroup>
+
+  <div id="social-links">
+    <ul>
+      <li id="social-links-github">
+        <a title="github" href="https://github.com/RoshanWu">github</a>
+      </li>
+      <li id="social-links-twitter">
+        <a title="twitter" href="http://twitter.com/roshan_wu">twitter</a>
+      </li>
+      <li id="social-links-weibo">
+        <a title="weibo" href="http://weibo.com/jinfeixibi/">weibo</a>
+      </li>
+      <li id="social-links-feed">
+        <a title="feed" href="http://roshanca.com/atom.xml">feed</a>
+      </li>
+    </ul>
+  </div>
+
+
+
+
+  </header>
+  
+  <div id="content">
+    <article class="hentry " role="article">
+  
+  <header>
+    <h2 class="entry-title">
+用 AppleScript 创建工作流
+</h2>
+
+  </header>
+
+<div class="entry-content"><p>自从用了 <a href="http://octopress.org">Octopress</a>，每次写新文章 &amp; 生产部署，都要在终端中反复敲打几个命令，重复劳动。</p>
+
+<p>出于职业习惯，开始琢磨有没有偷懒的方法，用工具或者程序来代替这体力活。</p>
+
+<p>一开始看上了 OS X 自带的实用小工具小机器人——Automator，可以录制用户在系统中的各种操作而串联成工作流，有点类似 PhotoShop 中“动作”，也像一些应用程序中的 Macros（宏指令）。可试了一把后，觉得不太靠谱，这玩意儿不仅将你的动作记录了下来，废操作也一并囊括。而且执行工作流时，鼠标的控制权被强行夺取，感觉被人远程协助中，这让我除了傻呆呆地望着屏幕啥事也不能干。</p>
+
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/Automator.png" alt="Automator" /></p>
+
+<p>后来试了试 AppleScript，感觉还是自己纯代码来写工作流比较爽，DIY 的空间更大而且执行起来更加高效。</p>
+
+<h2>什么是 AppleScript</h2>
+
+<ul>
+<li>一种脚本语言，和我们所知道的 VBScript 和 JavaScript 类似</li>
+<li>内建于 OS X</li>
+<li>用于实现应用程序控制</li>
+<li>使繁琐重复的机械操作自动化</li>
+</ul>
+
+
+<h2>入门</h2>
+
+<p><a href="http://ishare.iask.sina.com.cn/f/14009129.html?w=MTQ0MjA5NTIzNg%3D%3D">AppleScrip 简明基础教程</a></p>
+
+<p>两个小例子：</p>
+
+<p>1、让 Safari 打开一个 URL</p>
+
+<figure class='code'><div class='highlight'><pre class='main  applescript'><div class='line'><span class="k">tell</span> <span class="nb">application</span> <span class="s2">&quot;Safari&quot;</span>
+</div><div class='line'>    <span class="nb">open location</span> <span class="s2">&quot;http://roshanca.com&quot;</span>
+</div><div class='line'><span class="k">end</span> <span class="k">tell</span>
+</div></pre></div></figure>
+
+
+<p>2、 在桌面新建一个名为 &#8220;workflow&#8221; 的文件夹</p>
+
+<figure class='code'><div class='highlight'><pre class='main  applescript'><div class='line'><span class="k">tell</span> <span class="nb">application</span> <span class="s2">&quot;Finder&quot;</span>
+</div><div class='line'>    <span class="nb">make</span> <span class="nb">new</span> <span class="nv">folder</span> <span class="nb">at</span> <span class="nv">desktop</span> <span class="nv">with</span> <span class="na">properties</span> <span class="p">{</span><span class="na">name</span><span class="p">:</span><span class="s2">&quot;workflow&quot;</span><span class="p">}</span>
+</div><div class='line'><span class="k">end</span> <span class="k">tell</span>
+</div></pre></div></figure>
+
+
+<h2>进阶</h2>
+
+<p>也来两个小列子吧，感觉都还挺有用的~</p>
+
+<p>1、转换日期格式</p>
+
+<figure class='code'><div class='highlight'><pre class='main  applescript'><div class='line'><span class="k">set</span> <span class="p">{</span><span class="nb">year</span><span class="p">:</span><span class="nv">y</span><span class="p">,</span> <span class="nb">month</span><span class="p">:</span><span class="nv">m</span><span class="p">,</span> <span class="nb">day</span><span class="p">:</span><span class="nv">d</span><span class="p">}</span> <span class="k">to</span> <span class="p">(</span><span class="nb">current date</span><span class="p">)</span> <span class="c">-- date &quot;2012年11月20日星期二 下午4:33:51&quot;</span>
+</div><div class='line'><span class="k">set</span> <span class="nv">dateList</span> <span class="k">to</span> <span class="p">{</span><span class="nv">y</span><span class="p">,</span> <span class="nv">m</span> <span class="o">*</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">d</span><span class="p">}</span> <span class="c">-- {2012, Novemver * 1, 20} =&gt; {2012, 11, 20}</span>
+</div><div class='line'><span class="k">set</span> <span class="err">_dateList</span> <span class="k">to</span> <span class="nv">reverse</span> <span class="k">of</span> <span class="nv">rest</span> <span class="k">of</span> <span class="nv">dateList</span> <span class="c">-- {20， 11}</span>
+</div><div class='line'><span class="k">set</span> <span class="nv">theYear</span> <span class="k">to</span> <span class="nb">first</span> <span class="nb">item</span> <span class="k">of</span> <span class="nv">dateList</span> <span class="k">as </span><span class="nc">string</span> <span class="c">-- &quot;2012&quot;</span>
+</div><div class='line'><span class="k">set</span> <span class="nv">restDate</span> <span class="k">to</span> <span class="s2">&quot;&quot;</span>
+</div><div class='line'> </div><div class='line'><span class="k">repeat</span> <span class="nv">with</span> <span class="nv">theItem</span> <span class="k">in</span> <span class="err">_dateList</span>
+</div><div class='line'>    <span class="k">set</span> <span class="nv">restDate</span> <span class="k">to</span> <span class="s2">&quot;-&quot;</span> <span class="o">&amp;</span> <span class="nv">theItem</span> <span class="o">&amp;</span> <span class="nv">restDate</span>
+</div><div class='line'><span class="k">end</span> <span class="k">repeat</span>
+</div><div class='line'> </div><div class='line'><span class="no">return</span> <span class="nv">theYear</span> <span class="o">&amp;</span> <span class="nv">restDate</span> <span class="c">-- &quot;2012-11-20&quot;</span>
+</div></pre></div></figure>
+
+
+<p>2、获取用户文稿中最近修改文件的文件名（以下代码 <code>new_post.applescript</code> 中也有用到）</p>
+
+<figure class='code'><div class='highlight'><pre class='main  applescript'><div class='line'><span class="k">tell</span> <span class="nb">application</span> <span class="s2">&quot;Finder&quot;</span>
+</div><div class='line'>    <span class="k">set</span> <span class="nv">thePath</span> <span class="k">to</span> <span class="p">(</span><span class="nb">path to</span> <span class="nb">documents</span> <span class="nv">folder</span><span class="p">)</span> <span class="c">-- 获取文稿文件夹路径</span>
+</div><div class='line'>    <span class="k">set</span> <span class="nv">fileList</span> <span class="k">to</span> <span class="nv">files</span> <span class="k">in</span> <span class="nv">thePath</span> <span class="c">-- 获取路径下的文件集合记录</span>
+</div><div class='line'>    <span class="k">set</span> <span class="nv">fileList</span> <span class="k">to</span> <span class="nv">sort</span> <span class="nv">fileList</span> <span class="k">by</span> <span class="nv">modification</span> <span class="nv">date</span> <span class="c">-- 按最新修改排序</span>
+</div><div class='line'>    <span class="k">set</span> <span class="nv">fileName</span> <span class="k">to</span> <span class="na">name</span> <span class="k">of</span> <span class="nb">first</span> <span class="nb">item</span> <span class="k">in</span> <span class="nv">fileList</span> <span class="c">-- 获取记录集中第一个文件的文件名</span>
+</div><div class='line'>    <span class="no">return</span> <span class="nv">fileName</span>
+</div><div class='line'><span class="k">end</span> <span class="k">tell</span>
+</div></pre></div></figure>
+
+
+<h2>实战</h2>
+
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/applescript.png" alt="my AppleScripts" /></p>
+
+<p>综合基础教程与谷歌搜索，自己写了两个 Script，分别用于创建博客新文章与博客本地预览。</p>
+
+<p><figure class='code caption'><figcaption>new_post.applescript<a href='https://gist.github.com/4118971'>Gist page</a></figcaption><div class='highlight'><pre class='main  applescript'><div class='line'><span class="k">tell</span> <span class="nb">application</span> <span class="s2">&quot;Finder&quot;</span>
+</div><div class='line'>    <span class="nb">activate</span>
+</div><div class='line'>    <span class="nb">display dialog</span> <span class="s2">&quot;填入文章标题&quot;</span> <span class="nv">default</span> <span class="nv">answer</span> <span class="s2">&quot;title&quot;</span>
+</div><div class='line'>    <span class="k">set</span> <span class="nv">postTitle</span> <span class="k">to</span> <span class="na">text returned</span> <span class="k">of</span> <span class="no">result</span> <span class="k">as </span><span class="nc">text</span>
+</div><div class='line'><span class="k">end</span> <span class="k">tell</span>
+</div><div class='line'> </div><div class='line'><span class="k">tell</span> <span class="nb">application</span> <span class="s2">&quot;Terminal&quot;</span>
+</div><div class='line'>    <span class="nb">activate</span>
+</div><div class='line'> </div><div class='line'>    <span class="k">if</span> <span class="p">(</span><span class="nb">count</span> <span class="k">of</span> <span class="nb">windows</span><span class="p">)</span> <span class="ow">is</span> <span class="mi">0</span> <span class="k">then</span>
+</div><div class='line'>        <span class="k">tell</span> <span class="nb">application</span> <span class="s2">&quot;System Events&quot;</span>
+</div><div class='line'>            <span class="nv">keystroke</span> <span class="s2">&quot;n&quot;</span> <span class="nv">using</span> <span class="p">{</span><span class="nv">command</span> <span class="nv">down</span><span class="p">}</span>
+</div><div class='line'>        <span class="k">end</span> <span class="k">tell</span>
+</div><div class='line'>    <span class="k">else</span>
+</div><div class='line'>        <span class="nb">activate</span>
+</div><div class='line'>    <span class="k">end</span> <span class="k">if</span>
+</div><div class='line'> </div><div class='line'>    <span class="k">repeat</span> <span class="nv">with</span> <span class="nv">win</span> <span class="k">in</span> <span class="nb">windows</span>
+</div><div class='line'>        <span class="k">try</span>
+</div><div class='line'>            <span class="k">if</span> <span class="k">get</span> <span class="na">frontmost</span> <span class="k">of</span> <span class="nv">win</span> <span class="ow">is</span> <span class="no">true</span> <span class="k">then</span>
+</div><div class='line'>                <span class="k">set</span> <span class="nv">currentTab</span> <span class="k">to</span> <span class="nv">selected</span> <span class="no">tab</span> <span class="k">of</span> <span class="nv">win</span>
+</div><div class='line'>                <span class="k">if</span> <span class="nv">currentTab</span> <span class="ow">is not</span> <span class="nv">busy</span> <span class="k">then</span>
+</div><div class='line'>                    <span class="nv">do</span> <span class="nv">script</span> <span class="s2">&quot;cd ~/Ruby_app/octopress&quot;</span> <span class="k">in</span> <span class="nv">currentTab</span>
+</div><div class='line'>                    <span class="nv">do</span> <span class="nv">script</span> <span class="s2">&quot;rake new_post[&#39;&quot;</span> <span class="o">&amp;</span> <span class="nv">postTitle</span> <span class="o">&amp;</span> <span class="s2">&quot;&#39;]&quot;</span> <span class="k">in</span> <span class="nv">currentTab</span>
+</div><div class='line'>                    <span class="nb">delay</span> <span class="mi">1</span>
+</div><div class='line'>                    <span class="k">set</span> <span class="nv">post</span> <span class="k">to</span> <span class="nv">getRecentFileName</span><span class="p">()</span> <span class="k">of</span> <span class="nv">postHandle</span>
+</div><div class='line'>                    <span class="nv">do</span> <span class="nv">script</span> <span class="s2">&quot;subl source/<em>posts/&quot;</span> <span class="o">&amp;</span> <span class="nv">post</span> <span class="k">in</span> <span class="nv">currentTab</span>
+</div><div class='line'>                <span class="k">end</span> <span class="k">if</span>
+</div><div class='line'>            <span class="k">end</span> <span class="k">if</span>
+</div><div class='line'>        <span class="k">end</span> <span class="k">try</span>
+</div><div class='line'>    <span class="k">end</span> <span class="k">repeat</span>
+</div><div class='line'><span class="k">end</span> <span class="k">tell</span>
+</div><div class='line'> </div><div class='line'><span class="k">script</span> <span class="nv">postHandle</span>
+</div><div class='line'>    <span class="nb">on</span> <span class="nv">getRecentFileName</span><span class="p">()</span>
+</div><div class='line'>        <span class="k">tell</span> <span class="nb">application</span> <span class="s2">&quot;Finder&quot;</span>
+</div><div class='line'>            <span class="k">set</span> <span class="nv">thePath</span> <span class="k">to</span> <span class="nv">alias</span> <span class="p">((</span><span class="nb">path to</span> <span class="nv">home</span> <span class="nv">folder</span> <span class="k">as </span><span class="nc">text</span><span class="p">)</span> <span class="o">&amp;</span> <span class="s2">&quot;Ruby_app:octopress:source:</em>posts:&quot;</span><span class="p">)</span>
+</div><div class='line'>            <span class="k">set</span> <span class="nv">fileList</span> <span class="k">to</span> <span class="nv">files</span> <span class="k">in</span> <span class="nv">thePath</span>
+</div><div class='line'>            <span class="k">set</span> <span class="nv">fileList</span> <span class="k">to</span> <span class="nv">sort</span> <span class="nv">fileList</span> <span class="k">by</span> <span class="nv">modification</span> <span class="nv">date</span>
+</div><div class='line'>            <span class="k">set</span> <span class="nv">fileName</span> <span class="k">to</span> <span class="na">name</span> <span class="k">of</span> <span class="nb">first</span> <span class="nb">item</span> <span class="k">in</span> <span class="nv">fileList</span>
+</div><div class='line'>            <span class="no">return</span> <span class="nv">fileName</span>
+</div><div class='line'>        <span class="k">end</span> <span class="k">tell</span>
+</div><div class='line'>    <span class="k">end</span> <span class="nv">getRecentFileName</span>
+</div><div class='line'><span class="k">end</span> <span class="nv">script</span>
+</div></pre></div></figure></p>
+
+<p><figure class='code caption'><figcaption>blog_preview.applescript<a href='https://gist.github.com/4118971'>Gist page</a></figcaption><div class='highlight'><pre class='main  applescript'><div class='line'><span class="k">tell</span> <span class="nb">application</span> <span class="s2">&quot;Terminal&quot;</span>
+</div><div class='line'>    <span class="nb">activate</span>
+</div><div class='line'> </div><div class='line'>    <span class="k">if</span> <span class="p">(</span><span class="nb">count</span> <span class="k">of</span> <span class="nb">windows</span><span class="p">)</span> <span class="ow">is</span> <span class="mi">0</span> <span class="k">then</span>
+</div><div class='line'>        <span class="k">tell</span> <span class="nb">application</span> <span class="s2">&quot;System Events&quot;</span>
+</div><div class='line'>            <span class="nv">keystroke</span> <span class="s2">&quot;n&quot;</span> <span class="nv">using</span> <span class="p">{</span><span class="nv">command</span> <span class="nv">down</span><span class="p">}</span>
+</div><div class='line'>        <span class="k">end</span> <span class="k">tell</span>
+</div><div class='line'>    <span class="k">else</span>
+</div><div class='line'>        <span class="nb">activate</span>
+</div><div class='line'>    <span class="k">end</span> <span class="k">if</span>
+</div><div class='line'> </div><div class='line'>    <span class="k">repeat</span> <span class="nv">with</span> <span class="nv">win</span> <span class="k">in</span> <span class="nb">windows</span>
+</div><div class='line'>        <span class="k">try</span>
+</div><div class='line'>            <span class="k">if</span> <span class="k">get</span> <span class="na">frontmost</span> <span class="k">of</span> <span class="nv">win</span> <span class="ow">is</span> <span class="no">true</span> <span class="k">then</span>
+</div><div class='line'>                <span class="k">set</span> <span class="nv">currentTab</span> <span class="k">to</span> <span class="nv">selected</span> <span class="no">tab</span> <span class="k">of</span> <span class="nv">win</span>
+</div><div class='line'>                <span class="k">if</span> <span class="nv">currentTab</span> <span class="ow">is not</span> <span class="nv">busy</span> <span class="k">then</span>
+</div><div class='line'>                    <span class="nv">do</span> <span class="nv">script</span> <span class="s2">&quot;cd ~/Ruby_app/octopress&quot;</span> <span class="k">in</span> <span class="nv">currentTab</span>
+</div><div class='line'>                    <span class="nv">do</span> <span class="nv">script</span> <span class="s2">&quot;rake generate&quot;</span> <span class="k">in</span> <span class="nv">currentTab</span>
+</div><div class='line'>                    <span class="nv">do</span> <span class="nv">script</span> <span class="s2">&quot;rake preview&quot;</span> <span class="k">in</span> <span class="nv">currentTab</span>
+</div><div class='line'>                <span class="k">else</span>
+</div><div class='line'>                    <span class="no">return</span>
+</div><div class='line'>                <span class="k">end</span> <span class="k">if</span>
+</div><div class='line'>            <span class="k">end</span> <span class="k">if</span>
+</div><div class='line'>        <span class="k">end</span> <span class="k">try</span>
+</div><div class='line'>    <span class="k">end</span> <span class="k">repeat</span>
+</div><div class='line'> </div><div class='line'><span class="k">end</span> <span class="k">tell</span>
+</div><div class='line'> </div><div class='line'><span class="k">tell</span> <span class="nb">application</span> <span class="s2">&quot;Safari&quot;</span>
+</div><div class='line'>    <span class="nb">delay</span> <span class="mi">6</span>
+</div><div class='line'>    <span class="nb">open location</span> <span class="s2">&quot;http://localhost:4000&quot;</span>
+</div><div class='line'>    <span class="nb">activate</span>
+</div><div class='line'><span class="k">end</span> <span class="k">tell</span>
+</div></pre></div></figure></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-20T22:18:00+08:00" pubdate data-updated="true">Nov 20<span>th</span>, 2012</time>
+
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/applescript/'>applescript</a>, <a class='category' href='/blog/categories/octopress/'>octopress</a>, <a class='category' href='/blog/categories/workflow/'>workflow</a>
+  
+</span>
+
+
+
+      
+
+    </p>
+  </footer>
+</article>
+
+<section>
+  
+
+  
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  
+</section>
+
+  </div>
+  
+  <footer role="contentinfo"><hr class="end">
+<p>
+  Copyright &copy; 2013 - Roshan Wu -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a> & <a href="https://github.com">GitHub</a></span>
+</p>
+
+</footer>
+  
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'Roshanca';
+			var disqus_developer = '0';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://roshanca.com/applescript-workflow/';
+        var disqus_url = 'http://roshanca.com/applescript-workflow/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,298 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="zh-CN"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Switch … Case 被认为是有害的 - 肉山·察</title>
+  <meta name="author" content="Roshan Wu">
+  <meta name="Generator" content="Jekyll & Octopress (http://octopress.org)">
+
+  
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://roshanca.com/switch-case-considered-harmful/">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/octopress.min.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="肉山·察" type="application/atom+xml">
+  
+
+<!--Fonts from Google's Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-15720258-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+  
+  <link href="/favicon.png" rel="icon">
+</head>
+
+<body>
+  <header role="banner">
+    <hgroup>
+  <h1><a href="/">肉山·察</a></h1>
+  
+    <h2>用 Mac 写前端的男人</h2>
+  
+</hgroup>
+
+  <div id="social-links">
+    <ul>
+      <li id="social-links-github">
+        <a title="github" href="https://github.com/RoshanWu">github</a>
+      </li>
+      <li id="social-links-twitter">
+        <a title="twitter" href="http://twitter.com/roshan_wu">twitter</a>
+      </li>
+      <li id="social-links-weibo">
+        <a title="weibo" href="http://weibo.com/jinfeixibi/">weibo</a>
+      </li>
+      <li id="social-links-feed">
+        <a title="feed" href="http://roshanca.com/atom.xml">feed</a>
+      </li>
+    </ul>
+  </div>
+
+
+
+
+  </header>
+  
+  <div id="content">
+    <article class="hentry " role="article">
+  
+  <header>
+    <h2 class="entry-title">
+Switch … Case 被认为是有害的
+</h2>
+
+  </header>
+
+<div class="entry-content"><p>本文为原创译文，英文原文：<a href="http://ericleads.com/2012/12/switch-case-considered-harmful/">Switch … Case Considered Harmful</a></p>
+
+<blockquote><p>Don’t Use Switch.</p><footer><strong>Eric Elliott</strong> <cite><a href='http://shop.oreilly.com/product/0636920024231.do'>《Programming JavaScript Applications》</a></cite></footer></blockquote>
+
+
+<p>JavaScript 有着良好的控制流程语句，这些语句往往用花括号包裹着。不过有个例外：<code>switch ... case</code> 语句。<code>switch ... case</code> 的奇怪之处在于你必须在每个 <code>case</code> 末尾加上关键字 <code>break</code>，以防止流程控制权穿越进入下一个 <code>case</code> 语句中。穿越是指让多条 <code>case</code> 执行的手法，当未遇见预期的 <code>break</code> 时，控制权就自动交到下一句 <code>case</code> 手中。然而，就如同分号与花括号一样，你很有可能会在不经意之间忘了写 <code>break</code>，当这发生时，后期的错误排查就比较痛苦，因为语句本身是没错的。因此，配对地写 <code>case ... break</code> 是个好习惯。</p>
+
+<p>我们通常讲，JavaScript 有着优雅的对象字面量与顶级函数，这些都使得特定的方法查询变的非常简单。为方法查询所创建的对象，我们称之为 <em>活动对象(action object)</em> 或 <em>命令对象(command object)</em>，它被运用在许多软件设计模式中，包括强大的而有用的命令模式。</p>
+
+<p>假设你要创建一个游戏程序，非玩家的格斗动作是基于一段特定算法来进行选择处理，作为字符串传给 <code>doAction</code> 方法。<code>switch ... case</code> 的形式如下：</p>
+
+<figure class='code'><div class='highlight'><pre class='main  js'><div class='line'><span class="kd">function</span> <span class="nx">doAction</span><span class="p">(</span><span class="nx">action</span><span class="p">)</span> <span class="p">{</span>
+</div><div class='line'>  <span class="k">switch</span> <span class="p">(</span><span class="nx">action</span><span class="p">)</span> <span class="p">{</span>
+</div><div class='line'>    <span class="k">case</span> <span class="s1">&#39;hack&#39;</span><span class="o">:</span>
+</div><div class='line'>      <span class="k">return</span> <span class="s1">&#39;hack&#39;</span><span class="p">;</span>
+</div><div class='line'>    <span class="k">break</span><span class="p">;</span>
+</div><div class='line'>    <span class="k">case</span> <span class="s1">&#39;slash&#39;</span><span class="o">:</span>
+</div><div class='line'>      <span class="k">return</span> <span class="s1">&#39;slash&#39;</span><span class="p">;</span>
+</div><div class='line'>    <span class="k">break</span><span class="p">;</span>
+</div><div class='line'>    <span class="k">case</span> <span class="s1">&#39;run&#39;</span><span class="o">:</span>
+</div><div class='line'>      <span class="k">return</span> <span class="s1">&#39;run&#39;</span><span class="p">;</span>
+</div><div class='line'>    <span class="k">break</span><span class="p">;</span>
+</div><div class='line'>    <span class="k">default</span><span class="o">:</span>
+</div><div class='line'>      <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;Invalid action.&#39;</span><span class="p">);</span>
+</div><div class='line'>    <span class="k">break</span><span class="p">;</span>
+</div><div class='line'>  <span class="p">}</span>
+</div><div class='line'><span class="p">}</span>
+</div></pre></div></figure>
+
+
+<p>方法查询的版本：</p>
+
+<figure class='code'><div class='highlight'><pre class='main  js'><div class='line'><span class="kd">function</span> <span class="nx">doAction</span><span class="p">(</span><span class="nx">action</span><span class="p">)</span> <span class="p">{</span>
+</div><div class='line'>  <span class="kd">var</span> <span class="nx">actions</span> <span class="o">=</span> <span class="p">{</span>
+</div><div class='line'>      <span class="s1">&#39;hack&#39;</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</div><div class='line'>        <span class="k">return</span> <span class="s1">&#39;hack&#39;</span><span class="p">;</span>
+</div><div class='line'>      <span class="p">},</span>
+</div><div class='line'>      <span class="s1">&#39;slash&#39;</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</div><div class='line'>        <span class="k">return</span> <span class="s1">&#39;slash&#39;</span><span class="p">;</span>
+</div><div class='line'>      <span class="p">},</span>
+</div><div class='line'>      <span class="s1">&#39;run&#39;</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</div><div class='line'>        <span class="k">return</span> <span class="s1">&#39;run&#39;</span><span class="p">;</span>
+</div><div class='line'>      <span class="p">}</span>
+</div><div class='line'>    <span class="p">};</span>
+</div><div class='line'> </div><div class='line'>  <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">actions</span><span class="p">[</span><span class="nx">action</span><span class="p">]</span> <span class="o">!==</span> <span class="s1">&#39;function&#39;</span><span class="p">)</span> <span class="p">{</span>
+</div><div class='line'>    <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;Invalid action.&#39;</span><span class="p">);</span>
+</div><div class='line'>  <span class="p">}</span>
+</div><div class='line'>  <span class="k">return</span> <span class="nx">actions</span><span class="p">[</span><span class="nx">action</span><span class="p">]();</span>
+</div><div class='line'><span class="p">}</span>
+</div></pre></div></figure>
+
+
+<p>另一个输入分组（频繁使用 <code>case</code> 语句的穿越特性）的例子：假定你正在写一个编程语言解析器，并且你要执行一个动作：当遇到一个记号符(token)，打开对象或数组；当遇到另一个记号符(token)，关闭它们。假设已存在以下方法：</p>
+
+<figure class='code'><div class='highlight'><pre class='main  js'><div class='line'><span class="kd">function</span> <span class="nx">handleOpen</span><span class="p">(</span><span class="nx">token</span><span class="p">)</span> <span class="p">{</span>
+</div><div class='line'>  <span class="k">return</span> <span class="s1">&#39;Open object / array.&#39;</span><span class="p">;</span>
+</div><div class='line'><span class="p">}</span>
+</div><div class='line'> </div><div class='line'><span class="kd">function</span> <span class="nx">handleClose</span><span class="p">(</span><span class="nx">token</span><span class="p">)</span> <span class="p">{</span>
+</div><div class='line'>  <span class="k">return</span> <span class="s1">&#39;Close object / array&#39;</span><span class="p">;</span>
+</div><div class='line'><span class="p">}</span>
+</div></pre></div></figure>
+
+
+<p><code>switch … case</code> 的写法是：</p>
+
+<figure class='code'><div class='highlight'><pre class='main  js'><div class='line'><span class="kd">function</span> <span class="nx">processToken</span> <span class="p">(</span><span class="nx">token</span><span class="p">)</span> <span class="p">{</span>
+</div><div class='line'>  <span class="k">switch</span> <span class="p">(</span><span class="nx">token</span><span class="p">)</span> <span class="p">{</span>
+</div><div class='line'>    <span class="k">case</span> <span class="s1">&#39;{&#39;</span><span class="o">:</span>
+</div><div class='line'>    <span class="k">case</span> <span class="s1">&#39;[&#39;</span><span class="o">:</span>
+</div><div class='line'>      <span class="nx">handleOpen</span><span class="p">(</span><span class="nx">token</span><span class="p">);</span>
+</div><div class='line'>    <span class="k">break</span><span class="p">;</span>
+</div><div class='line'>    <span class="k">case</span> <span class="s1">&#39;]&#39;</span><span class="o">:</span>
+</div><div class='line'>    <span class="k">case</span> <span class="s1">&#39;}&#39;</span><span class="o">:</span>
+</div><div class='line'>      <span class="nx">handleClose</span><span class="p">(</span><span class="nx">token</span><span class="p">);</span>
+</div><div class='line'>    <span class="k">break</span><span class="p">;</span>
+</div><div class='line'>    <span class="k">default</span><span class="o">:</span>
+</div><div class='line'>      <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;Invalid token.&#39;</span><span class="p">);</span>
+</div><div class='line'>    <span class="k">break</span><span class="p">;</span>
+</div><div class='line'>  <span class="p">}</span>
+</div><div class='line'><span class="p">}</span>
+</div></pre></div></figure>
+
+
+<p>而方法查询则是像这样：</p>
+
+<figure class='code'><div class='highlight'><pre class='main  js'><div class='line'><span class="kd">var</span> <span class="nx">tokenActions</span> <span class="o">=</span> <span class="p">{</span>
+</div><div class='line'>    <span class="s1">&#39;{&#39;</span><span class="o">:</span> <span class="nx">handleOpen</span><span class="p">,</span>
+</div><div class='line'>    <span class="s1">&#39;[&#39;</span><span class="o">:</span> <span class="nx">handleOpen</span><span class="p">,</span>
+</div><div class='line'>    <span class="s1">&#39;]&#39;</span><span class="o">:</span> <span class="nx">handleClose</span><span class="p">,</span>
+</div><div class='line'>    <span class="s1">&#39;}&#39;</span><span class="o">:</span> <span class="nx">handleClose</span>
+</div><div class='line'>  <span class="p">};</span>
+</div><div class='line'> </div><div class='line'><span class="kd">function</span> <span class="nx">processToken</span><span class="p">(</span><span class="nx">token</span><span class="p">)</span> <span class="p">{</span>
+</div><div class='line'>  <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">tokenActions</span><span class="p">[</span><span class="nx">token</span><span class="p">]</span> <span class="o">!==</span> <span class="s1">&#39;function&#39;</span><span class="p">)</span> <span class="p">{</span>
+</div><div class='line'>    <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;Invalid token.&#39;</span><span class="p">);</span>
+</div><div class='line'>  <span class="p">}</span>
+</div><div class='line'>  <span class="k">return</span> <span class="nx">tokenActions</span><span class="p">[</span><span class="nx">token</span><span class="p">](</span><span class="nx">token</span><span class="p">);</span>
+</div><div class='line'><span class="p">}</span>
+</div></pre></div></figure>
+
+
+<p>乍看上去，方法查询的做法稍显复杂，但是它有以下几个优点：</p>
+
+<ul>
+<li>使用标准花括号构成的语句块，就像在 JavaScript 中的大部分语句一样；</li>
+<li>不必担心遗漏 <code>break</code>；</li>
+<li>方法查询更加灵活。使用活动对象允许你在程序运行时改分支条件，比如，动态加载模块以扩展分支条件。甚至在逻辑段落的上下文切换时，改变部分或全部分支条件；</li>
+<li>方法查询在定义上是面向对象的。而用 <code>switch … case</code>，令你的程序更加地面向过程。</li>
+</ul>
+
+
+<p>最后的观点也许是最重要的：<code>switch</code> 语句与 <code>goto</code> 语句是十分类似的，后者是近二十年来普遍被科学界精英们要求退出现代编程语言舞台的。它们有着相同的弊端：我在到处都能见到 <code>switch ... case</code>，是的它被滥用了。开发者们将不相干的功能整合入过于分离的分支逻辑中。换句话说，<code>switch ... case</code> 倾向于驱使人们写出稀疏松散的代码，而代码查询则有助于人们写出组织良好、面向对象的代码。很常见地， <code>switch ... case</code> 语句的执行其实是对代码高凝聚逻辑低干扰原则的一种破坏。</p>
+
+<p>我曾是 <code>switch ... case</code> 的支持者，认为它是 <code>if ... else</code> 的更好的替换方案，但在熟悉 JavaScript 后，我就自然而然的用条件查询将其取代。我的编程生涯中已经好久未遇 <code>switch ... case</code> 了，我也一点都不想念它。</p>
+
+<p>当你发现自己在写一句 <code>switch</code> 语句时，停下思考：</p>
+
+<ul>
+<li>将来需要增加更多的条件分支吗？（队列，堆栈，插入式结构）</li>
+<li>能在运行时修改分支列表吗？例如：根据上下文改变启用的选项列表（模式切换）</li>
+<li>能对执行过的分支语句提供日志吗？比如：创建一个“撤销/重做”的堆栈表，或记录用户动作以提供给你的服务器做用户分析（命令管理）</li>
+<li>你是否用递增数字来做你的条件分支？例如：case 1:, case: 2, etc… （迭代目标）</li>
+<li>你是否试着将相关的输入语句组织在一起利用穿透特性使它们之间共享代码？</li>
+</ul>
+
+
+<p>如果你对以上任一问题的回答是 yes，那么你都有很好的理由远离 <code>switch</code> ，还有它那难以控制穿透特性。</p>
+
+<hr />
+
+<p>英文原文：<a href="http://ericleads.com/2012/12/switch-case-considered-harmful/">Switch … Case Considered Harmful</a></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-12T10:11:00+08:00" pubdate data-updated="true">Dec 12<span>th</span>, 2012</time>
+
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/javascript/'>javascript</a>
+  
+</span>
+
+
+
+      
+
+    </p>
+  </footer>
+</article>
+
+<section>
+  
+
+  
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  
+</section>
+
+  </div>
+  
+  <footer role="contentinfo"><hr class="end">
+<p>
+  Copyright &copy; 2013 - Roshan Wu -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a> & <a href="https://github.com">GitHub</a></span>
+</p>
+
+</footer>
+  
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'Roshanca';
+			var disqus_developer = '0';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://roshanca.com/switch-case-considered-harmful/';
+        var disqus_url = 'http://roshanca.com/switch-case-considered-harmful/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+</body>
+</html>
