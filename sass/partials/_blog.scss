@@ -39,7 +39,12 @@ article {
       ol { list-style-type: lower-alpha;
         ol { list-style-type: lower-roman; }}}
 
-    li { margin-bottom: .5em; }
+    li {
+      margin-bottom: .5em;
+      pre {
+        margin: 10px 0 !important;
+      }
+    }
 
     h2 { font-size: 1.38em; }
     #{headings()} { color: #4d4d4d; }
