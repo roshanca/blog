@@ -1,7 +1,0 @@
-{% capture category %}{{ post.categories | size }}{% endcapture %}
-
-  <li>
-    <time datetime="{{ post.date | datetime | date_to_xmlschema }}" pubdate>{{ post.date | date: "<span class='month'>%m月</span> <span class='day'>%d日</span>"}}</time>
-    &mdash;
-    <a href="{{ post.url }}">{{ post.title }}</a>
-  </li>

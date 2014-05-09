@@ -1,0 +1,7 @@
+{% if page.tags != nil %}
+<span class="post-tag">
+	{% for tag in page.tags %}
+		<span class="tag">{{ tag }}</span>
+	{% endfor %}
+</span>
+{% endif %}

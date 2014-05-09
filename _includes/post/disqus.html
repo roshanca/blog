@@ -1,0 +1,32 @@
+<div class="post-comment">
+	<div id="disqus_thread" class="container"></div>
+</div>
+<script>
+function getElementTopLeft(elem) {
+	var top = 0;
+	var left = 0;
+	while(elem) {
+		top += elem.offsetTop;
+		left += elem.offsetLeft;
+
+		elem = elem.offsetParent;
+	}
+	return {top: top, left: left};
+}
+
+var disqus_shortname = 'roshanca';
+var disqus_elem = document.getElementById('disqus_thread');
+var disqus_init = false;
+
+window.onscroll = function () {
+	if (disqus_init) return;
+
+	var viewHeight = document.documentElement.clientHeight;
+	var scrollY = document.documentElement.scrollTop || document.body.scrollTop;
+
+	if(getElementTopLeft(disqus_elem).top < viewHeight + scrollY) {
+		loadSync('//' + disqus_shortname + '.disqus.com/embed.js');
+		disqus_init = true;
+	}
+}
+</script>

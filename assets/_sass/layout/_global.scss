@@ -1,0 +1,53 @@
+html {
+	font-size: 62.5%;
+}
+
+body {
+	font-family: $serif;
+	font-size: 2rem;
+	line-height: 1.7;
+	color: $text-color;
+  @extend %word-break;
+  text-rendering: optimizelegibility;
+}
+
+a {
+	color: $link-color;
+	&:hover {
+		@include opacity(.8);
+	}
+}
+
+abbr {
+  border-bottom: 1px dotted #000;
+  cursor: help;
+}
+
+table {
+  table-layout: fixed;
+  // @include word-break;
+  th {
+    padding: .9rem 1.8rem;
+    font-weight: 700;
+    border-bottom: 1px solid #ddd;
+  }
+  td {
+    padding: .4rem 1.8rem;
+  }
+}
+
+.fluid {
+	max-width: 960px;
+	margin: 0 auto;
+}
+
+.social-link {
+	margin-right: .8rem;
+	text-decoration: none;
+}
+
+::selection {
+	background-color: #ddd;
+	color: #000;
+	text-shadow: none;
+}

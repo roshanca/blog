@@ -1,0 +1,39 @@
+%container {
+	position: relative;
+	width: 80%;
+	max-width: 650px;
+	margin: 0 auto;
+	zoom: 1;
+}
+
+%title-pseudo {
+	position: absolute;
+	top: 2rem;
+	font-size: 3rem;
+	color: lighten($heading-color, 44%);
+}
+
+%word-break {
+  word-wrap: break-word;
+  word-break: break-all;
+  word-break: break-word;
+}
+
+%force-wrap {
+  // CSS 2.0
+  white-space: pre;
+  // CSS 2.1
+  white-space: pre-wrap;
+  // CSS 3.0
+  white-space: pre-line;
+  // Opera 4-6
+  white-space: -pre-wrap;
+  // Opera 7
+  white-space: -o-pre-wrap;
+  // Mozilla
+  white-space: -moz-pre-wrap;
+  // HP Printers
+  white-space: -hp-pre-wrap;
+  // IE 5+
+  word-wrap: break-word;
+}

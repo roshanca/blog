@@ -1,0 +1,14 @@
+<header id="header" role="banner">
+	<hgroup>
+	{% if page.index == true %}
+		<h1 class="blog-title">{{ site.title }}</h1>
+		<h2 class="blog-desc">{{ site.subtitle }}</h2>
+	{% else %}
+		<a href="/" class="blog-title">{{ site.title }}</a>
+		<div>{% include social-service.html %}</div>
+	{% endif %}
+	</hgroup>
+	<a href="/atom.xml" class="subscribe">
+		<i class="fa fa-rss"></i>
+	</a>
+</header>

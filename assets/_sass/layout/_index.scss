@@ -1,0 +1,77 @@
+.index-section {
+  @extend %container;
+  margin-top: 4rem;
+  h2 {
+    text-transform: capitalize;
+    color: lighten($link-color, 44%);
+  }
+}
+
+.about {
+  @include clearfix;
+  margin-top: .3rem;
+  @include responsive(480px) {
+    position: relative;
+  }
+  .about-avatar {
+    float: left;
+    width: 48px;
+    height: 48px;
+    margin-right: 1rem;
+    border-radius: 10%;
+    @include responsive(480px) {
+      float: none;
+    }
+  }
+  .about-detail {
+    float: left;
+    @include responsive(480px) {
+      float: none;
+    }
+  }
+  .about-desc {
+    display: block;
+    margin-top: -5px;
+    font-family: $san;
+    font-size: 80%;
+  }
+  .about-author {
+    margin-right: 1rem;
+    @include responsive(480px) {
+      position: absolute;
+      top: 20px;
+      left: 58px;
+    }
+  }
+  .about-social {
+    @include responsive(480px) {
+      position: absolute;
+      top: -3px;
+      left: 58px;
+    }
+  }
+}
+
+.article {
+  li {
+    margin-top: .3rem;
+    @include responsive(480px) {
+      margin: 0 0 1rem 0;
+    }
+    a[rel] {
+      margin-left: 1rem;
+      @include responsive(480px) {
+        margin-left: 0;
+      }
+    }
+    time {
+      font-family: $san;
+      font-size: 1.8rem;
+      color: lighten($link-color, 22%);
+      @include responsive(480px) {
+        display: block;
+        @include tailhook(.5rem);
+      }
+    }
+  }
+}

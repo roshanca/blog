@@ -1,0 +1,5 @@
+{% for service in site.data.social %}
+	<a href="{{ service.link }}" class="social-link">
+		<i class="fa fa-{{ service.name }}"></i>
+	</a>
+{% endfor %}

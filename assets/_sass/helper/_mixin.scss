@@ -1,0 +1,56 @@
+@mixin clearfix {
+	*zoom: 1;
+	&:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+}
+
+@mixin at2x($path, $ext: "png", $w: auto, $h: auto) {
+	background-image: url("../images/#{$path}.#{$ext}");
+	background-repeat: no-repeat;
+	background-size: $w $h;
+
+	@media all and (-webkit-min-device-pixel-ratio : 1.5),
+		all and (-o-min-device-pixel-ratio: 3/2),
+		all and (min--moz-device-pixel-ratio: 1.5),
+		all and (min-device-pixel-ratio: 1.5) {
+			background-image: url("../images/#{$path}@2x.#{$ext}");
+			background-size: $w $h;
+	}
+}
+
+@mixin responsive($width) {
+  @media only screen and (max-width: $width) { @content; }
+}
+
+@mixin inline-block($alignment: middle) {
+	display: -moz-inline-stack;
+	display: inline-block;
+	*display: inline;
+	zoom: 1;
+	@if $alignment and $alignment != none {
+		vertical-align: $alignment;
+	}
+}
+
+@mixin opacity($opacity) {
+	filter: unquote("progid:DXImageTransform.Microsoft.Alpha(Opacity=#{round($opacity * 100)})");
+	opacity: $opacity;
+}
+
+@mixin iconfont($content, $font-family: "FontAwesome") {
+  content: $content;
+  font-family: $font-family;
+}
+
+@mixin tailhook($margin: 0) {
+  &:after {
+    position: relative;
+    top: .3rem;
+    margin: $margin;
+    font-size: 60%;
+    @include iconfont("\f149");
+  }
+}

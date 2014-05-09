@@ -1,0 +1,50 @@
+#header {
+  position: relative;
+	padding: 4rem 0;
+	text-align: center;
+	border-bottom: 1px solid #eee;
+	hgroup {
+		@extend %container;
+	}
+	.blog-title {
+		position: relative;
+		@include inline-block;
+		font-family: "Hiragino Mincho ProN", $serif;
+		font-size: 5rem;
+		font-weight: bold;
+		color: $heading-color;
+		text-decoration: none;
+		&:before {
+			content: "<";
+			@extend %title-pseudo;
+			left: -2rem;
+		}
+		&:after {
+			content: "/>";
+			@extend %title-pseudo;
+			right: -3rem;
+		}
+	}
+	.blog-desc {
+		color: lighten($heading-color, 44%);
+	}
+  .subscribe {
+    position: absolute;
+    left: 50%;
+    bottom: -15px;
+    z-index: 9;
+    display: block;
+    width: 28px;
+    height: 28px;
+    margin-left: -15px;
+    line-height: 28px;
+    color: lighten($heading-color, 44%);
+    border: 1px solid #eee;
+    border-radius: 100%;
+    background-color: #fff;
+    .fa {
+      font-size: 14px;
+      vertical-align: 2px;
+    }
+  }
+}

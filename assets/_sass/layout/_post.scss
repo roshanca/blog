@@ -1,0 +1,155 @@
+.post {
+  @extend %container;
+  .post-header {
+    padding: 3rem 0;
+  }
+  .post-title {
+    margin-bottom: 0;
+    font-size: 3.6rem;
+    font-weight: bold;
+    line-height: 4rem;
+    text-align: center;
+  }
+  .post-footer {
+    position: absolute;
+    top: 10rem;
+    right: 100%;
+    width: 135px;
+    padding-right: 20px;
+    @include responsive(960px) {
+      position: static;
+      width: 100%;
+    }
+  }
+  .post-meta {
+    font-family: $san;
+    font-size: 1.6rem;
+    line-height: 34px;
+    text-align: right;
+    color: lighten($text-color, 22%);
+    vertical-align: middle;
+  }
+  .post-tag {
+    display: block;
+    @include responsive(960px) {
+      display: inline;
+    }
+    .tag {
+      display: block;
+      @include responsive(960px) {
+        display: inline;
+        padding-left: .3rem;
+      }
+      &:before {
+        content: "#";
+        font-style: italic;
+        color: #999;
+      }
+    }
+  }
+  p,
+  ul, ol,
+  blockquote,
+  pre,
+  table {
+    margin-bottom: 2.4rem;
+  }
+  img {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  h1, h2, h3 {
+    margin-bottom: 1.2rem;
+    font-family: $heading;
+    font-weight: bold;
+    text-rendering: optimizelegibility;
+  }
+  h2 {
+    font-size: 3rem;
+    border-bottom: 1px solid #eee;
+  }
+  h3 {
+    font-size: 2.4rem;
+  }
+  ol, ul {
+    padding-left: 4rem;
+    ul {
+      list-style: circle outside;
+    }
+    li {
+      margin-bottom: 1.2rem;
+    }
+  }
+  ol {
+    list-style: decimal outside;
+  }
+  ul {
+    list-style: disc outside;
+  }
+  blockquote {
+    position: relative;
+    padding-left: 3.6rem;
+    color: $quote-color;
+    // border-left: 4px solid lighten($quote-color, 44%);
+    &:before {
+      position: absolute;
+      left: 0;
+      top: 0;
+      content: "\f10d";
+      font-family: FontAwesome;
+      color: lighten($quote-color, 40%);
+    }
+  }
+  code {
+    padding: 0 .5rem;
+    font-family: $mono;
+    background-color: $code-bg-color;
+  }
+  pre {
+    // padding: .8rem 1.6rem;
+    font-size: 90%;
+    line-height: 1.5;
+    // border-left: 4px solid #dadada;
+    // background-color: $pre-bg-color;
+    white-space: pre-wrap;
+    overflow-x: auto;
+    code {
+      padding: 0;
+      background: none;
+    }
+  }
+  strong {
+    font-weight: 700;
+    color: #222;
+  }
+  em {
+    font-style: italic;
+  }
+  .gist .gist-file .gist-data {
+    font-size: 1.6rem;
+    line-height: 1.5;
+    table {
+      margin-bottom: 0;
+      word-break: normal;
+    }
+  }
+  .keyboard {
+    th {
+      text-align: left;
+      &:before {
+        margin-right: .5rem;
+        content: "\f11c";
+        font-family: FontAwesome;
+        color: lighten($text-color, 22%);
+      }
+    }
+  }
+}
+
+.post-comment {
+  padding-top: 3rem;
+  .container {
+    @extend %container;
+  }
+}
