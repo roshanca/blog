@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>从 Heroku 迁移至 GitHub - 肉山·察</title>
+	<meta name="viewport" content="width=device-width">
+	
+	<link rel="canonical" href="http://roshanca.com/2012/heroku-to-github">
+	<link media="all" rel="stylesheet" href="/assets/styles/app.css" />
+	<link href="//fonts.googleapis.com/css?family=Noto+Serif" rel="stylesheet">
+	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+	<script src="/assets/scripts/jquery.min.js"></script>
+</head>
+<body>
+
+<header id="header" role="banner">
+	<hgroup>
+	
+		<a href="/" class="blog-title">肉山·察</a>
+		<div>
+	<a href="//github.com/roshanca" class="social-link">
+		<i class="fa fa-github"></i>
+	</a>
+
+	<a href="//twitter.com/roshan_wu" class="social-link">
+		<i class="fa fa-twitter"></i>
+	</a>
+
+	<a href="//weibo.com/jinfeixibi" class="social-link">
+		<i class="fa fa-weibo"></i>
+	</a>
+
+	<a href="//www.flickr.com/photos/roshanca/" class="social-link">
+		<i class="fa fa-flickr"></i>
+	</a>
+</div>
+	
+	</hgroup>
+	<a href="/atom.xml" class="subscribe">
+		<i class="fa fa-rss"></i>
+	</a>
+</header>
+
+<main class="fluid" role="main">
+	<article class="post" role="article">
+		<header class="post-header">
+			<h1 class="post-title">从 Heroku 迁移至 GitHub</h1>
+		</header>
+		<section class="post-content">
+			<p><a href="http://www.heroku.com/">Heroku</a> 太慢了。</p>
+
+<p>在 <a href="http://www.godaddy.com/">Godaddy</a> 上申请了个域名：<code>roshanca.com</code>，9.99$ 一年，但两年的费用成了 23$，我都不知道咋整的。。。仔细一看，才发现 9.99 是优惠价，而且只限第一年优惠。晕了，不过相对国内来说，还算是便宜的了。</p>
+
+<p>GitHub 上的部署见 <a href="http://octopress.org/docs/deploying/github/">http://octopress.org/docs/deploying/github/</a> ，只需一句命令真是方便：</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">rake setup_github_pages
+</code></pre></div>
+<p>等了半天，都没见页面出来，原来：</p>
+
+<blockquote>
+<p>On the first push, it can take up to ten minutes before the content is available.</p>
+</blockquote>
+
+<p><a href="http://pages.github.com/">GitHub Pages</a> 的第一次生成，真的很慢！</p>
+
+<p>关于使用自主域名，非常 easy，到 Octopress 主程序的 Source 目录下，生成一个 CNAME 文件，注意不要有后缀哦。</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">touch CNAME
+</code></pre></div>
+<p>文件内容就是你自己的域名，你可以用编辑器来编辑文件，当然也可以在终端里 vi 编辑。</p>
+
+<p>或者依照 Octopress 官方指示，在终端中一句搞定：</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">echo</span> <span class="s1">&#39;roshanca.com&#39;</span> &gt;&gt; <span class="nb">source</span>/CNAME
+</code></pre></div>
+		</section>
+		<footer class="post-footer">
+			<div class="post-meta">
+				<time datetime="2012-04-10 17:00:00 +0800" class="updated" pubdate>Apr 10, 2012</time>
+
+				
+<span class="post-tag">
+	
+		<span class="tag">octopress</span>
+	
+		<span class="tag">github</span>
+	
+</span>
+
+
+			</div>
+		</footer>
+	</article>
+</main>
+
+<footer id="footer" role="copyright">
+	<p>© Copyright 2014 by Roshan Wu.</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>一道 JavaScript 小题 - 肉山·察</title>
+	<meta name="viewport" content="width=device-width">
+	
+	<link rel="canonical" href="http://roshanca.com/2012/javascript-tiny-quiz">
+	<link media="all" rel="stylesheet" href="/assets/styles/app.css" />
+	<link href="//fonts.googleapis.com/css?family=Noto+Serif" rel="stylesheet">
+	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+	<script src="/assets/scripts/jquery.min.js"></script>
+</head>
+<body>
+
+<header id="header" role="banner">
+	<hgroup>
+	
+		<a href="/" class="blog-title">肉山·察</a>
+		<div>
+	<a href="//github.com/roshanca" class="social-link">
+		<i class="fa fa-github"></i>
+	</a>
+
+	<a href="//twitter.com/roshan_wu" class="social-link">
+		<i class="fa fa-twitter"></i>
+	</a>
+
+	<a href="//weibo.com/jinfeixibi" class="social-link">
+		<i class="fa fa-weibo"></i>
+	</a>
+
+	<a href="//www.flickr.com/photos/roshanca/" class="social-link">
+		<i class="fa fa-flickr"></i>
+	</a>
+</div>
+	
+	</hgroup>
+	<a href="/atom.xml" class="subscribe">
+		<i class="fa fa-rss"></i>
+	</a>
+</header>
+
+<main class="fluid" role="main">
+	<article class="post" role="article">
+		<header class="post-header">
+			<h1 class="post-title">一道 JavaScript 小题</h1>
+		</header>
+		<section class="post-content">
+			<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">add</span> <span class="o">=</span> <span class="nx">___</span><span class="p">;</span>
+<span class="nx">add</span><span class="p">(</span><span class="mi">3</span><span class="p">)(</span><span class="mi">4</span><span class="p">)(</span><span class="mi">5</span><span class="p">);</span> <span class="c1">// 输出60;</span>
+</code></pre></div>
+<p>在网上看到这样一道题，有点意思，由此展开了一点联想。</p>
+
+<p>能显而易见的是 <code>60 = 3 * 4 * 5</code>，但该如何来组织编写 <code>add</code> 这个方法呢？</p>
+
+<h3>先来看看屌丝版：</h3>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">add</span> <span class="o">=</span> <span class="kd">function</span> <span class="nx">foo</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">x</span> <span class="o">==</span> <span class="mi">5</span><span class="p">){</span>
+    <span class="k">return</span> <span class="mi">60</span><span class="p">;</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">foo</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>啥也不说了，这个方法虽然能实现题意，但无论是引入递归还是无下限的程度，都让人不禁对其唉声叹息。</p>
+
+<h3>再来看看普通青年版：</h3>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">add</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">a</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">c</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">a</span> <span class="o">*</span> <span class="nx">b</span> <span class="o">*</span> <span class="nx">c</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>多层嵌套，不尽优雅，倘若遇上 <code>add(3)(4)(5)⋯(N)</code> 输出 3 * 4 * 5 * ⋯ * N 的要求那岂不是要 <code>return</code> 个 N - 2 次？</p>
+
+<h3>最后是高富帅版：</h3>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">add</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">m</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">function</span> <span class="nx">temp</span> <span class="p">(</span><span class="nx">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">add</span><span class="p">(</span><span class="nx">m</span> <span class="o">*</span> <span class="nx">n</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">temp</span><span class="p">.</span><span class="nx">toString</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">m</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="nx">temp</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>在内部定义一个临时的方法，是不是有种运筹帷幄的赶脚？特别是这 <code>toString</code> 的用法，有些鬼斧神工呀。这样一来，还将 <code>add</code> 方法抽象成了输出 N 个参数的乘积的方法。所以此时：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">add</span><span class="p">(</span><span class="mi">3</span><span class="p">)(</span><span class="mi">4</span><span class="p">)(</span><span class="mi">5</span><span class="p">)</span><span class="err">⋯</span><span class="p">(</span><span class="nx">N</span><span class="p">);</span> 
+<span class="c1">// 输出 3 * 4 * 5 * ⋯ * N</span>
+</code></pre></div>
+		</section>
+		<footer class="post-footer">
+			<div class="post-meta">
+				<time datetime="2012-10-15 14:01:00 +0800" class="updated" pubdate>Oct 15, 2012</time>
+
+				
+<span class="post-tag">
+	
+		<span class="tag">javascript</span>
+	
+</span>
+
+
+			</div>
+		</footer>
+	</article>
+</main>
+
+<footer id="footer" role="copyright">
+	<p>© Copyright 2014 by Roshan Wu.</p>
+</footer>
+
+</body>
+</html>

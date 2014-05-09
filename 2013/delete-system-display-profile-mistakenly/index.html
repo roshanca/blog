@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>误删系统显示描述文件 - 肉山·察</title>
+	<meta name="viewport" content="width=device-width">
+	
+	<link rel="canonical" href="http://roshanca.com/2013/delete-system-display-profile-mistakenly">
+	<link media="all" rel="stylesheet" href="/assets/styles/app.css" />
+	<link href="//fonts.googleapis.com/css?family=Noto+Serif" rel="stylesheet">
+	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+	<script src="/assets/scripts/jquery.min.js"></script>
+</head>
+<body>
+
+<header id="header" role="banner">
+	<hgroup>
+	
+		<a href="/" class="blog-title">肉山·察</a>
+		<div>
+	<a href="//github.com/roshanca" class="social-link">
+		<i class="fa fa-github"></i>
+	</a>
+
+	<a href="//twitter.com/roshan_wu" class="social-link">
+		<i class="fa fa-twitter"></i>
+	</a>
+
+	<a href="//weibo.com/jinfeixibi" class="social-link">
+		<i class="fa fa-weibo"></i>
+	</a>
+
+	<a href="//www.flickr.com/photos/roshanca/" class="social-link">
+		<i class="fa fa-flickr"></i>
+	</a>
+</div>
+	
+	</hgroup>
+	<a href="/atom.xml" class="subscribe">
+		<i class="fa fa-rss"></i>
+	</a>
+</header>
+
+<main class="fluid" role="main">
+	<article class="post" role="article">
+		<header class="post-header">
+			<h1 class="post-title">误删系统显示描述文件</h1>
+		</header>
+		<section class="post-content">
+			<p>手贱，看见显示器的描述文件有重复，就想擅自删除几个。可自诩 Mac 达人的我，这回出了糗，误删了系统目录下的颜色描述文件，导致我的系统崩溃，接着就一直无敌风火轮了。。。</p>
+
+<p>开始有点慌了，没有考虑到解决方案，打给苹果客服，一姑娘接的电话，态度是好，但水平太差。居然听不懂什么叫 <strong>“颜色描述文件”</strong> ，只是一味的让我重装系统。好嘛，重装前如何转移硬盘数据倒是说的挺溜。我很无奈的打断了姑娘的话，礼貌性滴谢谢再见后，陷入了沉思。</p>
+
+<p>还是自己动手吧：开机按 <code>shift</code> 以安全模式启动，不行。开机按 <code>option + command + R + P</code> 清除 RAM，还是不行。难道真的要逼我重装！可重装太麻烦啦，不到万不得已，千万别走这一步。</p>
+
+<p>仔细一想：删除掉的系统文件，还在垃圾篓里。只要能将垃圾篓里的文件再放回原处，我就得救了。可搞！咱这 Macbook 不是还有个 Recovery 分区么，里面有磁盘工具，有终端等等实用的工具。这次就是终端救了我。</p>
+
+<h2>操作步骤：</h2>
+
+<ol>
+<li> 开机按 <code>option</code> 等待出现选择界面；</li>
+<li> 选择进入 Recovery；</li>
+<li> 选择“实用工具” - “终端”（Utilities - Terminal）；</li>
+<li><p>下面重点的来了，首先定位到垃圾篓：</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">cd</span> /Volume/Macintosh<span class="se">\ </span>HD/Users/Yourname/.Trash
+</code></pre></div>
+<p>执行 <code>ls -a</code> 看看删除掉的文件是不是在这儿；</p></li>
+<li><p>接下来你需要知道它们原本的位置路径，你可以用任意手边的终端去谷歌或百度一下，因为接下来我们要直接用命令拷贝了：</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">cp AdobeRGB1998.icc /Volumes/Macintosh<span class="se">\ </span>HD/System/Library/ColorSync/Profiles/
+</code></pre></div>
+<p>其它几个文件依葫芦画瓢；</p></li>
+<li><p>所有的文件都拷贝完后，最好用磁盘工具检查下权限问题，有问题则修复，没问题则可重启电脑了。</p></li>
+</ol>
+
+<h2>总结问题</h2>
+
+<ul>
+<li> 以上方法，适用于大部分删除系统文件后无法进入系统的状况，前提是你要知道系统文件的原路径；</li>
+<li> 出了问题别一味的相信什么苹果客服苹果天才们，一个是专业水准的问题（这全靠运气了，有时能遇上高手有事遇到菜鸟），另一个是电话沟通效率低；</li>
+<li> 老生常谈：遇到问题要冷静思考，不到万不得已坚决不重装；</li>
+<li> 如果你的显示器描述文件出现了许多重复的，想删除一定要选对目录。</li>
+</ul>
+
+<table><thead>
+<tr>
+<th style="text-align: left">目录</th>
+<th style="text-align: left">描述</th>
+<th style="text-align: left">可删除性</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">/Users/Yourname/Library/ColorSync/Profiles</td>
+<td style="text-align: left">用户校准文件</td>
+<td style="text-align: left">可删除</td>
+</tr>
+<tr>
+<td style="text-align: left">/Library/Application\ Support/Adobe/Color/Profiles</td>
+<td style="text-align: left">推荐的颜色空间文件（貌似安装过 PS 就会有）</td>
+<td style="text-align: left">可删除</td>
+</tr>
+<tr>
+<td style="text-align: left">/Library/ColorSync/Profiles/Displays</td>
+<td style="text-align: left">原厂显示器颜色描述文件</td>
+<td style="text-align: left">不建议删除，删除后无法做屏幕颜色矫正</td>
+</tr>
+<tr>
+<td style="text-align: left">/System/Library/ColorSync/Profiles</td>
+<td style="text-align: left">系统颜色描述文件</td>
+<td style="text-align: left">不可删除</td>
+</tr>
+</tbody></table>
+
+		</section>
+		<footer class="post-footer">
+			<div class="post-meta">
+				<time datetime="2013-06-05 16:47:00 +0800" class="updated" pubdate>Jun 05, 2013</time>
+
+				
+<span class="post-tag">
+	
+		<span class="tag">mac</span>
+	
+</span>
+
+
+			</div>
+		</footer>
+	</article>
+</main>
+
+<footer id="footer" role="copyright">
+	<p>© Copyright 2014 by Roshan Wu.</p>
+</footer>
+
+</body>
+</html>

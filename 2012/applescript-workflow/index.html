@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>用 AppleScript 创建工作流 - 肉山·察</title>
+	<meta name="viewport" content="width=device-width">
+	
+	<link rel="canonical" href="http://roshanca.com/2012/applescript-workflow">
+	<link media="all" rel="stylesheet" href="/assets/styles/app.css" />
+	<link href="//fonts.googleapis.com/css?family=Noto+Serif" rel="stylesheet">
+	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+	<script src="/assets/scripts/jquery.min.js"></script>
+</head>
+<body>
+
+<header id="header" role="banner">
+	<hgroup>
+	
+		<a href="/" class="blog-title">肉山·察</a>
+		<div>
+	<a href="//github.com/roshanca" class="social-link">
+		<i class="fa fa-github"></i>
+	</a>
+
+	<a href="//twitter.com/roshan_wu" class="social-link">
+		<i class="fa fa-twitter"></i>
+	</a>
+
+	<a href="//weibo.com/jinfeixibi" class="social-link">
+		<i class="fa fa-weibo"></i>
+	</a>
+
+	<a href="//www.flickr.com/photos/roshanca/" class="social-link">
+		<i class="fa fa-flickr"></i>
+	</a>
+</div>
+	
+	</hgroup>
+	<a href="/atom.xml" class="subscribe">
+		<i class="fa fa-rss"></i>
+	</a>
+</header>
+
+<main class="fluid" role="main">
+	<article class="post" role="article">
+		<header class="post-header">
+			<h1 class="post-title">用 AppleScript 创建工作流</h1>
+		</header>
+		<section class="post-content">
+			<p>自从用了 <a href="http://octopress.org">Octopress</a>，每次写新文章 &amp; 生产部署，都要在终端中反复敲打几个命令，重复劳动。出于职业习惯，开始琢磨有没有偷懒的方法，用工具或者程序来代替这体力活。</p>
+
+<p>一开始看上了 OS X 自带的实用小工具小机器人——Automator，可以录制用户在系统中的各种操作而串联成工作流，有点类似 PhotoShop 中“动作”，也像一些应用程序中的 Macros（宏指令）。可试了一把后，觉得不太靠谱，这玩意儿不仅将你的动作记录了下来，废操作也一并囊括。而且执行工作流时，鼠标的控制权被强行夺取，感觉被人远程协助中，这让我除了傻呆呆地望着屏幕啥事也不能干。</p>
+
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/Automator.png" alt="Automator"></p>
+
+<p>后来试了试 AppleScript，感觉还是自己纯代码来写工作流比较爽，DIY 的空间更大而且执行起来更加高效。</p>
+
+<h2>什么是 AppleScript</h2>
+
+<ul>
+<li>  一种脚本语言，和我们所知道的 VBScript 和 JavaScript 类似</li>
+<li>  内建于 OS X</li>
+<li>  用于实现应用程序控制</li>
+<li>  使繁琐重复的机械操作自动化</li>
+</ul>
+
+<h2>入门</h2>
+
+<p><a href="http://ishare.iask.sina.com.cn/f/14009129.html?w=MTQ0MjA5NTIzNg%3D%3D">AppleScrip 简明基础教程</a></p>
+
+<p>两个小例子：</p>
+
+<ol>
+<li><p>让 Safari 打开一个 URL</p>
+<div class="highlight"><pre><code class="language-applescript" data-lang="applescript"><span class="k">tell</span> <span class="nb">application</span> <span class="s2">&quot;Safari&quot;</span>
+    <span class="nb">open location</span> <span class="s2">&quot;http://roshanca.com&quot;</span>
+<span class="k">end</span> <span class="k">tell</span>
+</code></pre></div></li>
+<li><p>在桌面新建一个名为 &quot;workflow&quot; 的文件夹</p>
+<div class="highlight"><pre><code class="language-applescript" data-lang="applescript"><span class="k">tell</span> <span class="nb">application</span> <span class="s2">&quot;Finder&quot;</span>
+    <span class="nb">make</span> <span class="nb">new</span> <span class="nv">folder</span> <span class="nb">at</span> <span class="nv">desktop</span> <span class="nv">with</span> <span class="na">properties</span> <span class="p">{</span><span class="na">name</span><span class="p">:</span><span class="s2">&quot;workflow&quot;</span><span class="p">}</span>
+<span class="k">end</span> <span class="k">tell</span>
+</code></pre></div></li>
+</ol>
+
+<h2>进阶</h2>
+
+<p>也来两个小列子吧，感觉都还挺有用的~</p>
+
+<ol>
+<li><p>转换日期格式</p>
+<div class="highlight"><pre><code class="language-applescript" data-lang="applescript"><span class="k">set</span> <span class="p">{</span><span class="nb">year</span><span class="p">:</span><span class="nv">y</span><span class="p">,</span> <span class="nb">month</span><span class="p">:</span><span class="nv">m</span><span class="p">,</span> <span class="nb">day</span><span class="p">:</span><span class="nv">d</span><span class="p">}</span> <span class="k">to</span> <span class="p">(</span><span class="nb">current date</span><span class="p">)</span> <span class="c">-- date &quot;2012年11月20日星期二 下午4:33:51&quot;</span>
+<span class="k">set</span> <span class="nv">dateList</span> <span class="k">to</span> <span class="p">{</span><span class="nv">y</span><span class="p">,</span> <span class="nv">m</span> <span class="o">*</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">d</span><span class="p">}</span> <span class="c">-- {2012, Novemver * 1, 20} =&gt; {2012, 11, 20}</span>
+<span class="k">set</span> <span class="nv">newDateList</span> <span class="k">to</span> <span class="nv">reverse</span> <span class="k">of</span> <span class="nv">rest</span> <span class="k">of</span> <span class="nv">dateList</span> <span class="c">-- {20， 11}</span>
+<span class="k">set</span> <span class="nv">theYear</span> <span class="k">to</span> <span class="nb">first</span> <span class="nb">item</span> <span class="k">of</span> <span class="nv">dateList</span> <span class="k">as </span><span class="nc">string</span> <span class="c">-- &quot;2012&quot;</span>
+<span class="k">set</span> <span class="nv">restDate</span> <span class="k">to</span> <span class="s2">&quot;&quot;</span>
+
+<span class="k">repeat</span> <span class="nv">with</span> <span class="nv">theItem</span> <span class="k">in</span> <span class="nv">newDateList</span>
+    <span class="k">set</span> <span class="nv">restDate</span> <span class="k">to</span> <span class="s2">&quot;-&quot;</span> <span class="o">&amp;</span> <span class="nv">theItem</span> <span class="o">&amp;</span> <span class="nv">restDate</span>
+<span class="k">end</span> <span class="k">repeat</span>
+
+<span class="no">return</span> <span class="nv">theYear</span> <span class="o">&amp;</span> <span class="nv">restDate</span> <span class="c">-- &quot;2012-11-20&quot;</span>
+</code></pre></div></li>
+<li><p>获取用户文稿中最近修改文件的文件名（以下代码 <code>new_post.applescript</code> 中也有用到）</p>
+<div class="highlight"><pre><code class="language-applescript" data-lang="applescript"><span class="k">tell</span> <span class="nb">application</span> <span class="s2">&quot;Finder&quot;</span>
+    <span class="k">set</span> <span class="nv">thePath</span> <span class="k">to</span> <span class="p">(</span><span class="nb">path to</span> <span class="nb">documents</span> <span class="nv">folder</span><span class="p">)</span> <span class="c">-- 获取文稿文件夹路径</span>
+    <span class="k">set</span> <span class="nv">fileList</span> <span class="k">to</span> <span class="nv">files</span> <span class="k">in</span> <span class="nv">thePath</span> <span class="c">-- 获取路径下的文件集合记录</span>
+    <span class="k">set</span> <span class="nv">fileList</span> <span class="k">to</span> <span class="nv">sort</span> <span class="nv">fileList</span> <span class="k">by</span> <span class="nv">modification</span> <span class="nv">date</span> <span class="c">-- 按最新修改排序</span>
+    <span class="k">set</span> <span class="nv">fileName</span> <span class="k">to</span> <span class="na">name</span> <span class="k">of</span> <span class="nb">first</span> <span class="nb">item</span> <span class="k">in</span> <span class="nv">fileList</span> <span class="c">-- 获取记录集中第一个文件的文件名</span>
+    <span class="no">return</span> <span class="nv">fileName</span>
+<span class="k">end</span> <span class="k">tell</span>
+</code></pre></div></li>
+</ol>
+
+<h2>实战</h2>
+
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/applescript.png" alt="my AppleScripts"></p>
+
+<p>综合基础教程与谷歌搜索，自己写了两个 Script，分别用于创建博客新文章与博客本地预览。</p>
+
+<script src="https://gist.github.com/4118971.js?file=new_post.applescript"> </script>
+
+<script src="https://gist.github.com/4118971.js?file=blog_preview.applescript"> </script>
+
+		</section>
+		<footer class="post-footer">
+			<div class="post-meta">
+				<time datetime="2012-11-20 22:18:00 +0800" class="updated" pubdate>Nov 20, 2012</time>
+
+				
+<span class="post-tag">
+	
+		<span class="tag">applescript</span>
+	
+		<span class="tag">octopress</span>
+	
+		<span class="tag">workflow</span>
+	
+</span>
+
+
+			</div>
+		</footer>
+	</article>
+</main>
+
+<footer id="footer" role="copyright">
+	<p>© Copyright 2014 by Roshan Wu.</p>
+</footer>
+
+</body>
+</html>

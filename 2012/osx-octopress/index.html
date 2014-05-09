@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>OS X 下的 Octopress 搭建 - 肉山·察</title>
+	<meta name="viewport" content="width=device-width">
+	
+	<link rel="canonical" href="http://roshanca.com/2012/osx-octopress">
+	<link media="all" rel="stylesheet" href="/assets/styles/app.css" />
+	<link href="//fonts.googleapis.com/css?family=Noto+Serif" rel="stylesheet">
+	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+	<script src="/assets/scripts/jquery.min.js"></script>
+</head>
+<body>
+
+<header id="header" role="banner">
+	<hgroup>
+	
+		<a href="/" class="blog-title">肉山·察</a>
+		<div>
+	<a href="//github.com/roshanca" class="social-link">
+		<i class="fa fa-github"></i>
+	</a>
+
+	<a href="//twitter.com/roshan_wu" class="social-link">
+		<i class="fa fa-twitter"></i>
+	</a>
+
+	<a href="//weibo.com/jinfeixibi" class="social-link">
+		<i class="fa fa-weibo"></i>
+	</a>
+
+	<a href="//www.flickr.com/photos/roshanca/" class="social-link">
+		<i class="fa fa-flickr"></i>
+	</a>
+</div>
+	
+	</hgroup>
+	<a href="/atom.xml" class="subscribe">
+		<i class="fa fa-rss"></i>
+	</a>
+</header>
+
+<main class="fluid" role="main">
+	<article class="post" role="article">
+		<header class="post-header">
+			<h1 class="post-title">OS X 下的 Octopress 搭建</h1>
+		</header>
+		<section class="post-content">
+			<p>终于将家中的 <a href="http://baike.baidu.com/view/2173094.htm">Hackintosh</a> 完善了，尝试下在 Mac 中搭建 Octopress吧。</p>
+
+<p>我目前在用的是 Lion 10.7.3 的系统，自带 ruby 1.8.7，看来要 update 下。</p>
+
+<h2>必备工具</h2>
+
+<ul>
+<li>  Xcode 或 <a href="https://github.com/downloads/kennethreitz/osx-gcc-installer/GCC-10.7-v2.pkg">GCC Installer</a>，用于编译；</li>
+<li>  RVM(Ruby Version Management)：一个命令行工具，可以提供一个便捷的多版本ruby环境的管理和切换。</li>
+</ul>
+
+<h2>安装 RVM</h2>
+
+<p>安装 RVM 的方法有点不同：</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">bash -s stable &lt; &lt;<span class="o">(</span>curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer<span class="o">)</span>
+</code></pre></div>
+<p>配置一下，添加 RVM 方法：</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">echo</span> <span class="s1">&#39;[[ -s &quot;$HOME/.rvm/scripts/rvm&quot; ]] &amp;&amp; . &quot;$HOME/.rvm/scripts/rvm&quot; # Load RVM function&#39;</span> &gt;&gt; ~/.bash_profile
+<span class="nb">source</span> ~/.bash_profile
+</code></pre></div>
+<p>这个时候用下面命令可以验证 RVM 是否安装成功：</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">type </span>rvm <span class="p">|</span> head -1
+</code></pre></div>
+<p>如若看到 <code>rvm is a function</code> 表示已安装成功了。</p>
+
+<h2>安装 Ruby</h2>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">rvm install 1.9.3
+</code></pre></div>
+<p>如果失败，可以采用如下方式：</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">rvm reinstall 1.9.3 --with-gcc<span class="o">=</span>clang
+</code></pre></div>
+<p>设置目前的 ruby 为默认版本：</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">rvm --default use 1.9.3
+</code></pre></div>
+<h2>安装 Octopress</h2>
+
+<p>由于我之前在公司电脑上已经创建了本站的 heroku 的 app，那我只要通过 git 获取目前线上的资源就 ok 啦～</p>
+
+<p>用 Aptana 创建一个空白的 Ruby Project，命名为 Octopress</p>
+
+<p><img src="http://farm8.staticflickr.com/7051/6971729423_3a9f79e468.jpg" alt="创建一个空白的 Ruby Project, 命名为 Octopress"></p>
+
+<p>接着定位到工程目录下</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># 初始化 git:</span>
+git init
+
+<span class="c"># ok，接下来为这个 git 添加远程仓库：</span>
+git remote add heroku git@heroku.com:losttemple.git
+
+<span class="c"># 将远程仓库资源 `pull` 到本地 project：</span>
+git pull heroku master
+</code></pre></div>
+<p>恩，这下我之前使用的 Octopress 又重新出现到了我的视线中：）</p>
+
+<p><img src="http://farm8.staticflickr.com/7177/6825679466_d7b9a71aee.jpg" alt="Octopress Project"></p>
+
+<h2>使用 Octopress</h2>
+
+<p>老样子，依旧要先安装依赖包：</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">gem install bundler
+bundle install
+</code></pre></div>
+<p>但这次好像出现了个问题：</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">Installing rb-fsevent <span class="o">(</span>0.4.3.1<span class="o">)</span> with native extensions Unfortunately, a fatal error has occurred. Please report this error to the Bundler issue tracker at https://github.com/carlhuda/bundler/issues so that we can fix it. Thanks!
+/Users/wwj1983/.rvm/rubies/ruby-1.9.3-p125/lib/ruby/site_ruby/1.9.1/rubygems/installer.rb:552:in <span class="s1">&#39;rescue in block in build_extensions&#39;</span>: ERROR: Failed to build gem native extension. <span class="o">(</span>Gem::Installer::ExtensionBuildError<span class="o">)</span>
+</code></pre></div>
+<p><code>rb-fsevent</code> 这个依赖包死活安装不上，于是单独安装</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">gem install rb-fsevent
+Successfully installed rb-fsevent-0.9.0
+1 gem installed
+Installing ri documentation <span class="k">for </span>rb-fsevent-0.9.0...
+Installing RDoc documentation <span class="k">for </span>rb-fsevent-0.9.0...
+</code></pre></div>
+<p>但是，这个版本与 <code>Gemfile.lock</code> 中的版本 0.4.3.1 不符。你应该知道怎么做了，哼哼，手动更改为 0.9.0 即可。好吧，把剩下的 <code>bundle</code> 装完，然后尽情地 <code>rake generate</code> 吧～</p>
+
+<h2>参考（部分地址需 FanQ1ang）</h2>
+
+<ul>
+<li>  <a href="http://www.unfoldingcode.com/2012/02/ruby-193-via-rvm-on-mac-osx-lion.html">http://www.unfoldingcode.com/2012/02/ruby-193-via-rvm-on-mac-osx-lion.html</a></li>
+<li>  <a href="http://beginrescueend.com/rvm/install/">http://beginrescueend.com/rvm/install/</a></li>
+<li>  <a href="http://devcenter.heroku.com/articles/git">http://devcenter.heroku.com/articles/git</a></li>
+</ul>
+
+		</section>
+		<footer class="post-footer">
+			<div class="post-meta">
+				<time datetime="2012-03-11 14:04:00 +0800" class="updated" pubdate>Mar 11, 2012</time>
+
+				
+<span class="post-tag">
+	
+		<span class="tag">octopress</span>
+	
+		<span class="tag">mac</span>
+	
+</span>
+
+
+			</div>
+		</footer>
+	</article>
+</main>
+
+<footer id="footer" role="copyright">
+	<p>© Copyright 2014 by Roshan Wu.</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>如何屏蔽优酷和土豆的 Flash 广告 - 肉山·察</title>
+	<meta name="viewport" content="width=device-width">
+	
+	<link rel="canonical" href="http://roshanca.com/2012/how-to-block-youku-and-tudos-flash-ads">
+	<link media="all" rel="stylesheet" href="/assets/styles/app.css" />
+	<link href="//fonts.googleapis.com/css?family=Noto+Serif" rel="stylesheet">
+	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+	<script src="/assets/scripts/jquery.min.js"></script>
+</head>
+<body>
+
+<header id="header" role="banner">
+	<hgroup>
+	
+		<a href="/" class="blog-title">肉山·察</a>
+		<div>
+	<a href="//github.com/roshanca" class="social-link">
+		<i class="fa fa-github"></i>
+	</a>
+
+	<a href="//twitter.com/roshan_wu" class="social-link">
+		<i class="fa fa-twitter"></i>
+	</a>
+
+	<a href="//weibo.com/jinfeixibi" class="social-link">
+		<i class="fa fa-weibo"></i>
+	</a>
+
+	<a href="//www.flickr.com/photos/roshanca/" class="social-link">
+		<i class="fa fa-flickr"></i>
+	</a>
+</div>
+	
+	</hgroup>
+	<a href="/atom.xml" class="subscribe">
+		<i class="fa fa-rss"></i>
+	</a>
+</header>
+
+<main class="fluid" role="main">
+	<article class="post" role="article">
+		<header class="post-header">
+			<h1 class="post-title">如何屏蔽优酷和土豆的 Flash 广告</h1>
+		</header>
+		<section class="post-content">
+			<p>大家出来混都不容易，按理说视频网站的播放不收费只内嵌点广告，无可厚非。可最近看来，这些视频网站的 Flash 内嵌广告，越来越长，直逼老婆娘的裹脚布，让人有点忍无可忍了。我见过最长的广告长达1分45秒，how about u？真叫人怀念那个15秒广告的年代啊！而且现如今广告的质量也不咋样，我曾在追一部无脑国产连续剧时（哎，哥也有无聊的时候啊），被生逼着看了好几遍的“苏菲”广告。质量差点也就算了，还不让跳过。看看人家 YouTube，5秒后可选 Skip 的设计多棒，不过人家也是对广告内容的自信。</p>
+
+<p>好了，言归正传，来看看有什么方法让优酷和土豆，甚至是奇艺、sina、网易、QQ、迅雷...等的视频广告消失不见。</p>
+
+<h3>host 修改法</h3>
+
+<p>这是比较普遍的修改法，但效果不太尽人意。具体的可以参考以下文章：</p>
+
+<ul>
+<li>  <a href="http://www.gracecode.com/archives/3099/">MAC 下屏蔽优酷的黑屏等待</a></li>
+<li>  <a href="http://joys.name/2011/09/block-youku-ad.html">彻底屏蔽优酷广告：最新反“反屏蔽”的方法……</a></li>
+</ul>
+
+<h3>userScript 注入法</h3>
+
+<p>使用 <a href="http://userscripts.org">userScript</a> 的注入技术以达到不可告人的目的，说白了，就是允许用户脚本运行在 web 页面上，与其交互。So, 我们可以在页面加载或 Flash 载入前，做好多自己想做事情。有人就研究出了偷梁换柱的方法，见 <a href="http://player.opengg.me">OpenGG.Clean.Player</a>。注意：这个脚本是将整个 Flash 播放源替换了，所以 host 修改法解决不了的问题，在此得到了彻底的解决。</p>
+
+<p>简单说下如何使用。</p>
+
+<ul>
+<li>  Firefox：<a href="http://www.greasespot.net">Greasemonkey</a></li>
+<li>  Chrome：<a href="https://chrome.google.com/webstore/detail/gcalenpjmijncebpfijmoaglllgpjagf?hl=zh-CN&amp;utm_source=chrome-ntp-launcher">Tampermonkey Beta</a> </li>
+</ul>
+
+<p>安装完相应的插件后，非常 simple 了，前往此偷梁换柱神奇脚本的地址：<a href="http://userscripts.org/scripts/show/120679">http://userscripts.org/scripts/show/120679</a>，点击右上角的 <code>Install</code> 即可。</p>
+
+<h4>update:</h4>
+
+<p><a href="http://player.opengg.me">OpenGG.Clean.Player</a> 在 Chrome Web Store 上上架了，用 Chrome 的童鞋可以直接访问以下地址进行安装了：</p>
+
+<p><a href="https://chrome.google.com/webstore/detail/openggcleanplayer/doleffkdbkfeokcanjaagploacdflcff">OpenGG.Clean.Player for Chrome</a>（已停止更新）</p>
+
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/QQ20121115-1.png" alt="OpenGG.Clean.Player for Chrome"></p>
+
+<h3>HTML 5 转换法</h3>
+
+<p>可以说这是更高级的 userScript 注入法，对页面元素的改动更大。</p>
+
+<p>简单来说，就是获取网络视频针对于移动设备（主要是 iOS 设备）的媒体流地址，再用浏览器内建的 HTML 5 播放器来进行播放。这个媒体流的格式一般是 <code>m3u8</code> 或 <code>mp4</code>，目前只有 OSX 下的 Safari 支持 <code>m3u8</code>，而且好多视频都无 <code>mp4</code> 格式的提供，所以其局限性不言而喻（Windows 的使用者可直接跳过此方法了）。</p>
+
+<p>多亏或者是多怪苹果公司不断壮大以及 iPhone iPad 的普及，Adobe 公司的 Flash 被众人口诛笔伐甚至被吹口哨要求其登下历史舞台。Flash 的诟病无需多说，至少它让我 Macbook 成了“煎蛋器”。但它的优势也显而易见，对于其要被 HTML 5 取代的说法，似乎有些危言耸听。但很高兴看到的是，目前向 HTML 5 视频中嵌入广告以及获取用户隐私的技术尚不成熟，得益于此，我乐于在自己的 Macbook 上尽量采用 HTML 5 来替代 Flash 的方案。</p>
+
+<p>好吧，来看看怎么做，方法有三：</p>
+
+<ul>
+<li><p><a href="http://www.mac52ipod.cn/post/apple-safari-flv-html5-tudou-youku.php">更改 Safari UA</a>：若嫌要每次手工更改略显麻烦，可以在终端中执行以下代码设置 UA 默认为 iPad：</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">defaults write com.apple.Safari CustomUserAgent “‘Mozilla/5.0 <span class="o">(</span>iPad<span class="p">;</span> CPU OS 5_1 like Mac OS X<span class="o">)</span> AppleWebKit/534.46 <span class="o">(</span>KHTML, like Gecko<span class="o">)</span> Version/5.1 Mobile/9B176 Safari/7534.48.3′”
+</code></pre></div>
+<p>要还原只需执行：</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">defaults delete com.apple.Safari CustomUserAgent
+</code></pre></div></li>
+<li><p><a href="http://zythum.free.bg/youkuhtml5playerbookmark/">一个在线转换优酷土豆视频的 bookmark</a>：also, safari supported only.</p>
+
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/html5bookmark.jpg" alt="html5bookmark"></p></li>
+<li><p><a href="http://hoyois.github.com/safariextensions/clicktoplugin/">ClickToPlugin &amp; ClickToFlash</a>：这是老外写的 Safari Extension，前者是后者的扩展版。从字面上看是用于控制 Flash 等浏览器插件（Java, Silverlight etc.）加载的，实际上，as it says</p>
+
+<blockquote>
+<p>Further, it can replace many plug-in-based media players by Safari’s native HTML5 media player</p>
+</blockquote>
+
+<p>这可是意外的惊喜。更加惊喜的是，它经过国内一位<a href="https://twitter.com/ilools">88年的小伙子</a>一番 DIY 后，支持了大陆众多视频网的播放器替换。看看截图就知道它的覆盖面有多广了：</p>
+
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/killers.jpg" alt="killers">
+<img src="http://i93.photobucket.com/albums/l57/ShakeSpace/preview.jpg" alt="preview"></p>
+
+<p>它的优势显而易见：</p>
+
+<ul>
+<li>  降温：据我观测，看同样的视频，从用 Flash 到 HTML 5，我的设备温度从50多度下降至40度左右；</li>
+<li>  减噪：温度低了，风扇转速自然就下来了；</li>
+<li>  网页加载更快：因为所有插件都被阻止，直到用户点击才去请求加载插件内容。</li>
+</ul>
+
+<p>当然，目前来说，它还有许多不足：比如支持还不够广泛（许多微博的内嵌视频不支持），比如亮度对比度的调节、画面尺寸调节功能的缺失等等。</p>
+
+<p>但相对于其带来的巨大优势来说，这些小瑕疵都不算什么。</p></li>
+</ul>
+
+		</section>
+		<footer class="post-footer">
+			<div class="post-meta">
+				<time datetime="2012-09-13 13:17:00 +0800" class="updated" pubdate>Sep 13, 2012</time>
+
+				
+<span class="post-tag">
+	
+		<span class="tag">flash</span>
+	
+		<span class="tag">html5</span>
+	
+		<span class="tag">video</span>
+	
+</span>
+
+
+			</div>
+		</footer>
+	</article>
+</main>
+
+<footer id="footer" role="copyright">
+	<p>© Copyright 2014 by Roshan Wu.</p>
+</footer>
+
+</body>
+</html>

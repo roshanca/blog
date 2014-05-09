@@ -1,29 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
+
   <title><![CDATA[肉山·察]]></title>
   <link href="http://roshanca.com/atom.xml" rel="self"/>
   <link href="http://roshanca.com/"/>
-  <updated>2013-06-06T09:04:59+08:00</updated>
+  <updated>2014-05-09T14:11:13+08:00</updated>
   <id>http://roshanca.com/</id>
   <author>
     <name><![CDATA[Roshan Wu]]></name>
-    <email><![CDATA[wwj1983@gmail.com]]></email>
+    
   </author>
-  <generator uri="http://octopress.org/">Octopress</generator>
 
   
-    <entry>
-      
-
-
-
-
-<title type="html"><![CDATA[误删显示器颜色描述文件]]></title>
-<link href="http://roshanca.com/mistakenly-deleted-display-description-file/"/>
-<updated>2013-06-05T16:47:00+08:00</updated>
-<id>http://roshanca.com/mistakenly-deleted-display-description-file</id>
-
-      <content type="html"><![CDATA[<p>手贱，看见显示器的描述文件有重复，就想擅自删除几个。可自诩 Mac 达人的我，这回出了糗，误删了系统目录下的颜色描述文件，导致我的系统崩溃，接着就一直无敌风火轮了。。。</p>
+  <entry>
+    <title type="html"><![CDATA[误删系统显示描述文件]]></title>
+    <link href="http://roshanca.com/2013/delete-system-display-profile-mistakenly"/>
+    <updated>2013-06-05T16:47:00+08:00</updated>
+    <id>http://roshanca.com/2013/delete-system-display-profile-mistakenly</id>
+    <content type="html"><![CDATA[<p>手贱，看见显示器的描述文件有重复，就想擅自删除几个。可自诩 Mac 达人的我，这回出了糗，误删了系统目录下的颜色描述文件，导致我的系统崩溃，接着就一直无敌风火轮了。。。</p>
 
 <p>开始有点慌了，没有考虑到解决方案，打给苹果客服，一姑娘接的电话，态度是好，但水平太差。居然听不懂什么叫 <strong>“颜色描述文件”</strong> ，只是一味的让我重装系统。好嘛，重装前如何转移硬盘数据倒是说的挺溜。我很无奈的打断了姑娘的话，礼貌性滴谢谢再见后，陷入了沉思。</p>
 
@@ -31,161 +25,159 @@
 
 <p>仔细一想：删除掉的系统文件，还在垃圾篓里。只要能将垃圾篓里的文件再放回原处，我就得救了。可搞！咱这 Macbook 不是还有个 Recovery 分区么，里面有磁盘工具，有终端等等实用的工具。这次就是终端救了我。</p>
 
-<h3>操作步骤：</h3>
+<h2>操作步骤：</h2>
+
+<ol>
+<li> 开机按 <code>option</code> 等待出现选择界面；</li>
+<li> 选择进入 Recovery；</li>
+<li> 选择“实用工具” - “终端”（Utilities - Terminal）；</li>
+<li><p>下面重点的来了，首先定位到垃圾篓：</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">cd</span> /Volume/Macintosh<span class="se">\ </span>HD/Users/Yourname/.Trash
+</code></pre></div>
+<p>执行 <code>ls -a</code> 看看删除掉的文件是不是在这儿；</p></li>
+<li><p>接下来你需要知道它们原本的位置路径，你可以用任意手边的终端去谷歌或百度一下，因为接下来我们要直接用命令拷贝了：</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">cp AdobeRGB1998.icc /Volumes/Macintosh<span class="se">\ </span>HD/System/Library/ColorSync/Profiles/
+</code></pre></div>
+<p>其它几个文件依葫芦画瓢；</p></li>
+<li><p>所有的文件都拷贝完后，最好用磁盘工具检查下权限问题，有问题则修复，没问题则可重启电脑了。</p></li>
+</ol>
+
+<h2>总结问题</h2>
 
 <ul>
-<li>开机按 <code>option</code> 等待出现选择界面；</li>
-<li>选择进入 Recovery；</li>
-<li>选择“实用工具” - “终端”（Utilities - Terminal）；</li>
-<li>下面重点的来了，首先定位到垃圾篓：
-
-<pre><code> $ cd /Volume/Macintosh\ HD/Users/Yourname/.Trash
-</code></pre>
-
-<p> <code>ls -a</code> 看看删除掉的文件是不是在这儿；</p></li>
-<li>接下来你需要知道它们原本的位置路径，你可以用任意手边的终端去谷歌或百度一下，因为接下来我们要直接用命令拷贝了：
-
-<pre><code> $ cp AdobeRGB1998.icc /Volumes/Macintosh\ HD/System/Library/ColorSync/Profiles/
-</code></pre>
-
-<p> 其它几个文件依葫芦画瓢；</p></li>
-<li>所有的文件都拷贝完后，最好用磁盘工具检查下权限问题，有问题则修复，没问题则可重启电脑了。</li>
+<li> 以上方法，适用于大部分删除系统文件后无法进入系统的状况，前提是你要知道系统文件的原路径；</li>
+<li> 出了问题别一味的相信什么苹果客服苹果天才们，一个是专业水准的问题（这全靠运气了，有时能遇上高手有事遇到菜鸟），另一个是电话沟通效率低；</li>
+<li> 老生常谈：遇到问题要冷静思考，不到万不得已坚决不重装；</li>
+<li> 如果你的显示器描述文件出现了许多重复的，想删除一定要选对目录。</li>
 </ul>
 
-
-<h3>总结问题</h3>
-
-<ul>
-<li>以上方法，适用于大部分删除系统文件后无法进入系统的状况，前提是你要知道系统文件的原路径；</li>
-<li>出了问题别一味的相信什么苹果客服苹果天才们，一个是专业水准的问题（这全靠运气了，有时能遇上高手有事遇到菜鸟），另一个是通过电话毕竟不太好描述，限制的因素太多；</li>
-<li>老生常谈：遇到问题要冷静思考，不到万不得已不要随便的重装；</li>
-<li>如果你的显示器描述文件出现了许多重复的，想删除一定要选对目录：
-
-<ul>
-<li> <code>/Users/Yourname/Library/ColorSync/Profiles</code> 用户校准文件，可删除；</li>
-<li> <code>/Library/Application\ Support/Adobe/Color/Profiles/</code> Adobe 推荐的颜色空间（貌似安装过 PS 就会有），可删除；</li>
-<li> <code>/Library/ColorSync/Profiles/Displays</code> 原厂显示器颜色描述文件，不建议删除，删除后无法做屏幕颜色矫正；</li>
-<li> <code>/System/Library/ColorSync/Profiles</code> <strong> 不可删除！ </strong>否则会跟我一样发生无法进入系统的惨剧。</li>
-</ul>
-</li>
-</ul>
-
-
-<p>最后来个 PS: 今天 OS X 迎来了 10.8.4 的系统更新。不过&#8230;不是几天后就要开 WWDC 大会了么？不是说好的 OS X 10.9 么？这个时候出个更新，不免让人觉得诡异。</p>
-<p><a rel="bookmark" href="http://roshanca.com/mistakenly-deleted-display-description-file/">&#9875; Permalink</a></p>]]></content>
-    </entry>
+<table><thead>
+<tr>
+<th style="text-align: left">目录</th>
+<th style="text-align: left">描述</th>
+<th style="text-align: left">可删除性</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">/Users/Yourname/Library/ColorSync/Profiles</td>
+<td style="text-align: left">用户校准文件</td>
+<td style="text-align: left">可删除</td>
+</tr>
+<tr>
+<td style="text-align: left">/Library/Application\ Support/Adobe/Color/Profiles</td>
+<td style="text-align: left">推荐的颜色空间文件（貌似安装过 PS 就会有）</td>
+<td style="text-align: left">可删除</td>
+</tr>
+<tr>
+<td style="text-align: left">/Library/ColorSync/Profiles/Displays</td>
+<td style="text-align: left">原厂显示器颜色描述文件</td>
+<td style="text-align: left">不建议删除，删除后无法做屏幕颜色矫正</td>
+</tr>
+<tr>
+<td style="text-align: left">/System/Library/ColorSync/Profiles</td>
+<td style="text-align: left">系统颜色描述文件</td>
+<td style="text-align: left">不可删除</td>
+</tr>
+</tbody></table>
+]]></content>
+  </entry>
   
-    <entry>
-      
+  <entry>
+    <title type="html"><![CDATA[Switch … Case 不被推荐使用]]></title>
+    <link href="http://roshanca.com/2012/switch-case-considered-harmful"/>
+    <updated>2012-12-12T10:11:00+08:00</updated>
+    <id>http://roshanca.com/2012/switch-case-considered-harmful</id>
+    <content type="html"><![CDATA[<p>本文为原创译文，英文原文：<a href="http://ericleads.com/2012/12/switch-case-considered-harmful/">Switch … Case Considered Harmful</a></p>
 
+<blockquote>
+<p>Don’t Use Switch.</p>
 
+<p>Eric Elliott - <a href="http://shop.oreilly.com/product/0636920024231.do">《Programming JavaScript Applications》</a></p>
+</blockquote>
 
+<p>JavaScript 有着良好的控制流程语句，这些语句往往用花括号包裹着。不过有个例外：<code>switch ... case</code> 语句。<code>switch ... case</code> 的另类之处在于你必须在每个 <code>case</code> 末尾加上关键字 <code>break</code>，以防止流程控制权穿越进入下一个 <code>case</code> 语句中。穿越是指让多条 <code>case</code> 执行的手法，当未遇见预期的 <code>break</code> 时，控制权就自动交到下一句 <code>case</code> 手中。然而，就如同分号与花括号一样，你很有可能会在不经意之间忘了写 <code>break</code>，当这发生时，后期的错误排查就比较痛苦，因为语句本身是没错的。因此，配对地写 <code>case ... break</code> 是个好习惯。</p>
 
-<title type="html"><![CDATA[Switch … Case 被认为是有害的]]></title>
-<link href="http://roshanca.com/switch-case-considered-harmful/"/>
-<updated>2012-12-12T10:11:00+08:00</updated>
-<id>http://roshanca.com/switch-case-considered-harmful</id>
-
-      <content type="html"><![CDATA[<p>本文为原创译文，英文原文：<a href="http://ericleads.com/2012/12/switch-case-considered-harmful/">Switch … Case Considered Harmful</a></p>
-
-<blockquote><p>Don’t Use Switch.</p><footer><strong>Eric Elliott</strong> <cite><a href='http://shop.oreilly.com/product/0636920024231.do'>《Programming JavaScript Applications》</a></cite></footer></blockquote>
-
-
-<p>JavaScript 有着良好的控制流程语句，这些语句往往用花括号包裹着。不过有个例外：<code>switch ... case</code> 语句。<code>switch ... case</code> 的奇怪之处在于你必须在每个 <code>case</code> 末尾加上关键字 <code>break</code>，以防止流程控制权穿越进入下一个 <code>case</code> 语句中。穿越是指让多条 <code>case</code> 执行的手法，当未遇见预期的 <code>break</code> 时，控制权就自动交到下一句 <code>case</code> 手中。然而，就如同分号与花括号一样，你很有可能会在不经意之间忘了写 <code>break</code>，当这发生时，后期的错误排查就比较痛苦，因为语句本身是没错的。因此，配对地写 <code>case ... break</code> 是个好习惯。</p>
-
-<p>我们通常讲，JavaScript 有着优雅的对象字面量与顶级函数，这些都使得特定的方法查询变的非常简单。为方法查询所创建的对象，我们称之为 <em>活动对象(action object)</em> 或 <em>命令对象(command object)</em>，它被运用在许多软件设计模式中，包括强大的而有用的命令模式。</p>
+<p>我们通常讲，JavaScript 有着优雅的对象字面量与全局函数，这些都使得特定的方法查询变的非常简单。为方法查询所创建的对象，我们称之为 <em>活动对象(action object)</em> 或 <em>命令对象(command object)</em>，它被运用在许多软件设计模式中，包括强大的而有用的命令模式。</p>
 
 <p>假设你要创建一个游戏程序，非玩家的格斗动作是基于一段特定算法来进行选择处理，作为字符串传给 <code>doAction</code> 方法。<code>switch ... case</code> 的形式如下：</p>
-
-<figure class='code'><div class='highlight'><pre class='main  js'><div class='line'><span class="kd">function</span> <span class="nx">doAction</span><span class="p">(</span><span class="nx">action</span><span class="p">)</span> <span class="p">{</span>
-</div><div class='line'>  <span class="k">switch</span> <span class="p">(</span><span class="nx">action</span><span class="p">)</span> <span class="p">{</span>
-</div><div class='line'>    <span class="k">case</span> <span class="s1">&#39;hack&#39;</span><span class="o">:</span>
-</div><div class='line'>      <span class="k">return</span> <span class="s1">&#39;hack&#39;</span><span class="p">;</span>
-</div><div class='line'>    <span class="k">break</span><span class="p">;</span>
-</div><div class='line'>    <span class="k">case</span> <span class="s1">&#39;slash&#39;</span><span class="o">:</span>
-</div><div class='line'>      <span class="k">return</span> <span class="s1">&#39;slash&#39;</span><span class="p">;</span>
-</div><div class='line'>    <span class="k">break</span><span class="p">;</span>
-</div><div class='line'>    <span class="k">case</span> <span class="s1">&#39;run&#39;</span><span class="o">:</span>
-</div><div class='line'>      <span class="k">return</span> <span class="s1">&#39;run&#39;</span><span class="p">;</span>
-</div><div class='line'>    <span class="k">break</span><span class="p">;</span>
-</div><div class='line'>    <span class="k">default</span><span class="o">:</span>
-</div><div class='line'>      <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;Invalid action.&#39;</span><span class="p">);</span>
-</div><div class='line'>    <span class="k">break</span><span class="p">;</span>
-</div><div class='line'>  <span class="p">}</span>
-</div><div class='line'><span class="p">}</span>
-</div></pre></div></figure>
-
-
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">doAction</span><span class="p">(</span><span class="nx">action</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">switch</span> <span class="p">(</span><span class="nx">action</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="s1">&#39;hack&#39;</span><span class="o">:</span>
+        <span class="k">return</span> <span class="s1">&#39;hack&#39;</span><span class="p">;</span>
+    <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="s1">&#39;slash&#39;</span><span class="o">:</span>
+        <span class="k">return</span> <span class="s1">&#39;slash&#39;</span><span class="p">;</span>
+    <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="s1">&#39;run&#39;</span><span class="o">:</span>
+        <span class="k">return</span> <span class="s1">&#39;run&#39;</span><span class="p">;</span>
+    <span class="k">break</span><span class="p">;</span>
+    <span class="k">default</span><span class="o">:</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;Invalid action.&#39;</span><span class="p">);</span>
+    <span class="k">break</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>方法查询的版本：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">doAction</span><span class="p">(</span><span class="nx">action</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">actions</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;hack&#39;</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="s1">&#39;hack&#39;</span><span class="p">;</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;slash&#39;</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="s1">&#39;slash&#39;</span><span class="p">;</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;run&#39;</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="s1">&#39;run&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">};</span>
 
-<figure class='code'><div class='highlight'><pre class='main  js'><div class='line'><span class="kd">function</span> <span class="nx">doAction</span><span class="p">(</span><span class="nx">action</span><span class="p">)</span> <span class="p">{</span>
-</div><div class='line'>  <span class="kd">var</span> <span class="nx">actions</span> <span class="o">=</span> <span class="p">{</span>
-</div><div class='line'>      <span class="s1">&#39;hack&#39;</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-</div><div class='line'>        <span class="k">return</span> <span class="s1">&#39;hack&#39;</span><span class="p">;</span>
-</div><div class='line'>      <span class="p">},</span>
-</div><div class='line'>      <span class="s1">&#39;slash&#39;</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-</div><div class='line'>        <span class="k">return</span> <span class="s1">&#39;slash&#39;</span><span class="p">;</span>
-</div><div class='line'>      <span class="p">},</span>
-</div><div class='line'>      <span class="s1">&#39;run&#39;</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-</div><div class='line'>        <span class="k">return</span> <span class="s1">&#39;run&#39;</span><span class="p">;</span>
-</div><div class='line'>      <span class="p">}</span>
-</div><div class='line'>    <span class="p">};</span>
-</div><div class='line'> </div><div class='line'>  <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">actions</span><span class="p">[</span><span class="nx">action</span><span class="p">]</span> <span class="o">!==</span> <span class="s1">&#39;function&#39;</span><span class="p">)</span> <span class="p">{</span>
-</div><div class='line'>    <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;Invalid action.&#39;</span><span class="p">);</span>
-</div><div class='line'>  <span class="p">}</span>
-</div><div class='line'>  <span class="k">return</span> <span class="nx">actions</span><span class="p">[</span><span class="nx">action</span><span class="p">]();</span>
-</div><div class='line'><span class="p">}</span>
-</div></pre></div></figure>
-
-
+  <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">actions</span><span class="p">[</span><span class="nx">action</span><span class="p">]</span> <span class="o">!==</span> <span class="s1">&#39;function&#39;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;Invalid action.&#39;</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">actions</span><span class="p">[</span><span class="nx">action</span><span class="p">]();</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>另一个输入分组（频繁使用 <code>case</code> 语句的穿越特性）的例子：假定你正在写一个编程语言解析器，并且你要执行一个动作：当遇到一个记号符(token)，打开对象或数组；当遇到另一个记号符(token)，关闭它们。假设已存在以下方法：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">handleOpen</span><span class="p">(</span><span class="nx">token</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="s1">&#39;Open object / array.&#39;</span><span class="p">;</span>
+<span class="p">}</span>
 
-<figure class='code'><div class='highlight'><pre class='main  js'><div class='line'><span class="kd">function</span> <span class="nx">handleOpen</span><span class="p">(</span><span class="nx">token</span><span class="p">)</span> <span class="p">{</span>
-</div><div class='line'>  <span class="k">return</span> <span class="s1">&#39;Open object / array.&#39;</span><span class="p">;</span>
-</div><div class='line'><span class="p">}</span>
-</div><div class='line'> </div><div class='line'><span class="kd">function</span> <span class="nx">handleClose</span><span class="p">(</span><span class="nx">token</span><span class="p">)</span> <span class="p">{</span>
-</div><div class='line'>  <span class="k">return</span> <span class="s1">&#39;Close object / array&#39;</span><span class="p">;</span>
-</div><div class='line'><span class="p">}</span>
-</div></pre></div></figure>
-
-
+<span class="kd">function</span> <span class="nx">handleClose</span><span class="p">(</span><span class="nx">token</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="s1">&#39;Close object / array&#39;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <p><code>switch … case</code> 的写法是：</p>
-
-<figure class='code'><div class='highlight'><pre class='main  js'><div class='line'><span class="kd">function</span> <span class="nx">processToken</span> <span class="p">(</span><span class="nx">token</span><span class="p">)</span> <span class="p">{</span>
-</div><div class='line'>  <span class="k">switch</span> <span class="p">(</span><span class="nx">token</span><span class="p">)</span> <span class="p">{</span>
-</div><div class='line'>    <span class="k">case</span> <span class="s1">&#39;{&#39;</span><span class="o">:</span>
-</div><div class='line'>    <span class="k">case</span> <span class="s1">&#39;[&#39;</span><span class="o">:</span>
-</div><div class='line'>      <span class="nx">handleOpen</span><span class="p">(</span><span class="nx">token</span><span class="p">);</span>
-</div><div class='line'>    <span class="k">break</span><span class="p">;</span>
-</div><div class='line'>    <span class="k">case</span> <span class="s1">&#39;]&#39;</span><span class="o">:</span>
-</div><div class='line'>    <span class="k">case</span> <span class="s1">&#39;}&#39;</span><span class="o">:</span>
-</div><div class='line'>      <span class="nx">handleClose</span><span class="p">(</span><span class="nx">token</span><span class="p">);</span>
-</div><div class='line'>    <span class="k">break</span><span class="p">;</span>
-</div><div class='line'>    <span class="k">default</span><span class="o">:</span>
-</div><div class='line'>      <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;Invalid token.&#39;</span><span class="p">);</span>
-</div><div class='line'>    <span class="k">break</span><span class="p">;</span>
-</div><div class='line'>  <span class="p">}</span>
-</div><div class='line'><span class="p">}</span>
-</div></pre></div></figure>
-
-
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">processToken</span> <span class="p">(</span><span class="nx">token</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">switch</span> <span class="p">(</span><span class="nx">token</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="s1">&#39;{&#39;</span><span class="o">:</span>
+    <span class="k">case</span> <span class="s1">&#39;[&#39;</span><span class="o">:</span>
+      <span class="nx">handleOpen</span><span class="p">(</span><span class="nx">token</span><span class="p">);</span>
+    <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="s1">&#39;]&#39;</span><span class="o">:</span>
+    <span class="k">case</span> <span class="s1">&#39;}&#39;</span><span class="o">:</span>
+      <span class="nx">handleClose</span><span class="p">(</span><span class="nx">token</span><span class="p">);</span>
+    <span class="k">break</span><span class="p">;</span>
+    <span class="k">default</span><span class="o">:</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;Invalid token.&#39;</span><span class="p">);</span>
+    <span class="k">break</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>而方法查询则是像这样：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">tokenActions</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;{&#39;</span><span class="o">:</span> <span class="nx">handleOpen</span><span class="p">,</span>
+    <span class="s1">&#39;[&#39;</span><span class="o">:</span> <span class="nx">handleOpen</span><span class="p">,</span>
+    <span class="s1">&#39;]&#39;</span><span class="o">:</span> <span class="nx">handleClose</span><span class="p">,</span>
+    <span class="s1">&#39;}&#39;</span><span class="o">:</span> <span class="nx">handleClose</span>
+  <span class="p">};</span>
 
-<figure class='code'><div class='highlight'><pre class='main  js'><div class='line'><span class="kd">var</span> <span class="nx">tokenActions</span> <span class="o">=</span> <span class="p">{</span>
-</div><div class='line'>    <span class="s1">&#39;{&#39;</span><span class="o">:</span> <span class="nx">handleOpen</span><span class="p">,</span>
-</div><div class='line'>    <span class="s1">&#39;[&#39;</span><span class="o">:</span> <span class="nx">handleOpen</span><span class="p">,</span>
-</div><div class='line'>    <span class="s1">&#39;]&#39;</span><span class="o">:</span> <span class="nx">handleClose</span><span class="p">,</span>
-</div><div class='line'>    <span class="s1">&#39;}&#39;</span><span class="o">:</span> <span class="nx">handleClose</span>
-</div><div class='line'>  <span class="p">};</span>
-</div><div class='line'> </div><div class='line'><span class="kd">function</span> <span class="nx">processToken</span><span class="p">(</span><span class="nx">token</span><span class="p">)</span> <span class="p">{</span>
-</div><div class='line'>  <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">tokenActions</span><span class="p">[</span><span class="nx">token</span><span class="p">]</span> <span class="o">!==</span> <span class="s1">&#39;function&#39;</span><span class="p">)</span> <span class="p">{</span>
-</div><div class='line'>    <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;Invalid token.&#39;</span><span class="p">);</span>
-</div><div class='line'>  <span class="p">}</span>
-</div><div class='line'>  <span class="k">return</span> <span class="nx">tokenActions</span><span class="p">[</span><span class="nx">token</span><span class="p">](</span><span class="nx">token</span><span class="p">);</span>
-</div><div class='line'><span class="p">}</span>
-</div></pre></div></figure>
-
-
+<span class="kd">function</span> <span class="nx">processToken</span><span class="p">(</span><span class="nx">token</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">tokenActions</span><span class="p">[</span><span class="nx">token</span><span class="p">]</span> <span class="o">!==</span> <span class="s1">&#39;function&#39;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;Invalid token.&#39;</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">tokenActions</span><span class="p">[</span><span class="nx">token</span><span class="p">](</span><span class="nx">token</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>乍看上去，方法查询的做法稍显复杂，但是它有以下几个优点：</p>
 
 <ul>
@@ -194,7 +186,6 @@
 <li>方法查询更加灵活。使用活动对象允许你在程序运行时改分支条件，比如，动态加载模块以扩展分支条件。甚至在逻辑段落的上下文切换时，改变部分或全部分支条件；</li>
 <li>方法查询在定义上是面向对象的。而用 <code>switch … case</code>，令你的程序更加地面向过程。</li>
 </ul>
-
 
 <p>最后的观点也许是最重要的：<code>switch</code> 语句与 <code>goto</code> 语句是十分类似的，后者是近二十年来普遍被科学界精英们要求退出现代编程语言舞台的。它们有着相同的弊端：我在到处都能见到 <code>switch ... case</code>，是的它被滥用了。开发者们将不相干的功能整合入过于分离的分支逻辑中。换句话说，<code>switch ... case</code> 倾向于驱使人们写出稀疏松散的代码，而代码查询则有助于人们写出组织良好、面向对象的代码。很常见地， <code>switch ... case</code> 语句的执行其实是对代码高凝聚逻辑低干扰原则的一种破坏。</p>
 
@@ -210,325 +201,277 @@
 <li>你是否试着将相关的输入语句组织在一起利用穿透特性使它们之间共享代码？</li>
 </ul>
 
-
 <p>如果你对以上任一问题的回答是 yes，那么你都有很好的理由远离 <code>switch</code> ，还有它那难以控制穿透特性。</p>
-
-<hr />
-
-<p>英文原文：<a href="http://ericleads.com/2012/12/switch-case-considered-harmful/">Switch … Case Considered Harmful</a></p>
-<p><a rel="bookmark" href="http://roshanca.com/switch-case-considered-harmful/">&#9875; Permalink</a></p>]]></content>
-    </entry>
+]]></content>
+  </entry>
   
-    <entry>
-      
-
-
-
-
-<title type="html"><![CDATA[TODO 插件 for Sublime Text 2]]></title>
-<link href="http://roshanca.com/todo-plugin-for-sublime/"/>
-<updated>2012-12-07T20:30:00+08:00</updated>
-<id>http://roshanca.com/todo-plugin-for-sublime</id>
-
-      <content type="html"><![CDATA[<p>用 ST2 来实现日常与工作中的 TODO，详细请查看这篇文章：<a href="http://lucifr.com/2012/09/18/sublime-text-extension-plaintasks/">《Sublime Text 2 插件：PlainTasks》</a></p>
+  <entry>
+    <title type="html"><![CDATA[TODO 插件 for Sublime Text 2]]></title>
+    <link href="http://roshanca.com/2012/todo-plugin-for-sublime"/>
+    <updated>2012-12-07T20:30:00+08:00</updated>
+    <id>http://roshanca.com/2012/todo-plugin-for-sublime</id>
+    <content type="html"><![CDATA[<p>用 ST2 来实现日常与工作中的 TODO，详细请查看这篇文章：<a href="http://lucifr.com/2012/09/18/sublime-text-extension-plaintasks/">《Sublime Text 2 插件：PlainTasks》</a></p>
 
 <p>安装与使用文中已经的很详细了，很感谢 Lucifr 翻译了 <a href="https://github.com/aziz/PlainTasks">PlainTasks</a> 自带的英文教程：</p>
 
-<p><figure class='code caption'><figcaption>Gist: 4232437<a href='https://gist.github.com/4232437'>Gist page</a></figcaption><div class='highlight'><pre class='main  plain'></pre></div></figure></p>
+<script src="https://gist.github.com/4232437.js"> </script>
 
-<h2>自动关联图标</h2>
+<h3>自动关联图标</h3>
 
 <p>关于如何将 TODO 文档自动关联作者提供的那漂亮的图标，我去搜索了一番，具体做法如下：</p>
 
 <ol>
-<li>右键点击 ST2 选择“显示包内容”，进入 <code>Contents =&gt; Resources</code>；</li>
-<li>将图标文件 <code>TODO.icns</code> 复制到此目录下；</li>
+<li> 右键点击 ST2 选择“显示包内容”，进入 <code>Contents =&gt; Resources</code>；</li>
+<li> 将图标文件 <code>TODO.icns</code> 复制到此目录下；</li>
 <li><p>返回 <code>Contents</code> 目录，编辑 <code>info.plist</code>，在键值 <code>CFBundleDocumentTypes</code> 内的首个 <code>&lt;array&gt;</code> 后加入以下代码：</p>
-
-<pre><code>&lt;dict&gt;
-  &lt;key&gt;CFBundleTypeExtensions&lt;/key&gt;
-  &lt;array&gt;
-    &lt;string&gt;todo&lt;/string&gt;
-    &lt;string&gt;todolist&lt;/string&gt;
-    &lt;string&gt;tasks&lt;/string&gt;
-    &lt;string&gt;taskpaper&lt;/string&gt;
-  &lt;/array&gt;
-  &lt;key&gt;CFBundleTypeRole&lt;/key&gt;
-  &lt;string&gt;Editor&lt;/string&gt;
-  &lt;key&gt;CFBundleTypeName&lt;/key&gt;
-  &lt;string&gt;Tasks&lt;/string&gt;
-  &lt;key&gt;CFBundleTypeIconFile&lt;/key&gt;
-  &lt;string&gt;TODO&lt;/string&gt;
-&lt;/dict&gt;
-</code></pre></li>
-<li>保存，关闭退出 ST2；</li>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dict&gt;</span>
+  <span class="nt">&lt;key&gt;</span>CFBundleTypeExtensions<span class="nt">&lt;/key&gt;</span>
+  <span class="nt">&lt;array&gt;</span>
+    <span class="nt">&lt;string&gt;</span>todo<span class="nt">&lt;/string&gt;</span>
+    <span class="nt">&lt;string&gt;</span>todolist<span class="nt">&lt;/string&gt;</span>
+    <span class="nt">&lt;string&gt;</span>tasks<span class="nt">&lt;/string&gt;</span>
+    <span class="nt">&lt;string&gt;</span>taskpaper<span class="nt">&lt;/string&gt;</span>
+  <span class="nt">&lt;/array&gt;</span>
+  <span class="nt">&lt;key&gt;</span>CFBundleTypeRole<span class="nt">&lt;/key&gt;</span>
+  <span class="nt">&lt;string&gt;</span>Editor<span class="nt">&lt;/string&gt;</span>
+  <span class="nt">&lt;key&gt;</span>CFBundleTypeName<span class="nt">&lt;/key&gt;</span>
+  <span class="nt">&lt;string&gt;</span>Tasks<span class="nt">&lt;/string&gt;</span>
+  <span class="nt">&lt;key&gt;</span>CFBundleTypeIconFile<span class="nt">&lt;/key&gt;</span>
+  <span class="nt">&lt;string&gt;</span>TODO<span class="nt">&lt;/string&gt;</span>
+<span class="nt">&lt;/dict&gt;</span>
+</code></pre></div></li>
+<li><p>保存，关闭退出 ST2；</p></li>
 <li><p>重建 Launchservice：在终端中输入：</p>
-
-<pre><code>/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister -r -f /Applications/Sublime\ Text\ 2.app/
-</code></pre></li>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister -r -f /Applications/Sublime<span class="se">\ </span>Text<span class="se">\ </span>2.app/
+</code></pre></div></li>
 <li><p>注销电脑或者在终端中输入 <code>killall Finder</code>。</p></li>
 </ol>
 
-
 <p>ok，新建一个 TODO 文档，保存至电脑看看效果吧 ☺</p>
-<p><a rel="bookmark" href="http://roshanca.com/todo-plugin-for-sublime/">&#9875; Permalink</a></p>]]></content>
-    </entry>
+]]></content>
+  </entry>
   
-    <entry>
-      
+  <entry>
+    <title type="html"><![CDATA[更新公司电子门禁密码]]></title>
+    <link href="http://roshanca.com/2012/update-company-electronic-access-password"/>
+    <updated>2012-12-06T10:12:00+08:00</updated>
+    <id>http://roshanca.com/2012/update-company-electronic-access-password</id>
+    <content type="html"><![CDATA[<p>昨天很杯具地发现丢了饭卡与公司的门禁卡！饭卡里还有几十块钱，虽说不能挂失，但能补办就行了。门禁卡就不一样了，因为涉及到公司安全，必须赶紧更换门锁密码！</p>
 
+<p>but...如何更改密码？我望着门锁上如同黑洞般的刷卡感应区，手里拿着新门禁卡，不知所措。因为它长这样：</p>
 
-
-
-<title type="html"><![CDATA[更新公司门禁密钥]]></title>
-<link href="http://roshanca.com/update-the-key-of-access-cards-for-company/"/>
-<updated>2012-12-06T10:12:00+08:00</updated>
-<id>http://roshanca.com/update-the-key-of-access-cards-for-company</id>
-
-      <content type="html"><![CDATA[<p>昨天很杯具地发现遗失了饭卡与门禁卡！饭卡里还有几十块钱，虽然不能挂失，丢了就丢了，补办好了。门禁卡比较麻烦，因为涉及到公司安全，必须赶紧更换门锁密码啊！</p>
-
-<p>but&#8230;如何更改密码？我望着门锁上如同黑洞般的刷卡感应区，手里拿着 IC 卡，不知道该咋整。因为它长这样：</p>
-
-<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/lock1.jpg" alt="公司门锁" /></p>
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/lock1.jpg" alt="公司电子门锁"></p>
 
 <p>感觉无从下手，谷歌百度了半天也无果。</p>
 
 <p>这可急坏了咱们行政主管小姣童鞋，一边抱怨我的丢三落四，一边打电话咨询开锁公司🔓。</p>
 
-<p>经咨询，只提供上门服务，费用 ¥100。我说好吧，钱我来出让人家过来吧。小姣交待说，这次就跟着学着点，下次有人再丢卡，我们就可以自己解决了。我想也是，100块不能白交啊 T_T</p>
+<p>经咨询，只提供上门服务，费用 ¥100。我说好吧，钱我来出让人家过来吧。小姣交待说，这次就跟着学着点，下次有人再丢卡，我们就可以自己解决了。我想也是，这钱不能白交了。</p>
 
-<p>记录一下方法，纪念一下我的 100 块&#8230;</p>
+<p>记录一下方法，纪念一下我的 100 块...</p>
 
 <h2>前提</h2>
 
 <p>门锁是搭配 IC 射频卡使用的那种，锁上有射频感应区，刷卡开门。我们公司的锁的牌子是“鑫雅顿”，IC 卡用的是“MANGO”。此锁应该有一张所谓“母卡”，多张“子卡”。</p>
 
-<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/ic_card.jpg" alt="MANGO IC CARD" /></p>
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/ic_card.jpg" alt="MANGO IC CARD"></p>
 
 <h2>情境</h2>
 
-<p>由于是一锁对多卡，一卡遗失，必须更改门锁密钥，对应地，其余的卡的也必须更改密钥。</p>
+<p>由于是一锁对多卡，一卡遗失，必须更改门锁密码，对应地，其余的卡的也必须重新配对密码。</p>
 
 <h2>操作步骤</h2>
 
 <h3>更新门锁密钥</h3>
 
 <ol>
-<li>用母卡刷门一次，“滴”一声后门锁感应区内蓝光亮起</li>
-<li>扳动门把╖开锁，蓝光消失</li>
-<li>立马再用母卡刷门一次，这回“滴”后发现蓝光在闪烁⊹</li>
-<li>蓝光闪烁时再刷一次母卡，蓝点转变为红光，红光会逐渐变暗（这个过程可理解为母卡重新生成了一个新密钥并复制给了门锁）</li>
-<li>红光熄灭后一声长响，表示门锁上的密钥已经更换（此时除了母卡，其余子卡是开不了门的）</li>
+<li> 用母卡刷门一次，“滴”一声后门锁感应区内蓝光亮起</li>
+<li> 扳动门把╖开锁，蓝光消失</li>
+<li> 立马再用母卡刷门一次，这回“滴”后发现蓝光在闪烁⊹</li>
+<li> 蓝光闪烁时再刷一次母卡，蓝点转变为红光，红光会逐渐变暗（这个过程可理解为母卡重新生成了一个新密钥并复制给了门锁）</li>
+<li> 红光熄灭后一声长响，表示门锁上的密钥已经更换（此时除了母卡，其余子卡是开不了门的）</li>
 </ol>
-
 
 <h3>复制密钥到子卡</h3>
 
 <ol>
-<li>重复以上 1、2、3 步骤</li>
-<li>蓝光闪烁时把子卡放上去刷，就可将门锁密钥复制至子卡，“滴”一声表示完成（可趁着蓝光闪烁批量复制）</li>
-<li>等蓝灯熄灭，子卡们都已生效，而丢失的那张卡，显然已经无法再度使用了☺</li>
+<li> 重复以上 1、2、3 步骤</li>
+<li> 蓝光闪烁时把子卡放上去刷，就可将门锁密钥复制至子卡，“滴”一声表示完成（可趁着蓝光闪烁批量复制）</li>
+<li> 等蓝灯熄灭，子卡们都已生效，而丢失的那张卡，显然已经无法再度使用了☺</li>
 </ol>
 
-
-<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/lock2.jpg" alt="公司门锁" /></p>
-<p><a rel="bookmark" href="http://roshanca.com/update-the-key-of-access-cards-for-company/">&#9875; Permalink</a></p>]]></content>
-    </entry>
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/lock2.jpg" alt="公司门锁"></p>
+]]></content>
+  </entry>
   
-    <entry>
-      
-
-
-
-
-<title type="html"><![CDATA[编辑神器：Sublime Text 2]]></title>
-<link href="http://roshanca.com/magical-sublime-text-2/"/>
-<updated>2012-12-02T22:49:00+08:00</updated>
-<id>http://roshanca.com/magical-sublime-text-2</id>
-
-      <content type="html"><![CDATA[<p>Sublime Text 2 (以下简称 ST2)，无疑是我所用过的最好用的文本（代码）编辑器，没有之一！基于它的某些诱人特性，总让人在不经意间就眼前一亮，所以最近身边有好多同事都因无意一瞥，就被其吸引，继而让我推荐。</p>
+  <entry>
+    <title type="html"><![CDATA[编辑神器：Sublime Text 2]]></title>
+    <link href="http://roshanca.com/2012/magical-sublime-text-2"/>
+    <updated>2012-12-02T22:49:00+08:00</updated>
+    <id>http://roshanca.com/2012/magical-sublime-text-2</id>
+    <content type="html"><![CDATA[<p>Sublime Text 2 (以下简称 ST2)，无疑是我所用过的最好用的文本（代码）编辑器，没有之一！基于它的某些诱人特性，总让人在不经意间就眼前一亮，所以最近身边有好多同事都因无意一瞥，就被其吸引，继而让我推荐。</p>
 
 <p>先来说说它的优势所在：</p>
 
 <ul>
-<li><em>启动快速，运行流畅</em>，而且这是在拥有众多功能和加载许多插件的前提下，单凭这一点，就达到了我内心“神器”的标准；</li>
-<li><em>UI 漂亮精美</em>，内置多款主题，无论你喜欢深色背景，还是钟意浅色皮肤，它都能满足你；</li>
-<li>支持各种流行编程语言的<em>语法高亮</em>，非常齐全，还可通过插件扩展；</li>
-<li><em>代码自动补全提示</em>，注意：它只是个编辑器，不是 IDE，虽然提示的代码有限，但十分实用（特别是写 CSS，太爽了）；</li>
-<li><em>可定制性和可扩展性</em>，这个可就因人而异了，有人嫌麻烦，有人要个性，但毫无疑问的是，ST2 因为这一点而无比强大！</li>
+<li>  <strong>启动快速，运行流畅</strong>，而且这是在拥有众多功能和加载许多插件的前提下，单凭这一点，就达到了我内心“神器”的标准；</li>
+<li>  <strong>UI 漂亮精美</strong>，内置多款主题，无论你喜欢深色背景，还是钟意浅色皮肤，它都能满足你；</li>
+<li>  支持各种流行编程语言的<strong>语法高亮</strong>，非常齐全，还可通过插件扩展；</li>
+<li>  <strong>代码自动补全提示</strong>，注意：它只是个编辑器，不是 IDE，虽然提示的代码有限，但十分实用（特别是写 CSS，太爽了）；</li>
+<li>  <strong>可定制性和可扩展性</strong>，这个可就因人而异了，有人嫌麻烦，有人要个性，但毫无疑问的是，ST2 因为这一点而无比强大！</li>
 </ul>
-
 
 <p>有没有心动呢？心动不如行动，赶紧来试试吧。</p>
 
 <h2>下载</h2>
 
 <ul>
-<li>稳定版：<a href="http://www.sublimetext.com/2">Stable</a></li>
-<li>开发版：<a href="http://www.sublimetext.com/dev">Dev</a> - Semi-frequently updated, available to anyone.</li>
-<li>内测版：<a href="http://www.sublimetext.com/nightly">Nightly</a> - Mostly frequently updated, available for registered users only.</li>
+<li>  稳定版：<a href="http://www.sublimetext.com/2">Stable</a></li>
+<li>  开发版：<a href="http://www.sublimetext.com/dev">Dev</a> - Semi-frequently updated, available to anyone.</li>
+<li>  内测版：<a href="http://www.sublimetext.com/nightly">Nightly</a> - Mostly frequently updated, available for registered users only.</li>
 </ul>
-
 
 <p>推荐下载开发版（Dev）。</p>
 
 <h2>破解</h2>
 
-<p>其实未注册的免费版跟付费版功能完全相同，只是前者主窗口右上角有 &#8220;UNREGISTERED&#8221; 的水印而已，还有就是偶尔的提示注册弹窗（非常的偶尔，好久才弹一次）。破解过程我就不赘述了，请移步至以下链接。</p>
+<p>其实未注册的免费版跟付费版功能完全相同，只是前者主窗口右上角有 &quot;UNREGISTERED&quot; 的水印而已，还有就是偶尔的提示注册弹窗（频率低的可以忽略不记），所以破解<strong>我既不提倡，也觉得没那必要</strong>。过程我就不赘述了，请移步至以下链接。</p>
 
 <ul>
-<li><strong>OS X</strong> - <a href="http://mac.pcbeta.com/thread-114355-1-1.html">http://mac.pcbeta.com/thread-114355-1-1.html</a></li>
-<li><strong>Windows &amp; Linux</strong> - <a href="http://i.wanz.im/2012/04/07/cracking_sublime-text2/">http://i.wanz.im/2012/04/07/cracking_sublime-text2/</a></li>
+<li>  <strong>OS X</strong> - <a href="http://mac.pcbeta.com/thread-114355-1-1.html">http://mac.pcbeta.com/thread-114355-1-1.html</a></li>
+<li>  <strong>Windows &amp; Linux</strong> - <a href="http://i.wanz.im/2012/04/07/cracking_sublime-text2/">http://i.wanz.im/2012/04/07/cracking_sublime-text2/</a></li>
 </ul>
-
 
 <h2>使用技巧</h2>
 
 <p>提示：因为本文基于 OS X 环境所写，所以为了更好的阅读下文，请先确保理解 OS X 与 Windows 下的键盘映射关系。见表：</p>
 
-<table>
-<thead>
+<table><thead>
 <tr>
-<th></th>
-<th>OS X   </th>
-<th>符号</th>
-<th>对应</th>
-<th>Windows</th>
+<th style="text-align: left">OS X</th>
+<th style="text-align: center">符号</th>
+<th style="text-align: center">对应</th>
+<th style="text-align: left">Windows</th>
 </tr>
-</thead>
-<tbody>
+</thead><tbody>
 <tr>
-<td></td>
-<td>Command</td>
-<td> ⌘ </td>
-<td> => </td>
-<td>Ctrl</td>
+<td style="text-align: left">Command</td>
+<td style="text-align: center">⌘</td>
+<td style="text-align: center">=&gt;</td>
+<td style="text-align: left">Ctrl</td>
 </tr>
 <tr>
-<td></td>
-<td>Shift  </td>
-<td> ⇧ </td>
-<td> => </td>
-<td>Shift</td>
+<td style="text-align: left">Shift</td>
+<td style="text-align: center">⇧</td>
+<td style="text-align: center">=&gt;</td>
+<td style="text-align: left">Shift</td>
 </tr>
 <tr>
-<td></td>
-<td>Option </td>
-<td> ⌥ </td>
-<td> => </td>
-<td>Alt</td>
+<td style="text-align: left">Option</td>
+<td style="text-align: center">⌥</td>
+<td style="text-align: center">=&gt;</td>
+<td style="text-align: left">Alt</td>
 </tr>
 <tr>
-<td></td>
-<td>Control</td>
-<td> ⌃ </td>
-<td> => </td>
-<td>Ctrl</td>
+<td style="text-align: left">Control</td>
+<td style="text-align: center">⌃</td>
+<td style="text-align: center">=&gt;</td>
+<td style="text-align: left">Ctrl</td>
 </tr>
-</tbody>
-</table>
-
+</tbody></table>
 
 <h3>多重选择(Multi-Selection)</h3>
 
-<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/rename.jpg" alt="Multi-Selection" /></p>
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/rename.jpg" alt="Multi-Selection"></p>
 
 <p>这项功能实在是太强大了！太让人随心所欲了，使得许多需要用正则、高级搜索、替换才能完成的任务，变得轻松 easy，不禁让我感慨：“当年没这神器，是怎么活过来的？！”</p>
 
 <p>如何激活多重选择呢？</p>
 
 <ul>
-<li>按住 <code>Command</code> or <code>Ctrl</code>，点击编辑区域内任何你所期望光标出现的位置；</li>
-<li>通过多次 <code>Command + D</code> or <code>Ctrl + D</code>，即可将全文中与光标当前所在位置的词相同的词逐一加入选择。而在有词句选中状况下，通过 <code>Command + Control + G</code> or <code>Alt + F3</code> 即可一次性选择全文中所有相同的词；</li>
-<li>Windows 下可按住鼠标中键后拖动来进行垂直方向的纵列选择，OS X 下则是按住 <code>option</code> 键；</li>
-<li>选中多行文本，通过 <code>Command + Shift + L</code> or <code>Ctrl + Shift + L</code> 来将光标打散至每行行尾。</li>
+<li>  按住 <code>Command</code>，点击编辑区域内任何你所期望光标出现的位置；</li>
+<li>  通过多次 <code>Command + D</code>，即可将全文中与光标当前所在位置的词相同的词逐一加入选择。而在有词句选中状况下，通过 <code>Command + Control + G</code> 即可一次性选择全文中所有相同的词；</li>
+<li>  Windows 下可按住鼠标中键后拖动来进行垂直方向的纵列选择，OS X 下则是按住 <code>option</code> 键；</li>
+<li>  选中多行文本，通过 <code>Command + Shift + L</code> 来将光标打散至每行行尾。</li>
 </ul>
-
 
 <h3>随心所欲跳转(Goto Anything)</h3>
 
-<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/goto.jpg" alt="Goto Anything" /></p>
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/goto.jpg" alt="Goto Anything"></p>
 
-<p>许多 IDE 都有这个功能，切换当前打开的文档嘛。但 ST2 的 Goto Anything 已经完全超越了，当我们按下 <code>Command + P</code> or <code>Ctrl + P</code> 时看看都能做些什么：</p>
+<p>许多 IDE 都有这个功能，切换当前打开的文档嘛。但 ST2 的 Goto Anything 已经完全超越了，当我们按下 <code>Command + P</code> 时看看都能做些什么：</p>
 
 <ul>
-<li>切换文档，不单单是在当前打开的文档之间哦，包括了整个 Project，并可用关键字过滤</li>
-<li>关键字以 <code>@</code> 开头，匹配的是文档中的函数以及其它关键内容（例如：HTML 中就匹配元素 id，这有些类似一般 IDE 中的 &#8220;outline&#8221; 的功能），它的快捷键是 <code>Command + R</code> or <code>Ctrl + R</code></li>
-<li>关键字以 <code>#</code> 开头，其实就是个全文搜索</li>
-<li>关键字以 <code>:</code> 开头，后跟数字可跳转至相应的行，它的快捷键是 <code>Ctrl + G</code></li>
+<li>  切换文档，不单单是在当前打开的文档之间哦，包括了整个 Project，并可用关键字过滤</li>
+<li>  关键字以 <code>@</code> 开头，匹配的是文档中的函数以及其它关键内容（例如：HTML 中就匹配元素 id，这有些类似一般 IDE 中的 &quot;outline&quot; 的功能），它的快捷键是 <code>Command + R</code></li>
+<li>  关键字以 <code>#</code> 开头，其实就是个全文搜索</li>
+<li>  关键字以 <code>:</code> 开头，后跟数字可跳转至相应的行，它的快捷键是 <code>Ctrl + G</code></li>
 </ul>
-
 
 <h3>边栏(Side Bar)</h3>
 
-<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/Side-Bar.jpg" alt="Side Bar" /></p>
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/Side-Bar.jpg" alt="Side Bar"></p>
 
-<p>很多编辑器（Notepad++ etc.）也有边栏，但 ST2 有点不同的是：单选左侧边栏中的文件，右侧自动出现文档预览（若选中的为图片等文件，则显示其二进制编码）。当你修改编辑它时，它才在 ST2 中以 Tab 的形式自动打开，so sweety~</p>
+<p>很多编辑器（Notepad++ etc.）也有边栏，但 ST2 有点不同的是：单选左侧边栏中的文件，右侧自动出现文档预览（若选中的为图片等文件，则显示其二进制编码）。当你修改编辑它时，它才在 ST2 中以 Tab 的形式自动打开，so sweety ☺</p>
 
 <h3>命令面板(Command Palette)</h3>
 
-<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/command_palette.jpg" alt="Command Palette" /></p>
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/command_palette.jpg" alt="Command Palette"></p>
 
-<p>执行命令的快捷入口，我们一般以快捷键来快速调用（<code>Command + Shift + P</code> in OS X, <code>Ctrl + Shift + P</code> in Windows），当然你也可以在菜单 <code>Tool</code> 下找到它。</p>
+<p>执行命令的快捷入口，我们一般以快捷键 <code>Command + Shift + P</code> 来快速调用，当然你也可以在菜单 <code>Tool</code> 下找到它。</p>
 
 <h3>无干扰模式(Distraction Free Mode)</h3>
 
-<p>在菜单 <code>View</code> 中选择 <code>Enter Distraction Free Mode</code> 就可进入无干扰模式。快捷键为 <code>Ctrl + Shift + Command + F</code> or <code>Shift + F11</code></p>
+<p>在菜单 <code>View</code> 中选择 <code>Enter Distraction Free Mode</code> 就可进入无干扰模式。快捷键为 <code>Ctrl + Shift + Command + F</code></p>
 
-<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/Distraction-Free-Mode.jpg" alt="Distraction Free Mode" /></p>
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/Distraction-Free-Mode.jpg" alt="Distraction Free Mode"></p>
 
 <p>通过修改 <code>Preferences -&gt; Settings - More -&gt; Distraction Free - User</code> 可以对防干扰模式进行一些设置：</p>
-
-<pre><code>{
-    "line_numbers": false,      // 是否显示行号
-    "gutter": false,            // 是否显示边列
-    "draw_centered": true,      // 是否居中显示
-    "wrap_width": 80,           // 换行宽度(单位：字符)
-    "word_wrap": true,          // 是否自动换行
-    "scroll_past_end": true     // 滚动能否超过结尾
-}
-</code></pre>
-
+<div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span>
+    <span class="nt">&quot;line_numbers&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>      <span class="err">//</span> <span class="err">是否显示行号</span>
+    <span class="nt">&quot;gutter&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>            <span class="err">//</span> <span class="err">是否显示边列</span>
+    <span class="nt">&quot;draw_centered&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>      <span class="err">//</span> <span class="err">是否居中显示</span>
+    <span class="nt">&quot;wrap_width&quot;</span><span class="p">:</span> <span class="mi">80</span><span class="p">,</span>           <span class="err">//</span> <span class="err">换行宽度(单位：字符)</span>
+    <span class="nt">&quot;word_wrap&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>          <span class="err">//</span> <span class="err">是否自动换行</span>
+    <span class="nt">&quot;scroll_past_end&quot;</span><span class="p">:</span> <span class="kc">true</span>     <span class="err">//</span> <span class="err">滚动能否超过结尾</span>
+<span class="p">}</span>
+</code></pre></div>
 <h3>迷你地图(Minimap)</h3>
 
-<p>右侧默认显示迷你地图，这其实是个全局预览加模糊定位文档位置的功能。当然如果你像增大编辑可视面积，也可通过菜单 &#8220;View&#8221; 选择 &#8220;Hide Minimap&#8221; 将其关闭。</p>
+<p>右侧默认显示迷你地图，这其实是个全局预览加模糊定位文档位置的功能。当然如果你像增大编辑可视面积，也可通过菜单 &quot;View&quot; 选择 &quot;Hide Minimap&quot; 将其关闭。</p>
 
 <h2>设置</h2>
 
 <p><code>Preferences -&gt; Settings - Default</code>，这个是 ST2 的默认设置，不建议修改此文件，而是通过修改 <code>Preferences -&gt; Settings - User</code> 来达到个性化的定制。例如，以下就是我的 User 设定：</p>
-
-<pre><code>{
-    "folder_exclude_patterns":
-    [
-        ".svn",
-        ".git",
-        ".hg",
-        "CVS",
-        ".idea"
-    ],
-    "highlight_line": true,
-    "highlight_modified_tabs": true,
-    "scroll_past_end": true,
-    "tab_size": 2,
-    "theme": "Soda Dark.sublime-theme"
-}
-</code></pre>
-
+<div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span>
+    <span class="nt">&quot;folder_exclude_patterns&quot;</span><span class="p">:</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;.svn&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;.git&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;.hg&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;CVS&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;.idea&quot;</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;highlight_line&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&quot;highlight_modified_tabs&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&quot;scroll_past_end&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&quot;tab_size&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="nt">&quot;theme&quot;</span><span class="p">:</span> <span class="s2">&quot;Soda Dark.sublime-theme&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>根据字面意思相信你都能看懂分别代表什么意思，这里要提一下的是如何开启鼎鼎大名的 Vim 模式（重度 Coder 的大爱），请添加这句：</p>
-
-<pre><code>{
-    "ignored_packages": []
-}
-</code></pre>
-
+<div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span>
+    <span class="nt">&quot;ignored_packages&quot;</span><span class="p">:</span> <span class="p">[]</span>
+<span class="p">}</span>
+</code></pre></div>
 <h2>快捷键</h2>
 
 <p>类似设置，你可以进入 <code>Preferences -&gt; Key Bindings - Default</code> 查看所有的快捷键设置，然后在 <code>Key Bindings - User</code> 来自定义快捷键。</p>
 
 <p>附上常用的快捷键：（Windows 用户请移步至 <strong><a href="http://istyles.blog.163.com/blog/static/1811003892011828111418654/">这里</a></strong>）</p>
 
-<div class="group">
-    <table style="float:left;margin-right:1.5em;">
+<div class="keyboard">
+    <table>
         <thead>
             <tr>
                 <th colspan="2">编辑</th>
@@ -723,35 +666,31 @@
     </table>
 </div>
 
-
 <h2>安装插件</h2>
 
-<p>ST2 的插件安装是通过所谓的 <a href="http://wbond.net/sublime_packages/package_control">Package Control (包控制)</a> 来实现的。如果你用过 <code>npm</code> 或者 <code>spm</code> ，那你一定不会对这种包管理的方式感到陌生。</p>
+<p>ST2 的插件安装是通过所谓的 <a href="//sublime.wbond.net/">Package Control (包控制)</a> 来实现的。如果你用过 <code>npm</code> 或者 <code>spm</code> ，那你一定不会对这种包管理的方式感到陌生。</p>
 
 <p>安装 Package Control 的方法：</p>
 
 <ol>
 <li>打开 ST2，通过 <code>Ctrl + `</code> 调出 Console (控制台)</li>
 <li><p>将以下代码粘贴进命令行中并回车：</p>
-
-<pre><code> import urllib2,os; pf='Package Control.sublime-package'; ipp=sublime.installed_packages_path(); os.makedirs(ipp) if not os.path.exists(ipp) else None; urllib2.install_opener(urllib2.build_opener(urllib2.ProxyHandler())); open(os.path.join(ipp,pf),'wb').write(urllib2.urlopen('http://sublime.wbond.net/'+pf.replace(' ','%20')).read()); print 'Please restart Sublime Text to finish installation'
-</code></pre></li>
-<li>重启 ST2，如果在 <code>Preferences</code> 下见到 <code>Package Control</code> 这一项，就说明安装成功了。</li>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">urllib2</span><span class="o">,</span><span class="nn">os</span><span class="p">;</span> <span class="n">pf</span><span class="o">=</span><span class="s">&#39;Package Control.sublime-package&#39;</span><span class="p">;</span> <span class="n">ipp</span><span class="o">=</span><span class="n">sublime</span><span class="o">.</span><span class="n">installed_packages_path</span><span class="p">();</span> <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">ipp</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">ipp</span><span class="p">)</span> <span class="k">else</span> <span class="bp">None</span><span class="p">;</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">install_opener</span><span class="p">(</span><span class="n">urllib2</span><span class="o">.</span><span class="n">build_opener</span><span class="p">(</span><span class="n">urllib2</span><span class="o">.</span><span class="n">ProxyHandler</span><span class="p">()));</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ipp</span><span class="p">,</span><span class="n">pf</span><span class="p">),</span><span class="s">&#39;wb&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="s">&#39;http://sublime.wbond.net/&#39;</span><span class="o">+</span><span class="n">pf</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39; &#39;</span><span class="p">,</span><span class="s">&#39;%20&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">read</span><span class="p">());</span> <span class="k">print</span> <span class="s">&#39;Please restart Sublime Text to finish installation&#39;</span>
+</code></pre></div></li>
+<li><p>重启 ST2，如果在 <code>Preferences</code> 下见到 <code>Package Control</code> 这一项，就说明安装成功了。</p></li>
 </ol>
-
 
 <p>接下来我们就可以利用 Package Control 来安装插件了：</p>
 
 <ol>
-<li><p>打开 ST2，通过 <code>Command + Shift + P</code> or <code>Ctrl + Shift + P</code> 打开命令面板，输入关键字调出 <code>Package Control: Install Package</code></p>
+<li><p>打开 ST2，通过 <code>Command + Shift + P</code> 打开命令面板，输入关键字调出 <code>Package Control: Install Package</code></p>
 
-<p> <img src="http://i93.photobucket.com/albums/l57/ShakeSpace/PCI.jpg" alt="" /></p></li>
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/PCI.jpg" alt=""></p></li>
 <li><p>选择 <code>Package Control: Install Package</code>，稍等片刻后就可会出现插件列表，可输入插件名来在列表中查找选择所需插件</p>
 
-<p> <img src="http://i93.photobucket.com/albums/l57/ShakeSpace/PCI-RESULT.jpg" alt="" /></p></li>
-<li>等待安装（左下角 [ = ] 显示运行中），安装完毕后重启 ST2 即可</li>
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/PCI-RESULT.jpg" alt=""></p></li>
+<li><p>等待安装（左下角 [ = ] 显示运行中），安装完毕后重启 ST2 即可</p></li>
 </ol>
-
 
 <h2>常用插件</h2>
 
@@ -761,18 +700,15 @@
 <li><p><strong>Alignment</strong></p>
 
 <p>这插件用于对齐代码赋值语句, 例如:</p>
-
-<pre><code>var name = "sublimt"
-var version = "2.0.1"
-var title = "sublime text"
-</code></pre>
-
+<div class="highlight"><pre><code class="language-text" data-lang="text">var name = &quot;sublimt&quot;
+var version = &quot;2.0.1&quot;
+var title = &quot;sublime text&quot;
+</code></pre></div>
 <p>以上代码就能转化为：</p>
-
-<pre><code>var name    = "sublimt"
-var version = "2.0.1"
-var title   = "sublime text"
-</code></pre></li>
+<div class="highlight"><pre><code class="language-text" data-lang="text">var name    = &quot;sublimt&quot;
+var version = &quot;2.0.1&quot;
+var title   = &quot;sublime text&quot;
+</code></pre></div></li>
 <li><p><strong>Clipboard History</strong></p>
 
 <p>粘贴板历史记录，方便使用复制/剪切的内容。</p></li>
@@ -785,18 +721,19 @@ var title   = "sublime text"
 <li><p><strong>DocBlockr</strong></p>
 
 <p>自动生成标准 JSDoc 注释的好帮手，只需在函数声明定义上方输入 <code>/**</code> 然后回车，便会出现类似如下代码：</p>
-
-<pre><code>/**
+<div class="highlight"><pre><code class="language-text" data-lang="text">/**
 * [width description]
 * @param  {[type]} px [description]
 * @return {[type]}    [description]
 */
-</code></pre></li>
+</code></pre></div></li>
 <li><p><strong>Emmet</strong></p>
 
 <p>你也许没听说它，但其前身：zen coding 可谓是鼎鼎大名（在前端界）。之所以更名，是因为它给自己的定位：</p>
 
-<blockquote><p>the essential toolkit for web-developers</p></blockquote>
+<blockquote>
+<p>the essential toolkit for web-developers</p>
+</blockquote>
 
 <p>作为资深前端插件，它不仅可安装在 ST2 上，基本上流行的 IDE (Aptana/Eclipse etc.) 与编辑器 (Notepad++/TextMate etc.)，它都提供支持。详细的使用文档：<a href="http://docs.emmet.io">Emmet Documentation</a>，<a href="https://github.com/sergeche/emmet-sublime">Emmet for ST2</a></p></li>
 <li><p><strong>GBK Encoding Support</strong></p>
@@ -807,7 +744,9 @@ var title   = "sublime text"
 <p>格式化 JS，当然也包括 JSON，快捷键是 <code>Ctrl + Shift + F</code> 非常方便。</p></li>
 <li><p><strong>MarkdownEditing</strong></p>
 
-<blockquote><p>MarkdownEditing 从视觉和便捷性上针对 Markdown 文档的编辑进行了一系列的优化。</p></blockquote>
+<blockquote>
+<p>MarkdownEditing 从视觉和便捷性上针对 Markdown 文档的编辑进行了一系列的优化。</p>
+</blockquote>
 
 <p>附上 <a href="http://wowubuntu.com/markdown/index.html">Markdown 语法说明 (简体中文版)</a>，and <a href="http://lucifr.com/2012/07/12/markdownediting-for-sublime-text-2/">MarkdownEditing 的详细中文介绍</a></p></li>
 <li><p><strong>Markdown Preview</strong></p>
@@ -817,292 +756,245 @@ var title   = "sublime text"
 
 <p>加强在侧栏目录树中右键的选项。如图所示：</p>
 
-<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/sidebarenhancements.jpg" alt="SideBarEnhancements" /></p></li>
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/sidebarenhancements.jpg" alt="SideBarEnhancements"></p></li>
 <li><p>最后介绍一个 <strong>自动生成当天日期</strong> 的小插件，TextMate 用户一定不会陌生，命令是 <code>isoD + Tab</code>，此非官方插件，所以要使用的话，必须将 <a href="https://github.com/sunteya/sublime-user-package/blob/master/timestamp.py">timestamp.py</a> 这个文件加入到用户配置目录（<code>Packages -&gt; User</code>）下。</p></li>
 </ul>
-
-<p><a rel="bookmark" href="http://roshanca.com/magical-sublime-text-2/">&#9875; Permalink</a></p>]]></content>
-    </entry>
+]]></content>
+  </entry>
   
-    <entry>
-      
+  <entry>
+    <title type="html"><![CDATA[JavaScript 中的一些坑（一）]]></title>
+    <link href="http://roshanca.com/2012/traps-in-javascript-part-I"/>
+    <updated>2012-11-29T14:47:00+08:00</updated>
+    <id>http://roshanca.com/2012/traps-in-javascript-part-I</id>
+    <content type="html"><![CDATA[<p>“坑”这个字，在此的意思是“陷阱”。由于 JavaScript “弱语言”的性质，使得其在使用过程中异常的宽松灵活，但也极为容易“中招”。</p>
 
+<h2>坑一：全局变量</h2>
 
-
-
-<title type="html"><![CDATA[JavaScript 中的一些坑（一）]]></title>
-<link href="http://roshanca.com/traps-in-javascript-part-I/"/>
-<updated>2012-11-29T14:47:00+08:00</updated>
-<id>http://roshanca.com/traps-in-javascript-part-I</id>
-
-      <content type="html"><![CDATA[<p>“坑”这个字，在此的意思是“陷阱”。由于 JavaScript “弱语言”的性质，使得其在使用过程中异常的宽松灵活，但也极为容易“中招”。这些坑往往隐藏着，所以必须擦亮双眼，才能在学习与应用 JS 的道路上走的一帆风顺。</p>
-
-<h2>全局变量</h2>
-
-<blockquote><p>  JavaScript 通过函数管理作用域。在函数内部声明的变量只在这个函数内部，函数外面不可用。另一方面，全局变量就是在任何函数外面声明的或是未声明直接简单使用的。</p></blockquote>
+<blockquote>
+<p>JavaScript 通过函数管理作用域。在函数内部声明的变量只在这个函数内部，函数外面不可用。另一方面，全局变量就是在任何函数外面声明的或是未声明直接简单使用的。</p>
+</blockquote>
 
 <p>“未声明直接简单使用”，指的是不用 <code>var</code> 关键字来声明变量。这个我们已经非常清楚，避免造成隐式产生全局变量的方法就是声明变量尽量用 <code>var</code> 关键字。</p>
 
 <p>可你以为用了 <code>var</code> 就 ok 了？来看看这个坑：</p>
-
-<figure class='code'><div class='highlight'><pre class='main  js'><div class='line'><span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
-</div><div class='line'>    <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="nx">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-</div><div class='line'>    <span class="c1">// body...</span>
-</div><div class='line'><span class="p">}</span>
-</div></pre></div></figure>
-
-
-<p>也许你期望得到的是两个局部变量，但 <code>b</code> 却是货真价实的全局变量。why? Because <strong> 赋值运算是自右往左的 </strong>，所以这相当于：</p>
-
-<figure class='code'><div class='highlight'><pre class='main  js'><div class='line'><span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
-</div><div class='line'>    <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">(</span><span class="nx">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
-</div><div class='line'>    <span class="c1">// body...</span>
-</div><div class='line'><span class="p">}</span>
-</div></pre></div></figure>
-
-
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="nx">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="c1">// body...</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>也许你期望得到的是两个局部变量，但 <code>b</code> 却是货真价实的全局变量。why? Because <strong>赋值运算是自右往左的</strong>，所以这相当于：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">(</span><span class="nx">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="c1">// body...</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>所以 <code>b</code> 是全局变量。</p>
 
 <p>填坑：变量声明，最好一个个来，别搞批发~_~;</p>
 
-<h2>变量声明</h2>
+<h2>坑二：变量声明</h2>
 
 <p>先来看坑：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">myName</span> <span class="o">=</span> <span class="s2">&quot;global&quot;</span><span class="p">;</span>
 
-<figure class='code'><div class='highlight'><pre class='main  js'><div class='line'><span class="nx">myName</span> <span class="o">=</span> <span class="s2">&quot;global&quot;</span><span class="p">;</span>
-</div><div class='line'> </div><div class='line'><span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
-</div><div class='line'>    <span class="nx">alert</span><span class="p">(</span><span class="nx">myName</span><span class="p">);</span>
-</div><div class='line'>    <span class="kd">var</span> <span class="nx">myName</span> <span class="o">=</span> <span class="s2">&quot;local&quot;</span><span class="p">;</span>
-</div><div class='line'>    <span class="nx">alert</span><span class="p">(</span><span class="nx">myName</span><span class="p">);</span>
-</div><div class='line'><span class="p">}</span>
-</div><div class='line'> </div><div class='line'><span class="nx">foo</span><span class="p">();</span>
-</div></pre></div></figure>
+<span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="nx">myName</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">myName</span> <span class="o">=</span> <span class="s2">&quot;local&quot;</span><span class="p">;</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="nx">myName</span><span class="p">);</span>
+<span class="p">}</span>
 
+<span class="nx">foo</span><span class="p">();</span>
+</code></pre></div>
+<p>乍看上去，我们预计期望两次 <code>alert</code> 的结果分别为 &quot;global&quot; 与 &quot;local&quot;，但真实的结果是 &quot;undefined&quot; 与 &quot;local&quot;。why? 因为：</p>
 
-<p>乍看上去，我们预计期望两次 <code>alert</code> 的结果分别为 &#8220;global&#8221; 与 &#8220;local&#8221;，但真实的结果是 &#8220;undefined&#8221; 与 &#8220;local&#8221;。why? Because <strong> 变量在同一作用域（同一函数）中，声明都是被提至作用域顶部先进行解析的。 </strong></p>
+<blockquote>
+<p>变量在同一作用域（同一函数）中，声明都是被提至作用域顶部先进行解析的。</p>
+</blockquote>
 
 <p>所以以上代码片段的执行行为可能就像这样：</p>
-
-<figure class='code'><div class='highlight'><pre class='main  js'><div class='line'><span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
-</div><div class='line'>    <span class="kd">var</span> <span class="nx">myName</span><span class="p">;</span>
-</div><div class='line'>    <span class="nx">alert</span><span class="p">(</span><span class="nx">myName</span><span class="p">);</span> <span class="c1">// &quot;undefined&quot;</span>
-</div><div class='line'>    <span class="nx">myName</span> <span class="o">=</span> <span class="s2">&quot;local&quot;</span><span class="p">;</span>
-</div><div class='line'>    <span class="nx">alert</span><span class="p">(</span><span class="nx">myName</span><span class="p">);</span> <span class="c1">// &quot;local&quot;</span>
-</div><div class='line'><span class="p">}</span>
-</div></pre></div></figure>
-
-
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">myName</span><span class="p">;</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="nx">myName</span><span class="p">);</span> <span class="c1">// &quot;undefined&quot;</span>
+    <span class="nx">myName</span> <span class="o">=</span> <span class="s2">&quot;local&quot;</span><span class="p">;</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="nx">myName</span><span class="p">);</span> <span class="c1">// &quot;local&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>用另一个坑来测试下你是否真的理解了预解析：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="s2">&quot;a&quot;</span> <span class="k">in</span> <span class="nb">window</span><span class="p">))</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
 
-<figure class='code'><div class='highlight'><pre class='main  js'><div class='line'><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="s2">&quot;a&quot;</span> <span class="k">in</span> <span class="nb">window</span><span class="p">))</span> <span class="p">{</span>
-</div><div class='line'>    <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-</div><div class='line'><span class="p">}</span>
-</div><div class='line'> </div><div class='line'><span class="nx">alert</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
-</div></pre></div></figure>
+<span class="nx">alert</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
+</code></pre></div>
+<p><code>a</code> 变量的声明被提前到了代码顶端，此时还未赋值。接下来进入 <code>if</code> 语句，判断条件中 <code>&quot;a&quot; in window</code> 已成立（<code>a</code> 已被声明为全局变量），所以判断语句计算结果为 <code>false</code>，直接就跳出 <code>if</code> 语句了，所以 <code>a</code> 的值为 <code>undefined</code>。</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">a</span><span class="p">;</span> <span class="c1">// &quot;undefined&quot;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;a&quot;</span> <span class="k">in</span> <span class="nb">window</span><span class="p">);</span> <span class="c1">// true</span>
 
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="s2">&quot;a&quot;</span> <span class="k">in</span> <span class="nb">window</span><span class="p">))</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// 不执行</span>
+<span class="p">}</span>
 
-<p><code>a</code> 变量的声明被提前到了代码顶端，此时还未赋值。接下来进入 <code>if</code> 语句，判断条件中 <code>"a" in window</code> 已成立（<code>a</code> 已被声明为全局变量），所以判断语句计算结果为 <code>false</code>，直接就跳出 <code>if</code> 语句了，所以 <code>a</code> 的值为 <code>undefined</code>。</p>
-
-<figure class='code'><div class='highlight'><pre class='main  js'><div class='line'><span class="kd">var</span> <span class="nx">a</span><span class="p">;</span> <span class="c1">// &quot;undefined&quot;</span>
-</div><div class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;a&quot;</span> <span class="k">in</span> <span class="nb">window</span><span class="p">);</span> <span class="c1">// true</span>
-</div><div class='line'> </div><div class='line'><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="s2">&quot;a&quot;</span> <span class="k">in</span> <span class="nb">window</span><span class="p">))</span> <span class="p">{</span>
-</div><div class='line'>    <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// 不执行</span>
-</div><div class='line'><span class="p">}</span>
-</div><div class='line'> </div><div class='line'><span class="nx">alert</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span> <span class="c1">// &quot;undefined&quot;</span>
-</div></pre></div></figure>
-
-
+<span class="nx">alert</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span> <span class="c1">// &quot;undefined&quot;</span>
+</code></pre></div>
 <p>填坑：变量声明，最好手动置于作用域顶部，对于无法当下赋值的变量，可采取先声明后赋值的手法。</p>
 
-<h2>函数声明</h2>
+<h2>坑三：函数声明</h2>
 
-<p><strong> 函数声明也是被提前至作用域顶部，先于任何表达式和语句被解析和求值的 </strong></p>
+<blockquote>
+<p>函数声明也是被提前至作用域顶部，先于任何表达式和语句被解析和求值的</p>
+</blockquote>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">alert</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">foo</span><span class="p">);</span> <span class="c1">// &quot;function&quot;</span>
 
-<figure class='code'><div class='highlight'><pre class='main  js'><div class='line'><span class="nx">alert</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">foo</span><span class="p">);</span> <span class="c1">// &quot;function&quot;</span>
-</div><div class='line'> </div><div class='line'><span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
-</div><div class='line'>    <span class="c1">// body...</span>
-</div><div class='line'><span class="p">}</span>
-</div></pre></div></figure>
-
-
+<span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// body...</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>可以对比一下：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">alert</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">foo</span><span class="p">);</span> <span class="c1">// &quot;undefined&quot;</span>
 
-<figure class='code'><div class='highlight'><pre class='main  js'><div class='line'><span class="nx">alert</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">foo</span><span class="p">);</span> <span class="c1">// &quot;undefined&quot;</span>
-</div><div class='line'> </div><div class='line'><span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-</div><div class='line'>    <span class="c1">// body...</span>
-</div><div class='line'><span class="p">};</span>
-</div></pre></div></figure>
-
-
+<span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// body...</span>
+<span class="p">};</span>
+</code></pre></div>
 <p>明白了这个道理的你，是否还会踩以下的坑呢？</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">test</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;1&quot;</span><span class="p">);</span>
+<span class="p">}</span>
 
-<figure class='code'><div class='highlight'><pre class='main  js'><div class='line'><span class="kd">function</span> <span class="nx">test</span><span class="p">()</span> <span class="p">{</span>
-</div><div class='line'>    <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;1&quot;</span><span class="p">);</span>
-</div><div class='line'><span class="p">}</span>
-</div><div class='line'> </div><div class='line'><span class="nx">test</span><span class="p">();</span>
-</div><div class='line'> </div><div class='line'><span class="kd">function</span> <span class="nx">test</span><span class="p">()</span> <span class="p">{</span>
-</div><div class='line'>    <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">);</span>
-</div><div class='line'><span class="p">}</span>
-</div><div class='line'> </div><div class='line'><span class="nx">test</span><span class="p">();</span>
-</div></pre></div></figure>
+<span class="nx">test</span><span class="p">();</span>
 
+<span class="kd">function</span> <span class="nx">test</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">);</span>
+<span class="p">}</span>
 
-<p>运行以上代码片段，看到的两次弹窗显示的都是 &#8220;2&#8221;，为什么不是分别为 &#8220;1&#8221; 和 &#8220;2&#8221; 呢？很简单，<code>test</code> 的声明先于 <code>test()</code> 被解析，由于后者覆盖前者，所以两次执行的结果都是 &#8220;2&#8221;。</p>
+<span class="nx">test</span><span class="p">();</span>
+</code></pre></div>
+<p>运行以上代码片段，看到的两次弹窗显示的都是 &quot;2&quot;，为什么不是分别为 &quot;1&quot; 和 &quot;2&quot; 呢？很简单，<code>test</code> 的声明先于 <code>test()</code> 被解析，由于后者覆盖前者，所以两次执行的结果都是 &quot;2&quot;。</p>
 
-<p>填坑：多数情况下，我用函数表达式来代替函数声明，特别是在一些语句块中。</p>
+<p>填坑：多数情况下，用函数表达式来代替函数声明是一个好习惯，特别是在一些语句块中。</p>
 
-<h2>函数表达式</h2>
+<h2>坑四：函数表达式</h2>
 
 <p>先看命名函数表达式，理所当然，就是它得有名字，例如：</p>
-
-<figure class='code'><div class='highlight'><pre class='main  js'><div class='line'><span class="kd">var</span> <span class="nx">bar</span> <span class="o">=</span> <span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
-</div><div class='line'>    <span class="c1">// body...</span>
-</div><div class='line'><span class="p">};</span>
-</div></pre></div></figure>
-
-
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">bar</span> <span class="o">=</span> <span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// body...</span>
+<span class="p">};</span>
+</code></pre></div>
 <p>要注意的是：函数名只对其函数内部可见。如以下坑：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">bar</span> <span class="o">=</span> <span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">foo</span><span class="p">();</span> <span class="c1">// 正常运行</span>
+<span class="p">};</span>
 
-<figure class='code'><div class='highlight'><pre class='main  js'><div class='line'><span class="kd">var</span> <span class="nx">bar</span> <span class="o">=</span> <span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
-</div><div class='line'>    <span class="nx">foo</span><span class="p">();</span> <span class="c1">// 正常运行</span>
-</div><div class='line'><span class="p">};</span>
-</div><div class='line'> </div><div class='line'><span class="nx">foo</span><span class="p">();</span> <span class="c1">// 出错：ReferenceError</span>
-</div></pre></div></figure>
-
-
+<span class="nx">foo</span><span class="p">();</span> <span class="c1">// 出错：ReferenceError</span>
+</code></pre></div>
 <p>填坑：尽量少用命名函数表达式（除了一些递归以及 debug 的用途），切勿将函数名使用于外部。</p>
 
-<h2>函数的自执行</h2>
+<h2>坑五：函数的自执行</h2>
 
-<p>对于函数表达式，可以通过后面加上 <code>()</code> 自执行，而且可在括号中传递参数，而函数声明不可以。坑：</p>
+<p>对于函数表达式，可以通过后面加上 <code>()</code> 立即执行。并且可在 <code>()</code> 中传递参数，而函数声明不可以。</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// (1) 这只是一个分组操作符，不是函数调用！</span>
+<span class="c1">// 所以这里函数未被执行，依旧是个声明</span>
+<span class="kd">function</span> <span class="nx">foo</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">alert</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>
+<span class="p">}(</span><span class="mi">1</span><span class="p">);</span>
+</code></pre></div>
+<p>以下代码片段分别执行都弹窗显示 &quot;1&quot;，因为在 <code>(1)</code> 之前，都为函数表达式，所以这里的 <code>()</code> 非分组操作符，而为运算符，表示调用执行。</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// 标准的匿名函数表达式</span>
+<span class="kd">var</span> <span class="nx">bar</span> <span class="o">=</span> <span class="kd">function</span> <span class="nx">foo</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">alert</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>
+<span class="p">}(</span><span class="mi">1</span><span class="p">);</span>
 
-<figure class='code'><div class='highlight'><pre class='main  js'><div class='line'><span class="c1">// (1) 这只是一个分组操作符，不是函数调用！</span>
-</div><div class='line'><span class="c1">// 所以这里函数未被执行，依旧是个声明</span>
-</div><div class='line'><span class="kd">function</span> <span class="nx">foo</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
-</div><div class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>
-</div><div class='line'><span class="p">}(</span><span class="mi">1</span><span class="p">);</span>
-</div></pre></div></figure>
+<span class="c1">// 前面的 () 将 function 声明转化为了表达式</span>
+<span class="p">(</span><span class="kd">function</span> <span class="nx">foo</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">alert</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>
+<span class="p">})(</span><span class="mi">1</span><span class="p">);</span>
 
+<span class="c1">// 整个 () 内为表达式</span>
+<span class="p">(</span><span class="kd">function</span> <span class="nx">foo</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">alert</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>
+<span class="p">}(</span><span class="mi">1</span><span class="p">));</span>
 
-<p>以下代码片段分别执行都弹窗显示 &#8220;1&#8221;，因为在 <code>(1)</code> 之前，都为函数表达式，所以这里的 <code>()</code> 非分组操作符，而为运算符，表示调用执行。</p>
+<span class="c1">// new 表达式</span>
+<span class="k">new</span> <span class="kd">function</span> <span class="nx">foo</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">alert</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>
+<span class="p">}(</span><span class="mi">1</span><span class="p">);</span>
 
-<figure class='code'><div class='highlight'><pre class='main  js'><div class='line'><span class="c1">// 标准的匿名函数表达式</span>
-</div><div class='line'><span class="kd">var</span> <span class="nx">bar</span> <span class="o">=</span> <span class="kd">function</span> <span class="nx">foo</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
-</div><div class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>
-</div><div class='line'><span class="p">}(</span><span class="mi">1</span><span class="p">);</span>
-</div><div class='line'> </div><div class='line'><span class="c1">// 前面的 () 将 function 声明转化为了表达式</span>
-</div><div class='line'><span class="p">(</span><span class="kd">function</span> <span class="nx">foo</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
-</div><div class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>
-</div><div class='line'><span class="p">})(</span><span class="mi">1</span><span class="p">);</span>
-</div><div class='line'> </div><div class='line'><span class="c1">// 整个 () 内为表达式</span>
-</div><div class='line'><span class="p">(</span><span class="kd">function</span> <span class="nx">foo</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
-</div><div class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>
-</div><div class='line'><span class="p">}(</span><span class="mi">1</span><span class="p">));</span>
-</div><div class='line'> </div><div class='line'><span class="c1">// new 表达式</span>
-</div><div class='line'><span class="k">new</span> <span class="kd">function</span> <span class="nx">foo</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
-</div><div class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>
-</div><div class='line'><span class="p">}(</span><span class="mi">1</span><span class="p">);</span>
-</div><div class='line'> </div><div class='line'><span class="c1">// &amp;&amp;, ||, !, +, -, ~ 等操作符（还有逗号），在函数表达式和函数声明上消除歧义</span>
-</div><div class='line'><span class="c1">// 所以一旦解析器知道其中一个已经是表达式了，其它的也都默认为表达式了</span>
-</div><div class='line'><span class="kc">true</span> <span class="o">&amp;&amp;</span> <span class="kd">function</span> <span class="nx">foo</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
-</div><div class='line'>  <span class="nx">alert</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>
-</div><div class='line'><span class="p">}(</span><span class="mi">1</span><span class="p">);</span><span class="err">​</span>
-</div></pre></div></figure>
+<span class="c1">// &amp;&amp;, ||, !, +, -, ~ 等操作符（还有逗号），在函数表达式和函数声明上消除歧义</span>
+<span class="c1">// 所以一旦解析器知道其中一个已经是表达式了，其它的也都默认为表达式了</span>
+<span class="kc">true</span> <span class="o">&amp;&amp;</span> <span class="kd">function</span> <span class="nx">foo</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">alert</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>
+<span class="p">}(</span><span class="mi">1</span><span class="p">);</span><span class="err">​</span>
+</code></pre></div>
+<p>填坑：要解决这个坑的关键在于，弄清楚形形色色的函数表达式之实质。</p>
 
-
-<p>填坑：这个坑的关键在于，弄清楚形形色色函数表达式的实质。</p>
-
-<h2>循环中的闭包</h2>
+<h2>坑六：循环中的闭包</h2>
 
 <p>以下演示的是一个常见的坑：</p>
 
-<iframe style="width: 100%; height: 300px" src="http://jsfiddle.net/GNDd4/embedded/result,html,js/light/"></iframe>
+<iframe style="width: 100%; height: 300px" frameborder="0" seamless="seamless" src="http://jsfiddle.net/GNDd4/embedded/result,html,js/light/"></iframe>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">links</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s2">&quot;ul&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">);</span>
 
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">l</span> <span class="o">=</span> <span class="nx">links</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">l</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">links</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">onclick</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;You click link #&quot;</span> <span class="o">+</span> <span class="nx">i</span><span class="p">);</span>        
+    <span class="p">}</span>       
+<span class="p">}</span>
+</code></pre></div>
+<p>我们预期当点击第 <code>i</code> 个链接时，得到此序列索引 <code>i</code> 的值，可实际无论点击哪个链接，得到的都是 <code>i</code> 在循环后的最终结果：&quot;5&quot;。</p>
 
-
-
-<figure class='code'><div class='highlight'><pre class='main  js'><div class='line'><span class="kd">var</span> <span class="nx">links</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s2">&quot;ul&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">);</span>
-</div><div class='line'> </div><div class='line'><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">l</span> <span class="o">=</span> <span class="nx">links</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">l</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-</div><div class='line'>    <span class="nx">links</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">onclick</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-</div><div class='line'>        <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
-</div><div class='line'>        <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;You click link #&quot;</span> <span class="o">+</span> <span class="nx">i</span><span class="p">);</span>
-</div><div class='line'>    <span class="p">}</span>        
-</div><div class='line'><span class="p">}</span>
-</div></pre></div></figure>
-
-
-<p>我们预期当点击第 <code>i</code> 个链接时，得到此序列索引 <code>i</code> 的值，可实际无论点击哪个链接，得到的都是 <code>i</code> 在循环后的最终结果：&#8221;5&#8221;。</p>
-
-<p>解释一下原因：当 <code>alert</code> 被调用时，<code>for</code> 循环内的匿名函数表达式，保持了对外部变量 <code>i</code> 的引用（闭包），此时循环已结束，<code>i</code> 的值被修改为 &#8220;5&#8221;。</p>
+<p>解释一下原因：当 <code>alert</code> 被调用时，<code>for</code> 循环内的匿名函数表达式，保持了对外部变量 <code>i</code> 的引用（闭包），此时循环已结束，<code>i</code> 的值被修改为 &quot;5&quot;。</p>
 
 <p>填坑：为了得到想要的结果，需要在每次循环中创建变量 <code>i</code> 的拷贝。以下演示正确的做法：</p>
 
-<iframe style="width: 100%; height: 300px" src="http://jsfiddle.net/UTy8Z/embedded/result,html,js/light/"></iframe>
+<iframe style="width: 100%; height: 300px" frameborder="0" seamless="seamless" src="http://jsfiddle.net/UTy8Z/embedded/result,html,js/light/"></iframe>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">links</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s2">&quot;ul&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">);</span>
 
-
-
-
-<figure class='code'><div class='highlight'><pre class='main  js'><div class='line'><span class="kd">var</span> <span class="nx">links</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s2">&quot;ul&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">);</span>
-</div><div class='line'> </div><div class='line'><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">l</span> <span class="o">=</span> <span class="nx">links</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">l</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-</div><div class='line'>    <span class="nx">links</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">onclick</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">index</span><span class="p">)</span> <span class="p">{</span>
-</div><div class='line'>        <span class="k">return</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-</div><div class='line'>            <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
-</div><div class='line'>            <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;You click link #&quot;</span> <span class="o">+</span> <span class="nx">index</span><span class="p">);</span>
-</div><div class='line'>        <span class="p">}</span>
-</div><div class='line'>    <span class="p">})(</span><span class="nx">i</span><span class="p">);</span>
-</div><div class='line'><span class="p">}</span>
-</div></pre></div></figure>
-
-
-<p>可以看到，<code>(function () { ... })()</code> 的形式，就是上文提到的<strong> 函数的自执行 </strong>，<code>i</code> 作为参数传给了 <code>index</code>，<code>alert</code> 再次执行时，它就拥有了对 <code>index</code> 的引用，此时这个值是不会被循环改变的。当然，明白了其原理后，你也可以这样写：</p>
-
-<figure class='code'><div class='highlight'><pre class='main  js'><div class='line'><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">l</span> <span class="o">=</span> <span class="nx">links</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">l</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-</div><div class='line'>    <span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">index</span><span class="p">)</span> <span class="p">{</span>
-</div><div class='line'>        <span class="nx">links</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">onclick</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-</div><div class='line'>            <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
-</div><div class='line'>            <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;You click link #&quot;</span> <span class="o">+</span> <span class="nx">index</span><span class="p">);</span>
-</div><div class='line'>        <span class="p">}</span>
-</div><div class='line'>    <span class="p">})(</span><span class="nx">i</span><span class="p">);</span>
-</div><div class='line'><span class="p">}</span>
-</div></pre></div></figure>
-
-
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">l</span> <span class="o">=</span> <span class="nx">links</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">l</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">links</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">onclick</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">index</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+            <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;You click link #&quot;</span> <span class="o">+</span> <span class="nx">index</span><span class="p">);</span>        
+        <span class="p">}</span>
+    <span class="p">})(</span><span class="nx">i</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>可以看到，<code>(function () { ... })()</code> 的形式，就是上文提到的<strong>函数的自执行</strong>，<code>i</code> 作为参数传给了 <code>index</code>，<code>alert</code> 再次执行时，它就拥有了对 <code>index</code> 的引用，此时这个值是不会被循环改变的。当然，明白了道理后，你也可以这样写：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">l</span> <span class="o">=</span> <span class="nx">links</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">l</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">index</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">links</span><span class="p">[</span><span class="nx">index</span><span class="p">].</span><span class="nx">onclick</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+            <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;You click link #&quot;</span> <span class="o">+</span> <span class="nx">index</span><span class="p">);</span>        
+        <span class="p">}</span>
+    <span class="p">})(</span><span class="nx">i</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>It works too.</p>
-
-<p>To be continued&#8230;</p>
-<p><a rel="bookmark" href="http://roshanca.com/traps-in-javascript-part-I/">&#9875; Permalink</a></p>]]></content>
-    </entry>
+]]></content>
+  </entry>
   
-    <entry>
-      
-
-
-
-
-<title type="html"><![CDATA[用 AppleScript 创建工作流]]></title>
-<link href="http://roshanca.com/applescript-workflow/"/>
-<updated>2012-11-20T22:18:00+08:00</updated>
-<id>http://roshanca.com/applescript-workflow</id>
-
-      <content type="html"><![CDATA[<p>自从用了 <a href="http://octopress.org">Octopress</a>，每次写新文章 &amp; 生产部署，都要在终端中反复敲打几个命令，重复劳动。</p>
-
-<p>出于职业习惯，开始琢磨有没有偷懒的方法，用工具或者程序来代替这体力活。</p>
+  <entry>
+    <title type="html"><![CDATA[用 AppleScript 创建工作流]]></title>
+    <link href="http://roshanca.com/2012/applescript-workflow"/>
+    <updated>2012-11-20T22:18:00+08:00</updated>
+    <id>http://roshanca.com/2012/applescript-workflow</id>
+    <content type="html"><![CDATA[<p>自从用了 <a href="http://octopress.org">Octopress</a>，每次写新文章 &amp; 生产部署，都要在终端中反复敲打几个命令，重复劳动。出于职业习惯，开始琢磨有没有偷懒的方法，用工具或者程序来代替这体力活。</p>
 
 <p>一开始看上了 OS X 自带的实用小工具小机器人——Automator，可以录制用户在系统中的各种操作而串联成工作流，有点类似 PhotoShop 中“动作”，也像一些应用程序中的 Macros（宏指令）。可试了一把后，觉得不太靠谱，这玩意儿不仅将你的动作记录了下来，废操作也一并囊括。而且执行工作流时，鼠标的控制权被强行夺取，感觉被人远程协助中，这让我除了傻呆呆地望着屏幕啥事也不能干。</p>
 
-<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/Automator.png" alt="Automator" /></p>
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/Automator.png" alt="Automator"></p>
 
 <p>后来试了试 AppleScript，感觉还是自己纯代码来写工作流比较爽，DIY 的空间更大而且执行起来更加高效。</p>
 
 <h2>什么是 AppleScript</h2>
 
 <ul>
-<li>一种脚本语言，和我们所知道的 VBScript 和 JavaScript 类似</li>
-<li>内建于 OS X</li>
-<li>用于实现应用程序控制</li>
-<li>使繁琐重复的机械操作自动化</li>
+<li>  一种脚本语言，和我们所知道的 VBScript 和 JavaScript 类似</li>
+<li>  内建于 OS X</li>
+<li>  用于实现应用程序控制</li>
+<li>  使繁琐重复的机械操作自动化</li>
 </ul>
-
 
 <h2>入门</h2>
 
@@ -1110,312 +1002,209 @@ var title   = "sublime text"
 
 <p>两个小例子：</p>
 
-<p>1、让 Safari 打开一个 URL</p>
-
-<figure class='code'><div class='highlight'><pre class='main  applescript'><div class='line'><span class="k">tell</span> <span class="nb">application</span> <span class="s2">&quot;Safari&quot;</span>
-</div><div class='line'>    <span class="nb">open location</span> <span class="s2">&quot;http://roshanca.com&quot;</span>
-</div><div class='line'><span class="k">end</span> <span class="k">tell</span>
-</div></pre></div></figure>
-
-
-<p>2、 在桌面新建一个名为 &#8220;workflow&#8221; 的文件夹</p>
-
-<figure class='code'><div class='highlight'><pre class='main  applescript'><div class='line'><span class="k">tell</span> <span class="nb">application</span> <span class="s2">&quot;Finder&quot;</span>
-</div><div class='line'>    <span class="nb">make</span> <span class="nb">new</span> <span class="nv">folder</span> <span class="nb">at</span> <span class="nv">desktop</span> <span class="nv">with</span> <span class="na">properties</span> <span class="p">{</span><span class="na">name</span><span class="p">:</span><span class="s2">&quot;workflow&quot;</span><span class="p">}</span>
-</div><div class='line'><span class="k">end</span> <span class="k">tell</span>
-</div></pre></div></figure>
-
+<ol>
+<li><p>让 Safari 打开一个 URL</p>
+<div class="highlight"><pre><code class="language-applescript" data-lang="applescript"><span class="k">tell</span> <span class="nb">application</span> <span class="s2">&quot;Safari&quot;</span>
+    <span class="nb">open location</span> <span class="s2">&quot;http://roshanca.com&quot;</span>
+<span class="k">end</span> <span class="k">tell</span>
+</code></pre></div></li>
+<li><p>在桌面新建一个名为 &quot;workflow&quot; 的文件夹</p>
+<div class="highlight"><pre><code class="language-applescript" data-lang="applescript"><span class="k">tell</span> <span class="nb">application</span> <span class="s2">&quot;Finder&quot;</span>
+    <span class="nb">make</span> <span class="nb">new</span> <span class="nv">folder</span> <span class="nb">at</span> <span class="nv">desktop</span> <span class="nv">with</span> <span class="na">properties</span> <span class="p">{</span><span class="na">name</span><span class="p">:</span><span class="s2">&quot;workflow&quot;</span><span class="p">}</span>
+<span class="k">end</span> <span class="k">tell</span>
+</code></pre></div></li>
+</ol>
 
 <h2>进阶</h2>
 
 <p>也来两个小列子吧，感觉都还挺有用的~</p>
 
-<p>1、转换日期格式</p>
+<ol>
+<li><p>转换日期格式</p>
+<div class="highlight"><pre><code class="language-applescript" data-lang="applescript"><span class="k">set</span> <span class="p">{</span><span class="nb">year</span><span class="p">:</span><span class="nv">y</span><span class="p">,</span> <span class="nb">month</span><span class="p">:</span><span class="nv">m</span><span class="p">,</span> <span class="nb">day</span><span class="p">:</span><span class="nv">d</span><span class="p">}</span> <span class="k">to</span> <span class="p">(</span><span class="nb">current date</span><span class="p">)</span> <span class="c">-- date &quot;2012年11月20日星期二 下午4:33:51&quot;</span>
+<span class="k">set</span> <span class="nv">dateList</span> <span class="k">to</span> <span class="p">{</span><span class="nv">y</span><span class="p">,</span> <span class="nv">m</span> <span class="o">*</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">d</span><span class="p">}</span> <span class="c">-- {2012, Novemver * 1, 20} =&gt; {2012, 11, 20}</span>
+<span class="k">set</span> <span class="nv">newDateList</span> <span class="k">to</span> <span class="nv">reverse</span> <span class="k">of</span> <span class="nv">rest</span> <span class="k">of</span> <span class="nv">dateList</span> <span class="c">-- {20， 11}</span>
+<span class="k">set</span> <span class="nv">theYear</span> <span class="k">to</span> <span class="nb">first</span> <span class="nb">item</span> <span class="k">of</span> <span class="nv">dateList</span> <span class="k">as </span><span class="nc">string</span> <span class="c">-- &quot;2012&quot;</span>
+<span class="k">set</span> <span class="nv">restDate</span> <span class="k">to</span> <span class="s2">&quot;&quot;</span>
 
-<figure class='code'><div class='highlight'><pre class='main  applescript'><div class='line'><span class="k">set</span> <span class="p">{</span><span class="nb">year</span><span class="p">:</span><span class="nv">y</span><span class="p">,</span> <span class="nb">month</span><span class="p">:</span><span class="nv">m</span><span class="p">,</span> <span class="nb">day</span><span class="p">:</span><span class="nv">d</span><span class="p">}</span> <span class="k">to</span> <span class="p">(</span><span class="nb">current date</span><span class="p">)</span> <span class="c">-- date &quot;2012年11月20日星期二 下午4:33:51&quot;</span>
-</div><div class='line'><span class="k">set</span> <span class="nv">dateList</span> <span class="k">to</span> <span class="p">{</span><span class="nv">y</span><span class="p">,</span> <span class="nv">m</span> <span class="o">*</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">d</span><span class="p">}</span> <span class="c">-- {2012, Novemver * 1, 20} =&gt; {2012, 11, 20}</span>
-</div><div class='line'><span class="k">set</span> <span class="err">_dateList</span> <span class="k">to</span> <span class="nv">reverse</span> <span class="k">of</span> <span class="nv">rest</span> <span class="k">of</span> <span class="nv">dateList</span> <span class="c">-- {20， 11}</span>
-</div><div class='line'><span class="k">set</span> <span class="nv">theYear</span> <span class="k">to</span> <span class="nb">first</span> <span class="nb">item</span> <span class="k">of</span> <span class="nv">dateList</span> <span class="k">as </span><span class="nc">string</span> <span class="c">-- &quot;2012&quot;</span>
-</div><div class='line'><span class="k">set</span> <span class="nv">restDate</span> <span class="k">to</span> <span class="s2">&quot;&quot;</span>
-</div><div class='line'> </div><div class='line'><span class="k">repeat</span> <span class="nv">with</span> <span class="nv">theItem</span> <span class="k">in</span> <span class="err">_dateList</span>
-</div><div class='line'>    <span class="k">set</span> <span class="nv">restDate</span> <span class="k">to</span> <span class="s2">&quot;-&quot;</span> <span class="o">&amp;</span> <span class="nv">theItem</span> <span class="o">&amp;</span> <span class="nv">restDate</span>
-</div><div class='line'><span class="k">end</span> <span class="k">repeat</span>
-</div><div class='line'> </div><div class='line'><span class="no">return</span> <span class="nv">theYear</span> <span class="o">&amp;</span> <span class="nv">restDate</span> <span class="c">-- &quot;2012-11-20&quot;</span>
-</div></pre></div></figure>
+<span class="k">repeat</span> <span class="nv">with</span> <span class="nv">theItem</span> <span class="k">in</span> <span class="nv">newDateList</span>
+    <span class="k">set</span> <span class="nv">restDate</span> <span class="k">to</span> <span class="s2">&quot;-&quot;</span> <span class="o">&amp;</span> <span class="nv">theItem</span> <span class="o">&amp;</span> <span class="nv">restDate</span>
+<span class="k">end</span> <span class="k">repeat</span>
 
-
-<p>2、获取用户文稿中最近修改文件的文件名（以下代码 <code>new_post.applescript</code> 中也有用到）</p>
-
-<figure class='code'><div class='highlight'><pre class='main  applescript'><div class='line'><span class="k">tell</span> <span class="nb">application</span> <span class="s2">&quot;Finder&quot;</span>
-</div><div class='line'>    <span class="k">set</span> <span class="nv">thePath</span> <span class="k">to</span> <span class="p">(</span><span class="nb">path to</span> <span class="nb">documents</span> <span class="nv">folder</span><span class="p">)</span> <span class="c">-- 获取文稿文件夹路径</span>
-</div><div class='line'>    <span class="k">set</span> <span class="nv">fileList</span> <span class="k">to</span> <span class="nv">files</span> <span class="k">in</span> <span class="nv">thePath</span> <span class="c">-- 获取路径下的文件集合记录</span>
-</div><div class='line'>    <span class="k">set</span> <span class="nv">fileList</span> <span class="k">to</span> <span class="nv">sort</span> <span class="nv">fileList</span> <span class="k">by</span> <span class="nv">modification</span> <span class="nv">date</span> <span class="c">-- 按最新修改排序</span>
-</div><div class='line'>    <span class="k">set</span> <span class="nv">fileName</span> <span class="k">to</span> <span class="na">name</span> <span class="k">of</span> <span class="nb">first</span> <span class="nb">item</span> <span class="k">in</span> <span class="nv">fileList</span> <span class="c">-- 获取记录集中第一个文件的文件名</span>
-</div><div class='line'>    <span class="no">return</span> <span class="nv">fileName</span>
-</div><div class='line'><span class="k">end</span> <span class="k">tell</span>
-</div></pre></div></figure>
-
+<span class="no">return</span> <span class="nv">theYear</span> <span class="o">&amp;</span> <span class="nv">restDate</span> <span class="c">-- &quot;2012-11-20&quot;</span>
+</code></pre></div></li>
+<li><p>获取用户文稿中最近修改文件的文件名（以下代码 <code>new_post.applescript</code> 中也有用到）</p>
+<div class="highlight"><pre><code class="language-applescript" data-lang="applescript"><span class="k">tell</span> <span class="nb">application</span> <span class="s2">&quot;Finder&quot;</span>
+    <span class="k">set</span> <span class="nv">thePath</span> <span class="k">to</span> <span class="p">(</span><span class="nb">path to</span> <span class="nb">documents</span> <span class="nv">folder</span><span class="p">)</span> <span class="c">-- 获取文稿文件夹路径</span>
+    <span class="k">set</span> <span class="nv">fileList</span> <span class="k">to</span> <span class="nv">files</span> <span class="k">in</span> <span class="nv">thePath</span> <span class="c">-- 获取路径下的文件集合记录</span>
+    <span class="k">set</span> <span class="nv">fileList</span> <span class="k">to</span> <span class="nv">sort</span> <span class="nv">fileList</span> <span class="k">by</span> <span class="nv">modification</span> <span class="nv">date</span> <span class="c">-- 按最新修改排序</span>
+    <span class="k">set</span> <span class="nv">fileName</span> <span class="k">to</span> <span class="na">name</span> <span class="k">of</span> <span class="nb">first</span> <span class="nb">item</span> <span class="k">in</span> <span class="nv">fileList</span> <span class="c">-- 获取记录集中第一个文件的文件名</span>
+    <span class="no">return</span> <span class="nv">fileName</span>
+<span class="k">end</span> <span class="k">tell</span>
+</code></pre></div></li>
+</ol>
 
 <h2>实战</h2>
 
-<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/applescript.png" alt="my AppleScripts" /></p>
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/applescript.png" alt="my AppleScripts"></p>
 
 <p>综合基础教程与谷歌搜索，自己写了两个 Script，分别用于创建博客新文章与博客本地预览。</p>
 
-<p><figure class='code caption'><figcaption>new_post.applescript<a href='https://gist.github.com/4118971'>Gist page</a></figcaption><div class='highlight'><pre class='main  applescript'><div class='line'><span class="k">tell</span> <span class="nb">application</span> <span class="s2">&quot;Finder&quot;</span>
-</div><div class='line'>    <span class="nb">activate</span>
-</div><div class='line'>    <span class="nb">display dialog</span> <span class="s2">&quot;填入文章标题&quot;</span> <span class="nv">default</span> <span class="nv">answer</span> <span class="s2">&quot;title&quot;</span>
-</div><div class='line'>    <span class="k">set</span> <span class="nv">postTitle</span> <span class="k">to</span> <span class="na">text returned</span> <span class="k">of</span> <span class="no">result</span> <span class="k">as </span><span class="nc">text</span>
-</div><div class='line'><span class="k">end</span> <span class="k">tell</span>
-</div><div class='line'> </div><div class='line'><span class="k">tell</span> <span class="nb">application</span> <span class="s2">&quot;Terminal&quot;</span>
-</div><div class='line'>    <span class="nb">activate</span>
-</div><div class='line'> </div><div class='line'>    <span class="k">if</span> <span class="p">(</span><span class="nb">count</span> <span class="k">of</span> <span class="nb">windows</span><span class="p">)</span> <span class="ow">is</span> <span class="mi">0</span> <span class="k">then</span>
-</div><div class='line'>        <span class="k">tell</span> <span class="nb">application</span> <span class="s2">&quot;System Events&quot;</span>
-</div><div class='line'>            <span class="nv">keystroke</span> <span class="s2">&quot;n&quot;</span> <span class="nv">using</span> <span class="p">{</span><span class="nv">command</span> <span class="nv">down</span><span class="p">}</span>
-</div><div class='line'>        <span class="k">end</span> <span class="k">tell</span>
-</div><div class='line'>    <span class="k">else</span>
-</div><div class='line'>        <span class="nb">activate</span>
-</div><div class='line'>    <span class="k">end</span> <span class="k">if</span>
-</div><div class='line'> </div><div class='line'>    <span class="k">repeat</span> <span class="nv">with</span> <span class="nv">win</span> <span class="k">in</span> <span class="nb">windows</span>
-</div><div class='line'>        <span class="k">try</span>
-</div><div class='line'>            <span class="k">if</span> <span class="k">get</span> <span class="na">frontmost</span> <span class="k">of</span> <span class="nv">win</span> <span class="ow">is</span> <span class="no">true</span> <span class="k">then</span>
-</div><div class='line'>                <span class="k">set</span> <span class="nv">currentTab</span> <span class="k">to</span> <span class="nv">selected</span> <span class="no">tab</span> <span class="k">of</span> <span class="nv">win</span>
-</div><div class='line'>                <span class="k">if</span> <span class="nv">currentTab</span> <span class="ow">is not</span> <span class="nv">busy</span> <span class="k">then</span>
-</div><div class='line'>                    <span class="nv">do</span> <span class="nv">script</span> <span class="s2">&quot;cd ~/Ruby_app/octopress&quot;</span> <span class="k">in</span> <span class="nv">currentTab</span>
-</div><div class='line'>                    <span class="nv">do</span> <span class="nv">script</span> <span class="s2">&quot;rake new_post[&#39;&quot;</span> <span class="o">&amp;</span> <span class="nv">postTitle</span> <span class="o">&amp;</span> <span class="s2">&quot;&#39;]&quot;</span> <span class="k">in</span> <span class="nv">currentTab</span>
-</div><div class='line'>                    <span class="nb">delay</span> <span class="mi">1</span>
-</div><div class='line'>                    <span class="k">set</span> <span class="nv">post</span> <span class="k">to</span> <span class="nv">getRecentFileName</span><span class="p">()</span> <span class="k">of</span> <span class="nv">postHandle</span>
-</div><div class='line'>                    <span class="nv">do</span> <span class="nv">script</span> <span class="s2">&quot;subl source/<em>posts/&quot;</span> <span class="o">&amp;</span> <span class="nv">post</span> <span class="k">in</span> <span class="nv">currentTab</span>
-</div><div class='line'>                <span class="k">end</span> <span class="k">if</span>
-</div><div class='line'>            <span class="k">end</span> <span class="k">if</span>
-</div><div class='line'>        <span class="k">end</span> <span class="k">try</span>
-</div><div class='line'>    <span class="k">end</span> <span class="k">repeat</span>
-</div><div class='line'><span class="k">end</span> <span class="k">tell</span>
-</div><div class='line'> </div><div class='line'><span class="k">script</span> <span class="nv">postHandle</span>
-</div><div class='line'>    <span class="nb">on</span> <span class="nv">getRecentFileName</span><span class="p">()</span>
-</div><div class='line'>        <span class="k">tell</span> <span class="nb">application</span> <span class="s2">&quot;Finder&quot;</span>
-</div><div class='line'>            <span class="k">set</span> <span class="nv">thePath</span> <span class="k">to</span> <span class="nv">alias</span> <span class="p">((</span><span class="nb">path to</span> <span class="nv">home</span> <span class="nv">folder</span> <span class="k">as </span><span class="nc">text</span><span class="p">)</span> <span class="o">&amp;</span> <span class="s2">&quot;Ruby_app:octopress:source:</em>posts:&quot;</span><span class="p">)</span>
-</div><div class='line'>            <span class="k">set</span> <span class="nv">fileList</span> <span class="k">to</span> <span class="nv">files</span> <span class="k">in</span> <span class="nv">thePath</span>
-</div><div class='line'>            <span class="k">set</span> <span class="nv">fileList</span> <span class="k">to</span> <span class="nv">sort</span> <span class="nv">fileList</span> <span class="k">by</span> <span class="nv">modification</span> <span class="nv">date</span>
-</div><div class='line'>            <span class="k">set</span> <span class="nv">fileName</span> <span class="k">to</span> <span class="na">name</span> <span class="k">of</span> <span class="nb">first</span> <span class="nb">item</span> <span class="k">in</span> <span class="nv">fileList</span>
-</div><div class='line'>            <span class="no">return</span> <span class="nv">fileName</span>
-</div><div class='line'>        <span class="k">end</span> <span class="k">tell</span>
-</div><div class='line'>    <span class="k">end</span> <span class="nv">getRecentFileName</span>
-</div><div class='line'><span class="k">end</span> <span class="nv">script</span>
-</div></pre></div></figure></p>
+<script src="https://gist.github.com/4118971.js?file=new_post.applescript"> </script>
 
-<p><figure class='code caption'><figcaption>blog_preview.applescript<a href='https://gist.github.com/4118971'>Gist page</a></figcaption><div class='highlight'><pre class='main  applescript'><div class='line'><span class="k">tell</span> <span class="nb">application</span> <span class="s2">&quot;Terminal&quot;</span>
-</div><div class='line'>    <span class="nb">activate</span>
-</div><div class='line'> </div><div class='line'>    <span class="k">if</span> <span class="p">(</span><span class="nb">count</span> <span class="k">of</span> <span class="nb">windows</span><span class="p">)</span> <span class="ow">is</span> <span class="mi">0</span> <span class="k">then</span>
-</div><div class='line'>        <span class="k">tell</span> <span class="nb">application</span> <span class="s2">&quot;System Events&quot;</span>
-</div><div class='line'>            <span class="nv">keystroke</span> <span class="s2">&quot;n&quot;</span> <span class="nv">using</span> <span class="p">{</span><span class="nv">command</span> <span class="nv">down</span><span class="p">}</span>
-</div><div class='line'>        <span class="k">end</span> <span class="k">tell</span>
-</div><div class='line'>    <span class="k">else</span>
-</div><div class='line'>        <span class="nb">activate</span>
-</div><div class='line'>    <span class="k">end</span> <span class="k">if</span>
-</div><div class='line'> </div><div class='line'>    <span class="k">repeat</span> <span class="nv">with</span> <span class="nv">win</span> <span class="k">in</span> <span class="nb">windows</span>
-</div><div class='line'>        <span class="k">try</span>
-</div><div class='line'>            <span class="k">if</span> <span class="k">get</span> <span class="na">frontmost</span> <span class="k">of</span> <span class="nv">win</span> <span class="ow">is</span> <span class="no">true</span> <span class="k">then</span>
-</div><div class='line'>                <span class="k">set</span> <span class="nv">currentTab</span> <span class="k">to</span> <span class="nv">selected</span> <span class="no">tab</span> <span class="k">of</span> <span class="nv">win</span>
-</div><div class='line'>                <span class="k">if</span> <span class="nv">currentTab</span> <span class="ow">is not</span> <span class="nv">busy</span> <span class="k">then</span>
-</div><div class='line'>                    <span class="nv">do</span> <span class="nv">script</span> <span class="s2">&quot;cd ~/Ruby_app/octopress&quot;</span> <span class="k">in</span> <span class="nv">currentTab</span>
-</div><div class='line'>                    <span class="nv">do</span> <span class="nv">script</span> <span class="s2">&quot;rake generate&quot;</span> <span class="k">in</span> <span class="nv">currentTab</span>
-</div><div class='line'>                    <span class="nv">do</span> <span class="nv">script</span> <span class="s2">&quot;rake preview&quot;</span> <span class="k">in</span> <span class="nv">currentTab</span>
-</div><div class='line'>                <span class="k">else</span>
-</div><div class='line'>                    <span class="no">return</span>
-</div><div class='line'>                <span class="k">end</span> <span class="k">if</span>
-</div><div class='line'>            <span class="k">end</span> <span class="k">if</span>
-</div><div class='line'>        <span class="k">end</span> <span class="k">try</span>
-</div><div class='line'>    <span class="k">end</span> <span class="k">repeat</span>
-</div><div class='line'> </div><div class='line'><span class="k">end</span> <span class="k">tell</span>
-</div><div class='line'> </div><div class='line'><span class="k">tell</span> <span class="nb">application</span> <span class="s2">&quot;Safari&quot;</span>
-</div><div class='line'>    <span class="nb">delay</span> <span class="mi">6</span>
-</div><div class='line'>    <span class="nb">open location</span> <span class="s2">&quot;http://localhost:4000&quot;</span>
-</div><div class='line'>    <span class="nb">activate</span>
-</div><div class='line'><span class="k">end</span> <span class="k">tell</span>
-</div></pre></div></figure></p>
-<p><a rel="bookmark" href="http://roshanca.com/applescript-workflow/">&#9875; Permalink</a></p>]]></content>
-    </entry>
+<script src="https://gist.github.com/4118971.js?file=blog_preview.applescript"> </script>
+]]></content>
+  </entry>
   
-    <entry>
-      
-
-
-
-
-<title type="html"><![CDATA[一道 JavaScript 小题]]></title>
-<link href="http://roshanca.com/javascript-quiz/"/>
-<updated>2012-10-15T14:01:00+08:00</updated>
-<id>http://roshanca.com/javascript-quiz</id>
-
-      <content type="html"><![CDATA[<figure class='code'><div class='highlight'><pre class='main  js'><div class='line'><span class="kd">var</span> <span class="nx">add</span> <span class="o">=</span> <span class="nx">___</span><span class="p">;</span>
-</div><div class='line'><span class="nx">add</span><span class="p">(</span><span class="mi">3</span><span class="p">)(</span><span class="mi">4</span><span class="p">)(</span><span class="mi">5</span><span class="p">);</span> <span class="c1">// 输出60;</span>
-</div></pre></div></figure>
-
-
+  <entry>
+    <title type="html"><![CDATA[一道 JavaScript 小题]]></title>
+    <link href="http://roshanca.com/2012/javascript-tiny-quiz"/>
+    <updated>2012-10-15T14:01:00+08:00</updated>
+    <id>http://roshanca.com/2012/javascript-tiny-quiz</id>
+    <content type="html"><![CDATA[<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">add</span> <span class="o">=</span> <span class="nx">___</span><span class="p">;</span>
+<span class="nx">add</span><span class="p">(</span><span class="mi">3</span><span class="p">)(</span><span class="mi">4</span><span class="p">)(</span><span class="mi">5</span><span class="p">);</span> <span class="c1">// 输出60;</span>
+</code></pre></div>
 <p>在网上看到这样一道题，有点意思，由此展开了一点联想。</p>
 
 <p>能显而易见的是 <code>60 = 3 * 4 * 5</code>，但该如何来组织编写 <code>add</code> 这个方法呢？</p>
 
-<p><strong> 先来看看屌丝版： </strong></p>
-
-<figure class='code'><div class='highlight'><pre class='main  js'><div class='line'><span class="kd">var</span> <span class="nx">add</span> <span class="o">=</span> <span class="kd">function</span> <span class="nx">foo</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
-</div><div class='line'>  <span class="k">if</span> <span class="p">(</span><span class="nx">x</span> <span class="o">==</span> <span class="mi">5</span><span class="p">){</span>
-</div><div class='line'>    <span class="k">return</span> <span class="mi">60</span><span class="p">;</span>
-</div><div class='line'>  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-</div><div class='line'>    <span class="k">return</span> <span class="nx">foo</span><span class="p">;</span>
-</div><div class='line'>  <span class="p">}</span>
-</div><div class='line'><span class="p">}</span>
-</div></pre></div></figure>
-
-
+<h3>先来看看屌丝版：</h3>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">add</span> <span class="o">=</span> <span class="kd">function</span> <span class="nx">foo</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">x</span> <span class="o">==</span> <span class="mi">5</span><span class="p">){</span>
+    <span class="k">return</span> <span class="mi">60</span><span class="p">;</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">foo</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>啥也不说了，这个方法虽然能实现题意，但无论是引入递归还是无下限的程度，都让人不禁对其唉声叹息。</p>
 
-<p><strong> 再来看看普通青年版： </strong></p>
-
-<figure class='code'><div class='highlight'><pre class='main  js'><div class='line'><span class="kd">var</span> <span class="nx">add</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">a</span><span class="p">)</span> <span class="p">{</span>
-</div><div class='line'>  <span class="k">return</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
-</div><div class='line'>    <span class="k">return</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">c</span><span class="p">)</span> <span class="p">{</span>
-</div><div class='line'>      <span class="k">return</span> <span class="nx">a</span> <span class="o">*</span> <span class="nx">b</span> <span class="o">*</span> <span class="nx">c</span><span class="p">;</span>
-</div><div class='line'>    <span class="p">}</span>
-</div><div class='line'>  <span class="p">}</span>
-</div><div class='line'><span class="p">}</span>
-</div></pre></div></figure>
-
-
+<h3>再来看看普通青年版：</h3>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">add</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">a</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">c</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">a</span> <span class="o">*</span> <span class="nx">b</span> <span class="o">*</span> <span class="nx">c</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>多层嵌套，不尽优雅，倘若遇上 <code>add(3)(4)(5)⋯(N)</code> 输出 3 * 4 * 5 * ⋯ * N 的要求那岂不是要 <code>return</code> 个 N - 2 次？</p>
 
-<p><strong> 最后是高富帅版： </strong></p>
+<h3>最后是高富帅版：</h3>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">add</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">m</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">function</span> <span class="nx">temp</span> <span class="p">(</span><span class="nx">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">add</span><span class="p">(</span><span class="nx">m</span> <span class="o">*</span> <span class="nx">n</span><span class="p">);</span>
+  <span class="p">}</span>
 
-<figure class='code'><div class='highlight'><pre class='main  js'><div class='line'><span class="kd">var</span> <span class="nx">add</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">m</span><span class="p">)</span> <span class="p">{</span>
-</div><div class='line'>  <span class="kd">function</span> <span class="nx">temp</span> <span class="p">(</span><span class="nx">n</span><span class="p">)</span> <span class="p">{</span>
-</div><div class='line'>    <span class="k">return</span> <span class="nx">add</span><span class="p">(</span><span class="nx">m</span> <span class="o">*</span> <span class="nx">n</span><span class="p">);</span>
-</div><div class='line'>  <span class="p">}</span>
-</div><div class='line'> </div><div class='line'>  <span class="nx">temp</span><span class="p">.</span><span class="nx">toString</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-</div><div class='line'>    <span class="k">return</span> <span class="nx">m</span><span class="p">;</span>
-</div><div class='line'>  <span class="p">}</span>
-</div><div class='line'> </div><div class='line'>  <span class="k">return</span> <span class="nx">temp</span><span class="p">;</span>
-</div><div class='line'><span class="p">}</span>
-</div></pre></div></figure>
+  <span class="nx">temp</span><span class="p">.</span><span class="nx">toString</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">m</span><span class="p">;</span>
+  <span class="p">}</span>
 
-
+  <span class="k">return</span> <span class="nx">temp</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>在内部定义一个临时的方法，是不是有种运筹帷幄的赶脚？特别是这 <code>toString</code> 的用法，有些鬼斧神工呀。这样一来，还将 <code>add</code> 方法抽象成了输出 N 个参数的乘积的方法。所以此时：</p>
-
-<figure class='code'><div class='highlight'><pre class='main  js'><div class='line'><span class="nx">add</span><span class="p">(</span><span class="mi">3</span><span class="p">)(</span><span class="mi">4</span><span class="p">)(</span><span class="mi">5</span><span class="p">)</span><span class="err">⋯</span><span class="p">(</span><span class="nx">N</span><span class="p">);</span> <span class="c1">// 输出 3 * 4 * 5 * ⋯ * N</span>
-</div></pre></div></figure>
-
-<p><a rel="bookmark" href="http://roshanca.com/javascript-quiz/">&#9875; Permalink</a></p>]]></content>
-    </entry>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">add</span><span class="p">(</span><span class="mi">3</span><span class="p">)(</span><span class="mi">4</span><span class="p">)(</span><span class="mi">5</span><span class="p">)</span><span class="err">⋯</span><span class="p">(</span><span class="nx">N</span><span class="p">);</span> 
+<span class="c1">// 输出 3 * 4 * 5 * ⋯ * N</span>
+</code></pre></div>]]></content>
+  </entry>
   
-    <entry>
-      
+  <entry>
+    <title type="html"><![CDATA[iOS 像素级的界面变化]]></title>
+    <link href="http://roshanca.com/2012/minor-interface-changes-of-ios"/>
+    <updated>2012-09-23T05:56:00+08:00</updated>
+    <id>http://roshanca.com/2012/minor-interface-changes-of-ios</id>
+    <content type="html"><![CDATA[<p>从 iOS4 到 iOS5，再到 iOS6，有些微小的像素级的界面改进，往往只有设计师才会注意到它们。</p>
 
-
-
-
-<title type="html"><![CDATA[iOS 像素级的界面变化]]></title>
-<link href="http://roshanca.com/minor-interface-changes-of-ios/"/>
-<updated>2012-09-23T05:56:00+08:00</updated>
-<id>http://roshanca.com/minor-interface-changes-of-ios</id>
-
-      <content type="html"><![CDATA[<p>从 iOS4 到 iOS5，再到 iOS6，有些微小的像素级的界面改进，往往只有设计师才会注意到它们。</p>
-
-<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/vm_01_iconbadge_zps013f3e6e.jpg" alt="" /></p>
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/vm_01_iconbadge_zps013f3e6e.jpg" alt=""></p>
 
 <p>app 右上角的提示徽标，阴影减弱，使得整体感更强了。</p>
 
-<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/vm_02_boxdesign_zps14f7570a.jpg" alt="" /></p>
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/vm_02_boxdesign_zps14f7570a.jpg" alt=""></p>
 
 <p>箱体设计，如设置面板中，更加立体。</p>
 
-<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/vm_04_messagetext_zps78c83a0b.jpg" alt="" /></p>
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/vm_04_messagetext_zps78c83a0b.jpg" alt=""></p>
 
 <p>消息文本加上了阴影高光，CSS 中的说法应该是 <code>text-shadow</code> 吧，我个人是非常喜欢这个效果。</p>
 
-<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/vm_03_rotatelock_zpscd7d4dbf.jpg" alt="" /></p>
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/vm_03_rotatelock_zpscd7d4dbf.jpg" alt=""></p>
 
 <p>屏幕旋转锁定，我想是为了跟右边的启动音乐图标区分开来，表明它们不是同一类型的按钮（或许是我想多了）。</p>
 
-<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/vm_05_homeicon_zpsca574807.jpg" alt="" /></p>
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/vm_05_homeicon_zpsca574807.jpg" alt=""></p>
 
-<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/vm_05_homeicon2_zps97206dd3.jpg" alt="" /></p>
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/vm_05_homeicon2_zps97206dd3.jpg" alt=""></p>
 
 <p>左右对称了，没什么好说的。</p>
 
 <p>下面看看最近刚发布的 iOS6，又有哪些不易察觉的改变。</p>
 
-<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/__setting_zps190c9226.jpg" alt="" /></p>
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/__setting_zps190c9226.jpg" alt=""></p>
 
 <p>设置图标中的齿轮与 OS X 中的统一了起来，更加圆润。同时也去掉了高光。</p>
 
-<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/__clock_zps9b6d99ff.jpg" alt="" /></p>
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/__clock_zps9b6d99ff.jpg" alt=""></p>
 
 <p>与设置图标类似，iOS 6 图标上的指针粗细是一致的，也去掉了锋利的感觉。看起来更像德国博朗出品的钟表。</p>
 
-<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/__header_zps900803ec.jpg" alt="" /></p>
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/__header_zps900803ec.jpg" alt=""></p>
 
 <p>iOS 5 中的采用了高光效果，而 iOS 6 去掉了高光，改用了磨砂效果。大家知道 iPhone 5 的背壳就是磨砂效果，或许苹果是为了统一软硬件的质感吧。另外，iOS 6 的框架头部还加强了阴影效果。</p>
 
-<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/__actionsheet_zpsf2c5f1dd.jpg" alt="" /></p>
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/__actionsheet_zpsf2c5f1dd.jpg" alt=""></p>
 
 <p>同样的，也去掉了高光。</p>
 
-<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/__camera_zpseddab197.jpg" alt="" /></p>
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/__camera_zpseddab197.jpg" alt=""></p>
 
 <p>锁屏界面的相机图标看起来更加的圆润。</p>
 
-<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/__corner_zps3de29696.jpg" alt="" /></p>
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/__corner_zps3de29696.jpg" alt=""></p>
 
 <p>开始还没看出来，原来是键盘的边角由圆角改为了直角。我表示用了这么久从来没注意到过这个细节。</p>
 
-<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/__message_zpsd7b4f829.jpg" alt="" /></p>
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/__message_zpsd7b4f829.jpg" alt=""></p>
 
 <p>又是 <code>text-shadow</code>，高光从 2px 降至了 1px，立体感虽降低了些，可读性增加了。不过我还是喜欢原来的设计。</p>
 
-<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/__rotate_lock_zps20117574.jpg" alt="" /></p>
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/__rotate_lock_zps20117574.jpg" alt=""> </p>
 
 <p>屏幕旋转锁定图标，同样是去掉了高光效果，细看能发现图标中的旋转标志更大一些，背景与设置图标统一了起来，表达出它属于设置一类的按钮。</p>
 
-<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/__serachbar_zpse36addbf.jpg" alt="" /></p>
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/__serachbar_zpse36addbf.jpg" alt=""></p>
 
 <p>难道是为了呼应 iPhone 5 更薄的特性？</p>
 
-<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/__keyboard_zps03f2a3f8.jpg" alt="" /></p>
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/__keyboard_zps03f2a3f8.jpg" alt=""></p>
 
 <p>iOS 5 的数字符号屏幕键盘高光是2px，按键采用相对平面的设计，但在 iOS 6 中高亮值变成了1px，按键上使用了渐变来体现立体感。</p>
 
-<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/__key_pitch_zpsb52122ad.jpg" alt="" /></p>
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/__key_pitch_zpsb52122ad.jpg" alt=""></p>
 
 <p>增加了键盘按键大小，输入更加好按了。</p>
 
 <p>图片来源：<a href="http://stam-design-stam.blogspot.jp">Design Archive</a></p>
-<p><a rel="bookmark" href="http://roshanca.com/minor-interface-changes-of-ios/">&#9875; Permalink</a></p>]]></content>
-    </entry>
+]]></content>
+  </entry>
   
-    <entry>
-      
+  <entry>
+    <title type="html"><![CDATA[如何屏蔽优酷和土豆的 Flash 广告]]></title>
+    <link href="http://roshanca.com/2012/how-to-block-youku-and-tudos-flash-ads"/>
+    <updated>2012-09-13T13:17:00+08:00</updated>
+    <id>http://roshanca.com/2012/how-to-block-youku-and-tudos-flash-ads</id>
+    <content type="html"><![CDATA[<p>大家出来混都不容易，按理说视频网站的播放不收费只内嵌点广告，无可厚非。可最近看来，这些视频网站的 Flash 内嵌广告，越来越长，直逼老婆娘的裹脚布，让人有点忍无可忍了。我见过最长的广告长达1分45秒，how about u？真叫人怀念那个15秒广告的年代啊！而且现如今广告的质量也不咋样，我曾在追一部无脑国产连续剧时（哎，哥也有无聊的时候啊），被生逼着看了好几遍的“苏菲”广告。质量差点也就算了，还不让跳过。看看人家 YouTube，5秒后可选 Skip 的设计多棒，不过人家也是对广告内容的自信。</p>
 
-
-
-
-<title type="html"><![CDATA[如何屏蔽优酷和土豆的 Flash 广告]]></title>
-<link href="http://roshanca.com/how-to-block-youku-and-tudos-flash-ads/"/>
-<updated>2012-09-13T13:17:00+08:00</updated>
-<id>http://roshanca.com/how-to-block-youku-and-tudos-flash-ads</id>
-
-      <content type="html"><![CDATA[<p>大家出来混都不容易，按理说视频网站的播放不收费只内嵌点广告，无可厚非。可最近看来，这些视频网站的 Flash 内嵌广告，越来越长，直逼老婆娘的裹脚布，让人有点忍无可忍了。我见过最长的广告长达1分45秒，how about u？真叫人怀念那个15秒广告的年代啊！而且现如今广告的质量也不咋样，我曾在追一部无脑国产连续剧时（哎，哥也有无聊的时候啊），被生逼着看了好几遍的“苏菲”广告。质量差点也就算了，还不让跳过。看看人家 YouTube，5秒后可选 Skip 的设计多棒，不过人家也是对广告内容的自信。</p>
-
-<p>好了，言归正传，来看看有什么方法让优酷和土豆，甚至是奇艺、sina、网易、QQ、迅雷&#8230;等的视频广告消失不见。</p>
+<p>好了，言归正传，来看看有什么方法让优酷和土豆，甚至是奇艺、sina、网易、QQ、迅雷...等的视频广告消失不见。</p>
 
 <h3>host 修改法</h3>
 
 <p>这是比较普遍的修改法，但效果不太尽人意。具体的可以参考以下文章：</p>
 
 <ul>
-<li><a href="http://www.gracecode.com/archives/3099/">MAC 下屏蔽优酷的黑屏等待</a></li>
-<li><a href="http://joys.name/2011/09/block-youku-ad.html">彻底屏蔽优酷广告：最新反“反屏蔽”的方法……</a></li>
+<li>  <a href="http://www.gracecode.com/archives/3099/">MAC 下屏蔽优酷的黑屏等待</a></li>
+<li>  <a href="http://joys.name/2011/09/block-youku-ad.html">彻底屏蔽优酷广告：最新反“反屏蔽”的方法……</a></li>
 </ul>
-
 
 <h3>userScript 注入法</h3>
 
@@ -1424,10 +1213,9 @@ var title   = "sublime text"
 <p>简单说下如何使用。</p>
 
 <ul>
-<li>Firefox：<a href="http://www.greasespot.net">Greasemonkey</a></li>
-<li>Chrome：<a href="https://chrome.google.com/webstore/detail/gcalenpjmijncebpfijmoaglllgpjagf?hl=zh-CN&amp;utm_source=chrome-ntp-launcher">Tampermonkey Beta</a></li>
+<li>  Firefox：<a href="http://www.greasespot.net">Greasemonkey</a></li>
+<li>  Chrome：<a href="https://chrome.google.com/webstore/detail/gcalenpjmijncebpfijmoaglllgpjagf?hl=zh-CN&amp;utm_source=chrome-ntp-launcher">Tampermonkey Beta</a> </li>
 </ul>
-
 
 <p>安装完相应的插件后，非常 simple 了，前往此偷梁换柱神奇脚本的地址：<a href="http://userscripts.org/scripts/show/120679">http://userscripts.org/scripts/show/120679</a>，点击右上角的 <code>Install</code> 即可。</p>
 
@@ -1435,9 +1223,9 @@ var title   = "sublime text"
 
 <p><a href="http://player.opengg.me">OpenGG.Clean.Player</a> 在 Chrome Web Store 上上架了，用 Chrome 的童鞋可以直接访问以下地址进行安装了：</p>
 
-<p><a href="https://chrome.google.com/webstore/detail/openggcleanplayer/doleffkdbkfeokcanjaagploacdflcff">OpenGG.Clean.Player for Chrome</a></p>
+<p><a href="https://chrome.google.com/webstore/detail/openggcleanplayer/doleffkdbkfeokcanjaagploacdflcff">OpenGG.Clean.Player for Chrome</a>（已停止更新）</p>
 
-<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/QQ20121115-1.png" alt="OpenGG.Clean.Player for Chrome" /></p>
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/QQ20121115-1.png" alt="OpenGG.Clean.Player for Chrome"></p>
 
 <h3>HTML 5 转换法</h3>
 
@@ -1451,62 +1239,46 @@ var title   = "sublime text"
 
 <ul>
 <li><p><a href="http://www.mac52ipod.cn/post/apple-safari-flv-html5-tudou-youku.php">更改 Safari UA</a>：若嫌要每次手工更改略显麻烦，可以在终端中执行以下代码设置 UA 默认为 iPad：</p>
-
-<pre><code>defaults write com.apple.Safari CustomUserAgent “‘Mozilla/5.0 (iPad; CPU OS 5_1 like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko) Version/5.1 Mobile/9B176 Safari/7534.48.3′”
-</code></pre>
-
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">defaults write com.apple.Safari CustomUserAgent “‘Mozilla/5.0 <span class="o">(</span>iPad<span class="p">;</span> CPU OS 5_1 like Mac OS X<span class="o">)</span> AppleWebKit/534.46 <span class="o">(</span>KHTML, like Gecko<span class="o">)</span> Version/5.1 Mobile/9B176 Safari/7534.48.3′”
+</code></pre></div>
 <p>要还原只需执行：</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">defaults delete com.apple.Safari CustomUserAgent
+</code></pre></div></li>
+<li><p><a href="http://zythum.free.bg/youkuhtml5playerbookmark/">一个在线转换优酷土豆视频的 bookmark</a>：also, safari supported only.</p>
 
-<pre><code>defaults delete com.apple.Safari CustomUserAgent
-</code></pre></li>
-<li><p><a href="http://zythum.free.bg/youkuhtml5playerbookmark/">一个在线转换优酷土豆视频的 bookmark</a>：also, safari support only.</p>
-
-<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/html5bookmark.jpg" alt="html5bookmark" /></p></li>
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/html5bookmark.jpg" alt="html5bookmark"></p></li>
 <li><p><a href="http://hoyois.github.com/safariextensions/clicktoplugin/">ClickToPlugin &amp; ClickToFlash</a>：这是老外写的 Safari Extension，前者是后者的扩展版。从字面上看是用于控制 Flash 等浏览器插件（Java, Silverlight etc.）加载的，实际上，as it says</p>
 
-<blockquote><p>Further, it can replace many plug-in-based media players by Safari’s native HTML5 media player</p></blockquote>
+<blockquote>
+<p>Further, it can replace many plug-in-based media players by Safari’s native HTML5 media player</p>
+</blockquote>
 
-<p>这可是意外的惊喜。更加惊喜的是，它经过国内一位88年的小伙子一番 DIY 后，支持了大陆众多视频网的播放器替换。看看截图就知道它的覆盖面有多广了：</p>
+<p>这可是意外的惊喜。更加惊喜的是，它经过国内一位<a href="https://twitter.com/ilools">88年的小伙子</a>一番 DIY 后，支持了大陆众多视频网的播放器替换。看看截图就知道它的覆盖面有多广了：</p>
 
-<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/killers.jpg" alt="killers" />
-<img src="http://i93.photobucket.com/albums/l57/ShakeSpace/preview.jpg" alt="preview" /></p>
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/killers.jpg" alt="killers">
+<img src="http://i93.photobucket.com/albums/l57/ShakeSpace/preview.jpg" alt="preview"></p>
 
 <p>它的优势显而易见：</p>
 
 <ul>
-<li>降温：据我观测，看同样的视频，从用 Flash 到 HTML 5，我的设备温度从50多度下降至40度左右；</li>
-<li>减噪：温度低了，风扇转速自然就下来了；</li>
-<li>网页加载更快：因为所有插件都被阻止，直到用户点击才去请求加载插件内容。</li>
+<li>  降温：据我观测，看同样的视频，从用 Flash 到 HTML 5，我的设备温度从50多度下降至40度左右；</li>
+<li>  减噪：温度低了，风扇转速自然就下来了；</li>
+<li>  网页加载更快：因为所有插件都被阻止，直到用户点击才去请求加载插件内容。</li>
 </ul>
 
+<p>当然，目前来说，它还有许多不足：比如支持还不够广泛（许多微博的内嵌视频不支持），比如亮度对比度的调节、画面尺寸调节功能的缺失等等。</p>
 
-<p>在我看来它还有以下不足：</p>
-
-<ul>
-<li>支持还不够广泛：特别是相对于视频网主站来说的站外播放器，支持的不是很好（比如各微博的内嵌视频）；</li>
-<li>视频的加载速度不如 Flash 给力，当然，这也可能是设置问题，或是我的主观感受；</li>
-<li>功能不如 Flash 强大，比如亮度对比度的调节、画面尺寸调节、分享等等，这些都暂无法移植。</li>
+<p>但相对于其带来的巨大优势来说，这些小瑕疵都不算什么。</p></li>
 </ul>
-
-
-<p>不再提供下载了，需要的可给我留言。</p></li>
-</ul>
-
-<p><a rel="bookmark" href="http://roshanca.com/how-to-block-youku-and-tudos-flash-ads/">&#9875; Permalink</a></p>]]></content>
-    </entry>
+]]></content>
+  </entry>
   
-    <entry>
-      
-
-
-
-
-<title type="html"><![CDATA[Diy Select]]></title>
-<link href="http://roshanca.com/diy-select/"/>
-<updated>2012-05-30T13:22:00+08:00</updated>
-<id>http://roshanca.com/diy-select</id>
-
-      <content type="html"><![CDATA[<p><code>&lt;select/&gt;</code> 在不同的系统不同的显示器下表现各异，无法统一。但可以用其它的 <code>HTMLElement</code> 来模拟，其好处是你可以对其使用自定义样式，而且在各个环境下保持一致；缺点也显而易见，毕竟是人工模拟，很难做到完美，比如浏览器窗口不是最大化时，由于 <code>&lt;select/&gt;</code> 属于窗体控件可溢出浏览器边界悬浮于窗口，而普通的 <code>HTMLElement</code> 无法做到这点。</p>
+  <entry>
+    <title type="html"><![CDATA[Diy Select]]></title>
+    <link href="http://roshanca.com/2012/diy-select"/>
+    <updated>2012-05-30T13:22:00+08:00</updated>
+    <id>http://roshanca.com/2012/diy-select</id>
+    <content type="html"><![CDATA[<p><code>&lt;select/&gt;</code> 在不同的系统不同的显示器下表现各异，无法统一。但可以用其它的 <code>HTMLElement</code> 来模拟，其好处是你可以对其使用自定义样式，而且在各个环境下保持一致；缺点也显而易见，毕竟是人工模拟，很难做到完美，比如浏览器窗口不是最大化时，由于 <code>&lt;select/&gt;</code> 属于窗体控件可溢出浏览器边界悬浮于视窗之上，而普通的 <code>HTMLElement</code> 无法做到这点。</p>
 
 <h2><del>JS 代码如下：</del></h2>
 
@@ -1518,152 +1290,106 @@ var title   = "sublime text"
 
 <p>项目已迁至 <a href="https://github.com/RoshanWu/diySelect">GitHub</a></p>
 
-<p>查看 <a href="http://jsfiddle.net/Roshanwu/wyBF5/">Demo</a></p>
-<p><a rel="bookmark" href="http://roshanca.com/diy-select/">&#9875; Permalink</a></p>]]></content>
-    </entry>
+<p>查看 Demo:</p>
+
+<iframe style="width: 100%; height: 1000px" frameborder="0" seamless="seamless" src="http://jsfiddle.net/wyBF5/embedded/result/light/"></iframe>
+]]></content>
+  </entry>
   
-    <entry>
-      
+  <entry>
+    <title type="html"><![CDATA[从 Heroku 迁移至 GitHub]]></title>
+    <link href="http://roshanca.com/2012/heroku-to-github"/>
+    <updated>2012-04-10T17:00:00+08:00</updated>
+    <id>http://roshanca.com/2012/heroku-to-github</id>
+    <content type="html"><![CDATA[<p><a href="http://www.heroku.com/">Heroku</a> 太慢了。</p>
 
-
-
-
-<title type="html"><![CDATA[从 Heroku 迁移至 GitHub]]></title>
-<link href="http://roshanca.com/heroku-to-github/"/>
-<updated>2012-04-10T17:00:00+08:00</updated>
-<id>http://roshanca.com/heroku-to-github</id>
-
-      <content type="html"><![CDATA[<p><a href="http://www.heroku.com/">Heroku</a> 太慢了。</p>
-
-<p>在 <a href="http://www.godaddy.com/">Godaddy</a> 上申请了个域名，9.99$ 一年，但两年的费用成了 23$，我都不知道咋整的。。。仔细一看，才发现 9.99 是优惠价，而且只限第一年优惠。晕了，不过相对国内来说，还算是便宜的了。</p>
+<p>在 <a href="http://www.godaddy.com/">Godaddy</a> 上申请了个域名：<code>roshanca.com</code>，9.99$ 一年，但两年的费用成了 23$，我都不知道咋整的。。。仔细一看，才发现 9.99 是优惠价，而且只限第一年优惠。晕了，不过相对国内来说，还算是便宜的了。</p>
 
 <p>GitHub 上的部署见 <a href="http://octopress.org/docs/deploying/github/">http://octopress.org/docs/deploying/github/</a> ，只需一句命令真是方便：</p>
-
-<figure class='code'><div class='highlight'><pre class='main  bash'><div class='line'><span class="nv">$ </span>rake setup_github_pages
-</div></pre></div></figure>
-
-
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">rake setup_github_pages
+</code></pre></div>
 <p>等了半天，都没见页面出来，原来：</p>
 
-<blockquote><p>  On the first push, it can take up to ten minutes before the content is available.</p></blockquote>
+<blockquote>
+<p>On the first push, it can take up to ten minutes before the content is available.</p>
+</blockquote>
 
 <p><a href="http://pages.github.com/">GitHub Pages</a> 的第一次生成，真的很慢！</p>
 
 <p>关于使用自主域名，非常 easy，到 Octopress 主程序的 Source 目录下，生成一个 CNAME 文件，注意不要有后缀哦。</p>
-
-<figure class='code'><div class='highlight'><pre class='main  bash'><div class='line'><span class="nv">$ </span>touch CNAME
-</div></pre></div></figure>
-
-
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">touch CNAME
+</code></pre></div>
 <p>文件内容就是你自己的域名，你可以用编辑器来编辑文件，当然也可以在终端里 vi 编辑。</p>
 
 <p>或者依照 Octopress 官方指示，在终端中一句搞定：</p>
-
-<figure class='code'><div class='highlight'><pre class='main  bash'><div class='line'><span class="nv">$ </span><span class="nb">echo</span> <span class="s1">&#39;your-domain.com&#39;</span> &gt;&gt; <span class="nb">source</span>/CNAME
-</div></pre></div></figure>
-
-
-
-<p><a rel="bookmark" href="http://roshanca.com/heroku-to-github/">&#9875; Permalink</a></p>]]></content>
-    </entry>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">echo</span> <span class="s1">&#39;roshanca.com&#39;</span> &gt;&gt; <span class="nb">source</span>/CNAME
+</code></pre></div>]]></content>
+  </entry>
   
-    <entry>
-      
+  <entry>
+    <title type="html"><![CDATA[为 Octopress 添加 Flickr 边栏]]></title>
+    <link href="http://roshanca.com/2012/flickr-aside-for-octopress"/>
+    <updated>2012-03-12T21:30:00+08:00</updated>
+    <id>http://roshanca.com/2012/flickr-aside-for-octopress</id>
+    <content type="html"><![CDATA[<p>今天为自己的 Octopress 添加上了 Flickr 边栏，见右侧。</p>
 
-
-
-
-<title type="html"><![CDATA[为 Octopress 添加 Flickr 边栏]]></title>
-<link href="http://roshanca.com/flickr-aside-for-octopress/"/>
-<updated>2012-03-12T21:30:00+08:00</updated>
-<id>http://roshanca.com/flickr-aside-for-octopress</id>
-
-      <content type="html"><![CDATA[<p>今天为自己的 Octopress 添加上了 Flickr 边栏，见右侧。</p>
-
-<p><img src="http://farm8.staticflickr.com/7061/6829895096_262b9ef4af.jpg" alt="" /></p>
+<p><img src="http://farm8.staticflickr.com/7061/6829895096_262b9ef4af.jpg" alt=""></p>
 
 <p>步骤如下：</p>
 
 <ol>
-<li><p>在 <code>source/_includes/custom/asides/</code> 目录下新建 <code>flickr.html</code>，粘贴如下代码：<figure class='code caption'><figcaption>flickr.html<a href='https://gist.github.com/1421792'>Gist page</a></figcaption><div class='highlight'><pre class='main  html'><div class='line'>&#x7b;&#x25; if site.flickr_user %}
-</div><div class='line'><span class="nt">&lt;section</span> <span class="na">class=</span><span class="s">&quot;flickr&quot;</span><span class="nt">&gt;</span>
-</div><div class='line'><span class="nt">&lt;h1&gt;</span>My Flickr<span class="nt">&lt;/h1&gt;</span>
-</div><div class='line'><span class="c">&lt;!-- Start of Flickr Badge --&gt;</span>
-</div><div class='line'><span class="nt">&lt;style </span><span class="na">type=</span><span class="s">&quot;text/css&quot;</span><span class="nt">&gt;</span>
-</div><div class='line'><span class="c">/<em></span>
-</div><div class='line'><span class="c">Images are wrapped in divs classed &quot;flickr_badge_image&quot; with ids &quot;flickr_badge_imageX&quot; where &quot;X&quot; is an integer specifying ordinal position. Below are some styles to get you started!</span>
-</div><div class='line'><span class="c"></em>/</span>
-</div><div class='line'><span class="nf">#flickr_badge_wrapper</span> <span class="p">{</span><span class="k">padding</span><span class="o">:</span><span class="m">10px</span> <span class="m">0</span> <span class="m">10px</span> <span class="m">0</span><span class="p">;}</span>
-</div><div class='line'><span class="nc">.flickr_badge_image</span> <span class="p">{</span><span class="k">margin</span><span class="o">:</span> <span class="m">0</span> <span class="m">9px</span> <span class="m">8px</span> <span class="m">0px</span><span class="p">;</span><span class="k">display</span><span class="o">:</span> <span class="k">inline</span><span class="o">-</span><span class="k">block</span><span class="p">;}</span>
-</div><div class='line'><span class="nt">&lt;/style&gt;</span>
-</div><div class='line'><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;flickr_badge_uber_wrapper&quot;</span><span class="nt">&gt;&lt;div</span> <span class="na">id=</span><span class="s">&quot;flickr_badge_wrapper&quot;</span><span class="nt">&gt;</span>
-</div><div class='line'><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;http://www.flickr.com/badge_code_v2.gne?count=&#x7b;&#x7b; site.flickr_count }}&amp;display=latest&amp;size=s&amp;layout=x&amp;source=user&amp;user=&#x7b;&#x7b; site.flickr_user }}&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-</div><div class='line'><span class="nt">&lt;/div&gt;&lt;/div&gt;</span>
-</div><div class='line'><span class="c">&lt;!-- End of Flickr Badge --&gt;</span>
-</div><div class='line'><span class="nt">&lt;/section&gt;</span>
-</div><div class='line'>&#x7b;&#x25; endif %}
-</div></pre></div></figure>P.S. <code>script</code> 外链地址中所带的参数你可以进一步的自定义，比如我就将 <code>display</code> 的参数改为了 <code>random</code>，以随机显示我的照片～</p></li>
-<li><p>在 <code>_config.yml</code> 中添加：<figure class='code caption'><figcaption>Code%20added%20to%20_config.yml<a href='https://gist.github.com/1421792'>Gist page</a></figcaption><div class='highlight'><pre class='main  yaml'><div class='line'><span class="c1"># Flick Badges</span>
-</div><div class='line'><span class="c1"># Find your user id here: http://idgettr.com/ It should be something like &quot;25711589%40N00&quot;.</span>
-</div><div class='line'><span class="l-Scalar-Plain">flickr_user</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">25711589%40N00</span>
-</div><div class='line'><span class="l-Scalar-Plain">flickr_count</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">6</span>
-</div></pre></div></figure>把 flickr_user 换成自己的 id。</p></li>
+<li><p>在 <code>source/_includes/custom/asides/</code> 目录下新建 <code>flickr.html</code>，粘贴如下代码：<script src="https://gist.github.com/1421792.js?file=flickr.html"> </script>P.S. <code>script</code> 外链地址中所带的参数你可以进一步的自定义，比如我就将 <code>display</code> 的参数改为了 <code>random</code>，以随机显示我的照片～</p></li>
+<li><p>在 <code>_config.yml</code> 中添加：<script src="https://gist.github.com/1421792.js?file=Code%20added%20to%20_config.yml"> </script>把 flickr_user 换成自己的 id。</p></li>
 <li><p>最后，在 <code>_config.yml</code> 中的 <code>default_asides</code> 里添加 <code>custom/asides/flickr.html</code>，即大功告成。</p></li>
 </ol>
 
-
 <p>本方法作者：<a href="http://lucifr.com/">lucifr</a></p>
-<p><a rel="bookmark" href="http://roshanca.com/flickr-aside-for-octopress/">&#9875; Permalink</a></p>]]></content>
-    </entry>
+]]></content>
+  </entry>
   
-    <entry>
-      
-
-
-
-
-<title type="html"><![CDATA[暗黑破坏神3 － 试玩]]></title>
-<link href="http://roshanca.com/diablo-iii/"/>
-<updated>2012-03-11T21:36:00+08:00</updated>
-<id>http://roshanca.com/diablo-iii</id>
-
-      <content type="html"><![CDATA[<p>上周从同事那 copy 来的暗黑破解版，居然近 10G，想想还是断了在公司本本上跑的念头，直接拿回家用台式机试试。看了下游戏推荐配置，也是勉强合格吧，那就二话不说，搞起～</p>
+  <entry>
+    <title type="html"><![CDATA[试玩暗黑破坏神3]]></title>
+    <link href="http://roshanca.com/2012/try-diablo-iii"/>
+    <updated>2012-03-11T21:36:00+08:00</updated>
+    <id>http://roshanca.com/2012/try-diablo-iii</id>
+    <content type="html"><![CDATA[<p>上周从同事那 copy 来的暗黑破解版，居然近 10G，想想还是断了在公司本本上跑的念头，直接拿回家用台式机试试。看了下游戏推荐配置，也是勉强合格吧，那就二话不说，搞起～</p>
 
 <p>感谢<a href="http://bbs.3dmgame.com/">“3大妈”</a>出品的体验工具，让我们能在暗黑3 beta 版出世这么久的日子里，结束“看的着吃不着”的苦逼状态。虽然听说破解的有许多破解后遗症，但总比没有的好是吧。也有人坚持不碰破解版，怕破坏暗黑3在他们心中的完美形象，那是仁者见仁了。</p>
 
 <p>感兴趣的，可以去 <a href="http://bbs.3dmgame.com/thread-2899917-1-1.html">http://bbs.3dmgame.com/thread-2899917-1-1.html</a> 看看，有下载有安装教程。但经我实际安装后，还有几点是需要补充的：</p>
 
 <ul>
-<li>莫要整中文路径；</li>
-<li>VC2005 &amp; VC2010 忒大，咋整？完全没必要，去下个完整的包含 VC2010 SP1 runtime 的安装包（哈哈，这个只有 10M 大小），当然，前提是你已安装了 .NET Framework 4.0<br />
-<a href="http://system.data.sqlite.org/downloads/1.0.79.0/sqlite-netFx40-setup-bundle-x86-2010-1.0.79.0.exe">x86下载</a>
-<a href="http://system.data.sqlite.org/downloads/1.0.79.0/sqlite-netFx40-setup-bundle-x64-2010-1.0.79.0.exe">64位下载</a></li>
-<li>如果这样运行 MadCow 还是会出错，就依照下图，将此些选项全部勾上：</li>
+<li>  莫要整中文路径；</li>
+<li>  VC2005 &amp; VC2010 忒大，咋整？完全没必要，去下个完整的包含 VC2010 SP1 runtime 的安装包（哈哈，这个只有 10M 大小），当然，前提是你已安装了 .NET Framework 4.0<br />
+
+<ul>
+<li> <a href="http://system.data.sqlite.org/downloads/1.0.79.0/sqlite-netFx40-setup-bundle-x86-2010-1.0.79.0.exe">x86下载</a></li>
+<li> <a href="http://system.data.sqlite.org/downloads/1.0.79.0/sqlite-netFx40-setup-bundle-x64-2010-1.0.79.0.exe">64位下载</a></li>
+</ul></li>
+<li>  如果这样运行 MadCow 还是会出错，就依照下图，将此些选项全部勾上：</li>
 </ul>
 
-
-<p><img src="http://farm8.staticflickr.com/7200/6972555695_2ca8aa323e_z.jpg" alt="MadCow config" /></p>
+<p><img src="http://farm8.staticflickr.com/7200/6972555695_2ca8aa323e_z.jpg" alt="MadCow config"></p>
 
 <p>好了，如果顺利的话，几分钟就可以搞定，下面开始 Diablo III 的体验之旅吧。下面是我自己录制的一个简短视频，巫医的角色。</p>
 
-<p><embed src="http://player.youku.com/player.php/sid/XMzY0Mjk3NTI0/v.swf" quality="high" width="600" height="500" align="middle" allowScriptAccess="sameDomain" allowFullscreen="true" type="application/x-shockwave-flash"></embed></p>
+<p><embed src="http://player.youku.com/player.php/sid/XMzY0Mjk3NTI0/v.swf" allowFullScreen="true" quality="high" width="480" height="400" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed></p>
 
 <p>bug 确实非常多，是个标准的<strong>体验版</strong>。列举一些：</p>
 
 <ul>
-<li>无法触发任务</li>
-<li>各种穿墙，地图上的 door 都成了摆设，你可以无限制的四处遨游（野蛮人更是凭借跳跃技能，能到达地图的每一个角落，无视地理模型）</li>
-<li>你可以装备各种华丽的装备道具，但它们如同皇帝的新衣一般，中看不中用，无法发挥其功效（那还刷毛个装备呀！）</li>
-<li>大部分职业 1 级就拥有了一个或多个高等级的技能，一旦你升级点掉了，那它就再也回不来了（甚至低等级的技能你都无法使用）</li>
-<li>技能栏里好些技能都是摆设（当然，你只有 1 级，本来就不该有这些技能的）</li>
-<li>木桶等各种可被破坏的物品，远程攻击对其无效，少了好多交互的快乐哟</li>
-<li>鼠标左击移动，时常被认为是攻击，估计是地图上有许多神秘的隐藏着的可被攻击的 Obejct，鬼知道那是什么，总妨碍我移动</li>
-<li>怪物都千篇一律，能来几个 boss 吗？</li>
-<li>死亡有时被误认为升级（太坑爹了吧），前一秒我还在为自己的极限操作横刀向天笑，下一秒钟，整个世界就都清静了，游戏中断了。。。</li>
-<li>大退掉等级，小退掉装备</li>
-<li>还有很多很多，暂时想不起来了</li>
+<li>  无法触发任务</li>
+<li>  各种穿墙，地图上的 door 都成了摆设，你可以无限制的四处遨游（野蛮人更是凭借跳跃技能，能到达地图的每一个角落，无视地理模型）</li>
+<li>  你可以装备各种华丽的装备道具，但它们如同皇帝的新衣一般，中看不中用，无法发挥其功效（那还刷毛个装备呀！）</li>
+<li>  大部分职业 1 级就拥有了一个或多个高等级的技能，一旦你升级点掉了，那它就再也回不来了（甚至低等级的技能你都无法使用）</li>
+<li>  技能栏里好些技能都是摆设（当然，你只有 1 级，本来就不该有这些技能的）</li>
+<li>  木桶等各种可被破坏的物品，远程攻击对其无效，少了好多交互的快乐哟</li>
+<li>  鼠标左击移动，时常被认为是攻击，估计是地图上有许多神秘的隐藏着的可被攻击的 Obejct，鬼知道那是什么，总妨碍我移动</li>
+<li>  怪物都千篇一律，能来几个 boss 吗？</li>
+<li>  死亡有时被误认为升级（太坑爹了吧），前一秒我还在为自己的极限操作横刀向天笑，下一秒钟，整个世界就都清静了，游戏中断了。。。</li>
+<li>  大退掉等级，小退掉装备</li>
+<li>  还有很多很多，暂时想不起来了</li>
 </ul>
-
 
 <h3>总结</h3>
 
@@ -1671,197 +1397,147 @@ var title   = "sublime text"
 
 <p>话说我这台机子属于是两三年前的主流配置（其实跟游戏的推荐配置已经很接近了），开了以下的设置，玩起来还是有些迟滞。</p>
 
-<p><a href="http://farm8.staticflickr.com/7037/6972766875_9bc6afa6ce_b.jpg" title="点击看大图"><img src="http://farm8.staticflickr.com/7037/6972766875_9bc6afa6ce_z.jpg" alt="" /></a></p>
+<p><a href="http://farm8.staticflickr.com/7037/6972766875_9bc6afa6ce_b.jpg" title="点击看大图"><img src="http://farm8.staticflickr.com/7037/6972766875_9bc6afa6ce_z.jpg" alt=""></a></p>
 
 <p>大概就是这样咯，期盼 10 年的游戏，觉得还是值得等待下去的，等出正式版了可以考虑升级下我这台服役了三四年的老爷机了。</p>
-<p><a rel="bookmark" href="http://roshanca.com/diablo-iii/">&#9875; Permalink</a></p>]]></content>
-    </entry>
+]]></content>
+  </entry>
   
-    <entry>
-      
-
-
-
-
-<title type="html"><![CDATA[OS X 下的 Octopress 搭建]]></title>
-<link href="http://roshanca.com/osx-octopress/"/>
-<updated>2012-03-11T14:04:00+08:00</updated>
-<id>http://roshanca.com/osx-octopress</id>
-
-      <content type="html"><![CDATA[<p>终于将家中的 <a href="http://baike.baidu.com/view/2173094.htm">Hackintosh</a> 完善了，就来尝试下在 Mac 下搭建 Octopress吧。</p>
+  <entry>
+    <title type="html"><![CDATA[OS X 下的 Octopress 搭建]]></title>
+    <link href="http://roshanca.com/2012/osx-octopress"/>
+    <updated>2012-03-11T14:04:00+08:00</updated>
+    <id>http://roshanca.com/2012/osx-octopress</id>
+    <content type="html"><![CDATA[<p>终于将家中的 <a href="http://baike.baidu.com/view/2173094.htm">Hackintosh</a> 完善了，尝试下在 Mac 中搭建 Octopress吧。</p>
 
 <p>我目前在用的是 Lion 10.7.3 的系统，自带 ruby 1.8.7，看来要 update 下。</p>
 
 <h2>必备工具</h2>
 
 <ul>
-<li>Xcode 或 <a href="https://github.com/downloads/kennethreitz/osx-gcc-installer/GCC-10.7-v2.pkg">GCC Installer</a>，用于编译；</li>
-<li>RVM(Ruby Version Management)：一个命令行工具，可以提供一个便捷的多版本ruby环境的管理和切换。</li>
+<li>  Xcode 或 <a href="https://github.com/downloads/kennethreitz/osx-gcc-installer/GCC-10.7-v2.pkg">GCC Installer</a>，用于编译；</li>
+<li>  RVM(Ruby Version Management)：一个命令行工具，可以提供一个便捷的多版本ruby环境的管理和切换。</li>
 </ul>
-
 
 <h2>安装 RVM</h2>
 
 <p>安装 RVM 的方法有点不同：</p>
-
-<figure class='code'><div class='highlight'><pre class='main  bash'><div class='line'><span class="nv">$ </span>bash -s stable &lt; &lt;<span class="o">(</span>curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer<span class="o">)</span>
-</div></pre></div></figure>
-
-
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">bash -s stable &lt; &lt;<span class="o">(</span>curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer<span class="o">)</span>
+</code></pre></div>
 <p>配置一下，添加 RVM 方法：</p>
-
-<figure class='code'><div class='highlight'><pre class='main  bash'><div class='line'><span class="nv">$ </span><span class="nb">echo</span> <span class="s1">&#39;[[ -s &quot;$HOME/.rvm/scripts/rvm&quot; ]] &amp;&amp; . &quot;$HOME/.rvm/scripts/rvm&quot; # Load RVM function&#39;</span> &gt;&gt; ~/.bash_profile
-</div><div class='line'><span class="nv">$ </span><span class="nb">source</span> ~/.bash_profile
-</div></pre></div></figure>
-
-
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">echo</span> <span class="s1">&#39;[[ -s &quot;$HOME/.rvm/scripts/rvm&quot; ]] &amp;&amp; . &quot;$HOME/.rvm/scripts/rvm&quot; # Load RVM function&#39;</span> &gt;&gt; ~/.bash_profile
+<span class="nb">source</span> ~/.bash_profile
+</code></pre></div>
 <p>这个时候用下面命令可以验证 RVM 是否安装成功：</p>
-
-<figure class='code'><div class='highlight'><pre class='main  bash'><div class='line'><span class="nv">$ </span><span class="nb">type </span>rvm | head -1
-</div><div class='line'> </div><div class='line'><span class="c"># 如若成功会出现以下一句</span>
-</div><div class='line'><span class="c"># rvm is a function</span>
-</div></pre></div></figure>
-
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">type </span>rvm <span class="p">|</span> head -1
+</code></pre></div>
+<p>如若看到 <code>rvm is a function</code> 表示已安装成功了。</p>
 
 <h2>安装 Ruby</h2>
-
-<figure class='code'><div class='highlight'><pre class='main  bash'><div class='line'><span class="nv">$ </span>rvm install 1.9.3
-</div></pre></div></figure>
-
-
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">rvm install 1.9.3
+</code></pre></div>
 <p>如果失败，可以采用如下方式：</p>
-
-<figure class='code'><div class='highlight'><pre class='main  bash'><div class='line'><span class="nv">$ </span>rvm reinstall 1.9.3 --with-gcc<span class="o">=</span>clang
-</div></pre></div></figure>
-
-
-<p> bsah
-设置目前的 ruby 为默认版本：</p>
-
-<figure class='code'><div class='highlight'><pre class='main  bash'><div class='line'><span class="nv">$ </span>rvm --default use 1.9.3
-</div></pre></div></figure>
-
-
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">rvm reinstall 1.9.3 --with-gcc<span class="o">=</span>clang
+</code></pre></div>
+<p>设置目前的 ruby 为默认版本：</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">rvm --default use 1.9.3
+</code></pre></div>
 <h2>安装 Octopress</h2>
 
 <p>由于我之前在公司电脑上已经创建了本站的 heroku 的 app，那我只要通过 git 获取目前线上的资源就 ok 啦～</p>
 
 <p>用 Aptana 创建一个空白的 Ruby Project，命名为 Octopress</p>
 
-<p><img src="http://farm8.staticflickr.com/7051/6971729423_3a9f79e468.jpg" alt="创建一个空白的 Ruby Project, 命名为 Octopress" /></p>
+<p><img src="http://farm8.staticflickr.com/7051/6971729423_3a9f79e468.jpg" alt="创建一个空白的 Ruby Project, 命名为 Octopress"></p>
 
 <p>接着定位到工程目录下</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># 初始化 git:</span>
+git init
 
-<figure class='code'><div class='highlight'><pre class='main  bash'><div class='line'><span class="c"># 初始化 git:</span>
-</div><div class='line'><span class="nv">$ </span>git init
-</div><div class='line'> </div><div class='line'><span class="c"># ok，接下来为这个 git 添加远程仓库：</span>
-</div><div class='line'><span class="nv">$ </span>git remote add heroku git@heroku.com:losttemple.git
-</div><div class='line'> </div><div class='line'><span class="c"># 将远程仓库资源 `pull` 到本地 project：</span>
-</div><div class='line'><span class="nv">$ </span>git pull heroku master
-</div></pre></div></figure>
+<span class="c"># ok，接下来为这个 git 添加远程仓库：</span>
+git remote add heroku git@heroku.com:losttemple.git
 
-
+<span class="c"># 将远程仓库资源 `pull` 到本地 project：</span>
+git pull heroku master
+</code></pre></div>
 <p>恩，这下我之前使用的 Octopress 又重新出现到了我的视线中：）</p>
 
-<p><img src="http://farm8.staticflickr.com/7177/6825679466_d7b9a71aee.jpg" alt="Octopress Project" /></p>
+<p><img src="http://farm8.staticflickr.com/7177/6825679466_d7b9a71aee.jpg" alt="Octopress Project"></p>
 
 <h2>使用 Octopress</h2>
 
 <p>老样子，依旧要先安装依赖包：</p>
-
-<figure class='code'><div class='highlight'><pre class='main  bash'><div class='line'><span class="nv">$ </span>gem install bundler
-</div><div class='line'><span class="nv">$ </span>bundle install
-</div></pre></div></figure>
-
-
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">gem install bundler
+bundle install
+</code></pre></div>
 <p>但这次好像出现了个问题：</p>
-
-<figure class='code'><div class='highlight'><pre class='main  bash'><div class='line'>Installing rb-fsevent <span class="o">(</span>0.4.3.1<span class="o">)</span> with native extensions Unfortunately, a fatal error has occurred. Please report this error to the Bundler issue tracker at https://github.com/carlhuda/bundler/issues so that we can fix it. Thanks!
-</div><div class='line'>/Users/wwj1983/.rvm/rubies/ruby-1.9.3-p125/lib/ruby/site_ruby/1.9.1/rubygems/installer.rb:552:in <span class="s1">&#39;rescue in block in build_extensions&#39;</span>: ERROR: Failed to build gem native extension. <span class="o">(</span>Gem::Installer::ExtensionBuildError<span class="o">)</span>
-</div></pre></div></figure>
-
-
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">Installing rb-fsevent <span class="o">(</span>0.4.3.1<span class="o">)</span> with native extensions Unfortunately, a fatal error has occurred. Please report this error to the Bundler issue tracker at https://github.com/carlhuda/bundler/issues so that we can fix it. Thanks!
+/Users/wwj1983/.rvm/rubies/ruby-1.9.3-p125/lib/ruby/site_ruby/1.9.1/rubygems/installer.rb:552:in <span class="s1">&#39;rescue in block in build_extensions&#39;</span>: ERROR: Failed to build gem native extension. <span class="o">(</span>Gem::Installer::ExtensionBuildError<span class="o">)</span>
+</code></pre></div>
 <p><code>rb-fsevent</code> 这个依赖包死活安装不上，于是单独安装</p>
-
-<figure class='code'><div class='highlight'><pre class='main  bash'><div class='line'><span class="nv">$ </span>gem install rb-fsevent
-</div><div class='line'>Successfully installed rb-fsevent-0.9.0
-</div><div class='line'>1 gem installed
-</div><div class='line'>Installing ri documentation <span class="k">for </span>rb-fsevent-0.9.0...
-</div><div class='line'>Installing RDoc documentation <span class="k">for </span>rb-fsevent-0.9.0...
-</div></pre></div></figure>
-
-
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">gem install rb-fsevent
+Successfully installed rb-fsevent-0.9.0
+1 gem installed
+Installing ri documentation <span class="k">for </span>rb-fsevent-0.9.0...
+Installing RDoc documentation <span class="k">for </span>rb-fsevent-0.9.0...
+</code></pre></div>
 <p>但是，这个版本与 <code>Gemfile.lock</code> 中的版本 0.4.3.1 不符。你应该知道怎么做了，哼哼，手动更改为 0.9.0 即可。好吧，把剩下的 <code>bundle</code> 装完，然后尽情地 <code>rake generate</code> 吧～</p>
 
 <h2>参考（部分地址需 FanQ1ang）</h2>
 
 <ul>
-<li><a href="http://www.unfoldingcode.com/2012/02/ruby-193-via-rvm-on-mac-osx-lion.html">http://www.unfoldingcode.com/2012/02/ruby-193-via-rvm-on-mac-osx-lion.html</a></li>
-<li><a href="http://beginrescueend.com/rvm/install/">http://beginrescueend.com/rvm/install/</a></li>
-<li><a href="http://devcenter.heroku.com/articles/git">http://devcenter.heroku.com/articles/git</a></li>
+<li>  <a href="http://www.unfoldingcode.com/2012/02/ruby-193-via-rvm-on-mac-osx-lion.html">http://www.unfoldingcode.com/2012/02/ruby-193-via-rvm-on-mac-osx-lion.html</a></li>
+<li>  <a href="http://beginrescueend.com/rvm/install/">http://beginrescueend.com/rvm/install/</a></li>
+<li>  <a href="http://devcenter.heroku.com/articles/git">http://devcenter.heroku.com/articles/git</a></li>
 </ul>
-
-<p><a rel="bookmark" href="http://roshanca.com/osx-octopress/">&#9875; Permalink</a></p>]]></content>
-    </entry>
+]]></content>
+  </entry>
   
-    <entry>
-      
-
-
-
-
-<title type="html"><![CDATA[Hello Octopress]]></title>
-<link href="http://roshanca.com/hello-octopress/"/>
-<updated>2012-03-07T10:37:00+08:00</updated>
-<id>http://roshanca.com/hello-octopress</id>
-
-      <content type="html"><![CDATA[<p>这个网站使用 <a href="http://octopress.org/">Octopress</a> 架设，并通过免费的 <a href="http://www.heroku.com/">Heroku</a> 部署到网上。</p>
+  <entry>
+    <title type="html"><![CDATA[Hello Octopress]]></title>
+    <link href="http://roshanca.com/2012/hello-octopress"/>
+    <updated>2012-03-07T10:37:00+08:00</updated>
+    <id>http://roshanca.com/2012/hello-octopress</id>
+    <content type="html"><![CDATA[<p>这个网站使用 <a href="http://octopress.org/">Octopress</a> 架设，并通过免费的 <a href="http://www.heroku.com/">Heroku</a> 部署到网上。</p>
 
 <p>第一次使用 Octopress，就发现“回不去了”！</p>
 
-<blockquote><p>看到 Octopress 让我觉得很惊艳， 用 Markdown 语法很快写好一篇博文， 接着用
-<code>
-rake generate
-</code>
-就能很快的生成整个网站并迅速 deploy 到 GitHub ， 就像在 Coding 一样快乐无比， 很有亲切感。</p></blockquote>
+<blockquote>
+<p>看到 Octopress 让我觉得很惊艳，用 Markdown 语法很快写好一篇博文，接着用 <code>rake generate</code> 就能很快的生成整个网站并迅速 deploy 到 GitHub ， 就像在 Coding 一样快乐无比， 很有亲切感。</p>
+</blockquote>
 
-<p>这里有 Octopress 的<a href="http://octopress.org/">介绍</a> －（<a href="http://fancyoung.com/blog/octopress-study/">中文</a>），以及<a href="http://octopress.org/docs/">安装教程</a> － （<a href="http://lyhdev.com/note:octopress">中文</a>）</p>
+<p>这里有 Octopress 的<a href="http://octopress.org/">介绍</a> －（<a href="http://fancyoung.com/blog/octopress-study/">中文</a>），以及<a href="http://octopress.org/docs/">安装教程</a> － （<a href="http://lyhdev.com/note:octopress">中文</a>）。</p>
 
 <p>自己在安装和使用的过程中也遇到了一些问题，在此记录一下。</p>
 
 <h2>安装环境</h2>
 
 <ul>
-<li>win 7 sp1</li>
-<li>Apatna Studio 3 (自带 git)</li>
+<li>  win 7 sp1</li>
+<li>  Apatna Studio 3 (自带 git)</li>
 </ul>
-
 
 <h2>下载 Ruby 以及开发工具 DevKit</h2>
 
 <ul>
-<li><a href="http://rubyinstaller.org/downloads/">RubyInstaller</a>（我下载的是 1.9.3 的版本）<br /></li>
-<li><a href="https://github.com/downloads/oneclick/rubyinstaller/DevKit-tdm-32-4.5.2-20111229-1559-sfx.exe">DevKit-tdm-32-4.5.2-20111229-1559-sfx.exe</a></li>
+<li>  <a href="http://rubyinstaller.org/downloads/">RubyInstaller</a>（我下载的是 1.9.3 的版本）<br /></li>
+<li>  <a href="https://github.com/downloads/oneclick/rubyinstaller/DevKit-tdm-32-4.5.2-20111229-1559-sfx.exe">DevKit-tdm-32-4.5.2-20111229-1559-sfx.exe</a></li>
 </ul>
-
 
 <h2>安装 Ruby &amp; DevKit</h2>
 
-<p>安装完 ruby 后会自动将其路径添加至系统变量的 PATH 中，否者需手动添加。<code>Win + R</code> 键入 <code>cmd</code> 打开命令行 输入 <code>ruby -v</code> 确认 ruby 是否已成功安装。<br />
-安装完 DevKit 进入目录会发现两个 bat 文件都打不开，进入编辑后发现一句</p>
+<p>安装完 ruby 后会自动将其路径添加至系统变量的 PATH 中，否者需手动添加。<code>Win + R</code> 键入 <code>cmd</code> 打开命令行 输入 <code>ruby -v</code> 确认 ruby 是否已成功安装。</p>
 
-<figure class='code'><div class='highlight'><pre class='main  plain'><div class='line'>rem A value similar to C:\msys\1.0\bin is what the "Start in:" field needs</div></pre></div></figure>
-
-
+<p>安装完 DevKit 进入目录会发现两个 bat 文件都打不开，进入编辑后发现一句</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">rem A value similar to C:\msys\1.0\bin is what the &quot;Start in:&quot; field needs
+</code></pre></div>
 <p>就依照提示在 C 分区下创建目录路径 <code>msys/1.0</code>，再将文件都转移其中，这回 <code>msys.bat</code> 可以启动了。</p>
 
 <h2>重头戏，安装 Octopress</h2>
 
 <p>打开 Aptana，新建 Ruby Project，Generate APP 选项中选择 Clone a existing git project，然后在 Location 中填入</p>
-
-<figure class='code'><div class='highlight'><pre class='main  plain'><div class='line'>git://github.com/imathis/octopress.git</div></pre></div></figure>
-
-
+<div class="highlight"><pre><code class="language-text" data-lang="text">git://github.com/imathis/octopress.git
+</code></pre></div>
 <p>这个时候 Aptana 工作区面板里的 Terminal 是无法 <code>ruby --version</code> 成功的，别着急，先启动下 <code>path/to/ruby/bin</code> 目录下的 <code>ruby.exe</code> 即可。</p>
 
 <p><strong>我一开始尝试在此 Terminal 中输入命令来安装 Octopress 所需的 <code>bundle</code>，后来发现不行，非得要用 DevKit 才能装上，估计要编译什么的吧。</strong></p>
@@ -1869,18 +1545,12 @@ rake generate
 <p>那好，就先打开 DevKit，cd 定位到你新建的 Ruby Project，也就是 Octopress 主程序。</p>
 
 <h3>安装依赖包</h3>
-
-<figure class='code'><div class='highlight'><pre class='main  bash'><div class='line'><span class="nv">$ </span>gem install bundler
-</div><div class='line'><span class="nv">$ </span>bundle install
-</div></pre></div></figure>
-
-
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">gem install bundler
+bundle install
+</code></pre></div>
 <h3>安装默认主题</h3>
-
-<figure class='code'><div class='highlight'><pre class='main  bash'><div class='line'><span class="nv">$ </span>rake install
-</div></pre></div></figure>
-
-
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">rake install
+</code></pre></div>
 <h2>配置 Octopress</h2>
 
 <p>关于网站的信息都可在 <code>_config.yml</code> 里的到配置，具体的可参见<a href="http://octopress.org/docs/configuring/">这里</a>。</p>
@@ -1888,26 +1558,19 @@ rake generate
 <h2>本地预览</h2>
 
 <p>从这步开始，可以用 Aptana 中的 Terminal 更加方便的输命令行了。</p>
-
-<figure class='code'><div class='highlight'><pre class='main  bash'><div class='line'><span class="nv">$ </span>rake generate
-</div><div class='line'><span class="nv">$ </span>rake preview
-</div></pre></div></figure>
-
-
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">rake generate
+rake preview
+</code></pre></div>
 <p>即可在 localhost:4000 中预览你的 Octopress 了。</p>
 
-<p><strong> Bug 1: 关于 &#8220;Could not determine content-length of response body. Set content-length of the response or set Response#chunked = true&#8221; 的警告，解决方法如下： </strong></p>
+<p><strong>Bug 1: 关于 &quot;Could not determine content-length of response body. Set content-length of the response or set Response#chunked = true&quot; 的警告，解决方法如下：</strong></p>
 
 <p>打开 <code>path/to/ruby/lib/ruby/1.9.1/webrick/httpresponse.rb</code> 搜索以上错误内容，定位到</p>
-
-<figure class='code'><div class='highlight'><pre class='main  plain'><div class='line'>if chunked? || @header['content-length']</div></pre></div></figure>
-
-
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">if</span> <span class="n">chunked?</span> <span class="o">||</span> <span class="vi">@header</span><span class="o">[</span><span class="s1">&#39;content-length&#39;</span><span class="o">]</span>
+</code></pre></div>
 <p>一般是 Line 205，将其改为</p>
-
-<figure class='code'><div class='highlight'><pre class='main  plain'><div class='line'>if chunked? || @header['content-length'] || @status == 304 || @status == 204</div></pre></div></figure>
-
-
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">if</span> <span class="n">chunked?</span> <span class="o">||</span> <span class="vi">@header</span><span class="o">[</span><span class="s1">&#39;content-length&#39;</span><span class="o">]</span> <span class="o">||</span> <span class="vi">@status</span> <span class="o">==</span> <span class="mi">304</span> <span class="o">||</span> <span class="vi">@status</span> <span class="o">==</span> <span class="mi">204</span>
+</code></pre></div>
 <h2>部署 Heroku</h2>
 
 <p>你得先有个 Heroku 账号，<a href="https://api.heroku.com/signup">注册一个</a>！</p>
@@ -1915,82 +1578,68 @@ rake generate
 <p>Aptana Studio 3 中自带了 Heroku 图形化的插件，只需 Run Web Demployment Wizard，按照提示配置即可。</p>
 
 <p>你也可以自己手动配置，这也许更加有趣：</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">gem install heroku
 
-<figure class='code'><div class='highlight'><pre class='main  bash'><div class='line'><span class="nv">$ </span>gem install heroku
-</div><div class='line'> </div><div class='line'><span class="c"># 创建一个 heroku app</span>
-</div><div class='line'><span class="nv">$ </span>heroku create
-</div><div class='line'> </div><div class='line'><span class="c"># 这里你可以重命名你的 heroku app</span>
-</div><div class='line'><span class="nv">$ </span>heroku rename newname
-</div><div class='line'> </div><div class='line'><span class="c"># 登陆 heroku，需填 email 和 password</span>
-</div><div class='line'><span class="nv">$ </span>heroku login
-</div><div class='line'> </div><div class='line'><span class="c"># 添加你的 SSH Key，后可跟路径，例如 /Users/Administrator/.ssh/id_rsa.pub</span>
-</div><div class='line'><span class="nv">$ </span>heroku keys:add
-</div></pre></div></figure>
+<span class="c"># 创建一个 heroku app</span>
+heroku create
 
+<span class="c"># 这里你可以重命名你的 heroku app</span>
+heroku rename newname
 
+<span class="c"># 登陆 heroku，需填 email 和 password</span>
+heroku login
+
+<span class="c"># 添加你的 SSH Key，后可跟路径，例如 /Users/Administrator/.ssh/id_rsa.pub</span>
+heroku keys:add
+</code></pre></div>
 <p>关于如何生成 SSH Key，请看<a href="http://help.github.com/set-up-git-redirect/">这里</a>。</p>
 
 <p>编辑 <code>.gitignore</code> 去除 <code>public</code>，否则生成内容无法部署到 Heroku 上。</p>
-
-<figure class='code'><div class='highlight'><pre class='main  bash'><div class='line'><span class="nv">$ </span>rake generate
-</div><div class='line'><span class="nv">$ </span>git add .
-</div><div class='line'><span class="nv">$ </span>git commit -m <span class="s1">&#39;site updated&#39;</span>
-</div><div class='line'><span class="nv">$ </span>git push heroku master
-</div></pre></div></figure>
-
-
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">rake generate
+git add .
+git commit -m <span class="s1">&#39;site updated&#39;</span>
+git push heroku master
+</code></pre></div>
 <h2>发表文章</h2>
 
 <p>只需一句</p>
-
-<figure class='code'><div class='highlight'><pre class='main  bash'><div class='line'><span class="nv">$ </span>rake new_post<span class="o">[</span><span class="s2">&quot;title&quot;</span><span class="o">]</span>
-</div></pre></div></figure>
-
-
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">rake new_post<span class="o">[</span><span class="s2">&quot;title&quot;</span><span class="o">]</span>
+</code></pre></div>
 <p>生成的 <code>Source/_posts/</code> 下的 markdown 即为文章内，你可以用 <a href="https://github.com/Shopify/liquid/wiki/Liquid-for-Designers">Liquid</a> 语法来编辑它。</p>
 
 <p>关于 Markdown 的更多介绍，请看<a href="http://daringfireball.net/projects/markdown/syntax">这里</a> － （<a href="http://wowubuntu.com/markdown/index.html">中文</a>）。</p>
 
-<p><strong> Bug 2: 关于中文字符的问题，解决方法如下： </strong></p>
+<p><strong>Bug 2: 关于中文字符的问题，解决方法如下：</strong></p>
 
 <p>打开 <code>path/to/ruby/lib/ruby/gems/1.9.1/gems/jekyll-0.11.0/lib/jekyll/convertible.rb</code>，找到</p>
-
-<figure class='code'><div class='highlight'><pre class='main  plain'><div class='line'>self.content = File.read(File.join(base, name))</div></pre></div></figure>
-
-
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">self</span><span class="o">.</span><span class="n">content</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="no">File</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="nb">name</span><span class="p">))</span>
+</code></pre></div>
 <p>修改为</p>
-
-<figure class='code'><div class='highlight'><pre class='main  plain'><div class='line'>self.content = File.read(File.join(base, name), :encoding => "utf-8")</div></pre></div></figure>
-
-
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">self</span><span class="o">.</span><span class="n">content</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="no">File</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="nb">name</span><span class="p">),</span> <span class="ss">:encoding</span> <span class="o">=&gt;</span> <span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+</code></pre></div>
 <p>在 windows 平台上，还有一些特殊的错误。</p>
 
-<p><strong> Bug 3: 关于 jekyll 的 &#8220;invalid byte sequence in GBK (ArgumentError)&#8221; 错误，你可能需要在命令行下改变当前代码页到 UTF-8： </strong></p>
+<p><strong>Bug 3: 关于 jekyll 的 &quot;invalid byte sequence in GBK (ArgumentError)&quot; 错误，你可能需要在命令行下改变当前代码页到 UTF-8：</strong></p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">chcp.com 65001
+</code></pre></div>
+<p><strong>Bug 4: 关于语法高亮无法使用报 &quot;Liquid error: No such file or directory - python -c &#39;import sys; print sys.executable&#39;&quot; 错误的解决方法：</strong></p>
 
-<figure class='code'><div class='highlight'><pre class='main  bash'><div class='line'><span class="nv">$ </span>chcp.com 65001
-</div></pre></div></figure>
-
-
-<p><strong> Bug 4: 关于语法高亮无法使用报 &#8220;Liquid error: No such file or directory - python -c &#8216;import sys; print sys.executable&#8217;&#8221; 错误的解决方法： </strong></p>
-
-<ul>
-<li>安装 <a href="http://www.python.org/getit/">python for windows</a> （不推荐安装  3.3 版本的）;</li>
-<li>下载<a href="http://blog.yesmryang.net/downloads/code/pythonexec.rb" title="pythonexec.rb">这个文件</a>；</li>
-<li>用下载文件替换 <code>path/to/ruby/lib/ruby/gems/1.9.1/gems/rubypython-0.5.1/lib/rubypython</code> 目录下的同名文件；</li>
-<li>记得重启电脑 :)</li>
-</ul>
-
+<ol>
+<li>  安装 <a href="http://www.python.org/getit/">python for windows</a> （不推荐安装  3.3 版本的）;</li>
+<li>  下载<a href="http://blog.yesmryang.net/downloads/code/pythonexec.rb" title="pythonexec.rb">这个文件</a>；</li>
+<li>  用下载文件替换 <code>path/to/ruby/lib/ruby/gems/1.9.1/gems/rubypython-0.5.1/lib/rubypython</code> 目录下的同名文件；</li>
+<li>  记得重启电脑 :)</li>
+</ol>
 
 <h2>参考文章（部分地址需 FanQ1ang）</h2>
 
 <ul>
-<li><a href="https://bugs.ruby-lang.org/attachments/2300/204_304_keep_alive.patch">https://bugs.ruby-lang.org/attachments/2300/204_304_keep_alive.patch</a></li>
-<li><a href="http://www.soimort.org/tech-blog/2011/11/19/introduction-to-jekyll_zh.html">http://www.soimort.org/tech-blog/2011/11/19/introduction-to-jekyll_zh.html</a></li>
-<li><a href="http://blog.yesmryang.net/windows-octopress-python/">http://blog.yesmryang.net/windows-octopress-python/</a></li>
-<li><a href="http://ruby-taiwan.org/topics/154">http://ruby-taiwan.org/topics/154</a></li>
+<li>  <a href="https://bugs.ruby-lang.org/attachments/2300/204_304_keep_alive.patch">https://bugs.ruby-lang.org/attachments/2300/204_304_keep_alive.patch</a></li>
+<li>  <a href="http://www.soimort.org/tech-blog/2011/11/19/introduction-to-jekyll_zh.html">http://www.soimort.org/tech-blog/2011/11/19/introduction-to-jekyll_zh.html</a></li>
+<li>  <a href="http://blog.yesmryang.net/windows-octopress-python/">http://blog.yesmryang.net/windows-octopress-python/</a></li>
+<li>  <a href="http://ruby-taiwan.org/topics/154">http://ruby-taiwan.org/topics/154</a></li>
 </ul>
-
-<p><a rel="bookmark" href="http://roshanca.com/hello-octopress/">&#9875; Permalink</a></p>]]></content>
-    </entry>
+]]></content>
+  </entry>
   
 </feed>
