@@ -8,9 +8,9 @@
 	{% capture canonical %}{{ site.url }}{% if site.permalink contains '.html' %}{{ page.url }}{% else %}{{ page.url | remove:'index.html' }}{% endif %}{% endcapture %}
 	<link rel="canonical" href="{{ canonical }}">
 	<link rel="alternate" type="application/atom+xml" title="Subscribe Feed" href="/atom.xml">
-	<link media="all" rel="stylesheet" href="{{ site.baseurl }}/assets/styles/app.css" />
-	<link href="//fonts.googleapis.com/css?family=Noto+Serif" rel="stylesheet">
-	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+	<link  href="{{ site.baseurl }}/assets/styles/app.css" rel="stylesheet" media="all">
+	<link href="{{ site.baseurl }}/assets/styles/font-awesome.min.css" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Noto+Serif" rel="stylesheet">
 	<script>
 	function loadSync(u,p,a){
 		if(!p && location.port)return {onload: null};

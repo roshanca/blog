@@ -66,12 +66,15 @@
     }
     time {
       font-family: $san;
-      font-size: 1.8rem;
+      font-size: 90%;
       color: lighten($link-color, 22%);
       @include responsive(480px) {
         display: block;
         @include tailhook(.5rem);
       }
     }
+  }
+  .excerpt {
+
   }
 }

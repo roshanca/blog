@@ -23,9 +23,12 @@ abbr {
   cursor: help;
 }
 
+sup {
+  padding-left: .3rem;
+}
+
 table {
   table-layout: fixed;
-  // @include word-break;
   th {
     padding: .9rem 1.8rem;
     font-weight: 700;
