@@ -4,7 +4,7 @@
   <title><![CDATA[肉山·察]]></title>
   <link href="http://roshanca.com/atom.xml" rel="self"/>
   <link href="http://roshanca.com/"/>
-  <updated>2014-05-12T10:24:42+08:00</updated>
+  <updated>2014-05-14T13:09:42+08:00</updated>
   <id>http://roshanca.com/</id>
   <author>
     <name><![CDATA[Roshan Wu]]></name>
@@ -52,13 +52,13 @@
 
 <p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/Photobucket%20Desktop%20-%20WuMacBookPro/Photobucket/ssh_zps5ef42e95.png" alt=""></p>
 
-<p>新建一个终端窗口或者标签页，接下来把下载好的迅雷固件文件，放入远程指定目录下：</p>
+<p>新建一个终端窗口或者标签页，接下来把下载好的迅雷固件文件夹，拷贝至路由器的指定目录下：</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">scp -P 22 -r ~/Download/Xware1 root@192.168.0.1:/jffs/
 </code></pre></div>
 <p>再次输入密码，完成传输任务，切换回 ssh 界面，继续操作：</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">cd</span> /jffs
 
-<span class="c"># 将 放入的文件夹改名为 xunlei</span>
+<span class="c"># 将拷贝好的迅雷固件文件夹改名为 xunlei</span>
 mv Xware1 xunlei
 
 <span class="nb">cd </span>xunlei
@@ -66,12 +66,12 @@ mv Xware1 xunlei
 <span class="c"># 给 xunlei 目录添加执行权限</span>
 chmod 777 * -R
 
-<span class="c"># 启动迅雷离线</span>
+<span class="c"># 启动迅雷离线服务</span>
 ./portal
 </code></pre></div>
 <p>其它步骤教程中都有，不再赘述。</p>
 
-<p>完成后我就开始疯狂下载 1080p 的电影了。建议上班前挂上准备好的资源，到公司后打开管理页面启动一下，下班后回到家就看片了，很不错的赶脚。家里 20M 的带宽，速度基本上有 2M 多吧。袄，忘了说，我是迅雷会员，非会员估计下载速度要打个折扣。</p>
+<p>完成后我就开始疯狂下载 1080p 的电影了。建议上班前挂上准备好的资源，到公司登录 <a href="http://yuancheng.xunlei.com">http://yuancheng.xunlei.com</a> 开始下载，下班后回到家就看片了，还是蛮不错的赶脚。家里 20M 的带宽，下载速度基本上有 2M 多吧。袄，忘了说，我是迅雷会员，非会员这速度可能要打个折扣。</p>
 
 <p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/Photobucket%20Desktop%20-%20WuMacBookPro/Photobucket/QQ20140429-12x_zps9f86c594.png" alt=""></p>
 
@@ -93,7 +93,36 @@ chmod 777 * -R
 
 <p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/Photobucket%20Desktop%20-%20WuMacBookPro/Photobucket/dlnaserver_zpsb8902bcb.png" alt=""> </p>
 
-<p>经测试，DD-WRT 提供的 DLNA 服务更加稳定可靠，也许是因为 <code>Linux</code> 系统强大的缘故吧。更为可喜的是，它还直接解决了 MKV 字幕的问题，妈妈再也不用担心我看不了欧美大片了。</p>
+<p>经测试，DD-WRT 提供的 DLNA 服务更加稳定可靠，也许是因为 <code>Linux</code> 系统强大的缘故吧。<del>更为可喜的是，它还直接解决了 MKV 字幕的问题，妈妈再也不用担心我看不了欧美大片了。</del></p>
+
+<h3>Update</h3>
+
+<p>经测试，通过 DLNA 播放 <code>MKV</code> 视频，主要看接收端（电视）对于视频的支持，而并不取决于发布端（路由）。</p>
+
+<p>我的家里有两台电视：Sony(KDL-47W800A) 和 LeTV(S40)，目前只有前者在使用 DLNA 播放视频时支持显示 <code>MKV</code> 内置字幕，对乐视略失望☹</p>
+
+<p>对于一些比较老旧的设备，还有一个音轨的问题。估计一些电视暂不支持 <abbr title="Digital Theater Systems">DTS</abbr> 音轨，看 NAS 上的蓝光电影就比较悲剧了，因为这类片子一般都是 DTS 的音轨。此时就要将音轨转至 AC3。DTS 转 AC3，网上有着众多的教程与工具，这里我推荐最 Geek 的做法：<code>ffmpeg</code> + 终端提取 AC3 音轨，再用 <a href="http://www.bunkus.org/videotools/mkvtoolnix/">Mkvtoolnix</a> 将其 merge 到 MKV 文件中。</p>
+
+<h3>安装 ffmpeg</h3>
+
+<p>推荐 <code>brew</code>（如何安装 <code>brew</code> 与本主题关系不大，请自行搜索了）：</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">brew doctor
+
+<span class="c"># 提示 Your system is ready to brew.</span>
+<span class="c"># 再进行下一步，否则先通过 brew update 将组件都更新到最新</span>
+
+brew install ffmeg
+</code></pre></div>
+<h3>使用 ffmpeg</h3>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">ffmpeg -i &lt;INPUT_video_filename&gt; -map 0:1 -acodec ac3 -ab 448k -ac 6 &lt;OUTPUT_audio_filename&gt;.ac3
+</code></pre></div>
+<ul>
+<li>  -i ☞ 输入文件（一般是 MKV）</li>
+<li>  -map ☞ 要转换的声道 (0:1 是第一声道的意思)</li>
+<li>  -acodec ☞ 输出音轨文件的编码 (ac3 毫无疑问)</li>
+<li>  -ab ☞ 码率 (448k is OK)</li>
+<li>  -ac ☞ 声道数量 (6 = 5.1)</li>
+</ul>
 ]]></content>
   </entry>
   

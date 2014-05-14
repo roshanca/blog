@@ -140,7 +140,36 @@ chmod 777 * -R
 
 <p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/Photobucket%20Desktop%20-%20WuMacBookPro/Photobucket/dlnaserver_zpsb8902bcb.png" alt=""> </p>
 
-<p>经测试，DD-WRT 提供的 DLNA 服务更加稳定可靠，也许是因为 <code>Linux</code> 系统强大的缘故吧。更为可喜的是，它还直接解决了 MKV 字幕的问题，妈妈再也不用担心我看不了欧美大片了。</p>
+<p>经测试，DD-WRT 提供的 DLNA 服务更加稳定可靠，也许是因为 <code>Linux</code> 系统强大的缘故吧。<del>更为可喜的是，它还直接解决了 MKV 字幕的问题，妈妈再也不用担心我看不了欧美大片了。</del></p>
+
+<h3>Update</h3>
+
+<p>经测试，通过 DLNA 播放 <code>MKV</code> 视频，主要看接收端（电视）对于视频的支持，而并不取决于发布端（路由）。</p>
+
+<p>我的家里有两台电视：Sony(KDL-47W800A) 和 LeTV(S40)，目前只有前者在使用 DLNA 播放视频时支持显示 <code>MKV</code> 内置字幕，对乐视略失望☹</p>
+
+<p>对于一些比较老旧的设备，还有一个音轨的问题。估计一些电视暂不支持 <abbr title="Digital Theater Systems">DTS</abbr> 音轨，看 NAS 上的蓝光电影就比较悲剧了，因为这类片子一般都是 DTS 的音轨。此时就要将音轨转至 AC3。DTS 转 AC3，网上有着众多的教程与工具，这里我推荐最 Geek 的做法：<code>ffmpeg</code> + 终端提取 AC3 音轨，再用 <a href="http://www.bunkus.org/videotools/mkvtoolnix/">Mkvtoolnix</a> 将其 merge 到 MKV 文件中。</p>
+
+<h3>安装 ffmpeg</h3>
+
+<p>推荐 <code>brew</code>（如何安装 <code>brew</code> 与本主题关系不大，请自行搜索了）：</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">brew doctor
+
+<span class="c"># 提示 Your system is ready to brew.</span>
+<span class="c"># 再进行下一步，否则先通过 brew update 将组件都更新到最新</span>
+
+brew install ffmeg
+</code></pre></div>
+<h3>使用 ffmpeg</h3>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">ffmpeg -i &lt;INPUT_video_filename&gt; -map 0:1 -acodec ac3 -ab 448k -ac 6 &lt;OUTPUT_audio_filename&gt;.ac3
+</code></pre></div>
+<ul>
+<li>  -i ☞ 输入文件（一般是 MKV）</li>
+<li>  -map ☞ 要转换的声道 (0:1 是第一声道的意思)</li>
+<li>  -acodec ☞ 输出音轨文件的编码 (ac3 毫无疑问)</li>
+<li>  -ab ☞ 码率 (448k is OK)</li>
+<li>  -ac ☞ 声道数量 (6 = 5.1)</li>
+</ul>
 
 		</section>
 		<footer class="post-footer">
