@@ -1,0 +1,12 @@
+encoding: utf-8
+name: blog
+url: http://roshanca.com
+author: Roshan Wu
+title: 肉山·察
+subtitle: Just Roshan's blog
+permalink: /:year/:title
+source: site
+plugins: ./_plugins
+markdown: redcarpet
+redcarpet:
+  extensions: ["autolink", "tables", "strikethrough", "superscript", "footnotes"]

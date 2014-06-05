@@ -1,1 +1,6 @@
 .DS_Store
+.sass-cache/
+_drafts/
+_site/
+_deploy
+node_modules/
