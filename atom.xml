@@ -4,7 +4,7 @@
   <title><![CDATA[肉山·察]]></title>
   <link href="http://roshanca.com/atom.xml" rel="self"/>
   <link href="http://roshanca.com/"/>
-  <updated>2014-05-14T13:09:42+08:00</updated>
+  <updated>2014-07-03T14:12:47+08:00</updated>
   <id>http://roshanca.com/</id>
   <author>
     <name><![CDATA[Roshan Wu]]></name>
@@ -53,7 +53,7 @@
 <p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/Photobucket%20Desktop%20-%20WuMacBookPro/Photobucket/ssh_zps5ef42e95.png" alt=""></p>
 
 <p>新建一个终端窗口或者标签页，接下来把下载好的迅雷固件文件夹，拷贝至路由器的指定目录下：</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">scp -P 22 -r ~/Download/Xware1 root@192.168.0.1:/jffs/
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">scp -P <span class="m">22</span> -r ~/Download/Xware1 root@192.168.0.1:/jffs/
 </code></pre></div>
 <p>再次输入密码，完成传输任务，切换回 ssh 界面，继续操作：</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">cd</span> /jffs
@@ -64,7 +64,7 @@ mv Xware1 xunlei
 <span class="nb">cd </span>xunlei
 
 <span class="c"># 给 xunlei 目录添加执行权限</span>
-chmod 777 * -R
+chmod <span class="m">777</span> * -R
 
 <span class="c"># 启动迅雷离线服务</span>
 ./portal
@@ -114,7 +114,7 @@ chmod 777 * -R
 brew install ffmeg
 </code></pre></div>
 <h3>使用 ffmpeg</h3>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">ffmpeg -i &lt;INPUT_video_filename&gt; -map 0:1 -acodec ac3 -ab 448k -ac 6 &lt;OUTPUT_audio_filename&gt;.ac3
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">ffmpeg -i &lt;INPUT_video_filename&gt; -map 0:1 -acodec ac3 -ab 448k -ac <span class="m">6</span> &lt;OUTPUT_audio_filename&gt;.ac3
 </code></pre></div>
 <ul>
 <li>  -i ☞ 输入文件（一般是 MKV）</li>
@@ -1591,9 +1591,9 @@ bundle install
 <p><code>rb-fsevent</code> 这个依赖包死活安装不上，于是单独安装</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">gem install rb-fsevent
 Successfully installed rb-fsevent-0.9.0
-1 gem installed
-Installing ri documentation <span class="k">for </span>rb-fsevent-0.9.0...
-Installing RDoc documentation <span class="k">for </span>rb-fsevent-0.9.0...
+<span class="m">1</span> gem installed
+Installing ri documentation <span class="k">for</span> rb-fsevent-0.9.0...
+Installing RDoc documentation <span class="k">for</span> rb-fsevent-0.9.0...
 </code></pre></div>
 <p>但是，这个版本与 <code>Gemfile.lock</code> 中的版本 0.4.3.1 不符。你应该知道怎么做了，哼哼，手动更改为 0.9.0 即可。好吧，把剩下的 <code>bundle</code> 装完，然后尽情地 <code>rake generate</code> 吧～</p>
 

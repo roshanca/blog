@@ -10,7 +10,7 @@
 	<link rel="alternate" type="application/atom+xml" title="Subscribe Feed" href="/atom.xml">
 	<link  href="/assets/styles/app.css" rel="stylesheet" media="all">
 	<link href="/assets/styles/font-awesome.min.css" rel="stylesheet">
-    <link href="//fonts.googleapis.com/css?family=Noto+Serif" rel="stylesheet">
+    <link href="//fonts.useso.com/css?family=Noto+Serif" rel="stylesheet">
 	<script>
 	function loadSync(u,p,a){
 		if(!p && location.port)return {onload: null};
@@ -133,9 +133,9 @@ bundle install
 <p><code>rb-fsevent</code> 这个依赖包死活安装不上，于是单独安装</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">gem install rb-fsevent
 Successfully installed rb-fsevent-0.9.0
-1 gem installed
-Installing ri documentation <span class="k">for </span>rb-fsevent-0.9.0...
-Installing RDoc documentation <span class="k">for </span>rb-fsevent-0.9.0...
+<span class="m">1</span> gem installed
+Installing ri documentation <span class="k">for</span> rb-fsevent-0.9.0...
+Installing RDoc documentation <span class="k">for</span> rb-fsevent-0.9.0...
 </code></pre></div>
 <p>但是，这个版本与 <code>Gemfile.lock</code> 中的版本 0.4.3.1 不符。你应该知道怎么做了，哼哼，手动更改为 0.9.0 即可。好吧，把剩下的 <code>bundle</code> 装完，然后尽情地 <code>rake generate</code> 吧～</p>
 
