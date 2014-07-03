@@ -159,7 +159,7 @@ table {
   margin: 4rem 0 0;
   padding: 2rem 0 3rem;
   font-size: 1.4rem;
-  font-family: Optima, "Helvetica Neue", "Microsoft YaHei", arial, sans-serif;
+  font-family: Optima, "Helvetica Neue", Helvetica, arial, "Microsoft YaHei", sans-serif;
   text-align: center;
   border-top: 1px solid #eee;
   color: #999; }
@@ -197,7 +197,7 @@ table {
   .about .about-desc {
     display: block;
     margin-top: -5px;
-    font-family: Optima, "Helvetica Neue", "Microsoft YaHei", arial, sans-serif;
+    font-family: Optima, "Helvetica Neue", Helvetica, arial, "Microsoft YaHei", sans-serif;
     font-size: 80%; }
   .about .about-author {
     margin-right: 1rem; }
@@ -223,7 +223,7 @@ table {
       .article li a[rel] {
         margin-left: 0; } }
   .article li time {
-    font-family: Optima, "Helvetica Neue", "Microsoft YaHei", arial, sans-serif;
+    font-family: Optima, "Helvetica Neue", Helvetica, arial, "Microsoft YaHei", sans-serif;
     font-size: 90%;
     color: #7c7c7c; }
     @media only screen and (max-width: 480px) {
@@ -256,7 +256,7 @@ table {
       position: static;
       width: 100%; } }
 .post .post-meta {
-  font-family: Optima, "Helvetica Neue", "Microsoft YaHei", arial, sans-serif;
+  font-family: Optima, "Helvetica Neue", Helvetica, arial, "Microsoft YaHei", sans-serif;
   font-size: 1.6rem;
   line-height: 34px;
   text-align: right;
@@ -360,7 +360,7 @@ table {
     #archive ul {
       padding-left: 1rem; } }
 #archive time {
-  font-family: Optima, "Helvetica Neue", "Microsoft YaHei", arial, sans-serif;
+  font-family: Optima, "Helvetica Neue", Helvetica, arial, "Microsoft YaHei", sans-serif;
   font-size: 90%;
   color: #7c7c7c; }
   #archive time:after {
