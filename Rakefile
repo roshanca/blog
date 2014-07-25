@@ -14,3 +14,9 @@ task :default do
 
   [jekyllPid, sassPid].each { |pid| Process.wait(pid) }
 end
+
+desc "Build task"
+task :generate do
+  system "sass --watch #{sass_dir}/app.scss:#{css_dir}/app.css"
+  system "jekyll build"
+end
