@@ -1,21 +1,6 @@
 language: ruby
-rvm:
-  - 2.1.1
-branches:
-  only:
-    - master
-script:
-  - "rake generate"
-after_success:
-  - "mkdir git_deploy"
-  - "git clone $REPO git_deploy"
-  - "cd git_deploy"
-  - "git checkout --track test"
-  - "rm -r *"
-  - "cp -r ../_site/* ."
-  - "git config --global push.default simple"
-  - "git config --global user.name 'roshanca'"
-  - "git config --global user.email wwj1983@gmail.com"
-  - "git add -A"
-  - "git commit -m 'update'"
-  - "git push -q origin test:test"
+install: bundle install
+script: bundle exec rake site:deploy --quiet
+env:
+  global:
+    secure: d0aLpiKHZmUFQ1il+P6i3r55ur5LANi/ICTId3jy0a+9Beo223PfHYCJeo/pLFbygnXS9b3hhLSqhIZ8QBXLfdz3l/Tjs9wsY048a8+lMfKv6H1f3SJX3Dgm7w6xCOGJRzS0i2hs7ccH/WCJK7G9twkJ0btKHk6ADmmncqLSCPk=
