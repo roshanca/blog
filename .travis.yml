@@ -1,12 +1,13 @@
-language: node_js
-node_js:
-  - "0.10"
+language: ruby
+rvm:
+  - 2.1.1
 branches:
   only:
     - master
 script:
   - "rake generate"
 after_success:
+  - "mkdir git_deploy"
   - "git clone $REPO git_deploy"
   - "cd git_deploy"
   - "git checkout --track test"
