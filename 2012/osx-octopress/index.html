@@ -68,14 +68,14 @@
 
 <p>我目前在用的是 Lion 10.7.3 的系统，自带 ruby 1.8.7，看来要 update 下。</p>
 
-<h2>必备工具</h2>
+<h2 id="必备工具">必备工具</h2>
 
 <ul>
 <li>  Xcode 或 <a href="https://github.com/downloads/kennethreitz/osx-gcc-installer/GCC-10.7-v2.pkg">GCC Installer</a>，用于编译；</li>
 <li>  RVM(Ruby Version Management)：一个命令行工具，可以提供一个便捷的多版本ruby环境的管理和切换。</li>
 </ul>
 
-<h2>安装 RVM</h2>
+<h2 id="安装-rvm">安装 RVM</h2>
 
 <p>安装 RVM 的方法有点不同：</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">bash -s stable &lt; &lt;<span class="o">(</span>curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer<span class="o">)</span>
@@ -89,7 +89,7 @@
 </code></pre></div>
 <p>如若看到 <code>rvm is a function</code> 表示已安装成功了。</p>
 
-<h2>安装 Ruby</h2>
+<h2 id="安装-ruby">安装 Ruby</h2>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">rvm install 1.9.3
 </code></pre></div>
 <p>如果失败，可以采用如下方式：</p>
@@ -98,7 +98,7 @@
 <p>设置目前的 ruby 为默认版本：</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">rvm --default use 1.9.3
 </code></pre></div>
-<h2>安装 Octopress</h2>
+<h2 id="安装-octopress">安装 Octopress</h2>
 
 <p>由于我之前在公司电脑上已经创建了本站的 heroku 的 app，那我只要通过 git 获取目前线上的资源就 ok 啦～</p>
 
@@ -120,7 +120,7 @@ git pull heroku master
 
 <p><img src="http://farm8.staticflickr.com/7177/6825679466_d7b9a71aee.jpg" alt="Octopress Project"></p>
 
-<h2>使用 Octopress</h2>
+<h2 id="使用-octopress">使用 Octopress</h2>
 
 <p>老样子，依旧要先安装依赖包：</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">gem install bundler
@@ -139,7 +139,7 @@ Installing RDoc documentation <span class="k">for</span> rb-fsevent-0.9.0...
 </code></pre></div>
 <p>但是，这个版本与 <code>Gemfile.lock</code> 中的版本 0.4.3.1 不符。你应该知道怎么做了，哼哼，手动更改为 0.9.0 即可。好吧，把剩下的 <code>bundle</code> 装完，然后尽情地 <code>rake generate</code> 吧～</p>
 
-<h2>参考（部分地址需 FanQ1ang）</h2>
+<h2 id="参考（部分地址需-fanq1ang）">参考（部分地址需 FanQ1ang）</h2>
 
 <ul>
 <li>  <a href="http://www.unfoldingcode.com/2012/02/ruby-193-via-rvm-on-mac-osx-lion.html">http://www.unfoldingcode.com/2012/02/ruby-193-via-rvm-on-mac-osx-lion.html</a></li>
@@ -150,7 +150,7 @@ Installing RDoc documentation <span class="k">for</span> rb-fsevent-0.9.0...
 		</section>
 		<footer class="post-footer">
 			<div class="post-meta">
-				<time datetime="2012-03-11 14:04:00 +0800" class="updated" pubdate>Mar 11, 2012</time>
+				<time datetime="2012-03-11 14:04:00 +0000" class="updated" pubdate>Mar 11, 2012</time>
 
 				
 <span class="post-tag">

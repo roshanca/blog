@@ -4,7 +4,7 @@
   <title><![CDATA[肉山·察]]></title>
   <link href="http://roshanca.com/atom.xml" rel="self"/>
   <link href="http://roshanca.com/"/>
-  <updated>2014-07-03T14:12:47+08:00</updated>
+  <updated>2014-07-25T10:22:42+00:00</updated>
   <id>http://roshanca.com/</id>
   <author>
     <name><![CDATA[Roshan Wu]]></name>
@@ -15,7 +15,7 @@
   <entry>
     <title type="html"><![CDATA[DIY 网件 R6300v2 路由器]]></title>
     <link href="http://roshanca.com/2014/diy-netgear-r6300v2"/>
-    <updated>2014-05-11T21:41:00+08:00</updated>
+    <updated>2014-05-11T21:41:00+00:00</updated>
     <id>http://roshanca.com/2014/diy-netgear-r6300v2</id>
     <content type="html"><![CDATA[<p>据说 Geek 都喜欢 <abbr title="Network Attached Storage">NAS</abbr> 与离线下载。</p>
 
@@ -31,13 +31,13 @@
 
 <p>还是那句老话：自己动手，丰衣足食。以此三点为目标，开始折腾。</p>
 
-<h2>刷 DD-WRT 固件</h2>
+<h2 id="刷-dd-wrt-固件">刷 DD-WRT 固件</h2>
 
 <p>原厂固件有什么不好？之前听说 R6300v2 自带固件网络不稳定，我好像没怎么碰到过。但 DD-WRT 的稳定性应该在它之上不用说，而且还支持 5G 网络的无线频道自动选择，这个是官方所不支持的。最为重要的一点是，它是上迅雷固件的先决条件。</p>
 
 <p>刷机的整个过程，依照<a href="http://luyou.xunlei.com/thread-426-1-1.html">这里</a>的教程，step by step 就行了，非常 easy~</p>
 
-<h2>刷迅雷固件</h2>
+<h2 id="刷迅雷固件">刷迅雷固件</h2>
 
 <p>毫无疑问，这是为了实现离线下载。这里的指的离线下载，又比迅雷下载软件自带的离线功能，更高一级：后者是将资源离线下到迅雷的云端，而前者则直接下到路由挂载的硬盘上，接着通过无线内网直接读取，更加便利了。</p>
 
@@ -75,7 +75,7 @@ chmod <span class="m">777</span> * -R
 
 <p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/Photobucket%20Desktop%20-%20WuMacBookPro/Photobucket/QQ20140429-12x_zps9f86c594.png" alt=""></p>
 
-<h2>NAS</h2>
+<h2 id="nas">NAS</h2>
 
 <p>普通的文件的共享，需开启 &quot;File Sharing&quot; 和 &quot;Samba Server&quot;，在路由管理界面（<code>http://192.168.0.1</code>）中的“服务 - NAS”下可以找到它们。</p>
 
@@ -87,7 +87,7 @@ chmod <span class="m">777</span> * -R
 
 <p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/Photobucket%20Desktop%20-%20WuMacBookPro/Photobucket/workgroup_zps90ee0444.png" alt=""></p>
 
-<h2>DLNA</h2>
+<h2 id="dlna">DLNA</h2>
 
 <p>如果家中电视支持 DLNA，那太赞了，开启路由 &quot;DLNA Server&quot;，直接在电视上欣赏路由 NAS 中的视频、照片、音乐吧。</p>
 
@@ -95,7 +95,7 @@ chmod <span class="m">777</span> * -R
 
 <p>经测试，DD-WRT 提供的 DLNA 服务更加稳定可靠，也许是因为 <code>Linux</code> 系统强大的缘故吧。<del>更为可喜的是，它还直接解决了 MKV 字幕的问题，妈妈再也不用担心我看不了欧美大片了。</del></p>
 
-<h3>Update</h3>
+<h3 id="update">Update</h3>
 
 <p>经测试，通过 DLNA 播放 <code>MKV</code> 视频，主要看接收端（电视）对于视频的支持，而并不取决于发布端（路由）。</p>
 
@@ -103,7 +103,7 @@ chmod <span class="m">777</span> * -R
 
 <p>对于一些比较老旧的设备，还有一个音轨的问题。估计一些电视暂不支持 <abbr title="Digital Theater Systems">DTS</abbr> 音轨，看 NAS 上的蓝光电影就比较悲剧了，因为这类片子一般都是 DTS 的音轨。此时就要将音轨转至 AC3。DTS 转 AC3，网上有着众多的教程与工具，这里我推荐最 Geek 的做法：<code>ffmpeg</code> + 终端提取 AC3 音轨，再用 <a href="http://www.bunkus.org/videotools/mkvtoolnix/">Mkvtoolnix</a> 将其 merge 到 MKV 文件中。</p>
 
-<h3>安装 ffmpeg</h3>
+<h3 id="安装-ffmpeg">安装 ffmpeg</h3>
 
 <p>推荐 <code>brew</code>（如何安装 <code>brew</code> 与本主题关系不大，请自行搜索了）：</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">brew doctor
@@ -113,7 +113,7 @@ chmod <span class="m">777</span> * -R
 
 brew install ffmeg
 </code></pre></div>
-<h3>使用 ffmpeg</h3>
+<h3 id="使用-ffmpeg">使用 ffmpeg</h3>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">ffmpeg -i &lt;INPUT_video_filename&gt; -map 0:1 -acodec ac3 -ab 448k -ac <span class="m">6</span> &lt;OUTPUT_audio_filename&gt;.ac3
 </code></pre></div>
 <ul>
@@ -129,7 +129,7 @@ brew install ffmeg
   <entry>
     <title type="html"><![CDATA[误删系统显示描述文件]]></title>
     <link href="http://roshanca.com/2013/delete-system-display-profile-mistakenly"/>
-    <updated>2013-06-05T16:47:00+08:00</updated>
+    <updated>2013-06-05T16:47:00+00:00</updated>
     <id>http://roshanca.com/2013/delete-system-display-profile-mistakenly</id>
     <content type="html"><![CDATA[<p>手贱，看见显示器的描述文件有重复，就想擅自删除几个。可自诩 Mac 达人的我，这回出了糗，误删了系统目录下的颜色描述文件，导致我的系统崩溃，接着就一直无敌风火轮了。。。</p>
 
@@ -139,7 +139,7 @@ brew install ffmeg
 
 <p>仔细一想：删除掉的系统文件，还在垃圾篓里。只要能将垃圾篓里的文件再放回原处，我就得救了。可搞！咱这 Macbook 不是还有个 Recovery 分区么，里面有磁盘工具，有终端等等实用的工具。这次就是终端救了我。</p>
 
-<h2>操作步骤：</h2>
+<h2 id="操作步骤：">操作步骤：</h2>
 
 <ol>
 <li> 开机按 <code>option</code> 等待出现选择界面；</li>
@@ -156,7 +156,7 @@ brew install ffmeg
 <li><p>所有的文件都拷贝完后，最好用磁盘工具检查下权限问题，有问题则修复，没问题则可重启电脑了。</p></li>
 </ol>
 
-<h2>总结问题</h2>
+<h2 id="总结问题">总结问题</h2>
 
 <ul>
 <li> 以上方法，适用于大部分删除系统文件后无法进入系统的状况，前提是你要知道系统文件的原路径；</li>
@@ -199,7 +199,7 @@ brew install ffmeg
   <entry>
     <title type="html"><![CDATA[Switch … Case 不被推荐使用]]></title>
     <link href="http://roshanca.com/2012/switch-case-considered-harmful"/>
-    <updated>2012-12-12T10:11:00+08:00</updated>
+    <updated>2012-12-12T10:11:00+00:00</updated>
     <id>http://roshanca.com/2012/switch-case-considered-harmful</id>
     <content type="html"><![CDATA[<p>本文为原创译文，英文原文：<a href="http://ericleads.com/2012/12/switch-case-considered-harmful/">Switch … Case Considered Harmful</a></p>
 
@@ -322,7 +322,7 @@ brew install ffmeg
   <entry>
     <title type="html"><![CDATA[TODO 插件 for Sublime Text 2]]></title>
     <link href="http://roshanca.com/2012/todo-plugin-for-sublime"/>
-    <updated>2012-12-07T20:30:00+08:00</updated>
+    <updated>2012-12-07T20:30:00+00:00</updated>
     <id>http://roshanca.com/2012/todo-plugin-for-sublime</id>
     <content type="html"><![CDATA[<p>用 ST2 来实现日常与工作中的 TODO，详细请查看这篇文章：<a href="http://lucifr.com/2012/09/18/sublime-text-extension-plaintasks/">《Sublime Text 2 插件：PlainTasks》</a></p>
 
@@ -330,7 +330,7 @@ brew install ffmeg
 
 <script src="https://gist.github.com/4232437.js"> </script>
 
-<h3>自动关联图标</h3>
+<h3 id="自动关联图标">自动关联图标</h3>
 
 <p>关于如何将 TODO 文档自动关联作者提供的那漂亮的图标，我去搜索了一番，具体做法如下：</p>
 
@@ -368,7 +368,7 @@ brew install ffmeg
   <entry>
     <title type="html"><![CDATA[更新公司电子门禁密码]]></title>
     <link href="http://roshanca.com/2012/update-company-electronic-access-password"/>
-    <updated>2012-12-06T10:12:00+08:00</updated>
+    <updated>2012-12-06T10:12:00+00:00</updated>
     <id>http://roshanca.com/2012/update-company-electronic-access-password</id>
     <content type="html"><![CDATA[<p>昨天很杯具地发现丢了饭卡与公司的门禁卡！饭卡里还有几十块钱，虽说不能挂失，但能补办就行了。门禁卡就不一样了，因为涉及到公司安全，必须赶紧更换门锁密码！</p>
 
@@ -384,19 +384,19 @@ brew install ffmeg
 
 <p>记录一下方法，纪念一下我的 100 块...</p>
 
-<h2>前提</h2>
+<h2 id="前提">前提</h2>
 
 <p>门锁是搭配 IC 射频卡使用的那种，锁上有射频感应区，刷卡开门。我们公司的锁的牌子是“鑫雅顿”，IC 卡用的是“MANGO”。此锁应该有一张所谓“母卡”，多张“子卡”。</p>
 
 <p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/ic_card.jpg" alt="MANGO IC CARD"></p>
 
-<h2>情境</h2>
+<h2 id="情境">情境</h2>
 
 <p>由于是一锁对多卡，一卡遗失，必须更改门锁密码，对应地，其余的卡的也必须重新配对密码。</p>
 
-<h2>操作步骤</h2>
+<h2 id="操作步骤">操作步骤</h2>
 
-<h3>更新门锁密钥</h3>
+<h3 id="更新门锁密钥">更新门锁密钥</h3>
 
 <ol>
 <li> 用母卡刷门一次，“滴”一声后门锁感应区内蓝光亮起</li>
@@ -406,7 +406,7 @@ brew install ffmeg
 <li> 红光熄灭后一声长响，表示门锁上的密钥已经更换（此时除了母卡，其余子卡是开不了门的）</li>
 </ol>
 
-<h3>复制密钥到子卡</h3>
+<h3 id="复制密钥到子卡">复制密钥到子卡</h3>
 
 <ol>
 <li> 重复以上 1、2、3 步骤</li>
@@ -421,7 +421,7 @@ brew install ffmeg
   <entry>
     <title type="html"><![CDATA[编辑神器：Sublime Text 2]]></title>
     <link href="http://roshanca.com/2012/magical-sublime-text-2"/>
-    <updated>2012-12-02T22:49:00+08:00</updated>
+    <updated>2012-12-02T22:49:00+00:00</updated>
     <id>http://roshanca.com/2012/magical-sublime-text-2</id>
     <content type="html"><![CDATA[<p>Sublime Text 2 (以下简称 ST2)，无疑是我所用过的最好用的文本（代码）编辑器，没有之一！基于它的某些诱人特性，总让人在不经意间就眼前一亮，所以最近身边有好多同事都因无意一瞥，就被其吸引，继而让我推荐。</p>
 
@@ -437,7 +437,7 @@ brew install ffmeg
 
 <p>有没有心动呢？心动不如行动，赶紧来试试吧。</p>
 
-<h2>下载</h2>
+<h2 id="下载">下载</h2>
 
 <ul>
 <li>  稳定版：<a href="http://www.sublimetext.com/2">Stable</a></li>
@@ -447,7 +447,7 @@ brew install ffmeg
 
 <p>推荐下载开发版（Dev）。</p>
 
-<h2>破解</h2>
+<h2 id="破解">破解</h2>
 
 <p>其实未注册的免费版跟付费版功能完全相同，只是前者主窗口右上角有 &quot;UNREGISTERED&quot; 的水印而已，还有就是偶尔的提示注册弹窗（频率低的可以忽略不记），所以破解<strong>我既不提倡，也觉得没那必要</strong>。过程我就不赘述了，请移步至以下链接。</p>
 
@@ -456,7 +456,7 @@ brew install ffmeg
 <li>  <strong>Windows &amp; Linux</strong> - <a href="http://i.wanz.im/2012/04/07/cracking_sublime-text2/">http://i.wanz.im/2012/04/07/cracking_sublime-text2/</a></li>
 </ul>
 
-<h2>使用技巧</h2>
+<h2 id="使用技巧">使用技巧</h2>
 
 <p>提示：因为本文基于 OS X 环境所写，所以为了更好的阅读下文，请先确保理解 OS X 与 Windows 下的键盘映射关系。见表：</p>
 
@@ -494,7 +494,7 @@ brew install ffmeg
 </tr>
 </tbody></table>
 
-<h3>多重选择(Multi-Selection)</h3>
+<h3 id="多重选择(multi-selection)">多重选择(Multi-Selection)</h3>
 
 <p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/rename.jpg" alt="Multi-Selection"></p>
 
@@ -509,7 +509,7 @@ brew install ffmeg
 <li>  选中多行文本，通过 <code>Command + Shift + L</code> 来将光标打散至每行行尾。</li>
 </ul>
 
-<h3>随心所欲跳转(Goto Anything)</h3>
+<h3 id="随心所欲跳转(goto-anything)">随心所欲跳转(Goto Anything)</h3>
 
 <p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/goto.jpg" alt="Goto Anything"></p>
 
@@ -522,19 +522,19 @@ brew install ffmeg
 <li>  关键字以 <code>:</code> 开头，后跟数字可跳转至相应的行，它的快捷键是 <code>Ctrl + G</code></li>
 </ul>
 
-<h3>边栏(Side Bar)</h3>
+<h3 id="边栏(side-bar)">边栏(Side Bar)</h3>
 
 <p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/Side-Bar.jpg" alt="Side Bar"></p>
 
 <p>很多编辑器（Notepad++ etc.）也有边栏，但 ST2 有点不同的是：单选左侧边栏中的文件，右侧自动出现文档预览（若选中的为图片等文件，则显示其二进制编码）。当你修改编辑它时，它才在 ST2 中以 Tab 的形式自动打开，so sweety ☺</p>
 
-<h3>命令面板(Command Palette)</h3>
+<h3 id="命令面板(command-palette)">命令面板(Command Palette)</h3>
 
 <p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/command_palette.jpg" alt="Command Palette"></p>
 
 <p>执行命令的快捷入口，我们一般以快捷键 <code>Command + Shift + P</code> 来快速调用，当然你也可以在菜单 <code>Tool</code> 下找到它。</p>
 
-<h3>无干扰模式(Distraction Free Mode)</h3>
+<h3 id="无干扰模式(distraction-free-mode)">无干扰模式(Distraction Free Mode)</h3>
 
 <p>在菜单 <code>View</code> 中选择 <code>Enter Distraction Free Mode</code> 就可进入无干扰模式。快捷键为 <code>Ctrl + Shift + Command + F</code></p>
 
@@ -550,11 +550,11 @@ brew install ffmeg
     <span class="nt">&quot;scroll_past_end&quot;</span><span class="p">:</span> <span class="kc">true</span>     <span class="err">//</span> <span class="err">滚动能否超过结尾</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3>迷你地图(Minimap)</h3>
+<h3 id="迷你地图(minimap)">迷你地图(Minimap)</h3>
 
 <p>右侧默认显示迷你地图，这其实是个全局预览加模糊定位文档位置的功能。当然如果你像增大编辑可视面积，也可通过菜单 &quot;View&quot; 选择 &quot;Hide Minimap&quot; 将其关闭。</p>
 
-<h2>设置</h2>
+<h2 id="设置">设置</h2>
 
 <p><code>Preferences -&gt; Settings - Default</code>，这个是 ST2 的默认设置，不建议修改此文件，而是通过修改 <code>Preferences -&gt; Settings - User</code> 来达到个性化的定制。例如，以下就是我的 User 设定：</p>
 <div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span>
@@ -578,7 +578,7 @@ brew install ffmeg
     <span class="nt">&quot;ignored_packages&quot;</span><span class="p">:</span> <span class="p">[]</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2>快捷键</h2>
+<h2 id="快捷键">快捷键</h2>
 
 <p>类似设置，你可以进入 <code>Preferences -&gt; Key Bindings - Default</code> 查看所有的快捷键设置，然后在 <code>Key Bindings - User</code> 来自定义快捷键。</p>
 
@@ -780,7 +780,7 @@ brew install ffmeg
     </table>
 </div>
 
-<h2>安装插件</h2>
+<h2 id="安装插件">安装插件</h2>
 
 <p>ST2 的插件安装是通过所谓的 <a href="//sublime.wbond.net/">Package Control (包控制)</a> 来实现的。如果你用过 <code>npm</code> 或者 <code>spm</code> ，那你一定不会对这种包管理的方式感到陌生。</p>
 
@@ -806,7 +806,7 @@ brew install ffmeg
 <li><p>等待安装（左下角 [ = ] 显示运行中），安装完毕后重启 ST2 即可</p></li>
 </ol>
 
-<h2>常用插件</h2>
+<h2 id="常用插件">常用插件</h2>
 
 <p>这里就简单罗列一些，包括了网上热评的和自己在用的。</p>
 
@@ -879,11 +879,11 @@ var title   = &quot;sublime text&quot;
   <entry>
     <title type="html"><![CDATA[JavaScript 中的一些坑（一）]]></title>
     <link href="http://roshanca.com/2012/traps-in-javascript-part-I"/>
-    <updated>2012-11-29T14:47:00+08:00</updated>
+    <updated>2012-11-29T14:47:00+00:00</updated>
     <id>http://roshanca.com/2012/traps-in-javascript-part-I</id>
     <content type="html"><![CDATA[<p>“坑”这个字，在此的意思是“陷阱”。由于 JavaScript “弱语言”的性质，使得其在使用过程中异常的宽松灵活，但也极为容易“中招”。</p>
 
-<h2>坑一：全局变量</h2>
+<h2 id="坑一：全局变量">坑一：全局变量</h2>
 
 <blockquote>
 <p>JavaScript 通过函数管理作用域。在函数内部声明的变量只在这个函数内部，函数外面不可用。另一方面，全局变量就是在任何函数外面声明的或是未声明直接简单使用的。</p>
@@ -907,7 +907,7 @@ var title   = &quot;sublime text&quot;
 
 <p>填坑：变量声明，最好一个个来，别搞批发~_~;</p>
 
-<h2>坑二：变量声明</h2>
+<h2 id="坑二：变量声明">坑二：变量声明</h2>
 
 <p>先来看坑：</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">myName</span> <span class="o">=</span> <span class="s2">&quot;global&quot;</span><span class="p">;</span>
@@ -953,7 +953,7 @@ var title   = &quot;sublime text&quot;
 </code></pre></div>
 <p>填坑：变量声明，最好手动置于作用域顶部，对于无法当下赋值的变量，可采取先声明后赋值的手法。</p>
 
-<h2>坑三：函数声明</h2>
+<h2 id="坑三：函数声明">坑三：函数声明</h2>
 
 <blockquote>
 <p>函数声明也是被提前至作用域顶部，先于任何表达式和语句被解析和求值的</p>
@@ -988,7 +988,7 @@ var title   = &quot;sublime text&quot;
 
 <p>填坑：多数情况下，用函数表达式来代替函数声明是一个好习惯，特别是在一些语句块中。</p>
 
-<h2>坑四：函数表达式</h2>
+<h2 id="坑四：函数表达式">坑四：函数表达式</h2>
 
 <p>先看命名函数表达式，理所当然，就是它得有名字，例如：</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">bar</span> <span class="o">=</span> <span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
@@ -1004,7 +1004,7 @@ var title   = &quot;sublime text&quot;
 </code></pre></div>
 <p>填坑：尽量少用命名函数表达式（除了一些递归以及 debug 的用途），切勿将函数名使用于外部。</p>
 
-<h2>坑五：函数的自执行</h2>
+<h2 id="坑五：函数的自执行">坑五：函数的自执行</h2>
 
 <p>对于函数表达式，可以通过后面加上 <code>()</code> 立即执行。并且可在 <code>()</code> 中传递参数，而函数声明不可以。</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// (1) 这只是一个分组操作符，不是函数调用！</span>
@@ -1042,7 +1042,7 @@ var title   = &quot;sublime text&quot;
 </code></pre></div>
 <p>填坑：要解决这个坑的关键在于，弄清楚形形色色的函数表达式之实质。</p>
 
-<h2>坑六：循环中的闭包</h2>
+<h2 id="坑六：循环中的闭包">坑六：循环中的闭包</h2>
 
 <p>以下演示的是一个常见的坑：</p>
 
@@ -1091,7 +1091,7 @@ var title   = &quot;sublime text&quot;
   <entry>
     <title type="html"><![CDATA[用 AppleScript 创建工作流]]></title>
     <link href="http://roshanca.com/2012/applescript-workflow"/>
-    <updated>2012-11-20T22:18:00+08:00</updated>
+    <updated>2012-11-20T22:18:00+00:00</updated>
     <id>http://roshanca.com/2012/applescript-workflow</id>
     <content type="html"><![CDATA[<p>自从用了 <a href="http://octopress.org">Octopress</a>，每次写新文章 &amp; 生产部署，都要在终端中反复敲打几个命令，重复劳动。出于职业习惯，开始琢磨有没有偷懒的方法，用工具或者程序来代替这体力活。</p>
 
@@ -1101,7 +1101,7 @@ var title   = &quot;sublime text&quot;
 
 <p>后来试了试 AppleScript，感觉还是自己纯代码来写工作流比较爽，DIY 的空间更大而且执行起来更加高效。</p>
 
-<h2>什么是 AppleScript</h2>
+<h2 id="什么是-applescript">什么是 AppleScript</h2>
 
 <ul>
 <li>  一种脚本语言，和我们所知道的 VBScript 和 JavaScript 类似</li>
@@ -1110,7 +1110,7 @@ var title   = &quot;sublime text&quot;
 <li>  使繁琐重复的机械操作自动化</li>
 </ul>
 
-<h2>入门</h2>
+<h2 id="入门">入门</h2>
 
 <p><a href="http://ishare.iask.sina.com.cn/f/14009129.html?w=MTQ0MjA5NTIzNg%3D%3D">AppleScrip 简明基础教程</a></p>
 
@@ -1129,7 +1129,7 @@ var title   = &quot;sublime text&quot;
 </code></pre></div></li>
 </ol>
 
-<h2>进阶</h2>
+<h2 id="进阶">进阶</h2>
 
 <p>也来两个小列子吧，感觉都还挺有用的~</p>
 
@@ -1158,7 +1158,7 @@ var title   = &quot;sublime text&quot;
 </code></pre></div></li>
 </ol>
 
-<h2>实战</h2>
+<h2 id="实战">实战</h2>
 
 <p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/applescript.png" alt="my AppleScripts"></p>
 
@@ -1173,7 +1173,7 @@ var title   = &quot;sublime text&quot;
   <entry>
     <title type="html"><![CDATA[一道 JavaScript 小题]]></title>
     <link href="http://roshanca.com/2012/javascript-tiny-quiz"/>
-    <updated>2012-10-15T14:01:00+08:00</updated>
+    <updated>2012-10-15T14:01:00+00:00</updated>
     <id>http://roshanca.com/2012/javascript-tiny-quiz</id>
     <content type="html"><![CDATA[<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">add</span> <span class="o">=</span> <span class="nx">___</span><span class="p">;</span>
 <span class="nx">add</span><span class="p">(</span><span class="mi">3</span><span class="p">)(</span><span class="mi">4</span><span class="p">)(</span><span class="mi">5</span><span class="p">);</span> <span class="c1">// 输出60;</span>
@@ -1182,7 +1182,7 @@ var title   = &quot;sublime text&quot;
 
 <p>能显而易见的是 <code>60 = 3 * 4 * 5</code>，但该如何来组织编写 <code>add</code> 这个方法呢？</p>
 
-<h3>先来看看屌丝版：</h3>
+<h3 id="先来看看屌丝版：">先来看看屌丝版：</h3>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">add</span> <span class="o">=</span> <span class="kd">function</span> <span class="nx">foo</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">if</span> <span class="p">(</span><span class="nx">x</span> <span class="o">==</span> <span class="mi">5</span><span class="p">){</span>
     <span class="k">return</span> <span class="mi">60</span><span class="p">;</span>
@@ -1193,7 +1193,7 @@ var title   = &quot;sublime text&quot;
 </code></pre></div>
 <p>啥也不说了，这个方法虽然能实现题意，但无论是引入递归还是无下限的程度，都让人不禁对其唉声叹息。</p>
 
-<h3>再来看看普通青年版：</h3>
+<h3 id="再来看看普通青年版：">再来看看普通青年版：</h3>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">add</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">a</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">return</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">c</span><span class="p">)</span> <span class="p">{</span>
@@ -1204,7 +1204,7 @@ var title   = &quot;sublime text&quot;
 </code></pre></div>
 <p>多层嵌套，不尽优雅，倘若遇上 <code>add(3)(4)(5)⋯(N)</code> 输出 3 * 4 * 5 * ⋯ * N 的要求那岂不是要 <code>return</code> 个 N - 2 次？</p>
 
-<h3>最后是高富帅版：</h3>
+<h3 id="最后是高富帅版：">最后是高富帅版：</h3>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">add</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">m</span><span class="p">)</span> <span class="p">{</span>
   <span class="kd">function</span> <span class="nx">temp</span> <span class="p">(</span><span class="nx">n</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">add</span><span class="p">(</span><span class="nx">m</span> <span class="o">*</span> <span class="nx">n</span><span class="p">);</span>
@@ -1226,7 +1226,7 @@ var title   = &quot;sublime text&quot;
   <entry>
     <title type="html"><![CDATA[iOS 像素级的界面变化]]></title>
     <link href="http://roshanca.com/2012/minor-interface-changes-of-ios"/>
-    <updated>2012-09-23T05:56:00+08:00</updated>
+    <updated>2012-09-23T05:56:00+00:00</updated>
     <id>http://roshanca.com/2012/minor-interface-changes-of-ios</id>
     <content type="html"><![CDATA[<p>从 iOS4 到 iOS5，再到 iOS6，有些微小的像素级的界面改进，往往只有设计师才会注意到它们。</p>
 
@@ -1305,13 +1305,13 @@ var title   = &quot;sublime text&quot;
   <entry>
     <title type="html"><![CDATA[如何屏蔽优酷和土豆的 Flash 广告]]></title>
     <link href="http://roshanca.com/2012/how-to-block-youku-and-tudos-flash-ads"/>
-    <updated>2012-09-13T13:17:00+08:00</updated>
+    <updated>2012-09-13T13:17:00+00:00</updated>
     <id>http://roshanca.com/2012/how-to-block-youku-and-tudos-flash-ads</id>
     <content type="html"><![CDATA[<p>大家出来混都不容易，按理说视频网站的播放不收费只内嵌点广告，无可厚非。可最近看来，这些视频网站的 Flash 内嵌广告，越来越长，直逼老婆娘的裹脚布，让人有点忍无可忍了。我见过最长的广告长达1分45秒，how about u？真叫人怀念那个15秒广告的年代啊！而且现如今广告的质量也不咋样，我曾在追一部无脑国产连续剧时（哎，哥也有无聊的时候啊），被生逼着看了好几遍的“苏菲”广告。质量差点也就算了，还不让跳过。看看人家 YouTube，5秒后可选 Skip 的设计多棒，不过人家也是对广告内容的自信。</p>
 
 <p>好了，言归正传，来看看有什么方法让优酷和土豆，甚至是奇艺、sina、网易、QQ、迅雷...等的视频广告消失不见。</p>
 
-<h3>host 修改法</h3>
+<h3 id="host-修改法">host 修改法</h3>
 
 <p>这是比较普遍的修改法，但效果不太尽人意。具体的可以参考以下文章：</p>
 
@@ -1320,7 +1320,7 @@ var title   = &quot;sublime text&quot;
 <li>  <a href="http://joys.name/2011/09/block-youku-ad.html">彻底屏蔽优酷广告：最新反“反屏蔽”的方法……</a></li>
 </ul>
 
-<h3>userScript 注入法</h3>
+<h3 id="userscript-注入法">userScript 注入法</h3>
 
 <p>使用 <a href="http://userscripts.org">userScript</a> 的注入技术以达到不可告人的目的，说白了，就是允许用户脚本运行在 web 页面上，与其交互。So, 我们可以在页面加载或 Flash 载入前，做好多自己想做事情。有人就研究出了偷梁换柱的方法，见 <a href="http://player.opengg.me">OpenGG.Clean.Player</a>。注意：这个脚本是将整个 Flash 播放源替换了，所以 host 修改法解决不了的问题，在此得到了彻底的解决。</p>
 
@@ -1333,7 +1333,7 @@ var title   = &quot;sublime text&quot;
 
 <p>安装完相应的插件后，非常 simple 了，前往此偷梁换柱神奇脚本的地址：<a href="http://userscripts.org/scripts/show/120679">http://userscripts.org/scripts/show/120679</a>，点击右上角的 <code>Install</code> 即可。</p>
 
-<h4>update:</h4>
+<h4 id="update:">update:</h4>
 
 <p><a href="http://player.opengg.me">OpenGG.Clean.Player</a> 在 Chrome Web Store 上上架了，用 Chrome 的童鞋可以直接访问以下地址进行安装了：</p>
 
@@ -1341,7 +1341,7 @@ var title   = &quot;sublime text&quot;
 
 <p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/QQ20121115-1.png" alt="OpenGG.Clean.Player for Chrome"></p>
 
-<h3>HTML 5 转换法</h3>
+<h3 id="html-5-转换法">HTML 5 转换法</h3>
 
 <p>可以说这是更高级的 userScript 注入法，对页面元素的改动更大。</p>
 
@@ -1390,17 +1390,17 @@ var title   = &quot;sublime text&quot;
   <entry>
     <title type="html"><![CDATA[Diy Select]]></title>
     <link href="http://roshanca.com/2012/diy-select"/>
-    <updated>2012-05-30T13:22:00+08:00</updated>
+    <updated>2012-05-30T13:22:00+00:00</updated>
     <id>http://roshanca.com/2012/diy-select</id>
     <content type="html"><![CDATA[<p><code>&lt;select/&gt;</code> 在不同的系统不同的显示器下表现各异，无法统一。但可以用其它的 <code>HTMLElement</code> 来模拟，其好处是你可以对其使用自定义样式，而且在各个环境下保持一致；缺点也显而易见，毕竟是人工模拟，很难做到完美，比如浏览器窗口不是最大化时，由于 <code>&lt;select/&gt;</code> 属于窗体控件可溢出浏览器边界悬浮于视窗之上，而普通的 <code>HTMLElement</code> 无法做到这点。</p>
 
-<h2><del>JS 代码如下：</del></h2>
+<h2 id="js-代码如下："><del>JS 代码如下：</del></h2>
 
-<h2><del>CSS 代码如下：</del></h2>
+<h2 id="css-代码如下："><del>CSS 代码如下：</del></h2>
 
-<h2><del>箭头图标：</del></h2>
+<h2 id="箭头图标："><del>箭头图标：</del></h2>
 
-<h3>updated：</h3>
+<h3 id="updated：">updated：</h3>
 
 <p>项目已迁至 <a href="https://github.com/RoshanWu/diySelect">GitHub</a></p>
 
@@ -1413,7 +1413,7 @@ var title   = &quot;sublime text&quot;
   <entry>
     <title type="html"><![CDATA[从 Heroku 迁移至 GitHub]]></title>
     <link href="http://roshanca.com/2012/heroku-to-github"/>
-    <updated>2012-04-10T17:00:00+08:00</updated>
+    <updated>2012-04-10T17:00:00+00:00</updated>
     <id>http://roshanca.com/2012/heroku-to-github</id>
     <content type="html"><![CDATA[<p><a href="http://www.heroku.com/">Heroku</a> 太慢了。</p>
 
@@ -1443,7 +1443,7 @@ var title   = &quot;sublime text&quot;
   <entry>
     <title type="html"><![CDATA[为 Octopress 添加 Flickr 边栏]]></title>
     <link href="http://roshanca.com/2012/flickr-aside-for-octopress"/>
-    <updated>2012-03-12T21:30:00+08:00</updated>
+    <updated>2012-03-12T21:30:00+00:00</updated>
     <id>http://roshanca.com/2012/flickr-aside-for-octopress</id>
     <content type="html"><![CDATA[<p>今天为自己的 Octopress 添加上了 Flickr 边栏，见右侧。</p>
 
@@ -1464,7 +1464,7 @@ var title   = &quot;sublime text&quot;
   <entry>
     <title type="html"><![CDATA[试玩暗黑破坏神3]]></title>
     <link href="http://roshanca.com/2012/try-diablo-iii"/>
-    <updated>2012-03-11T21:36:00+08:00</updated>
+    <updated>2012-03-11T21:36:00+00:00</updated>
     <id>http://roshanca.com/2012/try-diablo-iii</id>
     <content type="html"><![CDATA[<p>上周从同事那 copy 来的暗黑破解版，居然近 10G，想想还是断了在公司本本上跑的念头，直接拿回家用台式机试试。看了下游戏推荐配置，也是勉强合格吧，那就二话不说，搞起～</p>
 
@@ -1505,7 +1505,7 @@ var title   = &quot;sublime text&quot;
 <li>  还有很多很多，暂时想不起来了</li>
 </ul>
 
-<h3>总结</h3>
+<h3 id="总结">总结</h3>
 
 <p>总体来说，这次的<strong>体验版</strong>，还是比较坑爹的，除了到处逛逛欣赏下风景，没啥事可做，无剧情，无用装备，无乐趣。我现在基本用来享受音效～</p>
 
@@ -1520,20 +1520,20 @@ var title   = &quot;sublime text&quot;
   <entry>
     <title type="html"><![CDATA[OS X 下的 Octopress 搭建]]></title>
     <link href="http://roshanca.com/2012/osx-octopress"/>
-    <updated>2012-03-11T14:04:00+08:00</updated>
+    <updated>2012-03-11T14:04:00+00:00</updated>
     <id>http://roshanca.com/2012/osx-octopress</id>
     <content type="html"><![CDATA[<p>终于将家中的 <a href="http://baike.baidu.com/view/2173094.htm">Hackintosh</a> 完善了，尝试下在 Mac 中搭建 Octopress吧。</p>
 
 <p>我目前在用的是 Lion 10.7.3 的系统，自带 ruby 1.8.7，看来要 update 下。</p>
 
-<h2>必备工具</h2>
+<h2 id="必备工具">必备工具</h2>
 
 <ul>
 <li>  Xcode 或 <a href="https://github.com/downloads/kennethreitz/osx-gcc-installer/GCC-10.7-v2.pkg">GCC Installer</a>，用于编译；</li>
 <li>  RVM(Ruby Version Management)：一个命令行工具，可以提供一个便捷的多版本ruby环境的管理和切换。</li>
 </ul>
 
-<h2>安装 RVM</h2>
+<h2 id="安装-rvm">安装 RVM</h2>
 
 <p>安装 RVM 的方法有点不同：</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">bash -s stable &lt; &lt;<span class="o">(</span>curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer<span class="o">)</span>
@@ -1547,7 +1547,7 @@ var title   = &quot;sublime text&quot;
 </code></pre></div>
 <p>如若看到 <code>rvm is a function</code> 表示已安装成功了。</p>
 
-<h2>安装 Ruby</h2>
+<h2 id="安装-ruby">安装 Ruby</h2>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">rvm install 1.9.3
 </code></pre></div>
 <p>如果失败，可以采用如下方式：</p>
@@ -1556,7 +1556,7 @@ var title   = &quot;sublime text&quot;
 <p>设置目前的 ruby 为默认版本：</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">rvm --default use 1.9.3
 </code></pre></div>
-<h2>安装 Octopress</h2>
+<h2 id="安装-octopress">安装 Octopress</h2>
 
 <p>由于我之前在公司电脑上已经创建了本站的 heroku 的 app，那我只要通过 git 获取目前线上的资源就 ok 啦～</p>
 
@@ -1578,7 +1578,7 @@ git pull heroku master
 
 <p><img src="http://farm8.staticflickr.com/7177/6825679466_d7b9a71aee.jpg" alt="Octopress Project"></p>
 
-<h2>使用 Octopress</h2>
+<h2 id="使用-octopress">使用 Octopress</h2>
 
 <p>老样子，依旧要先安装依赖包：</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">gem install bundler
@@ -1597,7 +1597,7 @@ Installing RDoc documentation <span class="k">for</span> rb-fsevent-0.9.0...
 </code></pre></div>
 <p>但是，这个版本与 <code>Gemfile.lock</code> 中的版本 0.4.3.1 不符。你应该知道怎么做了，哼哼，手动更改为 0.9.0 即可。好吧，把剩下的 <code>bundle</code> 装完，然后尽情地 <code>rake generate</code> 吧～</p>
 
-<h2>参考（部分地址需 FanQ1ang）</h2>
+<h2 id="参考（部分地址需-fanq1ang）">参考（部分地址需 FanQ1ang）</h2>
 
 <ul>
 <li>  <a href="http://www.unfoldingcode.com/2012/02/ruby-193-via-rvm-on-mac-osx-lion.html">http://www.unfoldingcode.com/2012/02/ruby-193-via-rvm-on-mac-osx-lion.html</a></li>
@@ -1610,7 +1610,7 @@ Installing RDoc documentation <span class="k">for</span> rb-fsevent-0.9.0...
   <entry>
     <title type="html"><![CDATA[Hello Octopress]]></title>
     <link href="http://roshanca.com/2012/hello-octopress"/>
-    <updated>2012-03-07T10:37:00+08:00</updated>
+    <updated>2012-03-07T10:37:00+00:00</updated>
     <id>http://roshanca.com/2012/hello-octopress</id>
     <content type="html"><![CDATA[<p>这个网站使用 <a href="http://octopress.org/">Octopress</a> 架设，并通过免费的 <a href="http://www.heroku.com/">Heroku</a> 部署到网上。</p>
 
@@ -1624,21 +1624,21 @@ Installing RDoc documentation <span class="k">for</span> rb-fsevent-0.9.0...
 
 <p>自己在安装和使用的过程中也遇到了一些问题，在此记录一下。</p>
 
-<h2>安装环境</h2>
+<h2 id="安装环境">安装环境</h2>
 
 <ul>
 <li>  win 7 sp1</li>
 <li>  Apatna Studio 3 (自带 git)</li>
 </ul>
 
-<h2>下载 Ruby 以及开发工具 DevKit</h2>
+<h2 id="下载-ruby-以及开发工具-devkit">下载 Ruby 以及开发工具 DevKit</h2>
 
 <ul>
 <li>  <a href="http://rubyinstaller.org/downloads/">RubyInstaller</a>（我下载的是 1.9.3 的版本）<br /></li>
 <li>  <a href="https://github.com/downloads/oneclick/rubyinstaller/DevKit-tdm-32-4.5.2-20111229-1559-sfx.exe">DevKit-tdm-32-4.5.2-20111229-1559-sfx.exe</a></li>
 </ul>
 
-<h2>安装 Ruby &amp; DevKit</h2>
+<h2 id="安装-ruby-&amp;-devkit">安装 Ruby &amp; DevKit</h2>
 
 <p>安装完 ruby 后会自动将其路径添加至系统变量的 PATH 中，否者需手动添加。<code>Win + R</code> 键入 <code>cmd</code> 打开命令行 输入 <code>ruby -v</code> 确认 ruby 是否已成功安装。</p>
 
@@ -1647,7 +1647,7 @@ Installing RDoc documentation <span class="k">for</span> rb-fsevent-0.9.0...
 </code></pre></div>
 <p>就依照提示在 C 分区下创建目录路径 <code>msys/1.0</code>，再将文件都转移其中，这回 <code>msys.bat</code> 可以启动了。</p>
 
-<h2>重头戏，安装 Octopress</h2>
+<h2 id="重头戏，安装-octopress">重头戏，安装 Octopress</h2>
 
 <p>打开 Aptana，新建 Ruby Project，Generate APP 选项中选择 Clone a existing git project，然后在 Location 中填入</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">git://github.com/imathis/octopress.git
@@ -1658,18 +1658,18 @@ Installing RDoc documentation <span class="k">for</span> rb-fsevent-0.9.0...
 
 <p>那好，就先打开 DevKit，cd 定位到你新建的 Ruby Project，也就是 Octopress 主程序。</p>
 
-<h3>安装依赖包</h3>
+<h3 id="安装依赖包">安装依赖包</h3>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">gem install bundler
 bundle install
 </code></pre></div>
-<h3>安装默认主题</h3>
+<h3 id="安装默认主题">安装默认主题</h3>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">rake install
 </code></pre></div>
-<h2>配置 Octopress</h2>
+<h2 id="配置-octopress">配置 Octopress</h2>
 
 <p>关于网站的信息都可在 <code>_config.yml</code> 里的到配置，具体的可参见<a href="http://octopress.org/docs/configuring/">这里</a>。</p>
 
-<h2>本地预览</h2>
+<h2 id="本地预览">本地预览</h2>
 
 <p>从这步开始，可以用 Aptana 中的 Terminal 更加方便的输命令行了。</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">rake generate
@@ -1685,7 +1685,7 @@ rake preview
 <p>一般是 Line 205，将其改为</p>
 <div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">if</span> <span class="n">chunked?</span> <span class="o">||</span> <span class="vi">@header</span><span class="o">[</span><span class="s1">&#39;content-length&#39;</span><span class="o">]</span> <span class="o">||</span> <span class="vi">@status</span> <span class="o">==</span> <span class="mi">304</span> <span class="o">||</span> <span class="vi">@status</span> <span class="o">==</span> <span class="mi">204</span>
 </code></pre></div>
-<h2>部署 Heroku</h2>
+<h2 id="部署-heroku">部署 Heroku</h2>
 
 <p>你得先有个 Heroku 账号，<a href="https://api.heroku.com/signup">注册一个</a>！</p>
 
@@ -1714,7 +1714,7 @@ git add .
 git commit -m <span class="s1">&#39;site updated&#39;</span>
 git push heroku master
 </code></pre></div>
-<h2>发表文章</h2>
+<h2 id="发表文章">发表文章</h2>
 
 <p>只需一句</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">rake new_post<span class="o">[</span><span class="s2">&quot;title&quot;</span><span class="o">]</span>
@@ -1745,7 +1745,7 @@ git push heroku master
 <li>  记得重启电脑 :)</li>
 </ol>
 
-<h2>参考文章（部分地址需 FanQ1ang）</h2>
+<h2 id="参考文章（部分地址需-fanq1ang）">参考文章（部分地址需 FanQ1ang）</h2>
 
 <ul>
 <li>  <a href="https://bugs.ruby-lang.org/attachments/2300/204_304_keep_alive.patch">https://bugs.ruby-lang.org/attachments/2300/204_304_keep_alive.patch</a></li>

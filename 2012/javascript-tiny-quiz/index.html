@@ -71,7 +71,7 @@
 
 <p>能显而易见的是 <code>60 = 3 * 4 * 5</code>，但该如何来组织编写 <code>add</code> 这个方法呢？</p>
 
-<h3>先来看看屌丝版：</h3>
+<h3 id="先来看看屌丝版：">先来看看屌丝版：</h3>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">add</span> <span class="o">=</span> <span class="kd">function</span> <span class="nx">foo</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">if</span> <span class="p">(</span><span class="nx">x</span> <span class="o">==</span> <span class="mi">5</span><span class="p">){</span>
     <span class="k">return</span> <span class="mi">60</span><span class="p">;</span>
@@ -82,7 +82,7 @@
 </code></pre></div>
 <p>啥也不说了，这个方法虽然能实现题意，但无论是引入递归还是无下限的程度，都让人不禁对其唉声叹息。</p>
 
-<h3>再来看看普通青年版：</h3>
+<h3 id="再来看看普通青年版：">再来看看普通青年版：</h3>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">add</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">a</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">return</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">c</span><span class="p">)</span> <span class="p">{</span>
@@ -93,7 +93,7 @@
 </code></pre></div>
 <p>多层嵌套，不尽优雅，倘若遇上 <code>add(3)(4)(5)⋯(N)</code> 输出 3 * 4 * 5 * ⋯ * N 的要求那岂不是要 <code>return</code> 个 N - 2 次？</p>
 
-<h3>最后是高富帅版：</h3>
+<h3 id="最后是高富帅版：">最后是高富帅版：</h3>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">add</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">m</span><span class="p">)</span> <span class="p">{</span>
   <span class="kd">function</span> <span class="nx">temp</span> <span class="p">(</span><span class="nx">n</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">add</span><span class="p">(</span><span class="nx">m</span> <span class="o">*</span> <span class="nx">n</span><span class="p">);</span>
@@ -113,7 +113,7 @@
 		</section>
 		<footer class="post-footer">
 			<div class="post-meta">
-				<time datetime="2012-10-15 14:01:00 +0800" class="updated" pubdate>Oct 15, 2012</time>
+				<time datetime="2012-10-15 14:01:00 +0000" class="updated" pubdate>Oct 15, 2012</time>
 
 				
 <span class="post-tag">

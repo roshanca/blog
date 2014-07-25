@@ -76,21 +76,21 @@
 
 <p>自己在安装和使用的过程中也遇到了一些问题，在此记录一下。</p>
 
-<h2>安装环境</h2>
+<h2 id="安装环境">安装环境</h2>
 
 <ul>
 <li>  win 7 sp1</li>
 <li>  Apatna Studio 3 (自带 git)</li>
 </ul>
 
-<h2>下载 Ruby 以及开发工具 DevKit</h2>
+<h2 id="下载-ruby-以及开发工具-devkit">下载 Ruby 以及开发工具 DevKit</h2>
 
 <ul>
 <li>  <a href="http://rubyinstaller.org/downloads/">RubyInstaller</a>（我下载的是 1.9.3 的版本）<br /></li>
 <li>  <a href="https://github.com/downloads/oneclick/rubyinstaller/DevKit-tdm-32-4.5.2-20111229-1559-sfx.exe">DevKit-tdm-32-4.5.2-20111229-1559-sfx.exe</a></li>
 </ul>
 
-<h2>安装 Ruby &amp; DevKit</h2>
+<h2 id="安装-ruby-&amp;-devkit">安装 Ruby &amp; DevKit</h2>
 
 <p>安装完 ruby 后会自动将其路径添加至系统变量的 PATH 中，否者需手动添加。<code>Win + R</code> 键入 <code>cmd</code> 打开命令行 输入 <code>ruby -v</code> 确认 ruby 是否已成功安装。</p>
 
@@ -99,7 +99,7 @@
 </code></pre></div>
 <p>就依照提示在 C 分区下创建目录路径 <code>msys/1.0</code>，再将文件都转移其中，这回 <code>msys.bat</code> 可以启动了。</p>
 
-<h2>重头戏，安装 Octopress</h2>
+<h2 id="重头戏，安装-octopress">重头戏，安装 Octopress</h2>
 
 <p>打开 Aptana，新建 Ruby Project，Generate APP 选项中选择 Clone a existing git project，然后在 Location 中填入</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">git://github.com/imathis/octopress.git
@@ -110,18 +110,18 @@
 
 <p>那好，就先打开 DevKit，cd 定位到你新建的 Ruby Project，也就是 Octopress 主程序。</p>
 
-<h3>安装依赖包</h3>
+<h3 id="安装依赖包">安装依赖包</h3>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">gem install bundler
 bundle install
 </code></pre></div>
-<h3>安装默认主题</h3>
+<h3 id="安装默认主题">安装默认主题</h3>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">rake install
 </code></pre></div>
-<h2>配置 Octopress</h2>
+<h2 id="配置-octopress">配置 Octopress</h2>
 
 <p>关于网站的信息都可在 <code>_config.yml</code> 里的到配置，具体的可参见<a href="http://octopress.org/docs/configuring/">这里</a>。</p>
 
-<h2>本地预览</h2>
+<h2 id="本地预览">本地预览</h2>
 
 <p>从这步开始，可以用 Aptana 中的 Terminal 更加方便的输命令行了。</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">rake generate
@@ -137,7 +137,7 @@ rake preview
 <p>一般是 Line 205，将其改为</p>
 <div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">if</span> <span class="n">chunked?</span> <span class="o">||</span> <span class="vi">@header</span><span class="o">[</span><span class="s1">&#39;content-length&#39;</span><span class="o">]</span> <span class="o">||</span> <span class="vi">@status</span> <span class="o">==</span> <span class="mi">304</span> <span class="o">||</span> <span class="vi">@status</span> <span class="o">==</span> <span class="mi">204</span>
 </code></pre></div>
-<h2>部署 Heroku</h2>
+<h2 id="部署-heroku">部署 Heroku</h2>
 
 <p>你得先有个 Heroku 账号，<a href="https://api.heroku.com/signup">注册一个</a>！</p>
 
@@ -166,7 +166,7 @@ git add .
 git commit -m <span class="s1">&#39;site updated&#39;</span>
 git push heroku master
 </code></pre></div>
-<h2>发表文章</h2>
+<h2 id="发表文章">发表文章</h2>
 
 <p>只需一句</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">rake new_post<span class="o">[</span><span class="s2">&quot;title&quot;</span><span class="o">]</span>
@@ -197,7 +197,7 @@ git push heroku master
 <li>  记得重启电脑 :)</li>
 </ol>
 
-<h2>参考文章（部分地址需 FanQ1ang）</h2>
+<h2 id="参考文章（部分地址需-fanq1ang）">参考文章（部分地址需 FanQ1ang）</h2>
 
 <ul>
 <li>  <a href="https://bugs.ruby-lang.org/attachments/2300/204_304_keep_alive.patch">https://bugs.ruby-lang.org/attachments/2300/204_304_keep_alive.patch</a></li>
@@ -209,7 +209,7 @@ git push heroku master
 		</section>
 		<footer class="post-footer">
 			<div class="post-meta">
-				<time datetime="2012-03-07 10:37:00 +0800" class="updated" pubdate>Mar 07, 2012</time>
+				<time datetime="2012-03-07 10:37:00 +0000" class="updated" pubdate>Mar 07, 2012</time>
 
 				
 <span class="post-tag">
