@@ -22,4 +22,4 @@ redcarpet:
 # or "master" otherwise
 username: roshanca
 branch: master
-repo: https://github.com/roshanca/blog.git
+repo: blog
