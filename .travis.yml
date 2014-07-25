@@ -1,0 +1,20 @@
+language: node_js
+node_js:
+  - "0.10"
+branches:
+  only:
+    - master
+script:
+  - "rake generate"
+after_success:
+  - "git clone $REPO git_deploy"
+  - "cd git_deploy"
+  - "git checkout --track test"
+  - "rm -r *"
+  - "cp -r ../_site/* ."
+  - "git config --global push.default simple"
+  - "git config --global user.name 'roshanca'"
+  - "git config --global user.email wwj1983@gmail.com"
+  - "git add -A"
+  - "git commit -m 'update'"
+  - "git push -q origin test:test"
