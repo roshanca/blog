@@ -31,7 +31,7 @@
 <body>
 
 <header id="header" role="banner">
-	<hgroup>
+	<div class="header-inner">
 	
 		<a href="/" class="blog-title">肉山·察</a>
 		<div>
@@ -52,7 +52,7 @@
 	</a>
 </div>
 	
-	</hgroup>
+	</div>
 	<a href="/atom.xml" class="subscribe">
 		<i class="fa fa-rss"></i>
 	</a>
@@ -82,13 +82,15 @@
 
 <p>原厂固件有什么不好？之前听说 R6300v2 自带固件网络不稳定，我好像没怎么碰到过。但 DD-WRT 的稳定性应该在它之上不用说，而且还支持 5G 网络的无线频道自动选择，这个是官方所不支持的。最为重要的一点是，它是上迅雷固件的先决条件。</p>
 
-<p>刷机的整个过程，依照<a href="http://luyou.xunlei.com/thread-426-1-1.html">这里</a>的教程，step by step 就行了，非常 easy~</p>
+<p>刷机的整个过程，依照 <a href="http://luyou.xunlei.com/thread-426-1-1.html">http://luyou.xunlei.com/thread-426-1-1.html</a> 的教程，step by step 就行了，非常 easy~</p>
+
+<p>附上固件下载地址（持续更新）：<a href="http://www.desipro.de/ddwrt/K3-AC-Arm/">http://www.desipro.de/ddwrt/K3-AC-Arm/</a></p>
 
 <h2 id="刷迅雷固件">刷迅雷固件</h2>
 
 <p>毫无疑问，这是为了实现离线下载。这里的指的离线下载，又比迅雷下载软件自带的离线功能，更高一级：后者是将资源离线下到迅雷的云端，而前者则直接下到路由挂载的硬盘上，接着通过无线内网直接读取，更加便利了。</p>
 
-<p>同样，刷机的教程，网上也有，比如<a href="http://luyou.xunlei.com/thread-768-1-1.html">这里</a>。</p>
+<p>同样，刷机的教程，网上也有，比如 <a href="http://luyou.xunlei.com/thread-768-1-1.html">http://luyou.xunlei.com/thread-768-1-1.html</a>.</p>
 
 <p>但 Mac 用户有着天然的优势，根本无需用到此教程中的 winscp 和 putty 软件，下面就来看看如何用终端来取代它们的吧：</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">ssh root@192.168.0.1
@@ -122,7 +124,7 @@ chmod <span class="m">777</span> * -R
 
 <p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/Photobucket%20Desktop%20-%20WuMacBookPro/Photobucket/QQ20140429-12x_zps9f86c594.png" alt=""></p>
 
-<h2 id="nas">NAS</h2>
+<h2 id="nas-">NAS <img style="display:inline;" src="http://www.iconsdb.com/icons/preview/caribbean-blue/nas-xxl.png" width="24" height="24" alt="NAS icon"></h2>
 
 <p>普通的文件的共享，需开启 &quot;File Sharing&quot; 和 &quot;Samba Server&quot;，在路由管理界面（<code>http://192.168.0.1</code>）中的“服务 - NAS”下可以找到它们。</p>
 
@@ -134,7 +136,7 @@ chmod <span class="m">777</span> * -R
 
 <p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/Photobucket%20Desktop%20-%20WuMacBookPro/Photobucket/workgroup_zps90ee0444.png" alt=""></p>
 
-<h2 id="dlna">DLNA</h2>
+<h2 id="dlna-">DLNA <embed src="http://upload.wikimedia.org/wikipedia/en/f/f0/Dlna.svg" width="91" height="24" type="image/svg+xml" codebase="http://www.adobe.com/svg/viewer/install"></h2>
 
 <p>如果家中电视支持 DLNA，那太赞了，开启路由 &quot;DLNA Server&quot;，直接在电视上欣赏路由 NAS 中的视频、照片、音乐吧。</p>
 
@@ -226,9 +228,10 @@ window.onscroll = function () {
 
 
 
-<footer id="footer" role="copyright">
+<footer id="footer" role="contentinfo">
 	<p>© Copyright 2014 by Roshan Wu.</p>
 </footer>
+
 
 </body>
 </html>

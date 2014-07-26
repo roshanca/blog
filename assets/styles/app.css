@@ -49,7 +49,7 @@ table {
 img {
   border: 0 none; }
 
-#header hgroup, .index-section, .post, .post-comment .container {
+#header .header-inner, .index-section, .post, .post-comment .container {
   position: relative;
   width: 80%;
   max-width: 650px;
