@@ -3,7 +3,7 @@
 	padding: 4rem 0;
 	text-align: center;
 	border-bottom: 1px solid #eee;
-	hgroup {
+	.header-inner {
 		@extend %container;
 	}
 	.blog-title {
