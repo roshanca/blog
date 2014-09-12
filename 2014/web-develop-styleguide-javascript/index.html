@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>前端编码风格规范之 JavaScript 规范 - 肉山·察</title>
+	<meta name="viewport" content="width=device-width">
+	
+	<link rel="canonical" href="http://roshanca.com/2014/web-develop-styleguide-javascript">
+	<link rel="alternate" type="application/atom+xml" title="Subscribe Feed" href="/atom.xml">
+	<link  href="/assets/styles/app.css" rel="stylesheet" media="all">
+	<link href="/assets/styles/font-awesome.min.css" rel="stylesheet">
+    <link href="//fonts.useso.com/css?family=Noto+Serif" rel="stylesheet">
+	<script>
+	function loadSync(u,p,a){
+		if(!p && location.port)return {onload: null};
+		if(/\.js$/.test(u)){a='script'}else{a='link'};
+		var d=document,s=d.createElement(a),f=d.getElementsByTagName(a)[0];
+		if(a=='link'){s.href=u,s.rel='stylesheet'}else{s.src=u,s.async=true}
+		f.parentNode.insertBefore(s,f);return s;
+	}
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-15720258-1']);
+	_gaq.push(['_trackPageview']);
+	_gaq.push(['_trackPageLoadTime']);
+	loadSync('//ssl.google-analytics.com/ga.js');
+	if(/windows/i.test(navigator.userAgent)){document.getElementsByTagName('html')[0].className = 'windows'}
+	</script>
+</head>
+
+<body>
+
+<header id="header" role="banner">
+	<div class="header-inner">
+	
+		<a href="/" class="blog-title">肉山·察</a>
+		<div>
+	<a href="//github.com/roshanca" class="social-link">
+		<i class="fa fa-github"></i>
+	</a>
+
+	<a href="//twitter.com/roshan_wu" class="social-link">
+		<i class="fa fa-twitter"></i>
+	</a>
+
+	<a href="//weibo.com/jinfeixibi" class="social-link">
+		<i class="fa fa-weibo"></i>
+	</a>
+
+	<a href="//www.flickr.com/photos/roshanca/" class="social-link">
+		<i class="fa fa-flickr"></i>
+	</a>
+</div>
+	
+	</div>
+	<a href="/atom.xml" class="subscribe">
+		<i class="fa fa-rss"></i>
+	</a>
+</header>
+
+<main class="fluid" role="main">
+	<article class="post" role="article">
+		<header class="post-header">
+			<h1 class="post-title">前端编码风格规范之 JavaScript 规范</h1>
+		</header>
+		<section class="post-content">
+			<p>原文：<a href="https://github.com/gionkunz/chartist-js/blob/develop/CODINGSTYLE.md">Web Styleguide - Style guide to harmonize HTML, Javascript and CSS / SASS coding style</a></p>
+
+<h2 id="javascript-规范">JavaScript 规范</h2>
+
+<hr>
+
+<h3 id="全局命名空间污染与-iife">全局命名空间污染与 IIFE</h3>
+
+<p>总是将代码包裹成一个 IIFE(Immediately-Invoked Function Expression)，用以创建独立隔绝的定义域。这一举措可防止全局命名空间被污染。</p>
+
+<p>IIFE 还可确保你的代码不会轻易被其它全局命名空间里的代码所修改（i.e. 第三方库，window 引用，被覆盖的未定义的关键字等等）。</p>
+
+<p><strong>不推荐</strong></p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="nx">y</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+
+<span class="c1">// Declaring variables in the global scope is resulting in global scope pollution. All variables declared like this</span>
+<span class="c1">// will be stored in the window object. This is very unclean and needs to be avoided.</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">x</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="nb">window</span><span class="p">.</span><span class="nx">y</span><span class="p">);</span>
+</code></pre></div>
+<p><strong>推荐</strong></p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// We declare a IIFE and pass parameters into the function that we will use from the global space</span>
+<span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">log</span><span class="p">,</span> <span class="nx">w</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">){</span>
+  <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+
+  <span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+      <span class="nx">y</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+
+  <span class="c1">// Will output &#39;true true&#39;</span>
+  <span class="nx">log</span><span class="p">((</span><span class="nx">w</span><span class="p">.</span><span class="nx">x</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="p">(</span><span class="nx">w</span><span class="p">.</span><span class="nx">y</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">));</span>
+
+<span class="p">}(</span><span class="nb">window</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">,</span> <span class="nb">window</span><span class="p">));</span>
+</code></pre></div>
+<hr>
+
+<h3 id="iife（立即执行的函数表达式）">IIFE（立即执行的函数表达式）</h3>
+
+<p>无论何时，想要创建一个新的封闭的定义域，那就用 IIFE。它不仅避免了干扰，也使得内存在执行完后立即释放。</p>
+
+<p>所有脚本文件建议都从 IIFE 开始。</p>
+
+<p>立即执行的函数表达式的执行括号应该写在外包括号内。虽然写在内还是写在外都是有效的，但写在内使得整个表达式看起来更像一个整体，因此推荐这么做。</p>
+
+<p><strong>不推荐</strong></p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">(</span><span class="kd">function</span><span class="p">(){})();</span>
+</code></pre></div>
+<p><strong>推荐</strong></p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">(</span><span class="kd">function</span><span class="p">(){}());</span>
+</code></pre></div>
+<p>so，用下列写法来格式化你的 IIFE 代码：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+  <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+
+  <span class="c1">// Code goes here</span>
+
+<span class="p">}());</span>
+</code></pre></div>
+<p>如果你想引用全局变量或者是外层 IIFE 的变量，可以通过下列方式传参：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">,</span> <span class="nx">w</span><span class="p">,</span> <span class="nx">d</span><span class="p">){</span>
+  <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+
+  <span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">w</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="nx">d</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">).</span><span class="nx">length</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">}(</span><span class="nx">jQuery</span><span class="p">,</span> <span class="nb">window</span><span class="p">,</span> <span class="nb">document</span><span class="p">));</span>
+</code></pre></div>
+<hr>
+
+<h3 id="严格模式">严格模式</h3>
+
+<p>ECMAScript 5 严格模式可在整个脚本或独个方法内被激活。它对应不同的 javascript 语境会做更加严格的错误检查。严格模式也确保了 javascript 代码更加的健壮，运行的也更加快速。</p>
+
+<p>严格模式会阻止使用在未来很可能被引入的预留关键字。</p>
+
+<p>你应该在你的脚本中启用严格模式，最好是在独立的 IIFE 中应用它。避免在你的脚本第一行使用它而导致你的所有脚本都启动了严格模式，这有可能会引发一些第三方类库的问题。</p>
+
+<p><strong>不推荐</strong></p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// Script starts here</span>
+<span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+
+<span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+
+  <span class="c1">// Your code starts here</span>
+
+<span class="p">}());</span>
+</code></pre></div>
+<p><strong>推荐</strong></p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+  <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+
+  <span class="c1">// Your code starts here</span>
+
+<span class="p">}());</span>
+</code></pre></div>
+<hr>
+
+<h3 id="变量声明">变量声明</h3>
+
+<p>总是使用 <code>var</code> 来声明变量。如不指定 var，变量将被隐式地声明为全局变量，这将对变量难以控制。如果没有声明，变量处于什么定义域就变得不清（可以是在 Document 或 Window 中，也可以很容易地进入本地定义域）。所以，请总是使用 var 来声明变量。</p>
+
+<p>采用严格模式带来的好处是，当你手误输入错误的变量名时，它可以通过报错信息来帮助你定位错误出处。</p>
+
+<p><strong>不推</strong></p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="nx">y</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>推荐</strong></p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="nx">y</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+</code></pre></div>
+<hr>
+
+<h3 id="理解-javascript-的定义域和定义域提升">理解 JavaScript 的定义域和定义域提升</h3>
+
+<p>在 JavaScript 中变量和方法定义会自动提升到执行之前。JavaScript 只有 function 级的定义域，而无其他很多编程语言中的块定义域，所以使得你在某一 function 内的某语句和循环体中定义了一个变量，此变量可作用于整个 function 内，而不仅仅是在此语句或循环体中，因为它们的声明被 JavaScript 自动提升了。</p>
+
+<p>我们通过例子来看清楚这到底是怎么一回事：</p>
+
+<p><strong>原 function</strong></p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">log</span><span class="p">){</span>
+  <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+
+  <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+
+  <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">a</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="nx">i</span> <span class="o">*</span> <span class="nx">i</span><span class="p">;</span>
+    <span class="nx">log</span><span class="p">(</span><span class="nx">b</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="k">if</span><span class="p">(</span><span class="nx">a</span> <span class="o">===</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">f</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
+    <span class="p">};</span>
+    <span class="nx">f</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="kd">function</span> <span class="nx">x</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Mr. X!&#39;</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="nx">x</span><span class="p">();</span>
+
+<span class="p">}(</span><span class="nb">window</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">));</span>
+</code></pre></div>
+<p><strong>被 JS 提升过后</strong></p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">log</span><span class="p">){</span>
+  <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+  <span class="c1">// All variables used in the closure will be hoisted to the top of the function</span>
+  <span class="kd">var</span> <span class="nx">a</span><span class="p">,</span>
+      <span class="nx">i</span><span class="p">,</span>
+      <span class="nx">b</span><span class="p">,</span>
+      <span class="nx">f</span><span class="p">;</span>
+  <span class="c1">// All functions in the closure will be hoisted to the top</span>
+  <span class="kd">function</span> <span class="nx">x</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Mr. X!&#39;</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+
+  <span class="k">for</span><span class="p">(</span><span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">a</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">b</span> <span class="o">=</span> <span class="nx">i</span> <span class="o">*</span> <span class="nx">i</span><span class="p">;</span>
+    <span class="nx">log</span><span class="p">(</span><span class="nx">b</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="k">if</span><span class="p">(</span><span class="nx">a</span> <span class="o">===</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Function assignments will only result in hoisted variables but the function body will not be hoisted</span>
+    <span class="c1">// Only by using a real function declaration the whole function will be hoisted with its body</span>
+    <span class="nx">f</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
+    <span class="p">};</span>
+    <span class="nx">f</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="nx">x</span><span class="p">();</span>
+
+<span class="p">}(</span><span class="nb">window</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">));</span>
+</code></pre></div>
+<p>根据以上提升过程，你是否可理解以下代码？</p>
+
+<p><strong>有效代码</strong></p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">log</span><span class="p">){</span>
+  <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+
+  <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+
+  <span class="nx">i</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+
+  <span class="nx">x</span><span class="p">();</span>
+
+  <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">a</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">log</span><span class="p">(</span><span class="nx">b</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="nx">i</span> <span class="o">*</span> <span class="nx">i</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">if</span><span class="p">(</span><span class="nx">a</span> <span class="o">===</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">f</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
+    <span class="p">};</span>
+    <span class="nx">f</span><span class="p">();</span>
+
+    <span class="kd">var</span> <span class="nx">f</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="kd">function</span> <span class="nx">x</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Mr. X!&#39;</span><span class="p">);</span>
+  <span class="p">}</span>
+
+<span class="p">}(</span><span class="nb">window</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">));</span>
+</code></pre></div>
+<p>正如你所看到的这段令人充满困惑与误解的代码导致了出人意料的结果。只有良好的声明习惯，也就是下一章节我们要提到的声明规则，才能尽可能的避免这类错误风险。</p>
+
+<hr>
+
+<p>提升声明</p>
+
+<p>为避免上一章节所述的变量和方法定义被自动提升造成误解，把风险降到最低，我们应该手动地显示地去声明变量与方法。也就是说，所有的变量以及方法，应当定义在 function 内的首行。</p>
+
+<p>只用一个 <code>var</code> 关键字声明，多个变量用逗号隔开。</p>
+
+<p><strong>不推荐</strong></p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">log</span><span class="p">){</span>
+  <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+
+  <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+
+  <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">c</span> <span class="o">=</span> <span class="nx">a</span> <span class="o">*</span> <span class="nx">b</span> <span class="o">*</span> <span class="nx">i</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="kd">function</span> <span class="nx">f</span><span class="p">()</span> <span class="p">{</span>
+
+  <span class="p">}</span>
+
+  <span class="kd">var</span> <span class="nx">d</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">d</span> <span class="o">*</span> <span class="nx">d</span><span class="p">;</span>
+  <span class="p">};</span>
+  <span class="nx">log</span><span class="p">(</span><span class="nx">x</span><span class="p">());</span>
+
+<span class="p">}(</span><span class="nb">window</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">));</span>
+</code></pre></div>
+<p><strong>推荐</strong></p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">log</span><span class="p">){</span>
+  <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+
+  <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+      <span class="nx">b</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+      <span class="nx">i</span><span class="p">,</span>
+      <span class="nx">c</span><span class="p">,</span>
+      <span class="nx">d</span><span class="p">,</span>
+      <span class="nx">x</span><span class="p">;</span>
+
+  <span class="kd">function</span> <span class="nx">f</span><span class="p">()</span> <span class="p">{</span>
+
+  <span class="p">}</span>
+
+  <span class="k">for</span><span class="p">(</span><span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">c</span> <span class="o">=</span> <span class="nx">a</span> <span class="o">*</span> <span class="nx">b</span> <span class="o">*</span> <span class="nx">i</span><span class="p">;</span>
+  <span class="p">}</span>
+
+
+
+  <span class="nx">d</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+  <span class="nx">x</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">d</span> <span class="o">*</span> <span class="nx">d</span><span class="p">;</span>
+  <span class="p">};</span>
+  <span class="nx">log</span><span class="p">(</span><span class="nx">x</span><span class="p">());</span>
+
+<span class="p">}(</span><span class="nb">window</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">));</span>
+</code></pre></div>
+<p>把赋值尽量写在变量申明中。</p>
+
+<p><strong>不推荐</strong></p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">a</span><span class="p">,</span>
+    <span class="nx">b</span><span class="p">,</span>
+    <span class="nx">c</span><span class="p">;</span>
+
+<span class="nx">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="nx">b</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="nx">c</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>推荐</strong></p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="nx">b</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="nx">c</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="总是使用带类型判断的比较判断">总是使用带类型判断的比较判断</h3>
+
+<p>总是使用 <code>===</code> 精确的比较操作符，避免在判断的过程中，由 JavaScript 的强制类型转换所造成的困扰。</p>
+
+<p>如果你使用 <code>===</code> 操作符，那比较的双方必须是同一类型为前提的条件下才会有效。</p>
+
+<p>如果你想了解更多关于强制类型转换的信息，你可以读一读 <a href="http://dmitrysoshnikov.com/notes/note-2-ecmascript-equality-operators/">Dmitry Soshnikov 的这篇文章</a>。</p>
+
+<p>在只使用 <code>==</code> 的情况下，JavaScript 所带来的强制类型转换使得判断结果跟踪变得复杂，下面的例子可以看出这样的结果有多怪了：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">log</span><span class="p">){</span>
+  <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+
+  <span class="nx">log</span><span class="p">(</span><span class="s1">&#39;0&#39;</span> <span class="o">==</span> <span class="mi">0</span><span class="p">);</span> <span class="c1">// true</span>
+  <span class="nx">log</span><span class="p">(</span><span class="s1">&#39;&#39;</span> <span class="o">==</span> <span class="kc">false</span><span class="p">);</span> <span class="c1">// true</span>
+  <span class="nx">log</span><span class="p">(</span><span class="s1">&#39;1&#39;</span> <span class="o">==</span> <span class="kc">true</span><span class="p">);</span> <span class="c1">// true</span>
+  <span class="nx">log</span><span class="p">(</span><span class="kc">null</span> <span class="o">==</span> <span class="kc">undefined</span><span class="p">);</span> <span class="c1">// true</span>
+
+  <span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">valueOf</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="s1">&#39;X&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">};</span>
+
+  <span class="nx">log</span><span class="p">(</span><span class="nx">x</span> <span class="o">==</span> <span class="s1">&#39;X&#39;</span><span class="p">);</span>
+
+<span class="p">}(</span><span class="nb">window</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">));</span>
+</code></pre></div>
+<hr>
+
+<h3 id="明智地使用真假判断">明智地使用真假判断</h3>
+
+<p>当我们在一个 if 条件语句中使用变量或表达式时，会做真假判断。<code>if(a == true)</code> 是不同于 <code>if(a)</code> 的。后者的判断比较特殊，我们称其为真假判断。这种判断会通过特殊的操作将其转换为 true 或 false，下列表达式统统返回 false：<code>false</code>, <code>0</code>, <code>undefined</code>, <code>null</code>, <code>NaN</code>, <code>&#39;&#39;</code>（空字符串）.</p>
+
+<p>这种真假判断在我们只求结果而不关心过程的情况下，非常的有帮助。</p>
+
+<p>以下示例展示了真假判断是如何工作的：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">log</span><span class="p">){</span>
+  <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+
+  <span class="kd">function</span> <span class="nx">logTruthyFalsy</span><span class="p">(</span><span class="nx">expr</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">expr</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">log</span><span class="p">(</span><span class="s1">&#39;truthy&#39;</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="nx">log</span><span class="p">(</span><span class="s1">&#39;falsy&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="nx">logTruthyFalsy</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span> <span class="c1">// truthy</span>
+  <span class="nx">logTruthyFalsy</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span> <span class="c1">// truthy</span>
+  <span class="nx">logTruthyFalsy</span><span class="p">({});</span> <span class="c1">// truthy</span>
+  <span class="nx">logTruthyFalsy</span><span class="p">([]);</span> <span class="c1">// truthy</span>
+  <span class="nx">logTruthyFalsy</span><span class="p">(</span><span class="s1">&#39;0&#39;</span><span class="p">);</span> <span class="c1">// truthy</span>
+
+  <span class="nx">logTruthyFalsy</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span> <span class="c1">// falsy</span>
+  <span class="nx">logTruthyFalsy</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="c1">// falsy</span>
+  <span class="nx">logTruthyFalsy</span><span class="p">(</span><span class="kc">undefined</span><span class="p">);</span> <span class="c1">// falsy</span>
+  <span class="nx">logTruthyFalsy</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span> <span class="c1">// falsy</span>
+  <span class="nx">logTruthyFalsy</span><span class="p">(</span><span class="kc">NaN</span><span class="p">);</span> <span class="c1">// falsy</span>
+  <span class="nx">logTruthyFalsy</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">);</span> <span class="c1">// falsy</span>
+
+<span class="p">}(</span><span class="nb">window</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">));</span>
+</code></pre></div>
+<hr>
+
+<h3 id="变量赋值时的逻辑操作">变量赋值时的逻辑操作</h3>
+
+<p>逻辑操作符 <code>||</code> 和 <code>&amp;&amp;</code> 也可被用来返回布尔值。如果操作对象为非布尔对象，那每个表达式将会被自左向右地做真假判断。基于此操作，最终总有一个表达式被返回回来。这在变量赋值时，是可以用来简化你的代码的。</p>
+
+<p><strong>不推荐</strong></p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">x</span> <span class="o">=</span> <span class="nx">y</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>推荐</strong></p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">x</span> <span class="o">=</span> <span class="nx">x</span> <span class="o">||</span> <span class="nx">y</span> <span class="o">||</span> <span class="mi">1</span><span class="p">;</span>
+</code></pre></div>
+<p>这一小技巧经常用来给方法设定默认的参数。</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">log</span><span class="p">){</span>
+  <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+
+  <span class="kd">function</span> <span class="nx">multiply</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">a</span> <span class="o">=</span> <span class="nx">a</span> <span class="o">||</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="nx">b</span> <span class="o">=</span> <span class="nx">b</span> <span class="o">||</span> <span class="mi">1</span><span class="p">;</span>
+
+    <span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Result &#39;</span> <span class="o">+</span> <span class="nx">a</span> <span class="o">*</span> <span class="nx">b</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">multiply</span><span class="p">();</span> <span class="c1">// Result 1</span>
+  <span class="nx">multiply</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span> <span class="c1">// Result 10</span>
+  <span class="nx">multiply</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="kc">NaN</span><span class="p">);</span> <span class="c1">// Result 3</span>
+  <span class="nx">multiply</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span> <span class="c1">// Result 45</span>
+
+<span class="p">}(</span><span class="nb">window</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">));</span>
+</code></pre></div>
+<hr>
+
+<h3 id="分号">分号</h3>
+
+<p>总是使用分号，因为隐式的代码嵌套会引发难以察觉的问题。当然我们更要从根本上来杜绝这些问题<sup>[1]</sup> 。以下几个示例展示了缺少分号的危害：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// 1.</span>
+<span class="nx">MyClass</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">myMethod</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="mi">42</span><span class="p">;</span>
+<span class="p">}</span>  <span class="c1">// No semicolon here.</span>
+
+<span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// Some initialization code wrapped in a function to create a scope for locals.</span>
+<span class="p">})();</span>
+
+
+<span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">&#39;i&#39;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="s1">&#39;j&#39;</span><span class="o">:</span> <span class="mi">2</span>
+<span class="p">}</span>  <span class="c1">// No semicolon here.</span>
+
+<span class="c1">// 2.  Trying to do one thing on Internet Explorer and another on Firefox.</span>
+<span class="c1">// I know you&#39;d never write code like this, but throw me a bone.</span>
+<span class="p">[</span><span class="nx">ffVersion</span><span class="p">,</span> <span class="nx">ieVersion</span><span class="p">][</span><span class="nx">isIE</span><span class="p">]();</span>
+
+
+<span class="kd">var</span> <span class="nx">THINGS_TO_EAT</span> <span class="o">=</span> <span class="p">[</span><span class="nx">apples</span><span class="p">,</span> <span class="nx">oysters</span><span class="p">,</span> <span class="nx">sprayOnCheese</span><span class="p">]</span>  <span class="c1">// No semicolon here.</span>
+
+<span class="c1">// 3. conditional execution a la bash</span>
+<span class="o">-</span><span class="mi">1</span> <span class="o">==</span> <span class="nx">resultOfOperation</span><span class="p">()</span> <span class="o">||</span> <span class="nx">die</span><span class="p">();</span>
+</code></pre></div>
+<p><strong>So what happens?</strong></p>
+
+<ol>
+<li>JavaScript 错误 —— 首先返回 42 的那个 function 被第二个 function 当中参数传入调用，接着数字 42 也被“调用”而导致出错。</li>
+<li>八成你会得到 &#39;no such property in undefined&#39; 的错误提示，因为在真实环境中的调用是这个样子：<code>x[ffVersion, ieVersion][isIE]()</code>.</li>
+<li><code>die</code> 总是被调用。因为数组减 1 的结果是 <code>NaN</code>，它不等于任何东西（无论 <code>resultOfOperation</code> 是否返回 <code>NaN</code>）。所以最终的结果是 <code>die()</code> 执行完所获得值将赋给 <code>THINGS_TO_EAT</code>.</li>
+</ol>
+
+<p><strong>Why?</strong></p>
+
+<p>JavaScript 中语句要以分号结束，否则它将会继续执行下去，不管换不换行。以上的每一个示例中，函数声明或对象或数组，都变成了在一句语句体内。要知道闭合圆括号并不代表语句结束，JavaScript 不会终结语句，除非它的下一个 token 是一个中缀符<sup>[2]</sup> 或者是圆括号操作符。</p>
+
+<p>这真是让人大吃一惊，所以乖乖地给语句末加上分号吧。</p>
+
+<p><strong>澄清：分号与函数</strong></p>
+
+<p>分号需要用在表达式的结尾，而并非函数声明的结尾。区分它们最好的例子是：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+<span class="p">};</span>  <span class="c1">// semicolon here.</span>
+
+<span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+<span class="p">}</span>  <span class="c1">// no semicolon here.</span>
+</code></pre></div>
+<hr>
+
+<h3 id="嵌套函数">嵌套函数</h3>
+
+<p>嵌套函数是非常有用的，比如用在持续创建和隐藏辅助函数的任务中。你可以非常自由随意地使用它们。</p>
+
+<hr>
+
+<h3 id="语句块内的函数声明">语句块内的函数声明</h3>
+
+<p>切勿在语句块内声明函数，在 ECMAScript 5 的严格模式下，这是不合法的。函数声明应该在定义域的顶层。但在语句块内可将函数申明转化为函数表达式赋值给变量。</p>
+
+<p><strong>不推荐</strong></p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="k">if</span> <span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>推荐</strong></p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="k">if</span> <span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{};</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr>
+
+<h3 id="异常">异常</h3>
+
+<p>基本上你无法避免出现异常，特别是在做大型开发时（使用应用开发框架等等）。</p>
+
+<p>在没有自定义异常的情况下，从有返回值的函数中返回错误信息一定非常的棘手，更别提多不优雅了。不好的解决方案包括了传第一个引用类型来接纳错误信息，或总是返回一个对象列表，其中包含着可能的错误对象。以上方式基本上是比较简陋的异常处理方式。适时可做自定义异常处理。</p>
+
+<p>在复杂的环境中，你可以考虑抛出对象而不仅仅是字符串（默认的抛出值）。</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="k">if</span><span class="p">(</span><span class="nx">name</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">throw</span> <span class="p">{</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;System Error&#39;</span><span class="p">,</span>
+    <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;A name should always be specified!&#39;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr>
+
+<h3 id="标准特性">标准特性</h3>
+
+<p>总是优先考虑使用标准特性。为了最大限度地保证扩展性与兼容性，总是首选标准的特性，而不是非标准的特性（例如：首选 <code>string.charAt(3)</code> 而不是 <code>string[3]</code>；首选 DOM 的操作方法来获得元素引用，而不是某一应用特定的快捷方法）。</p>
+
+<hr>
+
+<h3 id="简易的原型继承">简易的原型继承</h3>
+
+<p>如果你想在 JavaScript 中继承你的对象，请遵循一个简易的模式来创建此继承。如果你预计你会遇上复杂对象的继承，那可以考虑采用一个继承库，比如 <a href="https://github.com/rauschma/proto-js">Proto.js by Axel Rauschmayer</a>.</p>
+
+<p>简易继承请用以下方式：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">log</span><span class="p">){</span>
+  <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+
+  <span class="c1">// Constructor function</span>
+  <span class="kd">function</span> <span class="nx">Apple</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="c1">// Defining a method of apple</span>
+  <span class="nx">Apple</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">eat</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Eating &#39;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+  <span class="p">};</span>
+
+  <span class="c1">// Constructor function</span>
+  <span class="kd">function</span> <span class="nx">GrannySmithApple</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Invoking parent constructor</span>
+    <span class="nx">Apple</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">constructor</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="s1">&#39;Granny Smith&#39;</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="c1">// Set parent prototype while creating a copy with Object.create</span>
+  <span class="nx">GrannySmithApple</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">Apple</span><span class="p">.</span><span class="nx">prototype</span><span class="p">);</span>
+  <span class="c1">// Set constructor to the sub type, otherwise points to Apple</span>
+  <span class="nx">GrannySmithApple</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">=</span> <span class="nx">GrannySmithApple</span><span class="p">;</span>
+
+  <span class="c1">// Calling a super method</span>
+  <span class="nx">GrannySmithApple</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">eat</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Be sure to apply it onto our current object with call(this)</span>
+    <span class="nx">Apple</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">eat</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+
+    <span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Poor Grany Smith&#39;</span><span class="p">);</span>
+  <span class="p">};</span>
+
+  <span class="c1">// Instantiation</span>
+  <span class="kd">var</span> <span class="nx">apple</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Apple</span><span class="p">(</span><span class="s1">&#39;Test Apple&#39;</span><span class="p">);</span>
+  <span class="kd">var</span> <span class="nx">grannyApple</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">GrannySmithApple</span><span class="p">();</span>
+
+  <span class="nx">log</span><span class="p">(</span><span class="nx">apple</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span> <span class="c1">// Test Apple</span>
+  <span class="nx">log</span><span class="p">(</span><span class="nx">grannyApple</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span> <span class="c1">// Granny Smith</span>
+
+  <span class="c1">// Instance checks</span>
+  <span class="nx">log</span><span class="p">(</span><span class="nx">apple</span> <span class="k">instanceof</span> <span class="nx">Apple</span><span class="p">);</span> <span class="c1">// true</span>
+  <span class="nx">log</span><span class="p">(</span><span class="nx">apple</span> <span class="k">instanceof</span> <span class="nx">GrannySmithApple</span><span class="p">);</span> <span class="c1">// false</span>
+
+  <span class="nx">log</span><span class="p">(</span><span class="nx">grannyApple</span> <span class="k">instanceof</span> <span class="nx">Apple</span><span class="p">);</span> <span class="c1">// true</span>
+  <span class="nx">log</span><span class="p">(</span><span class="nx">grannyApple</span> <span class="k">instanceof</span> <span class="nx">GrannySmithApple</span><span class="p">);</span> <span class="c1">// true</span>
+
+  <span class="c1">// Calling method that calls super method</span>
+  <span class="nx">grannyApple</span><span class="p">.</span><span class="nx">eat</span><span class="p">();</span> <span class="c1">// Eating Granny Smith\nPoor Grany Smith</span>
+
+<span class="p">}(</span><span class="nb">window</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">));</span>
+</code></pre></div>
+<hr>
+
+<h3 id="使用闭包">使用闭包</h3>
+
+<p>闭包的创建也许是 JS 最有用也是最易被忽略的能力了。<a href="http://jibbering.com/faq/faq_notes/closures.html">关于闭包如何工作的合理解释</a>。</p>
+
+<hr>
+
+<h3 id="切勿在循环中创建函数">切勿在循环中创建函数</h3>
+
+<p>在简单的循环语句中加入函数是非常容易形成闭包而带来隐患的。下面的例子就是一个典型的陷阱：</p>
+
+<p><strong>不推荐</strong></p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">log</span><span class="p">,</span> <span class="nx">w</span><span class="p">){</span>
+  <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+
+  <span class="c1">// numbers and i is defined in the current function closure</span>
+  <span class="kd">var</span> <span class="nx">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+      <span class="nx">i</span><span class="p">;</span>
+
+  <span class="k">for</span><span class="p">(</span><span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">numbers</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">w</span><span class="p">.</span><span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="c1">// At the moment when this gets executed the i variable, coming from the outer function scope</span>
+      <span class="c1">// is set to 3 and the current program is alerting the message 3 times</span>
+      <span class="c1">// &#39;Index 3 with number undefined</span>
+      <span class="c1">// If you understand closures in javascript you know how to deal with those cases</span>
+      <span class="c1">// It&#39;s best to just avoid functions / new closures in loops as this prevents those issues</span>
+
+      <span class="nx">w</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;Index &#39;</span> <span class="o">+</span> <span class="nx">i</span> <span class="o">+</span> <span class="s1">&#39; with number &#39;</span> <span class="o">+</span> <span class="nx">numbers</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span>
+    <span class="p">},</span> <span class="mi">0</span><span class="p">);</span>
+  <span class="p">}</span>
+
+<span class="p">}(</span><span class="nb">window</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">,</span> <span class="nb">window</span><span class="p">));</span>
+</code></pre></div>
+<p>接下来的改进虽然已经解决了上述例子中的问题或 bug，但还是违反了不在循环中创建函数或闭包的原则。</p>
+
+<p><strong>不推荐</strong></p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">log</span><span class="p">,</span> <span class="nx">w</span><span class="p">){</span>
+  <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+
+  <span class="c1">// numbers and i is defined in the current function closure</span>
+  <span class="kd">var</span> <span class="nx">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+      <span class="nx">i</span><span class="p">;</span>
+
+  <span class="k">for</span><span class="p">(</span><span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">numbers</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Creating a new closure scope with an IIFE solves the problem</span>
+    <span class="c1">// The delayed function will use index and number which are</span>
+    <span class="c1">// in their own closure scope (one closure per loop iteration).</span>
+    <span class="c1">// ---</span>
+    <span class="c1">// Still this is not recommended as we violate our rule to not</span>
+    <span class="c1">// create functions within loops and we are creating two!</span>
+
+    <span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">index</span><span class="p">,</span> <span class="nx">number</span><span class="p">){</span>
+      <span class="nx">w</span><span class="p">.</span><span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// Will output as expected 0 &gt; 1, 1 &gt; 2, 2 &gt; 3</span>
+        <span class="nx">w</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;Index &#39;</span> <span class="o">+</span> <span class="nx">index</span> <span class="o">+</span> <span class="s1">&#39; with number &#39;</span> <span class="o">+</span> <span class="nx">number</span><span class="p">);</span>
+      <span class="p">},</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="p">}(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">numbers</span><span class="p">[</span><span class="nx">i</span><span class="p">]));</span>
+  <span class="p">}</span>
+
+<span class="p">}(</span><span class="nb">window</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">,</span> <span class="nb">window</span><span class="p">));</span>
+</code></pre></div>
+<p>接下来的改进已解决问题，而且也遵循了规范。可是，你会发现看上去似乎过于复杂繁冗了，应该会有更好的解决方案吧。</p>
+
+<p><strong>不完全推荐</strong></p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">log</span><span class="p">,</span> <span class="nx">w</span><span class="p">){</span>
+  <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+
+  <span class="c1">// numbers and i is defined in the current function closure</span>
+  <span class="kd">var</span> <span class="nx">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+      <span class="nx">i</span><span class="p">;</span>
+
+  <span class="c1">// Create a function outside of the loop that will accept arguments to create a</span>
+  <span class="c1">// function closure scope. This function will return a function that executes in this</span>
+  <span class="c1">// closure parent scope.</span>
+  <span class="kd">function</span> <span class="nx">alertIndexWithNumber</span><span class="p">(</span><span class="nx">index</span><span class="p">,</span> <span class="nx">number</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">w</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;Index &#39;</span> <span class="o">+</span> <span class="nx">index</span> <span class="o">+</span> <span class="s1">&#39; with number &#39;</span> <span class="o">+</span> <span class="nx">number</span><span class="p">);</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+
+  <span class="c1">// First parameter is a function call that returns a function.</span>
+  <span class="c1">// ---</span>
+  <span class="c1">// This solves our problem and we don&#39;t create a function inside our loop</span>
+  <span class="k">for</span><span class="p">(</span><span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">numbers</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">w</span><span class="p">.</span><span class="nx">setTimeout</span><span class="p">(</span><span class="nx">alertIndexWithNumber</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">numbers</span><span class="p">[</span><span class="nx">i</span><span class="p">]),</span> <span class="mi">0</span><span class="p">);</span>
+  <span class="p">}</span>
+
+<span class="p">}(</span><span class="nb">window</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">,</span> <span class="nb">window</span><span class="p">));</span>
+</code></pre></div>
+<p>将循环语句转换为函数执行的方式问题能得到立马解决，每一次循环都会对应地创建一次闭包。函数式的风格更加值得推荐，而且看上去也更加地自然和可预料。</p>
+
+<p><strong>推荐</strong></p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">log</span><span class="p">,</span> <span class="nx">w</span><span class="p">){</span>
+  <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+
+  <span class="c1">// numbers and i is defined in the current function closure</span>
+  <span class="kd">var</span> <span class="nx">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+      <span class="nx">i</span><span class="p">;</span>
+
+  <span class="nx">numbers</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">number</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">w</span><span class="p">.</span><span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">w</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;Index &#39;</span> <span class="o">+</span> <span class="nx">index</span> <span class="o">+</span> <span class="s1">&#39; with number &#39;</span> <span class="o">+</span> <span class="nx">number</span><span class="p">);</span>
+    <span class="p">},</span> <span class="mi">0</span><span class="p">);</span>
+  <span class="p">});</span>
+
+<span class="p">}(</span><span class="nb">window</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">,</span> <span class="nb">window</span><span class="p">));</span>
+</code></pre></div>
+<hr>
+
+<h3 id="eval-函数（魔鬼）">eval 函数（魔鬼）</h3>
+
+<p><code>eval()</code> 不但混淆语境还很危险，总会有比这更好、更清晰、更安全的另一种方案来写你的代码，因此尽量不要使用 evil 函数。</p>
+
+<hr>
+
+<h3 id="this-关键字">this 关键字</h3>
+
+<p>只在对象构造器、方法和在设定的闭包中使用 <code>this</code> 关键字。this 的语义在此有些误导。它时而指向全局对象（大多数时），时而指向调用者的定义域（在 eval 中），时而指向 DOM 树中的某一节点（当用事件处理绑定到 HTML 属性上时），时而指向一个新创建的对象（在构造器中），还时而指向其它的一些对象（如果函数被 <code>call()</code> 和 <code>apply()</code> 执行和调用时）。</p>
+
+<p>正因为它是如此容易地被搞错，请限制它的使用场景：</p>
+
+<ul>
+<li>  在构造函数中</li>
+<li>  在对象的方法中（包括由此创建出的闭包内）</li>
+</ul>
+
+<hr>
+
+<h3 id="首选函数式风格">首选函数式风格</h3>
+
+<p>函数式编程让你可以简化代码并缩减维护成本，因为它容易复用，又适当地解耦和更少的依赖。</p>
+
+<p>接下来的例子中，在一组数字求和的同一问题上，比较了两种解决方案。第一个例子是经典的程序处理，而第二个例子则是采用了函数式编程和 ECMA Script 5.1 的数组方法。</p>
+
+<p>例外：往往在重代码性能轻代码维护的情况之下，要选择最优性能的解决方案而非维护性高的方案（比如用简单的循环语句代替 forEach）。</p>
+
+<p><strong>不推荐</strong></p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">log</span><span class="p">){</span>
+  <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+
+  <span class="kd">var</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span>
+      <span class="nx">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="nx">i</span><span class="p">;</span>
+
+
+  <span class="k">for</span><span class="p">(</span><span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">arr</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">sum</span> <span class="o">+=</span> <span class="nx">arr</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+  <span class="p">}</span>
+
+  <span class="nx">log</span><span class="p">(</span><span class="s1">&#39;The sum of array &#39;</span> <span class="o">+</span> <span class="nx">arr</span> <span class="o">+</span> <span class="s1">&#39; is: &#39;</span> <span class="o">+</span> <span class="nx">sum</span><span class="p">)</span>
+
+<span class="p">}(</span><span class="nb">window</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">));</span>
+</code></pre></div>
+<p><strong>推荐</strong></p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">log</span><span class="p">){</span>
+  <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+
+  <span class="kd">var</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">20</span><span class="p">];</span>
+
+  <span class="kd">var</span> <span class="nx">sum</span> <span class="o">=</span> <span class="nx">arr</span><span class="p">.</span><span class="nx">reduce</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">prevValue</span><span class="p">,</span> <span class="nx">currentValue</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">prevValue</span> <span class="o">+</span> <span class="nx">currentValue</span><span class="p">;</span>
+  <span class="p">},</span> <span class="mi">0</span><span class="p">);</span>
+
+  <span class="nx">log</span><span class="p">(</span><span class="s1">&#39;The sum of array &#39;</span> <span class="o">+</span> <span class="nx">arr</span> <span class="o">+</span> <span class="s1">&#39; is: &#39;</span> <span class="o">+</span> <span class="nx">sum</span><span class="p">);</span>
+
+<span class="p">}(</span><span class="nb">window</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">));</span>
+</code></pre></div>
+<p>另一个例子通过某一规则对一个数组进行过滤匹配来创建一个新的数组。</p>
+
+<p><strong>不推荐</strong></p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">log</span><span class="p">){</span>
+  <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+
+  <span class="kd">var</span> <span class="nx">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
+      <span class="nx">numbersGreaterTen</span> <span class="o">=</span> <span class="p">[],</span>
+      <span class="nx">i</span><span class="p">;</span>
+
+
+  <span class="k">for</span><span class="p">(</span><span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">numbers</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">numbers</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">numbersGreaterTen</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">numbers</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="nx">log</span><span class="p">(</span><span class="s1">&#39;From the list of numbers &#39;</span> <span class="o">+</span> <span class="nx">numbers</span> <span class="o">+</span> <span class="s1">&#39; only &#39;</span> <span class="o">+</span> <span class="nx">numbersGreaterTen</span> <span class="o">+</span> <span class="s1">&#39; are greater than ten&#39;</span><span class="p">);</span>
+
+<span class="p">}(</span><span class="nb">window</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">));</span>
+</code></pre></div>
+<p><strong>推荐</strong></p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">log</span><span class="p">){</span>
+  <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+
+  <span class="kd">var</span> <span class="nx">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">10</span><span class="p">];</span>
+
+  <span class="kd">var</span> <span class="nx">numbersGreaterTen</span> <span class="o">=</span> <span class="nx">numbers</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">element</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">element</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">;</span>
+  <span class="p">});</span>
+
+  <span class="nx">log</span><span class="p">(</span><span class="s1">&#39;From the list of numbers &#39;</span> <span class="o">+</span> <span class="nx">numbers</span> <span class="o">+</span> <span class="s1">&#39; only &#39;</span> <span class="o">+</span> <span class="nx">numbersGreaterTen</span> <span class="o">+</span> <span class="s1">&#39; are greater than ten&#39;</span><span class="p">);</span>
+
+<span class="p">}(</span><span class="nb">window</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">));</span>
+</code></pre></div>
+<hr>
+
+<h3 id="使用-ecma-script-5">使用 ECMA Script 5</h3>
+
+<p>建议使用 ECMA Script 5 中新增的语法糖和函数。这将简化你的程序，并让你的代码更加灵活和可复用。</p>
+
+<hr>
+
+<h3 id="数组和对象的属性迭代">数组和对象的属性迭代</h3>
+
+<p>用 ECMA5 的迭代方法来迭代数组。使用 <code>Array.forEach</code> 或者如果你要在特殊场合下中断迭代，那就用 <code>Array.every</code>。</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">log</span><span class="p">){</span>
+  <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+
+  <span class="c1">// Iterate over an array and break at a certain condition</span>
+  <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">].</span><span class="nx">every</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">element</span><span class="p">,</span> <span class="nx">index</span><span class="p">,</span> <span class="nx">arr</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">log</span><span class="p">(</span><span class="nx">element</span> <span class="o">+</span> <span class="s1">&#39; at index &#39;</span> <span class="o">+</span> <span class="nx">index</span> <span class="o">+</span> <span class="s1">&#39; in array &#39;</span> <span class="o">+</span> <span class="nx">arr</span><span class="p">);</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="nx">index</span> <span class="o">!==</span> <span class="mi">5</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+
+  <span class="c1">// Defining a simple javascript object</span>
+  <span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">a</span><span class="o">:</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span>
+    <span class="nx">b</span><span class="o">:</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;c-d-e&#39;</span><span class="o">:</span> <span class="s1">&#39;CDE&#39;</span>
+  <span class="p">};</span>
+
+  <span class="c1">// Iterating over the object keys</span>
+  <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">obj</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">element</span><span class="p">,</span> <span class="nx">index</span><span class="p">,</span> <span class="nx">arr</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Key &#39;</span> <span class="o">+</span> <span class="nx">element</span> <span class="o">+</span> <span class="s1">&#39; has value &#39;</span> <span class="o">+</span> <span class="nx">obj</span><span class="p">[</span><span class="nx">element</span><span class="p">]);</span>
+  <span class="p">});</span>
+
+<span class="p">}(</span><span class="nb">window</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">));</span>
+</code></pre></div>
+<hr>
+
+<h3 id="不要使用-switch">不要使用 switch</h3>
+
+<p>switch 在所有的编程语言中都是个非常错误的难以控制的语句，建议用 if else 来替换它。</p>
+
+<hr>
+
+<h3 id="数组和对象字面量">数组和对象字面量</h3>
+
+<p>用数组和对象字面量来代替数组和对象构造器。数组构造器很容易让人在它的参数上犯错。</p>
+
+<p><strong>不推荐</strong></p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// Length is 3.</span>
+<span class="kd">var</span> <span class="nx">a1</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="nx">x1</span><span class="p">,</span> <span class="nx">x2</span><span class="p">,</span> <span class="nx">x3</span><span class="p">);</span>
+
+<span class="c1">// Length is 2.</span>
+<span class="kd">var</span> <span class="nx">a2</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="nx">x1</span><span class="p">,</span> <span class="nx">x2</span><span class="p">);</span>
+
+<span class="c1">// If x1 is a number and it is a natural number the length will be x1.</span>
+<span class="c1">// If x1 is a number but not a natural number this will throw an exception.</span>
+<span class="c1">// Otherwise the array will have one element with x1 as its value.</span>
+<span class="kd">var</span> <span class="nx">a3</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="nx">x1</span><span class="p">);</span>
+
+<span class="c1">// Length is 0.</span>
+<span class="kd">var</span> <span class="nx">a4</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">();</span>
+</code></pre></div>
+<p>正因如此，如果将代码传参从两个变为一个，那数组很有可能发生意料不到的长度变化。为避免此类怪异状况，请总是采用更多可读的数组字面量。</p>
+
+<p><strong>推荐</strong></p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[</span><span class="nx">x1</span><span class="p">,</span> <span class="nx">x2</span><span class="p">,</span> <span class="nx">x3</span><span class="p">];</span>
+<span class="kd">var</span> <span class="nx">a2</span> <span class="o">=</span> <span class="p">[</span><span class="nx">x1</span><span class="p">,</span> <span class="nx">x2</span><span class="p">];</span>
+<span class="kd">var</span> <span class="nx">a3</span> <span class="o">=</span> <span class="p">[</span><span class="nx">x1</span><span class="p">];</span>
+<span class="kd">var</span> <span class="nx">a4</span> <span class="o">=</span> <span class="p">[];</span>
+</code></pre></div>
+<p>对象构造器不会有类似的问题，但是为了可读性和统一性，我们应该使用对象字面量。</p>
+
+<p><strong>不推荐</strong></p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">o</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Object</span><span class="p">();</span>
+
+<span class="kd">var</span> <span class="nx">o2</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Object</span><span class="p">();</span>
+<span class="nx">o2</span><span class="p">.</span><span class="nx">a</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="nx">o2</span><span class="p">.</span><span class="nx">b</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="nx">o2</span><span class="p">.</span><span class="nx">c</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="nx">o2</span><span class="p">[</span><span class="s1">&#39;strange key&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+</code></pre></div>
+<p>应该写成这样：</p>
+
+<p><strong>推荐</strong></p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">o</span> <span class="o">=</span> <span class="p">{};</span>
+
+<span class="kd">var</span> <span class="nx">o2</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">a</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="nx">b</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="nx">c</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+  <span class="s1">&#39;strange key&#39;</span><span class="o">:</span> <span class="mi">3</span>
+<span class="p">};</span>
+</code></pre></div>
+<hr>
+
+<h3 id="修改内建对象的原型链">修改内建对象的原型链</h3>
+
+<p>修改内建的诸如 <code>Object.prototype</code> 和 <code>Array.prototype</code> 是被严厉禁止的。修改其它的内建对象比如 <code>Function.prototype</code>，虽危害没那么大，但始终还是会导致在开发过程中难以 debug 的问题，应当也要避免。</p>
+
+<hr>
+
+<h3 id="自定义-tostring()-方法">自定义 toString() 方法</h3>
+
+<p>你可以通过自定义 <code>toString()</code> 来控制对象字符串化。这很好，但你必须保证你的方法总是成功并不会有其它副作用。如果你的方法达不到这样的标准，那将会引发严重的问题。如果 <code>toString()</code> 调用了一个方法，这个方法做了一个断言<sup>[3]</sup> ，当断言失败，它可能会输出它所在对象的名称，当然对象也需要调用 <code>toString()</code>。</p>
+
+<hr>
+
+<h3 id="圆括号">圆括号</h3>
+
+<p>一般在语法和语义上真正需要时才谨慎地使用圆括号。不要用在一元操作符上，例如 <code>delete</code>, <code>typeof</code> 和 <code>void</code>，或在关键字之后，例如 <code>return</code>, <code>throw</code>, <code>case</code>, <code>new</code> 等。</p>
+
+<hr>
+
+<h3 id="字符串">字符串</h3>
+
+<p>统一使用单引号(&#39;)，不使用双引号(&quot;)。这在创建 HTML 字符串非常有好处：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">msg</span> <span class="o">=</span> <span class="s1">&#39;This is some HTML &lt;div class=&quot;makes-sense&quot;&gt;&lt;/div&gt;&#39;</span><span class="p">;</span>
+</code></pre></div>
+<hr>
+
+<h3 id="三元条件判断（if-的快捷方法）">三元条件判断（if 的快捷方法）</h3>
+
+<p>用三元操作符分配或返回语句。在比较简单的情况下使用，避免在复杂的情况下使用。没人愿意用 10 行三元操作符把自己的脑子绕晕。</p>
+
+<p><strong>不推荐</strong></p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="k">if</span><span class="p">(</span><span class="nx">x</span> <span class="o">===</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="s1">&#39;valid&#39;</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="s1">&#39;invalid&#39;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>推荐</strong></p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="k">return</span> <span class="nx">x</span> <span class="o">===</span> <span class="mi">10</span> <span class="o">?</span> <span class="s1">&#39;valid&#39;</span> <span class="o">:</span> <span class="s1">&#39;invalid&#39;</span><span class="p">;</span>
+</code></pre></div>
+<hr>
+
+<p>[1]：作者指的是采用严格规范的语句写法，从根本上杜绝由分号缺失而引起的代码歧义。</p>
+
+<p>[2]：中缀符，指的是像 <code>x + y</code> 中的 <code>+</code>。</p>
+
+<p>[3]：断言一般指程序员在测试测序时的假设，一般是一些布尔表达式，当返回是 true 时，断言为真，false 时断言不通过。</p>
+
+<hr>
+
+<h2 id="系列文章">系列文章</h2>
+
+<ul>
+<li><a href="//roshanca.com/2014/web-develop-styleguide-general">前端编码风格规范之一般规范</a></li>
+<li><a href="//roshanca.com/2014/web-develop-styleguide-html">前端编码风格规范之 HTML</a></li>
+</ul>
+
+		</section>
+		<footer class="post-footer">
+			<div class="post-meta">
+				<time datetime="2014-09-12 00:00:00 +0000" class="updated" pubdate>Sep 12, 2014</time>
+
+				
+<span class="post-tag">
+	
+		<span class="tag">code</span>
+	
+</span>
+
+
+			</div>
+		</footer>
+	</article>
+</main>
+
+<div class="post-comment">
+	<div id="disqus_thread" class="container"></div>
+</div>
+<script>
+function getElementTopLeft(elem) {
+	var top = 0;
+	var left = 0;
+	while(elem) {
+		top += elem.offsetTop;
+		left += elem.offsetLeft;
+
+		elem = elem.offsetParent;
+	}
+	return {top: top, left: left};
+}
+
+var disqus_shortname = 'roshanca';
+var disqus_elem = document.getElementById('disqus_thread');
+var disqus_init = false;
+
+window.onscroll = function () {
+	if (disqus_init) return;
+
+	var viewHeight = document.documentElement.clientHeight;
+	var scrollY = document.documentElement.scrollTop || document.body.scrollTop;
+
+	if(getElementTopLeft(disqus_elem).top < viewHeight + scrollY) {
+		loadSync('//' + disqus_shortname + '.disqus.com/embed.js');
+		disqus_init = true;
+	}
+}
+</script>
+
+
+
+<footer id="footer" role="contentinfo">
+	<p>© Copyright 2014 by Roshan Wu.</p>
+</footer>
+
+
+</body>
+</html>
