@@ -173,3 +173,10 @@ if(includeLabels) {
 ***
 
 [1]: Compass 是一个基于 Sass 开源的 CSS 框架，而 Sass 是一个非常流行的 CSS 预编译器。
+
+***
+
+## 系列文章
+
+* [前端编码风格规范之 HTML](//roshanca.com/2014/web-develop-styleguide-html)
+* [前端编码风格规范之 JavaScript](//roshanca.com/2014/web-develop-styleguide-javascript)
