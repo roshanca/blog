@@ -307,6 +307,11 @@ table {
   list-style: decimal outside; }
 .post ul {
   list-style: disc outside; }
+.post hr {
+  height: 4px;
+  margin: 20px auto;
+  background-color: #e7e7e7;
+  border: 0 none; }
 .post blockquote {
   position: relative;
   padding-left: 3.6rem;

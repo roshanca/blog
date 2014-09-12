@@ -87,6 +87,12 @@
   ul {
     list-style: disc outside;
   }
+  hr {
+    height: 4px;
+    margin: 20px auto;
+    background-color: #e7e7e7;
+    border: 0 none;
+  }
   blockquote {
     position: relative;
     padding-left: 3.6rem;
