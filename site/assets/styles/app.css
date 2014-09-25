@@ -574,3 +574,10 @@ table {
 .windows .post {
   font-family: "Noto Serif", Tahoma, "Microsoft YaHei", sans-serif;
   color: #4d4e53; }
+
+/* woff */
+@font-face {
+  font-family: 'Noto Serif';
+  font-style: normal;
+  font-weight: 400;
+  src: local("Noto Serif"), local("NotoSerif"), url(/assets/fonts/NotoSerif.woff) format("woff"); }
