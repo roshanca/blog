@@ -33,14 +33,19 @@ sup {
 
 table {
   table-layout: fixed;
-  th {
-    padding: .9rem 1.8rem;
-    font-weight: 700;
-    border-bottom: 1px solid #ddd;
-  }
-  td {
-    padding: .4rem 1.8rem;
-  }
+  margin-bottom: 1rem;
+  width: 100%;
+  border: 1px solid #e5e5e5;
+  border-collapse: collapse;
+}
+td,
+th {
+  padding: .5rem 1rem;
+  border: 1px solid #e5e5e5;
+}
+tbody tr:nth-child(odd) td,
+tbody tr:nth-child(odd) th {
+  background-color: #f9f9f9;
 }
 
 button, input, select, textarea {
