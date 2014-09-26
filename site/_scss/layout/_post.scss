@@ -135,12 +135,30 @@
   em {
     font-style: italic;
   }
-  .gist .gist-file .gist-data {
-    font-size: 1.6rem;
-    line-height: 1.5;
+  .gist {
+    .gist-file .gist-data {
+      background: #f8f8f8;
+    }
+    .file-data {
+      font-size: 1.6rem;
+      line-height: 1.5;
+    }
+    .line-data {
+      padding: 1em 1.5em !important;
+    }
     table {
       margin-bottom: 0;
+      border: 0 none;
       word-break: normal;
+      td {
+        border: 0 none;
+      }
+      td.line-numbers {
+        display: none;
+      }
+    }
+    .gist-meta {
+      background: #fff;
     }
   }
   .keyboard {
