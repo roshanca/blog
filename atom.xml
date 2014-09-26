@@ -4,7 +4,7 @@
   <title><![CDATA[肉山·察]]></title>
   <link href="http://roshanca.com/atom.xml" rel="self"/>
   <link href="http://roshanca.com/"/>
-  <updated>2014-09-25T07:23:02+00:00</updated>
+  <updated>2014-09-26T04:23:34+00:00</updated>
   <id>http://roshanca.com/</id>
   <author>
     <name><![CDATA[Roshan Wu]]></name>
@@ -901,7 +901,7 @@
 
 <p>[2]：中缀符，指的是像 <code>x + y</code> 中的 <code>+</code>。</p>
 
-<p>[3]：断言一般指程序员在测试测序时的假设，一般是一些布尔表达式，当返回是 true 时，断言为真，false 时断言不通过。</p>
+<p>[3]：断言一般指程序员在测试测序时的假设，一般是一些布尔表达式，当返回是 true 时，断言为真，代码运行会继续进行；如果条件判断为 false，代码运行停止，你的应用被终止。</p>
 
 <hr>
 
