@@ -2,9 +2,6 @@ require 'rake'
 require 'date'
 require 'yaml'
 
-sass_dir = "site/assets/_sass"
-css_dir = "site/assets/styles"
-
 CONFIG = YAML.load(File.read('_config.yml'))
 USERNAME = CONFIG["username"] || ENV['GIT_NAME']
 REPO = CONFIG["repo"] || "#{USERNAME}.github.io"
@@ -171,7 +168,6 @@ namespace :site do
   desc "Generate the site"
   task :build do
     check_destination
-    sh "bundle exec sass #{sass_dir}/app.scss #{css_dir}/app.css"
     sh "bundle exec jekyll build"
   end
 
@@ -183,17 +179,8 @@ namespace :site do
 
   desc "Generate the site, serve locally and watch for changes"
   task :watch do
-    # sh "bundle exec jekyll serve --watch"
-
-    jekyllPid = Process.spawn("jekyll serve --watch")
-    sassPid = Process.spawn("sass --watch #{sass_dir}/app.scss:#{css_dir}/app.css")
-
-    trap("INT") {
-      [jekyllPid, sassPid].each { |pid| Process.kill(9, pid) rescue Errno::ESRCH }
-      exit 0
-    }
-
-    [jekyllPid, sassPid].each { |pid| Process.wait(pid) }
+    check_destination
+    sh "bundle exec jekyll serve --watch"
   end
 
   desc "Generate the site and push changes to remote origin"

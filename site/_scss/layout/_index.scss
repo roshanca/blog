@@ -2,6 +2,8 @@
   @extend %container;
   margin-top: 4rem;
   h2 {
+    margin-bottom: .5rem;
+    font: inherit;
     text-transform: capitalize;
     color: lighten($link-color, 44%);
   }
@@ -32,7 +34,7 @@
   .about-desc {
     display: block;
     margin-top: -5px;
-    font-family: $san;
+    font-family: $sans;
     font-size: 80%;
   }
   .about-author {
@@ -54,7 +56,7 @@
 
 .article {
   li {
-    margin-top: .3rem;
+    margin-bottom: .5rem;
     @include responsive(480px) {
       margin: 0 0 1rem 0;
     }
@@ -65,7 +67,7 @@
       }
     }
     time {
-      font-family: $san;
+      font-family: $sans;
       font-size: 90%;
       color: lighten($link-color, 22%);
       @include responsive(480px) {

@@ -1,17 +1,34 @@
-encoding: utf-8
-name: blog
+# Setup
 url: http://roshanca.com
 author: Roshan Wu
 title: 肉山·察
-subtitle: Just Roshan's blog
+subtitle: just Roshan's blog
+
+# Permalinks
+#
+# Use of `relative_permalinks` ensures post links from the index work properly.
 permalink: /:year/:title
+relative_permalinks: true
+
+# Where things are
 source: site
 destination: ./_site
 plugins: ./_plugins
+
+# Markdown Processors
 markdown: redcarpet
 redcarpet:
   extensions: ["autolink", "tables", "strikethrough", "superscript", "with_toc_data"]
 
+# Syntax highlighting
+highlighter: pygments
+
+# Assets
+#
+# We specify the directory for Jekyll so we can use @imports.
+sass:
+  sass_dir: _scss
+  style: :compressed
 
 # Settings for deploy rake task
 # Username and repo of Github repo, e.g.

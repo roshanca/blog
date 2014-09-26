@@ -22,9 +22,9 @@
     }
   }
   .post-meta {
-    font-family: $san;
+    font-family: $sans;
     font-size: 1.6rem;
-    line-height: 34px;
+    line-height: 32px;
     text-align: right;
     color: lighten($text-color, 22%);
     vertical-align: middle;
@@ -105,6 +105,9 @@
       content: "\f10d";
       font-family: FontAwesome;
       color: lighten($quote-color, 40%);
+    }
+    p {
+      margin-bottom: .5rem;
     }
   }
   code {

@@ -26,6 +26,8 @@
 		}
 	}
 	.blog-desc {
+    font-size: 100%;
+    text-transform: capitalize;
 		color: lighten($heading-color, 44%);
 	}
   .subscribe {
@@ -39,7 +41,7 @@
     margin-left: -15px;
     line-height: 28px;
     color: lighten($heading-color, 44%);
-    border: 1px solid #eee;
+    border: 1px solid #e0e0e0;
     border-radius: 100%;
     background-color: #fff;
     .fa {

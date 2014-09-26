@@ -5,10 +5,14 @@ html {
 body {
 	font-family: $serif;
 	font-size: 2rem;
-	line-height: 1.7;
+	line-height: 1.6;
 	color: $text-color;
   @extend %word-break;
   text-rendering: optimizelegibility;
+}
+
+h1,h2,h3,h4 {
+  font-size: 100%;
 }
 
 a {
@@ -37,6 +41,10 @@ table {
   td {
     padding: .4rem 1.8rem;
   }
+}
+
+button, input, select, textarea {
+  font-family: $sans;
 }
 
 .fluid {
