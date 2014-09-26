@@ -68,7 +68,7 @@ my-file.min.css
 <script src="http://cdn.com/foundation.min.js"></script>
 ```
 
-**不推荐**
+**推荐**
 
 ```html
 <script src="//cdn.com/foundation.min.js"></script>
