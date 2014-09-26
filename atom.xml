@@ -4,7 +4,7 @@
   <title><![CDATA[肉山·察]]></title>
   <link href="http://roshanca.com/atom.xml" rel="self"/>
   <link href="http://roshanca.com/"/>
-  <updated>2014-09-26T10:19:14+00:00</updated>
+  <updated>2014-09-26T15:00:59+00:00</updated>
   <id>http://roshanca.com/</id>
   <author>
     <name><![CDATA[Roshan Wu]]></name>
@@ -1449,7 +1449,7 @@ my-file.min.css
 <p><strong>不推荐</strong></p>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://cdn.com/foundation.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
 </code></pre></div>
-<p><strong>不推荐</strong></p>
+<p><strong>推荐</strong></p>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;//cdn.com/foundation.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
 </code></pre></div>
 <p><strong>不推荐</strong></p>
