@@ -177,12 +177,6 @@ namespace :site do
     sh "bundle exec jekyll serve"
   end
 
-  desc "Generate the site, serve locally and watch for changes"
-  task :watch do
-    check_destination
-    sh "bundle exec jekyll serve --watch"
-  end
-
   desc "Generate the site and push changes to remote origin"
   task :deploy do
     # Detect pull request
