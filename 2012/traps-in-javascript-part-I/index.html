@@ -103,7 +103,7 @@
 
 <span class="nx">foo</span><span class="p">();</span>
 </code></pre></div>
-<p>乍看上去，我们预计期望两次 <code>alert</code> 的结果分别为 &quot;global&quot; 与 &quot;local&quot;，但真实的结果是 &quot;undefined&quot; 与 &quot;local&quot;。why? 因为：</p>
+<p>乍看上去，我们预计期望两次 <code>alert</code> 的结果分别为 &ldquo;global&rdquo; 与 &ldquo;local&quot;，但真实的结果是 &quot;undefined&rdquo; 与 &ldquo;local&quot;。why? 因为：</p>
 
 <blockquote>
 <p>变量在同一作用域（同一函数）中，声明都是被提至作用域顶部先进行解析的。</p>
@@ -167,7 +167,7 @@
 
 <span class="nx">test</span><span class="p">();</span>
 </code></pre></div>
-<p>运行以上代码片段，看到的两次弹窗显示的都是 &quot;2&quot;，为什么不是分别为 &quot;1&quot; 和 &quot;2&quot; 呢？很简单，<code>test</code> 的声明先于 <code>test()</code> 被解析，由于后者覆盖前者，所以两次执行的结果都是 &quot;2&quot;。</p>
+<p>运行以上代码片段，看到的两次弹窗显示的都是 &quot;2&quot;，为什么不是分别为 &quot;1&rdquo; 和 &ldquo;2&rdquo; 呢？很简单，<code>test</code> 的声明先于 <code>test()</code> 被解析，由于后者覆盖前者，所以两次执行的结果都是 &ldquo;2&quot;。</p>
 
 <p>填坑：多数情况下，用函数表达式来代替函数声明是一个好习惯，特别是在一些语句块中。</p>
 

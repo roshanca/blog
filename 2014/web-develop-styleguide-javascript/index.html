@@ -482,7 +482,7 @@
 
 <ol>
 <li>JavaScript 错误 —— 首先返回 42 的那个 function 被第二个 function 当中参数传入调用，接着数字 42 也被“调用”而导致出错。</li>
-<li>八成你会得到 &#39;no such property in undefined&#39; 的错误提示，因为在真实环境中的调用是这个样子：<code>x[ffVersion, ieVersion][isIE]()</code>.</li>
+<li>八成你会得到 &lsquo;no such property in undefined&rsquo; 的错误提示，因为在真实环境中的调用是这个样子：<code>x[ffVersion, ieVersion][isIE]()</code>.</li>
 <li><code>die</code> 总是被调用。因为数组减 1 的结果是 <code>NaN</code>，它不等于任何东西（无论 <code>resultOfOperation</code> 是否返回 <code>NaN</code>）。所以最终的结果是 <code>die()</code> 执行完所获得值将赋给 <code>THINGS_TO_EAT</code>.</li>
 </ol>
 
@@ -923,7 +923,7 @@
 
 <h3 id="字符串">字符串</h3>
 
-<p>统一使用单引号(&#39;)，不使用双引号(&quot;)。这在创建 HTML 字符串非常有好处：</p>
+<p>统一使用单引号(&rsquo;)，不使用双引号(&ldquo;)。这在创建 HTML 字符串非常有好处：</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">msg</span> <span class="o">=</span> <span class="s1">&#39;This is some HTML &lt;div class=&quot;makes-sense&quot;&gt;&lt;/div&gt;&#39;</span><span class="p">;</span>
 </code></pre></div>
 <hr>

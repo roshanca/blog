@@ -4,13 +4,94 @@
   <title><![CDATA[肉山·察]]></title>
   <link href="http://roshanca.com/atom.xml" rel="self"/>
   <link href="http://roshanca.com/"/>
-  <updated>2014-10-08T05:12:11+00:00</updated>
+  <updated>2014-12-31T13:50:18+00:00</updated>
   <id>http://roshanca.com/</id>
   <author>
     <name><![CDATA[Roshan Wu]]></name>
     
   </author>
 
+  
+  <entry>
+    <title type="html"><![CDATA[2014年工作总结]]></title>
+    <link href="http://roshanca.com/2014/2014-work-summary"/>
+    <updated>2014-12-31T16:23:00+00:00</updated>
+    <id>http://roshanca.com/2014/2014-work-summary</id>
+    <content type="html"><![CDATA[<p>2014 马上就要画上句点，回首这一年，感慨良多。最大的感受是工作上的充实：今年公司自创业以来业务量最多的一年，真是锻炼人的一年呐。</p>
+
+<h2 id="成长">成长</h2>
+
+<p>自去年网上开户的项目开始没多久，自己便开始尝试编写自动化构建脚本，自动部署至公司服务器提供预览，自动上传提交，效率有了质的飞跃。今年在其他项目上，采用了更加流行的且学习成本更低的 grunt 和 gulp 来做 workflow，先已成为了我们团队的标配。</p>
+
+<p>今年下半年开始，我逐渐将精力转向网上开户移动端的项目开发，开始尝试的两个版本都很不理想，在第三版启动时，我在大家的质疑声中力推市面上最新的 HTML5 移动框架 —— Framework7，当时不被看好。这套框架在当时不要说没中文资源，连英文文档也只有寥寥几句。而且由于其只针对 iOS 系统而在 Android 下坑不断，我花了不少的力气在兼容性上填坑。好在 F7 是开源的框架，遇到实在难以解决的困难我就上 github 用英文给框架作者提 issues，甚至有时也推送自己的解决方案代码。在我的坚持下，随着项目进展也随着框架自身完善与文档逐渐丰富，其优势渐渐显露出来，我们也借此机会打败了我们的竞争对手重新赢得了客户信任。目前 F7 已成为了我们移动端前端开发的主力框架。</p>
+
+<p>在这趟移动端开发之旅中，我也尝试了新的开发模式，按照 MVC 的思想将前后端的代码尽可能进行了分离，将后端业务操作的 JS 代码锁定了在 Controller 这一层，而对应的 View 层，主要是一些 DOM 操作，交给更加专业的前端来做。页面模板的渲染不同于传统做法放在了客户端来做，一开始采用的是流行的 Mustache 和 Handlebars，后来用 F7 自带的 Template7。只需前后端将数据结构名称等约定好，前端开发用本地模拟数据，交付给后端后再换用真实数据，这样就完全地干掉了 JSP 等这些服务端的模板。目的很简单：<strong>让专业的人做专业的事</strong>。</p>
+
+<h2 id="困难">困难</h2>
+
+<p>这个项目做下来，很大的感受是让我们公司的 Java 开发们接受新事物比较困难。他们的理由有这么几点：</p>
+
+<ol>
+<li> 能用就行，这个没必要吧；</li>
+<li> 这个不稳定吧，别把原来的给搞坏咯；</li>
+<li> 这个不是太懂，感觉还是原来的好用（不想学习）。</li>
+</ol>
+
+<p><strong>后端相较前端而言，特别是金融行业，更加追求“稳定”二字，思维也更加封闭。</strong></p>
+
+<p>好在我的坚持与据理力争，才使得目前公司移动端的项目从代码质量与开发效率这两个层面上都有所提升。<strong>可惜在推动分布式版本管理软件 Git 上我失败了</strong>，可能是自己没准备好，也可能是 Git 的学习成本真的太高了。但我还是不死心，我打算明年继续推动，不能像以前那样想一步到位了，先在自己负责的前端组全面实行，再推广到全公司。</p>
+
+<p>随着券商客户的不断增加，项目的版本日渐增多，管理维护愈发的困难。<strong>版本管理，无论对前端还是后端，都是一个巨大的挑战</strong>。特别是前端，因为我们的后端服务，大部分是可以共用的，而前台界面，不仅要适应不同券商的不同功能而改动（后端需要改动），还要适应券商的个性化表现层的需求，比如字体颜色文字修改等等（后端无需改动）。</p>
+
+<p><strong>前后端之间的衔接通道不畅通</strong>，这是就目前为止最令人苦恼的一件事了。目前我们的配合模式有两种：</p>
+
+<p>一、<strong>前端们安装后端环境，跑后端服务来写前端页面</strong>。我是比较反感这样的做法的：</p>
+
+<ol>
+<li> 后端环境往往很重，配置依赖颇多，没有后端开发经验的话，难以驾驭；</li>
+<li> 对前端开发调试不友好，由于基于后端提供的数据，不如自己模拟数据来的灵活；</li>
+<li> 后端跑的 http 服务一般是 tomcat，这跟前端们自己的服务还是有差距的，缺少了比如 less 编译、浏览器 live reload 等功能，非常的不方便。</li>
+</ol>
+
+<p>二、而如果不这样做，<strong>前端后端拥有各自的开发环境</strong>，缺点也很明显：</p>
+
+<ol>
+<li> 这样一来，前端的产出物往往要通过后端二次包装（嵌套为 JSP，静态资源引用加版本号避免缓存等），一些前端资源的合并压缩，被放到了后端来做，做的不好不说，有时候甚至压根就没做；</li>
+<li> 效率也很低，可以想象，每次前端的改动，无法直接应用到最终产品端，都要由后端通过前端的提交版本比对来进行修改。有时如果 SVN 出了点问题，历史版本被清空了， 就会变得比较棘手了。</li>
+<li> 随着时间推移，后端加入了许多自己的代码，将许多的页面和 JS 都改的面目全非，与前端的版本越来越分离，会搞成后端不想动前端不想改的烂摊子。</li>
+</ol>
+
+<p>写代码的人很多，写文档的人太少。优先面向机器还是面向人，这是一个问题。</p>
+
+<p>太过追求开发速度，不注重代码质量导致后期的 debug 成本过高。</p>
+
+<h2 id="期望">期望</h2>
+
+<p>对于刚起步的创业公司而言（如果三年也算刚起步），我觉得以上几点困难有些不是那么的要紧，毕竟“快上线”和“占领市场，占得先机”才是关键。但是要想做强做大，我相信迟早都是要直面这些问题的。</p>
+
+<p><strong>版本管理</strong>的问题，有 Git 这把利刃。</p>
+
+<p>而<strong>前后端分离</strong>，今年开始变成了一个热门话题，目前还都在实验阶段，比如淘宝的“中途岛”项目。相关的一些资料还比较少，我也是在摸着石头过河，希望明年能有一些突破。而突破的前提，看来是要多招一些能写好的 JS/NodeJS 的小伙伴们。</p>
+
+<p>目前我们公司的开发们不仅要写服务端代码，而且还要写很大一部分客户端代码。估计一个项目中有一半的 JS，都是由后端开发写的。这算不算又是一个典型的<strong>让专业的人做专业的事</strong>的反例呢？</p>
+
+<p>关于 JS 这层，需不需要专业的人来做，还有待评估。</p>
+
+<p>这个问题也直接关系到关于客户端的业务操作逻辑代码，要不要由前端来介入甚至接管的问题（我相信在很多互联网大公司，这是理所当然的事情，这也是作为前端工程师的很大一部分的价值体现，所以他们的薪资一般也与后端开发们相当，这也是我目前<strong>最理想的招人类型</strong>）。</p>
+
+<p>看来其实核心问题是：<strong>要不要加钱加人在专业性上更上一层楼</strong>。当然这个是否必要，也看公司的具体情况，因为我也不敢保证，专业性上去了，公司的效益是否也能成比例增长，这个很难讲（至少“效”会提升吧？）。</p>
+
+<p>加钱招人是一条路，但斯以为，人海战术固然可行，可<strong>在开发效率上提升一些岂不是更好</strong>？打一个比方：测试MM抱怨出包繁琐，容易出错。是否有人愿意跳出来，写一个自动化的打包服务？</p>
+
+<h2 id="团队">团队</h2>
+
+<p>今年新招的应届生MM，我还是比较满意的。思路清晰，一点就通，平日里也较积极主动，就是有时候比较马虎。比如有一次跑来问我：为什么 <code>rake generate</code> 的命令报错。我一看原来是 generate 的单词她拼错了。</p>
+
+<p>另一位前端GG，稍令人担忧一些。老请假是一方面，解决问题的思路也是不尽如人意，依赖性太强了。好在底子还可以，这一年通过网厅的项目，也得到了不少的锻炼。</p>
+
+<p>带人对我来说也是一项挑战，我总是跟我的组员强调，要有工程师的思维，要有解决问题的能力，要有自身的价值体现。我希望我的组员不仅仅是制作页面的“切图仔”，要对得起<strong>“前端工程师”</strong>的名号。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[前端编码风格规范之 JavaScript 规范]]></title>
@@ -435,7 +516,7 @@
 
 <ol>
 <li>JavaScript 错误 —— 首先返回 42 的那个 function 被第二个 function 当中参数传入调用，接着数字 42 也被“调用”而导致出错。</li>
-<li>八成你会得到 &#39;no such property in undefined&#39; 的错误提示，因为在真实环境中的调用是这个样子：<code>x[ffVersion, ieVersion][isIE]()</code>.</li>
+<li>八成你会得到 &lsquo;no such property in undefined&rsquo; 的错误提示，因为在真实环境中的调用是这个样子：<code>x[ffVersion, ieVersion][isIE]()</code>.</li>
 <li><code>die</code> 总是被调用。因为数组减 1 的结果是 <code>NaN</code>，它不等于任何东西（无论 <code>resultOfOperation</code> 是否返回 <code>NaN</code>）。所以最终的结果是 <code>die()</code> 执行完所获得值将赋给 <code>THINGS_TO_EAT</code>.</li>
 </ol>
 
@@ -876,7 +957,7 @@
 
 <h3 id="字符串">字符串</h3>
 
-<p>统一使用单引号(&#39;)，不使用双引号(&quot;)。这在创建 HTML 字符串非常有好处：</p>
+<p>统一使用单引号(&rsquo;)，不使用双引号(&ldquo;)。这在创建 HTML 字符串非常有好处：</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">msg</span> <span class="o">=</span> <span class="s1">&#39;This is some HTML &lt;div class=&quot;makes-sense&quot;&gt;&lt;/div&gt;&#39;</span><span class="p">;</span>
 </code></pre></div>
 <hr>
@@ -1368,7 +1449,7 @@
 
 <h3 id="html-引号">HTML 引号</h3>
 
-<p>使用双引号(&quot;&quot;) 而不是单引号(&#39;&#39;) 。</p>
+<p>使用双引号(&ldquo;&rdquo;) 而不是单引号(&ldquo;) 。</p>
 
 <p><strong>不推荐</strong></p>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&#39;news-article&#39;</span><span class="nt">&gt;&lt;/div&gt;</span>
@@ -1555,7 +1636,7 @@ my-file.min.css
 
 <ul>
 <li>  <strong>NAS</strong>：木有问题啦，USB 3.0/2.0 接口各一个，扩展无鸭梨。瓶颈主要在传输速率上：除了一台新买的 iPad 外，其余电子设备都太过老久，不支持 AC 千兆协议；</li>
-<li>  <strong>离线下载</strong>：只支持 BT 下载... what？在迅雷一桶浆糊的天朝，这简直弱爆了；</li>
+<li>  <strong>离线下载</strong>：只支持 BT 下载&hellip; what？在迅雷一桶浆糊的天朝，这简直弱爆了；</li>
 <li>  <strong>无线媒体内容服务</strong>：虽说支持了 DLNA 协议，可实际用下来，稳定性和实用性都欠佳。还有一点，<strong>不支持 MKV 内嵌字幕</strong>是硬伤啊，让哥肿么看欧美大片？？？</li>
 </ul>
 
@@ -1609,7 +1690,7 @@ chmod <span class="m">777</span> * -R
 
 <h2 id="nas-">NAS <img style="display:inline;" src="http://www.iconsdb.com/icons/preview/caribbean-blue/nas-xxl.png" width="24" height="24" alt="NAS icon"></h2>
 
-<p>普通的文件的共享，需开启 &quot;File Sharing&quot; 和 &quot;Samba Server&quot;，在路由管理界面（<code>http://192.168.0.1</code>）中的“服务 - NAS”下可以找到它们。</p>
+<p>普通的文件的共享，需开启 &ldquo;File Sharing&rdquo; 和 &ldquo;Samba Server&quot;，在路由管理界面（<code>http://192.168.0.1</code>）中的“服务 - NAS”下可以找到它们。</p>
 
 <p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/Photobucket%20Desktop%20-%20WuMacBookPro/Photobucket/filesharing_zpsa41ea46a.png" alt=""></p>
 
@@ -1904,7 +1985,7 @@ brew install ffmeg
     <id>http://roshanca.com/2012/update-company-electronic-access-password</id>
     <content type="html"><![CDATA[<p>昨天很杯具地发现丢了饭卡与公司的门禁卡！饭卡里还有几十块钱，虽说不能挂失，但能补办就行了。门禁卡就不一样了，因为涉及到公司安全，必须赶紧更换门锁密码！</p>
 
-<p>but...如何更改密码？我望着门锁上如同黑洞般的刷卡感应区，手里拿着新门禁卡，不知所措。因为它长这样：</p>
+<p>but&hellip;如何更改密码？我望着门锁上如同黑洞般的刷卡感应区，手里拿着新门禁卡，不知所措。因为它长这样：</p>
 
 <p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/lock1.jpg" alt="公司电子门锁"></p>
 
@@ -1914,7 +1995,7 @@ brew install ffmeg
 
 <p>经咨询，只提供上门服务，费用 ¥100。我说好吧，钱我来出让人家过来吧。小姣交待说，这次就跟着学着点，下次有人再丢卡，我们就可以自己解决了。我想也是，这钱不能白交了。</p>
 
-<p>记录一下方法，纪念一下我的 100 块...</p>
+<p>记录一下方法，纪念一下我的 100 块&hellip;</p>
 
 <h2 id="前提">前提</h2>
 
@@ -1981,7 +2062,7 @@ brew install ffmeg
 
 <h2 id="破解">破解</h2>
 
-<p>其实未注册的免费版跟付费版功能完全相同，只是前者主窗口右上角有 &quot;UNREGISTERED&quot; 的水印而已，还有就是偶尔的提示注册弹窗（频率低的可以忽略不记），所以破解<strong>我既不提倡，也觉得没那必要</strong>。过程我就不赘述了，请移步至以下链接。</p>
+<p>其实未注册的免费版跟付费版功能完全相同，只是前者主窗口右上角有 &ldquo;UNREGISTERED&rdquo; 的水印而已，还有就是偶尔的提示注册弹窗（频率低的可以忽略不记），所以破解<strong>我既不提倡，也觉得没那必要</strong>。过程我就不赘述了，请移步至以下链接。</p>
 
 <ul>
 <li>  <strong>OS X</strong> - <a href="http://mac.pcbeta.com/thread-114355-1-1.html">http://mac.pcbeta.com/thread-114355-1-1.html</a></li>
@@ -2049,7 +2130,7 @@ brew install ffmeg
 
 <ul>
 <li>  切换文档，不单单是在当前打开的文档之间哦，包括了整个 Project，并可用关键字过滤</li>
-<li>  关键字以 <code>@</code> 开头，匹配的是文档中的函数以及其它关键内容（例如：HTML 中就匹配元素 id，这有些类似一般 IDE 中的 &quot;outline&quot; 的功能），它的快捷键是 <code>Command + R</code></li>
+<li>  关键字以 <code>@</code> 开头，匹配的是文档中的函数以及其它关键内容（例如：HTML 中就匹配元素 id，这有些类似一般 IDE 中的 &ldquo;outline&rdquo; 的功能），它的快捷键是 <code>Command + R</code></li>
 <li>  关键字以 <code>#</code> 开头，其实就是个全文搜索</li>
 <li>  关键字以 <code>:</code> 开头，后跟数字可跳转至相应的行，它的快捷键是 <code>Ctrl + G</code></li>
 </ul>
@@ -2084,7 +2165,7 @@ brew install ffmeg
 </code></pre></div>
 <h3 id="迷你地图(minimap)">迷你地图(Minimap)</h3>
 
-<p>右侧默认显示迷你地图，这其实是个全局预览加模糊定位文档位置的功能。当然如果你像增大编辑可视面积，也可通过菜单 &quot;View&quot; 选择 &quot;Hide Minimap&quot; 将其关闭。</p>
+<p>右侧默认显示迷你地图，这其实是个全局预览加模糊定位文档位置的功能。当然如果你像增大编辑可视面积，也可通过菜单 &ldquo;View&rdquo; 选择 &ldquo;Hide Minimap&rdquo; 将其关闭。</p>
 
 <h2 id="设置">设置</h2>
 
@@ -2452,7 +2533,7 @@ var title   = &quot;sublime text&quot;
 
 <span class="nx">foo</span><span class="p">();</span>
 </code></pre></div>
-<p>乍看上去，我们预计期望两次 <code>alert</code> 的结果分别为 &quot;global&quot; 与 &quot;local&quot;，但真实的结果是 &quot;undefined&quot; 与 &quot;local&quot;。why? 因为：</p>
+<p>乍看上去，我们预计期望两次 <code>alert</code> 的结果分别为 &ldquo;global&rdquo; 与 &ldquo;local&quot;，但真实的结果是 &quot;undefined&rdquo; 与 &ldquo;local&quot;。why? 因为：</p>
 
 <blockquote>
 <p>变量在同一作用域（同一函数）中，声明都是被提至作用域顶部先进行解析的。</p>
@@ -2516,7 +2597,7 @@ var title   = &quot;sublime text&quot;
 
 <span class="nx">test</span><span class="p">();</span>
 </code></pre></div>
-<p>运行以上代码片段，看到的两次弹窗显示的都是 &quot;2&quot;，为什么不是分别为 &quot;1&quot; 和 &quot;2&quot; 呢？很简单，<code>test</code> 的声明先于 <code>test()</code> 被解析，由于后者覆盖前者，所以两次执行的结果都是 &quot;2&quot;。</p>
+<p>运行以上代码片段，看到的两次弹窗显示的都是 &quot;2&quot;，为什么不是分别为 &quot;1&rdquo; 和 &ldquo;2&rdquo; 呢？很简单，<code>test</code> 的声明先于 <code>test()</code> 被解析，由于后者覆盖前者，所以两次执行的结果都是 &ldquo;2&quot;。</p>
 
 <p>填坑：多数情况下，用函数表达式来代替函数声明是一个好习惯，特别是在一些语句块中。</p>
 
@@ -2654,7 +2735,7 @@ var title   = &quot;sublime text&quot;
     <span class="nb">open location</span> <span class="s2">&quot;http://roshanca.com&quot;</span>
 <span class="k">end</span> <span class="k">tell</span>
 </code></pre></div></li>
-<li><p>在桌面新建一个名为 &quot;workflow&quot; 的文件夹</p>
+<li><p>在桌面新建一个名为 &ldquo;workflow&rdquo; 的文件夹</p>
 <div class="highlight"><pre><code class="language-applescript" data-lang="applescript"><span class="k">tell</span> <span class="nb">application</span> <span class="s2">&quot;Finder&quot;</span>
     <span class="nb">make</span> <span class="nb">new</span> <span class="nv">folder</span> <span class="nb">at</span> <span class="nv">desktop</span> <span class="nv">with</span> <span class="na">properties</span> <span class="p">{</span><span class="na">name</span><span class="p">:</span><span class="s2">&quot;workflow&quot;</span><span class="p">}</span>
 <span class="k">end</span> <span class="k">tell</span>
@@ -2841,7 +2922,7 @@ var title   = &quot;sublime text&quot;
     <id>http://roshanca.com/2012/how-to-block-youku-and-tudos-flash-ads</id>
     <content type="html"><![CDATA[<p>大家出来混都不容易，按理说视频网站的播放不收费只内嵌点广告，无可厚非。可最近看来，这些视频网站的 Flash 内嵌广告，越来越长，直逼老婆娘的裹脚布，让人有点忍无可忍了。我见过最长的广告长达1分45秒，how about u？真叫人怀念那个15秒广告的年代啊！而且现如今广告的质量也不咋样，我曾在追一部无脑国产连续剧时（哎，哥也有无聊的时候啊），被生逼着看了好几遍的“苏菲”广告。质量差点也就算了，还不让跳过。看看人家 YouTube，5秒后可选 Skip 的设计多棒，不过人家也是对广告内容的自信。</p>
 
-<p>好了，言归正传，来看看有什么方法让优酷和土豆，甚至是奇艺、sina、网易、QQ、迅雷...等的视频广告消失不见。</p>
+<p>好了，言归正传，来看看有什么方法让优酷和土豆，甚至是奇艺、sina、网易、QQ、迅雷&hellip;等的视频广告消失不见。</p>
 
 <h3 id="host-修改法">host 修改法</h3>
 
@@ -3135,155 +3216,6 @@ Installing RDoc documentation <span class="k">for</span> rb-fsevent-0.9.0...
 <li>  <a href="http://www.unfoldingcode.com/2012/02/ruby-193-via-rvm-on-mac-osx-lion.html">http://www.unfoldingcode.com/2012/02/ruby-193-via-rvm-on-mac-osx-lion.html</a></li>
 <li>  <a href="http://beginrescueend.com/rvm/install/">http://beginrescueend.com/rvm/install/</a></li>
 <li>  <a href="http://devcenter.heroku.com/articles/git">http://devcenter.heroku.com/articles/git</a></li>
-</ul>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Hello Octopress]]></title>
-    <link href="http://roshanca.com/2012/hello-octopress"/>
-    <updated>2012-03-07T10:37:00+00:00</updated>
-    <id>http://roshanca.com/2012/hello-octopress</id>
-    <content type="html"><![CDATA[<p>这个网站使用 <a href="http://octopress.org/">Octopress</a> 架设，并通过免费的 <a href="http://www.heroku.com/">Heroku</a> 部署到网上。</p>
-
-<p>第一次使用 Octopress，就发现“回不去了”！</p>
-
-<blockquote>
-<p>看到 Octopress 让我觉得很惊艳，用 Markdown 语法很快写好一篇博文，接着用 <code>rake generate</code> 就能很快的生成整个网站并迅速 deploy 到 GitHub ， 就像在 Coding 一样快乐无比， 很有亲切感。</p>
-</blockquote>
-
-<p>这里有 Octopress 的<a href="http://octopress.org/">介绍</a> －（<a href="http://fancyoung.com/blog/octopress-study/">中文</a>），以及<a href="http://octopress.org/docs/">安装教程</a> － （<a href="http://lyhdev.com/note:octopress">中文</a>）。</p>
-
-<p>自己在安装和使用的过程中也遇到了一些问题，在此记录一下。</p>
-
-<h2 id="安装环境">安装环境</h2>
-
-<ul>
-<li>  win 7 sp1</li>
-<li>  Apatna Studio 3 (自带 git)</li>
-</ul>
-
-<h2 id="下载-ruby-以及开发工具-devkit">下载 Ruby 以及开发工具 DevKit</h2>
-
-<ul>
-<li>  <a href="http://rubyinstaller.org/downloads/">RubyInstaller</a>（我下载的是 1.9.3 的版本）<br /></li>
-<li>  <a href="https://github.com/downloads/oneclick/rubyinstaller/DevKit-tdm-32-4.5.2-20111229-1559-sfx.exe">DevKit-tdm-32-4.5.2-20111229-1559-sfx.exe</a></li>
-</ul>
-
-<h2 id="安装-ruby-&amp;-devkit">安装 Ruby &amp; DevKit</h2>
-
-<p>安装完 ruby 后会自动将其路径添加至系统变量的 PATH 中，否者需手动添加。<code>Win + R</code> 键入 <code>cmd</code> 打开命令行 输入 <code>ruby -v</code> 确认 ruby 是否已成功安装。</p>
-
-<p>安装完 DevKit 进入目录会发现两个 bat 文件都打不开，进入编辑后发现一句</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">rem A value similar to C:\msys\1.0\bin is what the &quot;Start in:&quot; field needs
-</code></pre></div>
-<p>就依照提示在 C 分区下创建目录路径 <code>msys/1.0</code>，再将文件都转移其中，这回 <code>msys.bat</code> 可以启动了。</p>
-
-<h2 id="重头戏，安装-octopress">重头戏，安装 Octopress</h2>
-
-<p>打开 Aptana，新建 Ruby Project，Generate APP 选项中选择 Clone a existing git project，然后在 Location 中填入</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">git://github.com/imathis/octopress.git
-</code></pre></div>
-<p>这个时候 Aptana 工作区面板里的 Terminal 是无法 <code>ruby --version</code> 成功的，别着急，先启动下 <code>path/to/ruby/bin</code> 目录下的 <code>ruby.exe</code> 即可。</p>
-
-<p><strong>我一开始尝试在此 Terminal 中输入命令来安装 Octopress 所需的 <code>bundle</code>，后来发现不行，非得要用 DevKit 才能装上，估计要编译什么的吧。</strong></p>
-
-<p>那好，就先打开 DevKit，cd 定位到你新建的 Ruby Project，也就是 Octopress 主程序。</p>
-
-<h3 id="安装依赖包">安装依赖包</h3>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">gem install bundler
-bundle install
-</code></pre></div>
-<h3 id="安装默认主题">安装默认主题</h3>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">rake install
-</code></pre></div>
-<h2 id="配置-octopress">配置 Octopress</h2>
-
-<p>关于网站的信息都可在 <code>_config.yml</code> 里的到配置，具体的可参见<a href="http://octopress.org/docs/configuring/">这里</a>。</p>
-
-<h2 id="本地预览">本地预览</h2>
-
-<p>从这步开始，可以用 Aptana 中的 Terminal 更加方便的输命令行了。</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">rake generate
-rake preview
-</code></pre></div>
-<p>即可在 localhost:4000 中预览你的 Octopress 了。</p>
-
-<p><strong>Bug 1: 关于 &quot;Could not determine content-length of response body. Set content-length of the response or set Response#chunked = true&quot; 的警告，解决方法如下：</strong></p>
-
-<p>打开 <code>path/to/ruby/lib/ruby/1.9.1/webrick/httpresponse.rb</code> 搜索以上错误内容，定位到</p>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">if</span> <span class="n">chunked?</span> <span class="o">||</span> <span class="vi">@header</span><span class="o">[</span><span class="s1">&#39;content-length&#39;</span><span class="o">]</span>
-</code></pre></div>
-<p>一般是 Line 205，将其改为</p>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">if</span> <span class="n">chunked?</span> <span class="o">||</span> <span class="vi">@header</span><span class="o">[</span><span class="s1">&#39;content-length&#39;</span><span class="o">]</span> <span class="o">||</span> <span class="vi">@status</span> <span class="o">==</span> <span class="mi">304</span> <span class="o">||</span> <span class="vi">@status</span> <span class="o">==</span> <span class="mi">204</span>
-</code></pre></div>
-<h2 id="部署-heroku">部署 Heroku</h2>
-
-<p>你得先有个 Heroku 账号，<a href="https://api.heroku.com/signup">注册一个</a>！</p>
-
-<p>Aptana Studio 3 中自带了 Heroku 图形化的插件，只需 Run Web Demployment Wizard，按照提示配置即可。</p>
-
-<p>你也可以自己手动配置，这也许更加有趣：</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">gem install heroku
-
-<span class="c"># 创建一个 heroku app</span>
-heroku create
-
-<span class="c"># 这里你可以重命名你的 heroku app</span>
-heroku rename newname
-
-<span class="c"># 登陆 heroku，需填 email 和 password</span>
-heroku login
-
-<span class="c"># 添加你的 SSH Key，后可跟路径，例如 /Users/Administrator/.ssh/id_rsa.pub</span>
-heroku keys:add
-</code></pre></div>
-<p>关于如何生成 SSH Key，请看<a href="http://help.github.com/set-up-git-redirect/">这里</a>。</p>
-
-<p>编辑 <code>.gitignore</code> 去除 <code>public</code>，否则生成内容无法部署到 Heroku 上。</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">rake generate
-git add .
-git commit -m <span class="s1">&#39;site updated&#39;</span>
-git push heroku master
-</code></pre></div>
-<h2 id="发表文章">发表文章</h2>
-
-<p>只需一句</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">rake new_post<span class="o">[</span><span class="s2">&quot;title&quot;</span><span class="o">]</span>
-</code></pre></div>
-<p>生成的 <code>Source/_posts/</code> 下的 markdown 即为文章内，你可以用 <a href="https://github.com/Shopify/liquid/wiki/Liquid-for-Designers">Liquid</a> 语法来编辑它。</p>
-
-<p>关于 Markdown 的更多介绍，请看<a href="http://daringfireball.net/projects/markdown/syntax">这里</a> － （<a href="http://wowubuntu.com/markdown/index.html">中文</a>）。</p>
-
-<p><strong>Bug 2: 关于中文字符的问题，解决方法如下：</strong></p>
-
-<p>打开 <code>path/to/ruby/lib/ruby/gems/1.9.1/gems/jekyll-0.11.0/lib/jekyll/convertible.rb</code>，找到</p>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">self</span><span class="o">.</span><span class="n">content</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="no">File</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="nb">name</span><span class="p">))</span>
-</code></pre></div>
-<p>修改为</p>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">self</span><span class="o">.</span><span class="n">content</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="no">File</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="nb">name</span><span class="p">),</span> <span class="ss">:encoding</span> <span class="o">=&gt;</span> <span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
-</code></pre></div>
-<p>在 windows 平台上，还有一些特殊的错误。</p>
-
-<p><strong>Bug 3: 关于 jekyll 的 &quot;invalid byte sequence in GBK (ArgumentError)&quot; 错误，你可能需要在命令行下改变当前代码页到 UTF-8：</strong></p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">chcp.com 65001
-</code></pre></div>
-<p><strong>Bug 4: 关于语法高亮无法使用报 &quot;Liquid error: No such file or directory - python -c &#39;import sys; print sys.executable&#39;&quot; 错误的解决方法：</strong></p>
-
-<ol>
-<li>  安装 <a href="http://www.python.org/getit/">python for windows</a> （不推荐安装  3.3 版本的）;</li>
-<li>  下载<a href="http://blog.yesmryang.net/downloads/code/pythonexec.rb" title="pythonexec.rb">这个文件</a>；</li>
-<li>  用下载文件替换 <code>path/to/ruby/lib/ruby/gems/1.9.1/gems/rubypython-0.5.1/lib/rubypython</code> 目录下的同名文件；</li>
-<li>  记得重启电脑 :)</li>
-</ol>
-
-<h2 id="参考文章（部分地址需-fanq1ang）">参考文章（部分地址需 FanQ1ang）</h2>
-
-<ul>
-<li>  <a href="https://bugs.ruby-lang.org/attachments/2300/204_304_keep_alive.patch">https://bugs.ruby-lang.org/attachments/2300/204_304_keep_alive.patch</a></li>
-<li>  <a href="http://www.soimort.org/tech-blog/2011/11/19/introduction-to-jekyll_zh.html">http://www.soimort.org/tech-blog/2011/11/19/introduction-to-jekyll_zh.html</a></li>
-<li>  <a href="http://blog.yesmryang.net/windows-octopress-python/">http://blog.yesmryang.net/windows-octopress-python/</a></li>
-<li>  <a href="http://ruby-taiwan.org/topics/154">http://ruby-taiwan.org/topics/154</a></li>
 </ul>
 ]]></content>
   </entry>

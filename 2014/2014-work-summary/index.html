@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <link href="http://gmpg.org/xfn/11" rel="profile">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>2014年工作总结 - 肉山·察</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	
+	<link rel="canonical" href="http://roshanca.com/2014/2014-work-summary">
+	<link rel="alternate" type="application/atom+xml" title="Subscribe Feed" href="/atom.xml">
+	<link  href="/css/app.css" rel="stylesheet" media="all">
+	<link href="//libs.useso.com/js/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+	<script>
+	function loadSync(u,p,a){
+		if(!p && location.port)return {onload: null};
+		if(/\.js$/.test(u)){a='script'}else{a='link'};
+		var d=document,s=d.createElement(a),f=d.getElementsByTagName(a)[0];
+		if(a=='link'){s.href=u,s.rel='stylesheet'}else{s.src=u,s.async=true}
+		f.parentNode.insertBefore(s,f);return s;
+	}
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-15720258-1']);
+	_gaq.push(['_trackPageview']);
+	_gaq.push(['_trackPageLoadTime']);
+	loadSync('//ssl.google-analytics.com/ga.js');
+	if(/windows/i.test(navigator.userAgent)){document.getElementsByTagName('html')[0].className = 'windows'}
+	</script>
+</head>
+
+<body>
+
+<header id="header" role="banner">
+	<div class="header-inner">
+	
+		<a href="/" class="blog-title">肉山·察</a>
+		<div>
+	<a href="//github.com/roshanca" class="social-link">
+		<i class="fa fa-github"></i>
+	</a>
+
+	<a href="//twitter.com/roshan_wu" class="social-link">
+		<i class="fa fa-twitter"></i>
+	</a>
+
+	<a href="//weibo.com/jinfeixibi" class="social-link">
+		<i class="fa fa-weibo"></i>
+	</a>
+
+	<a href="//www.flickr.com/photos/roshanca/" class="social-link">
+		<i class="fa fa-flickr"></i>
+	</a>
+</div>
+	
+	</div>
+	<a href="/atom.xml" class="subscribe">
+		<i class="fa fa-rss"></i>
+	</a>
+</header>
+
+<main class="fluid" role="main">
+	<article class="post" role="article">
+		<header class="post-header">
+			<h1 class="post-title">2014年工作总结</h1>
+		</header>
+		<section class="post-content">
+			<p>2014 马上就要画上句点，回首这一年，感慨良多。最大的感受是工作上的充实：今年公司自创业以来业务量最多的一年，真是锻炼人的一年呐。</p>
+
+<h2 id="成长">成长</h2>
+
+<p>自去年网上开户的项目开始没多久，自己便开始尝试编写自动化构建脚本，自动部署至公司服务器提供预览，自动上传提交，效率有了质的飞跃。今年在其他项目上，采用了更加流行的且学习成本更低的 grunt 和 gulp 来做 workflow，先已成为了我们团队的标配。</p>
+
+<p>今年下半年开始，我逐渐将精力转向网上开户移动端的项目开发，开始尝试的两个版本都很不理想，在第三版启动时，我在大家的质疑声中力推市面上最新的 HTML5 移动框架 —— Framework7，当时不被看好。这套框架在当时不要说没中文资源，连英文文档也只有寥寥几句。而且由于其只针对 iOS 系统而在 Android 下坑不断，我花了不少的力气在兼容性上填坑。好在 F7 是开源的框架，遇到实在难以解决的困难我就上 github 用英文给框架作者提 issues，甚至有时也推送自己的解决方案代码。在我的坚持下，随着项目进展也随着框架自身完善与文档逐渐丰富，其优势渐渐显露出来，我们也借此机会打败了我们的竞争对手重新赢得了客户信任。目前 F7 已成为了我们移动端前端开发的主力框架。</p>
+
+<p>在这趟移动端开发之旅中，我也尝试了新的开发模式，按照 MVC 的思想将前后端的代码尽可能进行了分离，将后端业务操作的 JS 代码锁定了在 Controller 这一层，而对应的 View 层，主要是一些 DOM 操作，交给更加专业的前端来做。页面模板的渲染不同于传统做法放在了客户端来做，一开始采用的是流行的 Mustache 和 Handlebars，后来用 F7 自带的 Template7。只需前后端将数据结构名称等约定好，前端开发用本地模拟数据，交付给后端后再换用真实数据，这样就完全地干掉了 JSP 等这些服务端的模板。目的很简单：<strong>让专业的人做专业的事</strong>。</p>
+
+<h2 id="困难">困难</h2>
+
+<p>这个项目做下来，很大的感受是让我们公司的 Java 开发们接受新事物比较困难。他们的理由有这么几点：</p>
+
+<ol>
+<li> 能用就行，这个没必要吧；</li>
+<li> 这个不稳定吧，别把原来的给搞坏咯；</li>
+<li> 这个不是太懂，感觉还是原来的好用（不想学习）。</li>
+</ol>
+
+<p><strong>后端相较前端而言，特别是金融行业，更加追求“稳定”二字，思维也更加封闭。</strong></p>
+
+<p>好在我的坚持与据理力争，才使得目前公司移动端的项目从代码质量与开发效率这两个层面上都有所提升。<strong>可惜在推动分布式版本管理软件 Git 上我失败了</strong>，可能是自己没准备好，也可能是 Git 的学习成本真的太高了。但我还是不死心，我打算明年继续推动，不能像以前那样想一步到位了，先在自己负责的前端组全面实行，再推广到全公司。</p>
+
+<p>随着券商客户的不断增加，项目的版本日渐增多，管理维护愈发的困难。<strong>版本管理，无论对前端还是后端，都是一个巨大的挑战</strong>。特别是前端，因为我们的后端服务，大部分是可以共用的，而前台界面，不仅要适应不同券商的不同功能而改动（后端需要改动），还要适应券商的个性化表现层的需求，比如字体颜色文字修改等等（后端无需改动）。</p>
+
+<p><strong>前后端之间的衔接通道不畅通</strong>，这是就目前为止最令人苦恼的一件事了。目前我们的配合模式有两种：</p>
+
+<p>一、<strong>前端们安装后端环境，跑后端服务来写前端页面</strong>。我是比较反感这样的做法的：</p>
+
+<ol>
+<li> 后端环境往往很重，配置依赖颇多，没有后端开发经验的话，难以驾驭；</li>
+<li> 对前端开发调试不友好，由于基于后端提供的数据，不如自己模拟数据来的灵活；</li>
+<li> 后端跑的 http 服务一般是 tomcat，这跟前端们自己的服务还是有差距的，缺少了比如 less 编译、浏览器 live reload 等功能，非常的不方便。</li>
+</ol>
+
+<p>二、而如果不这样做，<strong>前端后端拥有各自的开发环境</strong>，缺点也很明显：</p>
+
+<ol>
+<li> 这样一来，前端的产出物往往要通过后端二次包装（嵌套为 JSP，静态资源引用加版本号避免缓存等），一些前端资源的合并压缩，被放到了后端来做，做的不好不说，有时候甚至压根就没做；</li>
+<li> 效率也很低，可以想象，每次前端的改动，无法直接应用到最终产品端，都要由后端通过前端的提交版本比对来进行修改。有时如果 SVN 出了点问题，历史版本被清空了， 就会变得比较棘手了。</li>
+<li> 随着时间推移，后端加入了许多自己的代码，将许多的页面和 JS 都改的面目全非，与前端的版本越来越分离，会搞成后端不想动前端不想改的烂摊子。</li>
+</ol>
+
+<p>写代码的人很多，写文档的人太少。优先面向机器还是面向人，这是一个问题。</p>
+
+<p>太过追求开发速度，不注重代码质量导致后期的 debug 成本过高。</p>
+
+<h2 id="期望">期望</h2>
+
+<p>对于刚起步的创业公司而言（如果三年也算刚起步），我觉得以上几点困难有些不是那么的要紧，毕竟“快上线”和“占领市场，占得先机”才是关键。但是要想做强做大，我相信迟早都是要直面这些问题的。</p>
+
+<p><strong>版本管理</strong>的问题，有 Git 这把利刃。</p>
+
+<p>而<strong>前后端分离</strong>，今年开始变成了一个热门话题，目前还都在实验阶段，比如淘宝的“中途岛”项目。相关的一些资料还比较少，我也是在摸着石头过河，希望明年能有一些突破。而突破的前提，看来是要多招一些能写好的 JS/NodeJS 的小伙伴们。</p>
+
+<p>目前我们公司的开发们不仅要写服务端代码，而且还要写很大一部分客户端代码。估计一个项目中有一半的 JS，都是由后端开发写的。这算不算又是一个典型的<strong>让专业的人做专业的事</strong>的反例呢？</p>
+
+<p>关于 JS 这层，需不需要专业的人来做，还有待评估。</p>
+
+<p>这个问题也直接关系到关于客户端的业务操作逻辑代码，要不要由前端来介入甚至接管的问题（我相信在很多互联网大公司，这是理所当然的事情，这也是作为前端工程师的很大一部分的价值体现，所以他们的薪资一般也与后端开发们相当，这也是我目前<strong>最理想的招人类型</strong>）。</p>
+
+<p>看来其实核心问题是：<strong>要不要加钱加人在专业性上更上一层楼</strong>。当然这个是否必要，也看公司的具体情况，因为我也不敢保证，专业性上去了，公司的效益是否也能成比例增长，这个很难讲（至少“效”会提升吧？）。</p>
+
+<p>加钱招人是一条路，但斯以为，人海战术固然可行，可<strong>在开发效率上提升一些岂不是更好</strong>？打一个比方：测试MM抱怨出包繁琐，容易出错。是否有人愿意跳出来，写一个自动化的打包服务？</p>
+
+<h2 id="团队">团队</h2>
+
+<p>今年新招的应届生MM，我还是比较满意的。思路清晰，一点就通，平日里也较积极主动，就是有时候比较马虎。比如有一次跑来问我：为什么 <code>rake generate</code> 的命令报错。我一看原来是 generate 的单词她拼错了。</p>
+
+<p>另一位前端GG，稍令人担忧一些。老请假是一方面，解决问题的思路也是不尽如人意，依赖性太强了。好在底子还可以，这一年通过网厅的项目，也得到了不少的锻炼。</p>
+
+<p>带人对我来说也是一项挑战，我总是跟我的组员强调，要有工程师的思维，要有解决问题的能力，要有自身的价值体现。我希望我的组员不仅仅是制作页面的“切图仔”，要对得起<strong>“前端工程师”</strong>的名号。</p>
+
+		</section>
+		<footer class="post-footer">
+			<div class="post-meta">
+				<time datetime="2014-12-31 16:23:00 +0000" class="updated" pubdate>Dec 31, 2014</time>
+
+				
+<span class="post-tag">
+	
+		<span class="tag">work</span>
+	
+</span>
+
+
+			</div>
+		</footer>
+	</article>
+</main>
+
+<div class="post-comment">
+	<div id="disqus_thread" class="container"></div>
+</div>
+<script>
+function getElementTopLeft(elem) {
+	var top = 0;
+	var left = 0;
+	while(elem) {
+		top += elem.offsetTop;
+		left += elem.offsetLeft;
+
+		elem = elem.offsetParent;
+	}
+	return {top: top, left: left};
+}
+
+var disqus_shortname = 'roshanca';
+var disqus_elem = document.getElementById('disqus_thread');
+var disqus_init = false;
+
+window.onscroll = function () {
+	if (disqus_init) return;
+
+	var viewHeight = document.documentElement.clientHeight;
+	var scrollY = document.documentElement.scrollTop || document.body.scrollTop;
+
+	if(getElementTopLeft(disqus_elem).top < viewHeight + scrollY) {
+		loadSync('//' + disqus_shortname + '.disqus.com/embed.js');
+		disqus_init = true;
+	}
+}
+</script>
+
+
+
+<footer id="footer" role="contentinfo">
+	<p>© Copyright 2014 by Roshan Wu.</p>
+</footer>
+
+
+</body>
+</html>

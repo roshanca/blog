@@ -129,7 +129,7 @@ rake preview
 </code></pre></div>
 <p>即可在 localhost:4000 中预览你的 Octopress 了。</p>
 
-<p><strong>Bug 1: 关于 &quot;Could not determine content-length of response body. Set content-length of the response or set Response#chunked = true&quot; 的警告，解决方法如下：</strong></p>
+<p><strong>Bug 1: 关于 &ldquo;Could not determine content-length of response body. Set content-length of the response or set Response#chunked = true&rdquo; 的警告，解决方法如下：</strong></p>
 
 <p>打开 <code>path/to/ruby/lib/ruby/1.9.1/webrick/httpresponse.rb</code> 搜索以上错误内容，定位到</p>
 <div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">if</span> <span class="n">chunked?</span> <span class="o">||</span> <span class="vi">@header</span><span class="o">[</span><span class="s1">&#39;content-length&#39;</span><span class="o">]</span>
@@ -185,10 +185,10 @@ git push heroku master
 </code></pre></div>
 <p>在 windows 平台上，还有一些特殊的错误。</p>
 
-<p><strong>Bug 3: 关于 jekyll 的 &quot;invalid byte sequence in GBK (ArgumentError)&quot; 错误，你可能需要在命令行下改变当前代码页到 UTF-8：</strong></p>
+<p><strong>Bug 3: 关于 jekyll 的 &ldquo;invalid byte sequence in GBK (ArgumentError)&rdquo; 错误，你可能需要在命令行下改变当前代码页到 UTF-8：</strong></p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">chcp.com 65001
 </code></pre></div>
-<p><strong>Bug 4: 关于语法高亮无法使用报 &quot;Liquid error: No such file or directory - python -c &#39;import sys; print sys.executable&#39;&quot; 错误的解决方法：</strong></p>
+<p><strong>Bug 4: 关于语法高亮无法使用报 &ldquo;Liquid error: No such file or directory - python -c &lsquo;import sys; print sys.executable&rsquo;&rdquo; 错误的解决方法：</strong></p>
 
 <ol>
 <li>  安装 <a href="http://www.python.org/getit/">python for windows</a> （不推荐安装  3.3 版本的）;</li>
