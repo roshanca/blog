@@ -3,6 +3,9 @@
 _drafts/
 _site/
 _deploy
+Gemfile.lock
+.ruby-version
+.ruby-gemset
 
 # Deploy
 *.gem
