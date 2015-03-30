@@ -146,7 +146,7 @@ class PropertyFinderApp extends React.Component {
 
 是的，这是一个 JavaScript 类！
 
-类概念在 ECMAScript 6 (ES6) 中才被引入。尽管 JavaScript 在不断地进化，web 开发者们仍然被老旧的浏览器的兼容性所限制。React Native 运行在 JavaScript 核心中，因此，你可以运用现代语言的高级功能，而不必担心老旧浏览器不支持的问题。
+类概念在 ECMAScript 6 (ES6) 中才被引入。尽管 JavaScript 在不断地进化，web 开发者们仍然被老旧的浏览器的兼容性所限制。React Native 运行在 JavaScriptCore 中，因此，你可以运用现代语言的高级功能，而不必担心老旧浏览器不支持的问题。
 
 `PropertyFinderApp` 扩展自 `React.Component`, React 最基础的 UI 组件。组件包含了不可变的属性，和可变的状态变量，并且曝露了一个用来渲染组件的方法。目前应用足以简单，只需一个渲染方法。
 
@@ -175,7 +175,7 @@ React.AppRegistry.registerComponent('PropertyFinderApp', function() { return Pro
 当应用开始运行时，`RCTRootView` 从以下 URL 来加载应用：
 
 ```
-//localhost:8081/Examples/PropertyFinder/PropertyFinderApp.includeRequire.runModule.bundle
+http://localhost:8081/Examples/PropertyFinder/PropertyFinderApp.includeRequire.runModule.bundle
 ```
 
 回想起在教程开始时当你在终端窗口中执行 `npm start` 了吧，它其实是开启了一个容器和服务用以处理以上请求。
