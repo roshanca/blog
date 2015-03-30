@@ -1,5 +1,6 @@
 .DS_Store
 .sass-cache/
+.pygments-cache/
 _drafts/
 _site/
 _deploy
