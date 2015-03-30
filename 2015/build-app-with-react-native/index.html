@@ -178,7 +178,7 @@ React packager ready.
 </code></pre></div>
 <p>是的，这是一个 JavaScript 类！</p>
 
-<p>类概念在 ECMAScript 6 (ES6) 中才被引入。尽管 JavaScript 在不断地进化，web 开发者们仍然被老旧的浏览器的兼容性所限制。React Native 运行在 JavaScript 核心中，因此，你可以运用现代语言的高级功能，而不必担心老旧浏览器不支持的问题。</p>
+<p>类概念在 ECMAScript 6 (ES6) 中才被引入。尽管 JavaScript 在不断地进化，web 开发者们仍然被老旧的浏览器的兼容性所限制。React Native 运行在 JavaScriptCore 中，因此，你可以运用现代语言的高级功能，而不必担心老旧浏览器不支持的问题。</p>
 
 <p><code>PropertyFinderApp</code> 扩展自 <code>React.Component</code>, React 最基础的 UI 组件。组件包含了不可变的属性，和可变的状态变量，并且曝露了一个用来渲染组件的方法。目前应用足以简单，只需一个渲染方法。</p>
 
@@ -202,7 +202,7 @@ React packager ready.
 <p>是不是对其背后的运作原理感到好奇？在 Xcode 中打开 <code>AppDelegate.m</code> 并定位到 <code>application:didFinishLaunchingWithOptions:</code> 这句，这个方法构建了一个 <code>RCTRootView</code>，它加载了 JavaScript 应用并渲染了其对应的 view。</p>
 
 <p>当应用开始运行时，<code>RCTRootView</code> 从以下 URL 来加载应用：</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">//localhost:8081/Examples/PropertyFinder/PropertyFinderApp.includeRequire.runModule.bundle
+<div class="highlight"><pre><code class="language-text" data-lang="text">http://localhost:8081/Examples/PropertyFinder/PropertyFinderApp.includeRequire.runModule.bundle
 </code></pre></div>
 <p>回想起在教程开始时当你在终端窗口中执行 <code>npm start</code> 了吧，它其实是开启了一个容器和服务用以处理以上请求。</p>
 
