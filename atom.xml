@@ -4,13 +4,908 @@
   <title><![CDATA[肉山·察]]></title>
   <link href="http://roshanca.com/atom.xml" rel="self"/>
   <link href="http://roshanca.com/"/>
-  <updated>2015-03-29T09:15:31+00:00</updated>
+  <updated>2015-03-30T14:37:31+00:00</updated>
   <id>http://roshanca.com/</id>
   <author>
     <name><![CDATA[Roshan Wu]]></name>
     
   </author>
 
+  
+  <entry>
+    <title type="html"><![CDATA[React Native：使用 JavaScript 构建应用]]></title>
+    <link href="http://roshanca.com/2015/build-app-with-react-native"/>
+    <updated>2015-03-29T00:00:00+00:00</updated>
+    <id>http://roshanca.com/2015/build-app-with-react-native</id>
+    <content type="html"><![CDATA[<p>原文：<a href="//www.raywenderlich.com/99473/introducing-react-native-building-apps-javascript">Introducing React Native: Building Apps with JavaScript</a></p>
+
+<p>== 申明：转载请注明出处，尊重一下作者与译者的劳动:] ==</p>
+
+<p>几个月前 Facebook 才刚向世人展露 <a href="//facebook.github.io/react-native/">React Native</a>：一个用 JavaScript 来构建原生 iOS 应用的框架，现在它的 Beta <a href="https://github.com/facebook/react-native">版官方源码</a>就已被放上了 github。</p>
+
+<p>人们用 JavaScript 和 HTML5 写 iOS 应用，再用 <a href="//phonegap.com/">PhoneGap</a> 进行封装，这样的工作模式有一阵子了，React Native 到底有何不同呢？</p>
+
+<p>React Native 完全不是一码事，人们对其带来的两点倍感兴奋：</p>
+
+<ul>
+<li><p>在 React Native 中，虽然你的应用逻辑是用 JavaScript 所写，然而应用的 UI 可完全是原生的；因此你可以完全摈弃 HTML5 UI 所带来的效率低下。</p></li>
+<li><p>React 采用了一种非常大胆新颖的实现方式来构建用户界面。简单来说，应用的 UI 被简单地当做了一个当前的应用状态的功能函数来进行传递。</p></li>
+</ul>
+
+<p>关键的一点是 React Native 致力于为移动应用开发带来基于 <a href="//facebook.github.io/react/">React</a> 编程模式的巨大威力。它的目标并不是成为一个 &ldquo;write-once run-anywhere&rdquo; 的跨平台工具，它的目标是 &ldquo;learn-once write-anywhere&quot;。这是个很重要的差别。这篇教程只针对 iOS，但是一旦你学习到了它的概念创建 Android 应用对你来说应该也不是什么难事。</p>
+
+<p>若你曾经写过 Objective-C 或 Swift，你可能对这项 JavaScript 来替代它们工作的技术不会感到特别兴奋。不过，作为一名 Swift 开发者，上述的第二点应该会激起你的兴趣。</p>
+
+<p>通过 Swift，毫无疑问你已学到了更多函数式的编码算法和那些鼓励你转变或不变的技术。但是，在你构建 UI 的方式上，它与用 Objective-C 开发时并没多大不同：它仍是基于 UIKit 的实现。</p>
+
+<p>通过虚拟 DOM 和反射机制等概念，React 将函数式编程直接带入 UI 层。</p>
+
+<p>本篇教程以构建一个用于搜索英国城市房产登记项目的应用来向大家展示其工作原理。</p>
+
+<p><img src="//cdn5.raywenderlich.com/wp-content/uploads/2015/03/PropertyFinder.png" alt=""></p>
+
+<p>如果你之前从未写过任何 JavaScript，别怕；此教程会为你讲解每一步的代码原理。React 用 CSS 属性定义样式，一般来说它是足够易读易懂的，但如果需要的话，你可以参考优秀的 <a href="https://developer.mozilla.org/en-US/docs/Web/CSS">Mozilla 开发网络参考</a>。</p>
+
+<p>想要了解更多？继续阅读吧。</p>
+
+<h2 id="准备工作">准备工作</h2>
+
+<p>React Native 框架已经在 Github 上建立了<a href="https://github.com/facebook/react-native">仓库</a>，你可以通过 git 来克隆到本地，也可以选择下载 zip。一旦将它下载到了本地，在你开始写代码前，还有几件事要办。</p>
+
+<p>React Native 用到了 <a href="https://nodejs.org/">Node.js</a>，一个 JavaScript 的运行环境，用来构建你的 JavaScript 代码。如果你还未安装它，那是时候装一个了。</p>
+
+<p>第一步，<a href="//brew.sh/">安装 Homebrew</a>，按照 Homebrew 网站上的指示做，然后安装 Node.js，你可以通过终端窗口输入：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">brew install node
+</code></pre></div>
+<p>接下来，用 <code>homebrew</code> 安装 <a href="https://facebook.github.io/watchman/">watchman</a>，一个来自 Facebook 的文件 watcher 工具：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">brew install watchman
+</code></pre></div>
+<p>这是 React Native 用来观察代码变化并相应地作出重新构建用的，这好比每次你保存文件后 Xcode 就为你做了一次 build。</p>
+
+<p>React Native 代码在运行之前先要解决它的依赖问题。打开终端窗口定位至 React Native 目录下，并执行：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">npm install
+</code></pre></div>
+<p>这是在用 Node 的包管理器在获取依赖。这与 CocoaPods 和 Carthage 的功能类似。一旦命令运行成功，你会发现一个叫 <code>node_modules</code> 的文件夹被创建，大量的外部依赖文件就在其中。</p>
+
+<p>最后一步是启动开发服务。只需在刚才的终端窗口中继续输入：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">npm start
+</code></pre></div>
+<p>一旦执行，你会看到以下信息：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ npm start
+
+&gt; react-native@0.1.0 start /Users/colineberhardt/Projects/react-native
+&gt; ./packager/packager.sh
+
+
+ ===============================================================
+ |  Running packager on port 8081.       
+ |  Keep this packager running while developing on any JS         
+ |  projects. Feel free to close this tab and run your own      
+ |  packager instance if you prefer.                              
+ |                                                              
+ |     https://github.com/facebook/react-native                 
+ |                                                              
+ ===============================================================
+
+
+React packager ready.
+</code></pre></div>
+<p>这就对了，我们有了一个好的开头！将运行着脚本的终端窗口暂时搁置一边，我们继续教程。</p>
+
+<p>此时此刻，我建议你先跑一跑官方的例子，看看环境配置是否都正常运转。用 Xcode 打开 <code>react-native/Examples/Movies</code> 目录下的项目文件，编译运行，检查 <code>Movies</code> 应用有没有出现问题。</p>
+
+<h2 id="你好-react-native">你好 React Native</h2>
+
+<p>在开始编写这款房产搜索应用之前，你将先创建一个极其简单的 Hello World 应用。在此过程中你将接触许多的组件和概念。</p>
+
+<p>下载并解压缩这篇教程的<a href="//cdn5.raywenderlich.com/wp-content/uploads/2015/03/PropertyFinderStarter.zip">起步项目</a>，将其移至 <code>react-native/Examples</code> 目录下。一旦解压完毕，用 Xcode 打开 <code>PropertyFinder</code> 项目文件。先不着急编译运行，你得先写一些 JavaScript。</p>
+
+<p>用你的编辑器打开 <code>PropertyFinderApp.js</code> 在文件的开头加入以下这句：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+</code></pre></div>
+<p>用以启动严格模式，它将带来更加严格的错误处理，提醒禁止使用一些不太理想的 JavaScript 语言特性。简而言之，它有助于我们写出更好的 JavaScript 代码。</p>
+
+<p>接下来，加入以下这行：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">React</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;react-native&#39;</span><span class="p">);</span>
+</code></pre></div>
+<p>这将加载 <code>react-native</code> 模块并将其赋值给变量 <code>React</code>。React Native 采用与 Node.js 相同的模块加载技术，利用 <code>require</code> 方法导入。大致类似 Swift 中关联和导入库。</p>
+
+<p>在 <code>require</code> 语句下方，加入以下：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">styles</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">StyleSheet</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+  <span class="nx">text</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">color</span><span class="o">:</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span>
+    <span class="nx">backgroundColor</span><span class="o">:</span> <span class="s1">&#39;white&#39;</span><span class="p">,</span>
+    <span class="nx">fontSize</span><span class="o">:</span> <span class="mi">30</span><span class="p">,</span>
+    <span class="nx">margin</span><span class="o">:</span> <span class="mi">80</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>这句为 &quot;Hello World&rdquo; 文本单独定义了一个样式。如果你之前做过 web 开发，那你大概都认得这些属性名称。React Native 用<a href="//www.w3schools.com/css/">层叠样式表（CSS）</a>来定义应用 UI。</p>
+
+<p>回到应用本身！在同一文件中，在刚才的样式申明语句下加入以下代码：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kr">class</span> <span class="nx">PropertyFinderApp</span> <span class="kr">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="nx">React</span><span class="p">.</span><span class="nx">Text</span><span class="p">,</span> <span class="p">{</span><span class="nx">style</span><span class="o">:</span> <span class="nx">styles</span><span class="p">.</span><span class="nx">text</span><span class="p">},</span> <span class="s2">&quot;Hello World!&quot;</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>是的，这是一个 JavaScript 类！</p>
+
+<p>类概念在 ECMAScript 6 (ES6) 中才被引入。尽管 JavaScript 在不断地进化，web 开发者们仍然被老旧的浏览器的兼容性所限制。React Native 运行在 JavaScript 核心中，因此，你可以运用现代语言的高级功能，而不必担心老旧浏览器不支持的问题。</p>
+
+<p><code>PropertyFinderApp</code> 扩展自 <code>React.Component</code>, React 最基础的 UI 组件。组件包含了不可变的属性，和可变的状态变量，并且曝露了一个用来渲染组件的方法。目前应用足以简单，只需一个渲染方法。</p>
+
+<p>React Native 组件不属于 UIKit 类，但它们是有一些异曲同工。框架会将 React 组件树转化为所需的原生 UI。</p>
+
+<p>最后，在文件底部加入：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">React</span><span class="p">.</span><span class="nx">AppRegistry</span><span class="p">.</span><span class="nx">registerComponent</span><span class="p">(</span><span class="s1">&#39;PropertyFinderApp&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">PropertyFinderApp</span> <span class="p">});</span>
+</code></pre></div>
+<p><code>AppRegistry</code> 定义了一个指向应用的入口并且提供了根组件。</p>
+
+<p>保存 <code>PropertyFinderApp.js</code> 的改动，并回到 Xcode。确保 <code>PropertyFinder</code> 配置中指定过了具体的 iPhone 模拟器后，就可以开始编译运行了。没过几秒你就可以看见你的 “Hello World” 应用：</p>
+
+<p><img src="//cdn2.raywenderlich.com/wp-content/uploads/2015/03/react-helloworld.png" alt=""></p>
+
+<p>那个跑在模拟器中的 JavaScript 应用，被渲染成了原生 UI，根本看不见浏览器的存在！</p>
+
+<p>还是信不过我？:] 你可以自己验证：在 Xcode 中，选择菜单 <code>Debug\View Debugging\Capture View Hierarchy</code> 看一看原生视图的层级结构。你在任何地方都找不到 <code>UIWebView</code> 的实例。</p>
+
+<p><img src="//cdn4.raywenderlich.com/wp-content/uploads/2015/03/ViewDebugging.png" alt=""></p>
+
+<p>是不是对其背后的运作原理感到好奇？在 Xcode 中打开 <code>AppDelegate.m</code> 并定位到 <code>application:didFinishLaunchingWithOptions:</code> 这句，这个方法构建了一个 <code>RCTRootView</code>，它加载了 JavaScript 应用并渲染了其对应的 view。</p>
+
+<p>当应用开始运行时，<code>RCTRootView</code> 从以下 URL 来加载应用：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">//localhost:8081/Examples/PropertyFinder/PropertyFinderApp.includeRequire.runModule.bundle
+</code></pre></div>
+<p>回想起在教程开始时当你在终端窗口中执行 <code>npm start</code> 了吧，它其实是开启了一个容器和服务用以处理以上请求。</p>
+
+<p>在 Safari 中打开这个 URL，你可以看到应用的 JavaScript 代码。你应该能找到你的 “Hello World” 应用代码，被包围在 React Native 框架代码之中。</p>
+
+<p>当你的应用运行时，这段代码会被框架的核心加载与执行。在你的应用中，会加载 <code>PropertyFinderApp</code> 组件，然后构建原生 UIKit 视图。你会在接下来的教程中学到更多相关的内容。</p>
+
+<h2 id="hello-world-jsx">Hello World JSX</h2>
+
+<p>你的应用目前采用 <code>React.createElement</code> 来构建简单 UI，通过它 React 转变为相应的原生应用。你的 JavaScript 代码在当前格式下的可读性，不一会儿就会被更为复杂的多层嵌套的 UI 所迅速打破。</p>
+
+<p>确保应用还在运行中，回到编辑器重新编辑 <code>PropertyFinderApp.js</code>。修改你的组件渲染方法中的 <code>return</code> 语句：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="k">return</span> <span class="o">&lt;</span><span class="nx">React</span><span class="p">.</span><span class="nx">Text</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">text</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">Hello</span> <span class="nx">World</span> <span class="p">(</span><span class="nx">Again</span><span class="p">)</span><span class="o">&lt;</span><span class="err">/React.Text&gt;;</span>
+</code></pre></div>
+<p>这是 <a href="//facebook.github.io/react/docs/jsx-in-depth.html">JSX</a>，或是 JavaScript 语法扩展，它采用类 HTML 语法来混入你的 JavaScript 代码中。如果你是一名 web 开发者，你会对此感到非常熟悉。我们将在接下来的通篇文章中都使用 JSX 语法。</p>
+
+<p>保存 <code>PropertyFinderApp.js</code> 并回到模拟器中，按下 <code>Cmd+R</code> 你会发现你的应用刷新了界面将信息更新为了“Hello World (Again)”。</p>
+
+<p>重新运行 React Native 应用方便至极，就像刷新浏览器一般简单！:]</p>
+
+<p>从此只需关注 JavaScript 文件，一直保持着程序运行，在对 <code>PropertyFinderApp.js</code> 修改保存后，简单的刷新调试。</p>
+
+<p>Okay，“Hello World” 玩够了，接下来尝试写个真正的应用吧！</p>
+
+<h2 id="添加导航">添加导航</h2>
+
+<p>房产查找应用采用的是那一套基于标准导航栈的行为体验，提供自 UIKit 的导航控制器。是时候添加这项行为了。</p>
+
+<p>在 <code>PropertyFinderApp.js</code> 中，重新命名 <code>PropertyFinderApp</code> 为 <code>HelloWorld</code>：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kr">class</span> <span class="nx">HelloWorld</span> <span class="kr">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+</code></pre></div>
+<p>保持 “Hello World” 文本再显示一会儿，但它将不再是你的应用的根组件了。</p>
+
+<p>接下来在 <code>HelloWorld</code> 组件下方增加以下类：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kr">class</span> <span class="nx">PropertyFinderApp</span> <span class="kr">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">React</span><span class="p">.</span><span class="nx">NavigatorIOS</span>
+        <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">container</span><span class="p">}</span>
+        <span class="nx">initialRoute</span><span class="o">=</span><span class="p">{{</span>
+          <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;Property Finder&#39;</span><span class="p">,</span>
+          <span class="nx">component</span><span class="o">:</span> <span class="nx">HelloWorld</span><span class="p">,</span>
+        <span class="p">}}</span><span class="o">/&gt;</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>这构建了一个导航控制器，应用了样式，设定了初始路由指向 <code>HelloWorld</code> 组件。在 web 开发中，<code>路由</code> 是一项用来定义应用导航组织结构的技术：在此应用中，哪些页面，或路由被映射至 URLs。</p>
+
+<p>在同一文件中，更新样式申明以包含 container 样式：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">styles</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">StyleSheet</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+  <span class="nx">text</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">color</span><span class="o">:</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span>
+    <span class="nx">backgroundColor</span><span class="o">:</span> <span class="s1">&#39;white&#39;</span><span class="p">,</span>
+    <span class="nx">fontSize</span><span class="o">:</span> <span class="mi">30</span><span class="p">,</span>
+    <span class="nx">margin</span><span class="o">:</span> <span class="mi">80</span>
+  <span class="p">},</span>
+  <span class="nx">container</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">flex</span><span class="o">:</span> <span class="mi">1</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>稍后你会看到关于 <code>flex: 1</code> 的介绍。</p>
+
+<p>让我们回到模拟器并且按下 <code>Cmd+R</code> 发现 UI 变成了这样：</p>
+
+<p><img src="//cdn4.raywenderlich.com/wp-content/uploads/2015/03/react-helloworldagain.png" alt=""></p>
+
+<p>这是导航控制器与其根视图，它目前为 “Hello World” 文本。棒极了 —— 你现在为你的应用添加了适宜的基础导航结构，该到时候添加“真正”的 UI 了！</p>
+
+<h2 id="创建搜索页">创建搜索页</h2>
+
+<p>为工程新增名为 <code>SearchPage.js</code> 的文件，放置在与 <code>PropertyFinderApp.js</code> 同一目录中。为此文件添加以下代码：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">React</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;react-native&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="p">{</span>
+  <span class="nx">StyleSheet</span><span class="p">,</span>
+  <span class="nx">Text</span><span class="p">,</span>
+  <span class="nx">TextInput</span><span class="p">,</span>
+  <span class="nx">View</span><span class="p">,</span>
+  <span class="nx">TouchableHighlight</span><span class="p">,</span>
+  <span class="nx">ActivityIndicatorIOS</span><span class="p">,</span>
+  <span class="nx">Image</span><span class="p">,</span>
+  <span class="nx">Component</span>
+<span class="p">}</span> <span class="o">=</span> <span class="nx">React</span><span class="p">;</span>
+</code></pre></div>
+<p>你已经在之前见过了严格模式的定义与 react-native 的导入，但接下来的赋值语句可是全新的。</p>
+
+<p>这是<strong>解构赋值语句</strong>，它让你抽取出多个对象属性并用单条语句将其赋值给变量。所以，接下来你的代码中，可置 <code>React</code> 前缀。打个比方，你可以通过 <code>React.StyleSheet</code> 直接引用到 <code>StyleSheet</code>。解构赋值对于操作数组也是颇有用处，它也是<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment">非常值得学习的</a>。</p>
+
+<p>回到 <code>SearchPage.js</code> 文件，添加以下代码：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">styles</span> <span class="o">=</span> <span class="nx">StyleSheet</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+  <span class="nx">description</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">marginBottom</span><span class="o">:</span> <span class="mi">20</span><span class="p">,</span>
+    <span class="nx">fontSize</span><span class="o">:</span> <span class="mi">18</span><span class="p">,</span>
+    <span class="nx">textAlign</span><span class="o">:</span> <span class="s1">&#39;center&#39;</span><span class="p">,</span>
+    <span class="nx">color</span><span class="o">:</span> <span class="s1">&#39;#656565&#39;</span>
+  <span class="p">},</span>
+  <span class="nx">container</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">padding</span><span class="o">:</span> <span class="mi">30</span><span class="p">,</span>
+    <span class="nx">marginTop</span><span class="o">:</span> <span class="mi">65</span><span class="p">,</span>
+    <span class="nx">alignItems</span><span class="o">:</span> <span class="s1">&#39;center&#39;</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>同样的，这些是标准的 CSS 属性。像这样设置样式不如用界面构建工具来的直观，但它好过在你的 <code>viewDidLoad()</code> 方法中一个接着一个来设置视图属性！:]</p>
+
+<p>在样式下方添加组件自身代码：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kr">class</span> <span class="nx">SearchPage</span> <span class="kr">extends</span> <span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">View</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">container</span><span class="p">}</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">Text</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">description</span><span class="p">}</span><span class="o">&gt;</span>
+          <span class="nx">Search</span> <span class="k">for</span> <span class="nx">houses</span> <span class="nx">to</span> <span class="nx">buy</span><span class="o">!</span>
+        <span class="o">&lt;</span><span class="err">/Text&gt;</span>
+        <span class="o">&lt;</span><span class="nx">Text</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">description</span><span class="p">}</span><span class="o">&gt;</span>
+          <span class="nx">Search</span> <span class="nx">by</span> <span class="nx">place</span><span class="o">-</span><span class="nx">name</span><span class="p">,</span> <span class="nx">postcode</span> <span class="nx">or</span> <span class="nx">search</span> <span class="nx">near</span> <span class="nx">your</span> <span class="nx">location</span><span class="p">.</span>
+        <span class="o">&lt;</span><span class="err">/Text&gt;</span>
+      <span class="o">&lt;</span><span class="err">/View&gt;</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><code>render</code> 是 JSX 和与之提供的结构的重大示例。透过这样的方式，你可以对这些组件构建成的 UI 一目了然：一个容器两个文本标签。</p>
+
+<p>最后，我们在文件的结尾处添加：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">SearchPage</span><span class="p">;</span>
+</code></pre></div>
+<p>用以输出 <code>SearchPage</code> 类，它规定了其它文件允许引用的部分。</p>
+
+<p>接着的步骤是要更新应用的路由以便初始化路由。</p>
+
+<p>打开 <code>PropertyFinderApp.js</code>，在文件顶部 <code>require</code> 方法后加入：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">SearchPage</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./SearchPage&#39;</span><span class="p">);</span>
+</code></pre></div>
+<p><code>PropertyFinderApp</code> 类中的 <code>render</code> 方法内，更新 <code>initialRoute</code> 以引用新增页面，如下所示：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">component</span><span class="o">:</span> <span class="nx">SearchPage</span>
+</code></pre></div>
+<p>此刻你可以移除 <code>HelloWorld</code> 类和与之相关的样式了。如过你愿意，你将再也不需要那段代码了。</p>
+
+<p>回到模拟器，敲打 <code>Cmd+R</code> 查看新 UI：</p>
+
+<p><img src="//cdn1.raywenderlich.com/wp-content/uploads/2015/03/react-searchstarter.png" alt=""></p>
+
+<p>这就是运用了的新组件：<code>SearchPage</code>，你刚刚添加的。</p>
+
+<h2 id="用-flexbox-定义样式">用 Flexbox 定义样式</h2>
+
+<p>到目前为止，你已经见过了基础的 CSS 属性诸如 margins，paddings 和 color，但你可能不太熟悉 <code>flexbox</code>， 这是不久前才被加入 CSS 规范的属性，它对于应用 UI 排版布局那是相当的有用处。</p>
+
+<p>React Native 采用了 <a href="https://github.com/facebook/css-layout">css-layout</a> 库，一个 JavaScript 对于 flexbox 标准的实现，它将布局转化成 C (for iOS) 和 Java (for Android)。</p>
+
+<p>它很了不起，因为 Facebook 已将其作为一个独立的项目来进行开发维护，旨在多种语言。自此诞生了不少新奇的应用，比如<a href="//blog.scottlogic.com/2015/02/02/svg-layout-flexbox.html">在 SVG 上应用 flexbox 布局</a>（是的，那是我的作品&hellip;但噢不，我难尝饱眠已久）。</p>
+
+<p>在你的应用中，容器拥有默认的列布局，这意味着它的子元素是按垂直堆叠排列的，像这样：</p>
+
+<p><img src="//cdn3.raywenderlich.com/wp-content/uploads/2015/03/FlexStack.png" alt=""></p>
+
+<p>这被称为<strong>主轴</strong>，它的排列可垂直可水平。</p>
+
+<p>每个子元素的垂直位置，由其 margin，height 和 padding 来共同决定。容器也设置了 <code>alignItems</code> 属性为 <code>center</code>，这将影响其水平轴交叉轴上的排列，导致文本居中。</p>
+
+<p>该为其加上输入框和按钮了。打开 <code>SearchPage.js</code>，在第二个 <code>Text</code> 元素的闭合标签后加入以下代码：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">&lt;</span><span class="nx">View</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">flowRight</span><span class="p">}</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="nx">TextInput</span>
+    <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">searchInput</span><span class="p">}</span>
+    <span class="nx">placeholder</span><span class="o">=</span><span class="s1">&#39;Search via name or postcode&#39;</span><span class="o">/&gt;</span>
+  <span class="o">&lt;</span><span class="nx">TouchableHighlight</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">button</span><span class="p">}</span>
+      <span class="nx">underlayColor</span><span class="o">=</span><span class="s1">&#39;#99d9f4&#39;</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">Text</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">buttonText</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">Go</span><span class="o">&lt;</span><span class="err">/Text&gt;</span>
+  <span class="o">&lt;</span><span class="err">/TouchableHighlight&gt;</span>
+<span class="o">&lt;</span><span class="err">/View&gt;</span>
+<span class="o">&lt;</span><span class="nx">TouchableHighlight</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">button</span><span class="p">}</span>
+    <span class="nx">underlayColor</span><span class="o">=</span><span class="s1">&#39;#99d9f4&#39;</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="nx">Text</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">buttonText</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">Location</span><span class="o">&lt;</span><span class="err">/Text&gt;</span>
+<span class="o">&lt;</span><span class="err">/TouchableHighlight&gt;</span>
+</code></pre></div>
+<p>目前你已增加了两个顶级视图：一个拥有着一文本输入框和一按钮，另一个只包含了一按钮。一会儿再跟你解释如何定义这些元素样式的。</p>
+
+<p>接下来，添加相应的样式到你的 <code>styles</code> 定义中：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">flowRight</span><span class="o">:</span> <span class="p">{</span>
+  <span class="nx">flexDirection</span><span class="o">:</span> <span class="s1">&#39;row&#39;</span><span class="p">,</span>
+  <span class="nx">alignItems</span><span class="o">:</span> <span class="s1">&#39;center&#39;</span><span class="p">,</span>
+  <span class="nx">alignSelf</span><span class="o">:</span> <span class="s1">&#39;stretch&#39;</span>
+<span class="p">},</span>
+<span class="nx">buttonText</span><span class="o">:</span> <span class="p">{</span>
+  <span class="nx">fontSize</span><span class="o">:</span> <span class="mi">18</span><span class="p">,</span>
+  <span class="nx">color</span><span class="o">:</span> <span class="s1">&#39;white&#39;</span><span class="p">,</span>
+  <span class="nx">alignSelf</span><span class="o">:</span> <span class="s1">&#39;center&#39;</span>
+<span class="p">},</span>
+<span class="nx">button</span><span class="o">:</span> <span class="p">{</span>
+  <span class="nx">height</span><span class="o">:</span> <span class="mi">36</span><span class="p">,</span>
+  <span class="nx">flex</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="nx">flexDirection</span><span class="o">:</span> <span class="s1">&#39;row&#39;</span><span class="p">,</span>
+  <span class="nx">backgroundColor</span><span class="o">:</span> <span class="s1">&#39;#48BBEC&#39;</span><span class="p">,</span>
+  <span class="nx">borderColor</span><span class="o">:</span> <span class="s1">&#39;#48BBEC&#39;</span><span class="p">,</span>
+  <span class="nx">borderWidth</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="nx">borderRadius</span><span class="o">:</span> <span class="mi">8</span><span class="p">,</span>
+  <span class="nx">marginBottom</span><span class="o">:</span> <span class="mi">10</span><span class="p">,</span>
+  <span class="nx">alignSelf</span><span class="o">:</span> <span class="s1">&#39;stretch&#39;</span><span class="p">,</span>
+  <span class="nx">justifyContent</span><span class="o">:</span> <span class="s1">&#39;center&#39;</span>
+<span class="p">},</span>
+<span class="nx">searchInput</span><span class="o">:</span> <span class="p">{</span>
+  <span class="nx">height</span><span class="o">:</span> <span class="mi">36</span><span class="p">,</span>
+  <span class="nx">padding</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span>
+  <span class="nx">marginRight</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span>
+  <span class="nx">flex</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span>
+  <span class="nx">fontSize</span><span class="o">:</span> <span class="mi">18</span><span class="p">,</span>
+  <span class="nx">borderWidth</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="nx">borderColor</span><span class="o">:</span> <span class="s1">&#39;#48BBEC&#39;</span><span class="p">,</span>
+  <span class="nx">borderRadius</span><span class="o">:</span> <span class="mi">8</span><span class="p">,</span>
+  <span class="nx">color</span><span class="o">:</span> <span class="s1">&#39;#48BBEC&#39;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>格外小心它的格式，每一个样式属性定义块后必须用逗号来隔开。这意味着在 <code>container</code> 的样式定义结尾处也要有逗号。</p>
+
+<p>这些样式将应用在你刚添加的输入框和按钮上。</p>
+
+<p>回到模拟器按下 <code>Cmd+R</code> 以刷新 UI：</p>
+
+<p><img src="//cdn3.raywenderlich.com/wp-content/uploads/2015/03/react-searchpageinput.png" alt=""></p>
+
+<p>文本域和 &ldquo;Go&rdquo; 按钮要并列一排，所以你要将其都包裹在同一容器中，并给容器增加 <code>flexDirection: &#39;row&#39;</code> 的样式。不要为输入框和按钮设置具体的宽度，取而代之的是给它们一个 <code>flex</code> 值。文本域设置为 <code>flex: 4</code>，与此同时将按钮设置为 <code>flex: 1;</code>，所以它们的宽度是 4:1 比例。</p>
+
+<p>你也许注意到了这些按钮，并不是真正的按钮！:] 在 UIKit 中，原生按钮比标签更不易点击，因此 React Native 团队决定直接在 JavaScript 中构建按钮来的更容易一些。在你的应用中，按钮使用 <code>TouchableHighlight</code> 来构建，这是一个 React Native 组件，当它被点击时它会变得透明从而使得其底层的颜色显露出来。</p>
+
+<p>最后，完善应用搜索页面还差一张房子的图片。在 <code>location</code> 按钮的 <code>TouchableHighlight</code> 组件后加入：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">&lt;</span><span class="nx">Image</span> <span class="nx">source</span><span class="o">=</span><span class="p">{</span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;image!house&#39;</span><span class="p">)}</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">image</span><span class="p">}</span><span class="o">/&gt;</span>
+</code></pre></div>
+<p>现在，在样式列表中增加图片相应的样式，别忘了它与它之前的样式定义之间要加入逗号。</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">image</span><span class="o">:</span> <span class="p">{</span>
+  <span class="nx">width</span><span class="o">:</span> <span class="mi">217</span><span class="p">,</span>
+  <span class="nx">height</span><span class="o">:</span> <span class="mi">138</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>语句 <code>require(&#39;image!house&#39;)</code> 用以引用定位在应用静态资源目录下的图片资源的。在 Xcode 中，打开 <code>Images.xcassets</code> 你会发现以上代码引用的 &ldquo;house&rdquo; 图标。</p>
+
+<p>回到模拟器按下 <code>Cmd+R</code> 欣赏你的新 UI 吧：</p>
+
+<p><img src="//cdn2.raywenderlich.com/wp-content/uploads/2015/03/react-searchpagehouse.png" alt=""></p>
+
+<p>现在你的应用看上去不错，但缺少相应的功能。所以当务之急是增加应用的状态和表现行为。</p>
+
+<h2 id="增加组件状态">增加组件状态</h2>
+
+<p>每一个 React 组件都有自己的状态对象，它以键值的形式作为存储。在一个组件被渲染之前，我们必须先设置它的初始状态。</p>
+
+<p>在 <code>SearchPage.js</code> 中，为 <code>SearchPage</code> 类加入以下代码，加在 <code>render()</code> 之前：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kr">super</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">searchString</span><span class="o">:</span> <span class="s1">&#39;london&#39;</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>组件当前拥有了 <code>state</code> 变量，其中的 <code>searchString</code> 被设置成了一个初始值：<code>london</code>。</p>
+
+<p>看看怎么使用这个组件状态的。在 <code>render</code> 中，用以下代码替换 <code>TextInput</code> 元素：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">&lt;</span><span class="nx">TextInput</span>
+  <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">searchInput</span><span class="p">}</span>
+  <span class="nx">value</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">searchString</span><span class="p">}</span>
+  <span class="nx">placeholder</span><span class="o">=</span><span class="s1">&#39;Search via name or postcode&#39;</span><span class="o">/&gt;</span>
+</code></pre></div>
+<p>此处将 <code>TextInput</code> 的 value 属性 —— 那是向用户展示文本用的 —— 设置为了当下 <code>searchString</code> 状态变量的值。这只是用以处理初始状态的设置，那接下来当用户编辑本文又会发生什么呢？</p>
+
+<p>第一步是为此动作创建一个事件方法。在 <code>SearchPage</code> 类定义中增加如下方法：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">onSearchTextChanged</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;onSearchTextChanged&#39;</span><span class="p">);</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span> <span class="nx">searchString</span><span class="o">:</span> <span class="nx">event</span><span class="p">.</span><span class="nx">nativeEvent</span><span class="p">.</span><span class="nx">text</span> <span class="p">});</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">searchString</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>这可从事件的 <code>text</code> 属性获取值并且用它来更新组件状态，同时也增加了一些打印信息的代码用以测试。</p>
+
+<p>为使文本变化时方法被调用，回到在 <code>render</code> 方法中的 <code>TextInput</code> 元素上，我们为其增添 <code>onChange</code> 属性，它看起来成了这样：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">&lt;</span><span class="nx">TextInput</span>
+  <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">searchInput</span><span class="p">}</span>
+  <span class="nx">value</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">searchString</span><span class="p">}</span>
+  <span class="nx">onChange</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">onSearchTextChanged</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">)}</span>
+  <span class="nx">placeholder</span><span class="o">=</span><span class="s1">&#39;Search via name or postcode&#39;</span><span class="o">/&gt;</span>
+</code></pre></div>
+<p>只要用户一改变输入文本，<code>onChange</code> 即刻被触发，<code>onSearchTextChanged</code> 方法被执行。</p>
+
+<p>在你刷新应用前我们再做一步操作：将下列打印语句加入到 <code>render()</code> 顶部，<code>return</code> 之前：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;SearchPage.render&#39;</span><span class="p">);</span>
+</code></pre></div>
+<p>你稍后会对这些打印语句有所了解的！:]</p>
+
+<p>回到模拟器，按下 <code>Cmd+R</code>，你应该看到输入框内的初始文本显示为 &ldquo;london&rdquo; 并且一旦对其进行编辑一些调试语句就被打印在了 Xcode 的控制台里。</p>
+
+<p><img src="//cdn3.raywenderlich.com/wp-content/uploads/2015/03/react-renderconsole.png" alt=""></p>
+
+<p>查看以上截图，打印语句的顺序有些奇怪：</p>
+
+<ol>
+<li>初始调用 <code>render()</code> 以创建视图。</li>
+<li>当文本改变时执行 <code>onSearchTextChanged()</code>。</li>
+<li>接着更新组件状态反应在新的输入框文本上，后者又触发了另一轮 render。</li>
+<li><code>onSearchTextChanged()</code> 在日志中输出新的搜索字符串。</li>
+</ol>
+
+<p>无论何时，只要是应用一更新任意组件的状态，它都将会触发整个 UI 进行重新渲染，在此期间，所有组件的 <code>render</code> 方法都会调用执行。这是一个很赞的思路，因为它完全地对渲染逻辑进行了解耦，这些逻辑由影响 UI 的状态变化所产生。</p>
+
+<p>在其它众多的 UI 框架中，要么是由你负责手动地更新基于 UI 的状态变化，要么是利用某种绑定框架来创建一个的应用状态和它的 UI 呈现之间内在关联。</p>
+
+<p>看，举个例子，我的文章：实现<a href="//www.raywenderlich.com/74106/mvvm-tutorial-with-reactivecocoa-part-1">在 ReactiveCocoa 中的 MVVM 模式</a>。</p>
+
+<p>用 React，你不必再为究竟是哪一部分的 UI 也许受到了状态变化的影响而感到担心，整个 UI 都像是作为一个你的应用状态的方法函数来进行简单传递。</p>
+
+<p>这一刻你可能会指出这套概念当中的一个缺点。没错，就是 —— 性能。</p>
+
+<p>当然了你不可能删除整个 UI 再重新生成，每次一有状态改变就这么做？这可是 React 聪明之处。每一次 UI 渲染，它都会将渲染方法返回的视图树与当前的 UIKit 视图进行比对。比对的结果中相差异的部分才是 React 需要对当前视图做出更新的部分，也就是说，只有改动的一小部分才会被真正的重新渲染生成。</p>
+
+<p>令人刮目相看的是这新奇的理念使得 ReactJS 如此独特 —— 虚拟 DOM (文档对象模型, web 文档的可视树)和反射机制 —— 运用在 iOS 应用之中。</p>
+
+<p>你可以到时候再回头看这些东西，我们仍要继续完善当前的 app。删除打印信息语句，你不再需要它们来扰乱你的代码了。</p>
+
+<h2 id="开始搜索">开始搜索</h2>
+
+<p>为了实现搜索功能你需要在 “Go” 按钮的点击事件上做些文章。创建一个合适的 API 请求，并且为用户在此数据查询的等待过程中提供一个可视化的指示界面。</p>
+
+<p>在 <code>SearchPage.js</code> 中，更新初始状态：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">searchString</span><span class="o">:</span> <span class="s1">&#39;london&#39;</span><span class="p">,</span>
+  <span class="nx">isLoading</span><span class="o">:</span> <span class="kc">false</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>新增的 <code>isLoading</code> 属性用来跟踪数据查询是否完成。</p>
+
+<p>将以下逻辑加入到 <code>render</code> 的开头：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">spinner</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">isLoading</span> <span class="o">?</span>
+  <span class="p">(</span> <span class="o">&lt;</span><span class="nx">ActivityIndicatorIOS</span>
+      <span class="nx">hidden</span><span class="o">=</span><span class="s1">&#39;true&#39;</span>
+      <span class="nx">size</span><span class="o">=</span><span class="s1">&#39;large&#39;</span><span class="o">/&gt;</span> <span class="p">)</span> <span class="o">:</span>
+  <span class="p">(</span> <span class="o">&lt;</span><span class="nx">View</span><span class="o">/&gt;</span><span class="p">);</span>
+</code></pre></div>
+<p>这是一个三元的 <code>if</code> 判断语句，它的执行结果不是增加一个动态指示器就是一个空视图，这取决于组件的 <code>isLoading</code> 状态。因为整个组件每次都会渲染，所以你可以对 JSX 和 JavaScript 逻辑代码随意混用。</p>
+
+<p>JSX 在 <code>return</code> 中定义的搜索 UI 里，加入下列一行，位于 <code>Image</code> 下方：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">{</span><span class="nx">spinner</span><span class="p">}</span>
+</code></pre></div>
+<p>现在，在 <code>TouchableHighlight</code> 包裹着的 &ldquo;Go&rdquo; 文本视图上增加以下属性：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">onPress</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">onSearchPressed</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">)}</span>
+</code></pre></div>
+<p>接着，在 <code>SearchPage</code> 类里添加以下方法：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">_executeQuery</span><span class="p">(</span><span class="nx">query</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">query</span><span class="p">);</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span> <span class="nx">isLoading</span><span class="o">:</span> <span class="kc">true</span> <span class="p">});</span>
+<span class="p">}</span>
+
+<span class="nx">onSearchPressed</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">query</span> <span class="o">=</span> <span class="nx">urlForQueryAndPage</span><span class="p">(</span><span class="s1">&#39;place_name&#39;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">searchString</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">_executeQuery</span><span class="p">(</span><span class="nx">query</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><code>_executeQuery()</code> 会执行最终的查询，但现在我们先让它简单地输出一些信息在控制台里，并将 <code>isLoading</code> 设置设置为 <code>true</code> 以便 UI 更新。</p>
+
+<p>当 &ldquo;Go&rdquo; 按钮被点击时，<code>onSearchPressed()</code> 将被执行以开展查询。</p>
+
+<p>最后，在 <code>SearchPage</code> 类申明之前加入以下工具类方法：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">urlForQueryAndPage</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">value</span><span class="p">,</span> <span class="nx">pageNumber</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="nx">country</span><span class="o">:</span> <span class="s1">&#39;uk&#39;</span><span class="p">,</span>
+      <span class="nx">pretty</span><span class="o">:</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span>
+      <span class="nx">encoding</span><span class="o">:</span> <span class="s1">&#39;json&#39;</span><span class="p">,</span>
+      <span class="nx">listing_type</span><span class="o">:</span> <span class="s1">&#39;buy&#39;</span><span class="p">,</span>
+      <span class="nx">action</span><span class="o">:</span> <span class="s1">&#39;search_listings&#39;</span><span class="p">,</span>
+      <span class="nx">page</span><span class="o">:</span> <span class="nx">pageNumber</span>
+  <span class="p">};</span>
+  <span class="nx">data</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
+
+  <span class="kd">var</span> <span class="nx">querystring</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">key</span> <span class="o">=&gt;</span> <span class="nx">key</span> <span class="o">+</span> <span class="s1">&#39;=&#39;</span> <span class="o">+</span> <span class="nb">encodeURIComponent</span><span class="p">(</span><span class="nx">data</span><span class="p">[</span><span class="nx">key</span><span class="p">]))</span>
+    <span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;&amp;&#39;</span><span class="p">);</span>
+
+  <span class="k">return</span> <span class="s1">&#39;//api.nestoria.co.uk/api?&#39;</span> <span class="o">+</span> <span class="nx">querystring</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>这个方法不依赖于 <code>SearchPage</code>，所以它以一个独立的函数而不是一个类方法的形式存在。它一开始创建了基于参数的查询字符串在 <code>data</code> 之中，接下来它将数据转换成要求的字符串格式，<code>name=value</code>结队成组并用 &amp; 字符连接着。这里的 <code>=&gt;</code> 语法是表示一个箭头函数，这是<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions">新近加入的 JavaScript 语言</a>中用以创建匿名函数的简要语法。</p>
+
+<p>回头看模拟器，按下 <code>Cmd+R</code> 重新载入应用并点击 &ldquo;Go&rdquo; 按钮，你将能看到旋转的动态指示器。查看 Xcode 控制台，你将看到如下：</p>
+
+<p><img src="//cdn1.raywenderlich.com/wp-content/uploads/2015/03/SearchAcitivityIndicator.png" alt=""></p>
+
+<p>菊花图展现在视图中数据请求 URL 显示在控制台日志里。复制粘贴这段 URL 到你的浏览器中看看结果如何。你将会看到大段的 JSON 对象，别担心 —— 你不必了解它！你将编写代码解析它。</p>
+
+<p>下一步我们在应用中处理这项请求。</p>
+
+<h2 id="处理-api-请求">处理 API 请求</h2>
+
+<p>还是在 <code>SearchPage.js</code> 中，更新初始状态，在构造方法中加入 <code>message</code> 变量：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">searchString</span><span class="o">:</span> <span class="s1">&#39;london&#39;</span><span class="p">,</span>
+  <span class="nx">isLoading</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;&#39;</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>在 <code>render</code> 中，在 UI 底部加入：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">&lt;</span><span class="nx">Text</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">description</span><span class="p">}</span><span class="o">&gt;</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">message</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/Text&gt;</span>
+</code></pre></div>
+<p>它为向用户显示了信息条数。</p>
+
+<p>在 <code>SearchPage</code> 类中，加入以下代码到 <code>_executeQuery()</code> 结尾处：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">fetch</span><span class="p">(</span><span class="nx">query</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">json</span> <span class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">_handleResponse</span><span class="p">(</span><span class="nx">json</span><span class="p">.</span><span class="nx">response</span><span class="p">))</span>
+  <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span> <span class="o">=&gt;</span> 
+     <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span>
+      <span class="nx">isLoading</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;Something bad happened &#39;</span> <span class="o">+</span> <span class="nx">error</span>
+   <span class="p">}));</span>
+</code></pre></div>
+<p>这里采用了 <code>fetch</code> 函数，它是 <a href="https://fetch.spec.whatwg.org/">Web API 中的一部分</a>，提供了大量改进的针对 <code>XMLHttpRequest</code> 的 API。异步响应将以一个 <a href="http://www.html5rocks.com/en/tutorials/es6/promises/">promise</a> 的形式返回，在成功回路中将解析的 JSON 提供给一个接下来要新增的方法。</p>
+
+<p>最后一步是增加下列方法到 <code>SearchPage</code>：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">_handleResponse</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span> <span class="nx">isLoading</span><span class="o">:</span> <span class="kc">false</span> <span class="p">,</span> <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;&#39;</span> <span class="p">});</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">application_response_code</span><span class="p">.</span><span class="nx">substr</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">===</span> <span class="s1">&#39;1&#39;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Properties found: &#39;</span> <span class="o">+</span> <span class="nx">response</span><span class="p">.</span><span class="nx">listings</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span> <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;Location not recognized; please try again.&#39;</span><span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>这将清除 <code>isLoading</code> 状态和请求成功后显示在调试日志内的房产数量信息。</p>
+
+<p>保存你的修改，然后回到模拟器刷新之，试着搜索关键字 &ldquo;london&quot;，你应该能在日志中看到 20 处房产已被找到的信息。接下来试着搜索一个不存在的地点，比如 &quot;narnia&quot;，迎接你的将是以下信息：</p>
+
+<p><img src="//cdn5.raywenderlich.com/wp-content/uploads/2015/03/react-narnia.png" alt=""></p>
+
+<p>到了展现这伦敦真实位置的 20 处房产的时刻了。</p>
+
+<h2 id="展示结果">展示结果</h2>
+
+<p>创建一个 <code>SearchResults.js</code> 文件，加入以下代码：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">React</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;react-native&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="p">{</span>
+  <span class="nx">StyleSheet</span><span class="p">,</span>
+  <span class="nx">Image</span><span class="p">,</span> 
+  <span class="nx">View</span><span class="p">,</span>
+  <span class="nx">TouchableHighlight</span><span class="p">,</span>
+  <span class="nx">ListView</span><span class="p">,</span>
+  <span class="nx">Text</span><span class="p">,</span>
+  <span class="nx">Component</span>
+<span class="p">}</span> <span class="o">=</span> <span class="nx">React</span><span class="p">;</span>
+</code></pre></div>
+<p>对，没错，一个包含着 <code>react-native</code> 模块的 <code>require</code> 语句，还有一个解构赋值。这些都在之前提过了对吧？</p>
+
+<p>接着添加组件自身：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kr">class</span> <span class="nx">SearchResults</span> <span class="kr">extends</span> <span class="nx">Component</span> <span class="p">{</span>
+
+  <span class="nx">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kr">super</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">dataSource</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ListView</span><span class="p">.</span><span class="nx">DataSource</span><span class="p">(</span>
+      <span class="p">{</span><span class="nx">rowHasChanged</span><span class="o">:</span> <span class="p">(</span><span class="nx">r1</span><span class="p">,</span> <span class="nx">r2</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">r1</span><span class="p">.</span><span class="nx">guid</span> <span class="o">!==</span> <span class="nx">r2</span><span class="p">.</span><span class="nx">guid</span><span class="p">});</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="nx">dataSource</span><span class="o">:</span> <span class="nx">dataSource</span><span class="p">.</span><span class="nx">cloneWithRows</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">listings</span><span class="p">)</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+
+  <span class="nx">renderRow</span><span class="p">(</span><span class="nx">rowData</span><span class="p">,</span> <span class="nx">sectionID</span><span class="p">,</span> <span class="nx">rowID</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">TouchableHighlight</span>
+          <span class="nx">underlayColor</span><span class="o">=</span><span class="s1">&#39;#dddddd&#39;</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">View</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="nx">Text</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">rowData</span><span class="p">.</span><span class="nx">title</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/Text&gt;</span>
+        <span class="o">&lt;</span><span class="err">/View&gt;</span>
+      <span class="o">&lt;</span><span class="err">/TouchableHighlight&gt;</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">ListView</span>
+        <span class="nx">dataSource</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">dataSource</span><span class="p">}</span>
+        <span class="nx">renderRow</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">renderRow</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">)}</span><span class="o">/&gt;</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre></div>
+<p>以上代码使用到了更加特殊的组件 —— <code>ListView</code> —— 它在一个可滚动的容器中展现多排数据，类似 <code>UITableView</code>。你可以通过 <code>ListView.DataSource</code> 和一个方法来向 <code>ListView</code> 提供数据，这个方法每一行数据提供 UI 的实现。</p>
+
+<p>构建数据源时，你应当提供一个能两两比较行 id 的方法。<code>ListView</code> 用此在核对进程中来明确列表数据的具体改动。在这种情况下，Nestoria 房产的 API 所返回的 <code>guid</code> 属性，正好符合这一目的。</p>
+
+<p>现在增加模块输出定义在文件底部：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">SearchResults</span><span class="p">;</span>
+</code></pre></div>
+<p>增加以下代码至 <code>SearchPage.js</code> 文件顶部位置，插入在用以请求 React 的 <code>require</code> 之下：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">SearchResults</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./SearchResults&#39;</span><span class="p">);</span>
+</code></pre></div>
+<p>这样做使得我们在 <code>SearchPage</code> 中得以运用刚才添加的 <code>SearchResults</code> 类。</p>
+
+<p>修改当前的 <code>_handleResponse</code> 方法，将 <code>console.log</code> 语句替换为下列代码：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">navigator</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+  <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;Results&#39;</span><span class="p">,</span>
+  <span class="nx">component</span><span class="o">:</span> <span class="nx">SearchResults</span><span class="p">,</span>
+  <span class="nx">passProps</span><span class="o">:</span> <span class="p">{</span><span class="nx">listings</span><span class="o">:</span> <span class="nx">response</span><span class="p">.</span><span class="nx">listings</span><span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>以上代码将为你导航到新增的 <code>SearchResults</code> 组件并通过 API 请求来为列表传递数据。使用 <code>push</code> 方法可保证搜索结果页被推入之导航栈中，这意味着你可以通过返回按钮来回到根目录。</p>
+
+<p>回到模拟器刷新并搜索，展现在你面前的是一份房产列表：</p>
+
+<p><img src="//cdn4.raywenderlich.com/wp-content/uploads/2015/03/react-searchresults1.png" alt=""></p>
+
+<p>很高兴得到了我们期望已久的房产列表，但这列表展示略挫，让我们来让它变的更好一些。</p>
+
+<h2 id="接触样式">接触样式</h2>
+
+<p>这些 React Native 代码自此应该一回生二回熟了，以此以下教程可以两步并作一步来快速讲解。</p>
+
+<p>在 <code>SearchResults.js</code> 中的解构赋值语句后添加以下样式定义：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">styles</span> <span class="o">=</span> <span class="nx">StyleSheet</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+  <span class="nx">thumb</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">width</span><span class="o">:</span> <span class="mi">80</span><span class="p">,</span>
+    <span class="nx">height</span><span class="o">:</span> <span class="mi">80</span><span class="p">,</span>
+    <span class="nx">marginRight</span><span class="o">:</span> <span class="mi">10</span>
+  <span class="p">},</span>
+  <span class="nx">textContainer</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">flex</span><span class="o">:</span> <span class="mi">1</span>
+  <span class="p">},</span>
+  <span class="nx">separator</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">height</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nx">backgroundColor</span><span class="o">:</span> <span class="s1">&#39;#dddddd&#39;</span>
+  <span class="p">},</span>
+  <span class="nx">price</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">fontSize</span><span class="o">:</span> <span class="mi">25</span><span class="p">,</span>
+    <span class="nx">fontWeight</span><span class="o">:</span> <span class="s1">&#39;bold&#39;</span><span class="p">,</span>
+    <span class="nx">color</span><span class="o">:</span> <span class="s1">&#39;#48BBEC&#39;</span>
+  <span class="p">},</span>
+  <span class="nx">title</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">fontSize</span><span class="o">:</span> <span class="mi">20</span><span class="p">,</span>
+    <span class="nx">color</span><span class="o">:</span> <span class="s1">&#39;#656565&#39;</span>
+  <span class="p">},</span>
+  <span class="nx">rowContainer</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">flexDirection</span><span class="o">:</span> <span class="s1">&#39;row&#39;</span><span class="p">,</span>
+    <span class="nx">padding</span><span class="o">:</span> <span class="mi">10</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>以上定义了每一行即将要被渲染的列表样式。</p>
+
+<p>接着用以下代码替换 <code>renderRow()</code> 方法：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">renderRow</span><span class="p">(</span><span class="nx">rowData</span><span class="p">,</span> <span class="nx">sectionID</span><span class="p">,</span> <span class="nx">rowID</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">price</span> <span class="o">=</span> <span class="nx">rowData</span><span class="p">.</span><span class="nx">price_formatted</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">TouchableHighlight</span> <span class="nx">onPress</span><span class="o">=</span><span class="p">{()</span> <span class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">rowPressed</span><span class="p">(</span><span class="nx">rowData</span><span class="p">.</span><span class="nx">guid</span><span class="p">)}</span>
+        <span class="nx">underlayColor</span><span class="o">=</span><span class="s1">&#39;#dddddd&#39;</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">View</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">View</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">rowContainer</span><span class="p">}</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="nx">Image</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">thumb</span><span class="p">}</span> <span class="nx">source</span><span class="o">=</span> <span class="err">/&gt;</span>
+          <span class="o">&lt;</span><span class="nx">View</span>  <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">textContainer</span><span class="p">}</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">Text</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">price</span><span class="p">}</span><span class="o">&gt;</span><span class="err">£</span><span class="p">{</span><span class="nx">price</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/Text&gt;</span>
+            <span class="o">&lt;</span><span class="nx">Text</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">title</span><span class="p">}</span> 
+                  <span class="nx">numberOfLines</span><span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">}</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">rowData</span><span class="p">.</span><span class="nx">title</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/Text&gt;</span>
+          <span class="o">&lt;</span><span class="err">/View&gt;</span>
+        <span class="o">&lt;</span><span class="err">/View&gt;</span>
+        <span class="o">&lt;</span><span class="nx">View</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">separator</span><span class="p">}</span><span class="o">/&gt;</span>
+      <span class="o">&lt;</span><span class="err">/View&gt;</span>
+    <span class="o">&lt;</span><span class="err">/TouchableHighlight&gt;</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>这对返回的价格数据做了一点操作，将其 &quot;300,000 GBP&rdquo; 固定格式中的 GBP 后缀给去掉。然后渲染每一行 UI 采用的是你已熟烂于心的技术了。这一次，略缩图的数据是以 URL 的方式提供的，React Native 不会在主线程对其进行解码。</p>
+
+<p>注意 <code>TouchableHighlight</code> 组件的 <code>onPress</code> 属性，它利用了箭头函数来获取每一行的 <code>guid</code>。</p>
+
+<p>最后我们增加 press 的处理方法：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">rowPressed</span><span class="p">(</span><span class="nx">propertyGuid</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">property</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">listings</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">prop</span> <span class="o">=&gt;</span> <span class="nx">prop</span><span class="p">.</span><span class="nx">guid</span> <span class="o">===</span> <span class="nx">propertyGuid</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>这个方法能定位哪一行房产正被用户点击中。目前它还起不了作用，一会我们再来修复它。但现在，我们来欣赏下你的作品吧。</p>
+
+<p>回到模拟器刷新，来看看你的搜索结果页吧：</p>
+
+<p><img src="//cdn4.raywenderlich.com/wp-content/uploads/2015/03/react-searchresults2.png" alt=""></p>
+
+<p>看上去好很多了 —— 虽然这让人感到惊奇谁能住的起伦敦！</p>
+
+<p>到了添加应用最后的视图的时候了。</p>
+
+<h2 id="房产详细页视图">房产详细页视图</h2>
+
+<p>增加新文件 <code>PropertyView.js</code> 到项目中，接着在文件中加入代码：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">React</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;react-native&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="p">{</span>
+  <span class="nx">StyleSheet</span><span class="p">,</span>
+  <span class="nx">Image</span><span class="p">,</span> 
+  <span class="nx">View</span><span class="p">,</span>
+  <span class="nx">Text</span><span class="p">,</span>
+  <span class="nx">Component</span>
+<span class="p">}</span> <span class="o">=</span> <span class="nx">React</span><span class="p">;</span>
+</code></pre></div>
+<p>我敢确定这些都已无需再过多介绍，你在梦里都做到了！:]</p>
+
+<p>接下来增添下列样式：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">styles</span> <span class="o">=</span> <span class="nx">StyleSheet</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+  <span class="nx">container</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">marginTop</span><span class="o">:</span> <span class="mi">65</span>
+  <span class="p">},</span>
+  <span class="nx">heading</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">backgroundColor</span><span class="o">:</span> <span class="s1">&#39;#F8F8F8&#39;</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="nx">separator</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">height</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nx">backgroundColor</span><span class="o">:</span> <span class="s1">&#39;#DDDDDD&#39;</span>
+  <span class="p">},</span>
+  <span class="nx">image</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">width</span><span class="o">:</span> <span class="mi">400</span><span class="p">,</span>
+    <span class="nx">height</span><span class="o">:</span> <span class="mi">300</span>
+  <span class="p">},</span>
+  <span class="nx">price</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">fontSize</span><span class="o">:</span> <span class="mi">25</span><span class="p">,</span>
+    <span class="nx">fontWeight</span><span class="o">:</span> <span class="s1">&#39;bold&#39;</span><span class="p">,</span>
+    <span class="nx">margin</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="nx">color</span><span class="o">:</span> <span class="s1">&#39;#48BBEC&#39;</span>
+  <span class="p">},</span>
+  <span class="nx">title</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">fontSize</span><span class="o">:</span> <span class="mi">20</span><span class="p">,</span>
+    <span class="nx">margin</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="nx">color</span><span class="o">:</span> <span class="s1">&#39;#656565&#39;</span>
+  <span class="p">},</span>
+  <span class="nx">description</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">fontSize</span><span class="o">:</span> <span class="mi">18</span><span class="p">,</span>
+    <span class="nx">margin</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="nx">color</span><span class="o">:</span> <span class="s1">&#39;#656565&#39;</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>再来增加组件：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kr">class</span> <span class="nx">PropertyView</span> <span class="kr">extends</span> <span class="nx">Component</span> <span class="p">{</span>
+
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">property</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">property</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">stats</span> <span class="o">=</span> <span class="nx">property</span><span class="p">.</span><span class="nx">bedroom_number</span> <span class="o">+</span> <span class="s1">&#39; bed &#39;</span> <span class="o">+</span> <span class="nx">property</span><span class="p">.</span><span class="nx">property_type</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">property</span><span class="p">.</span><span class="nx">bathroom_number</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">stats</span> <span class="o">+=</span> <span class="s1">&#39;, &#39;</span> <span class="o">+</span> <span class="nx">property</span><span class="p">.</span><span class="nx">bathroom_number</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="p">(</span><span class="nx">property</span><span class="p">.</span><span class="nx">bathroom_number</span> <span class="o">&gt;</span> <span class="mi">1</span>
+        <span class="o">?</span> <span class="s1">&#39;bathrooms&#39;</span> <span class="o">:</span> <span class="s1">&#39;bathroom&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kd">var</span> <span class="nx">price</span> <span class="o">=</span> <span class="nx">property</span><span class="p">.</span><span class="nx">price_formatted</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">View</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">container</span><span class="p">}</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">Image</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">image</span><span class="p">}</span> 
+            <span class="nx">source</span><span class="o">=</span> <span class="err">/&gt;</span>
+        <span class="o">&lt;</span><span class="nx">View</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">heading</span><span class="p">}</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="nx">Text</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">price</span><span class="p">}</span><span class="o">&gt;</span><span class="err">£</span><span class="p">{</span><span class="nx">price</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/Text&gt;</span>
+          <span class="o">&lt;</span><span class="nx">Text</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">title</span><span class="p">}</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">property</span><span class="p">.</span><span class="nx">title</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/Text&gt;</span>
+          <span class="o">&lt;</span><span class="nx">View</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">separator</span><span class="p">}</span><span class="o">/&gt;</span>
+        <span class="o">&lt;</span><span class="err">/View&gt;</span>
+        <span class="o">&lt;</span><span class="nx">Text</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">description</span><span class="p">}</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">stats</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/Text&gt;</span>
+        <span class="o">&lt;</span><span class="nx">Text</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">description</span><span class="p">}</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">property</span><span class="p">.</span><span class="nx">summary</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/Text&gt;</span>
+      <span class="o">&lt;</span><span class="err">/View&gt;</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>第一部分的 <code>render()</code> 方法处理数据操作。通常来讲，由 API 返回来的数据往往不是很完美，所以我们要写一些简单的逻辑来处理得到我们想要的数据格式。</p>
+
+<p>其余的 <code>render</code> 不用说也很简单，它是一个组件的不可变状态的方法。</p>
+
+<p>最后我们在文件底部加上输出：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">PropertyView</span><span class="p">;</span>
+</code></pre></div>
+<p>回到 <code>SearchResults.js</code> 并增加 <code>require</code> 语句在文件头部，紧随 React <code>require</code> 这一行：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">PropertyView</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./PropertyView&#39;</span><span class="p">);</span>
+</code></pre></div>
+<p>接下来更新 <code>rowPressed()</code> 将导航转向你新增的 <code>PropertyView</code>：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">rowPressed</span><span class="p">(</span><span class="nx">propertyGuid</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">property</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">listings</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">prop</span> <span class="o">=&gt;</span> <span class="nx">prop</span><span class="p">.</span><span class="nx">guid</span> <span class="o">===</span> <span class="nx">propertyGuid</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+
+  <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">navigator</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+    <span class="nx">title</span><span class="o">:</span> <span class="s2">&quot;Property&quot;</span><span class="p">,</span>
+    <span class="nx">component</span><span class="o">:</span> <span class="nx">PropertyView</span><span class="p">,</span>
+    <span class="nx">passProps</span><span class="o">:</span> <span class="p">{</span><span class="nx">property</span><span class="o">:</span> <span class="nx">property</span><span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>你懂的，回到模拟器按下 <code>Cmd+R</code>，一路搜索查看下来，你会看到：</p>
+
+<p><img src="//cdn4.raywenderlich.com/wp-content/uploads/2015/03/react-property.png" alt=""></p>
+
+<p>负担的起的生活才是最好滴 —— 那个软垫真好看！（译者注：作者你又调皮了）</p>
+
+<p>至此你的应用已基本完成。还差一步就是允许用户搜索其周边房产。</p>
+
+<h2 id="基于地理位置的搜索">基于地理位置的搜索</h2>
+
+<p>在 Xcode 中，打开 <code>Info.plist</code> 新增一个键，通过点击右键选择 <code>Add Row</code> 来完成。键名为 <code>NSLocationWhenInUseUsageDescription</code>，并用取值为：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">PropertyFinder would like to use your location to find nearby properties
+</code></pre></div>
+<p>这是你完成后 plist 文件的样子：</p>
+
+<p><img src="//cdn5.raywenderlich.com/wp-content/uploads/2015/03/Screen-Shot-2015-03-20-at-21.49.06.png" alt=""></p>
+
+<p>这副键值是用来提示用户确认是否要使用他们的地理位置的。</p>
+
+<p>打开 <code>SearchPage.js</code>，定位到 &ldquo;Location&rdquo; 按钮的 <code>TouchableHighlight</code> 上，加入以下属性值：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">onPress</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">onLocationPressed</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">)}</span>
+</code></pre></div>
+<p>当你点击这个按钮时，它将执行 <code>onLocationPressed</code> —— 接下来要添加的。</p>
+
+<p>在 <code>SearchPage</code> 类中添加：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">onLocationPressed</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">navigator</span><span class="p">.</span><span class="nx">geolocation</span><span class="p">.</span><span class="nx">getCurrentPosition</span><span class="p">(</span>
+    <span class="nx">location</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">search</span> <span class="o">=</span> <span class="nx">location</span><span class="p">.</span><span class="nx">coords</span><span class="p">.</span><span class="nx">latitude</span> <span class="o">+</span> <span class="s1">&#39;,&#39;</span> <span class="o">+</span> <span class="nx">location</span><span class="p">.</span><span class="nx">coords</span><span class="p">.</span><span class="nx">longitude</span><span class="p">;</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span> <span class="nx">searchString</span><span class="o">:</span> <span class="nx">search</span> <span class="p">});</span>
+      <span class="kd">var</span> <span class="nx">query</span> <span class="o">=</span> <span class="nx">urlForQueryAndPage</span><span class="p">(</span><span class="s1">&#39;centre_point&#39;</span><span class="p">,</span> <span class="nx">search</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">_executeQuery</span><span class="p">(</span><span class="nx">query</span><span class="p">);</span>
+    <span class="p">},</span>
+    <span class="nx">error</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span>
+        <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;There was a problem with obtaining your location: &#39;</span> <span class="o">+</span> <span class="nx">error</span>
+      <span class="p">});</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>用户当前位置通过 <code>navigator.geolocation</code> 被取回，这是一个被 <a href="https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/Using_geolocation">Web API 定义</a>的接口，所以它对于曾在浏览器当中用过定位服务的人来说非常熟悉了。React Native 框架提供了自身对原生 iOS 定位服务的 API 实现。</p>
+
+<p>如果当前位置被成功捕获，将执行第一个箭头函数，它向 Nestoria 发起了一个查询请求。如果出错，它将显示一个基本的报错信息。</p>
+
+<p>一旦你更改了 plist 文件，就必须重启应用才能生效。<code>Cmd+R</code> 无效了这回 —— 抱歉。在 Xcode 停止运行应用，重新构建运行。</p>
+
+<p>在使用基于定位服务的搜索时，你的具体位置必须是在 Nestoria 房产公司的数据库中。从模拟器的菜单选项中选择 <code>Debug\Location\Custom Location...</code> 并输入维度 <code>55.02</code> 和经度 <code>-1.42</code>，这坐标来自英格兰北部的一座海滨小镇，我称之为故乡！</p>
+
+<p><img src="//cdn1.raywenderlich.com/wp-content/uploads/2015/03/WhitleyBaySearch-647x500.png" alt=""></p>
+
+<p>虽然不如伦敦 —— 但起码住的起！:]</p>
+
+<h2 id="接下来该做什么？">接下来该做什么？</h2>
+
+<p>恭喜你完成了第一个 React Native 应用！你可以<a href="//cdn1.raywenderlich.com/wp-content/uploads/2015/03/PropertyFinder-Final1.zip">下载本教程的最终完成项目</a>跑起来试试。</p>
+
+<p>如果你来自 Web 界，你会发现用 JavaScript 和 React定义界面和导航并从中获得完整的原生 UI 是多么地容易。但如果你是原生应用的开发者，我希望你能从 React Native 获得一点感官上的启发：快速应用迭代，现代的 JavaScript 语言和清晰的 CSS 样式。</p>
+
+<p>也许你希望用这套框架来写你下一个应用？亦或，你仍坚持 Swift 或 Objective-C? 无论你选择哪条路，我都希望你能从这篇文章中受益，并且能为你今后的项目中带来一些想法。</p>
+
+<p>如果对本篇教程有任何的意见或建议，请加入论坛来讨论。（译者注：抱歉，我没发现论坛链接，估计作者说的是文章下方的留言区啦）</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[2014年工作总结]]></title>
@@ -3127,96 +4022,6 @@ var title   = &quot;sublime text&quot;
 <p><a href="http://farm8.staticflickr.com/7037/6972766875_9bc6afa6ce_b.jpg" title="点击看大图"><img src="http://farm8.staticflickr.com/7037/6972766875_9bc6afa6ce_z.jpg" alt=""></a></p>
 
 <p>大概就是这样咯，期盼 10 年的游戏，觉得还是值得等待下去的，等出正式版了可以考虑升级下我这台服役了三四年的老爷机了。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[OS X 下的 Octopress 搭建]]></title>
-    <link href="http://roshanca.com/2012/osx-octopress"/>
-    <updated>2012-03-11T14:04:00+00:00</updated>
-    <id>http://roshanca.com/2012/osx-octopress</id>
-    <content type="html"><![CDATA[<p>终于将家中的 <a href="http://baike.baidu.com/view/2173094.htm">Hackintosh</a> 完善了，尝试下在 Mac 中搭建 Octopress吧。</p>
-
-<p>我目前在用的是 Lion 10.7.3 的系统，自带 ruby 1.8.7，看来要 update 下。</p>
-
-<h2 id="必备工具">必备工具</h2>
-
-<ul>
-<li>  Xcode 或 <a href="https://github.com/downloads/kennethreitz/osx-gcc-installer/GCC-10.7-v2.pkg">GCC Installer</a>，用于编译；</li>
-<li>  RVM(Ruby Version Management)：一个命令行工具，可以提供一个便捷的多版本ruby环境的管理和切换。</li>
-</ul>
-
-<h2 id="安装-rvm">安装 RVM</h2>
-
-<p>安装 RVM 的方法有点不同：</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">bash -s stable &lt; &lt;<span class="o">(</span>curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer<span class="o">)</span>
-</code></pre></div>
-<p>配置一下，添加 RVM 方法：</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">echo</span> <span class="s1">&#39;[[ -s &quot;$HOME/.rvm/scripts/rvm&quot; ]] &amp;&amp; . &quot;$HOME/.rvm/scripts/rvm&quot; # Load RVM function&#39;</span> &gt;&gt; ~/.bash_profile
-<span class="nb">source</span> ~/.bash_profile
-</code></pre></div>
-<p>这个时候用下面命令可以验证 RVM 是否安装成功：</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">type </span>rvm <span class="p">|</span> head -1
-</code></pre></div>
-<p>如若看到 <code>rvm is a function</code> 表示已安装成功了。</p>
-
-<h2 id="安装-ruby">安装 Ruby</h2>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">rvm install 1.9.3
-</code></pre></div>
-<p>如果失败，可以采用如下方式：</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">rvm reinstall 1.9.3 --with-gcc<span class="o">=</span>clang
-</code></pre></div>
-<p>设置目前的 ruby 为默认版本：</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">rvm --default use 1.9.3
-</code></pre></div>
-<h2 id="安装-octopress">安装 Octopress</h2>
-
-<p>由于我之前在公司电脑上已经创建了本站的 heroku 的 app，那我只要通过 git 获取目前线上的资源就 ok 啦～</p>
-
-<p>用 Aptana 创建一个空白的 Ruby Project，命名为 Octopress</p>
-
-<p><img src="http://farm8.staticflickr.com/7051/6971729423_3a9f79e468.jpg" alt="创建一个空白的 Ruby Project, 命名为 Octopress"></p>
-
-<p>接着定位到工程目录下</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># 初始化 git:</span>
-git init
-
-<span class="c"># ok，接下来为这个 git 添加远程仓库：</span>
-git remote add heroku git@heroku.com:losttemple.git
-
-<span class="c"># 将远程仓库资源 `pull` 到本地 project：</span>
-git pull heroku master
-</code></pre></div>
-<p>恩，这下我之前使用的 Octopress 又重新出现到了我的视线中：）</p>
-
-<p><img src="http://farm8.staticflickr.com/7177/6825679466_d7b9a71aee.jpg" alt="Octopress Project"></p>
-
-<h2 id="使用-octopress">使用 Octopress</h2>
-
-<p>老样子，依旧要先安装依赖包：</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">gem install bundler
-bundle install
-</code></pre></div>
-<p>但这次好像出现了个问题：</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">Installing rb-fsevent <span class="o">(</span>0.4.3.1<span class="o">)</span> with native extensions Unfortunately, a fatal error has occurred. Please report this error to the Bundler issue tracker at https://github.com/carlhuda/bundler/issues so that we can fix it. Thanks!
-/Users/wwj1983/.rvm/rubies/ruby-1.9.3-p125/lib/ruby/site_ruby/1.9.1/rubygems/installer.rb:552:in <span class="s1">&#39;rescue in block in build_extensions&#39;</span>: ERROR: Failed to build gem native extension. <span class="o">(</span>Gem::Installer::ExtensionBuildError<span class="o">)</span>
-</code></pre></div>
-<p><code>rb-fsevent</code> 这个依赖包死活安装不上，于是单独安装</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">gem install rb-fsevent
-Successfully installed rb-fsevent-0.9.0
-<span class="m">1</span> gem installed
-Installing ri documentation <span class="k">for</span> rb-fsevent-0.9.0...
-Installing RDoc documentation <span class="k">for</span> rb-fsevent-0.9.0...
-</code></pre></div>
-<p>但是，这个版本与 <code>Gemfile.lock</code> 中的版本 0.4.3.1 不符。你应该知道怎么做了，哼哼，手动更改为 0.9.0 即可。好吧，把剩下的 <code>bundle</code> 装完，然后尽情地 <code>rake generate</code> 吧～</p>
-
-<h2 id="参考（部分地址需-fanq1ang）">参考（部分地址需 FanQ1ang）</h2>
-
-<ul>
-<li>  <a href="http://www.unfoldingcode.com/2012/02/ruby-193-via-rvm-on-mac-osx-lion.html">http://www.unfoldingcode.com/2012/02/ruby-193-via-rvm-on-mac-osx-lion.html</a></li>
-<li>  <a href="http://beginrescueend.com/rvm/install/">http://beginrescueend.com/rvm/install/</a></li>
-<li>  <a href="http://devcenter.heroku.com/articles/git">http://devcenter.heroku.com/articles/git</a></li>
-</ul>
 ]]></content>
   </entry>
   
