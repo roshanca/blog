@@ -4,7 +4,7 @@
   <title><![CDATA[肉山·察]]></title>
   <link href="http://roshanca.com/atom.xml" rel="self"/>
   <link href="http://roshanca.com/"/>
-  <updated>2015-03-30T15:19:54+00:00</updated>
+  <updated>2015-04-01T05:26:12+00:00</updated>
   <id>http://roshanca.com/</id>
   <author>
     <name><![CDATA[Roshan Wu]]></name>
@@ -28,11 +28,11 @@
 <p>React Native 完全不是一码事，人们对其带来的两点倍感兴奋：</p>
 
 <ul>
-<li><p>在 React Native 中，虽然你的应用逻辑是用 JavaScript 所写，然而应用的 UI 可完全是原生的；因此你可以完全摈弃 HTML5 UI 所带来的效率低下。</p></li>
-<li><p>React 采用了一种非常大胆新颖的实现方式来构建用户界面。简单来说，应用的 UI 被简单地当做了一个当前的应用状态的功能函数来进行传递。</p></li>
+<li><p>在 React Native 中，虽然你的应用逻辑是用 JavaScript 所写，然而应用的 UI 可完全是原生的；因此你不能用 HTML5 来绘制 UI 了，这是一个妥协。</p></li>
+<li><p>React 引入了一种非常大胆新颖的实现方式来构建用户界面。简单来说，应用的 UI 被简单地表示为当前应用的状态的一个方法。</p></li>
 </ul>
 
-<p>关键的一点是 React Native 致力于为移动应用开发带来基于 <a href="//facebook.github.io/react/">React</a> 编程模式的巨大威力。它的目标并不是成为一个 &ldquo;write-once run-anywhere&rdquo; 的跨平台工具，它的目标是 &ldquo;learn-once write-anywhere&quot;。这是个很重要的差别。这篇教程只针对 iOS，但是一旦你学习到了它的概念创建 Android 应用对你来说应该也不是什么难事。</p>
+<p>React Native 的关键点是，它主要致力于为移动应用开发带来基于 <a href="//facebook.github.io/react/">React</a> 编程模式的巨大威力。它的目标并不是成为一个 &ldquo;一次编写到处运行&rdquo; 的跨平台工具，它的目标是 &ldquo;在任何地方都用一个框架&quot;。这是个很重要的差别。这篇教程只针对 iOS，但是一旦你学习到了它的概念创建 Android 应用对你来说应该也不是什么难事。</p>
 
 <p>若你曾经写过 Objective-C 或 Swift，你可能对这项 JavaScript 来替代它们工作的技术不会感到特别兴奋。不过，作为一名 Swift 开发者，上述的第二点应该会激起你的兴趣。</p>
 
