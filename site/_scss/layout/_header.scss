@@ -9,10 +9,11 @@
 	.blog-title {
 		position: relative;
 		@include inline-block;
-		font-family: "Hiragino Mincho ProN", $serif;
+		font-family: "Hiragino Mincho ProN";
 		font-size: 5rem;
 		font-weight: bold;
 		color: $heading-color;
+    border-bottom: 0 none;
 		text-decoration: none;
 		&:before {
 			content: "<";

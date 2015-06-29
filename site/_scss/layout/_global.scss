@@ -17,6 +17,9 @@ h1,h2,h3,h4 {
 
 a {
 	color: $link-color;
+  // color: saturate($link-color, 50%);
+  border-bottom: .1rem solid rgba(68, 68, 68, .5);
+  text-decoration: none;
 	&:hover {
 		@include opacity(.8);
 	}
@@ -58,6 +61,7 @@ button, input, select, textarea {
 
 .social-link {
 	margin-right: .8rem;
+  border-bottom: 0 none;
 	text-decoration: none;
 }
 

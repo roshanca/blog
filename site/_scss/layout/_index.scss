@@ -70,6 +70,10 @@
       font-family: $sans;
       font-size: 90%;
       color: lighten($link-color, 22%);
+      &:after {
+        content: "—";
+        margin: 0 1rem;
+      }
       @include responsive(480px) {
         display: block;
         @include tailhook(.5rem);
