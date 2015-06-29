@@ -1,6 +1,6 @@
 ---
 layout: post
-title: React Native：使用 JavaScript 构建应用
+title: React Native：用 JavaScript 构建应用
 data: 2015-03-29
 tags: js react
 comments: true
@@ -8,7 +8,7 @@ comments: true
 
 原文：[Introducing React Native: Building Apps with JavaScript](//www.raywenderlich.com/99473/introducing-react-native-building-apps-javascript)
 
-== 申明：转载请注明出处，尊重一下作者与译者的劳动:] ==
+---
 
 几个月前 Facebook 才刚向世人展露 [React Native](//facebook.github.io/react-native/)：一个用 JavaScript 来构建原生 iOS 应用的框架，现在它的 Beta [版官方源码](https://github.com/facebook/react-native)就已被放上了 github。
 
@@ -45,13 +45,13 @@ React Native 用到了 [Node.js](https://nodejs.org/)，一个 JavaScript 的运
 第一步，[安装 Homebrew](//brew.sh/)，按照 Homebrew 网站上的指示做，然后安装 Node.js，你可以通过终端窗口输入：
 
 ```
-brew install node
+$ brew install node
 ```
 
 接下来，用 `homebrew` 安装 [watchman](https://facebook.github.io/watchman/)，一个来自 Facebook 的文件 watcher 工具：
 
 ```
-brew install watchman
+$ brew install watchman
 ```
 
 这是 React Native 用来观察代码变化并相应地作出重新构建用的，这好比每次你保存文件后 Xcode 就为你做了一次 build。
@@ -59,7 +59,7 @@ brew install watchman
 React Native 代码在运行之前先要解决它的依赖问题。打开终端窗口定位至 React Native 目录下，并执行：
 
 ```
-npm install
+$ npm install
 ```
 
 这是在用 Node 的包管理器在获取依赖。这与 CocoaPods 和 Carthage 的功能类似。一旦命令运行成功，你会发现一个叫 `node_modules ` 的文件夹被创建，大量的外部依赖文件就在其中。
@@ -67,7 +67,7 @@ npm install
 最后一步是启动开发服务。只需在刚才的终端窗口中继续输入：
 
 ```
-npm start
+$ npm start
 ```
 
 一旦执行，你会看到以下信息：
