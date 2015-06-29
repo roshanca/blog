@@ -4,7 +4,7 @@
   <title><![CDATA[肉山·察]]></title>
   <link href="http://roshanca.com/atom.xml" rel="self"/>
   <link href="http://roshanca.com/"/>
-  <updated>2015-04-01T05:26:12+00:00</updated>
+  <updated>2015-06-29T08:16:01+00:00</updated>
   <id>http://roshanca.com/</id>
   <author>
     <name><![CDATA[Roshan Wu]]></name>
@@ -13,13 +13,13 @@
 
   
   <entry>
-    <title type="html"><![CDATA[React Native：使用 JavaScript 构建应用]]></title>
+    <title type="html"><![CDATA[React Native：用 JavaScript 构建应用]]></title>
     <link href="http://roshanca.com/2015/build-app-with-react-native"/>
     <updated>2015-03-29T00:00:00+00:00</updated>
     <id>http://roshanca.com/2015/build-app-with-react-native</id>
     <content type="html"><![CDATA[<p>原文：<a href="//www.raywenderlich.com/99473/introducing-react-native-building-apps-javascript">Introducing React Native: Building Apps with JavaScript</a></p>
 
-<p>== 申明：转载请注明出处，尊重一下作者与译者的劳动:] ==</p>
+<hr>
 
 <p>几个月前 Facebook 才刚向世人展露 <a href="//facebook.github.io/react-native/">React Native</a>：一个用 JavaScript 来构建原生 iOS 应用的框架，现在它的 Beta <a href="https://github.com/facebook/react-native">版官方源码</a>就已被放上了 github。</p>
 
@@ -55,20 +55,20 @@
 <p>React Native 用到了 <a href="https://nodejs.org/">Node.js</a>，一个 JavaScript 的运行环境，用来构建你的 JavaScript 代码。如果你还未安装它，那是时候装一个了。</p>
 
 <p>第一步，<a href="//brew.sh/">安装 Homebrew</a>，按照 Homebrew 网站上的指示做，然后安装 Node.js，你可以通过终端窗口输入：</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">brew install node
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ brew install node
 </code></pre></div>
 <p>接下来，用 <code>homebrew</code> 安装 <a href="https://facebook.github.io/watchman/">watchman</a>，一个来自 Facebook 的文件 watcher 工具：</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">brew install watchman
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ brew install watchman
 </code></pre></div>
 <p>这是 React Native 用来观察代码变化并相应地作出重新构建用的，这好比每次你保存文件后 Xcode 就为你做了一次 build。</p>
 
 <p>React Native 代码在运行之前先要解决它的依赖问题。打开终端窗口定位至 React Native 目录下，并执行：</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">npm install
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ npm install
 </code></pre></div>
 <p>这是在用 Node 的包管理器在获取依赖。这与 CocoaPods 和 Carthage 的功能类似。一旦命令运行成功，你会发现一个叫 <code>node_modules</code> 的文件夹被创建，大量的外部依赖文件就在其中。</p>
 
 <p>最后一步是启动开发服务。只需在刚才的终端窗口中继续输入：</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">npm start
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ npm start
 </code></pre></div>
 <p>一旦执行，你会看到以下信息：</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">$ npm start
@@ -1838,7 +1838,7 @@ React packager ready.
 
 <hr>
 
-<h3 id="自定义-tostring()-方法">自定义 toString() 方法</h3>
+<h3 id="自定义-tostring-方法">自定义 toString() 方法</h3>
 
 <p>你可以通过自定义 <code>toString()</code> 来控制对象字符串化。这很好，但你必须保证你的方法总是成功并不会有其它副作用。如果你的方法达不到这样的标准，那将会引发严重的问题。如果 <code>toString()</code> 调用了一个方法，这个方法做了一个断言<sup>[3]</sup> ，当断言失败，它可能会输出它所在对象的名称，当然对象也需要调用 <code>toString()</code>。</p>
 
@@ -2388,7 +2388,7 @@ React packager ready.
 
 <hr>
 
-<h3 id="文件/资源命名">文件/资源命名</h3>
+<h3 id="文件-资源命名">文件/资源命名</h3>
 
 <p>在 web 项目中，所有的文件名应该都遵循同一命名约定。以可读性而言，减号（-）是用来分隔文件名的不二之选。同时它也是常见的 URL 分隔符（i.e. <code>//example.com/blog/my-blog-entry</code> or <code>//s.example.com/images/big-black-background.jpg</code>），所以理所当然的，减号应该也是用来分隔资源名称的好选择。</p>
 
@@ -2583,7 +2583,7 @@ chmod <span class="m">777</span> * -R
 
 <p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/Photobucket%20Desktop%20-%20WuMacBookPro/Photobucket/QQ20140429-12x_zps9f86c594.png" alt=""></p>
 
-<h2 id="nas-">NAS <img style="display:inline;" src="http://www.iconsdb.com/icons/preview/caribbean-blue/nas-xxl.png" width="24" height="24" alt="NAS icon"></h2>
+<h2 id="nas">NAS <img style="display:inline;" src="http://www.iconsdb.com/icons/preview/caribbean-blue/nas-xxl.png" width="24" height="24" alt="NAS icon"></h2>
 
 <p>普通的文件的共享，需开启 &ldquo;File Sharing&rdquo; 和 &ldquo;Samba Server&quot;，在路由管理界面（<code>http://192.168.0.1</code>）中的“服务 - NAS”下可以找到它们。</p>
 
@@ -2595,7 +2595,7 @@ chmod <span class="m">777</span> * -R
 
 <p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/Photobucket%20Desktop%20-%20WuMacBookPro/Photobucket/workgroup_zps90ee0444.png" alt=""></p>
 
-<h2 id="dlna-">DLNA <embed src="http://upload.wikimedia.org/wikipedia/en/f/f0/Dlna.svg" width="91" height="24" type="image/svg+xml" codebase="http://www.adobe.com/svg/viewer/install"></h2>
+<h2 id="dlna">DLNA <embed src="http://upload.wikimedia.org/wikipedia/en/f/f0/Dlna.svg" width="91" height="24" type="image/svg+xml" codebase="http://www.adobe.com/svg/viewer/install"></h2>
 
 <p>如果家中电视支持 DLNA，那太赞了，开启路由 &quot;DLNA Server&quot;，直接在电视上欣赏路由 NAS 中的视频、照片、音乐吧。</p>
 
@@ -3002,7 +3002,7 @@ brew install ffmeg
 </tr>
 </tbody></table>
 
-<h3 id="多重选择(multi-selection)">多重选择(Multi-Selection)</h3>
+<h3 id="多重选择-multi-selection">多重选择(Multi-Selection)</h3>
 
 <p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/rename.jpg" alt="Multi-Selection"></p>
 
@@ -3017,7 +3017,7 @@ brew install ffmeg
 <li>  选中多行文本，通过 <code>Command + Shift + L</code> 来将光标打散至每行行尾。</li>
 </ul>
 
-<h3 id="随心所欲跳转(goto-anything)">随心所欲跳转(Goto Anything)</h3>
+<h3 id="随心所欲跳转-goto-anything">随心所欲跳转(Goto Anything)</h3>
 
 <p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/goto.jpg" alt="Goto Anything"></p>
 
@@ -3030,19 +3030,19 @@ brew install ffmeg
 <li>  关键字以 <code>:</code> 开头，后跟数字可跳转至相应的行，它的快捷键是 <code>Ctrl + G</code></li>
 </ul>
 
-<h3 id="边栏(side-bar)">边栏(Side Bar)</h3>
+<h3 id="边栏-side-bar">边栏(Side Bar)</h3>
 
 <p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/Side-Bar.jpg" alt="Side Bar"></p>
 
 <p>很多编辑器（Notepad++ etc.）也有边栏，但 ST2 有点不同的是：单选左侧边栏中的文件，右侧自动出现文档预览（若选中的为图片等文件，则显示其二进制编码）。当你修改编辑它时，它才在 ST2 中以 Tab 的形式自动打开，so sweety ☺</p>
 
-<h3 id="命令面板(command-palette)">命令面板(Command Palette)</h3>
+<h3 id="命令面板-command-palette">命令面板(Command Palette)</h3>
 
 <p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/command_palette.jpg" alt="Command Palette"></p>
 
 <p>执行命令的快捷入口，我们一般以快捷键 <code>Command + Shift + P</code> 来快速调用，当然你也可以在菜单 <code>Tool</code> 下找到它。</p>
 
-<h3 id="无干扰模式(distraction-free-mode)">无干扰模式(Distraction Free Mode)</h3>
+<h3 id="无干扰模式-distraction-free-mode">无干扰模式(Distraction Free Mode)</h3>
 
 <p>在菜单 <code>View</code> 中选择 <code>Enter Distraction Free Mode</code> 就可进入无干扰模式。快捷键为 <code>Ctrl + Shift + Command + F</code></p>
 
@@ -3058,7 +3058,7 @@ brew install ffmeg
     <span class="nt">&quot;scroll_past_end&quot;</span><span class="p">:</span> <span class="kc">true</span>     <span class="err">//</span> <span class="err">滚动能否超过结尾</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="迷你地图(minimap)">迷你地图(Minimap)</h3>
+<h3 id="迷你地图-minimap">迷你地图(Minimap)</h3>
 
 <p>右侧默认显示迷你地图，这其实是个全局预览加模糊定位文档位置的功能。当然如果你像增大编辑可视面积，也可通过菜单 &ldquo;View&rdquo; 选择 &ldquo;Hide Minimap&rdquo; 将其关闭。</p>
 
@@ -3841,7 +3841,7 @@ var title   = &quot;sublime text&quot;
 
 <p>安装完相应的插件后，非常 simple 了，前往此偷梁换柱神奇脚本的地址：<a href="http://userscripts.org/scripts/show/120679">http://userscripts.org/scripts/show/120679</a>，点击右上角的 <code>Install</code> 即可。</p>
 
-<h4 id="update:">update:</h4>
+<h4 id="update">update:</h4>
 
 <p><a href="http://player.opengg.me">OpenGG.Clean.Player</a> 在 Chrome Web Store 上上架了，用 Chrome 的童鞋可以直接访问以下地址进行安装了：</p>
 

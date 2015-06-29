@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
     <link href="http://gmpg.org/xfn/11" rel="profile">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title>React Native：使用 JavaScript 构建应用 - 肉山·察</title>
+	<title>React Native：用 JavaScript 构建应用 - 肉山·察</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 	
 	<link rel="canonical" href="http://roshanca.com/2015/build-app-with-react-native">
@@ -61,12 +61,12 @@
 <main class="fluid" role="main">
 	<article class="post" role="article">
 		<header class="post-header">
-			<h1 class="post-title">React Native：使用 JavaScript 构建应用</h1>
+			<h1 class="post-title">React Native：用 JavaScript 构建应用</h1>
 		</header>
 		<section class="post-content">
 			<p>原文：<a href="//www.raywenderlich.com/99473/introducing-react-native-building-apps-javascript">Introducing React Native: Building Apps with JavaScript</a></p>
 
-<p>== 申明：转载请注明出处，尊重一下作者与译者的劳动:] ==</p>
+<hr>
 
 <p>几个月前 Facebook 才刚向世人展露 <a href="//facebook.github.io/react-native/">React Native</a>：一个用 JavaScript 来构建原生 iOS 应用的框架，现在它的 Beta <a href="https://github.com/facebook/react-native">版官方源码</a>就已被放上了 github。</p>
 
@@ -102,20 +102,20 @@
 <p>React Native 用到了 <a href="https://nodejs.org/">Node.js</a>，一个 JavaScript 的运行环境，用来构建你的 JavaScript 代码。如果你还未安装它，那是时候装一个了。</p>
 
 <p>第一步，<a href="//brew.sh/">安装 Homebrew</a>，按照 Homebrew 网站上的指示做，然后安装 Node.js，你可以通过终端窗口输入：</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">brew install node
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ brew install node
 </code></pre></div>
 <p>接下来，用 <code>homebrew</code> 安装 <a href="https://facebook.github.io/watchman/">watchman</a>，一个来自 Facebook 的文件 watcher 工具：</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">brew install watchman
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ brew install watchman
 </code></pre></div>
 <p>这是 React Native 用来观察代码变化并相应地作出重新构建用的，这好比每次你保存文件后 Xcode 就为你做了一次 build。</p>
 
 <p>React Native 代码在运行之前先要解决它的依赖问题。打开终端窗口定位至 React Native 目录下，并执行：</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">npm install
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ npm install
 </code></pre></div>
 <p>这是在用 Node 的包管理器在获取依赖。这与 CocoaPods 和 Carthage 的功能类似。一旦命令运行成功，你会发现一个叫 <code>node_modules</code> 的文件夹被创建，大量的外部依赖文件就在其中。</p>
 
 <p>最后一步是启动开发服务。只需在刚才的终端窗口中继续输入：</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">npm start
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ npm start
 </code></pre></div>
 <p>一旦执行，你会看到以下信息：</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">$ npm start
