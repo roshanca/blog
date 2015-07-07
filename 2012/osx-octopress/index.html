@@ -123,19 +123,19 @@ git pull heroku master
 <h2 id="使用-octopress">使用 Octopress</h2>
 
 <p>老样子，依旧要先安装依赖包：</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">gem install bundler
+<div class="highlight"><pre><code class="language-text" data-lang="text">gem install bundler
 bundle install
 </code></pre></div>
 <p>但这次好像出现了个问题：</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">Installing rb-fsevent <span class="o">(</span>0.4.3.1<span class="o">)</span> with native extensions Unfortunately, a fatal error has occurred. Please report this error to the Bundler issue tracker at https://github.com/carlhuda/bundler/issues so that we can fix it. Thanks!
-/Users/wwj1983/.rvm/rubies/ruby-1.9.3-p125/lib/ruby/site_ruby/1.9.1/rubygems/installer.rb:552:in <span class="s1">&#39;rescue in block in build_extensions&#39;</span>: ERROR: Failed to build gem native extension. <span class="o">(</span>Gem::Installer::ExtensionBuildError<span class="o">)</span>
+<div class="highlight"><pre><code class="language-text" data-lang="text">Installing rb-fsevent (0.4.3.1) with native extensions Unfortunately, a fatal error has occurred. Please report this error to the Bundler issue tracker at https://github.com/carlhuda/bundler/issues so that we can fix it. Thanks!
+/Users/wwj1983/.rvm/rubies/ruby-1.9.3-p125/lib/ruby/site_ruby/1.9.1/rubygems/installer.rb:552:in &#39;rescue in block in build_extensions&#39;: ERROR: Failed to build gem native extension. (Gem::Installer::ExtensionBuildError)
 </code></pre></div>
 <p><code>rb-fsevent</code> 这个依赖包死活安装不上，于是单独安装</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">gem install rb-fsevent
+<div class="highlight"><pre><code class="language-text" data-lang="text">gem install rb-fsevent
 Successfully installed rb-fsevent-0.9.0
-<span class="m">1</span> gem installed
-Installing ri documentation <span class="k">for</span> rb-fsevent-0.9.0...
-Installing RDoc documentation <span class="k">for</span> rb-fsevent-0.9.0...
+1 gem installed
+Installing ri documentation for rb-fsevent-0.9.0...
+Installing RDoc documentation for rb-fsevent-0.9.0...
 </code></pre></div>
 <p>但是，这个版本与 <code>Gemfile.lock</code> 中的版本 0.4.3.1 不符。你应该知道怎么做了，哼哼，手动更改为 0.9.0 即可。好吧，把剩下的 <code>bundle</code> 装完，然后尽情地 <code>rake generate</code> 吧～</p>
 

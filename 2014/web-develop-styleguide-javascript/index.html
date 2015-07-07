@@ -452,7 +452,7 @@
 
 <h3 id="分号">分号</h3>
 
-<p>总是使用分号，因为隐式的代码嵌套会引发难以察觉的问题。当然我们更要从根本上来杜绝这些问题<sup>[1]</sup> 。以下几个示例展示了缺少分号的危害：</p>
+<p>总是使用分号，因为隐式的代码嵌套会引发难以察觉的问题。当然我们更要从根本上来杜绝这些问题<sup id="fnref1"><a href="#fn1" rel="footnote">1</a></sup> 。以下几个示例展示了缺少分号的危害：</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// 1.</span>
 <span class="nx">MyClass</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">myMethod</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">return</span> <span class="mi">42</span><span class="p">;</span>
@@ -488,7 +488,7 @@
 
 <p><strong>Why?</strong></p>
 
-<p>JavaScript 中语句要以分号结束，否则它将会继续执行下去，不管换不换行。以上的每一个示例中，函数声明或对象或数组，都变成了在一句语句体内。要知道闭合圆括号并不代表语句结束，JavaScript 不会终结语句，除非它的下一个 token 是一个中缀符<sup>[2]</sup> 或者是圆括号操作符。</p>
+<p>JavaScript 中语句要以分号结束，否则它将会继续执行下去，不管换不换行。以上的每一个示例中，函数声明或对象或数组，都变成了在一句语句体内。要知道闭合圆括号并不代表语句结束，JavaScript 不会终结语句，除非它的下一个 token 是一个中缀符<sup id="fnref2"><a href="#fn2" rel="footnote">2</a></sup> 或者是圆括号操作符。</p>
 
 <p>这真是让人大吃一惊，所以乖乖地给语句末加上分号吧。</p>
 
@@ -911,7 +911,7 @@
 
 <h3 id="自定义-tostring-方法">自定义 toString() 方法</h3>
 
-<p>你可以通过自定义 <code>toString()</code> 来控制对象字符串化。这很好，但你必须保证你的方法总是成功并不会有其它副作用。如果你的方法达不到这样的标准，那将会引发严重的问题。如果 <code>toString()</code> 调用了一个方法，这个方法做了一个断言<sup>[3]</sup> ，当断言失败，它可能会输出它所在对象的名称，当然对象也需要调用 <code>toString()</code>。</p>
+<p>你可以通过自定义 <code>toString()</code> 来控制对象字符串化。这很好，但你必须保证你的方法总是成功并不会有其它副作用。如果你的方法达不到这样的标准，那将会引发严重的问题。如果 <code>toString()</code> 调用了一个方法，这个方法做了一个断言<sup id="fnref3"><a href="#fn3" rel="footnote">3</a></sup> ，当断言失败，它可能会输出它所在对象的名称，当然对象也需要调用 <code>toString()</code>。</p>
 
 <hr>
 
@@ -944,20 +944,31 @@
 </code></pre></div>
 <hr>
 
-<p>[1]：作者指的是采用严格规范的语句写法，从根本上杜绝由分号缺失而引起的代码歧义。</p>
-
-<p>[2]：中缀符，指的是像 <code>x + y</code> 中的 <code>+</code>。</p>
-
-<p>[3]：断言一般指程序员在测试测序时的假设，一般是一些布尔表达式，当返回是 true 时，断言为真，代码运行会继续进行；如果条件判断为 false，代码运行停止，你的应用被终止。</p>
-
-<hr>
-
 <h2 id="系列文章">系列文章</h2>
 
 <ul>
 <li><a href="//roshanca.com/2014/web-develop-styleguide-general">前端编码风格规范之一般规范</a></li>
 <li><a href="//roshanca.com/2014/web-develop-styleguide-html">前端编码风格规范之 HTML</a></li>
 </ul>
+
+<div class="footnotes">
+<hr>
+<ol>
+
+<li id="fn1">
+<p>作者指的是采用严格规范的语句写法，从根本上杜绝由分号缺失而引起的代码歧义。&nbsp;<a href="#fnref1" rev="footnote">&#8617;</a></p>
+</li>
+
+<li id="fn2">
+<p>中缀符，指的是像 <code>x + y</code> 中的 <code>+</code>。&nbsp;<a href="#fnref2" rev="footnote">&#8617;</a></p>
+</li>
+
+<li id="fn3">
+<p>断言一般指程序员在测试测序时的假设，一般是一些布尔表达式，当返回是 true 时，断言为真，代码运行会继续进行；如果条件判断为 false，代码运行停止，你的应用被终止。&nbsp;<a href="#fnref3" rev="footnote">&#8617;</a></p>
+</li>
+
+</ol>
+</div>
 
 		</section>
 		<footer class="post-footer">
