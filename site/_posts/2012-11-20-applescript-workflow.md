@@ -81,6 +81,6 @@ comments: true
 
 综合基础教程与谷歌搜索，自己写了两个 Script，分别用于创建博客新文章与博客本地预览。
 
-{% gist 4118971 new_post.applescript %}
+{% gist roshanca/4118971 new_post.applescript %}
 
-{% gist 4118971 blog_preview.applescript %}
+{% gist roshanca/4118971 blog_preview.applescript %}

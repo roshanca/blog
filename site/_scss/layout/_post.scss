@@ -141,10 +141,14 @@
     }
     .file-data {
       font-size: 1.6rem;
-      line-height: 1.5;
+      line-height: 1.6 !important;
     }
     .line-data {
       padding: 1em 1.5em !important;
+    }
+    .line-pre {
+      font-size: 120% !important;
+      line-height: 1.6 !important;
     }
     table {
       margin-bottom: 0;
@@ -159,6 +163,9 @@
     }
     .gist-meta {
       background: #fff;
+      a {
+        border-bottom: 0 none;
+      }
     }
   }
   .keyboard {
@@ -171,6 +178,9 @@
         color: lighten($text-color, 22%);
       }
     }
+  }
+  iframe {
+    margin-bottom: 2.4rem;
   }
 }
 
