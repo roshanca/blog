@@ -4,7 +4,7 @@
   <title><![CDATA[肉山·察]]></title>
   <link href="http://roshanca.com/atom.xml" rel="self"/>
   <link href="http://roshanca.com/"/>
-  <updated>2015-06-29T08:31:29+00:00</updated>
+  <updated>2015-07-07T03:06:29+00:00</updated>
   <id>http://roshanca.com/</id>
   <author>
     <name><![CDATA[Roshan Wu]]></name>
@@ -3672,9 +3672,9 @@ var title   = &quot;sublime text&quot;
 
 <p>综合基础教程与谷歌搜索，自己写了两个 Script，分别用于创建博客新文章与博客本地预览。</p>
 
-<script src="https://gist.github.com/4118971.js?file=new_post.applescript"> </script>
+<script src="https://gist.github.com/roshanca/4118971.js?file=new_post.applescript"> </script>
 
-<script src="https://gist.github.com/4118971.js?file=blog_preview.applescript"> </script>
+<script src="https://gist.github.com/roshanca/4118971.js?file=blog_preview.applescript"> </script>
 ]]></content>
   </entry>
   
