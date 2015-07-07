@@ -18,7 +18,9 @@ comments: true
 
 （建议使用 text/html 格式的 HTML。避免使用 XHTML。XHTML 以及它的属性，比如 `application/xhtml+xml` 在浏览器中的应用支持与优化空间都十分有限）。
 
-HTML 中最好不要将无内容元素^[1] 的标签闭合，例如：使用 `<br>` 而非 `<br />`.
+HTML 中最好不要将无内容的空白元素[^1] 的标签闭合，例如：使用 `<br>` 而非 `<br />`.
+
+[^1]: 此处的空白元素指的是以下元素：`area`, `base`, `br`, `col`, `command`, `embed`, `hr`, `img`, `input`, `keygen`, `link`, `meta`, `param`, `source`, `track`, `wbr`
 
 ***
 
@@ -539,10 +541,6 @@ HTML 标签的目的，就是为了不断地展示内容信息。
 ```html
 <div class="news-article"></div>
 ```
-
-***
-
-[1]: 此处的空白元素指的是以下元素：`area`, `base`, `br`, `col`, `command`, `embed`, `hr`, `img`, `input`, `keygen`, `link`, `meta`, `param`, `source`, `track`, `wbr`
 
 ***
 

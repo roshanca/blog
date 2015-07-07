@@ -17,20 +17,20 @@ comments: true
 ## 安装 RVM
 安装 RVM 的方法有点不同：
 
-``` bash
+```bash
 bash -s stable < <(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer)
 ```
 
 配置一下，添加 RVM 方法：
 
-``` bash
+```bash
 echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function' >> ~/.bash_profile
 source ~/.bash_profile
 ```
 
 这个时候用下面命令可以验证 RVM 是否安装成功：
 
-``` bash
+```bash
 type rvm | head -1
 ```
 
@@ -38,19 +38,19 @@ type rvm | head -1
 
 ## 安装 Ruby
 
-``` bash
+```bash
 rvm install 1.9.3
 ```
 
 如果失败，可以采用如下方式：
 
-``` bash
+```bash
 rvm reinstall 1.9.3 --with-gcc=clang
 ```
 
 设置目前的 ruby 为默认版本：
 
-``` bash
+```bash
 rvm --default use 1.9.3
 ```
 
@@ -64,7 +64,7 @@ rvm --default use 1.9.3
 
 接着定位到工程目录下
 
-``` bash
+```bash
 # 初始化 git:
 git init
 
@@ -83,21 +83,21 @@ git pull heroku master
 
 老样子，依旧要先安装依赖包：
 
-``` bash
+```
 gem install bundler
 bundle install
 ```
 
 但这次好像出现了个问题：
 
-``` bash
+```
 Installing rb-fsevent (0.4.3.1) with native extensions Unfortunately, a fatal error has occurred. Please report this error to the Bundler issue tracker at https://github.com/carlhuda/bundler/issues so that we can fix it. Thanks!
 /Users/wwj1983/.rvm/rubies/ruby-1.9.3-p125/lib/ruby/site_ruby/1.9.1/rubygems/installer.rb:552:in 'rescue in block in build_extensions': ERROR: Failed to build gem native extension. (Gem::Installer::ExtensionBuildError)
 ```
 
 `rb-fsevent` 这个依赖包死活安装不上，于是单独安装
 
-``` bash
+```
 gem install rb-fsevent
 Successfully installed rb-fsevent-0.9.0
 1 gem installed

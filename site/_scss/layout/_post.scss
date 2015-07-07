@@ -179,6 +179,10 @@
       }
     }
   }
+  .footnotes {
+    font-size: 90%;
+    color: lighten($text-color, 22%);
+  }
   iframe {
     margin-bottom: 2.4rem;
   }
