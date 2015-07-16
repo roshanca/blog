@@ -4,7 +4,7 @@
   <title><![CDATA[肉山·察]]></title>
   <link href="http://roshanca.com/atom.xml" rel="self"/>
   <link href="http://roshanca.com/"/>
-  <updated>2015-07-07T17:32:08+00:00</updated>
+  <updated>2015-07-16T06:56:07+00:00</updated>
   <id>http://roshanca.com/</id>
   <author>
     <name><![CDATA[Roshan Wu]]></name>
@@ -2597,7 +2597,7 @@ my-file.min.css
 <p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/Photobucket%20Desktop%20-%20WuMacBookPro/Photobucket/ssh_zps5ef42e95.png" alt=""></p>
 
 <p>新建一个终端窗口或者标签页，接下来把下载好的迅雷固件文件夹，拷贝至路由器的指定目录下：</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">scp -P <span class="m">22</span> -r ~/Download/Xware1 root@192.168.0.1:/jffs/
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">scp -P <span class="m">22</span> -r ~/Downloads/Xware1 root@192.168.0.1:/jffs/
 </code></pre></div>
 <p>再次输入密码，完成传输任务，切换回 ssh 界面，继续操作：</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">cd</span> /jffs
@@ -2619,7 +2619,7 @@ chmod <span class="m">777</span> * -R
 
 <p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/Photobucket%20Desktop%20-%20WuMacBookPro/Photobucket/QQ20140429-12x_zps9f86c594.png" alt=""></p>
 
-<h2 id="nas">NAS <img style="display:inline;" src="http://www.iconsdb.com/icons/preview/caribbean-blue/nas-xxl.png" width="24" height="24" alt="NAS icon"></h2>
+<h2 id="nas">NAS <img style="display:inline;" src="https://cdn2.iconfinder.com/data/icons/windows-8-metro-style/512/nas.png" width="24" height="24" alt="NAS icon"></h2>
 
 <p>普通的文件的共享，需开启 &ldquo;File Sharing&rdquo; 和 &ldquo;Samba Server&quot;，在路由管理界面（<code>http://192.168.0.1</code>）中的“服务 - NAS”下可以找到它们。</p>
 
