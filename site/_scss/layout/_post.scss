@@ -121,10 +121,13 @@
     line-height: 1.5;
     // border-left: 4px solid #dadada;
     // background-color: $pre-bg-color;
-    white-space: pre-wrap;
+    // white-space: pre-wrap;
     overflow-x: auto;
     code {
       padding: 0;
+      white-space: pre;
+      word-wrap: normal;
+      word-break: normal;
       background: none;
     }
   }
