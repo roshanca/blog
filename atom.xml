@@ -4,13 +4,423 @@
   <title><![CDATA[肉山·察]]></title>
   <link href="http://roshanca.com/atom.xml" rel="self"/>
   <link href="http://roshanca.com/"/>
-  <updated>2015-07-16T06:56:07+00:00</updated>
+  <updated>2015-09-05T08:39:15+00:00</updated>
   <id>http://roshanca.com/</id>
   <author>
     <name><![CDATA[Roshan Wu]]></name>
     
   </author>
 
+  
+  <entry>
+    <title type="html"><![CDATA[用 TypeScript 写一个贪食蛇小游戏]]></title>
+    <link href="http://roshanca.com/2015/write-a-simple-snake-game-with-typescript"/>
+    <updated>2015-09-03T00:00:00+00:00</updated>
+    <id>http://roshanca.com/2015/write-a-simple-snake-game-with-typescript</id>
+    <content type="html"><![CDATA[<h2 id="typescript-amp-vs-code">TypeScript &amp; VS code</h2>
+
+<p>已经忘了是如何缘结 <a href="http://www.typescriptlang.org/">TypeScript</a> 的了，应该是透过 <a href="https://code.visualstudio.com/">Visual Studio Code</a> 这款优秀的 IDE 才开始接触的吧。目前还是 Preview 版本的 VS code，集众多优秀卓越的功能特性，已经深深地征服了我，在它身上看不到一点以往对微软的那种繁冗晦涩质感，取而代之的是轻灵优美且功能上不乏先进之处。有关 VS code 这是后话，下面先说说 TypeScript。</p>
+
+<h2 id="typescript-amp-coffeescript">TypeScript &amp; CoffeeScript</h2>
+
+<p>提到它很多人会拿 CoffeeScript 与之比对，我作为两者都使用过的过来人，简单介绍下两者的异同：</p>
+
+<p>在我看来相同点只有一点：都是 JavaScript Compiler 的定位，有点类似于 Sass, Less 之于 CSS。</p>
+
+<p>不同点很多：</p>
+
+<ol>
+<li>TypeScript 是 JavaScript 的超集，这使得它能够与普通的 JavaScript 混用，而 CoffeeScript 使用自己的那一套类 Ruby 的语法使得这是不可能滴;</li>
+<li>TypeScript 玩的概念比较多，比如 Module, Interface 等，而CoffeeScript 自己实现的语法糖则比较多；</li>
+<li>TypeScript 已经开始支持 ES6，CoffeeScript 会不会支持和什么时候支持，还都是未知数；</li>
+<li>最大的一点不同：TypeScript 在编译过程中可对类型进行检查，将 JavaScript 这个灵活的动态型语言变成了<strong>静态类型</strong>的语言。算是有利有弊吧：好处是相当于将部分的“测试”工作提前了，问题的定位也更加精准；坏处是丧失了一点灵活性与增加了一些代码量。</li>
+</ol>
+
+<h2 id="typescript-amp-go">TypeScript &amp; Go</h2>
+
+<p>不管怎样，我对 TypeScript 初识就有好感。这种好感源自之前看到过的关于 Go 语言的介绍系列：<a href="https://github.com/astaxie/build-web-application-with-golang">build web application with golang</a></p>
+
+<p>虽然我不是后端工程师，但冲着它优雅的语法，我在当下是很有冲动来学习 Go 的。</p>
+
+<p>TypeScript 在某些方面与 Go 很像，是我喜欢的部分（也许是我接触的静态型语言实在太少）。比如定义一个取两数较大值的函数：</p>
+
+<p>Go:</p>
+<div class="highlight"><pre><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nx">max</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="nx">a</span> <span class="p">&gt;</span> <span class="nx">b</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">a</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">b</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>TypeScript:</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">max</span><span class="p">(</span><span class="nx">a</span><span class="o">:</span> <span class="nx">number</span><span class="p">,</span> <span class="nx">b</span><span class="o">:</span> <span class="nx">number</span><span class="p">)</span><span class="o">:</span> <span class="nx">number</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">a</span> <span class="o">&gt;</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">a</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">b</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Go 的自定义类型：</p>
+<div class="highlight"><pre><code class="language-go" data-lang="go"><span class="kd">type</span> <span class="nx">Human</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">name</span> <span class="kt">string</span>
+    <span class="nx">age</span> <span class="kt">int</span>
+    <span class="nx">phone</span> <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">person</span> <span class="nx">Human</span>
+</code></pre></div>
+<p>TypeScript 的 Type Interface：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kr">interface</span> <span class="nx">Human</span> <span class="p">{</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="nx">string</span>
+    <span class="nx">age</span><span class="o">:</span> <span class="nx">number</span>
+    <span class="nx">phone</span><span class="o">:</span> <span class="nx">string</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">person</span><span class="o">:</span> <span class="nx">Human</span>
+</code></pre></div>
+<p>以上。我认为静态类型的好处，不止在于它在编译时提前找出错误，还在于它可以在你设计程序时，帮助你去理清思路。</p>
+
+<h2 id="贪食蛇">贪食蛇</h2>
+
+<p>下面进入正题，看看如何用 TypeScript 实现一个简单的贪食蛇小游戏。</p>
+
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/Blog/snake-game_zps4k2h7dhw.png" alt="Snake Game"></p>
+
+<p>首先，我们看构成这个游戏的要素，主要由这三个部分组成：</p>
+
+<ol>
+<li>地板: Floor</li>
+<li>蛇: Snake</li>
+<li>食物: Food</li>
+</ol>
+
+<p>可以看到，它们的组成单位，其实是一样，都是由单个“块”组成的：Floor 是由纵横两个维度的块组成，Snake 是由一列块组成，而 Food 是单个块。块是这个游戏世界构建的基本单位，我们改如何来实现这个块呢？这至关重要。</p>
+
+<p>简单来分析下，从图中可看出，块有三种颜色，分别是：</p>
+
+<ol>
+<li>Floor: 白色</li>
+<li>Snake: 黑色</li>
+<li>Food: 红色</li>
+</ol>
+
+<p>可以对全体的块进行三种分类，每类有相应的样式：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kr">const</span> <span class="nx">FLOOR</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">SPACE</span><span class="o">:</span> <span class="s1">&#39;space&#39;</span><span class="p">,</span>
+    <span class="nx">BODY</span><span class="o">:</span> <span class="s1">&#39;body&#39;</span><span class="p">,</span>
+    <span class="nx">FOOD</span><span class="o">:</span> <span class="s1">&#39;food&#39;</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.space</span> <span class="p">{</span>
+    <span class="k">background-color</span><span class="o">:</span> <span class="nb">white</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.body</span> <span class="p">{</span>
+    <span class="k">background-color</span><span class="o">:</span> <span class="nb">black</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.food</span> <span class="p">{</span>
+    <span class="k">background-color</span><span class="o">:</span> <span class="nb">red</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>其次，我们要让块动起来，使蛇移动，还要记录块的位置信息，即为横向和纵向上的 unique 坐标。</p>
+
+<p>最后，要用 JS 操作的介质，无非是承载着这些“块数据”的 DOM，块自身的颜色的变化，需要通过改变其对应的 DOM 元素的样式来实现。</p>
+
+<p>这样我们其实对块实现已经有了基本的想法：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kr">interface</span> <span class="nx">Block</span> <span class="p">{</span>
+    <span class="nx">pos</span><span class="o">:</span> <span class="nx">Pos</span>
+    <span class="nx">type</span><span class="o">:</span> <span class="nx">string</span>
+    <span class="nx">node</span><span class="o">:</span> <span class="nx">HTMLElement</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>这里由于块坐标我们后面用的很多，所以就定义了一个 Pos 类型：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kr">interface</span> <span class="nx">Pos</span> <span class="p">{</span>
+    <span class="nx">x</span><span class="o">:</span> <span class="nx">number</span>
+    <span class="nx">y</span><span class="o">:</span> <span class="nx">number</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>你会发现，在 TypeScript 的世界中，创建一个类型是多么地随心所欲和不费力气。</p>
+
+<p>好了，我们已经有了构建世界的基本粒子了，可以开始创建 Floor 和 Snake 了（先不管 Food，还没到这一步）。创建完后，再让 Snake 能够“动起来”，并且通过键盘的“上”、“下”、“左”、“右”键可控制其方向，就算完成大半了。</p>
+
+<p>创建 Floor 类：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kr">class</span> <span class="nx">Floor</span> <span class="p">{</span>
+    <span class="kr">private</span> <span class="nx">table</span><span class="o">:</span> <span class="nx">HTMLTableElement</span>
+    <span class="kr">private</span> <span class="nx">parent</span><span class="o">:</span> <span class="nx">HTMLElement</span>
+    <span class="kr">private</span> <span class="nx">row</span><span class="o">:</span> <span class="nx">number</span>
+    <span class="kr">private</span> <span class="nx">col</span><span class="o">:</span> <span class="nx">number</span>
+    <span class="kr">public</span> <span class="nx">blocks</span><span class="o">:</span> <span class="nx">Block</span><span class="p">[]</span> <span class="c1">// 提供给 Snake 使用的 block 集合</span>
+
+    <span class="nx">constructor</span><span class="p">(</span><span class="nx">options</span><span class="o">?</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">options</span> <span class="o">=</span> <span class="nx">options</span> <span class="o">||</span> <span class="p">{};</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">table</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;table&#39;</span><span class="p">)</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">parent</span> <span class="o">=</span> <span class="nx">options</span><span class="p">.</span><span class="nx">parent</span> <span class="o">||</span> <span class="nb">document</span><span class="p">.</span><span class="nx">body</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">row</span> <span class="o">=</span> <span class="nx">options</span><span class="p">.</span><span class="nx">row</span> <span class="o">||</span> <span class="mi">20</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">col</span> <span class="o">=</span> <span class="nx">options</span><span class="p">.</span><span class="nx">col</span> <span class="o">||</span> <span class="mi">20</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">blocks</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="p">}</span>
+
+    <span class="nx">initialize</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">x</span><span class="o">:</span> <span class="nx">number</span>
+        <span class="kd">let</span> <span class="nx">y</span><span class="o">:</span> <span class="nx">number</span>
+
+        <span class="k">for</span> <span class="p">(</span><span class="nx">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">y</span> <span class="o">&lt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">row</span><span class="p">;</span> <span class="nx">y</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kd">let</span> <span class="nx">tr</span> <span class="o">=</span> <span class="o">&lt;</span><span class="nx">HTMLTableRowElement</span><span class="o">&gt;</span><span class="k">this</span><span class="p">.</span><span class="nx">table</span><span class="p">.</span><span class="nx">insertRow</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+            <span class="k">for</span> <span class="p">(</span><span class="nx">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">x</span> <span class="o">&lt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">col</span><span class="p">;</span> <span class="nx">x</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+                <span class="kd">let</span> <span class="nx">td</span> <span class="o">=</span> <span class="o">&lt;</span><span class="nx">HTMLTableCellElement</span><span class="o">&gt;</span><span class="nx">tr</span><span class="p">.</span><span class="nx">insertCell</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+                <span class="nx">td</span><span class="p">.</span><span class="nx">className</span> <span class="o">=</span> <span class="nx">FLOOR</span><span class="p">.</span><span class="nx">SPACE</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">blocks</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+                    <span class="nx">node</span><span class="o">:</span> <span class="nx">td</span><span class="p">,</span>
+                    <span class="nx">type</span><span class="o">:</span> <span class="nx">FLOOR</span><span class="p">.</span><span class="nx">SPACE</span><span class="p">,</span>
+                    <span class="nx">pos</span><span class="o">:</span> <span class="p">{</span><span class="nx">x</span><span class="o">:</span> <span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="o">:</span> <span class="nx">y</span><span class="p">}</span>
+                <span class="p">})</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="k">this</span><span class="p">.</span><span class="nx">parent</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">table</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>创建 Snake 类：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kr">class</span> <span class="nx">Snake</span> <span class="p">{</span>
+    <span class="kr">private</span> <span class="nx">initLength</span><span class="o">:</span> <span class="nx">number</span>
+    <span class="kr">private</span> <span class="nx">bodies</span><span class="o">:</span> <span class="nx">Block</span><span class="p">[]</span>
+    <span class="kr">private</span> <span class="nx">speed</span><span class="o">:</span> <span class="nx">number</span>
+
+    <span class="nx">constructor</span><span class="p">(</span><span class="nx">options</span><span class="o">?</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">options</span> <span class="o">=</span> <span class="nx">options</span> <span class="o">||</span> <span class="p">{}</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">initLength</span> <span class="o">=</span> <span class="nx">options</span><span class="p">.</span><span class="nx">initLength</span> <span class="o">||</span> <span class="mi">3</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">speed</span> <span class="o">=</span> <span class="nx">options</span><span class="p">.</span><span class="nx">speed</span> <span class="o">||</span> <span class="mi">300</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">bodies</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="p">}</span>
+
+    <span class="nx">born</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">initLength</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">bodies</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">floor</span><span class="p">.</span><span class="nx">blocks</span><span class="p">[</span><span class="nx">i</span><span class="p">])</span> <span class="c1">// floor 是 Floor 的一个实例</span>
+        <span class="p">}</span>
+
+        <span class="k">this</span><span class="p">.</span><span class="nx">bodies</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">body</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nx">body</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="nx">FLOOR</span><span class="p">.</span><span class="nx">BODY</span>
+            <span class="nx">body</span><span class="p">.</span><span class="nx">node</span><span class="p">.</span><span class="nx">className</span> <span class="o">=</span> <span class="nx">body</span><span class="p">.</span><span class="nx">type</span> <span class="c1">// 着色</span>
+        <span class="p">})</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>好了，new 一个 Snake 试一下，是否有一只“三节蛇”已赫然印入眼帘。</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">let</span> <span class="nx">snake</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Snake</span><span class="p">()</span>
+<span class="nx">snake</span><span class="p">.</span><span class="nx">born</span><span class="p">()</span>
+</code></pre></div>
+<p>加上一个 move 方法让它动起来：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kr">class</span> <span class="nx">Snake</span> <span class="p">{</span>
+    <span class="p">...</span>
+    <span class="nx">move</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">head</span><span class="o">:</span> <span class="nx">Block</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">bodies</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="kd">let</span> <span class="nx">tail</span><span class="o">:</span> <span class="nx">Block</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">bodies</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">bodies</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="kd">let</span> <span class="nx">next</span><span class="o">:</span> <span class="nx">Block</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">sbling</span><span class="p">(</span><span class="nx">head</span><span class="p">)</span> <span class="c1">// 获取 head 右侧的 block</span>
+
+        <span class="c1">// body move</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">bodies</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">bodies</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">bodies</span><span class="p">[</span><span class="nx">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="p">}</span>
+
+        <span class="nx">next</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="nx">FLOOR</span><span class="p">.</span><span class="nx">BODY</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">bodies</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nx">next</span>
+
+        <span class="c1">// clear original tail</span>
+        <span class="nx">tail</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="nx">FLOOR</span><span class="p">.</span><span class="nx">SPACE</span>
+        <span class="nx">tail</span><span class="p">.</span><span class="nx">node</span><span class="p">.</span><span class="nx">className</span> <span class="o">=</span> <span class="nx">tail</span><span class="p">.</span><span class="nx">type</span>
+
+        <span class="c1">// change color of blocks</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">blocks</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">block</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nx">block</span><span class="p">.</span><span class="nx">node</span><span class="p">.</span><span class="nx">className</span> <span class="o">=</span> <span class="nx">block</span><span class="p">.</span><span class="nx">type</span>
+        <span class="p">})</span>
+    <span class="p">}</span>
+
+    <span class="nx">sbling</span><span class="p">(</span><span class="nx">source</span><span class="o">:</span> <span class="nx">Block</span><span class="p">)</span><span class="o">:</span> <span class="nx">Block</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">blocks</span><span class="p">.</span><span class="nx">filter</span><span class="p">((</span><span class="nx">block</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">source</span><span class="p">.</span><span class="nx">pos</span><span class="p">.</span><span class="nx">x</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">===</span> <span class="nx">block</span><span class="p">.</span><span class="nx">pos</span><span class="p">.</span><span class="nx">x</span>
+            <span class="o">&amp;&amp;</span> <span class="nx">source</span><span class="p">.</span><span class="nx">pos</span><span class="p">.</span><span class="nx">y</span> <span class="o">===</span> <span class="nx">block</span><span class="p">.</span><span class="nx">pos</span><span class="p">.</span><span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="kc">true</span>
+            <span class="p">}</span>
+        <span class="p">})[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>以上几句代简单码完成后，只要在 <code>born</code> 方法中加定计时任务，就可以使我们的小蛇向右跑起来了：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">born</span><span class="p">()</span> <span class="p">{</span>
+    <span class="p">...</span>
+    <span class="c1">// keep moving</span>
+    <span class="nx">setInterval</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">move</span><span class="p">();</span> <span class="p">}.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">),</span> <span class="k">this</span><span class="p">.</span><span class="nx">speed</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>接下来加上键盘控制事件之前，要先对 <code>sbling</code> 方法进行改造，因为移动过程中的下一个块 <code>next: Block</code>，要根据其移动方向来获得了。</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kr">const</span> <span class="kr">enum</span> <span class="nx">Direction</span> <span class="p">{</span>
+    <span class="nx">left</span><span class="p">,</span> <span class="nx">up</span><span class="p">,</span> <span class="nx">right</span><span class="p">,</span> <span class="nx">down</span>
+<span class="p">}</span>
+
+<span class="kr">class</span> <span class="nx">Snake</span> <span class="p">{</span>
+    <span class="p">...</span>
+    <span class="kr">private</span> <span class="nx">direction</span><span class="o">:</span> <span class="nx">Direction</span>
+    <span class="kr">private</span> <span class="nx">offsets</span><span class="o">:</span> <span class="nb">Array</span><span class="o">&lt;</span><span class="nx">number</span><span class="p">[]</span><span class="o">&gt;</span>
+
+    <span class="nx">constructor</span><span class="p">(</span><span class="nx">options</span><span class="o">?</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">...</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">direction</span> <span class="o">=</span> <span class="nx">Direction</span><span class="p">.</span><span class="nx">right</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">offsets</span> <span class="o">=</span> <span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">+</span><span class="mi">1</span><span class="p">]]</span>
+    <span class="p">}</span>
+    <span class="p">...</span>
+
+    <span class="nx">move</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">head</span><span class="o">:</span> <span class="nx">Block</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">bodies</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="kd">let</span> <span class="nx">tail</span><span class="o">:</span> <span class="nx">Block</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">bodies</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">bodies</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="kd">let</span> <span class="nx">next</span><span class="o">:</span> <span class="nx">Block</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">sbling</span><span class="p">(</span><span class="nx">head</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">direction</span><span class="p">)</span>
+        <span class="p">...</span>
+    <span class="p">}</span>
+
+    <span class="nx">sbling</span><span class="p">(</span><span class="nx">source</span><span class="o">:</span> <span class="nx">Block</span><span class="p">,</span> <span class="nx">direction</span><span class="o">:</span> <span class="nx">Direction</span><span class="p">)</span><span class="o">:</span> <span class="nx">Block</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">blocks</span><span class="p">.</span><span class="nx">filter</span><span class="p">((</span><span class="nx">block</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">source</span><span class="p">.</span><span class="nx">pos</span><span class="p">.</span><span class="nx">x</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">offsets</span><span class="p">[</span><span class="nx">direction</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">===</span> <span class="nx">block</span><span class="p">.</span><span class="nx">pos</span><span class="p">.</span><span class="nx">x</span>
+            <span class="o">&amp;&amp;</span> <span class="nx">source</span><span class="p">.</span><span class="nx">pos</span><span class="p">.</span><span class="nx">y</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">offsets</span><span class="p">[</span><span class="nx">direction</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">===</span> <span class="nx">block</span><span class="p">.</span><span class="nx">pos</span><span class="p">.</span><span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="kc">true</span>
+            <span class="p">}</span>
+        <span class="p">})[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>正式加上键盘事件，齐活了：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">born</span><span class="p">()</span> <span class="p">{</span>
+    <span class="p">...</span>
+    <span class="kd">let</span> <span class="nx">keyHandler</span> <span class="o">=</span> <span class="p">(</span><span class="nx">e</span><span class="o">:</span> <span class="nx">KeyboardEvent</span><span class="p">)</span><span class="o">:</span> <span class="k">void</span>  <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kr">const</span> <span class="nx">keyCode</span><span class="o">:</span> <span class="nx">number</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">keyCode</span> <span class="o">||</span> <span class="nx">e</span><span class="p">.</span><span class="nx">which</span> <span class="o">||</span> <span class="nx">e</span><span class="p">.</span><span class="nx">charCode</span>
+
+        <span class="k">switch</span> <span class="p">(</span><span class="nx">keyCode</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">case</span> <span class="nx">KeyCode</span><span class="p">.</span><span class="nx">left</span><span class="o">:</span>
+                <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">direction</span> <span class="o">!==</span> <span class="nx">Direction</span><span class="p">.</span><span class="nx">right</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="k">this</span><span class="p">.</span><span class="nx">direction</span> <span class="o">=</span> <span class="nx">Direction</span><span class="p">.</span><span class="nx">left</span>
+                <span class="p">}</span>
+                <span class="k">break</span>
+            <span class="k">case</span> <span class="nx">KeyCode</span><span class="p">.</span><span class="nx">up</span><span class="o">:</span>
+                <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">direction</span> <span class="o">!==</span> <span class="nx">Direction</span><span class="p">.</span><span class="nx">down</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="k">this</span><span class="p">.</span><span class="nx">direction</span> <span class="o">=</span> <span class="nx">Direction</span><span class="p">.</span><span class="nx">up</span>
+                <span class="p">}</span>
+                <span class="k">break</span>
+            <span class="k">case</span> <span class="nx">KeyCode</span><span class="p">.</span><span class="nx">right</span><span class="o">:</span>
+                <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">direction</span> <span class="o">!==</span> <span class="nx">Direction</span><span class="p">.</span><span class="nx">left</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="k">this</span><span class="p">.</span><span class="nx">direction</span> <span class="o">=</span> <span class="nx">Direction</span><span class="p">.</span><span class="nx">right</span>
+                <span class="p">}</span>
+                <span class="k">break</span>
+            <span class="k">case</span> <span class="nx">KeyCode</span><span class="p">.</span><span class="nx">down</span><span class="o">:</span>
+                <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">direction</span> <span class="o">!==</span> <span class="nx">Direction</span><span class="p">.</span><span class="nx">up</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="k">this</span><span class="p">.</span><span class="nx">direction</span> <span class="o">=</span> <span class="nx">Direction</span><span class="p">.</span><span class="nx">down</span>
+                <span class="p">}</span>
+                <span class="k">break</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;keydown&#39;</span><span class="p">,</span> <span class="nx">keyHandler</span><span class="p">,</span> <span class="kc">false</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>这下你可以操纵这条三节蛇满地跑了，有点意思。缺点意思的是：一没食物二到处碰壁死不了，别急，要解决吃食物的问题，先解决怎么生成食物：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kr">class</span> <span class="nx">Floor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="p">...</span>
+    <span class="nx">genFood</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// 在地板内的随机位置</span>
+        <span class="kd">let</span> <span class="nx">pos</span><span class="o">:</span> <span class="nx">Pos</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="nx">x</span><span class="o">:</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="k">this</span><span class="p">.</span><span class="nx">col</span><span class="p">),</span>
+            <span class="nx">y</span><span class="o">:</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="k">this</span><span class="p">.</span><span class="nx">row</span><span class="p">)</span>
+        <span class="p">}</span>
+
+        <span class="c1">// 根据位置获取食物 block</span>
+        <span class="kd">let</span> <span class="nx">food</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">blocks</span><span class="p">.</span><span class="nx">filter</span><span class="p">((</span><span class="nx">block</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">block</span><span class="p">.</span><span class="nx">pos</span><span class="p">.</span><span class="nx">x</span> <span class="o">===</span> <span class="nx">pos</span><span class="p">.</span><span class="nx">x</span> <span class="o">&amp;&amp;</span> <span class="nx">block</span><span class="p">.</span><span class="nx">pos</span><span class="p">.</span><span class="nx">y</span> <span class="o">===</span> <span class="nx">pos</span><span class="p">.</span><span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="kc">true</span>
+            <span class="p">}</span>
+        <span class="p">})[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="nx">food</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="nx">FLOOR</span><span class="p">.</span><span class="nx">FOOD</span>
+        <span class="nx">food</span><span class="p">.</span><span class="nx">node</span><span class="p">.</span><span class="nx">className</span> <span class="o">=</span> <span class="nx">food</span><span class="p">.</span><span class="nx">type</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>生成食物在蛇一出生就执行一次，随后，在蛇移动的过程中，每吃到一次食物，就重新再生成一次食物：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kr">class</span> <span class="nx">Snake</span> <span class="p">{</span>
+    <span class="p">...</span>
+    <span class="nx">born</span><span class="p">()</span> <span class="p">{</span>
+        <span class="p">...</span>
+
+        <span class="c1">// generate food</span>
+        <span class="nx">floor</span><span class="p">.</span><span class="nx">genFood</span><span class="p">()</span>
+
+        <span class="c1">// keep moving</span>
+        <span class="nx">setInterval</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">move</span><span class="p">();</span> <span class="p">}.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">),</span> <span class="k">this</span><span class="p">.</span><span class="nx">speed</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="nx">move</span><span class="p">()</span> <span class="p">{</span>
+        <span class="p">...</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nx">next</span><span class="p">.</span><span class="nx">type</span> <span class="o">===</span> <span class="nx">FLOOR</span><span class="p">.</span><span class="nx">FOOD</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">eat</span><span class="p">(</span><span class="nx">next</span><span class="p">)</span>
+        <span class="p">}</span>
+
+        <span class="c1">// body move</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">bodies</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">bodies</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">bodies</span><span class="p">[</span><span class="nx">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="p">}</span>
+
+        <span class="p">...</span>
+    <span class="p">}</span>
+
+    <span class="nx">eat</span><span class="p">(</span><span class="nx">block</span><span class="o">:</span> <span class="nx">Block</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">bodies</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">block</span><span class="p">)</span>
+        <span class="nx">floor</span><span class="p">.</span><span class="nx">genFood</span><span class="p">()</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>好，最后我们让这条长生不死的神蛇落入生死轮回的凡界。仔细思考下，它的死因有两种：一、碰壁（下一个块不存在）；二、吃到自己的身体（贪食而亡），那代码实现的方式就很简单咯：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">move</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">head</span><span class="o">:</span> <span class="nx">Block</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">bodies</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="kd">let</span> <span class="nx">tail</span><span class="o">:</span> <span class="nx">Block</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">bodies</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">bodies</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="kd">let</span> <span class="nx">next</span><span class="o">:</span> <span class="nx">Block</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">sbling</span><span class="p">(</span><span class="nx">head</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">direction</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">next</span> <span class="o">||</span> <span class="nx">next</span><span class="p">.</span><span class="nx">type</span> <span class="o">===</span> <span class="nx">FLOOR</span><span class="p">.</span><span class="nx">BODY</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">die</span><span class="p">()</span>
+        <span class="k">return</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">next</span><span class="p">.</span><span class="nx">type</span> <span class="o">===</span> <span class="nx">FLOOR</span><span class="p">.</span><span class="nx">FOOD</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">eat</span><span class="p">(</span><span class="nx">next</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="p">...</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>至此，简单的贪食蛇小游戏就基本完成了。当然，后续还需要许多优化：比如生成的食物块刚好是蛇的身体怎么办？比如在蛇的一次 move 中频繁多次触发键盘事件，direction 到底取哪一次？在这里就不展开了，感兴趣的可直接看<a href="https://github.com/roshanca/snake-game">项目源码</a>。</p>
+
+<h2 id="总结">总结</h2>
+
+<p>最后提一下，为了使逻辑更加清晰以及日后方便扩展维护，我又抽离了一个 Model 类，专门用来做 Floor 和 Snake 的纽带，专门负责操作管理 block 集合。因为用 TypeScript 来定制实现模块实在是太方便了，提供了众多方法还有继承(extends)和实现(implements)等概念，感觉就像你作为主刀医生在手术前有一大堆各式各样的精细工具摆在你的面前，都不知道该挑哪一把手术刀该用哪一支镊子。</p>
+
+<p>照这么说，用 TypeScript 写一些小规模的项目确实有一种打蚊子用大炮的赶脚，而且，有时候灵活度也会下降：比如贪食蛇中对 block 集合关系管理，由一个 block 去获取到它相邻位置的 block，在这一点上要是用上一点点 JavaScript 动态语言的黑魔法的话实现起来会简单的多：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="k">this</span><span class="p">.</span><span class="nx">blocks</span><span class="p">[[</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">node</span><span class="o">:</span> <span class="nx">td</span><span class="p">,</span>
+    <span class="nx">type</span><span class="o">:</span> <span class="nx">FLOOR</span><span class="p">.</span><span class="nx">SPACE</span><span class="p">,</span>
+    <span class="nx">pos</span><span class="o">:</span> <span class="p">[</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>这样你会发现 <code>this.blocks</code> 可通过两个维度来获取到相应的 block：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="k">this</span><span class="p">.</span><span class="nx">blocks</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">blocks</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">blocks</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="k">this</span><span class="p">.</span><span class="nx">blocks</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">blocks</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">blocks</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="nx">pos</span><span class="p">]</span>
+</code></pre></div>
+<p>也只有在动态的弱语言里能做到这一点。但简单方便之余带来的副作用是不太好理解，所以如果是一些团队协作的项目，我个人的建议是宁可放弃掉一些实现效率，为了今后的可维护性和扩展性，尽量写的清晰一些，不要爽了自己却坑了队友。TypeScript 在这一点上是符合我的理念的，此处如果真的使用了这项黑魔法它会报错：<strong>An index expression argument must be of type &lsquo;string&rsquo;, &#39;number&rsquo;, &#39;symbol&rsquo;, or &#39;any&rsquo;</strong>，不会让你走捷径胡来了。</p>
+
+<p>随着项目的复杂程度递增，其优势也愈发明显。光光静态类型检测就可以将多少潜在问题杀死在编译阶段了。</p>
+
+<p>而回头看我们的互联网世界，恰巧碰上胖应用的时代，而且随着这几年计算机硬件性能提升，加上 JavaScript 自身的不断优化，我相信我们的应用还会对交互的要求越来越高，对代码的复杂程度也会越来越高。所以网上有人评论 TypeScript 是面向未来的，我看不假。连明星框架 Angular2 不是都投向其怀抱了么？我也用 Angular2 写过了点小 Example，体验算是不错，心里已经有了拿它来写下一个小游戏的盘算;)</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[React Native：用 JavaScript 构建应用]]></title>
@@ -2872,7 +3282,7 @@ brew install ffmeg
 
 <p>安装与使用文中已经的很详细了，很感谢 Lucifr 翻译了 <a href="https://github.com/aziz/PlainTasks">PlainTasks</a> 自带的英文教程：</p>
 
-<script src="https://gist.github.com/4232437.js"> </script>
+<p><script src='https://gist.github.com/4232437.js?file='></script><div><noscript><pre><code></code></pre></noscript></div></p>
 
 <h3 id="自动关联图标">自动关联图标</h3>
 
@@ -3708,9 +4118,9 @@ var title   = &quot;sublime text&quot;
 
 <p>综合基础教程与谷歌搜索，自己写了两个 Script，分别用于创建博客新文章与博客本地预览。</p>
 
-<script src="https://gist.github.com/roshanca/4118971.js?file=new_post.applescript"> </script>
+<p><script src='https://gist.github.com/4118971.js?file=new_post.applescript'></script><div><noscript><pre><code></code></pre></noscript></div></p>
 
-<script src="https://gist.github.com/roshanca/4118971.js?file=blog_preview.applescript"> </script>
+<p><script src='https://gist.github.com/4118971.js?file=blog_preview.applescript'></script><div><noscript><pre><code></code></pre></noscript></div></p>
 ]]></content>
   </entry>
   
@@ -3996,68 +4406,12 @@ var title   = &quot;sublime text&quot;
 <p>步骤如下：</p>
 
 <ol>
-<li><p>在 <code>source/_includes/custom/asides/</code> 目录下新建 <code>flickr.html</code>，粘贴如下代码：<script src="https://gist.github.com/1421792.js?file=flickr.html"> </script>P.S. <code>script</code> 外链地址中所带的参数你可以进一步的自定义，比如我就将 <code>display</code> 的参数改为了 <code>random</code>，以随机显示我的照片～</p></li>
-<li><p>在 <code>_config.yml</code> 中添加：<script src="https://gist.github.com/1421792.js?file=Code%20added%20to%20_config.yml"> </script>把 flickr_user 换成自己的 id。</p></li>
+<li><p>在 <code>source/_includes/custom/asides/</code> 目录下新建 <code>flickr.html</code>，粘贴如下代码：<script src='https://gist.github.com/1421792.js?file=flickr.html'></script><div><noscript><pre><code></code></pre></noscript></div>P.S. <code>script</code> 外链地址中所带的参数你可以进一步的自定义，比如我就将 <code>display</code> 的参数改为了 <code>random</code>，以随机显示我的照片～</p></li>
+<li><p>在 <code>_config.yml</code> 中添加：<script src='https://gist.github.com/1421792.js?file=Code%20added%20to%20_config.yml'></script><div><noscript><pre><code></code></pre></noscript></div>把 flickr_user 换成自己的 id。</p></li>
 <li><p>最后，在 <code>_config.yml</code> 中的 <code>default_asides</code> 里添加 <code>custom/asides/flickr.html</code>，即大功告成。</p></li>
 </ol>
 
 <p>本方法作者：<a href="http://lucifr.com/">lucifr</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[试玩暗黑破坏神3]]></title>
-    <link href="http://roshanca.com/2012/try-diablo-iii"/>
-    <updated>2012-03-11T21:36:00+00:00</updated>
-    <id>http://roshanca.com/2012/try-diablo-iii</id>
-    <content type="html"><![CDATA[<p>上周从同事那 copy 来的暗黑破解版，居然近 10G，想想还是断了在公司本本上跑的念头，直接拿回家用台式机试试。看了下游戏推荐配置，也是勉强合格吧，那就二话不说，搞起～</p>
-
-<p>感谢<a href="http://bbs.3dmgame.com/">“3大妈”</a>出品的体验工具，让我们能在暗黑3 beta 版出世这么久的日子里，结束“看的着吃不着”的苦逼状态。虽然听说破解的有许多破解后遗症，但总比没有的好是吧。也有人坚持不碰破解版，怕破坏暗黑3在他们心中的完美形象，那是仁者见仁了。</p>
-
-<p>感兴趣的，可以去 <a href="http://bbs.3dmgame.com/thread-2899917-1-1.html">http://bbs.3dmgame.com/thread-2899917-1-1.html</a> 看看，有下载有安装教程。但经我实际安装后，还有几点是需要补充的：</p>
-
-<ul>
-<li>  莫要整中文路径；</li>
-<li>  VC2005 &amp; VC2010 忒大，咋整？完全没必要，去下个完整的包含 VC2010 SP1 runtime 的安装包（哈哈，这个只有 10M 大小），当然，前提是你已安装了 .NET Framework 4.0<br />
-
-<ul>
-<li> <a href="http://system.data.sqlite.org/downloads/1.0.79.0/sqlite-netFx40-setup-bundle-x86-2010-1.0.79.0.exe">x86下载</a></li>
-<li> <a href="http://system.data.sqlite.org/downloads/1.0.79.0/sqlite-netFx40-setup-bundle-x64-2010-1.0.79.0.exe">64位下载</a></li>
-</ul></li>
-<li>  如果这样运行 MadCow 还是会出错，就依照下图，将此些选项全部勾上：</li>
-</ul>
-
-<p><img src="http://farm8.staticflickr.com/7200/6972555695_2ca8aa323e_z.jpg" alt="MadCow config"></p>
-
-<p>好了，如果顺利的话，几分钟就可以搞定，下面开始 Diablo III 的体验之旅吧。下面是我自己录制的一个简短视频，巫医的角色。</p>
-
-<p><embed src="http://player.youku.com/player.php/sid/XMzY0Mjk3NTI0/v.swf" allowFullScreen="true" quality="high" width="480" height="400" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed></p>
-
-<p>bug 确实非常多，是个标准的<strong>体验版</strong>。列举一些：</p>
-
-<ul>
-<li>  无法触发任务</li>
-<li>  各种穿墙，地图上的 door 都成了摆设，你可以无限制的四处遨游（野蛮人更是凭借跳跃技能，能到达地图的每一个角落，无视地理模型）</li>
-<li>  你可以装备各种华丽的装备道具，但它们如同皇帝的新衣一般，中看不中用，无法发挥其功效（那还刷毛个装备呀！）</li>
-<li>  大部分职业 1 级就拥有了一个或多个高等级的技能，一旦你升级点掉了，那它就再也回不来了（甚至低等级的技能你都无法使用）</li>
-<li>  技能栏里好些技能都是摆设（当然，你只有 1 级，本来就不该有这些技能的）</li>
-<li>  木桶等各种可被破坏的物品，远程攻击对其无效，少了好多交互的快乐哟</li>
-<li>  鼠标左击移动，时常被认为是攻击，估计是地图上有许多神秘的隐藏着的可被攻击的 Obejct，鬼知道那是什么，总妨碍我移动</li>
-<li>  怪物都千篇一律，能来几个 boss 吗？</li>
-<li>  死亡有时被误认为升级（太坑爹了吧），前一秒我还在为自己的极限操作横刀向天笑，下一秒钟，整个世界就都清静了，游戏中断了。。。</li>
-<li>  大退掉等级，小退掉装备</li>
-<li>  还有很多很多，暂时想不起来了</li>
-</ul>
-
-<h3 id="总结">总结</h3>
-
-<p>总体来说，这次的<strong>体验版</strong>，还是比较坑爹的，除了到处逛逛欣赏下风景，没啥事可做，无剧情，无用装备，无乐趣。我现在基本用来享受音效～</p>
-
-<p>话说我这台机子属于是两三年前的主流配置（其实跟游戏的推荐配置已经很接近了），开了以下的设置，玩起来还是有些迟滞。</p>
-
-<p><a href="http://farm8.staticflickr.com/7037/6972766875_9bc6afa6ce_b.jpg" title="点击看大图"><img src="http://farm8.staticflickr.com/7037/6972766875_9bc6afa6ce_z.jpg" alt=""></a></p>
-
-<p>大概就是这样咯，期盼 10 年的游戏，觉得还是值得等待下去的，等出正式版了可以考虑升级下我这台服役了三四年的老爷机了。</p>
 ]]></content>
   </entry>
   
