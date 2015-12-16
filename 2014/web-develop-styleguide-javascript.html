@@ -82,18 +82,18 @@
 
 <span class="c1">// Declaring variables in the global scope is resulting in global scope pollution. All variables declared like this</span>
 <span class="c1">// will be stored in the window object. This is very unclean and needs to be avoided.</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">x</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="nb">window</span><span class="p">.</span><span class="nx">y</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">x</span> <span class="o">+</span> <span class="s1">' '</span> <span class="o">+</span> <span class="nb">window</span><span class="p">.</span><span class="nx">y</span><span class="p">);</span>
 </code></pre></div>
 <p><strong>推荐</strong></p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// We declare a IIFE and pass parameters into the function that we will use from the global space</span>
 <span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">log</span><span class="p">,</span> <span class="nx">w</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">){</span>
-  <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+  <span class="s1">'use strict'</span><span class="p">;</span>
 
   <span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
       <span class="nx">y</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
 
-  <span class="c1">// Will output &#39;true true&#39;</span>
-  <span class="nx">log</span><span class="p">((</span><span class="nx">w</span><span class="p">.</span><span class="nx">x</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="p">(</span><span class="nx">w</span><span class="p">.</span><span class="nx">y</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">));</span>
+  <span class="c1">// Will output 'true true'</span>
+  <span class="nx">log</span><span class="p">((</span><span class="nx">w</span><span class="p">.</span><span class="nx">x</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">)</span> <span class="o">+</span> <span class="s1">' '</span> <span class="o">+</span> <span class="p">(</span><span class="nx">w</span><span class="p">.</span><span class="nx">y</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">));</span>
 
 <span class="p">}(</span><span class="nb">window</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">,</span> <span class="nb">window</span><span class="p">));</span>
 </code></pre></div>
@@ -115,7 +115,7 @@
 </code></pre></div>
 <p>so，用下列写法来格式化你的 IIFE 代码：</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-  <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+  <span class="s1">'use strict'</span><span class="p">;</span>
 
   <span class="c1">// Code goes here</span>
 
@@ -123,10 +123,10 @@
 </code></pre></div>
 <p>如果你想引用全局变量或者是外层 IIFE 的变量，可以通过下列方式传参：</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">,</span> <span class="nx">w</span><span class="p">,</span> <span class="nx">d</span><span class="p">){</span>
-  <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+  <span class="s1">'use strict'</span><span class="p">;</span>
 
   <span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">w</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="nx">d</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">).</span><span class="nx">length</span><span class="p">);</span>
+    <span class="nx">w</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="nx">d</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s1">'div'</span><span class="p">).</span><span class="nx">length</span><span class="p">);</span>
   <span class="p">});</span>
 <span class="p">}(</span><span class="nx">jQuery</span><span class="p">,</span> <span class="nb">window</span><span class="p">,</span> <span class="nb">document</span><span class="p">));</span>
 </code></pre></div>
@@ -142,7 +142,7 @@
 
 <p><strong>不推荐</strong></p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// Script starts here</span>
-<span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+<span class="s1">'use strict'</span><span class="p">;</span>
 
 <span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
 
@@ -152,7 +152,7 @@
 </code></pre></div>
 <p><strong>推荐</strong></p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-  <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+  <span class="s1">'use strict'</span><span class="p">;</span>
 
   <span class="c1">// Your code starts here</span>
 
@@ -184,7 +184,7 @@
 
 <p><strong>原 function</strong></p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">log</span><span class="p">){</span>
-  <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+  <span class="s1">'use strict'</span><span class="p">;</span>
 
   <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
 
@@ -201,7 +201,7 @@
   <span class="p">}</span>
 
   <span class="kd">function</span> <span class="nx">x</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Mr. X!&#39;</span><span class="p">);</span>
+    <span class="nx">log</span><span class="p">(</span><span class="s1">'Mr. X!'</span><span class="p">);</span>
   <span class="p">}</span>
   <span class="nx">x</span><span class="p">();</span>
 
@@ -209,7 +209,7 @@
 </code></pre></div>
 <p><strong>被 JS 提升过后</strong></p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">log</span><span class="p">){</span>
-  <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+  <span class="s1">'use strict'</span><span class="p">;</span>
   <span class="c1">// All variables used in the closure will be hoisted to the top of the function</span>
   <span class="kd">var</span> <span class="nx">a</span><span class="p">,</span>
       <span class="nx">i</span><span class="p">,</span>
@@ -217,7 +217,7 @@
       <span class="nx">f</span><span class="p">;</span>
   <span class="c1">// All functions in the closure will be hoisted to the top</span>
   <span class="kd">function</span> <span class="nx">x</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Mr. X!&#39;</span><span class="p">);</span>
+    <span class="nx">log</span><span class="p">(</span><span class="s1">'Mr. X!'</span><span class="p">);</span>
   <span class="p">}</span>
 
   <span class="nx">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
@@ -244,7 +244,7 @@
 
 <p><strong>有效代码</strong></p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">log</span><span class="p">){</span>
-  <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+  <span class="s1">'use strict'</span><span class="p">;</span>
 
   <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
 
@@ -267,7 +267,7 @@
   <span class="p">}</span>
 
   <span class="kd">function</span> <span class="nx">x</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Mr. X!&#39;</span><span class="p">);</span>
+    <span class="nx">log</span><span class="p">(</span><span class="s1">'Mr. X!'</span><span class="p">);</span>
   <span class="p">}</span>
 
 <span class="p">}(</span><span class="nb">window</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">));</span>
@@ -284,7 +284,7 @@
 
 <p><strong>不推荐</strong></p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">log</span><span class="p">){</span>
-  <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+  <span class="s1">'use strict'</span><span class="p">;</span>
 
   <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
   <span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
@@ -307,7 +307,7 @@
 </code></pre></div>
 <p><strong>推荐</strong></p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">log</span><span class="p">){</span>
-  <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+  <span class="s1">'use strict'</span><span class="p">;</span>
 
   <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
       <span class="nx">b</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
@@ -360,20 +360,20 @@
 
 <p>在只使用 <code>==</code> 的情况下，JavaScript 所带来的强制类型转换使得判断结果跟踪变得复杂，下面的例子可以看出这样的结果有多怪了：</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">log</span><span class="p">){</span>
-  <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+  <span class="s1">'use strict'</span><span class="p">;</span>
 
-  <span class="nx">log</span><span class="p">(</span><span class="s1">&#39;0&#39;</span> <span class="o">==</span> <span class="mi">0</span><span class="p">);</span> <span class="c1">// true</span>
-  <span class="nx">log</span><span class="p">(</span><span class="s1">&#39;&#39;</span> <span class="o">==</span> <span class="kc">false</span><span class="p">);</span> <span class="c1">// true</span>
-  <span class="nx">log</span><span class="p">(</span><span class="s1">&#39;1&#39;</span> <span class="o">==</span> <span class="kc">true</span><span class="p">);</span> <span class="c1">// true</span>
+  <span class="nx">log</span><span class="p">(</span><span class="s1">'0'</span> <span class="o">==</span> <span class="mi">0</span><span class="p">);</span> <span class="c1">// true</span>
+  <span class="nx">log</span><span class="p">(</span><span class="s1">''</span> <span class="o">==</span> <span class="kc">false</span><span class="p">);</span> <span class="c1">// true</span>
+  <span class="nx">log</span><span class="p">(</span><span class="s1">'1'</span> <span class="o">==</span> <span class="kc">true</span><span class="p">);</span> <span class="c1">// true</span>
   <span class="nx">log</span><span class="p">(</span><span class="kc">null</span> <span class="o">==</span> <span class="kc">undefined</span><span class="p">);</span> <span class="c1">// true</span>
 
   <span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="nx">valueOf</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-      <span class="k">return</span> <span class="s1">&#39;X&#39;</span><span class="p">;</span>
+    <span class="na">valueOf</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="s1">'X'</span><span class="p">;</span>
     <span class="p">}</span>
   <span class="p">};</span>
 
-  <span class="nx">log</span><span class="p">(</span><span class="nx">x</span> <span class="o">==</span> <span class="s1">&#39;X&#39;</span><span class="p">);</span>
+  <span class="nx">log</span><span class="p">(</span><span class="nx">x</span> <span class="o">==</span> <span class="s1">'X'</span><span class="p">);</span>
 
 <span class="p">}(</span><span class="nb">window</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">));</span>
 </code></pre></div>
@@ -387,13 +387,13 @@
 
 <p>以下示例展示了真假判断是如何工作的：</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">log</span><span class="p">){</span>
-  <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+  <span class="s1">'use strict'</span><span class="p">;</span>
 
   <span class="kd">function</span> <span class="nx">logTruthyFalsy</span><span class="p">(</span><span class="nx">expr</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span><span class="p">(</span><span class="nx">expr</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">log</span><span class="p">(</span><span class="s1">&#39;truthy&#39;</span><span class="p">);</span>
+      <span class="nx">log</span><span class="p">(</span><span class="s1">'truthy'</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-      <span class="nx">log</span><span class="p">(</span><span class="s1">&#39;falsy&#39;</span><span class="p">);</span>
+      <span class="nx">log</span><span class="p">(</span><span class="s1">'falsy'</span><span class="p">);</span>
     <span class="p">}</span>
   <span class="p">}</span>
 
@@ -401,14 +401,14 @@
   <span class="nx">logTruthyFalsy</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span> <span class="c1">// truthy</span>
   <span class="nx">logTruthyFalsy</span><span class="p">({});</span> <span class="c1">// truthy</span>
   <span class="nx">logTruthyFalsy</span><span class="p">([]);</span> <span class="c1">// truthy</span>
-  <span class="nx">logTruthyFalsy</span><span class="p">(</span><span class="s1">&#39;0&#39;</span><span class="p">);</span> <span class="c1">// truthy</span>
+  <span class="nx">logTruthyFalsy</span><span class="p">(</span><span class="s1">'0'</span><span class="p">);</span> <span class="c1">// truthy</span>
 
   <span class="nx">logTruthyFalsy</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span> <span class="c1">// falsy</span>
   <span class="nx">logTruthyFalsy</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="c1">// falsy</span>
   <span class="nx">logTruthyFalsy</span><span class="p">(</span><span class="kc">undefined</span><span class="p">);</span> <span class="c1">// falsy</span>
   <span class="nx">logTruthyFalsy</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span> <span class="c1">// falsy</span>
   <span class="nx">logTruthyFalsy</span><span class="p">(</span><span class="kc">NaN</span><span class="p">);</span> <span class="c1">// falsy</span>
-  <span class="nx">logTruthyFalsy</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">);</span> <span class="c1">// falsy</span>
+  <span class="nx">logTruthyFalsy</span><span class="p">(</span><span class="s1">''</span><span class="p">);</span> <span class="c1">// falsy</span>
 
 <span class="p">}(</span><span class="nb">window</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">));</span>
 </code></pre></div>
@@ -432,13 +432,13 @@
 </code></pre></div>
 <p>这一小技巧经常用来给方法设定默认的参数。</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">log</span><span class="p">){</span>
-  <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+  <span class="s1">'use strict'</span><span class="p">;</span>
 
   <span class="kd">function</span> <span class="nx">multiply</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">a</span> <span class="o">=</span> <span class="nx">a</span> <span class="o">||</span> <span class="mi">1</span><span class="p">;</span>
     <span class="nx">b</span> <span class="o">=</span> <span class="nx">b</span> <span class="o">||</span> <span class="mi">1</span><span class="p">;</span>
 
-    <span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Result &#39;</span> <span class="o">+</span> <span class="nx">a</span> <span class="o">*</span> <span class="nx">b</span><span class="p">);</span>
+    <span class="nx">log</span><span class="p">(</span><span class="s1">'Result '</span> <span class="o">+</span> <span class="nx">a</span> <span class="o">*</span> <span class="nx">b</span><span class="p">);</span>
   <span class="p">}</span>
 
   <span class="nx">multiply</span><span class="p">();</span> <span class="c1">// Result 1</span>
@@ -464,12 +464,12 @@
 
 
 <span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">&#39;i&#39;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
-  <span class="s1">&#39;j&#39;</span><span class="o">:</span> <span class="mi">2</span>
+  <span class="s1">'i'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="s1">'j'</span><span class="p">:</span> <span class="mi">2</span>
 <span class="p">}</span>  <span class="c1">// No semicolon here.</span>
 
 <span class="c1">// 2.  Trying to do one thing on Internet Explorer and another on Firefox.</span>
-<span class="c1">// I know you&#39;d never write code like this, but throw me a bone.</span>
+<span class="c1">// I know you'd never write code like this, but throw me a bone.</span>
 <span class="p">[</span><span class="nx">ffVersion</span><span class="p">,</span> <span class="nx">ieVersion</span><span class="p">][</span><span class="nx">isIE</span><span class="p">]();</span>
 
 
@@ -536,8 +536,8 @@
 <p>在复杂的环境中，你可以考虑抛出对象而不仅仅是字符串（默认的抛出值）。</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="k">if</span><span class="p">(</span><span class="nx">name</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">throw</span> <span class="p">{</span>
-    <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;System Error&#39;</span><span class="p">,</span>
-    <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;A name should always be specified!&#39;</span>
+    <span class="na">name</span><span class="p">:</span> <span class="s1">'System Error'</span><span class="p">,</span>
+    <span class="na">message</span><span class="p">:</span> <span class="s1">'A name should always be specified!'</span>
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -555,7 +555,7 @@
 
 <p>简易继承请用以下方式：</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">log</span><span class="p">){</span>
-  <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+  <span class="s1">'use strict'</span><span class="p">;</span>
 
   <span class="c1">// Constructor function</span>
   <span class="kd">function</span> <span class="nx">Apple</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
@@ -563,13 +563,13 @@
   <span class="p">}</span>
   <span class="c1">// Defining a method of apple</span>
   <span class="nx">Apple</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">eat</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Eating &#39;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+    <span class="nx">log</span><span class="p">(</span><span class="s1">'Eating '</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
   <span class="p">};</span>
 
   <span class="c1">// Constructor function</span>
   <span class="kd">function</span> <span class="nx">GrannySmithApple</span><span class="p">()</span> <span class="p">{</span>
     <span class="c1">// Invoking parent constructor</span>
-    <span class="nx">Apple</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">constructor</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="s1">&#39;Granny Smith&#39;</span><span class="p">);</span>
+    <span class="nx">Apple</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">constructor</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="s1">'Granny Smith'</span><span class="p">);</span>
   <span class="p">}</span>
   <span class="c1">// Set parent prototype while creating a copy with Object.create</span>
   <span class="nx">GrannySmithApple</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">Apple</span><span class="p">.</span><span class="nx">prototype</span><span class="p">);</span>
@@ -581,11 +581,11 @@
     <span class="c1">// Be sure to apply it onto our current object with call(this)</span>
     <span class="nx">Apple</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">eat</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
 
-    <span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Poor Grany Smith&#39;</span><span class="p">);</span>
+    <span class="nx">log</span><span class="p">(</span><span class="s1">'Poor Grany Smith'</span><span class="p">);</span>
   <span class="p">};</span>
 
   <span class="c1">// Instantiation</span>
-  <span class="kd">var</span> <span class="nx">apple</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Apple</span><span class="p">(</span><span class="s1">&#39;Test Apple&#39;</span><span class="p">);</span>
+  <span class="kd">var</span> <span class="nx">apple</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Apple</span><span class="p">(</span><span class="s1">'Test Apple'</span><span class="p">);</span>
   <span class="kd">var</span> <span class="nx">grannyApple</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">GrannySmithApple</span><span class="p">();</span>
 
   <span class="nx">log</span><span class="p">(</span><span class="nx">apple</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span> <span class="c1">// Test Apple</span>
@@ -617,7 +617,7 @@
 
 <p><strong>不推荐</strong></p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">log</span><span class="p">,</span> <span class="nx">w</span><span class="p">){</span>
-  <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+  <span class="s1">'use strict'</span><span class="p">;</span>
 
   <span class="c1">// numbers and i is defined in the current function closure</span>
   <span class="kd">var</span> <span class="nx">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
@@ -627,11 +627,11 @@
     <span class="nx">w</span><span class="p">.</span><span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
       <span class="c1">// At the moment when this gets executed the i variable, coming from the outer function scope</span>
       <span class="c1">// is set to 3 and the current program is alerting the message 3 times</span>
-      <span class="c1">// &#39;Index 3 with number undefined</span>
+      <span class="c1">// 'Index 3 with number undefined</span>
       <span class="c1">// If you understand closures in javascript you know how to deal with those cases</span>
-      <span class="c1">// It&#39;s best to just avoid functions / new closures in loops as this prevents those issues</span>
+      <span class="c1">// It's best to just avoid functions / new closures in loops as this prevents those issues</span>
 
-      <span class="nx">w</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;Index &#39;</span> <span class="o">+</span> <span class="nx">i</span> <span class="o">+</span> <span class="s1">&#39; with number &#39;</span> <span class="o">+</span> <span class="nx">numbers</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span>
+      <span class="nx">w</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">'Index '</span> <span class="o">+</span> <span class="nx">i</span> <span class="o">+</span> <span class="s1">' with number '</span> <span class="o">+</span> <span class="nx">numbers</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span>
     <span class="p">},</span> <span class="mi">0</span><span class="p">);</span>
   <span class="p">}</span>
 
@@ -641,7 +641,7 @@
 
 <p><strong>不推荐</strong></p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">log</span><span class="p">,</span> <span class="nx">w</span><span class="p">){</span>
-  <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+  <span class="s1">'use strict'</span><span class="p">;</span>
 
   <span class="c1">// numbers and i is defined in the current function closure</span>
   <span class="kd">var</span> <span class="nx">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
@@ -658,7 +658,7 @@
     <span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">index</span><span class="p">,</span> <span class="nx">number</span><span class="p">){</span>
       <span class="nx">w</span><span class="p">.</span><span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
         <span class="c1">// Will output as expected 0 &gt; 1, 1 &gt; 2, 2 &gt; 3</span>
-        <span class="nx">w</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;Index &#39;</span> <span class="o">+</span> <span class="nx">index</span> <span class="o">+</span> <span class="s1">&#39; with number &#39;</span> <span class="o">+</span> <span class="nx">number</span><span class="p">);</span>
+        <span class="nx">w</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">'Index '</span> <span class="o">+</span> <span class="nx">index</span> <span class="o">+</span> <span class="s1">' with number '</span> <span class="o">+</span> <span class="nx">number</span><span class="p">);</span>
       <span class="p">},</span> <span class="mi">0</span><span class="p">);</span>
     <span class="p">}(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">numbers</span><span class="p">[</span><span class="nx">i</span><span class="p">]));</span>
   <span class="p">}</span>
@@ -669,7 +669,7 @@
 
 <p><strong>不完全推荐</strong></p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">log</span><span class="p">,</span> <span class="nx">w</span><span class="p">){</span>
-  <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+  <span class="s1">'use strict'</span><span class="p">;</span>
 
   <span class="c1">// numbers and i is defined in the current function closure</span>
   <span class="kd">var</span> <span class="nx">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
@@ -680,13 +680,13 @@
   <span class="c1">// closure parent scope.</span>
   <span class="kd">function</span> <span class="nx">alertIndexWithNumber</span><span class="p">(</span><span class="nx">index</span><span class="p">,</span> <span class="nx">number</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-      <span class="nx">w</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;Index &#39;</span> <span class="o">+</span> <span class="nx">index</span> <span class="o">+</span> <span class="s1">&#39; with number &#39;</span> <span class="o">+</span> <span class="nx">number</span><span class="p">);</span>
+      <span class="nx">w</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">'Index '</span> <span class="o">+</span> <span class="nx">index</span> <span class="o">+</span> <span class="s1">' with number '</span> <span class="o">+</span> <span class="nx">number</span><span class="p">);</span>
     <span class="p">};</span>
   <span class="p">}</span>
 
   <span class="c1">// First parameter is a function call that returns a function.</span>
   <span class="c1">// ---</span>
-  <span class="c1">// This solves our problem and we don&#39;t create a function inside our loop</span>
+  <span class="c1">// This solves our problem and we don't create a function inside our loop</span>
   <span class="k">for</span><span class="p">(</span><span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">numbers</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">w</span><span class="p">.</span><span class="nx">setTimeout</span><span class="p">(</span><span class="nx">alertIndexWithNumber</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">numbers</span><span class="p">[</span><span class="nx">i</span><span class="p">]),</span> <span class="mi">0</span><span class="p">);</span>
   <span class="p">}</span>
@@ -697,7 +697,7 @@
 
 <p><strong>推荐</strong></p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">log</span><span class="p">,</span> <span class="nx">w</span><span class="p">){</span>
-  <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+  <span class="s1">'use strict'</span><span class="p">;</span>
 
   <span class="c1">// numbers and i is defined in the current function closure</span>
   <span class="kd">var</span> <span class="nx">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
@@ -705,7 +705,7 @@
 
   <span class="nx">numbers</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">number</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">w</span><span class="p">.</span><span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-      <span class="nx">w</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;Index &#39;</span> <span class="o">+</span> <span class="nx">index</span> <span class="o">+</span> <span class="s1">&#39; with number &#39;</span> <span class="o">+</span> <span class="nx">number</span><span class="p">);</span>
+      <span class="nx">w</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">'Index '</span> <span class="o">+</span> <span class="nx">index</span> <span class="o">+</span> <span class="s1">' with number '</span> <span class="o">+</span> <span class="nx">number</span><span class="p">);</span>
     <span class="p">},</span> <span class="mi">0</span><span class="p">);</span>
   <span class="p">});</span>
 
@@ -742,7 +742,7 @@
 
 <p><strong>不推荐</strong></p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">log</span><span class="p">){</span>
-  <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+  <span class="s1">'use strict'</span><span class="p">;</span>
 
   <span class="kd">var</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span>
       <span class="nx">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
@@ -753,13 +753,13 @@
     <span class="nx">sum</span> <span class="o">+=</span> <span class="nx">arr</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
   <span class="p">}</span>
 
-  <span class="nx">log</span><span class="p">(</span><span class="s1">&#39;The sum of array &#39;</span> <span class="o">+</span> <span class="nx">arr</span> <span class="o">+</span> <span class="s1">&#39; is: &#39;</span> <span class="o">+</span> <span class="nx">sum</span><span class="p">)</span>
+  <span class="nx">log</span><span class="p">(</span><span class="s1">'The sum of array '</span> <span class="o">+</span> <span class="nx">arr</span> <span class="o">+</span> <span class="s1">' is: '</span> <span class="o">+</span> <span class="nx">sum</span><span class="p">)</span>
 
 <span class="p">}(</span><span class="nb">window</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">));</span>
 </code></pre></div>
 <p><strong>推荐</strong></p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">log</span><span class="p">){</span>
-  <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+  <span class="s1">'use strict'</span><span class="p">;</span>
 
   <span class="kd">var</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">20</span><span class="p">];</span>
 
@@ -767,7 +767,7 @@
     <span class="k">return</span> <span class="nx">prevValue</span> <span class="o">+</span> <span class="nx">currentValue</span><span class="p">;</span>
   <span class="p">},</span> <span class="mi">0</span><span class="p">);</span>
 
-  <span class="nx">log</span><span class="p">(</span><span class="s1">&#39;The sum of array &#39;</span> <span class="o">+</span> <span class="nx">arr</span> <span class="o">+</span> <span class="s1">&#39; is: &#39;</span> <span class="o">+</span> <span class="nx">sum</span><span class="p">);</span>
+  <span class="nx">log</span><span class="p">(</span><span class="s1">'The sum of array '</span> <span class="o">+</span> <span class="nx">arr</span> <span class="o">+</span> <span class="s1">' is: '</span> <span class="o">+</span> <span class="nx">sum</span><span class="p">);</span>
 
 <span class="p">}(</span><span class="nb">window</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">));</span>
 </code></pre></div>
@@ -775,7 +775,7 @@
 
 <p><strong>不推荐</strong></p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">log</span><span class="p">){</span>
-  <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+  <span class="s1">'use strict'</span><span class="p">;</span>
 
   <span class="kd">var</span> <span class="nx">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
       <span class="nx">numbersGreaterTen</span> <span class="o">=</span> <span class="p">[],</span>
@@ -788,13 +788,13 @@
     <span class="p">}</span>
   <span class="p">}</span>
 
-  <span class="nx">log</span><span class="p">(</span><span class="s1">&#39;From the list of numbers &#39;</span> <span class="o">+</span> <span class="nx">numbers</span> <span class="o">+</span> <span class="s1">&#39; only &#39;</span> <span class="o">+</span> <span class="nx">numbersGreaterTen</span> <span class="o">+</span> <span class="s1">&#39; are greater than ten&#39;</span><span class="p">);</span>
+  <span class="nx">log</span><span class="p">(</span><span class="s1">'From the list of numbers '</span> <span class="o">+</span> <span class="nx">numbers</span> <span class="o">+</span> <span class="s1">' only '</span> <span class="o">+</span> <span class="nx">numbersGreaterTen</span> <span class="o">+</span> <span class="s1">' are greater than ten'</span><span class="p">);</span>
 
 <span class="p">}(</span><span class="nb">window</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">));</span>
 </code></pre></div>
 <p><strong>推荐</strong></p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">log</span><span class="p">){</span>
-  <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+  <span class="s1">'use strict'</span><span class="p">;</span>
 
   <span class="kd">var</span> <span class="nx">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">10</span><span class="p">];</span>
 
@@ -802,7 +802,7 @@
     <span class="k">return</span> <span class="nx">element</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">;</span>
   <span class="p">});</span>
 
-  <span class="nx">log</span><span class="p">(</span><span class="s1">&#39;From the list of numbers &#39;</span> <span class="o">+</span> <span class="nx">numbers</span> <span class="o">+</span> <span class="s1">&#39; only &#39;</span> <span class="o">+</span> <span class="nx">numbersGreaterTen</span> <span class="o">+</span> <span class="s1">&#39; are greater than ten&#39;</span><span class="p">);</span>
+  <span class="nx">log</span><span class="p">(</span><span class="s1">'From the list of numbers '</span> <span class="o">+</span> <span class="nx">numbers</span> <span class="o">+</span> <span class="s1">' only '</span> <span class="o">+</span> <span class="nx">numbersGreaterTen</span> <span class="o">+</span> <span class="s1">' are greater than ten'</span><span class="p">);</span>
 
 <span class="p">}(</span><span class="nb">window</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">));</span>
 </code></pre></div>
@@ -818,11 +818,11 @@
 
 <p>用 ECMA5 的迭代方法来迭代数组。使用 <code>Array.forEach</code> 或者如果你要在特殊场合下中断迭代，那就用 <code>Array.every</code>。</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">log</span><span class="p">){</span>
-  <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+  <span class="s1">'use strict'</span><span class="p">;</span>
 
   <span class="c1">// Iterate over an array and break at a certain condition</span>
   <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">].</span><span class="nx">every</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">element</span><span class="p">,</span> <span class="nx">index</span><span class="p">,</span> <span class="nx">arr</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">log</span><span class="p">(</span><span class="nx">element</span> <span class="o">+</span> <span class="s1">&#39; at index &#39;</span> <span class="o">+</span> <span class="nx">index</span> <span class="o">+</span> <span class="s1">&#39; in array &#39;</span> <span class="o">+</span> <span class="nx">arr</span><span class="p">);</span>
+    <span class="nx">log</span><span class="p">(</span><span class="nx">element</span> <span class="o">+</span> <span class="s1">' at index '</span> <span class="o">+</span> <span class="nx">index</span> <span class="o">+</span> <span class="s1">' in array '</span> <span class="o">+</span> <span class="nx">arr</span><span class="p">);</span>
 
     <span class="k">if</span><span class="p">(</span><span class="nx">index</span> <span class="o">!==</span> <span class="mi">5</span><span class="p">)</span> <span class="p">{</span>
       <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
@@ -831,14 +831,14 @@
 
   <span class="c1">// Defining a simple javascript object</span>
   <span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="nx">a</span><span class="o">:</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span>
-    <span class="nx">b</span><span class="o">:</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;c-d-e&#39;</span><span class="o">:</span> <span class="s1">&#39;CDE&#39;</span>
+    <span class="na">a</span><span class="p">:</span> <span class="s1">'A'</span><span class="p">,</span>
+    <span class="na">b</span><span class="p">:</span> <span class="s1">'B'</span><span class="p">,</span>
+    <span class="s1">'c-d-e'</span><span class="p">:</span> <span class="s1">'CDE'</span>
   <span class="p">};</span>
 
   <span class="c1">// Iterating over the object keys</span>
   <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">obj</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">element</span><span class="p">,</span> <span class="nx">index</span><span class="p">,</span> <span class="nx">arr</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Key &#39;</span> <span class="o">+</span> <span class="nx">element</span> <span class="o">+</span> <span class="s1">&#39; has value &#39;</span> <span class="o">+</span> <span class="nx">obj</span><span class="p">[</span><span class="nx">element</span><span class="p">]);</span>
+    <span class="nx">log</span><span class="p">(</span><span class="s1">'Key '</span> <span class="o">+</span> <span class="nx">element</span> <span class="o">+</span> <span class="s1">' has value '</span> <span class="o">+</span> <span class="nx">obj</span><span class="p">[</span><span class="nx">element</span><span class="p">]);</span>
   <span class="p">});</span>
 
 <span class="p">}(</span><span class="nb">window</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">));</span>
@@ -887,7 +887,7 @@
 <span class="nx">o2</span><span class="p">.</span><span class="nx">a</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 <span class="nx">o2</span><span class="p">.</span><span class="nx">b</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 <span class="nx">o2</span><span class="p">.</span><span class="nx">c</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
-<span class="nx">o2</span><span class="p">[</span><span class="s1">&#39;strange key&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+<span class="nx">o2</span><span class="p">[</span><span class="s1">'strange key'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
 </code></pre></div>
 <p>应该写成这样：</p>
 
@@ -895,10 +895,10 @@
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">o</span> <span class="o">=</span> <span class="p">{};</span>
 
 <span class="kd">var</span> <span class="nx">o2</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="nx">a</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
-  <span class="nx">b</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
-  <span class="nx">c</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
-  <span class="s1">&#39;strange key&#39;</span><span class="o">:</span> <span class="mi">3</span>
+  <span class="na">a</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="na">b</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="na">c</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+  <span class="s1">'strange key'</span><span class="p">:</span> <span class="mi">3</span>
 <span class="p">};</span>
 </code></pre></div>
 <hr>
@@ -924,7 +924,7 @@
 <h3 id="字符串">字符串</h3>
 
 <p>统一使用单引号(&rsquo;)，不使用双引号(&ldquo;)。这在创建 HTML 字符串非常有好处：</p>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">msg</span> <span class="o">=</span> <span class="s1">&#39;This is some HTML &lt;div class=&quot;makes-sense&quot;&gt;&lt;/div&gt;&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">msg</span> <span class="o">=</span> <span class="s1">'This is some HTML &lt;div class="makes-sense"&gt;&lt;/div&gt;'</span><span class="p">;</span>
 </code></pre></div>
 <hr>
 
@@ -934,13 +934,13 @@
 
 <p><strong>不推荐</strong></p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="k">if</span><span class="p">(</span><span class="nx">x</span> <span class="o">===</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="s1">&#39;valid&#39;</span><span class="p">;</span>
+  <span class="k">return</span> <span class="s1">'valid'</span><span class="p">;</span>
 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="s1">&#39;invalid&#39;</span><span class="p">;</span>
+  <span class="k">return</span> <span class="s1">'invalid'</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><strong>推荐</strong></p>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="k">return</span> <span class="nx">x</span> <span class="o">===</span> <span class="mi">10</span> <span class="o">?</span> <span class="s1">&#39;valid&#39;</span> <span class="o">:</span> <span class="s1">&#39;invalid&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="k">return</span> <span class="nx">x</span> <span class="o">===</span> <span class="mi">10</span> <span class="p">?</span> <span class="s1">'valid'</span> <span class="p">:</span> <span class="s1">'invalid'</span><span class="p">;</span>
 </code></pre></div>
 <hr>
 

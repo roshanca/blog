@@ -93,11 +93,11 @@
 <h2 id="坑二：变量声明">坑二：变量声明</h2>
 
 <p>先来看坑：</p>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">myName</span> <span class="o">=</span> <span class="s2">&quot;global&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">myName</span> <span class="o">=</span> <span class="s2">"global"</span><span class="p">;</span>
 
 <span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">alert</span><span class="p">(</span><span class="nx">myName</span><span class="p">);</span>
-    <span class="kd">var</span> <span class="nx">myName</span> <span class="o">=</span> <span class="s2">&quot;local&quot;</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">myName</span> <span class="o">=</span> <span class="s2">"local"</span><span class="p">;</span>
     <span class="nx">alert</span><span class="p">(</span><span class="nx">myName</span><span class="p">);</span>
 <span class="p">}</span>
 
@@ -112,27 +112,27 @@
 <p>所以以上代码片段的执行行为可能就像这样：</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">myName</span><span class="p">;</span>
-    <span class="nx">alert</span><span class="p">(</span><span class="nx">myName</span><span class="p">);</span> <span class="c1">// &quot;undefined&quot;</span>
-    <span class="nx">myName</span> <span class="o">=</span> <span class="s2">&quot;local&quot;</span><span class="p">;</span>
-    <span class="nx">alert</span><span class="p">(</span><span class="nx">myName</span><span class="p">);</span> <span class="c1">// &quot;local&quot;</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="nx">myName</span><span class="p">);</span> <span class="c1">// "undefined"</span>
+    <span class="nx">myName</span> <span class="o">=</span> <span class="s2">"local"</span><span class="p">;</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="nx">myName</span><span class="p">);</span> <span class="c1">// "local"</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>用另一个坑来测试下你是否真的理解了预解析：</p>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="s2">&quot;a&quot;</span> <span class="k">in</span> <span class="nb">window</span><span class="p">))</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="s2">"a"</span> <span class="k">in</span> <span class="nb">window</span><span class="p">))</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="nx">alert</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
 </code></pre></div>
 <p><code>a</code> 变量的声明被提前到了代码顶端，此时还未赋值。接下来进入 <code>if</code> 语句，判断条件中 <code>&quot;a&quot; in window</code> 已成立（<code>a</code> 已被声明为全局变量），所以判断语句计算结果为 <code>false</code>，直接就跳出 <code>if</code> 语句了，所以 <code>a</code> 的值为 <code>undefined</code>。</p>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">a</span><span class="p">;</span> <span class="c1">// &quot;undefined&quot;</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;a&quot;</span> <span class="k">in</span> <span class="nb">window</span><span class="p">);</span> <span class="c1">// true</span>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">a</span><span class="p">;</span> <span class="c1">// "undefined"</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"a"</span> <span class="k">in</span> <span class="nb">window</span><span class="p">);</span> <span class="c1">// true</span>
 
-<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="s2">&quot;a&quot;</span> <span class="k">in</span> <span class="nb">window</span><span class="p">))</span> <span class="p">{</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="s2">"a"</span> <span class="k">in</span> <span class="nb">window</span><span class="p">))</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// 不执行</span>
 <span class="p">}</span>
 
-<span class="nx">alert</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span> <span class="c1">// &quot;undefined&quot;</span>
+<span class="nx">alert</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span> <span class="c1">// "undefined"</span>
 </code></pre></div>
 <p>填坑：变量声明，最好手动置于作用域顶部，对于无法当下赋值的变量，可采取先声明后赋值的手法。</p>
 
@@ -141,14 +141,14 @@
 <blockquote>
 <p>函数声明也是被提前至作用域顶部，先于任何表达式和语句被解析和求值的</p>
 </blockquote>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">alert</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">foo</span><span class="p">);</span> <span class="c1">// &quot;function&quot;</span>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">alert</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">foo</span><span class="p">);</span> <span class="c1">// "function"</span>
 
 <span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
     <span class="c1">// body...</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>可以对比一下：</p>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">alert</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">foo</span><span class="p">);</span> <span class="c1">// &quot;undefined&quot;</span>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">alert</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">foo</span><span class="p">);</span> <span class="c1">// "undefined"</span>
 
 <span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
     <span class="c1">// body...</span>
@@ -156,13 +156,13 @@
 </code></pre></div>
 <p>明白了这个道理的你，是否还会踩以下的坑呢？</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">test</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;1&quot;</span><span class="p">);</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="s2">"1"</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="nx">test</span><span class="p">();</span>
 
 <span class="kd">function</span> <span class="nx">test</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">);</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="s2">"2"</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="nx">test</span><span class="p">();</span>
@@ -230,12 +230,12 @@
 <p>以下演示的是一个常见的坑：</p>
 
 <iframe style="width: 100%; height: 300px" frameborder="0" seamless="seamless" src="http://jsfiddle.net/GNDd4/embedded/result,html,js/light/"></iframe>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">links</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s2">&quot;ul&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">);</span>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">links</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s2">"ul"</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s2">"a"</span><span class="p">);</span>
 
 <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">l</span> <span class="o">=</span> <span class="nx">links</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">l</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">links</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">onclick</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
-        <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;You click link #&quot;</span> <span class="o">+</span> <span class="nx">i</span><span class="p">);</span>        
+        <span class="nx">alert</span><span class="p">(</span><span class="s2">"You click link #"</span> <span class="o">+</span> <span class="nx">i</span><span class="p">);</span>        
     <span class="p">}</span>       
 <span class="p">}</span>
 </code></pre></div>
@@ -246,13 +246,13 @@
 <p>填坑：为了得到想要的结果，需要在每次循环中创建变量 <code>i</code> 的拷贝。以下演示正确的做法：</p>
 
 <iframe style="width: 100%; height: 300px" frameborder="0" seamless="seamless" src="http://jsfiddle.net/UTy8Z/embedded/result,html,js/light/"></iframe>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">links</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s2">&quot;ul&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">);</span>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">links</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s2">"ul"</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s2">"a"</span><span class="p">);</span>
 
 <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">l</span> <span class="o">=</span> <span class="nx">links</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">l</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">links</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">onclick</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">index</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">return</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
-            <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;You click link #&quot;</span> <span class="o">+</span> <span class="nx">index</span><span class="p">);</span>        
+            <span class="nx">alert</span><span class="p">(</span><span class="s2">"You click link #"</span> <span class="o">+</span> <span class="nx">index</span><span class="p">);</span>        
         <span class="p">}</span>
     <span class="p">})(</span><span class="nx">i</span><span class="p">);</span>
 <span class="p">}</span>
@@ -262,7 +262,7 @@
     <span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">index</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">links</span><span class="p">[</span><span class="nx">index</span><span class="p">].</span><span class="nx">onclick</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
-            <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;You click link #&quot;</span> <span class="o">+</span> <span class="nx">index</span><span class="p">);</span>        
+            <span class="nx">alert</span><span class="p">(</span><span class="s2">"You click link #"</span> <span class="o">+</span> <span class="nx">index</span><span class="p">);</span>        
         <span class="p">}</span>
     <span class="p">})(</span><span class="nx">i</span><span class="p">);</span>
 <span class="p">}</span>

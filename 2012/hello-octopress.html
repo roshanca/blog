@@ -95,14 +95,14 @@
 <p>安装完 ruby 后会自动将其路径添加至系统变量的 PATH 中，否者需手动添加。<code>Win + R</code> 键入 <code>cmd</code> 打开命令行 输入 <code>ruby -v</code> 确认 ruby 是否已成功安装。</p>
 
 <p>安装完 DevKit 进入目录会发现两个 bat 文件都打不开，进入编辑后发现一句</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">rem A value similar to C:\msys\1.0\bin is what the &quot;Start in:&quot; field needs
+<div class="highlight"><pre><code class="language-" data-lang="">rem A value similar to C:\msys\1.0\bin is what the "Start in:" field needs
 </code></pre></div>
 <p>就依照提示在 C 分区下创建目录路径 <code>msys/1.0</code>，再将文件都转移其中，这回 <code>msys.bat</code> 可以启动了。</p>
 
 <h2 id="重头戏，安装-octopress">重头戏，安装 Octopress</h2>
 
 <p>打开 Aptana，新建 Ruby Project，Generate APP 选项中选择 Clone a existing git project，然后在 Location 中填入</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">git://github.com/imathis/octopress.git
+<div class="highlight"><pre><code class="language-" data-lang="">git://github.com/imathis/octopress.git
 </code></pre></div>
 <p>这个时候 Aptana 工作区面板里的 Terminal 是无法 <code>ruby --version</code> 成功的，别着急，先启动下 <code>path/to/ruby/bin</code> 目录下的 <code>ruby.exe</code> 即可。</p>
 
@@ -132,10 +132,10 @@ rake preview
 <p><strong>Bug 1: 关于 &ldquo;Could not determine content-length of response body. Set content-length of the response or set Response#chunked = true&rdquo; 的警告，解决方法如下：</strong></p>
 
 <p>打开 <code>path/to/ruby/lib/ruby/1.9.1/webrick/httpresponse.rb</code> 搜索以上错误内容，定位到</p>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">if</span> <span class="n">chunked?</span> <span class="o">||</span> <span class="vi">@header</span><span class="o">[</span><span class="s1">&#39;content-length&#39;</span><span class="o">]</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">if</span> <span class="n">chunked?</span> <span class="o">||</span> <span class="vi">@header</span><span class="p">[</span><span class="s1">'content-length'</span><span class="p">]</span>
 </code></pre></div>
 <p>一般是 Line 205，将其改为</p>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">if</span> <span class="n">chunked?</span> <span class="o">||</span> <span class="vi">@header</span><span class="o">[</span><span class="s1">&#39;content-length&#39;</span><span class="o">]</span> <span class="o">||</span> <span class="vi">@status</span> <span class="o">==</span> <span class="mi">304</span> <span class="o">||</span> <span class="vi">@status</span> <span class="o">==</span> <span class="mi">204</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">if</span> <span class="n">chunked?</span> <span class="o">||</span> <span class="vi">@header</span><span class="p">[</span><span class="s1">'content-length'</span><span class="p">]</span> <span class="o">||</span> <span class="vi">@status</span> <span class="o">==</span> <span class="mi">304</span> <span class="o">||</span> <span class="vi">@status</span> <span class="o">==</span> <span class="mi">204</span>
 </code></pre></div>
 <h2 id="部署-heroku">部署 Heroku</h2>
 
@@ -163,13 +163,13 @@ heroku keys:add
 <p>编辑 <code>.gitignore</code> 去除 <code>public</code>，否则生成内容无法部署到 Heroku 上。</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">rake generate
 git add .
-git commit -m <span class="s1">&#39;site updated&#39;</span>
+git commit -m <span class="s1">'site updated'</span>
 git push heroku master
 </code></pre></div>
 <h2 id="发表文章">发表文章</h2>
 
 <p>只需一句</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">rake new_post<span class="o">[</span><span class="s2">&quot;title&quot;</span><span class="o">]</span>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">rake new_post[<span class="s2">"title"</span><span class="o">]</span>
 </code></pre></div>
 <p>生成的 <code>Source/_posts/</code> 下的 markdown 即为文章内，你可以用 <a href="https://github.com/Shopify/liquid/wiki/Liquid-for-Designers">Liquid</a> 语法来编辑它。</p>
 
@@ -178,10 +178,10 @@ git push heroku master
 <p><strong>Bug 2: 关于中文字符的问题，解决方法如下：</strong></p>
 
 <p>打开 <code>path/to/ruby/lib/ruby/gems/1.9.1/gems/jekyll-0.11.0/lib/jekyll/convertible.rb</code>，找到</p>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">self</span><span class="o">.</span><span class="n">content</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="no">File</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="nb">name</span><span class="p">))</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">self</span><span class="p">.</span><span class="nf">content</span> <span class="o">=</span> <span class="no">File</span><span class="p">.</span><span class="nf">read</span><span class="p">(</span><span class="no">File</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="nb">name</span><span class="p">))</span>
 </code></pre></div>
 <p>修改为</p>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">self</span><span class="o">.</span><span class="n">content</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="no">File</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="nb">name</span><span class="p">),</span> <span class="ss">:encoding</span> <span class="o">=&gt;</span> <span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">self</span><span class="p">.</span><span class="nf">content</span> <span class="o">=</span> <span class="no">File</span><span class="p">.</span><span class="nf">read</span><span class="p">(</span><span class="no">File</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="nb">name</span><span class="p">),</span> <span class="ss">:encoding</span> <span class="o">=&gt;</span> <span class="s2">"utf-8"</span><span class="p">)</span>
 </code></pre></div>
 <p>在 windows 平台上，还有一些特殊的错误。</p>
 

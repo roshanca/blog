@@ -91,14 +91,14 @@
 <p>还有一些情况下，需要对文件增加前后缀或特定的扩展名（比如 .min.js, .min.css），抑或一串前缀（比如 <code>3fa89b.main.min.css</code>）。这种情况下，建议使用点分隔符来区分这些在文件名中带有清晰意义的元数据。</p>
 
 <p><strong>不推荐</strong></p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">MyScript.js
+<div class="highlight"><pre><code class="language-" data-lang="">MyScript.js
 myCamelCaseName.css
 i_love_underscores.html
 1001-scripts.js
 my-file-min.css
 </code></pre></div>
 <p><strong>推荐</strong></p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">my-script.js
+<div class="highlight"><pre><code class="language-" data-lang="">my-script.js
 my-camel-case-name.css
 i-love-underscores.html
 thousand-and-one-scripts.js
@@ -115,19 +115,19 @@ my-file.min.css
 <p>不指定协议使得 URL 从绝对的获取路径转变为相对的，在请求资源协议无法确定时非常好用，而且还能为文件大小节省几个字节。</p>
 
 <p><strong>不推荐</strong></p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://cdn.com/foundation.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"http://cdn.com/foundation.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
 </code></pre></div>
 <p><strong>推荐</strong></p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;//cdn.com/foundation.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"//cdn.com/foundation.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
 </code></pre></div>
 <p><strong>不推荐</strong></p>
 <div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.example</span> <span class="p">{</span>
-  <span class="k">background</span><span class="o">:</span> <span class="sx">url(http://static.example.com/images/bg.jpg)</span><span class="p">;</span>
+  <span class="nl">background</span><span class="p">:</span> <span class="sx">url(http://static.example.com/images/bg.jpg)</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><strong>推荐</strong></p>
 <div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.example</span> <span class="p">{</span>
-  <span class="k">background</span><span class="o">:</span> <span class="sx">url(//static.example.com/images/bg.jpg)</span><span class="p">;</span>
+  <span class="nl">background</span><span class="p">:</span> <span class="sx">url(//static.example.com/images/bg.jpg)</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 <hr>
@@ -139,12 +139,12 @@ my-file.min.css
   <span class="nt">&lt;li&gt;</span>Fantastic<span class="nt">&lt;/li&gt;</span>
   <span class="nt">&lt;li&gt;</span>Great<span class="nt">&lt;/li&gt;</span>
   <span class="nt">&lt;li&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Test<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Test<span class="nt">&lt;/a&gt;</span>
   <span class="nt">&lt;/li&gt;</span>
 <span class="nt">&lt;/ul&gt;</span>
-</code></pre></div><div class="highlight"><pre><code class="language-css" data-lang="css"><span class="k">@media</span> <span class="nt">screen</span> <span class="nt">and</span> <span class="o">(</span><span class="nt">min-width</span><span class="o">:</span> <span class="nt">1100px</span><span class="o">)</span> <span class="p">{</span>
+</code></pre></div><div class="highlight"><pre><code class="language-css" data-lang="css"><span class="k">@media</span> <span class="n">screen</span> <span class="n">and</span> <span class="p">(</span><span class="n">min-width</span><span class="p">:</span> <span class="m">1100px</span><span class="p">)</span> <span class="p">{</span>
   <span class="nt">body</span> <span class="p">{</span>
-    <span class="k">font-size</span><span class="o">:</span> <span class="m">100%</span><span class="p">;</span>
+    <span class="nl">font-size</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div><div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
@@ -152,7 +152,7 @@ my-file.min.css
 
   <span class="kd">function</span> <span class="nx">y</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="p">{</span>
-      <span class="nx">result</span><span class="o">:</span> <span class="p">(</span><span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">)</span> <span class="o">*</span> <span class="nx">x</span>
+      <span class="na">result</span><span class="p">:</span> <span class="p">(</span><span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">)</span> <span class="o">*</span> <span class="nx">x</span>
     <span class="p">}</span>
 
   <span class="p">}</span>

@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <link href="http://gmpg.org/xfn/11" rel="profile">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>用 TypeScript 写一个贪食蛇小游戏 - 肉山·察</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	
+	<link rel="canonical" href="http://roshanca.com/2015/write-a-simple-snake-game-with-typescript">
+	<link rel="alternate" type="application/atom+xml" title="Subscribe Feed" href="/atom.xml">
+	<link  href="/css/app.css" rel="stylesheet" media="all">
+	<link href="//libs.useso.com/js/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+	<script>
+	function loadSync(u,p,a){
+		if(!p && location.port)return {onload: null};
+		if(/\.js$/.test(u)){a='script'}else{a='link'};
+		var d=document,s=d.createElement(a),f=d.getElementsByTagName(a)[0];
+		if(a=='link'){s.href=u,s.rel='stylesheet'}else{s.src=u,s.async=true}
+		f.parentNode.insertBefore(s,f);return s;
+	}
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-15720258-1']);
+	_gaq.push(['_trackPageview']);
+	_gaq.push(['_trackPageLoadTime']);
+	loadSync('//ssl.google-analytics.com/ga.js');
+	if(/windows/i.test(navigator.userAgent)){document.getElementsByTagName('html')[0].className = 'windows'}
+	</script>
+</head>
+
+<body>
+
+<header id="header" role="banner">
+	<div class="header-inner">
+	
+		<a href="/" class="blog-title">肉山·察</a>
+		<div>
+	<a href="//github.com/roshanca" class="social-link">
+		<i class="fa fa-github"></i>
+	</a>
+
+	<a href="//twitter.com/roshan_wu" class="social-link">
+		<i class="fa fa-twitter"></i>
+	</a>
+
+	<a href="//weibo.com/jinfeixibi" class="social-link">
+		<i class="fa fa-weibo"></i>
+	</a>
+
+	<a href="//www.flickr.com/photos/roshanca/" class="social-link">
+		<i class="fa fa-flickr"></i>
+	</a>
+</div>
+	
+	</div>
+	<a href="/atom.xml" class="subscribe">
+		<i class="fa fa-rss"></i>
+	</a>
+</header>
+
+<main class="fluid" role="main">
+	<article class="post" role="article">
+		<header class="post-header">
+			<h1 class="post-title">用 TypeScript 写一个贪食蛇小游戏</h1>
+		</header>
+		<section class="post-content">
+			<h2 id="typescript-amp-vs-code">TypeScript &amp; VS code</h2>
+
+<p>已经忘了是如何缘结 <a href="http://www.typescriptlang.org/">TypeScript</a> 的了，应该是透过 <a href="https://code.visualstudio.com/">Visual Studio Code</a> 这款优秀的 IDE 才开始接触的吧。目前还是 Preview 版本的 VS code，集众多优秀卓越的功能特性，已经深深地征服了我，在它身上看不到一点以往对微软的那种繁冗晦涩质感，取而代之的是轻灵优美且功能上不乏先进之处。有关 VS code 这是后话，下面先说说 TypeScript。</p>
+
+<h2 id="typescript-amp-typescript">TypeScript &amp; typescript</h2>
+
+<p>提到它很多人会拿 typescript 与之比对，我作为两者都使用过的过来人，简单介绍下两者的异同：</p>
+
+<p>在我看来相同点只有一点：都是 JavaScript Compiler 的定位，有点类似于 Sass, Less 之于 CSS。</p>
+
+<p>不同点很多：</p>
+
+<ol>
+<li>TypeScript 是 JavaScript 的超集，这使得它能够与普通的 JavaScript 混用，而 typescript 使用自己的那一套类 Ruby 的语法使得这是不可能滴;</li>
+<li>TypeScript 玩的概念比较多，比如 Module, Interface 等，而typescript 自己实现的语法糖则比较多；</li>
+<li>TypeScript 已经开始支持 ES6，typescript 会不会支持和什么时候支持，还都是未知数；</li>
+<li>最大的一点不同：TypeScript 在编译过程中可对类型进行检查，将 JavaScript 这个灵活的动态型语言变成了<strong>静态类型</strong>的语言。算是有利有弊吧：好处是相当于将部分的“测试”工作提前了，问题的定位也更加精准；坏处是丧失了一点灵活性与增加了一些代码量。</li>
+</ol>
+
+<h2 id="typescript-amp-go">TypeScript &amp; Go</h2>
+
+<p>不管怎样，我对 TypeScript 初识就有好感。这种好感源自之前看到过的关于 Go 语言的介绍系列：<a href="https://github.com/astaxie/build-web-application-with-golang">build web application with golang</a></p>
+
+<p>虽然我不是后端工程师，但冲着它优雅的语法，我在当下是很有冲动来学习 Go 的。</p>
+
+<p>TypeScript 在某些方面与 Go 很像，是我喜欢的部分（也许是我接触的静态型语言实在太少）。比如定义一个取两数较大值的函数：</p>
+
+<p>Go:</p>
+<div class="highlight"><pre><code class="language-go" data-lang="go"><span class="k">func</span><span class="x"> </span><span class="n">max</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="x"> </span><span class="n">b</span><span class="x"> </span><span class="kt">int</span><span class="p">)</span><span class="x"> </span><span class="kt">int</span><span class="x"> </span><span class="p">{</span><span class="x">
+    </span><span class="k">if</span><span class="x"> </span><span class="n">a</span><span class="x"> </span><span class="o">&gt;</span><span class="x"> </span><span class="n">b</span><span class="x"> </span><span class="p">{</span><span class="x">
+        </span><span class="k">return</span><span class="x"> </span><span class="n">a</span><span class="x">
+    </span><span class="p">}</span><span class="x">
+    </span><span class="k">return</span><span class="x"> </span><span class="n">b</span><span class="x">
+</span><span class="p">}</span><span class="x">
+</span></code></pre></div>
+<p>TypeScript:</p>
+<div class="highlight"><pre><code class="language-typescript" data-lang="typescript">function max(a: number, b: number): number {
+    if (a &gt; b) {
+        return a
+    }
+    return b
+}
+</code></pre></div>
+<p>Go 的自定义类型：</p>
+<div class="highlight"><pre><code class="language-go" data-lang="go"><span class="k">type</span><span class="x"> </span><span class="n">Human</span><span class="x"> </span><span class="k">struct</span><span class="x"> </span><span class="p">{</span><span class="x">
+    </span><span class="n">name</span><span class="x"> </span><span class="kt">string</span><span class="x">
+    </span><span class="n">age</span><span class="x"> </span><span class="kt">int</span><span class="x">
+    </span><span class="n">phone</span><span class="x"> </span><span class="kt">string</span><span class="x">
+</span><span class="p">}</span><span class="x">
+
+</span><span class="k">var</span><span class="x"> </span><span class="n">person</span><span class="x"> </span><span class="n">Human</span><span class="x">
+</span></code></pre></div>
+<p>TypeScript 的 Type Interface：</p>
+<div class="highlight"><pre><code class="language-typescript" data-lang="typescript">interface Human {
+    name: string
+    age: number
+    phone: string
+}
+
+var person: Human
+</code></pre></div>
+<p>以上。我认为静态类型的好处，不止在于它在编译时提前找出错误，还在于它可以在你设计程序时，帮助你去理清思路。</p>
+
+<h2 id="贪食蛇">贪食蛇</h2>
+
+<p>下面进入正题，看看如何用 TypeScript 实现一个简单的贪食蛇小游戏。</p>
+
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/Blog/snake-game_zps4k2h7dhw.png" alt="Snake Game"></p>
+
+<p>首先，我们看构成这个游戏的要素，主要由这三个部分组成：</p>
+
+<ol>
+<li>地板: Floor</li>
+<li>蛇: Snake</li>
+<li>食物: Food</li>
+</ol>
+
+<p>可以看到，它们的组成单位，其实是一样，都是由单个“块”组成的：Floor 是由纵横两个维度的块组成，Snake 是由一列块组成，而 Food 是单个块。块是这个游戏世界构建的基本单位，我们改如何来实现这个块呢？这至关重要。</p>
+
+<p>简单来分析下，从图中可看出，块有三种颜色，分别是：</p>
+
+<ol>
+<li>Floor: 白色</li>
+<li>Snake: 黑色</li>
+<li>Food: 红色</li>
+</ol>
+
+<p>可以对全体的块进行三种分类，每类有相应的样式：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kr">const</span> <span class="nx">FLOOR</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">SPACE</span><span class="p">:</span> <span class="s1">'space'</span><span class="p">,</span>
+    <span class="na">BODY</span><span class="p">:</span> <span class="s1">'body'</span><span class="p">,</span>
+    <span class="na">FOOD</span><span class="p">:</span> <span class="s1">'food'</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.space</span> <span class="p">{</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="no">white</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.body</span> <span class="p">{</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="no">black</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.food</span> <span class="p">{</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="no">red</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>其次，我们要让块动起来，使蛇移动，还要记录块的位置信息，即为横向和纵向上的 unique 坐标。</p>
+
+<p>最后，要用 JS 操作的介质，无非是承载着这些“块数据”的 DOM，块自身的颜色的变化，需要通过改变其对应的 DOM 元素的样式来实现。</p>
+
+<p>这样我们其实对块实现已经有了基本的想法：</p>
+<div class="highlight"><pre><code class="language-typescript" data-lang="typescript">interface Block {
+    pos: Pos
+    type: string
+    node: HTMLElement
+}
+</code></pre></div>
+<p>这里由于块坐标我们后面用的很多，所以就定义了一个 Pos 类型：</p>
+<div class="highlight"><pre><code class="language-typescript" data-lang="typescript">interface Pos {
+    x: number
+    y: number
+}
+</code></pre></div>
+<p>你会发现，在 TypeScript 的世界中，创建一个类型是多么地随心所欲和不费力气。</p>
+
+<p>好了，我们已经有了构建世界的基本粒子了，可以开始创建 Floor 和 Snake 了（先不管 Food，还没到这一步）。创建完后，再让 Snake 能够“动起来”，并且通过键盘的“上”、“下”、“左”、“右”键可控制其方向，就算完成大半了。</p>
+
+<p>创建 Floor 类：</p>
+<div class="highlight"><pre><code class="language-typescript" data-lang="typescript">class Floor {
+    private table: HTMLTableElement
+    private parent: HTMLElement
+    private row: number
+    private col: number
+    public blocks: Block[] // 提供给 Snake 使用的 block 集合
+
+    constructor(options?) {
+        options = options || {};
+        this.table = document.createElement('table')
+        this.parent = options.parent || document.body
+        this.row = options.row || 20
+        this.col = options.col || 20
+        this.blocks = []
+    }
+
+    initialize() {
+        let x: number
+        let y: number
+
+        for (y = 0; y &lt; this.row; y++) {
+            let tr = &lt;HTMLTableRowElement&gt;this.table.insertRow(-1)
+            for (x = 0; x &lt; this.col; x++) {
+                let td = &lt;HTMLTableCellElement&gt;tr.insertCell(-1)
+                td.className = FLOOR.SPACE
+                this.blocks.push({
+                    node: td,
+                    type: FLOOR.SPACE,
+                    pos: {x: x, y: y}
+                })
+            }
+        }
+
+        this.parent.appendChild(this.table)
+    }
+}
+</code></pre></div>
+<p>创建 Snake 类：</p>
+<div class="highlight"><pre><code class="language-typescript" data-lang="typescript">class Snake {
+    private initLength: number
+    private bodies: Block[]
+    private speed: number
+
+    constructor(options?) {
+        options = options || {}
+        this.initLength = options.initLength || 3
+        this.speed = options.speed || 300
+        this.bodies = []
+    }
+
+    born() {
+        for (let i = this.initLength - 1; i &gt;= 0; i--) {
+            this.bodies.push(floor.blocks[i]) // floor 是 Floor 的一个实例
+        }
+
+        this.bodies.forEach(body =&gt; {
+            body.type = FLOOR.BODY
+            body.node.className = body.type // 着色
+        })
+    }
+}
+</code></pre></div>
+<p>好了，new 一个 Snake 试一下，是否有一只“三节蛇”已赫然印入眼帘。</p>
+<div class="highlight"><pre><code class="language-typescript" data-lang="typescript">let snake = new Snake()
+snake.born()
+</code></pre></div>
+<p>加上一个 move 方法让它动起来：</p>
+<div class="highlight"><pre><code class="language-typescript" data-lang="typescript">class Snake {
+    ...
+    move() {
+        let head: Block = this.bodies[0]
+        let tail: Block = this.bodies[this.bodies.length - 1]
+        let next: Block = this.sbling(head) // 获取 head 右侧的 block
+
+        // body move
+        for (let i = this.bodies.length - 1; i &gt; 0; i--) {
+            this.bodies[i] = this.bodies[i - 1]
+        }
+
+        next.type = FLOOR.BODY
+        this.bodies[0] = next
+
+        // clear original tail
+        tail.type = FLOOR.SPACE
+        tail.node.className = tail.type
+
+        // change color of blocks
+        this.blocks.forEach(block =&gt; {
+            block.node.className = block.type
+        })
+    }
+
+    sbling(source: Block): Block {
+        return this.blocks.filter((block) =&gt; {
+            if (source.pos.x + 1 === block.pos.x
+            &amp;&amp; source.pos.y === block.pos.y) {
+                return true
+            }
+        })[0]
+    }
+}
+</code></pre></div>
+<p>以上几句代简单码完成后，只要在 <code>born</code> 方法中加定计时任务，就可以使我们的小蛇向右跑起来了：</p>
+<div class="highlight"><pre><code class="language-typescript" data-lang="typescript">born() {
+    ...
+    // keep moving
+    setInterval(function() { this.move(); }.bind(this), this.speed)
+}
+</code></pre></div>
+<p>接下来加上键盘控制事件之前，要先对 <code>sbling</code> 方法进行改造，因为移动过程中的下一个块 <code>next: Block</code>，要根据其移动方向来获得了。</p>
+<div class="highlight"><pre><code class="language-typescript" data-lang="typescript">const enum Direction {
+    left, up, right, down
+}
+
+class Snake {
+    ...
+    private direction: Direction
+    private offsets: Array&lt;number[]&gt;
+
+    constructor(options?) {
+        ...
+        this.direction = Direction.right
+        this.offsets = [[-1, 0], [0, -1], [+1, 0], [0, +1]]
+    }
+    ...
+
+    move() {
+        let head: Block = this.bodies[0]
+        let tail: Block = this.bodies[this.bodies.length - 1]
+        let next: Block = this.sbling(head, this.direction)
+        ...
+    }
+
+    sbling(source: Block, direction: Direction): Block {
+        return this.blocks.filter((block) =&gt; {
+            if (source.pos.x + this.offsets[direction][0] === block.pos.x
+            &amp;&amp; source.pos.y + this.offsets[direction][1] === block.pos.y) {
+                return true
+            }
+        })[0]
+    }
+}
+</code></pre></div>
+<p>正式加上键盘事件，齐活了：</p>
+<div class="highlight"><pre><code class="language-typescript" data-lang="typescript">born() {
+    ...
+    let keyHandler = (e: KeyboardEvent): void  =&gt; {
+        const keyCode: number = e.keyCode || e.which || e.charCode
+
+        switch (keyCode) {
+            case KeyCode.left:
+                if (this.direction !== Direction.right) {
+                    this.direction = Direction.left
+                }
+                break
+            case KeyCode.up:
+                if (this.direction !== Direction.down) {
+                    this.direction = Direction.up
+                }
+                break
+            case KeyCode.right:
+                if (this.direction !== Direction.left) {
+                    this.direction = Direction.right
+                }
+                break
+            case KeyCode.down:
+                if (this.direction !== Direction.up) {
+                    this.direction = Direction.down
+                }
+                break
+        }
+    }
+
+    document.addEventListener('keydown', keyHandler, false)
+}
+</code></pre></div>
+<p>这下你可以操纵这条三节蛇满地跑了，有点意思。缺点意思的是：一没食物二到处碰壁死不了，别急，要解决吃食物的问题，先解决怎么生成食物：</p>
+<div class="highlight"><pre><code class="language-typescript" data-lang="typescript">class Floor() {
+    ...
+    genFood() {
+        // 在地板内的随机位置
+        let pos: Pos = {
+            x: Math.floor(Math.random() * this.col),
+            y: Math.floor(Math.random() * this.row)
+        }
+
+        // 根据位置获取食物 block
+        let food = this.blocks.filter((block) =&gt; {
+            if (block.pos.x === pos.x &amp;&amp; block.pos.y === pos.y) {
+                return true
+            }
+        })[0]
+
+        food.type = FLOOR.FOOD
+        food.node.className = food.type
+    }
+}
+</code></pre></div>
+<p>生成食物在蛇一出生就执行一次，随后，在蛇移动的过程中，每吃到一次食物，就重新再生成一次食物：</p>
+<div class="highlight"><pre><code class="language-typescript" data-lang="typescript">class Snake {
+    ...
+    born() {
+        ...
+
+        // generate food
+        floor.genFood()
+
+        // keep moving
+        setInterval(function() { this.move(); }.bind(this), this.speed)
+    }
+
+    move() {
+        ...
+
+        if (next.type === FLOOR.FOOD) {
+            this.eat(next)
+        }
+
+        // body move
+        for (let i = this.bodies.length - 1; i &gt; 0; i--) {
+            this.bodies[i] = this.bodies[i - 1]
+        }
+
+        ...
+    }
+
+    eat(block: Block) {
+        this.bodies.push(block)
+        floor.genFood()
+    }
+}
+</code></pre></div>
+<p>好，最后我们让这条长生不死的神蛇落入生死轮回的凡界。仔细思考下，它的死因有两种：一、碰壁（下一个块不存在）；二、吃到自己的身体（贪食而亡），那代码实现的方式就很简单咯：</p>
+<div class="highlight"><pre><code class="language-typescript" data-lang="typescript">move() {
+    let head: Block = this.bodies[0]
+    let tail: Block = this.bodies[this.bodies.length - 1]
+    let next: Block = this.sbling(head, this.direction)
+
+    if (!next || next.type === FLOOR.BODY) {
+        this.die()
+        return
+    }
+
+    if (next.type === FLOOR.FOOD) {
+        this.eat(next)
+    }
+
+    ...
+}
+</code></pre></div>
+<p>至此，简单的贪食蛇小游戏就基本完成了。当然，后续还需要许多优化：比如生成的食物块刚好是蛇的身体怎么办？比如在蛇的一次 move 中频繁多次触发键盘事件，direction 到底取哪一次？在这里就不展开了，感兴趣的可直接看<a href="https://github.com/roshanca/snake-game">项目源码</a>。</p>
+
+<h2 id="总结">总结</h2>
+
+<p>最后提一下，为了使逻辑更加清晰以及日后方便扩展维护，我又抽离了一个 Model 类，专门用来做 Floor 和 Snake 的纽带，专门负责操作管理 block 集合。因为用 TypeScript 来定制实现模块实在是太方便了，提供了众多方法还有继承(extends)和实现(implements)等概念，感觉就像你作为主刀医生在手术前有一大堆各式各样的精细工具摆在你的面前，都不知道该挑哪一把手术刀该用哪一支镊子。</p>
+
+<p>照这么说，用 TypeScript 写一些小规模的项目确实有一种打蚊子用大炮的赶脚，而且，有时候灵活度也会下降：比如贪食蛇中对 block 集合关系管理，由一个 block 去获取到它相邻位置的 block，在这一点上要是用上一点点 JavaScript 动态语言的黑魔法的话实现起来会简单的多：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="k">this</span><span class="p">.</span><span class="nx">blocks</span><span class="p">[[</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">node</span><span class="p">:</span> <span class="nx">td</span><span class="p">,</span>
+    <span class="na">type</span><span class="p">:</span> <span class="nx">FLOOR</span><span class="p">.</span><span class="nx">SPACE</span><span class="p">,</span>
+    <span class="na">pos</span><span class="p">:</span> <span class="p">[</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>这样你会发现 <code>this.blocks</code> 可通过两个维度来获取到相应的 block：</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="k">this</span><span class="p">.</span><span class="nx">blocks</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">blocks</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">blocks</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="k">this</span><span class="p">.</span><span class="nx">blocks</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">blocks</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">blocks</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="nx">pos</span><span class="p">]</span>
+</code></pre></div>
+<p>也只有在动态的弱语言里能做到这一点。但简单方便之余带来的副作用是不太好理解，所以如果是一些团队协作的项目，我个人的建议是宁可放弃掉一些实现效率，为了今后的可维护性和扩展性，尽量写的清晰一些，不要爽了自己却坑了队友。TypeScript 在这一点上是符合我的理念的，此处如果真的使用了这项黑魔法它会报错：<code>An index expression argument must be of type &#39;string&#39;, &#39;number&#39;, &#39;symbol&#39;, or &#39;any&#39;</code>，不会让你走捷径胡来了。</p>
+
+<p>随着项目的复杂程度递增，其优势也愈发明显。光光静态类型检测就可以将多少潜在问题杀死在编译阶段了。</p>
+
+<p>而回头看我们的互联网世界，恰巧碰上胖应用的时代，而且随着这几年计算机硬件性能提升，加上 JavaScript 自身的不断优化，我相信我们的应用还会对交互的要求越来越高，对代码的复杂程度也会越来越高。所以网上有人评论 TypeScript 是面向未来的，我看不假。连明星框架 Angular2 不是都投向其怀抱了么？我也用 Angular2 写过了点小 Example，体验算是不错，心里已经有了拿它来写下一个小游戏的盘算;)</p>
+
+		</section>
+		<footer class="post-footer">
+			<div class="post-meta">
+				<time datetime="2015-09-03 00:00:00 +0000" class="updated" pubdate>Sep 03, 2015</time>
+
+				
+<span class="post-tag">
+	
+		<span class="tag">javascript</span>
+	
+</span>
+
+
+			</div>
+		</footer>
+	</article>
+</main>
+
+<div class="post-comment">
+	<div id="disqus_thread" class="container"></div>
+</div>
+<script>
+function getElementTopLeft(elem) {
+	var top = 0;
+	var left = 0;
+	while(elem) {
+		top += elem.offsetTop;
+		left += elem.offsetLeft;
+
+		elem = elem.offsetParent;
+	}
+	return {top: top, left: left};
+}
+
+var disqus_shortname = 'roshanca';
+var disqus_elem = document.getElementById('disqus_thread');
+var disqus_init = false;
+
+window.onscroll = function () {
+	if (disqus_init) return;
+
+	var viewHeight = document.documentElement.clientHeight;
+	var scrollY = document.documentElement.scrollTop || document.body.scrollTop;
+
+	if(getElementTopLeft(disqus_elem).top < viewHeight + scrollY) {
+		loadSync('//' + disqus_shortname + '.disqus.com/embed.js');
+		disqus_init = true;
+	}
+}
+</script>
+
+
+
+<footer id="footer" role="contentinfo">
+	<p>© Copyright 2012 - 2015 by Roshan Wu.</p>
+</footer>
+
+
+</body>
+</html>
