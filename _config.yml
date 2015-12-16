@@ -8,12 +8,12 @@ subtitle: just Roshan's blog
 #
 # Use of `relative_permalinks` ensures post links from the index work properly.
 permalink: /:year/:title
-relative_permalinks: true
+# relative_permalinks: true
 
 # Where things are
 source: site
 destination: ./_site
-plugins: ./_plugins
+plugins_dir: ./_plugins
 
 # Markdown Processors
 markdown: redcarpet
@@ -21,7 +21,7 @@ redcarpet:
   extensions: [autolink, smart, tables, strikethrough, superscript, with_toc_data, footnotes]
 
 # Syntax highlighting
-highlighter: pygments
+highlighter: rouge
 
 # Assets
 #

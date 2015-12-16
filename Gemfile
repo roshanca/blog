@@ -1,6 +1,6 @@
-source 'https://rubygems.org'
-# source 'https://ruby.taobao.org'
+# source 'https://rubygems.org'
+source 'https://ruby.taobao.org'
 
 gem 'rake'
-gem 'jekyll'
-gem 'sass'
+gem 'jekyll', '~> 3.0.1'
+gem 'redcarpet'
