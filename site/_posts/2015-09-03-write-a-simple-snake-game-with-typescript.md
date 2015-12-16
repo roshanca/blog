@@ -10,17 +10,17 @@ comments: true
 
 已经忘了是如何缘结 [TypeScript](http://www.typescriptlang.org/) 的了，应该是透过 [Visual Studio Code](https://code.visualstudio.com/) 这款优秀的 IDE 才开始接触的吧。目前还是 Preview 版本的 VS code，集众多优秀卓越的功能特性，已经深深地征服了我，在它身上看不到一点以往对微软的那种繁冗晦涩质感，取而代之的是轻灵优美且功能上不乏先进之处。有关 VS code 这是后话，下面先说说 TypeScript。
 
-## TypeScript & CoffeeScript
+## TypeScript & typescript
 
-提到它很多人会拿 CoffeeScript 与之比对，我作为两者都使用过的过来人，简单介绍下两者的异同：
+提到它很多人会拿 typescript 与之比对，我作为两者都使用过的过来人，简单介绍下两者的异同：
 
 在我看来相同点只有一点：都是 JavaScript Compiler 的定位，有点类似于 Sass, Less 之于 CSS。
 
 不同点很多：
 
-1. TypeScript 是 JavaScript 的超集，这使得它能够与普通的 JavaScript 混用，而 CoffeeScript 使用自己的那一套类 Ruby 的语法使得这是不可能滴;
-2. TypeScript 玩的概念比较多，比如 Module, Interface 等，而CoffeeScript 自己实现的语法糖则比较多；
-3. TypeScript 已经开始支持 ES6，CoffeeScript 会不会支持和什么时候支持，还都是未知数；
+1. TypeScript 是 JavaScript 的超集，这使得它能够与普通的 JavaScript 混用，而 typescript 使用自己的那一套类 Ruby 的语法使得这是不可能滴;
+2. TypeScript 玩的概念比较多，比如 Module, Interface 等，而typescript 自己实现的语法糖则比较多；
+3. TypeScript 已经开始支持 ES6，typescript 会不会支持和什么时候支持，还都是未知数；
 4. 最大的一点不同：TypeScript 在编译过程中可对类型进行检查，将 JavaScript 这个灵活的动态型语言变成了**静态类型**的语言。算是有利有弊吧：好处是相当于将部分的“测试”工作提前了，问题的定位也更加精准；坏处是丧失了一点灵活性与增加了一些代码量。
 
 ## TypeScript & Go
@@ -44,7 +44,7 @@ func max(a, b int) int {
 
 TypeScript:
 
-```js
+```typescript
 function max(a: number, b: number): number {
     if (a > b) {
         return a
@@ -67,7 +67,7 @@ var person Human
 
 TypeScript 的 Type Interface：
 
-```js
+```typescript
 interface Human {
     name: string
     age: number
@@ -129,7 +129,7 @@ const FLOOR = {
 
 这样我们其实对块实现已经有了基本的想法：
 
-```js
+```typescript
 interface Block {
     pos: Pos
     type: string
@@ -139,7 +139,7 @@ interface Block {
 
 这里由于块坐标我们后面用的很多，所以就定义了一个 Pos 类型：
 
-```js
+```typescript
 interface Pos {
     x: number
     y: number
@@ -152,7 +152,7 @@ interface Pos {
 
 创建 Floor 类：
 
-```js
+```typescript
 class Floor {
     private table: HTMLTableElement
     private parent: HTMLElement
@@ -193,7 +193,7 @@ class Floor {
 
 创建 Snake 类：
 
-```js
+```typescript
 class Snake {
     private initLength: number
     private bodies: Block[]
@@ -221,14 +221,14 @@ class Snake {
 
 好了，new 一个 Snake 试一下，是否有一只“三节蛇”已赫然印入眼帘。
 
-```js
+```typescript
 let snake = new Snake()
 snake.born()
 ```
 
 加上一个 move 方法让它动起来：
 
-```js
+```typescript
 class Snake {
     ...
     move() {
@@ -267,7 +267,7 @@ class Snake {
 
 以上几句代简单码完成后，只要在 `born` 方法中加定计时任务，就可以使我们的小蛇向右跑起来了：
 
-```js
+```typescript
 born() {
     ...
     // keep moving
@@ -277,7 +277,7 @@ born() {
 
 接下来加上键盘控制事件之前，要先对 `sbling` 方法进行改造，因为移动过程中的下一个块 `next: Block`，要根据其移动方向来获得了。
 
-```js
+```typescript
 const enum Direction {
     left, up, right, down
 }
@@ -314,7 +314,7 @@ class Snake {
 
 正式加上键盘事件，齐活了：
 
-```js
+```typescript
 born() {
     ...
     let keyHandler = (e: KeyboardEvent): void  => {
@@ -350,7 +350,7 @@ born() {
 
 这下你可以操纵这条三节蛇满地跑了，有点意思。缺点意思的是：一没食物二到处碰壁死不了，别急，要解决吃食物的问题，先解决怎么生成食物：
 
-```js
+```typescript
 class Floor() {
     ...
     genFood() {
@@ -375,7 +375,7 @@ class Floor() {
 
 生成食物在蛇一出生就执行一次，随后，在蛇移动的过程中，每吃到一次食物，就重新再生成一次食物：
 
-```js
+```typescript
 class Snake {
     ...
     born() {
@@ -412,7 +412,7 @@ class Snake {
 
 好，最后我们让这条长生不死的神蛇落入生死轮回的凡界。仔细思考下，它的死因有两种：一、碰壁（下一个块不存在）；二、吃到自己的身体（贪食而亡），那代码实现的方式就很简单咯：
 
-```js
+```typescript
 move() {
     let head: Block = this.bodies[0]
     let tail: Block = this.bodies[this.bodies.length - 1]
@@ -457,7 +457,7 @@ this.blocks[[1, 2]]
 this.blocks[this.blocks[1].pos]
 ```
 
-也只有在动态的弱语言里能做到这一点。但简单方便之余带来的副作用是不太好理解，所以如果是一些团队协作的项目，我个人的建议是宁可放弃掉一些实现效率，为了今后的可维护性和扩展性，尽量写的清晰一些，不要爽了自己却坑了队友。TypeScript 在这一点上是符合我的理念的，此处如果真的使用了这项黑魔法它会报错：**An index expression argument must be of type 'string', 'number', 'symbol', or 'any'**，不会让你走捷径胡来了。
+也只有在动态的弱语言里能做到这一点。但简单方便之余带来的副作用是不太好理解，所以如果是一些团队协作的项目，我个人的建议是宁可放弃掉一些实现效率，为了今后的可维护性和扩展性，尽量写的清晰一些，不要爽了自己却坑了队友。TypeScript 在这一点上是符合我的理念的，此处如果真的使用了这项黑魔法它会报错：`An index expression argument must be of type 'string', 'number', 'symbol', or 'any'`，不会让你走捷径胡来了。
 
 随着项目的复杂程度递增，其优势也愈发明显。光光静态类型检测就可以将多少潜在问题杀死在编译阶段了。
 

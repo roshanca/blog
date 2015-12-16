@@ -342,7 +342,7 @@ var SearchPage = require('./SearchPage');
 
 `PropertyFinderApp` 类中的 `render` 方法内，更新 `initialRoute` 以引用新增页面，如下所示：
 
-```js
+```
 component: SearchPage
 ```
 
@@ -392,7 +392,7 @@ React Native 采用了 [css-layout](https://github.com/facebook/css-layout) 库�
 
 接下来，添加相应的样式到你的 `styles` 定义中：
 
-```js
+```coffeescript
 flowRight: {
   flexDirection: 'row',
   alignItems: 'center',
@@ -442,13 +442,13 @@ searchInput: {
 
 最后，完善应用搜索页面还差一张房子的图片。在 `location` 按钮的 `TouchableHighlight` 组件后加入：
 
-```js
+```coffeescript
 <Image source={require('image!house')} style={styles.image}/>
 ```
 
 现在，在样式列表中增加图片相应的样式，别忘了它与它之前的样式定义之间要加入逗号。
 
-```js
+```coffeescript
 image: {
   width: 217,
   height: 138
