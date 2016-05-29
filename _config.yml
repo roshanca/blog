@@ -18,7 +18,7 @@ plugins_dir: ./_plugins
 # Markdown Processors
 markdown: redcarpet
 redcarpet:
-  extensions: [autolink, smart, tables, strikethrough, superscript, with_toc_data, footnotes]
+  extensions: [autolink, smart, tables, strikethrough, superscript, footnotes]
 
 # Syntax highlighting
 highlighter: rouge
