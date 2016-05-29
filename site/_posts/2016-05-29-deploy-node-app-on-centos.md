@@ -82,9 +82,11 @@ Ready
         vi ~/.npmrc
         ```
         
-        在其内容中加入：
-        >   registry=https://registry.npm.taobao.org/
+        在其内容中加入[^1]：
 
+        ```
+        registry=https://registry.npm.taobao.org/
+        ```
 
     1. 更新 npm 到最新版本
 
@@ -181,4 +183,8 @@ Deploy
     
 1. 进程启动后，是常驻状态，因此有些关于 pm2 的配置改动，需要用 `pm2 update` 来进行一下更新。
 
-1. 我没用 cluster 模式而是 fork 模式，好像程序老是会隔一段时间就自动重启，虽然用户无感，但我至今还没搞懂是内存不够还是什么鬼。。。之后用 cluster 模式尝试看看。 
+1. 我没用 cluster 模式而是 fork 模式，发现程序经常自动重启。虽然用户无感，但我至今还没搞懂是内存不够还是什么鬼。。。之后用 cluster 模式尝试看看。 
+
+新手上路，希望能迅速混入老司机队伍。
+
+[^1]: 还可以再加入 `progress=false` 禁用下载时的进度条显示来加速包下载
