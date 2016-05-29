@@ -10,7 +10,8 @@
 	<link rel="canonical" href="{{ canonical }}">
 	<link rel="alternate" type="application/atom+xml" title="Subscribe Feed" href="{{ site.baseurl }}/atom.xml">
 	<link  href="{{ site.baseurl }}/css/app.css" rel="stylesheet" media="all">
-	<link href="//libs.useso.com/js/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="//cdn.bootcss.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='//fonts.gmirror.org/css?family=PT+Serif:400,700' rel='stylesheet' type='text/css'>
 	<script>
 	function loadSync(u,p,a){
 		if(!p && location.port)return {onload: null};
@@ -25,5 +26,8 @@
 	_gaq.push(['_trackPageLoadTime']);
 	loadSync('//ssl.google-analytics.com/ga.js');
 	if(/windows/i.test(navigator.userAgent)){document.getElementsByTagName('html')[0].className = 'windows'}
-	</script>
+    </script>
+    <!--[if lt IE 9]>
+    <script>window.location.href="http://browsehappy.com"</script>
+    <![endif]-->
 </head>

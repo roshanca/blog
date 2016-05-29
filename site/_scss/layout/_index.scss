@@ -3,7 +3,8 @@
   margin-top: 4rem;
   h2 {
     margin-bottom: .5rem;
-    font: inherit;
+    font-family: $heading;
+    font-weight: normal;
     text-transform: capitalize;
     color: lighten($link-color, 44%);
   }

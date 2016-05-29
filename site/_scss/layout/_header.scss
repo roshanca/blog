@@ -9,7 +9,7 @@
 	.blog-title {
 		position: relative;
 		@include inline-block;
-		font-family: "Hiragino Mincho ProN", $serif;
+		font-family: "Hiragino Mincho ProN", $heading;
 		font-size: 5rem;
 		font-weight: bold;
 		color: $heading-color;
@@ -28,6 +28,7 @@
 	}
 	.blog-desc {
     font-size: 100%;
+    font-family: $heading;
     text-transform: capitalize;
 		color: lighten($heading-color, 44%);
 	}
