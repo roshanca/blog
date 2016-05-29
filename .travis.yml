@@ -1,6 +1,8 @@
 language: ruby
+env:
+  - USE_OFFICIAL_GEM_SOURCE=1
 rvm:
-- 2.1.4
+- 2.3.0
 install: bundle install
 script: bundle exec rake site:deploy --quiet
 env:
