@@ -82,3 +82,10 @@
     }
   }
 }
+
+.more {
+  padding-left: 13.5rem;
+  @include responsive(480px) {
+    padding-left: 0;
+  }
+}
