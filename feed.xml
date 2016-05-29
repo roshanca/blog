@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title></title>
+    <description></description>
+    <link>http://roshanca.com</link>
+    <atom:link href="http://roshanca.com/feed.xml" rel="self" type="application/rss+xml" />
+    
+      <item>
+        <title>在 CentOS 上布署 node 程序</title>
+        
+        
+          <description>&lt;p&gt;前后端分离已经提了有一年，在一家半互联网化的公司困难重重（传统 IT 企业历史上一直都是以后端开发为重，各种 Java, C#, .net 等&amp;hellip;）。现在终于看到了一点曙光，实属不易。当然，这对一些大公司来说，完全都不是事，人家早就自动化测试自动化布署持续集成一套组合拳打完不费力。一些小公司还在自己摸索着，我们也是。&lt;/p&gt;
+</description>
+        
+        <pubDate>Sun, 29 May 2016 00:00:00 +0000</pubDate>
+        <link>http://roshanca.com/2016/deploy-node-app-on-centos</link>
+        <guid isPermaLink="true">http://roshanca.com/2016/deploy-node-app-on-centos</guid>
+      </item>
+    
+      <item>
+        <title>用 TypeScript 写一个贪食蛇小游戏</title>
+        
+        
+          <description>&lt;h2&gt;TypeScript &amp;amp; VS code&lt;/h2&gt;
+</description>
+        
+        <pubDate>Thu, 03 Sep 2015 00:00:00 +0000</pubDate>
+        <link>http://roshanca.com/2015/write-a-simple-snake-game-with-typescript</link>
+        <guid isPermaLink="true">http://roshanca.com/2015/write-a-simple-snake-game-with-typescript</guid>
+      </item>
+    
+      <item>
+        <title>React Native：用 JavaScript 构建应用</title>
+        
+        
+          <description>&lt;p&gt;原文：&lt;a href=&quot;//www.raywenderlich.com/99473/introducing-react-native-building-apps-javascript&quot;&gt;Introducing React Native: Building Apps with JavaScript&lt;/a&gt;&lt;/p&gt;
+</description>
+        
+        <pubDate>Sun, 29 Mar 2015 00:00:00 +0000</pubDate>
+        <link>http://roshanca.com/2015/build-app-with-react-native</link>
+        <guid isPermaLink="true">http://roshanca.com/2015/build-app-with-react-native</guid>
+      </item>
+    
+      <item>
+        <title>2014年工作总结</title>
+        
+        
+          <description>&lt;p&gt;2014 马上就要画上句点，回首这一年，感慨良多。最大的感受是工作上的充实：今年公司自创业以来业务量最多的一年，真是锻炼人的一年呐。&lt;/p&gt;
+</description>
+        
+        <pubDate>Wed, 31 Dec 2014 16:23:00 +0000</pubDate>
+        <link>http://roshanca.com/2014/2014-work-summary</link>
+        <guid isPermaLink="true">http://roshanca.com/2014/2014-work-summary</guid>
+      </item>
+    
+      <item>
+        <title>前端编码风格规范之 JavaScript 规范</title>
+        
+        
+          <description>&lt;p&gt;原文：&lt;a href=&quot;https://github.com/gionkunz/chartist-js/blob/develop/CODINGSTYLE.md&quot;&gt;Web Styleguide - Style guide to harmonize HTML, Javascript and CSS / SASS coding style&lt;/a&gt;&lt;/p&gt;
+</description>
+        
+        <pubDate>Fri, 12 Sep 2014 00:00:00 +0000</pubDate>
+        <link>http://roshanca.com/2014/web-develop-styleguide-javascript</link>
+        <guid isPermaLink="true">http://roshanca.com/2014/web-develop-styleguide-javascript</guid>
+      </item>
+    
+      <item>
+        <title>前端编码风格规范之 HTML 规范</title>
+        
+        
+          <description>&lt;p&gt;原文：&lt;a href=&quot;https://github.com/gionkunz/chartist-js/blob/develop/CODINGSTYLE.md&quot;&gt;Web Styleguide - Style guide to harmonize HTML, Javascript and CSS / SASS coding style&lt;/a&gt;&lt;/p&gt;
+</description>
+        
+        <pubDate>Tue, 09 Sep 2014 00:00:00 +0000</pubDate>
+        <link>http://roshanca.com/2014/web-develop-styleguide-html</link>
+        <guid isPermaLink="true">http://roshanca.com/2014/web-develop-styleguide-html</guid>
+      </item>
+    
+      <item>
+        <title>前端编码风格规范之一般规范</title>
+        
+        
+          <description>&lt;p&gt;原文：&lt;a href=&quot;https://github.com/gionkunz/chartist-js/blob/develop/CODINGSTYLE.md&quot;&gt;Web Styleguide - Style guide to harmonize HTML, Javascript and CSS / SASS coding style&lt;/a&gt;&lt;/p&gt;
+</description>
+        
+        <pubDate>Sun, 07 Sep 2014 00:00:00 +0000</pubDate>
+        <link>http://roshanca.com/2014/web-develop-styleguide-general</link>
+        <guid isPermaLink="true">http://roshanca.com/2014/web-develop-styleguide-general</guid>
+      </item>
+    
+      <item>
+        <title>DIY 网件 R6300v2 路由器</title>
+        
+        
+          <description>&lt;p&gt;据说 Geek 都喜欢 &lt;abbr title=&quot;Network Attached Storage&quot;&gt;NAS&lt;/abbr&gt; 与离线下载。&lt;/p&gt;
+</description>
+        
+        <pubDate>Sun, 11 May 2014 21:41:00 +0000</pubDate>
+        <link>http://roshanca.com/2014/diy-netgear-r6300v2</link>
+        <guid isPermaLink="true">http://roshanca.com/2014/diy-netgear-r6300v2</guid>
+      </item>
+    
+      <item>
+        <title>误删系统显示描述文件</title>
+        
+        
+          <description>&lt;p&gt;手贱，看见显示器的描述文件有重复，就想擅自删除几个。可自诩 Mac 达人的我，这回出了糗，误删了系统目录下的颜色描述文件，导致我的系统崩溃，接着就一直无敌风火轮了。。。&lt;/p&gt;
+</description>
+        
+        <pubDate>Wed, 05 Jun 2013 16:47:00 +0000</pubDate>
+        <link>http://roshanca.com/2013/delete-system-display-profile-mistakenly</link>
+        <guid isPermaLink="true">http://roshanca.com/2013/delete-system-display-profile-mistakenly</guid>
+      </item>
+    
+      <item>
+        <title>Switch … Case 不被推荐使用</title>
+        
+        
+          <description>&lt;p&gt;本文为原创译文，英文原文：&lt;a href=&quot;http://ericleads.com/2012/12/switch-case-considered-harmful/&quot;&gt;Switch … Case Considered Harmful&lt;/a&gt;&lt;/p&gt;
+</description>
+        
+        <pubDate>Wed, 12 Dec 2012 10:11:00 +0000</pubDate>
+        <link>http://roshanca.com/2012/switch-case-considered-harmful</link>
+        <guid isPermaLink="true">http://roshanca.com/2012/switch-case-considered-harmful</guid>
+      </item>
+    
+  </channel>
+</rss>

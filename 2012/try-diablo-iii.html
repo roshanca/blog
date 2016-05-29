@@ -8,9 +8,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 	
 	<link rel="canonical" href="http://roshanca.com/2012/try-diablo-iii">
-	<link rel="alternate" type="application/atom+xml" title="Subscribe Feed" href="/atom.xml">
+	<link rel="alternate" type="application/rss+xml" title="Subscribe Feed" href="/feed.xml">
 	<link  href="/css/app.css" rel="stylesheet" media="all">
-	<link href="//libs.useso.com/js/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="//cdn.bootcss.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='//fonts.gmirror.org/css?family=PT+Serif:400,700' rel='stylesheet' type='text/css'>
 	<script>
 	function loadSync(u,p,a){
 		if(!p && location.port)return {onload: null};
@@ -25,7 +26,10 @@
 	_gaq.push(['_trackPageLoadTime']);
 	loadSync('//ssl.google-analytics.com/ga.js');
 	if(/windows/i.test(navigator.userAgent)){document.getElementsByTagName('html')[0].className = 'windows'}
-	</script>
+    </script>
+    <!--[if lt IE 9]>
+    <script>window.location.href="http://browsehappy.com"</script>
+    <![endif]-->
 </head>
 
 <body>
@@ -33,7 +37,7 @@
 <header id="header" role="banner">
 	<div class="header-inner">
 	
-		<a href="/" class="blog-title">肉山·察</a>
+		<a href="/" class="blog-title home">肉山·察</a>
 		<div>
 	<a href="//github.com/roshanca" class="social-link">
 		<i class="fa fa-github"></i>
@@ -53,7 +57,7 @@
 </div>
 	
 	</div>
-	<a href="/atom.xml" class="subscribe">
+	<a href="/feed.xml" data-tip="true" data-tip-content="订阅" class="tip--top subscribe">
 		<i class="fa fa-rss"></i>
 	</a>
 </header>
@@ -103,7 +107,7 @@
 <li>  还有很多很多，暂时想不起来了</li>
 </ul>
 
-<h3 id="总结">总结</h3>
+<h3>总结</h3>
 
 <p>总体来说，这次的<strong>体验版</strong>，还是比较坑爹的，除了到处逛逛欣赏下风景，没啥事可做，无剧情，无用装备，无乐趣。我现在基本用来享受音效～</p>
 
@@ -169,7 +173,7 @@ window.onscroll = function () {
 
 
 <footer id="footer" role="contentinfo">
-	<p>© Copyright 2012 - 2015 by Roshan Wu.</p>
+	<p>© Copyright 2012 - 2016 by Roshan Wu.</p>
 </footer>
 
 

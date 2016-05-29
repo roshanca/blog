@@ -8,9 +8,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 	
 	<link rel="canonical" href="http://roshanca.com/2015/build-app-with-react-native">
-	<link rel="alternate" type="application/atom+xml" title="Subscribe Feed" href="/atom.xml">
+	<link rel="alternate" type="application/rss+xml" title="Subscribe Feed" href="/feed.xml">
 	<link  href="/css/app.css" rel="stylesheet" media="all">
-	<link href="//libs.useso.com/js/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="//cdn.bootcss.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='//fonts.gmirror.org/css?family=PT+Serif:400,700' rel='stylesheet' type='text/css'>
 	<script>
 	function loadSync(u,p,a){
 		if(!p && location.port)return {onload: null};
@@ -25,7 +26,10 @@
 	_gaq.push(['_trackPageLoadTime']);
 	loadSync('//ssl.google-analytics.com/ga.js');
 	if(/windows/i.test(navigator.userAgent)){document.getElementsByTagName('html')[0].className = 'windows'}
-	</script>
+    </script>
+    <!--[if lt IE 9]>
+    <script>window.location.href="http://browsehappy.com"</script>
+    <![endif]-->
 </head>
 
 <body>
@@ -33,7 +37,7 @@
 <header id="header" role="banner">
 	<div class="header-inner">
 	
-		<a href="/" class="blog-title">肉山·察</a>
+		<a href="/" class="blog-title home">肉山·察</a>
 		<div>
 	<a href="//github.com/roshanca" class="social-link">
 		<i class="fa fa-github"></i>
@@ -53,7 +57,7 @@
 </div>
 	
 	</div>
-	<a href="/atom.xml" class="subscribe">
+	<a href="/feed.xml" data-tip="true" data-tip-content="订阅" class="tip--top subscribe">
 		<i class="fa fa-rss"></i>
 	</a>
 </header>
@@ -95,7 +99,7 @@
 
 <p>想要了解更多？继续阅读吧。</p>
 
-<h2 id="准备工作">准备工作</h2>
+<h2>准备工作</h2>
 
 <p>React Native 框架已经在 Github 上建立了<a href="https://github.com/facebook/react-native">仓库</a>，你可以通过 git 来克隆到本地，也可以选择下载 zip。一旦将它下载到了本地，在你开始写代码前，还有几件事要办。</p>
 
@@ -141,7 +145,7 @@ React packager ready.
 
 <p>此时此刻，我建议你先跑一跑官方的例子，看看环境配置是否都正常运转。用 Xcode 打开 <code>react-native/Examples/Movies</code> 目录下的项目文件，编译运行，检查 <code>Movies</code> 应用有没有出现问题。</p>
 
-<h2 id="你好-react-native">你好 React Native</h2>
+<h2>你好 React Native</h2>
 
 <p>在开始编写这款房产搜索应用之前，你将先创建一个极其简单的 Hello World 应用。在此过程中你将接触许多的组件和概念。</p>
 
@@ -210,7 +214,7 @@ React packager ready.
 
 <p>当你的应用运行时，这段代码会被框架的核心加载与执行。在你的应用中，会加载 <code>PropertyFinderApp</code> 组件，然后构建原生 UIKit 视图。你会在接下来的教程中学到更多相关的内容。</p>
 
-<h2 id="hello-world-jsx">Hello World JSX</h2>
+<h2>Hello World JSX</h2>
 
 <p>你的应用目前采用 <code>React.createElement</code> 来构建简单 UI，通过它 React 转变为相应的原生应用。你的 JavaScript 代码在当前格式下的可读性，不一会儿就会被更为复杂的多层嵌套的 UI 所迅速打破。</p>
 
@@ -227,7 +231,7 @@ React packager ready.
 
 <p>Okay，“Hello World” 玩够了，接下来尝试写个真正的应用吧！</p>
 
-<h2 id="添加导航">添加导航</h2>
+<h2>添加导航</h2>
 
 <p>房产查找应用采用的是那一套基于标准导航栈的行为体验，提供自 UIKit 的导航控制器。是时候添加这项行为了。</p>
 
@@ -273,7 +277,7 @@ React packager ready.
 
 <p>这是导航控制器与其根视图，它目前为 “Hello World” 文本。棒极了 —— 你现在为你的应用添加了适宜的基础导航结构，该到时候添加“真正”的 UI 了！</p>
 
-<h2 id="创建搜索页">创建搜索页</h2>
+<h2>创建搜索页</h2>
 
 <p>为工程新增名为 <code>SearchPage.js</code> 的文件，放置在与 <code>PropertyFinderApp.js</code> 同一目录中。为此文件添加以下代码：</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="s1">'use strict'</span><span class="p">;</span>
@@ -350,7 +354,7 @@ React packager ready.
 
 <p>这就是运用了的新组件：<code>SearchPage</code>，你刚刚添加的。</p>
 
-<h2 id="用-flexbox-定义样式">用 Flexbox 定义样式</h2>
+<h2>用 Flexbox 定义样式</h2>
 
 <p>到目前为止，你已经见过了基础的 CSS 属性诸如 margins，paddings 和 color，但你可能不太熟悉 <code>flexbox</code>， 这是不久前才被加入 CSS 规范的属性，它对于应用 UI 排版布局那是相当的有用处。</p>
 
@@ -447,7 +451,7 @@ React packager ready.
 
 <p>现在你的应用看上去不错，但缺少相应的功能。所以当务之急是增加应用的状态和表现行为。</p>
 
-<h2 id="增加组件状态">增加组件状态</h2>
+<h2>增加组件状态</h2>
 
 <p>每一个 React 组件都有自己的状态对象，它以键值的形式作为存储。在一个组件被渲染之前，我们必须先设置它的初始状态。</p>
 
@@ -521,7 +525,7 @@ React packager ready.
 
 <p>你可以到时候再回头看这些东西，我们仍要继续完善当前的 app。删除打印信息语句，你不再需要它们来扰乱你的代码了。</p>
 
-<h2 id="开始搜索">开始搜索</h2>
+<h2>开始搜索</h2>
 
 <p>为了实现搜索功能你需要在 “Go” 按钮的点击事件上做些文章。创建一个合适的 API 请求，并且为用户在此数据查询的等待过程中提供一个可视化的指示界面。</p>
 
@@ -592,7 +596,7 @@ React packager ready.
 
 <p>下一步我们在应用中处理这项请求。</p>
 
-<h2 id="处理-api-请求">处理 API 请求</h2>
+<h2>处理 API 请求</h2>
 
 <p>还是在 <code>SearchPage.js</code> 中，更新初始状态，在构造方法中加入 <code>message</code> 变量：</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
@@ -636,7 +640,7 @@ React packager ready.
 
 <p>到了展现这伦敦真实位置的 20 处房产的时刻了。</p>
 
-<h2 id="展示结果">展示结果</h2>
+<h2>展示结果</h2>
 
 <p>创建一个 <code>SearchResults.js</code> 文件，加入以下代码：</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="s1">'use strict'</span><span class="p">;</span>
@@ -714,7 +718,7 @@ React packager ready.
 
 <p>很高兴得到了我们期望已久的房产列表，但这列表展示略挫，让我们来让它变的更好一些。</p>
 
-<h2 id="接触样式">接触样式</h2>
+<h2>接触样式</h2>
 
 <p>这些 React Native 代码自此应该一回生二回熟了，以此以下教程可以两步并作一步来快速讲解。</p>
 
@@ -790,7 +794,7 @@ React packager ready.
 
 <p>到了添加应用最后的视图的时候了。</p>
 
-<h2 id="房产详细页视图">房产详细页视图</h2>
+<h2>房产详细页视图</h2>
 
 <p>增加新文件 <code>PropertyView.js</code> 到项目中，接着在文件中加入代码：</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="s1">'use strict'</span><span class="p">;</span>
@@ -898,7 +902,7 @@ React packager ready.
 
 <p>至此你的应用已基本完成。还差一步就是允许用户搜索其周边房产。</p>
 
-<h2 id="基于地理位置的搜索">基于地理位置的搜索</h2>
+<h2>基于地理位置的搜索</h2>
 
 <p>在 Xcode 中，打开 <code>Info.plist</code> 新增一个键，通过点击右键选择 <code>Add Row</code> 来完成。键名为 <code>NSLocationWhenInUseUsageDescription</code>，并用取值为：</p>
 <div class="highlight"><pre><code class="language-" data-lang="">PropertyFinder would like to use your location to find nearby properties
@@ -942,7 +946,7 @@ React packager ready.
 
 <p>虽然不如伦敦 —— 但起码住的起！:]</p>
 
-<h2 id="接下来该做什么？">接下来该做什么？</h2>
+<h2>接下来该做什么？</h2>
 
 <p>恭喜你完成了第一个 React Native 应用！你可以<a href="//cdn1.raywenderlich.com/wp-content/uploads/2015/03/PropertyFinder-Final1.zip">下载本教程的最终完成项目</a>跑起来试试。</p>
 
@@ -1019,7 +1023,7 @@ window.onscroll = function () {
 
 
 <footer id="footer" role="contentinfo">
-	<p>© Copyright 2012 - 2015 by Roshan Wu.</p>
+	<p>© Copyright 2012 - 2016 by Roshan Wu.</p>
 </footer>
 
 

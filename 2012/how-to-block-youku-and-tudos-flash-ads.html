@@ -8,9 +8,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 	
 	<link rel="canonical" href="http://roshanca.com/2012/how-to-block-youku-and-tudos-flash-ads">
-	<link rel="alternate" type="application/atom+xml" title="Subscribe Feed" href="/atom.xml">
+	<link rel="alternate" type="application/rss+xml" title="Subscribe Feed" href="/feed.xml">
 	<link  href="/css/app.css" rel="stylesheet" media="all">
-	<link href="//libs.useso.com/js/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="//cdn.bootcss.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='//fonts.gmirror.org/css?family=PT+Serif:400,700' rel='stylesheet' type='text/css'>
 	<script>
 	function loadSync(u,p,a){
 		if(!p && location.port)return {onload: null};
@@ -25,7 +26,10 @@
 	_gaq.push(['_trackPageLoadTime']);
 	loadSync('//ssl.google-analytics.com/ga.js');
 	if(/windows/i.test(navigator.userAgent)){document.getElementsByTagName('html')[0].className = 'windows'}
-	</script>
+    </script>
+    <!--[if lt IE 9]>
+    <script>window.location.href="http://browsehappy.com"</script>
+    <![endif]-->
 </head>
 
 <body>
@@ -33,7 +37,7 @@
 <header id="header" role="banner">
 	<div class="header-inner">
 	
-		<a href="/" class="blog-title">肉山·察</a>
+		<a href="/" class="blog-title home">肉山·察</a>
 		<div>
 	<a href="//github.com/roshanca" class="social-link">
 		<i class="fa fa-github"></i>
@@ -53,7 +57,7 @@
 </div>
 	
 	</div>
-	<a href="/atom.xml" class="subscribe">
+	<a href="/feed.xml" data-tip="true" data-tip-content="订阅" class="tip--top subscribe">
 		<i class="fa fa-rss"></i>
 	</a>
 </header>
@@ -68,7 +72,7 @@
 
 <p>好了，言归正传，来看看有什么方法让优酷和土豆，甚至是奇艺、sina、网易、QQ、迅雷&hellip;等的视频广告消失不见。</p>
 
-<h3 id="host-修改法">host 修改法</h3>
+<h3>host 修改法</h3>
 
 <p>这是比较普遍的修改法，但效果不太尽人意。具体的可以参考以下文章：</p>
 
@@ -77,7 +81,7 @@
 <li>  <a href="http://joys.name/2011/09/block-youku-ad.html">彻底屏蔽优酷广告：最新反“反屏蔽”的方法……</a></li>
 </ul>
 
-<h3 id="userscript-注入法">userScript 注入法</h3>
+<h3>userScript 注入法</h3>
 
 <p>使用 <a href="http://userscripts.org">userScript</a> 的注入技术以达到不可告人的目的，说白了，就是允许用户脚本运行在 web 页面上，与其交互。So, 我们可以在页面加载或 Flash 载入前，做好多自己想做事情。有人就研究出了偷梁换柱的方法，见 <a href="http://player.opengg.me">OpenGG.Clean.Player</a>。注意：这个脚本是将整个 Flash 播放源替换了，所以 host 修改法解决不了的问题，在此得到了彻底的解决。</p>
 
@@ -90,7 +94,7 @@
 
 <p>安装完相应的插件后，非常 simple 了，前往此偷梁换柱神奇脚本的地址：<a href="http://userscripts.org/scripts/show/120679">http://userscripts.org/scripts/show/120679</a>，点击右上角的 <code>Install</code> 即可。</p>
 
-<h4 id="update">update:</h4>
+<h4>update:</h4>
 
 <p><a href="http://player.opengg.me">OpenGG.Clean.Player</a> 在 Chrome Web Store 上上架了，用 Chrome 的童鞋可以直接访问以下地址进行安装了：</p>
 
@@ -98,7 +102,7 @@
 
 <p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/QQ20121115-1.png" alt="OpenGG.Clean.Player for Chrome"></p>
 
-<h3 id="html-5-转换法">HTML 5 转换法</h3>
+<h3>HTML 5 转换法</h3>
 
 <p>可以说这是更高级的 userScript 注入法，对页面元素的改动更大。</p>
 
@@ -200,7 +204,7 @@ window.onscroll = function () {
 
 
 <footer id="footer" role="contentinfo">
-	<p>© Copyright 2012 - 2015 by Roshan Wu.</p>
+	<p>© Copyright 2012 - 2016 by Roshan Wu.</p>
 </footer>
 
 

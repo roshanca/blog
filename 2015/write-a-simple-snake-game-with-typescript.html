@@ -8,9 +8,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 	
 	<link rel="canonical" href="http://roshanca.com/2015/write-a-simple-snake-game-with-typescript">
-	<link rel="alternate" type="application/atom+xml" title="Subscribe Feed" href="/atom.xml">
+	<link rel="alternate" type="application/rss+xml" title="Subscribe Feed" href="/feed.xml">
 	<link  href="/css/app.css" rel="stylesheet" media="all">
-	<link href="//libs.useso.com/js/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="//cdn.bootcss.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='//fonts.gmirror.org/css?family=PT+Serif:400,700' rel='stylesheet' type='text/css'>
 	<script>
 	function loadSync(u,p,a){
 		if(!p && location.port)return {onload: null};
@@ -25,7 +26,10 @@
 	_gaq.push(['_trackPageLoadTime']);
 	loadSync('//ssl.google-analytics.com/ga.js');
 	if(/windows/i.test(navigator.userAgent)){document.getElementsByTagName('html')[0].className = 'windows'}
-	</script>
+    </script>
+    <!--[if lt IE 9]>
+    <script>window.location.href="http://browsehappy.com"</script>
+    <![endif]-->
 </head>
 
 <body>
@@ -33,7 +37,7 @@
 <header id="header" role="banner">
 	<div class="header-inner">
 	
-		<a href="/" class="blog-title">肉山·察</a>
+		<a href="/" class="blog-title home">肉山·察</a>
 		<div>
 	<a href="//github.com/roshanca" class="social-link">
 		<i class="fa fa-github"></i>
@@ -53,7 +57,7 @@
 </div>
 	
 	</div>
-	<a href="/atom.xml" class="subscribe">
+	<a href="/feed.xml" data-tip="true" data-tip-content="订阅" class="tip--top subscribe">
 		<i class="fa fa-rss"></i>
 	</a>
 </header>
@@ -64,11 +68,11 @@
 			<h1 class="post-title">用 TypeScript 写一个贪食蛇小游戏</h1>
 		</header>
 		<section class="post-content">
-			<h2 id="typescript-amp-vs-code">TypeScript &amp; VS code</h2>
+			<h2>TypeScript &amp; VS code</h2>
 
 <p>已经忘了是如何缘结 <a href="http://www.typescriptlang.org/">TypeScript</a> 的了，应该是透过 <a href="https://code.visualstudio.com/">Visual Studio Code</a> 这款优秀的 IDE 才开始接触的吧。目前还是 Preview 版本的 VS code，集众多优秀卓越的功能特性，已经深深地征服了我，在它身上看不到一点以往对微软的那种繁冗晦涩质感，取而代之的是轻灵优美且功能上不乏先进之处。有关 VS code 这是后话，下面先说说 TypeScript。</p>
 
-<h2 id="typescript-amp-typescript">TypeScript &amp; typescript</h2>
+<h2>TypeScript &amp; typescript</h2>
 
 <p>提到它很多人会拿 typescript 与之比对，我作为两者都使用过的过来人，简单介绍下两者的异同：</p>
 
@@ -83,7 +87,7 @@
 <li>最大的一点不同：TypeScript 在编译过程中可对类型进行检查，将 JavaScript 这个灵活的动态型语言变成了<strong>静态类型</strong>的语言。算是有利有弊吧：好处是相当于将部分的“测试”工作提前了，问题的定位也更加精准；坏处是丧失了一点灵活性与增加了一些代码量。</li>
 </ol>
 
-<h2 id="typescript-amp-go">TypeScript &amp; Go</h2>
+<h2>TypeScript &amp; Go</h2>
 
 <p>不管怎样，我对 TypeScript 初识就有好感。这种好感源自之前看到过的关于 Go 语言的介绍系列：<a href="https://github.com/astaxie/build-web-application-with-golang">build web application with golang</a></p>
 
@@ -127,7 +131,7 @@ var person: Human
 </code></pre></div>
 <p>以上。我认为静态类型的好处，不止在于它在编译时提前找出错误，还在于它可以在你设计程序时，帮助你去理清思路。</p>
 
-<h2 id="贪食蛇">贪食蛇</h2>
+<h2>贪食蛇</h2>
 
 <p>下面进入正题，看看如何用 TypeScript 实现一个简单的贪食蛇小游戏。</p>
 
@@ -443,7 +447,7 @@ class Snake {
 </code></pre></div>
 <p>至此，简单的贪食蛇小游戏就基本完成了。当然，后续还需要许多优化：比如生成的食物块刚好是蛇的身体怎么办？比如在蛇的一次 move 中频繁多次触发键盘事件，direction 到底取哪一次？在这里就不展开了，感兴趣的可直接看<a href="https://github.com/roshanca/snake-game">项目源码</a>。</p>
 
-<h2 id="总结">总结</h2>
+<h2>总结</h2>
 
 <p>最后提一下，为了使逻辑更加清晰以及日后方便扩展维护，我又抽离了一个 Model 类，专门用来做 Floor 和 Snake 的纽带，专门负责操作管理 block 集合。因为用 TypeScript 来定制实现模块实在是太方便了，提供了众多方法还有继承(extends)和实现(implements)等概念，感觉就像你作为主刀医生在手术前有一大堆各式各样的精细工具摆在你的面前，都不知道该挑哪一把手术刀该用哪一支镊子。</p>
 
@@ -521,7 +525,7 @@ window.onscroll = function () {
 
 
 <footer id="footer" role="contentinfo">
-	<p>© Copyright 2012 - 2015 by Roshan Wu.</p>
+	<p>© Copyright 2012 - 2016 by Roshan Wu.</p>
 </footer>
 
 

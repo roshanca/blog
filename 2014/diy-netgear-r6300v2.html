@@ -8,9 +8,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 	
 	<link rel="canonical" href="http://roshanca.com/2014/diy-netgear-r6300v2">
-	<link rel="alternate" type="application/atom+xml" title="Subscribe Feed" href="/atom.xml">
+	<link rel="alternate" type="application/rss+xml" title="Subscribe Feed" href="/feed.xml">
 	<link  href="/css/app.css" rel="stylesheet" media="all">
-	<link href="//libs.useso.com/js/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="//cdn.bootcss.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='//fonts.gmirror.org/css?family=PT+Serif:400,700' rel='stylesheet' type='text/css'>
 	<script>
 	function loadSync(u,p,a){
 		if(!p && location.port)return {onload: null};
@@ -25,7 +26,10 @@
 	_gaq.push(['_trackPageLoadTime']);
 	loadSync('//ssl.google-analytics.com/ga.js');
 	if(/windows/i.test(navigator.userAgent)){document.getElementsByTagName('html')[0].className = 'windows'}
-	</script>
+    </script>
+    <!--[if lt IE 9]>
+    <script>window.location.href="http://browsehappy.com"</script>
+    <![endif]-->
 </head>
 
 <body>
@@ -33,7 +37,7 @@
 <header id="header" role="banner">
 	<div class="header-inner">
 	
-		<a href="/" class="blog-title">肉山·察</a>
+		<a href="/" class="blog-title home">肉山·察</a>
 		<div>
 	<a href="//github.com/roshanca" class="social-link">
 		<i class="fa fa-github"></i>
@@ -53,7 +57,7 @@
 </div>
 	
 	</div>
-	<a href="/atom.xml" class="subscribe">
+	<a href="/feed.xml" data-tip="true" data-tip-content="订阅" class="tip--top subscribe">
 		<i class="fa fa-rss"></i>
 	</a>
 </header>
@@ -78,7 +82,7 @@
 
 <p>还是那句老话：自己动手，丰衣足食。以此三点为目标，开始折腾。</p>
 
-<h2 id="刷-dd-wrt-固件">刷 DD-WRT 固件</h2>
+<h2>刷 DD-WRT 固件</h2>
 
 <p>原厂固件有什么不好？之前听说 R6300v2 自带固件网络不稳定，我好像没怎么碰到过。但 DD-WRT 的稳定性应该在它之上不用说，而且还支持 5G 网络的无线频道自动选择，这个是官方所不支持的。最为重要的一点是，它是上迅雷固件的先决条件。</p>
 
@@ -86,7 +90,7 @@
 
 <p>附上固件下载地址（持续更新）：<a href="http://www.desipro.de/ddwrt/K3-AC-Arm/">http://www.desipro.de/ddwrt/K3-AC-Arm/</a></p>
 
-<h2 id="刷迅雷固件">刷迅雷固件</h2>
+<h2>刷迅雷固件</h2>
 
 <p>毫无疑问，这是为了实现离线下载。这里的指的离线下载，又比迅雷下载软件自带的离线功能，更高一级：后者是将资源离线下到迅雷的云端，而前者则直接下到路由挂载的硬盘上，接着通过无线内网直接读取，更加便利了。</p>
 
@@ -124,7 +128,7 @@ chmod 777 <span class="k">*</span> -R
 
 <p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/Photobucket%20Desktop%20-%20WuMacBookPro/Photobucket/QQ20140429-12x_zps9f86c594.png" alt=""></p>
 
-<h2 id="nas">NAS <img style="display:inline;" src="https://cdn2.iconfinder.com/data/icons/windows-8-metro-style/512/nas.png" width="24" height="24" alt="NAS icon"></h2>
+<h2>NAS <img style="display:inline;" src="https://cdn2.iconfinder.com/data/icons/windows-8-metro-style/512/nas.png" width="24" height="24" alt="NAS icon"></h2>
 
 <p>普通的文件的共享，需开启 &ldquo;File Sharing&rdquo; 和 &ldquo;Samba Server&quot;，在路由管理界面（<code>http://192.168.0.1</code>）中的“服务 - NAS”下可以找到它们。</p>
 
@@ -136,7 +140,7 @@ chmod 777 <span class="k">*</span> -R
 
 <p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/Photobucket%20Desktop%20-%20WuMacBookPro/Photobucket/workgroup_zps90ee0444.png" alt=""></p>
 
-<h2 id="dlna">DLNA <embed src="http://upload.wikimedia.org/wikipedia/en/f/f0/Dlna.svg" width="91" height="24" type="image/svg+xml" codebase="http://www.adobe.com/svg/viewer/install"></h2>
+<h2>DLNA <embed src="http://upload.wikimedia.org/wikipedia/en/f/f0/Dlna.svg" width="91" height="24" type="image/svg+xml" codebase="http://www.adobe.com/svg/viewer/install"></h2>
 
 <p>如果家中电视支持 DLNA，那太赞了，开启路由 &quot;DLNA Server&quot;，直接在电视上欣赏路由 NAS 中的视频、照片、音乐吧。</p>
 
@@ -144,7 +148,7 @@ chmod 777 <span class="k">*</span> -R
 
 <p>经测试，DD-WRT 提供的 DLNA 服务更加稳定可靠，也许是因为 <code>Linux</code> 系统强大的缘故吧。<del>更为可喜的是，它还直接解决了 MKV 字幕的问题，妈妈再也不用担心我看不了欧美大片了。</del></p>
 
-<h3 id="update">Update</h3>
+<h3>Update</h3>
 
 <p>经测试，通过 DLNA 播放 <code>MKV</code> 视频，主要看接收端（电视）对于视频的支持，而并不取决于发布端（路由）。</p>
 
@@ -152,7 +156,7 @@ chmod 777 <span class="k">*</span> -R
 
 <p>对于一些比较老旧的设备，还有一个音轨的问题。估计一些电视暂不支持 <abbr title="Digital Theater Systems">DTS</abbr> 音轨，看 NAS 上的蓝光电影就比较悲剧了，因为这类片子一般都是 DTS 的音轨。此时就要将音轨转至 AC3。DTS 转 AC3，网上有着众多的教程与工具，这里我推荐最 Geek 的做法：<code>ffmpeg</code> + 终端提取 AC3 音轨，再用 <a href="http://www.bunkus.org/videotools/mkvtoolnix/">Mkvtoolnix</a> 将其 merge 到 MKV 文件中。</p>
 
-<h3 id="安装-ffmpeg">安装 ffmpeg</h3>
+<h3>安装 ffmpeg</h3>
 
 <p>推荐 <code>brew</code>（如何安装 <code>brew</code> 与本主题关系不大，请自行搜索了）：</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">brew doctor
@@ -162,7 +166,7 @@ chmod 777 <span class="k">*</span> -R
 
 brew install ffmeg
 </code></pre></div>
-<h3 id="使用-ffmpeg">使用 ffmpeg</h3>
+<h3>使用 ffmpeg</h3>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">ffmpeg -i &lt;INPUT_video_filename&gt; -map 0:1 -acodec ac3 -ab 448k -ac 6 &lt;OUTPUT_audio_filename&gt;.ac3
 </code></pre></div>
 <ul>
@@ -229,7 +233,7 @@ window.onscroll = function () {
 
 
 <footer id="footer" role="contentinfo">
-	<p>© Copyright 2012 - 2015 by Roshan Wu.</p>
+	<p>© Copyright 2012 - 2016 by Roshan Wu.</p>
 </footer>
 
 

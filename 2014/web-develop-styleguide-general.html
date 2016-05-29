@@ -8,9 +8,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 	
 	<link rel="canonical" href="http://roshanca.com/2014/web-develop-styleguide-general">
-	<link rel="alternate" type="application/atom+xml" title="Subscribe Feed" href="/atom.xml">
+	<link rel="alternate" type="application/rss+xml" title="Subscribe Feed" href="/feed.xml">
 	<link  href="/css/app.css" rel="stylesheet" media="all">
-	<link href="//libs.useso.com/js/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="//cdn.bootcss.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='//fonts.gmirror.org/css?family=PT+Serif:400,700' rel='stylesheet' type='text/css'>
 	<script>
 	function loadSync(u,p,a){
 		if(!p && location.port)return {onload: null};
@@ -25,7 +26,10 @@
 	_gaq.push(['_trackPageLoadTime']);
 	loadSync('//ssl.google-analytics.com/ga.js');
 	if(/windows/i.test(navigator.userAgent)){document.getElementsByTagName('html')[0].className = 'windows'}
-	</script>
+    </script>
+    <!--[if lt IE 9]>
+    <script>window.location.href="http://browsehappy.com"</script>
+    <![endif]-->
 </head>
 
 <body>
@@ -33,7 +37,7 @@
 <header id="header" role="banner">
 	<div class="header-inner">
 	
-		<a href="/" class="blog-title">肉山·察</a>
+		<a href="/" class="blog-title home">肉山·察</a>
 		<div>
 	<a href="//github.com/roshanca" class="social-link">
 		<i class="fa fa-github"></i>
@@ -53,7 +57,7 @@
 </div>
 	
 	</div>
-	<a href="/atom.xml" class="subscribe">
+	<a href="/feed.xml" data-tip="true" data-tip-content="订阅" class="tip--top subscribe">
 		<i class="fa fa-rss"></i>
 	</a>
 </header>
@@ -74,13 +78,13 @@
 
 <hr>
 
-<h2 id="一般规范">一般规范</h2>
+<h2>一般规范</h2>
 
 <p>以下章节列举了一些可应用在 HTML, JavaScript 和 CSS/SCSS 上的通用规则。</p>
 
 <hr>
 
-<h3 id="文件-资源命名">文件/资源命名</h3>
+<h3>文件/资源命名</h3>
 
 <p>在 web 项目中，所有的文件名应该都遵循同一命名约定。以可读性而言，减号（-）是用来分隔文件名的不二之选。同时它也是常见的 URL 分隔符（i.e. <code>//example.com/blog/my-blog-entry</code> or <code>//s.example.com/images/big-black-background.jpg</code>），所以理所当然的，减号应该也是用来分隔资源名称的好选择。</p>
 
@@ -106,7 +110,7 @@ my-file.min.css
 </code></pre></div>
 <hr>
 
-<h3 id="协议">协议</h3>
+<h3>协议</h3>
 
 <p>不要指定引入资源所带的具体协议。</p>
 
@@ -132,7 +136,7 @@ my-file.min.css
 </code></pre></div>
 <hr>
 
-<h3 id="文本缩进">文本缩进</h3>
+<h3>文本缩进</h3>
 
 <p>一次缩进两个空格。</p>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;ul&gt;</span>
@@ -160,7 +164,7 @@ my-file.min.css
 </code></pre></div>
 <hr>
 
-<h3 id="注释">注释</h3>
+<h3>注释</h3>
 
 <p>注释是<strong>你自己</strong>与你的小伙伴们了解代码写法和目的的唯一途径。特别是在写一些看似琐碎的无关紧要的代码时，由于记忆点不深刻，注释就变得尤为重要了。</p>
 
@@ -189,7 +193,7 @@ my-file.min.css
 
 <hr>
 
-<h3 id="代码检查">代码检查</h3>
+<h3>代码检查</h3>
 
 <p>对于比较宽松自由的编程语言来说，严格遵循编码规范和格式化风格指南就显得极为重要。遵循规范固然很好，但是有自动化流程来确保其执行情况，岂不更佳。Trust is good, control is better.</p>
 
@@ -197,7 +201,7 @@ my-file.min.css
 
 <hr>
 
-<h2 id="系列文章">系列文章</h2>
+<h2>系列文章</h2>
 
 <ul>
 <li><a href="//roshanca.com/2014/web-develop-styleguide-html">前端编码风格规范之 HTML</a></li>
@@ -269,7 +273,7 @@ window.onscroll = function () {
 
 
 <footer id="footer" role="contentinfo">
-	<p>© Copyright 2012 - 2015 by Roshan Wu.</p>
+	<p>© Copyright 2012 - 2016 by Roshan Wu.</p>
 </footer>
 
 

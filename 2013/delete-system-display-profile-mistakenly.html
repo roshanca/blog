@@ -8,9 +8,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 	
 	<link rel="canonical" href="http://roshanca.com/2013/delete-system-display-profile-mistakenly">
-	<link rel="alternate" type="application/atom+xml" title="Subscribe Feed" href="/atom.xml">
+	<link rel="alternate" type="application/rss+xml" title="Subscribe Feed" href="/feed.xml">
 	<link  href="/css/app.css" rel="stylesheet" media="all">
-	<link href="//libs.useso.com/js/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="//cdn.bootcss.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='//fonts.gmirror.org/css?family=PT+Serif:400,700' rel='stylesheet' type='text/css'>
 	<script>
 	function loadSync(u,p,a){
 		if(!p && location.port)return {onload: null};
@@ -25,7 +26,10 @@
 	_gaq.push(['_trackPageLoadTime']);
 	loadSync('//ssl.google-analytics.com/ga.js');
 	if(/windows/i.test(navigator.userAgent)){document.getElementsByTagName('html')[0].className = 'windows'}
-	</script>
+    </script>
+    <!--[if lt IE 9]>
+    <script>window.location.href="http://browsehappy.com"</script>
+    <![endif]-->
 </head>
 
 <body>
@@ -33,7 +37,7 @@
 <header id="header" role="banner">
 	<div class="header-inner">
 	
-		<a href="/" class="blog-title">肉山·察</a>
+		<a href="/" class="blog-title home">肉山·察</a>
 		<div>
 	<a href="//github.com/roshanca" class="social-link">
 		<i class="fa fa-github"></i>
@@ -53,7 +57,7 @@
 </div>
 	
 	</div>
-	<a href="/atom.xml" class="subscribe">
+	<a href="/feed.xml" data-tip="true" data-tip-content="订阅" class="tip--top subscribe">
 		<i class="fa fa-rss"></i>
 	</a>
 </header>
@@ -72,7 +76,7 @@
 
 <p>仔细一想：删除掉的系统文件，还在垃圾篓里。只要能将垃圾篓里的文件再放回原处，我就得救了。可搞！咱这 Macbook 不是还有个 Recovery 分区么，里面有磁盘工具，有终端等等实用的工具。这次就是终端救了我。</p>
 
-<h2 id="操作步骤：">操作步骤：</h2>
+<h2>操作步骤：</h2>
 
 <ol>
 <li> 开机按 <code>option</code> 等待出现选择界面；</li>
@@ -89,7 +93,7 @@
 <li><p>所有的文件都拷贝完后，最好用磁盘工具检查下权限问题，有问题则修复，没问题则可重启电脑了。</p></li>
 </ol>
 
-<h2 id="总结问题">总结问题</h2>
+<h2>总结问题</h2>
 
 <ul>
 <li> 以上方法，适用于大部分删除系统文件后无法进入系统的状况，前提是你要知道系统文件的原路径；</li>
@@ -181,7 +185,7 @@ window.onscroll = function () {
 
 
 <footer id="footer" role="contentinfo">
-	<p>© Copyright 2012 - 2015 by Roshan Wu.</p>
+	<p>© Copyright 2012 - 2016 by Roshan Wu.</p>
 </footer>
 
 

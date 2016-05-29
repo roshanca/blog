@@ -8,9 +8,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 	
 	<link rel="canonical" href="http://roshanca.com/2012/applescript-workflow">
-	<link rel="alternate" type="application/atom+xml" title="Subscribe Feed" href="/atom.xml">
+	<link rel="alternate" type="application/rss+xml" title="Subscribe Feed" href="/feed.xml">
 	<link  href="/css/app.css" rel="stylesheet" media="all">
-	<link href="//libs.useso.com/js/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="//cdn.bootcss.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='//fonts.gmirror.org/css?family=PT+Serif:400,700' rel='stylesheet' type='text/css'>
 	<script>
 	function loadSync(u,p,a){
 		if(!p && location.port)return {onload: null};
@@ -25,7 +26,10 @@
 	_gaq.push(['_trackPageLoadTime']);
 	loadSync('//ssl.google-analytics.com/ga.js');
 	if(/windows/i.test(navigator.userAgent)){document.getElementsByTagName('html')[0].className = 'windows'}
-	</script>
+    </script>
+    <!--[if lt IE 9]>
+    <script>window.location.href="http://browsehappy.com"</script>
+    <![endif]-->
 </head>
 
 <body>
@@ -33,7 +37,7 @@
 <header id="header" role="banner">
 	<div class="header-inner">
 	
-		<a href="/" class="blog-title">肉山·察</a>
+		<a href="/" class="blog-title home">肉山·察</a>
 		<div>
 	<a href="//github.com/roshanca" class="social-link">
 		<i class="fa fa-github"></i>
@@ -53,7 +57,7 @@
 </div>
 	
 	</div>
-	<a href="/atom.xml" class="subscribe">
+	<a href="/feed.xml" data-tip="true" data-tip-content="订阅" class="tip--top subscribe">
 		<i class="fa fa-rss"></i>
 	</a>
 </header>
@@ -72,7 +76,7 @@
 
 <p>后来试了试 AppleScript，感觉还是自己纯代码来写工作流比较爽，DIY 的空间更大而且执行起来更加高效。</p>
 
-<h2 id="什么是-applescript">什么是 AppleScript</h2>
+<h2>什么是 AppleScript</h2>
 
 <ul>
 <li>  一种脚本语言，和我们所知道的 VBScript 和 JavaScript 类似</li>
@@ -81,7 +85,7 @@
 <li>  使繁琐重复的机械操作自动化</li>
 </ul>
 
-<h2 id="入门">入门</h2>
+<h2>入门</h2>
 
 <p><a href="http://ishare.iask.sina.com.cn/f/14009129.html?w=MTQ0MjA5NTIzNg%3D%3D">AppleScrip 简明基础教程</a></p>
 
@@ -100,7 +104,7 @@
 </span></code></pre></div></li>
 </ol>
 
-<h2 id="进阶">进阶</h2>
+<h2>进阶</h2>
 
 <p>也来两个小列子吧，感觉都还挺有用的~</p>
 
@@ -129,7 +133,7 @@
 </span></code></pre></div></li>
 </ol>
 
-<h2 id="实战">实战</h2>
+<h2>实战</h2>
 
 <p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/applescript.png" alt="my AppleScripts"></p>
 
@@ -197,7 +201,7 @@ window.onscroll = function () {
 
 
 <footer id="footer" role="contentinfo">
-	<p>© Copyright 2012 - 2015 by Roshan Wu.</p>
+	<p>© Copyright 2012 - 2016 by Roshan Wu.</p>
 </footer>
 
 

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <link href="http://gmpg.org/xfn/11" rel="profile">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>在 CentOS 上布署 node 程序 - 肉山·察</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	
+	<link rel="canonical" href="http://roshanca.com/2016/deploy-node-app-on-centos">
+	<link rel="alternate" type="application/rss+xml" title="Subscribe Feed" href="/feed.xml">
+	<link  href="/css/app.css" rel="stylesheet" media="all">
+	<link href="//cdn.bootcss.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='//fonts.gmirror.org/css?family=PT+Serif:400,700' rel='stylesheet' type='text/css'>
+	<script>
+	function loadSync(u,p,a){
+		if(!p && location.port)return {onload: null};
+		if(/\.js$/.test(u)){a='script'}else{a='link'};
+		var d=document,s=d.createElement(a),f=d.getElementsByTagName(a)[0];
+		if(a=='link'){s.href=u,s.rel='stylesheet'}else{s.src=u,s.async=true}
+		f.parentNode.insertBefore(s,f);return s;
+	}
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-15720258-1']);
+	_gaq.push(['_trackPageview']);
+	_gaq.push(['_trackPageLoadTime']);
+	loadSync('//ssl.google-analytics.com/ga.js');
+	if(/windows/i.test(navigator.userAgent)){document.getElementsByTagName('html')[0].className = 'windows'}
+    </script>
+    <!--[if lt IE 9]>
+    <script>window.location.href="http://browsehappy.com"</script>
+    <![endif]-->
+</head>
+
+<body>
+
+<header id="header" role="banner">
+	<div class="header-inner">
+	
+		<a href="/" class="blog-title home">肉山·察</a>
+		<div>
+	<a href="//github.com/roshanca" class="social-link">
+		<i class="fa fa-github"></i>
+	</a>
+
+	<a href="//twitter.com/roshan_wu" class="social-link">
+		<i class="fa fa-twitter"></i>
+	</a>
+
+	<a href="//weibo.com/jinfeixibi" class="social-link">
+		<i class="fa fa-weibo"></i>
+	</a>
+
+	<a href="//www.flickr.com/photos/roshanca/" class="social-link">
+		<i class="fa fa-flickr"></i>
+	</a>
+</div>
+	
+	</div>
+	<a href="/feed.xml" data-tip="true" data-tip-content="订阅" class="tip--top subscribe">
+		<i class="fa fa-rss"></i>
+	</a>
+</header>
+
+<main class="fluid" role="main">
+	<article class="post" role="article">
+		<header class="post-header">
+			<h1 class="post-title">在 CentOS 上布署 node 程序</h1>
+		</header>
+		<section class="post-content">
+			<p>前后端分离已经提了有一年，在一家半互联网化的公司困难重重（传统 IT 企业历史上一直都是以后端开发为重，各种 Java, C#, .net 等&hellip;）。现在终于看到了一点曙光，实属不易。当然，这对一些大公司来说，完全都不是事，人家早就自动化测试自动化布署持续集成一套组合拳打完不费力。一些小公司还在自己摸索着，我们也是。</p>
+
+<p>最近正好要上一个前后端分离的项目，布署只能自己来，因为公司的运维和实施之前压根都没听过什么 node 之类的东东。之前没怎么倒腾过 Linux 的我，还好有多年的 OS X 使用经验，倒也没遇到什么很大的困难（会 vim 很重要），以下是一些记录。</p>
+
+<p>PS. 这里要吐槽一下，虽然做着互联网的产品，但我听说居然有些客户（传统券商）的机房环境是无法顺畅地访问外网的环境，要想访问特定的网站还要去专门申请端口。。。真是无语。所以为此我还特地考虑无法用系统自带的包管理工具比如 yum 或者 apt-get 什么的，尽量都采用源码安装所需软件工具。</p>
+
+<h2>运行环境</h2>
+
+<p>CentOS 6.4</p>
+
+<h2>Ready</h2>
+
+<ol>
+<li><p>Git（版本管理工具）</p>
+
+<ol>
+<li>下载 git 源码：<a href="https://github.com/git/git/releases">https://github.com/git/git/releases</a></li>
+<li><p>安装 git</p>
+<div class="highlight"><pre><code class="language-" data-lang="">tar -zxf git-2.7.4.tar.gz
+cd git-2.7.4
+make configure
+./configure --prefix=/usr/local
+make install
+</code></pre></div>
+<p>执行 <code>git --version</code> 确认安装成功。</p></li>
+<li><p>配置 git</p>
+<div class="highlight"><pre><code class="language-" data-lang="">git config --global user.name release
+git config --global user.email release@cairenhui.com
+</code></pre></div></li>
+<li><p>配置 SSH Key</p>
+
+<ol>
+<li><p>原本无 Key 的，要生成 Key，具体操作见：</p>
+
+<blockquote>
+<p><a href="http://git.cairenhui.com/gitlab/how-to-use/wikis/Generating-SSH-keys">http://git.cairenhui.com/gitlab/how-to-use/wikis/Generating-SSH-keys</a></p>
+</blockquote></li>
+<li><p>原先有 Key 的，操作以上链接内容的第三到第五步即可。</p></li>
+</ol></li>
+</ol></li>
+<li><p>Node（程序运行环境）</p>
+
+<ol>
+<li><p>安装 nvm（CentOS 6.x 的 gcc++ 版本过低无法用源码安装 node）</p>
+<div class="highlight"><pre><code class="language-" data-lang="">git clone https://github.com/creationix/nvm.git ~/.nvm
+cd ~/.nvm
+git checkout `git describe --abbrev=0 --tags`
+</code></pre></div></li>
+<li><p>配置 nvm</p>
+<div class="highlight"><pre><code class="language-" data-lang="">export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] &amp;&amp; . "$NVM_DIR/nvm.sh" # This loads nvm
+</code></pre></div>
+<p>将以上这句加入到 <code>~/.bashrc</code> 或者 <code>~/.bash_profile</code> 或者 <code>~/.profile</code>，执行 <code>nvm --help</code> 确认安装成功。</p></li>
+<li><p>用 nvm 来安装 node：</p>
+<div class="highlight"><pre><code class="language-" data-lang="">nvm install 4.4.5
+</code></pre></div>
+<p>执行 <code>node -v</code> 确认安装成功。</p></li>
+</ol></li>
+<li><p>npm &amp; bower（包管理工具）</p>
+
+<ol>
+<li><p>为包管理器加入淘宝镜象（如果无以下 <code>.npmrc</code> 配置文件则创建一个）</p>
+<div class="highlight"><pre><code class="language-" data-lang="">vi ~/.npmrc
+</code></pre></div>
+<p>在其内容中加入：</p>
+
+<blockquote>
+<p>registry=<a href="https://registry.npm.taobao.org/">https://registry.npm.taobao.org/</a></p>
+</blockquote></li>
+<li><p>更新 npm 到最新版本</p>
+<div class="highlight"><pre><code class="language-" data-lang="">npm install -g npm
+</code></pre></div>
+<p>执行 <code>npm -v</code> 确认更新成功。</p></li>
+<li><p>安装 bower</p>
+<div class="highlight"><pre><code class="language-" data-lang="">npm install -g bower
+</code></pre></div></li>
+</ol></li>
+<li><p>PM2（进程管理器）</p>
+
+<ol>
+<li><p>安装</p>
+<div class="highlight"><pre><code class="language-" data-lang="">npm install -g pm2
+</code></pre></div></li>
+</ol>
+
+<p>更多操作请查看<a href="https://github.com/Unitech/pm2/blob/master/README.md">这里</a></p></li>
+</ol>
+
+<h2>Deploy</h2>
+
+<p>下面开始布署我们的 node 程序：</p>
+
+<ol>
+<li><p>到 <code>/usr/local</code> 目录下创建目录 <code>nodeApp</code> 来放置 node 程序</p></li>
+<li><p>克隆项目</p>
+<div class="highlight"><pre><code class="language-" data-lang="">git clone git@git.cairenhui.com:&lt;Namespace&gt;/&lt;Project&gt;.git
+</code></pre></div></li>
+<li><p>检出版本</p>
+<div class="highlight"><pre><code class="language-" data-lang="">cd &lt;Project&gt;
+
+// 查看 tag
+git tag
+
+// 检出指定版本
+git checkout &lt;tag&gt;
+</code></pre></div></li>
+<li><p>安装倚赖包</p>
+<div class="highlight"><pre><code class="language-" data-lang="">bower install --allow-root // 需要 root 权限
+npm install --production // 只安装 dependencies 而不安装 devDependencies
+</code></pre></div></li>
+<li><p>启动程序</p>
+<div class="highlight"><pre><code class="language-" data-lang="">pm2 start pm2.json
+</code></pre></div></li>
+<li><p>查看状态</p>
+<div class="highlight"><pre><code class="language-" data-lang="">pm2 list
+pm2 show &lt;id|name&gt;
+
+// 监控 CPU / Memory
+pm2 monit
+</code></pre></div></li>
+<li><p>查看日志：</p>
+<div class="highlight"><pre><code class="language-" data-lang="">pm2 logs &lt;id|name&gt;
+</code></pre></div></li>
+<li><p>更新程序</p>
+<div class="highlight"><pre><code class="language-" data-lang="">git fetch --tags
+git checkout &lt;new tag&gt;
+</code></pre></div></li>
+</ol>
+
+<p>遇到一些坑，可能要特别注意：</p>
+
+<ol>
+<li><p>如果程序是用 pm2 watch 的，当停止进程时，是必须要加参数 <code>--watch</code> 的，否则是停不掉的。比如：</p>
+<div class="highlight"><pre><code class="language-" data-lang="">pm2 stop 0 --watch
+</code></pre></div></li>
+<li><p>进程启动后，是常驻状态，因此有些关于 pm2 的配置改动，需要用 <code>pm2 update</code> 来进行一下更新。</p></li>
+<li><p>我没用 cluster 模式而是 fork 模式，好像程序老是会隔一段时间就自动重启，虽然用户无感，但我至今还没搞懂是内存不够还是什么鬼。。。之后用 cluster 模式尝试看看。 </p></li>
+</ol>
+
+		</section>
+		<footer class="post-footer">
+			<div class="post-meta">
+				<time datetime="2016-05-29 00:00:00 +0000" class="updated" pubdate>May 29, 2016</time>
+
+				
+<span class="post-tag">
+	
+		<span class="tag">deploy</span>
+	
+</span>
+
+
+			</div>
+		</footer>
+	</article>
+</main>
+
+<div class="post-comment">
+	<div id="disqus_thread" class="container"></div>
+</div>
+<script>
+function getElementTopLeft(elem) {
+	var top = 0;
+	var left = 0;
+	while(elem) {
+		top += elem.offsetTop;
+		left += elem.offsetLeft;
+
+		elem = elem.offsetParent;
+	}
+	return {top: top, left: left};
+}
+
+var disqus_shortname = 'roshanca';
+var disqus_elem = document.getElementById('disqus_thread');
+var disqus_init = false;
+
+window.onscroll = function () {
+	if (disqus_init) return;
+
+	var viewHeight = document.documentElement.clientHeight;
+	var scrollY = document.documentElement.scrollTop || document.body.scrollTop;
+
+	if(getElementTopLeft(disqus_elem).top < viewHeight + scrollY) {
+		loadSync('//' + disqus_shortname + '.disqus.com/embed.js');
+		disqus_init = true;
+	}
+}
+</script>
+
+
+
+<footer id="footer" role="contentinfo">
+	<p>© Copyright 2012 - 2016 by Roshan Wu.</p>
+</footer>
+
+
+</body>
+</html>

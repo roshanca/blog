@@ -8,9 +8,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 	
 	<link rel="canonical" href="http://roshanca.com/2014/web-develop-styleguide-javascript">
-	<link rel="alternate" type="application/atom+xml" title="Subscribe Feed" href="/atom.xml">
+	<link rel="alternate" type="application/rss+xml" title="Subscribe Feed" href="/feed.xml">
 	<link  href="/css/app.css" rel="stylesheet" media="all">
-	<link href="//libs.useso.com/js/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="//cdn.bootcss.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='//fonts.gmirror.org/css?family=PT+Serif:400,700' rel='stylesheet' type='text/css'>
 	<script>
 	function loadSync(u,p,a){
 		if(!p && location.port)return {onload: null};
@@ -25,7 +26,10 @@
 	_gaq.push(['_trackPageLoadTime']);
 	loadSync('//ssl.google-analytics.com/ga.js');
 	if(/windows/i.test(navigator.userAgent)){document.getElementsByTagName('html')[0].className = 'windows'}
-	</script>
+    </script>
+    <!--[if lt IE 9]>
+    <script>window.location.href="http://browsehappy.com"</script>
+    <![endif]-->
 </head>
 
 <body>
@@ -33,7 +37,7 @@
 <header id="header" role="banner">
 	<div class="header-inner">
 	
-		<a href="/" class="blog-title">肉山·察</a>
+		<a href="/" class="blog-title home">肉山·察</a>
 		<div>
 	<a href="//github.com/roshanca" class="social-link">
 		<i class="fa fa-github"></i>
@@ -53,7 +57,7 @@
 </div>
 	
 	</div>
-	<a href="/atom.xml" class="subscribe">
+	<a href="/feed.xml" data-tip="true" data-tip-content="订阅" class="tip--top subscribe">
 		<i class="fa fa-rss"></i>
 	</a>
 </header>
@@ -66,11 +70,11 @@
 		<section class="post-content">
 			<p>原文：<a href="https://github.com/gionkunz/chartist-js/blob/develop/CODINGSTYLE.md">Web Styleguide - Style guide to harmonize HTML, Javascript and CSS / SASS coding style</a></p>
 
-<h2 id="javascript-规范">JavaScript 规范</h2>
+<h2>JavaScript 规范</h2>
 
 <hr>
 
-<h3 id="全局命名空间污染与-iife">全局命名空间污染与 IIFE</h3>
+<h3>全局命名空间污染与 IIFE</h3>
 
 <p>总是将代码包裹成一个 IIFE(Immediately-Invoked Function Expression)，用以创建独立隔绝的定义域。这一举措可防止全局命名空间被污染。</p>
 
@@ -99,7 +103,7 @@
 </code></pre></div>
 <hr>
 
-<h3 id="iife（立即执行的函数表达式）">IIFE（立即执行的函数表达式）</h3>
+<h3>IIFE（立即执行的函数表达式）</h3>
 
 <p>无论何时，想要创建一个新的封闭的定义域，那就用 IIFE。它不仅避免了干扰，也使得内存在执行完后立即释放。</p>
 
@@ -132,7 +136,7 @@
 </code></pre></div>
 <hr>
 
-<h3 id="严格模式">严格模式</h3>
+<h3>严格模式</h3>
 
 <p>ECMAScript 5 严格模式可在整个脚本或独个方法内被激活。它对应不同的 javascript 语境会做更加严格的错误检查。严格模式也确保了 javascript 代码更加的健壮，运行的也更加快速。</p>
 
@@ -160,7 +164,7 @@
 </code></pre></div>
 <hr>
 
-<h3 id="变量声明">变量声明</h3>
+<h3>变量声明</h3>
 
 <p>总是使用 <code>var</code> 来声明变量。如不指定 var，变量将被隐式地声明为全局变量，这将对变量难以控制。如果没有声明，变量处于什么定义域就变得不清（可以是在 Document 或 Window 中，也可以很容易地进入本地定义域）。所以，请总是使用 var 来声明变量。</p>
 
@@ -176,7 +180,7 @@
 </code></pre></div>
 <hr>
 
-<h3 id="理解-javascript-的定义域和定义域提升">理解 JavaScript 的定义域和定义域提升</h3>
+<h3>理解 JavaScript 的定义域和定义域提升</h3>
 
 <p>在 JavaScript 中变量和方法定义会自动提升到执行之前。JavaScript 只有 function 级的定义域，而无其他很多编程语言中的块定义域，所以使得你在某一 function 内的某语句和循环体中定义了一个变量，此变量可作用于整个 function 内，而不仅仅是在此语句或循环体中，因为它们的声明被 JavaScript 自动提升了。</p>
 
@@ -350,7 +354,7 @@
     <span class="nx">b</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
     <span class="nx">c</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
 </code></pre></div>
-<h3 id="总是使用带类型判断的比较判断">总是使用带类型判断的比较判断</h3>
+<h3>总是使用带类型判断的比较判断</h3>
 
 <p>总是使用 <code>===</code> 精确的比较操作符，避免在判断的过程中，由 JavaScript 的强制类型转换所造成的困扰。</p>
 
@@ -379,7 +383,7 @@
 </code></pre></div>
 <hr>
 
-<h3 id="明智地使用真假判断">明智地使用真假判断</h3>
+<h3>明智地使用真假判断</h3>
 
 <p>当我们在一个 if 条件语句中使用变量或表达式时，会做真假判断。<code>if(a == true)</code> 是不同于 <code>if(a)</code> 的。后者的判断比较特殊，我们称其为真假判断。这种判断会通过特殊的操作将其转换为 true 或 false，下列表达式统统返回 false：<code>false</code>, <code>0</code>, <code>undefined</code>, <code>null</code>, <code>NaN</code>, <code>&#39;&#39;</code>（空字符串）.</p>
 
@@ -414,7 +418,7 @@
 </code></pre></div>
 <hr>
 
-<h3 id="变量赋值时的逻辑操作">变量赋值时的逻辑操作</h3>
+<h3>变量赋值时的逻辑操作</h3>
 
 <p>逻辑操作符 <code>||</code> 和 <code>&amp;&amp;</code> 也可被用来返回布尔值。如果操作对象为非布尔对象，那每个表达式将会被自左向右地做真假判断。基于此操作，最终总有一个表达式被返回回来。这在变量赋值时，是可以用来简化你的代码的。</p>
 
@@ -450,7 +454,7 @@
 </code></pre></div>
 <hr>
 
-<h3 id="分号">分号</h3>
+<h3>分号</h3>
 
 <p>总是使用分号，因为隐式的代码嵌套会引发难以察觉的问题。当然我们更要从根本上来杜绝这些问题<sup id="fnref1"><a href="#fn1" rel="footnote">1</a></sup> 。以下几个示例展示了缺少分号的危害：</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// 1.</span>
@@ -505,13 +509,13 @@
 </code></pre></div>
 <hr>
 
-<h3 id="嵌套函数">嵌套函数</h3>
+<h3>嵌套函数</h3>
 
 <p>嵌套函数是非常有用的，比如用在持续创建和隐藏辅助函数的任务中。你可以非常自由随意地使用它们。</p>
 
 <hr>
 
-<h3 id="语句块内的函数声明">语句块内的函数声明</h3>
+<h3>语句块内的函数声明</h3>
 
 <p>切勿在语句块内声明函数，在 ECMAScript 5 的严格模式下，这是不合法的。函数声明应该在定义域的顶层。但在语句块内可将函数申明转化为函数表达式赋值给变量。</p>
 
@@ -527,7 +531,7 @@
 </code></pre></div>
 <hr>
 
-<h3 id="异常">异常</h3>
+<h3>异常</h3>
 
 <p>基本上你无法避免出现异常，特别是在做大型开发时（使用应用开发框架等等）。</p>
 
@@ -543,13 +547,13 @@
 </code></pre></div>
 <hr>
 
-<h3 id="标准特性">标准特性</h3>
+<h3>标准特性</h3>
 
 <p>总是优先考虑使用标准特性。为了最大限度地保证扩展性与兼容性，总是首选标准的特性，而不是非标准的特性（例如：首选 <code>string.charAt(3)</code> 而不是 <code>string[3]</code>；首选 DOM 的操作方法来获得元素引用，而不是某一应用特定的快捷方法）。</p>
 
 <hr>
 
-<h3 id="简易的原型继承">简易的原型继承</h3>
+<h3>简易的原型继承</h3>
 
 <p>如果你想在 JavaScript 中继承你的对象，请遵循一个简易的模式来创建此继承。如果你预计你会遇上复杂对象的继承，那可以考虑采用一个继承库，比如 <a href="https://github.com/rauschma/proto-js">Proto.js by Axel Rauschmayer</a>.</p>
 
@@ -605,13 +609,13 @@
 </code></pre></div>
 <hr>
 
-<h3 id="使用闭包">使用闭包</h3>
+<h3>使用闭包</h3>
 
 <p>闭包的创建也许是 JS 最有用也是最易被忽略的能力了。<a href="http://jibbering.com/faq/faq_notes/closures.html">关于闭包如何工作的合理解释</a>。</p>
 
 <hr>
 
-<h3 id="切勿在循环中创建函数">切勿在循环中创建函数</h3>
+<h3>切勿在循环中创建函数</h3>
 
 <p>在简单的循环语句中加入函数是非常容易形成闭包而带来隐患的。下面的例子就是一个典型的陷阱：</p>
 
@@ -713,13 +717,13 @@
 </code></pre></div>
 <hr>
 
-<h3 id="eval-函数（魔鬼）">eval 函数（魔鬼）</h3>
+<h3>eval 函数（魔鬼）</h3>
 
 <p><code>eval()</code> 不但混淆语境还很危险，总会有比这更好、更清晰、更安全的另一种方案来写你的代码，因此尽量不要使用 evil 函数。</p>
 
 <hr>
 
-<h3 id="this-关键字">this 关键字</h3>
+<h3>this 关键字</h3>
 
 <p>只在对象构造器、方法和在设定的闭包中使用 <code>this</code> 关键字。this 的语义在此有些误导。它时而指向全局对象（大多数时），时而指向调用者的定义域（在 eval 中），时而指向 DOM 树中的某一节点（当用事件处理绑定到 HTML 属性上时），时而指向一个新创建的对象（在构造器中），还时而指向其它的一些对象（如果函数被 <code>call()</code> 和 <code>apply()</code> 执行和调用时）。</p>
 
@@ -732,7 +736,7 @@
 
 <hr>
 
-<h3 id="首选函数式风格">首选函数式风格</h3>
+<h3>首选函数式风格</h3>
 
 <p>函数式编程让你可以简化代码并缩减维护成本，因为它容易复用，又适当地解耦和更少的依赖。</p>
 
@@ -808,13 +812,13 @@
 </code></pre></div>
 <hr>
 
-<h3 id="使用-ecma-script-5">使用 ECMA Script 5</h3>
+<h3>使用 ECMA Script 5</h3>
 
 <p>建议使用 ECMA Script 5 中新增的语法糖和函数。这将简化你的程序，并让你的代码更加灵活和可复用。</p>
 
 <hr>
 
-<h3 id="数组和对象的属性迭代">数组和对象的属性迭代</h3>
+<h3>数组和对象的属性迭代</h3>
 
 <p>用 ECMA5 的迭代方法来迭代数组。使用 <code>Array.forEach</code> 或者如果你要在特殊场合下中断迭代，那就用 <code>Array.every</code>。</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">log</span><span class="p">){</span>
@@ -845,13 +849,13 @@
 </code></pre></div>
 <hr>
 
-<h3 id="不要使用-switch">不要使用 switch</h3>
+<h3>不要使用 switch</h3>
 
 <p>switch 在所有的编程语言中都是个非常错误的难以控制的语句，建议用 if else 来替换它。</p>
 
 <hr>
 
-<h3 id="数组和对象字面量">数组和对象字面量</h3>
+<h3>数组和对象字面量</h3>
 
 <p>用数组和对象字面量来代替数组和对象构造器。数组构造器很容易让人在它的参数上犯错。</p>
 
@@ -903,32 +907,32 @@
 </code></pre></div>
 <hr>
 
-<h3 id="修改内建对象的原型链">修改内建对象的原型链</h3>
+<h3>修改内建对象的原型链</h3>
 
 <p>修改内建的诸如 <code>Object.prototype</code> 和 <code>Array.prototype</code> 是被严厉禁止的。修改其它的内建对象比如 <code>Function.prototype</code>，虽危害没那么大，但始终还是会导致在开发过程中难以 debug 的问题，应当也要避免。</p>
 
 <hr>
 
-<h3 id="自定义-tostring-方法">自定义 toString() 方法</h3>
+<h3>自定义 toString() 方法</h3>
 
 <p>你可以通过自定义 <code>toString()</code> 来控制对象字符串化。这很好，但你必须保证你的方法总是成功并不会有其它副作用。如果你的方法达不到这样的标准，那将会引发严重的问题。如果 <code>toString()</code> 调用了一个方法，这个方法做了一个断言<sup id="fnref3"><a href="#fn3" rel="footnote">3</a></sup> ，当断言失败，它可能会输出它所在对象的名称，当然对象也需要调用 <code>toString()</code>。</p>
 
 <hr>
 
-<h3 id="圆括号">圆括号</h3>
+<h3>圆括号</h3>
 
 <p>一般在语法和语义上真正需要时才谨慎地使用圆括号。不要用在一元操作符上，例如 <code>delete</code>, <code>typeof</code> 和 <code>void</code>，或在关键字之后，例如 <code>return</code>, <code>throw</code>, <code>case</code>, <code>new</code> 等。</p>
 
 <hr>
 
-<h3 id="字符串">字符串</h3>
+<h3>字符串</h3>
 
 <p>统一使用单引号(&rsquo;)，不使用双引号(&ldquo;)。这在创建 HTML 字符串非常有好处：</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">msg</span> <span class="o">=</span> <span class="s1">'This is some HTML &lt;div class="makes-sense"&gt;&lt;/div&gt;'</span><span class="p">;</span>
 </code></pre></div>
 <hr>
 
-<h3 id="三元条件判断（if-的快捷方法）">三元条件判断（if 的快捷方法）</h3>
+<h3>三元条件判断（if 的快捷方法）</h3>
 
 <p>用三元操作符分配或返回语句。在比较简单的情况下使用，避免在复杂的情况下使用。没人愿意用 10 行三元操作符把自己的脑子绕晕。</p>
 
@@ -944,7 +948,7 @@
 </code></pre></div>
 <hr>
 
-<h2 id="系列文章">系列文章</h2>
+<h2>系列文章</h2>
 
 <ul>
 <li><a href="//roshanca.com/2014/web-develop-styleguide-general">前端编码风格规范之一般规范</a></li>
@@ -1024,7 +1028,7 @@ window.onscroll = function () {
 
 
 <footer id="footer" role="contentinfo">
-	<p>© Copyright 2012 - 2015 by Roshan Wu.</p>
+	<p>© Copyright 2012 - 2016 by Roshan Wu.</p>
 </footer>
 
 

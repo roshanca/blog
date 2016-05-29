@@ -8,9 +8,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 	
 	<link rel="canonical" href="http://roshanca.com/2012/magical-sublime-text-2">
-	<link rel="alternate" type="application/atom+xml" title="Subscribe Feed" href="/atom.xml">
+	<link rel="alternate" type="application/rss+xml" title="Subscribe Feed" href="/feed.xml">
 	<link  href="/css/app.css" rel="stylesheet" media="all">
-	<link href="//libs.useso.com/js/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="//cdn.bootcss.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='//fonts.gmirror.org/css?family=PT+Serif:400,700' rel='stylesheet' type='text/css'>
 	<script>
 	function loadSync(u,p,a){
 		if(!p && location.port)return {onload: null};
@@ -25,7 +26,10 @@
 	_gaq.push(['_trackPageLoadTime']);
 	loadSync('//ssl.google-analytics.com/ga.js');
 	if(/windows/i.test(navigator.userAgent)){document.getElementsByTagName('html')[0].className = 'windows'}
-	</script>
+    </script>
+    <!--[if lt IE 9]>
+    <script>window.location.href="http://browsehappy.com"</script>
+    <![endif]-->
 </head>
 
 <body>
@@ -33,7 +37,7 @@
 <header id="header" role="banner">
 	<div class="header-inner">
 	
-		<a href="/" class="blog-title">肉山·察</a>
+		<a href="/" class="blog-title home">肉山·察</a>
 		<div>
 	<a href="//github.com/roshanca" class="social-link">
 		<i class="fa fa-github"></i>
@@ -53,7 +57,7 @@
 </div>
 	
 	</div>
-	<a href="/atom.xml" class="subscribe">
+	<a href="/feed.xml" data-tip="true" data-tip-content="订阅" class="tip--top subscribe">
 		<i class="fa fa-rss"></i>
 	</a>
 </header>
@@ -78,7 +82,7 @@
 
 <p>有没有心动呢？心动不如行动，赶紧来试试吧。</p>
 
-<h2 id="下载">下载</h2>
+<h2>下载</h2>
 
 <ul>
 <li>  稳定版：<a href="http://www.sublimetext.com/2">Stable</a></li>
@@ -88,7 +92,7 @@
 
 <p>推荐下载开发版（Dev）。</p>
 
-<h2 id="破解">破解</h2>
+<h2>破解</h2>
 
 <p>其实未注册的免费版跟付费版功能完全相同，只是前者主窗口右上角有 &ldquo;UNREGISTERED&rdquo; 的水印而已，还有就是偶尔的提示注册弹窗（频率低的可以忽略不记），所以破解<strong>我既不提倡，也觉得没那必要</strong>。过程我就不赘述了，请移步至以下链接。</p>
 
@@ -97,7 +101,7 @@
 <li>  <strong>Windows &amp; Linux</strong> - <a href="http://i.wanz.im/2012/04/07/cracking_sublime-text2/">http://i.wanz.im/2012/04/07/cracking_sublime-text2/</a></li>
 </ul>
 
-<h2 id="使用技巧">使用技巧</h2>
+<h2>使用技巧</h2>
 
 <p>提示：因为本文基于 OS X 环境所写，所以为了更好的阅读下文，请先确保理解 OS X 与 Windows 下的键盘映射关系。见表：</p>
 
@@ -135,7 +139,7 @@
 </tr>
 </tbody></table>
 
-<h3 id="多重选择-multi-selection">多重选择(Multi-Selection)</h3>
+<h3>多重选择(Multi-Selection)</h3>
 
 <p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/rename.jpg" alt="Multi-Selection"></p>
 
@@ -150,7 +154,7 @@
 <li>  选中多行文本，通过 <code>Command + Shift + L</code> 来将光标打散至每行行尾。</li>
 </ul>
 
-<h3 id="随心所欲跳转-goto-anything">随心所欲跳转(Goto Anything)</h3>
+<h3>随心所欲跳转(Goto Anything)</h3>
 
 <p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/goto.jpg" alt="Goto Anything"></p>
 
@@ -163,19 +167,19 @@
 <li>  关键字以 <code>:</code> 开头，后跟数字可跳转至相应的行，它的快捷键是 <code>Ctrl + G</code></li>
 </ul>
 
-<h3 id="边栏-side-bar">边栏(Side Bar)</h3>
+<h3>边栏(Side Bar)</h3>
 
 <p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/Side-Bar.jpg" alt="Side Bar"></p>
 
 <p>很多编辑器（Notepad++ etc.）也有边栏，但 ST2 有点不同的是：单选左侧边栏中的文件，右侧自动出现文档预览（若选中的为图片等文件，则显示其二进制编码）。当你修改编辑它时，它才在 ST2 中以 Tab 的形式自动打开，so sweety ☺</p>
 
-<h3 id="命令面板-command-palette">命令面板(Command Palette)</h3>
+<h3>命令面板(Command Palette)</h3>
 
 <p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/command_palette.jpg" alt="Command Palette"></p>
 
 <p>执行命令的快捷入口，我们一般以快捷键 <code>Command + Shift + P</code> 来快速调用，当然你也可以在菜单 <code>Tool</code> 下找到它。</p>
 
-<h3 id="无干扰模式-distraction-free-mode">无干扰模式(Distraction Free Mode)</h3>
+<h3>无干扰模式(Distraction Free Mode)</h3>
 
 <p>在菜单 <code>View</code> 中选择 <code>Enter Distraction Free Mode</code> 就可进入无干扰模式。快捷键为 <code>Ctrl + Shift + Command + F</code></p>
 
@@ -191,11 +195,11 @@
     </span><span class="nt">"scroll_past_end"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">     </span><span class="err">//</span><span class="w"> </span><span class="err">滚动能否超过结尾</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<h3 id="迷你地图-minimap">迷你地图(Minimap)</h3>
+<h3>迷你地图(Minimap)</h3>
 
 <p>右侧默认显示迷你地图，这其实是个全局预览加模糊定位文档位置的功能。当然如果你像增大编辑可视面积，也可通过菜单 &ldquo;View&rdquo; 选择 &ldquo;Hide Minimap&rdquo; 将其关闭。</p>
 
-<h2 id="设置">设置</h2>
+<h2>设置</h2>
 
 <p><code>Preferences -&gt; Settings - Default</code>，这个是 ST2 的默认设置，不建议修改此文件，而是通过修改 <code>Preferences -&gt; Settings - User</code> 来达到个性化的定制。例如，以下就是我的 User 设定：</p>
 <div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
@@ -219,7 +223,7 @@
     </span><span class="nt">"ignored_packages"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<h2 id="快捷键">快捷键</h2>
+<h2>快捷键</h2>
 
 <p>类似设置，你可以进入 <code>Preferences -&gt; Key Bindings - Default</code> 查看所有的快捷键设置，然后在 <code>Key Bindings - User</code> 来自定义快捷键。</p>
 
@@ -421,7 +425,7 @@
     </table>
 </div>
 
-<h2 id="安装插件">安装插件</h2>
+<h2>安装插件</h2>
 
 <p>ST2 的插件安装是通过所谓的 <a href="//sublime.wbond.net/">Package Control (包控制)</a> 来实现的。如果你用过 <code>npm</code> 或者 <code>spm</code> ，那你一定不会对这种包管理的方式感到陌生。</p>
 
@@ -447,7 +451,7 @@
 <li><p>等待安装（左下角 [ = ] 显示运行中），安装完毕后重启 ST2 即可</p></li>
 </ol>
 
-<h2 id="常用插件">常用插件</h2>
+<h2>常用插件</h2>
 
 <p>这里就简单罗列一些，包括了网上热评的和自己在用的。</p>
 
@@ -571,7 +575,7 @@ window.onscroll = function () {
 
 
 <footer id="footer" role="contentinfo">
-	<p>© Copyright 2012 - 2015 by Roshan Wu.</p>
+	<p>© Copyright 2012 - 2016 by Roshan Wu.</p>
 </footer>
 
 

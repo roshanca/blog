@@ -8,9 +8,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 	
 	<link rel="canonical" href="http://roshanca.com/2014/web-develop-styleguide-html">
-	<link rel="alternate" type="application/atom+xml" title="Subscribe Feed" href="/atom.xml">
+	<link rel="alternate" type="application/rss+xml" title="Subscribe Feed" href="/feed.xml">
 	<link  href="/css/app.css" rel="stylesheet" media="all">
-	<link href="//libs.useso.com/js/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="//cdn.bootcss.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='//fonts.gmirror.org/css?family=PT+Serif:400,700' rel='stylesheet' type='text/css'>
 	<script>
 	function loadSync(u,p,a){
 		if(!p && location.port)return {onload: null};
@@ -25,7 +26,10 @@
 	_gaq.push(['_trackPageLoadTime']);
 	loadSync('//ssl.google-analytics.com/ga.js');
 	if(/windows/i.test(navigator.userAgent)){document.getElementsByTagName('html')[0].className = 'windows'}
-	</script>
+    </script>
+    <!--[if lt IE 9]>
+    <script>window.location.href="http://browsehappy.com"</script>
+    <![endif]-->
 </head>
 
 <body>
@@ -33,7 +37,7 @@
 <header id="header" role="banner">
 	<div class="header-inner">
 	
-		<a href="/" class="blog-title">肉山·察</a>
+		<a href="/" class="blog-title home">肉山·察</a>
 		<div>
 	<a href="//github.com/roshanca" class="social-link">
 		<i class="fa fa-github"></i>
@@ -53,7 +57,7 @@
 </div>
 	
 	</div>
-	<a href="/atom.xml" class="subscribe">
+	<a href="/feed.xml" data-tip="true" data-tip-content="订阅" class="tip--top subscribe">
 		<i class="fa fa-rss"></i>
 	</a>
 </header>
@@ -66,11 +70,11 @@
 		<section class="post-content">
 			<p>原文：<a href="https://github.com/gionkunz/chartist-js/blob/develop/CODINGSTYLE.md">Web Styleguide - Style guide to harmonize HTML, Javascript and CSS / SASS coding style</a></p>
 
-<h2 id="html-规范">HTML 规范</h2>
+<h2>HTML 规范</h2>
 
 <hr>
 
-<h3 id="文档类型">文档类型</h3>
+<h3>文档类型</h3>
 
 <p>推荐使用 HTML5 的文档类型申明： <code>&lt;!DOCTYPE html&gt;</code>.</p>
 
@@ -80,7 +84,7 @@
 
 <hr>
 
-<h3 id="html-验证">HTML 验证</h3>
+<h3>HTML 验证</h3>
 
 <p>一般情况下，建议使用能通过标准规范验证的 HTML 代码，除非在性能优化和控制文件大小上不得不做出让步。</p>
 
@@ -98,7 +102,7 @@
 <span class="nt">&lt;title&gt;</span>Test<span class="nt">&lt;/title&gt;</span>
 <span class="nt">&lt;article&gt;</span>This is only a test.<span class="nt">&lt;/article&gt;</span>
 </code></pre></div>
-<h3 id="省略可选标签">省略可选标签</h3>
+<h3>省略可选标签</h3>
 
 <p>HTML5 规范中规定了 HTML 标签是可以省略的。但从可读性来说，在开发的源文件中最好不要这样做，因为省略标签可能会导致一些问题。</p>
 
@@ -106,7 +110,7 @@
 
 <hr>
 
-<h3 id="脚本加载">脚本加载</h3>
+<h3>脚本加载</h3>
 
 <p>出于性能考虑，脚本异步加载很关键。一段脚本放置在 <code>&lt;head&gt;</code> 内，比如 <code>&lt;script src=&quot;main.js&quot;&gt;&lt;/script&gt;</code>，其加载会一直阻塞 DOM 解析，直至它完全地加载和执行完毕。这会造成页面显示的延迟。特别是一些重量级的脚本，对用户体验来说那真是一个巨大的影响。</p>
 
@@ -143,7 +147,7 @@
 </code></pre></div>
 <hr>
 
-<h3 id="语义化">语义化</h3>
+<h3>语义化</h3>
 
 <p>根据元素（有时被错误地称作“标签”）其被创造出来时的初始意义来使用它。打个比方，用 heading 元素来定义头部标题，p 元素来定义文字段落，用 a 元素来定义链接锚点，等等。</p>
 
@@ -250,7 +254,7 @@
 </code></pre></div>
 <hr>
 
-<h3 id="多媒体回溯">多媒体回溯</h3>
+<h3>多媒体回溯</h3>
 
 <p>对页面上的媒体而言，像图片、视频、canvas 动画等，要确保其有可替代的接入接口。图片文件我们可采用有意义的备选文本（alt），视频和音频文件我们可以为其加上说明文字或字幕。</p>
 
@@ -274,7 +278,7 @@
 </code></pre></div>
 <hr>
 
-<h3 id="关注点分离">关注点分离</h3>
+<h3>关注点分离</h3>
 
 <p>理解 web 中如何和为何区分不同的关注点，这很重要。这里的关注点主要指的是：信息（HTML 结构）、外观（CSS）和行为（JavaScript）。为了使它们成为可维护的干净整洁的代码，我们要尽可能的将它们分离开来。</p>
 
@@ -341,7 +345,7 @@
 </code></pre></div>
 <hr>
 
-<h3 id="html-内容至上">HTML 内容至上</h3>
+<h3>HTML 内容至上</h3>
 
 <p>不要让非内容信息污染了你的 HTML。现在貌似有一种倾向：通过 HTML 来解决设计问题，这是显然是不对的。HTML 就应该只关注内容。</p>
 
@@ -407,7 +411,7 @@
 </code></pre></div>
 <hr>
 
-<h3 id="type-属性">Type 属性</h3>
+<h3>Type 属性</h3>
 
 <p>省略样式表与脚本上的 type 属性。鉴于 HTML5 中以上两者默认的 type 值就是 text/css 和 text/javascript，所以 type 属性一般是可以忽略掉的。甚至在老旧版本的浏览器中这么做也是安全可靠的。</p>
 
@@ -421,7 +425,7 @@
 </code></pre></div>
 <hr>
 
-<h3 id="可用性">可用性</h3>
+<h3>可用性</h3>
 
 <p>如果 HTML5 语义化标签使用得当，许多可用性问题已经引刃而解。ARIA 规则在一些语义化的元素上可为其添上默认的可用性角色属性，使用得当的话已使网站的可用性大部分成立。假如你使用 <code>nav</code>, <code>aside</code>, <code>main</code>, <code>footer</code> 等元素，ARIA 规则会在其上应用一些关联的默认值。
 更多细节可参考 <a href="http://rawgit.com/w3c/aria-in-html/master/index.html#recommendations-table">ARIA specification</a></p>
@@ -430,7 +434,7 @@
 
 <hr>
 
-<h3 id="tab-index-在可用性上的运用">Tab Index 在可用性上的运用</h3>
+<h3>Tab Index 在可用性上的运用</h3>
 
 <p>检查文档中的 tab 切换顺序并传值给元素上的 tabindex，这可以依据元素的重要性来重新排列其 tab 切换顺序。你可以设置 <code>tabindex=&quot;-1&quot;</code> 在任何元素上来禁用其 tab 切换。</p>
 
@@ -438,7 +442,7 @@
 
 <hr>
 
-<h3 id="微格式在-seo-和可用性上的运用">微格式在 SEO 和可用性上的运用</h3>
+<h3>微格式在 SEO 和可用性上的运用</h3>
 
 <p>如果 SEO 和可用性环境条件允许的话，建议考虑采用微格式。微格式是通过在元素标签上申明一系列特定数据来达成特定语义的方法。</p>
 
@@ -468,7 +472,7 @@
 </code></pre></div>
 <hr>
 
-<h3 id="id-和锚点">ID 和锚点</h3>
+<h3>ID 和锚点</h3>
 
 <p>通常一个比较好的做法是将页面内所有的头部标题元素都加上 ID. 这样做，页面 URL 的 hash 中带上对应的 ID 名称，即形成描点，方便跳转至对应元素所处位置。</p>
 
@@ -477,7 +481,7 @@
 </code></pre></div>
 <hr>
 
-<h3 id="格式化规则">格式化规则</h3>
+<h3>格式化规则</h3>
 
 <p>在每一个块状元素，列表元素和表格元素后，加上一新空白行，并对其子孙元素进行缩进。内联元素写在一行内，块状元素还有列表和表格要另起一行。</p>
 
@@ -511,7 +515,7 @@
 </code></pre></div>
 <hr>
 
-<h3 id="html-引号">HTML 引号</h3>
+<h3>HTML 引号</h3>
 
 <p>使用双引号(&ldquo;&rdquo;) 而不是单引号(&ldquo;) 。</p>
 
@@ -523,7 +527,7 @@
 </code></pre></div>
 <hr>
 
-<h2 id="系列文章">系列文章</h2>
+<h2>系列文章</h2>
 
 <ul>
 <li><a href="//roshanca.com/2014/web-develop-styleguide-general">前端编码风格规范之一般规范</a></li>
@@ -595,7 +599,7 @@ window.onscroll = function () {
 
 
 <footer id="footer" role="contentinfo">
-	<p>© Copyright 2012 - 2015 by Roshan Wu.</p>
+	<p>© Copyright 2012 - 2016 by Roshan Wu.</p>
 </footer>
 
 
