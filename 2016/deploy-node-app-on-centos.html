@@ -132,11 +132,9 @@ git checkout `git describe --abbrev=0 --tags`
 <li><p>为包管理器加入淘宝镜象（如果无以下 <code>.npmrc</code> 配置文件则创建一个）</p>
 <div class="highlight"><pre><code class="language-" data-lang="">vi ~/.npmrc
 </code></pre></div>
-<p>在其内容中加入：</p>
-
-<blockquote>
-<p>registry=<a href="https://registry.npm.taobao.org/">https://registry.npm.taobao.org/</a></p>
-</blockquote></li>
+<p>在其内容中加入<sup id="fnref1"><a href="#fn1" rel="footnote">1</a></sup>：</p>
+<div class="highlight"><pre><code class="language-" data-lang="">registry=https://registry.npm.taobao.org/
+</code></pre></div></li>
 <li><p>更新 npm 到最新版本</p>
 <div class="highlight"><pre><code class="language-" data-lang="">npm install -g npm
 </code></pre></div>
@@ -204,8 +202,21 @@ git checkout &lt;new tag&gt;
 <div class="highlight"><pre><code class="language-" data-lang="">pm2 stop 0 --watch
 </code></pre></div></li>
 <li><p>进程启动后，是常驻状态，因此有些关于 pm2 的配置改动，需要用 <code>pm2 update</code> 来进行一下更新。</p></li>
-<li><p>我没用 cluster 模式而是 fork 模式，好像程序老是会隔一段时间就自动重启，虽然用户无感，但我至今还没搞懂是内存不够还是什么鬼。。。之后用 cluster 模式尝试看看。 </p></li>
+<li><p>我没用 cluster 模式而是 fork 模式，发现程序经常自动重启。虽然用户无感，但我至今还没搞懂是内存不够还是什么鬼。。。之后用 cluster 模式尝试看看。 </p></li>
 </ol>
+
+<p>新手上路，希望能迅速混入老司机队伍。</p>
+
+<div class="footnotes">
+<hr>
+<ol>
+
+<li id="fn1">
+<p>还可以再加入 <code>progress=false</code> 禁用下载时的进度条显示来加速包下载&nbsp;<a href="#fnref1" rev="footnote">&#8617;</a></p>
+</li>
+
+</ol>
+</div>
 
 		</section>
 		<footer class="post-footer">
