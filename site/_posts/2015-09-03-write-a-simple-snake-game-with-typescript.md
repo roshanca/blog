@@ -2,25 +2,25 @@
 layout: post
 title: 用 TypeScript 写一个贪食蛇小游戏
 data: 2015-09-03
-tags: javascript
+tags: javascript typescript
 comments: true
 ---
 
 ## TypeScript & VS code
 
-已经忘了是如何缘结 [TypeScript](http://www.typescriptlang.org/) 的了，应该是透过 [Visual Studio Code](https://code.visualstudio.com/) 这款优秀的 IDE 才开始接触的吧。目前还是 Preview 版本的 VS code，集众多优秀卓越的功能特性，已经深深地征服了我，在它身上看不到一点以往对微软的那种繁冗晦涩质感，取而代之的是轻灵优美且功能上不乏先进之处。有关 VS code 这是后话，下面先说说 TypeScript。
+已经忘了是如何缘结 [TypeScript](http://www.typescriptlang.org/) 的了，应该是偶然使用过 [Visual Studio Code](https://code.visualstudio.com/) 这款优秀的 IDE 才认识 TS 的吧。目前还是 Preview 版本的 VS code，集众多优秀卓越的功能特性，已经深深地征服了我，在它身上看不到一点以往对微软的那种繁冗晦涩质感，取而代之的是轻灵优美且功能上不乏先进之处。有关 VS code 这是后话，下面先说说 TypeScript。
 
-## TypeScript & typescript
+## TypeScript & CoffeeScript
 
-提到它很多人会拿 typescript 与之比对，我作为两者都使用过的过来人，简单介绍下两者的异同：
+提到它很多人会拿 [CoffeeScript](http://coffeescript.org/) 与之比对，我作为两者都使用过的过来人，简单介绍下两者的异同：
 
 在我看来相同点只有一点：都是 JavaScript Compiler 的定位，有点类似于 Sass, Less 之于 CSS。
 
 不同点很多：
 
-1. TypeScript 是 JavaScript 的超集，这使得它能够与普通的 JavaScript 混用，而 typescript 使用自己的那一套类 Ruby 的语法使得这是不可能滴;
-2. TypeScript 玩的概念比较多，比如 Module, Interface 等，而typescript 自己实现的语法糖则比较多；
-3. TypeScript 已经开始支持 ES6，typescript 会不会支持和什么时候支持，还都是未知数；
+1. TypeScript 是 JavaScript 的超集，这使得它能够与普通的 JavaScript 混用，而 CoffeeScript 使用自己的那一套类 Ruby 的语法使得这是不可能滴;
+2. TypeScript 玩的概念比较多，比如 Module, Interface 等，而 CoffeeScript 自己实现的语法糖则比较多；
+3. TypeScript 已经开始支持 ES6，CoffeeScript 会不会支持和什么时候支持，还都是未知数；
 4. 最大的一点不同：TypeScript 在编译过程中可对类型进行检查，将 JavaScript 这个灵活的动态型语言变成了**静态类型**的语言。算是有利有弊吧：好处是相当于将部分的“测试”工作提前了，问题的定位也更加精准；坏处是丧失了一点灵活性与增加了一些代码量。
 
 ## TypeScript & Go
@@ -77,7 +77,7 @@ interface Human {
 var person: Human
 ```
 
-以上。我认为静态类型的好处，不止在于它在编译时提前找出错误，还在于它可以在你设计程序时，帮助你去理清思路。
+以上。我认为静态类型的好处，不止在于它在编译时提前找出错误，还在于它可以在你程序设计初期，帮助你去理清思路。
 
 ## 贪食蛇
 
@@ -348,7 +348,7 @@ born() {
 }
 ```
 
-这下你可以操纵这条三节蛇满地跑了，有点意思。缺点意思的是：一没食物二到处碰壁死不了，别急，要解决吃食物的问题，先解决怎么生成食物：
+这下你可以操纵这条三节蛇满地跑了，有点意思。缺点意思的是：一没食物二到处碰壁死不了。别急，首先解决食物是怎么生成的：
 
 ```typescript
 class Floor() {
@@ -435,7 +435,7 @@ move() {
 
 ## 总结
 
-最后提一下，为了使逻辑更加清晰以及日后方便扩展维护，我又抽离了一个 Model 类，专门用来做 Floor 和 Snake 的纽带，专门负责操作管理 block 集合。因为用 TypeScript 来定制实现模块实在是太方便了，提供了众多方法还有继承(extends)和实现(implements)等概念，感觉就像你作为主刀医生在手术前有一大堆各式各样的精细工具摆在你的面前，都不知道该挑哪一把手术刀该用哪一支镊子。
+最后提一下，为了使逻辑更加清晰以及日后方便扩展维护，我又抽离了一个 Model 类，专门用来做 Floor 和 Snake 的纽带，专门负责操作管理 block 集合。因为用 TypeScript 来定制实现模块实在是太方便了，提供了众多方法还有继承 (extends) 和实现 (implements) 等概念，感觉就像摆在你的面前一大堆各式各样的工具，都不知道该挑一把锤子或是一只镊子。
 
 照这么说，用 TypeScript 写一些小规模的项目确实有一种打蚊子用大炮的赶脚，而且，有时候灵活度也会下降：比如贪食蛇中对 block 集合关系管理，由一个 block 去获取到它相邻位置的 block，在这一点上要是用上一点点 JavaScript 动态语言的黑魔法的话实现起来会简单的多：
 
@@ -461,4 +461,4 @@ this.blocks[this.blocks[1].pos]
 
 随着项目的复杂程度递增，其优势也愈发明显。光光静态类型检测就可以将多少潜在问题杀死在编译阶段了。
 
-而回头看我们的互联网世界，恰巧碰上胖应用的时代，而且随着这几年计算机硬件性能提升，加上 JavaScript 自身的不断优化，我相信我们的应用还会对交互的要求越来越高，对代码的复杂程度也会越来越高。所以网上有人评论 TypeScript 是面向未来的，我看不假。连明星框架 Angular2 不是都投向其怀抱了么？我也用 Angular2 写过了点小 Example，体验算是不错，心里已经有了拿它来写下一个小游戏的盘算;)
+而回头看我们的互联网世界，恰巧碰上富应用的时代，而且随着这几年计算机硬件性能提升，加上 JavaScript 自身的不断优化，我相信我们的应用还会对交互的要求越来越高，对代码的复杂程度也会越来越高。应用自身的规模也越来越大，特别是一些跨平台的应用。这让 TypeScript 的优势愈加明显。

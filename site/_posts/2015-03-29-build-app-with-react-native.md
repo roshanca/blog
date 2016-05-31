@@ -20,7 +20,7 @@ React Native 完全不是一码事，人们对其带来的两点倍感兴奋：
 
 * React 引入了一种非常大胆新颖的实现方式来构建用户界面。简单来说，应用的 UI 被简单地表示为当前应用的状态的一个方法。
 
-React Native 的关键点是，它主要致力于为移动应用开发带来基于 [React](//facebook.github.io/react/) 编程模式的巨大威力。它的目标并不是成为一个 "一次编写到处运行" 的跨平台工具，它的目标是 "在任何地方都用一个框架"。这是个很重要的差别。这篇教程只针对 iOS，但是一旦你学习到了它的概念创建 Android 应用对你来说应该也不是什么难事。
+React Native 的关键点是，它主要致力于为移动应用开发带来基于 [React](//facebook.github.io/react/) 编程模式的巨大威力。它的目标并不是成为一个 "一次编写到处运行" 的跨平台工具，它的目标是 "在任何地方都用一个框架”。这是个很重要的差别。这篇教程只针对 iOS，但是一旦你学习到了它的概念创建 Android 应用对你来说应该也不是什么难事。
 
 若你曾经写过 Objective-C 或 Swift，你可能对这项 JavaScript 来替代它们工作的技术不会感到特别兴奋。不过，作为一名 Swift 开发者，上述的第二点应该会激起你的兴趣。
 
@@ -32,13 +32,13 @@ React Native 的关键点是，它主要致力于为移动应用开发带来基�
 
 ![](//cdn5.raywenderlich.com/wp-content/uploads/2015/03/PropertyFinder.png)
 
-如果你之前从未写过任何 JavaScript，别怕；此教程会为你讲解每一步的代码原理。React 用 CSS 属性定义样式，一般来说它是足够易读易懂的，但如果需要的话，你可以参考优秀的 [Mozilla 开发网络参考](https://developer.mozilla.org/en-US/docs/Web/CSS)。
+如果你之前从未写过任何 JavaScript，别担心；此教程会为你讲解每一步的代码原理。React 用 CSS 属性定义样式，一般来说它是足够易读易懂的，但如果需要的话，你可以参考优秀的 [Mozilla 开发网络参考](https://developer.mozilla.org/en-US/docs/Web/CSS)。
 
 想要了解更多？继续阅读吧。
 
 ## 准备工作
 
-React Native 框架已经在 Github 上建立了[仓库](https://github.com/facebook/react-native)，你可以通过 git 来克隆到本地，也可以选择下载 zip。一旦将它下载到了本地，在你开始写代码前，还有几件事要办。
+React Native 框架已经在 Github 上建立了[仓库](https://github.com/facebook/react-native)，你可以通过 git 来克隆到本地，也可以选择下载 zip。一旦将它下载到了本地，在你开始写代码前，还有一些准备工作。
 
 React Native 用到了 [Node.js](https://nodejs.org/)，一个 JavaScript 的运行环境，用来构建你的 JavaScript 代码。如果你还未安装它，那是时候装一个了。
 
