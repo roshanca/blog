@@ -1,0 +1,45 @@
+.fork-github {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 9999;
+  display: block;
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  > a {
+    position: absolute;
+    top: 40px;
+    right: -60px;
+    display: block;
+    width: 150px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    background-color: #333;
+    color: #fff;
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 5px 40px;
+    text-decoration: none;
+    box-shadow: 1px 1px 8px 0 #666;
+    &::before,
+    &::after {
+      content: "";
+      display: block;
+      width: 100%;
+      position: absolute;
+      top: 1px;
+      left: 0;
+      height: 1px;
+      background-color: #fff;
+      opacity: .8;
+    }
+    &::after {
+      bottom: 1px;
+      top: auto;
+    }
+    @include responsive(480px) {
+      display: none;
+    }
+  }
+}
