@@ -7,6 +7,18 @@
     <atom:link href="http://roshanca.com/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>在 CentOS 7 上搭建 Docker 私有仓库</title>
+        
+        
+          <description>&lt;p&gt;我们知道，执行 docker pull 某镜象，默认都是从 &lt;a href=&quot;https://hub.docker.com/&quot;&gt;Docker Hub&lt;/a&gt; 的公共仓库去获取的。这有点像全球最大的代码托管商：Github，但对于公司而言，也行我们更加需要是的自建的仓库服务，所以我们用自建的 Gitlab 代替 Github，那有什么可以替代 Docker Hub 呢？答案是：自建 Docker Registry。以下是自己的一点实践：&lt;/p&gt;
+</description>
+        
+        <pubDate>Sun, 24 Jul 2016 00:00:00 +0000</pubDate>
+        <link>http://roshanca.com/2016/deploying-a-docker-registry-server</link>
+        <guid isPermaLink="true">http://roshanca.com/2016/deploying-a-docker-registry-server</guid>
+      </item>
+    
+      <item>
         <title>在 CentOS 上布署 node 程序</title>
         
         
@@ -112,18 +124,6 @@
         <pubDate>Wed, 05 Jun 2013 16:47:00 +0000</pubDate>
         <link>http://roshanca.com/2013/delete-system-display-profile-mistakenly</link>
         <guid isPermaLink="true">http://roshanca.com/2013/delete-system-display-profile-mistakenly</guid>
-      </item>
-    
-      <item>
-        <title>Switch … Case 不被推荐使用</title>
-        
-        
-          <description>&lt;p&gt;本文为原创译文，英文原文：&lt;a href=&quot;http://ericleads.com/2012/12/switch-case-considered-harmful/&quot;&gt;Switch … Case Considered Harmful&lt;/a&gt;&lt;/p&gt;
-</description>
-        
-        <pubDate>Wed, 12 Dec 2012 10:11:00 +0000</pubDate>
-        <link>http://roshanca.com/2012/switch-case-considered-harmful</link>
-        <guid isPermaLink="true">http://roshanca.com/2012/switch-case-considered-harmful</guid>
       </item>
     
   </channel>
