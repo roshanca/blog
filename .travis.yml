@@ -1,15 +1,11 @@
 language: ruby
-
 rvm:
   - 2.3.0
-
 install: bundle install
-
 script: bundle exec rake site:deploy --quiet
-
 env:
-  - USE_OFFICIAL_GEM_SOURCE=1
   global:
-    - secure: vEtk4Lt9B9cP7av/a26az9H0gBdYwa38ojrA/AGQeKpQq78iwGO01Z093fd/reBH1kHAKrMaXg88OqhG5eYczwuuFCgujT5GDwWLlUsYYh99ECwuA4W6YYODFAkHRx4r7nUNuADpy5EhWWchNlvU95/ROiuTRQBQ77Gsq0wyGV8=
-    - secure: 2d79uMB3ORVGRMgM3GdOCOmh3ynzmyNEUa9JCjUdzeIMMaYBJQssK4c1SpnzEvk7fVXWdm2UxK99lX0OTF/G4hY26NObg3YkjtPLo+3t8hSTXjiYIEGs0hSGwIDcAMzrMK0g22T7u5gaYRl+O5eaU680z8/C6V7eCcUZ75SHIww=
-    - secure: t4f2ko0dZ0agb2PRqk+ciX9/j1u8wH0tHJOlwUebZxNbNaQOE9DbLYfJniM04S9qV8A1GuwVchsUv+qcJHtVRzkFN+JPO9X3YxL/mFt5b/nqd+TiETJA/zgsrTOZ2jSf2DDK9OA+E6pfth273U482/WRrT4tz/mZREtYCdWsXHk=
+  - USE_OFFICIAL_GEM_SOURCE=1
+  - secure: vEtk4Lt9B9cP7av/a26az9H0gBdYwa38ojrA/AGQeKpQq78iwGO01Z093fd/reBH1kHAKrMaXg88OqhG5eYczwuuFCgujT5GDwWLlUsYYh99ECwuA4W6YYODFAkHRx4r7nUNuADpy5EhWWchNlvU95/ROiuTRQBQ77Gsq0wyGV8=
+  - secure: 2d79uMB3ORVGRMgM3GdOCOmh3ynzmyNEUa9JCjUdzeIMMaYBJQssK4c1SpnzEvk7fVXWdm2UxK99lX0OTF/G4hY26NObg3YkjtPLo+3t8hSTXjiYIEGs0hSGwIDcAMzrMK0g22T7u5gaYRl+O5eaU680z8/C6V7eCcUZ75SHIww=
+  - secure: t4f2ko0dZ0agb2PRqk+ciX9/j1u8wH0tHJOlwUebZxNbNaQOE9DbLYfJniM04S9qV8A1GuwVchsUv+qcJHtVRzkFN+JPO9X3YxL/mFt5b/nqd+TiETJA/zgsrTOZ2jSf2DDK9OA+E6pfth273U482/WRrT4tz/mZREtYCdWsXHk=
