@@ -11,6 +11,9 @@
     }
   }
   time {
+    display: inline-block;
+    width: 10rem;
+    text-align: right;
     font-family: $sans;
     font-size: 90%;
     color: lighten($link-color, 22%);
