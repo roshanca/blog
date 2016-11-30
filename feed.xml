@@ -7,6 +7,20 @@
     <atom:link href="http://roshanca.com/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>Node APP 布署简易教程</title>
+        
+        
+          <description>&lt;h2&gt;环境 (System)：&lt;/h2&gt;
+
+&lt;p&gt;CentOS 7&lt;/p&gt;
+</description>
+        
+        <pubDate>Wed, 30 Nov 2016 00:00:00 +0000</pubDate>
+        <link>http://roshanca.com/2016/node-app-deploy-simple-guide</link>
+        <guid isPermaLink="true">http://roshanca.com/2016/node-app-deploy-simple-guide</guid>
+      </item>
+    
+      <item>
         <title>在 CentOS 7 上搭建 Docker 私有仓库</title>
         
         
@@ -16,18 +30,6 @@
         <pubDate>Sun, 24 Jul 2016 00:00:00 +0000</pubDate>
         <link>http://roshanca.com/2016/deploying-a-docker-registry-server</link>
         <guid isPermaLink="true">http://roshanca.com/2016/deploying-a-docker-registry-server</guid>
-      </item>
-    
-      <item>
-        <title>在 CentOS 上布署 node 程序</title>
-        
-        
-          <description>&lt;p&gt;前后端分离已经提了有一年，在一家半互联网化的公司困难重重（传统 IT 企业历史上一直都是以后端开发为重，各种 Java, C#, .net 等&amp;hellip;）。现在终于看到了一点曙光，实属不易。当然，这对一些大公司来说，完全都不是事，人家早就自动化测试自动化布署持续集成一套组合拳打完不费力。一些小公司还在自己摸索着，我们也是。&lt;/p&gt;
-</description>
-        
-        <pubDate>Sun, 29 May 2016 00:00:00 +0000</pubDate>
-        <link>http://roshanca.com/2016/deploy-node-app-on-centos</link>
-        <guid isPermaLink="true">http://roshanca.com/2016/deploy-node-app-on-centos</guid>
       </item>
     
       <item>
