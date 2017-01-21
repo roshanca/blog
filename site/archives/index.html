@@ -4,8 +4,8 @@ title: "Archives"
 ---
 
 <div id="archive">
-{% assign is_first = true %}
-{% for post in site.posts reverse %}
+  {% assign is_first = true %}
+  {% for post in site.posts reverse %}
     {% capture this_year %}{{ post.date | date: "%Y" }}{% endcapture %}
     {% unless year == this_year %}
     {% assign year = this_year %}
@@ -18,11 +18,11 @@ title: "Archives"
     <h2>{{ year }}</h2>
     <ul>
     {% endunless %}
-		<li>
-			<time datetime="{{ post.date | datetime | date_to_xmlschema }}" pubdate>
-				{{ post.date | date: "<span class='month'>%b</span> <span class='day'>%d</span>"}}
-			</time>
-			<a href="{{ post.url }}" rel="full-article">{{ post.title }}</a>
-		</li>
-{% endfor %}
+    <li>
+      <time datetime="{{ post.date | datetime | date_to_xmlschema }}" pubdate>
+        {{ post.date | date: "<span class='month'>%b</span> <span class='day'>%d</span>"}}
+      </time>
+      <a href="{{ post.url }}" rel="full-article">{{ post.title }}</a>
+    </li>
+  {% endfor %}
 </div>

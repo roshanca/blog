@@ -2,7 +2,7 @@
 layout: post
 title: Node APP 布署简易教程
 data: 2016-11-30
-tags: node
+tags: node deploy
 comments: true
 ---
 
@@ -13,23 +13,32 @@ CentOS 7
 准备 (Requirement)
 ---
 
-1. **git**: 分布式代码版本管理工具
-2. **node**: 基于 Chrome V8 引擎的 JavaScript 服务端运行环境
-3. **npm**: node 的倚赖包管理器
-4. **pm2**: node 应用进程管理器
++ **git**: 分布式代码版本管理工具
++ **node**: 基于 Chrome V8 引擎的 JavaScript 服务端运行环境
++ **npm**: node 的倚赖包管理器
++ **pm2**: node 应用进程管理器
 
 安装 (Install)
 ---
 
-### Install git
+一般在 Linux 系统中安装程序有三种方式：
+
+1. 下载源码，手动编译
+2. 直接下载二进制文件
+3. 用 yum 安装
+
+这里推荐用第二种。
+
+### Install git[^1]
+
+[^1]: 如果系统有自带的 git，可执行 `yum remove -y git` 删除
 
 1. 安装倚赖：
 
     ```
     yum install -y curl-devel expat-devel gettext-devel openssl-devel zlib-devel gcc perl-ExtUtils-MakeMaker
     ```
-    (ps. 如果系统有自带的 git，执行 `yum remove -y git` 删除)
-
+  
 1. 前往 [github](https://github.com/git/git/releases) 下载安装包，拷贝至 `/usr/src`，或者直接用 wget：
 
     ```
@@ -81,6 +90,12 @@ CentOS 7
     ```
     npm config set prefix $HOME/.node
     ```
+
+1. 添加国内 registry:
+
+    ```
+    npm config set registry https://registry.npm.taobao.org/
+    ```
   
 1. 配置系统路径，使 npm 全局安装的模块命令行 bin 生效：
 
@@ -115,7 +130,7 @@ git 的传输协议有 https 和 ssh 两种，我们采用更加安全快速的�
     ```
     git clone git@git.cairenhui.com:<GROUP>/<PROJECT>.git <NODE_APP_DIR>
     ```
-    *注：尖括号内的为变量*
+*注：尖括号内的为变量*
   
 1. 检出版本 
 
@@ -136,7 +151,7 @@ git 的传输协议有 https 和 ssh 两种，我们采用更加安全快速的�
     // 安装 node 倚赖包
     npm install --production
     ```
-    *注：不采用 git 布署的话，只需执行最后一步*
+*注：不采用 git 布署的话，只需执行最后一步*
   
 至此，无论是否使用 git，布署都已完成。
 
@@ -145,31 +160,15 @@ git 的传输协议有 https 和 ssh 两种，我们采用更加安全快速的�
 
 在项目根目录下，运行 `pm2 start pm2.json` 即可。
 
-`pm2.json` 的大概格式为：
-
-```json
-{
-  "name": "smart-care-admin",
-  "script": "server.js",
-  "env": {
-    "NODE_ENV": "production"
-  },
-  "error_file": "log/app-err.log",
-  "out_file": "log/app-out.log",
-  "exec_mode": "cluster",
-  "instances": 2
-}
-```
-
-`pm2.json` 中的 `name` 字段为 App name，pm2 可以全局地操作它，例如：`pm2 stop <APP_NAME>`。其它配置项请自行搜索，不在本文内讨论。
+`pm2.json` 中的 `name` 字段为 App name，pm2 可以全局地操作它：`pm2 stop <APP_NAME>`
 
 另外有几个比较有用的命令：
 
-1. 查看所有的 node 应用进程：`pm2 list`
-2. 查看某个应用的具体信息：`pm2 show <APP_NAME>`
-3. 监控 CPU / Memory: `pm2 monit`
-4. 查看应用消息日志：`pm2 logs <APP_NAME>`
-5. 重启应用程序：`pm2 restart <APP_NAME>`
++ 查看所有的 node 应用进程：`pm2 list`
++ 查看某个应用的具体信息：`pm2 show <APP_NAME>`
++ 监控 CPU / Memory: `pm2 monit`
++ 查看应用消息日志：`pm2 logs <APP_NAME>`
++ 重启应用程序：`pm2 restart <APP_NAME>`
 
 更多的命令用法请查看：https://github.com/Unitech/pm2#main-features
 
@@ -179,18 +178,18 @@ git 的传输协议有 https 和 ssh 两种，我们采用更加安全快速的�
 1. 不使用 git：之前已提到过，直接在 gitlab 上下载 tag 包，解压缩覆盖至服务器
 1. 使用 git：先通过 git 获取更新
 
-  ```
-  git fetch origin --tags
-  ```
+    ```
+    git fetch origin --tags
+    ```
   
-  再切换：
+    再切换：
   
-  ```
-  git checkout <NEW_TAG>
-  ```
+    ```
+    git checkout <NEW_TAG>
+    ```
   
-  回滚也非常简单：
+    回滚也非常简单：
   
-  ```
-  git checkout <PREV_TAG>
-  ```
+    ```
+    git checkout <PREV_TAG>
+    ```

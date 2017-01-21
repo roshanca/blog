@@ -3,20 +3,20 @@ layout: default
 ---
 
 <main class="fluid" role="main">
-	<article class="post" role="article">
-		<header class="post-header">
-			<h1 class="post-title">{{ page.title }}</h1>
-		</header>
-		<section class="post-content">
-			{{ content }}
-		</section>
-		<footer class="post-footer">
-			<div class="post-meta">
-				{% include post/date.html %}
-				{% include post/tag.html %}
-			</div>
-		</footer>
-	</article>
+  <article class="post" role="article">
+    <header class="post-header">
+      <h1 class="post-title">{{ page.title }}</h1>
+    </header>
+    <section class="post-content">
+      {{ content }}
+    </section>
+    <footer class="post-footer">
+      <div class="post-meta">
+        {% include post/date.html %}
+        {% include post/tag.html %}
+      </div>
+    </footer>
+  </article>
 </main>
 {% if page.comments == true %}
 {% include post/disqus.html %}
