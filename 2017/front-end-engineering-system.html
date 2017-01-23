@@ -131,7 +131,7 @@
 <p>但为什么一定要用 Node 来做 http 请求的代理转发？我的理由：</p>
 
 <ol>
-<li>前期前端开发过程中 mock 可与后期后端接口做平滑过渡，客户端做到无感知。甚至还能在 mock 数据和真实数据之间来回切换，十分灵活</li>
+<li>前期前端开发过程中 mock 可与后期后端接口做平滑过渡，客户端可做到无感知。甚至还能在 mock 数据和真实数据之间来回切换，十分灵活</li>
 <li>当后端服务增多时，特别是内部系统，跨域调用很成问题，Node 代理转发从根本上解决跨域问题，不用担心 Cookie 丢失等问题。而且在 Node 层针对 http 的请求和相应能做进一步拦截和根据业务需求定制这些二次加工，适用于更加广泛的场景</li>
 </ol>
 
@@ -348,15 +348,17 @@ h1 {
 
 <h3>MDV</h3>
 
-<p>MDV = <strong>模型驱动视图</strong>。从 2010 Google 推出 Angular 开始，到 2013 年 Facebook 推出 React，再到最近国人自创的小而美的 Vue，都一路贯穿着 web 开发新的思路：从<strong>手动操作 DOM</strong> 到<strong>数据绑定 + Virtual DOM</strong> 的转变。这也是 everything in js 体现的极致，把 DOM 操作都干掉了，直接用基于 js plain object 的虚拟 DOM：</p>
+<p>MDV = <strong>模型驱动视图</strong>。从 2010 Google 推出 Angular 开始，到 2013 年 Facebook 推出 React，再到最近国人自创的小而美的 Vue，都一路贯穿着 web 开发新的思路：从<strong>手动操作 DOM</strong> 到<strong>数据绑定 + Virtual DOM</strong> 的转变。这也是 everything in js 极致体现：把 DOM 操作都干掉了，直接用基于 js plain object 的虚拟 DOM：</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'a'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">className</span><span class="p">:</span> <span class="s1">'link'</span><span class="p">,</span>
   <span class="na">href</span><span class="p">:</span> <span class="s1">'https://github.com/facebook/react'</span>
 <span class="p">},</span> <span class="s1">'React'</span><span class="p">);</span>
 </code></pre></div>
-<p>React 首创的虚拟 DOM 有两大杀手锏大大提升了原生 DOM 操作效率低下的问题（特别是在移动端）：batching 和 diff。batching 把所有的 DOM 操作搜集起来，一次性提交给真实的 DOM；diff 算法时间复杂度也从标准的 diff 算法的 O(n<sup>3)</sup> 降到了 O(n)。</p>
+<p>React 首创的虚拟 DOM 有两大杀手锏大大提升了原生 DOM 操作效率低下的问题（特别是在移动端）：batching 和 diff。batching 把所有的 DOM 操作搜集起来，一次性提交给真实的 DOM；diff 算法时间复杂度也从标准的 diff 算法的 O(n<sup>3</sup> ) 降到了 O(n)<sup id="fnref1"><a href="#fn1" rel="footnote">1</a></sup>。</p>
 
-<p>除了性能提升之外，由于思路的转变，在开发效率上也有很大提升：MDV 模式下很自然的就将 web 页面看做是一台状态机（State Machine），UI = f(state), 界面上的变化皆由状态变化所导致，状态的变化来源一定为 M，即数据模型。我们将手动操作 DOM 的工作交给 MVVM 框架的数据绑定来做，界面的改变由数据的变化而自动完成，不仅十分高效，而且我们对于数据的流向更加清晰可控。在引入严格的函数式编程与不可变数据（immutable.js）后，还能使得结果可预测，方便做单元测试。</p>
+<p><img src="http://oigzv3evy.bkt.clouddn.com/react-diff.png" alt=""></p>
+
+<p>除了性能提升之外，由于思路的转变，在开发效率上也有很大提升：MDV 模式下很自然的就将 web 页面看做是一台状态机（State Machine），UI = f(state)， 界面上的变化皆由状态变化所导致，状态的变化来源一定为 M，即数据模型。我们将手动操作 DOM 的工作交给 MVVM 框架的数据绑定来做，界面的改变由数据的变化而自动完成，不仅十分高效，而且我们对于数据的流向更加清晰可控。在引入严格的函数式编程与不可变数据（immutable.js）后，还能使得结果可预测，方便做单元测试。</p>
 
 <p>当然，除了许多新的概念需要学习之外，组件间如何通信，异步数据如何管理等一系列问题也是随之而来的一些挑战。</p>
 
@@ -368,9 +370,9 @@ h1 {
 
 <h3>多终端和跨平台</h3>
 
-<p>在这里要稍微强调一下我们的客户端也就是浏览器，可以看作是我们前端代码的运行环境。我们可以想像的到，js 这个 10 天之内创造出来的语言之所以能够如此流行而且经久不衰，完全是靠了浏览器这个全球数量最庞大分部最广的天然 js 解析器的功劳。它遍布世界上的每一个角落，你不得不用。所以了解语言宿主，当然也是至关重要的。</p>
+<p>在这里要稍微强调一下我们的主战场也就是浏览器（可以看作是我们前端代码的运行环境）。可以想像的到，js 这个在短短 10 天之内创造出来的解释性语言之所以能够如此流行而且经久不衰，完全是托了浏览器这个全球数量最庞大分部最广的天然 js 解析器的福。它遍布世界上的每一个角落，你不得不用。所以了解语言宿主，当然也是至关重要的。</p>
 
-<p>根据浏览器内核来分，前端应该关注的终端环境应该包括：</p>
+<p>根据浏览器内核来分，前端应该关注的浏览器环境应该包括：</p>
 
 <ul>
 <li>移动端：微信 X5 内核，iOS Webkit，Android Webkit</li>
@@ -408,26 +410,26 @@ h1 {
 
 <p><img src="http://oigzv3evy.bkt.clouddn.com/2916377A-1DAF-4B8F-A160-E6C3FBA0AED8.png" alt=""></p>
 
-<p>Unit Test 在以往只重界面不重交互（页面状态管理）的传统 web 项目下并不常见，但在一些稍微有点复杂程度的前端项目中，单元测试就显得比较重要了。我之前的公司对项目开发的速度要求比较高，所以这一块比较少做。不过目前一些主流的前端框架都附带测试库与简单例子，比如 create-react-app 就自带了 jest。</p>
+<p>Unit Test 在以往只重界面不重交互（页面状态管理）的传统 web 项目下并不常见，但在一些稍微有点复杂程度的前端项目中，单元测试就显得比较重要了。我之前的公司对项目开发的速度要求比较高，所以这一块比较少做。不过目前一些主流的前端框架都附带测试库与简单例子，比如 <a href="https://github.com/facebookincubator/create-react-app">create-react-app</a> 就自带了 <a href="https://github.com/facebook/jest">jest</a>。</p>
 
 <h3>CI/CD</h3>
 
 <p>前端的布署主要分静态和动态两部分：</p>
 
 <ul>
-<li>静态主要是指一些静态资源，布署也比较简单，就是往 CDN 服务器上放即可。</li>
-<li>动态就是 Node 服务层的东西，关于 Node App 的布署，可参考我之前写的<a href="/2016/node-app-deploy-simple-guide">这篇文章</a>。</li>
+<li>静态主要是指一些静态资源，布署也比较简单，就是往 CDN 服务器上放即可</li>
+<li>动态就是 Node 服务层的东西，关于 Node App 的布署，可参考我之前写的<a href="/2016/node-app-deploy-simple-guide">这篇文章</a></li>
 </ul>
 
-<p>至于如何做到自动化以提升效率，主要利用 git hooks 通知到 CI 服务器，执行对于脚本来做，这里有许多方案可供选择。由于我在公司一直用的都是 gitlab，所以之前只尝试过 gitlab-ci，能与 Docker 配合着使用，用起来还是比较爽的。</p>
+<p>至于如何做到自动化以提升效率，主要利用 git hooks 通知到 CI 服务器，执行对应的脚本来实现。这里有许多方案可供选择。由于我在公司一直用的是 gitlab，所以之前只尝试过 <a href="https://about.gitlab.com/gitlab-ci/">gitlab-ci</a>，它能与 Docker 相结合，用起来还是比较爽的。</p>
 
-<p>其它比较常见的就是譬如 Jenkins, Travis CI 等。</p>
+<p>其它比较常见的如 Jenkins, Travis CI 等。</p>
 
 <h3>扩展与稳定性</h3>
 
 <p>遇到程序 crash 怎么办？现在 Node 上已经有非常多的进程重启模块，比如 pm2，forever 等。</p>
 
-<p>为了更好的利用 CPU 内核资源，我们还有在单台服务器上启用多个应用实例。大家知道，nginx 或 haproxy 等集群都是一主多从，主机的端口通过负载均衡算法，将请求转发到 slave 机器上。刚说的多台机器是这样的，那在一台机器上起多个实例，对这些实例进行集群管理也是一样的原理。</p>
+<p>为了更好的利用 CPU 内核资源，我们还有在单台服务器上启用多个应用实例。大家知道，nginx 或 haproxy 等集群都是一主多从，主机的端口通过负载均衡算法，将请求转发到 slave 机器上。以上说的是多台机器的情形，那在一台机器上起多个实例，对这些实例进行集群管理也是一样的原理。</p>
 
 <p>这里以 pm2 为例：</p>
 
@@ -444,6 +446,17 @@ h1 {
 <h2>写在最后</h2>
 
 <p>文中没有提到的 Private NPM 和 Private Docker Registry 我用虚线框起来，是就目前来看很难做到，因为我们的代码库是内网的，而且公司目前是阿里云的重度使用者，Docker 要如要投入使用，要是没有自身的 IAAS 基础设施做支持估计也是玩不转。当然，这些都是没几个小公司能玩转的，有机会就尝试，但做为技术人，首要任务还是方案落地和解决实际的业务问题。</p>
+
+<div class="footnotes">
+<hr>
+<ol>
+
+<li id="fn1">
+<p>React 只会逐层对比两颗随机树，这大大降低了 diff 算法的复杂度。并且在 web 组件中很少会将节点移动到不同的层级，经常只会在同一层级中移动。&nbsp;<a href="#fnref1" rev="footnote">&#8617;</a></p>
+</li>
+
+</ol>
+</div>
 
     </section>
     <footer class="post-footer">
