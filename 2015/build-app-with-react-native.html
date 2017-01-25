@@ -162,23 +162,23 @@ React packager ready.
 <p>这将加载 <code>react-native</code> 模块并将其赋值给变量 <code>React</code>。React Native 采用与 Node.js 相同的模块加载技术，利用 <code>require</code> 方法导入。大致类似 Swift 中关联和导入库。</p>
 
 <p>在 <code>require</code> 语句下方，加入以下：</p>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">styles</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">StyleSheet</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
-  <span class="na">text</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">color</span><span class="p">:</span> <span class="s1">'black'</span><span class="p">,</span>
-    <span class="na">backgroundColor</span><span class="p">:</span> <span class="s1">'white'</span><span class="p">,</span>
-    <span class="na">fontSize</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
-    <span class="na">margin</span><span class="p">:</span> <span class="mi">80</span>
-  <span class="p">}</span>
-<span class="p">});</span>
+<div class="highlight"><pre><code class="language-jsx" data-lang="jsx">var styles = React.StyleSheet.create({
+  text: {
+    color: 'black',
+    backgroundColor: 'white',
+    fontSize: 30,
+    margin: 80
+  }
+});
 </code></pre></div>
 <p>这句为 &quot;Hello World&rdquo; 文本单独定义了一个样式。如果你之前做过 web 开发，那你大概都认得这些属性名称。React Native 用<a href="//www.w3schools.com/css/">层叠样式表（CSS）</a>来定义应用 UI。</p>
 
 <p>回到应用本身！在同一文件中，在刚才的样式申明语句下加入以下代码：</p>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kr">class</span> <span class="nx">PropertyFinderApp</span> <span class="kr">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
-  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="nx">React</span><span class="p">.</span><span class="nx">Text</span><span class="p">,</span> <span class="p">{</span><span class="na">style</span><span class="p">:</span> <span class="nx">styles</span><span class="p">.</span><span class="nx">text</span><span class="p">},</span> <span class="s2">"Hello World!"</span><span class="p">);</span>
-  <span class="p">}</span>
-<span class="p">}</span>
+<div class="highlight"><pre><code class="language-jsx" data-lang="jsx">class PropertyFinderApp extends React.Component {
+  render() {
+    return React.createElement(React.Text, {style: styles.text}, "Hello World!");
+  }
+}
 </code></pre></div>
 <p>是的，这是一个 JavaScript 类！</p>
 
@@ -219,8 +219,8 @@ React packager ready.
 <p>你的应用目前采用 <code>React.createElement</code> 来构建简单 UI，通过它 React 转变为相应的原生应用。你的 JavaScript 代码在当前格式下的可读性，不一会儿就会被更为复杂的多层嵌套的 UI 所迅速打破。</p>
 
 <p>确保应用还在运行中，回到编辑器重新编辑 <code>PropertyFinderApp.js</code>。修改你的组件渲染方法中的 <code>return</code> 语句：</p>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="k">return</span> <span class="o">&lt;</span><span class="nx">React</span><span class="p">.</span><span class="nx">Text</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">text</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">Hello</span> <span class="nx">World</span> <span class="p">(</span><span class="nx">Again</span><span class="p">)</span><span class="o">&lt;</span><span class="sr">/React.Text&gt;</span><span class="err">;
-</span></code></pre></div>
+<div class="highlight"><pre><code class="language-jsx" data-lang="jsx">return &lt;React.Text style={styles.text}&gt;Hello World (Again)&lt;/React.Text&gt;;
+</code></pre></div>
 <p>这是 <a href="//facebook.github.io/react/docs/jsx-in-depth.html">JSX</a>，或是 JavaScript 语法扩展，它采用类 HTML 语法来混入你的 JavaScript 代码中。如果你是一名 web 开发者，你会对此感到非常熟悉。我们将在接下来的通篇文章中都使用 JSX 语法。</p>
 
 <p>保存 <code>PropertyFinderApp.js</code> 并回到模拟器中，按下 <code>Cmd+R</code> 你会发现你的应用刷新了界面将信息更新为了“Hello World (Again)”。</p>
@@ -236,38 +236,38 @@ React packager ready.
 <p>房产查找应用采用的是那一套基于标准导航栈的行为体验，提供自 UIKit 的导航控制器。是时候添加这项行为了。</p>
 
 <p>在 <code>PropertyFinderApp.js</code> 中，重新命名 <code>PropertyFinderApp</code> 为 <code>HelloWorld</code>：</p>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kr">class</span> <span class="nx">HelloWorld</span> <span class="kr">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-jsx" data-lang="jsx">class HelloWorld extends React.Component { ...
 </code></pre></div>
 <p>保持 “Hello World” 文本再显示一会儿，但它将不再是你的应用的根组件了。</p>
 
 <p>接下来在 <code>HelloWorld</code> 组件下方增加以下类：</p>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kr">class</span> <span class="nx">PropertyFinderApp</span> <span class="kr">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
-  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="p">(</span>
-      <span class="o">&lt;</span><span class="nx">React</span><span class="p">.</span><span class="nx">NavigatorIOS</span>
-        <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">container</span><span class="p">}</span>
-        <span class="nx">initialRoute</span><span class="o">=</span><span class="p">{{</span>
-          <span class="na">title</span><span class="p">:</span> <span class="s1">'Property Finder'</span><span class="p">,</span>
-          <span class="na">component</span><span class="p">:</span> <span class="nx">HelloWorld</span><span class="p">,</span>
-        <span class="p">}}</span><span class="sr">/</span><span class="err">&gt;
-</span>    <span class="p">);</span>
-  <span class="p">}</span>
-<span class="p">}</span>
+<div class="highlight"><pre><code class="language-jsx" data-lang="jsx">class PropertyFinderApp extends React.Component {
+  render() {
+    return (
+      &lt;React.NavigatorIOS
+        style={styles.container}
+        initialRoute={{
+          title: 'Property Finder',
+          component: HelloWorld,
+        }}/&gt;
+    );
+  }
+}
 </code></pre></div>
 <p>这构建了一个导航控制器，应用了样式，设定了初始路由指向 <code>HelloWorld</code> 组件。在 web 开发中，<code>路由</code> 是一项用来定义应用导航组织结构的技术：在此应用中，哪些页面，或路由被映射至 URLs。</p>
 
 <p>在同一文件中，更新样式申明以包含 container 样式：</p>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">styles</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">StyleSheet</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
-  <span class="na">text</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">color</span><span class="p">:</span> <span class="s1">'black'</span><span class="p">,</span>
-    <span class="na">backgroundColor</span><span class="p">:</span> <span class="s1">'white'</span><span class="p">,</span>
-    <span class="na">fontSize</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
-    <span class="na">margin</span><span class="p">:</span> <span class="mi">80</span>
-  <span class="p">},</span>
-  <span class="na">container</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">flex</span><span class="p">:</span> <span class="mi">1</span>
-  <span class="p">}</span>
-<span class="p">});</span>
+<div class="highlight"><pre><code class="language-jsx" data-lang="jsx">var styles = React.StyleSheet.create({
+  text: {
+    color: 'black',
+    backgroundColor: 'white',
+    fontSize: 30,
+    margin: 80
+  },
+  container: {
+    flex: 1
+  }
+});
 </code></pre></div>
 <p>稍后你会看到关于 <code>flex: 1</code> 的介绍。</p>
 
@@ -299,37 +299,37 @@ React packager ready.
 <p>这是<strong>解构赋值语句</strong>，它让你抽取出多个对象属性并用单条语句将其赋值给变量。所以，接下来你的代码中，可置 <code>React</code> 前缀。打个比方，你可以通过 <code>React.StyleSheet</code> 直接引用到 <code>StyleSheet</code>。解构赋值对于操作数组也是颇有用处，它也是<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment">非常值得学习的</a>。</p>
 
 <p>回到 <code>SearchPage.js</code> 文件，添加以下代码：</p>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">styles</span> <span class="o">=</span> <span class="nx">StyleSheet</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
-  <span class="na">description</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">marginBottom</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
-    <span class="na">fontSize</span><span class="p">:</span> <span class="mi">18</span><span class="p">,</span>
-    <span class="na">textAlign</span><span class="p">:</span> <span class="s1">'center'</span><span class="p">,</span>
-    <span class="na">color</span><span class="p">:</span> <span class="s1">'#656565'</span>
-  <span class="p">},</span>
-  <span class="na">container</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">padding</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
-    <span class="na">marginTop</span><span class="p">:</span> <span class="mi">65</span><span class="p">,</span>
-    <span class="na">alignItems</span><span class="p">:</span> <span class="s1">'center'</span>
-  <span class="p">}</span>
-<span class="p">});</span>
+<div class="highlight"><pre><code class="language-jsx" data-lang="jsx">var styles = StyleSheet.create({
+  description: {
+    marginBottom: 20,
+    fontSize: 18,
+    textAlign: 'center',
+    color: '#656565'
+  },
+  container: {
+    padding: 30,
+    marginTop: 65,
+    alignItems: 'center'
+  }
+});
 </code></pre></div>
 <p>同样的，这些是标准的 CSS 属性。像这样设置样式不如用界面构建工具来的直观，但它好过在你的 <code>viewDidLoad()</code> 方法中一个接着一个来设置视图属性！:]</p>
 
 <p>在样式下方添加组件自身代码：</p>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kr">class</span> <span class="nx">SearchPage</span> <span class="kr">extends</span> <span class="nx">Component</span> <span class="p">{</span>
-  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="p">(</span>
-      <span class="o">&lt;</span><span class="nx">View</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">container</span><span class="p">}</span><span class="o">&gt;</span>
-        <span class="o">&lt;</span><span class="nx">Text</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">description</span><span class="p">}</span><span class="o">&gt;</span>
-          <span class="nx">Search</span> <span class="k">for</span> <span class="nx">houses</span> <span class="nx">to</span> <span class="nx">buy</span><span class="o">!</span>
-        <span class="o">&lt;</span><span class="sr">/Text</span><span class="err">&gt;
-</span>        <span class="o">&lt;</span><span class="nx">Text</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">description</span><span class="p">}</span><span class="o">&gt;</span>
-          <span class="nx">Search</span> <span class="nx">by</span> <span class="nx">place</span><span class="o">-</span><span class="nx">name</span><span class="p">,</span> <span class="nx">postcode</span> <span class="nx">or</span> <span class="nx">search</span> <span class="nx">near</span> <span class="nx">your</span> <span class="nx">location</span><span class="p">.</span>
-        <span class="o">&lt;</span><span class="sr">/Text</span><span class="err">&gt;
-</span>      <span class="o">&lt;</span><span class="sr">/View</span><span class="err">&gt;
-</span>    <span class="p">);</span>
-  <span class="p">}</span>
-<span class="p">}</span>
+<div class="highlight"><pre><code class="language-jsx" data-lang="jsx">class SearchPage extends Component {
+  render() {
+    return (
+      &lt;View style={styles.container}&gt;
+        &lt;Text style={styles.description}&gt;
+          Search for houses to buy!
+        &lt;/Text&gt;
+        &lt;Text style={styles.description}&gt;
+          Search by place-name, postcode or search near your location.
+        &lt;/Text&gt;
+      &lt;/View&gt;
+    );
+  }
+}
 </code></pre></div>
 <p><code>render</code> 是 JSX 和与之提供的结构的重大示例。透过这样的方式，你可以对这些组件构建成的 UI 一目了然：一个容器两个文本标签。</p>
 
@@ -371,20 +371,18 @@ React packager ready.
 <p>每个子元素的垂直位置，由其 margin，height 和 padding 来共同决定。容器也设置了 <code>alignItems</code> 属性为 <code>center</code>，这将影响其水平轴交叉轴上的排列，导致文本居中。</p>
 
 <p>该为其加上输入框和按钮了。打开 <code>SearchPage.js</code>，在第二个 <code>Text</code> 元素的闭合标签后加入以下代码：</p>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">&lt;</span><span class="nx">View</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">flowRight</span><span class="p">}</span><span class="o">&gt;</span>
-  <span class="o">&lt;</span><span class="nx">TextInput</span>
-    <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">searchInput</span><span class="p">}</span>
-    <span class="nx">placeholder</span><span class="o">=</span><span class="s1">'Search via name or postcode'</span><span class="o">/&gt;</span>
-  <span class="o">&lt;</span><span class="nx">TouchableHighlight</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">button</span><span class="p">}</span>
-      <span class="nx">underlayColor</span><span class="o">=</span><span class="s1">'#99d9f4'</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="nx">Text</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">buttonText</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">Go</span><span class="o">&lt;</span><span class="sr">/Text</span><span class="err">&gt;
-</span>  <span class="o">&lt;</span><span class="sr">/TouchableHighlight</span><span class="err">&gt;
-</span><span class="o">&lt;</span><span class="sr">/View</span><span class="err">&gt;
-</span><span class="o">&lt;</span><span class="nx">TouchableHighlight</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">button</span><span class="p">}</span>
-    <span class="nx">underlayColor</span><span class="o">=</span><span class="s1">'#99d9f4'</span><span class="o">&gt;</span>
-  <span class="o">&lt;</span><span class="nx">Text</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">buttonText</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">Location</span><span class="o">&lt;</span><span class="sr">/Text</span><span class="err">&gt;
-</span><span class="o">&lt;</span><span class="sr">/TouchableHighlight</span><span class="err">&gt;
-</span></code></pre></div>
+<div class="highlight"><pre><code class="language-jsx" data-lang="jsx">&lt;View style={styles.flowRight}&gt;
+  &lt;TextInput
+    style={styles.searchInput}
+    placeholder='Search via name or postcode'/&gt;
+  &lt;TouchableHighlight style={styles.button} underlayColor='#99d9f4'&gt;
+    &lt;Text style={styles.buttonText}&gt;Go&lt;/Text&gt;
+  &lt;/TouchableHighlight&gt;
+&lt;/View&gt;
+&lt;TouchableHighlight style={styles.button} underlayColor='#99d9f4'&gt;
+  &lt;Text style={styles.buttonText}&gt;Location&lt;/Text&gt;
+&lt;/TouchableHighlight&gt;
+</code></pre></div>
 <p>目前你已增加了两个顶级视图：一个拥有着一文本输入框和一按钮，另一个只包含了一按钮。一会儿再跟你解释如何定义这些元素样式的。</p>
 
 <p>接下来，添加相应的样式到你的 <code>styles</code> 定义中：</p>
@@ -466,28 +464,28 @@ React packager ready.
 <p>组件当前拥有了 <code>state</code> 变量，其中的 <code>searchString</code> 被设置成了一个初始值：<code>london</code>。</p>
 
 <p>看看怎么使用这个组件状态的。在 <code>render</code> 中，用以下代码替换 <code>TextInput</code> 元素：</p>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">&lt;</span><span class="nx">TextInput</span>
-  <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">searchInput</span><span class="p">}</span>
-  <span class="nx">value</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">searchString</span><span class="p">}</span>
-  <span class="nx">placeholder</span><span class="o">=</span><span class="s1">'Search via name or postcode'</span><span class="o">/&gt;</span>
+<div class="highlight"><pre><code class="language-jsx" data-lang="jsx">&lt;TextInput
+  style={styles.searchInput}
+  value={this.state.searchString}
+  placeholder='Search via name or postcode'/&gt;
 </code></pre></div>
 <p>此处将 <code>TextInput</code> 的 value 属性 —— 那是向用户展示文本用的 —— 设置为了当下 <code>searchString</code> 状态变量的值。这只是用以处理初始状态的设置，那接下来当用户编辑本文又会发生什么呢？</p>
 
 <p>第一步是为此动作创建一个事件方法。在 <code>SearchPage</code> 类定义中增加如下方法：</p>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">onSearchTextChanged</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'onSearchTextChanged'</span><span class="p">);</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span> <span class="na">searchString</span><span class="p">:</span> <span class="nx">event</span><span class="p">.</span><span class="nx">nativeEvent</span><span class="p">.</span><span class="nx">text</span> <span class="p">});</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">searchString</span><span class="p">);</span>
-<span class="p">}</span>
+<div class="highlight"><pre><code class="language-jsx" data-lang="jsx">onSearchTextChanged(event) {
+  console.log('onSearchTextChanged');
+  this.setState({ searchString: event.nativeEvent.text });
+  console.log(this.state.searchString);
+}
 </code></pre></div>
 <p>这可从事件的 <code>text</code> 属性获取值并且用它来更新组件状态，同时也增加了一些打印信息的代码用以测试。</p>
 
 <p>为使文本变化时方法被调用，回到在 <code>render</code> 方法中的 <code>TextInput</code> 元素上，我们为其增添 <code>onChange</code> 属性，它看起来成了这样：</p>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">&lt;</span><span class="nx">TextInput</span>
-  <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">searchInput</span><span class="p">}</span>
-  <span class="nx">value</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">searchString</span><span class="p">}</span>
-  <span class="nx">onChange</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">onSearchTextChanged</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">)}</span>
-  <span class="nx">placeholder</span><span class="o">=</span><span class="s1">'Search via name or postcode'</span><span class="o">/&gt;</span>
+<div class="highlight"><pre><code class="language-jsx" data-lang="jsx">&lt;TextInput
+  style={styles.searchInput}
+  value={this.state.searchString}
+  onChange={this.onSearchTextChanged.bind(this)}
+  placeholder='Search via name or postcode'/&gt;
 </code></pre></div>
 <p>只要用户一改变输入文本，<code>onChange</code> 即刻被触发，<code>onSearchTextChanged</code> 方法被执行。</p>
 
@@ -538,19 +536,19 @@ React packager ready.
 <p>新增的 <code>isLoading</code> 属性用来跟踪数据查询是否完成。</p>
 
 <p>将以下逻辑加入到 <code>render</code> 的开头：</p>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">spinner</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">isLoading</span> <span class="p">?</span>
-  <span class="p">(</span> <span class="o">&lt;</span><span class="nx">ActivityIndicatorIOS</span>
-      <span class="nx">hidden</span><span class="o">=</span><span class="s1">'true'</span>
-      <span class="nx">size</span><span class="o">=</span><span class="s1">'large'</span><span class="o">/&gt;</span> <span class="p">)</span> <span class="p">:</span>
-  <span class="p">(</span> <span class="o">&lt;</span><span class="nx">View</span><span class="o">/&gt;</span><span class="p">);</span>
+<div class="highlight"><pre><code class="language-jsx" data-lang="jsx">var spinner = this.state.isLoading ?
+  ( &lt;ActivityIndicatorIOS
+      hidden='true'
+      size='large'/&gt; ) :
+  ( &lt;View/&gt;);
 </code></pre></div>
 <p>这是一个三元的 <code>if</code> 判断语句，它的执行结果不是增加一个动态指示器就是一个空视图，这取决于组件的 <code>isLoading</code> 状态。因为整个组件每次都会渲染，所以你可以对 JSX 和 JavaScript 逻辑代码随意混用。</p>
 
 <p>JSX 在 <code>return</code> 中定义的搜索 UI 里，加入下列一行，位于 <code>Image</code> 下方：</p>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">{</span><span class="nx">spinner</span><span class="p">}</span>
+<div class="highlight"><pre><code class="language-jsx" data-lang="jsx">{spinner}
 </code></pre></div>
 <p>现在，在 <code>TouchableHighlight</code> 包裹着的 &ldquo;Go&rdquo; 文本视图上增加以下属性：</p>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">onPress</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">onSearchPressed</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">)}</span>
+<div class="highlight"><pre><code class="language-jsx" data-lang="jsx">onPress={this.onSearchPressed.bind(this)}
 </code></pre></div>
 <p>接着，在 <code>SearchPage</code> 类里添加以下方法：</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">_executeQuery</span><span class="p">(</span><span class="nx">query</span><span class="p">)</span> <span class="p">{</span>
@@ -659,37 +657,37 @@ React packager ready.
 <p>对，没错，一个包含着 <code>react-native</code> 模块的 <code>require</code> 语句，还有一个解构赋值。这些都在之前提过了对吧？</p>
 
 <p>接着添加组件自身：</p>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kr">class</span> <span class="nx">SearchResults</span> <span class="kr">extends</span> <span class="nx">Component</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-jsx" data-lang="jsx">class SearchResults extends Component {
 
-  <span class="nx">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kr">super</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
-    <span class="kd">var</span> <span class="nx">dataSource</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ListView</span><span class="p">.</span><span class="nx">DataSource</span><span class="p">(</span>
-      <span class="p">{</span><span class="na">rowHasChanged</span><span class="p">:</span> <span class="p">(</span><span class="nx">r1</span><span class="p">,</span> <span class="nx">r2</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">r1</span><span class="p">.</span><span class="nx">guid</span> <span class="o">!==</span> <span class="nx">r2</span><span class="p">.</span><span class="nx">guid</span><span class="p">});</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
-      <span class="na">dataSource</span><span class="p">:</span> <span class="nx">dataSource</span><span class="p">.</span><span class="nx">cloneWithRows</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">listings</span><span class="p">)</span>
-    <span class="p">};</span>
-  <span class="p">}</span>
+  constructor(props) {
+    super(props);
+    var dataSource = new ListView.DataSource(
+      {rowHasChanged: (r1, r2) =&gt; r1.guid !== r2.guid});
+    this.state = {
+      dataSource: dataSource.cloneWithRows(this.props.listings)
+    };
+  }
 
-  <span class="nx">renderRow</span><span class="p">(</span><span class="nx">rowData</span><span class="p">,</span> <span class="nx">sectionID</span><span class="p">,</span> <span class="nx">rowID</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="p">(</span>
-      <span class="o">&lt;</span><span class="nx">TouchableHighlight</span>
-          <span class="nx">underlayColor</span><span class="o">=</span><span class="s1">'#dddddd'</span><span class="o">&gt;</span>
-        <span class="o">&lt;</span><span class="nx">View</span><span class="o">&gt;</span>
-          <span class="o">&lt;</span><span class="nx">Text</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">rowData</span><span class="p">.</span><span class="nx">title</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/Text</span><span class="err">&gt;
-</span>        <span class="o">&lt;</span><span class="sr">/View</span><span class="err">&gt;
-</span>      <span class="o">&lt;</span><span class="sr">/TouchableHighlight</span><span class="err">&gt;
-</span>    <span class="p">);</span>
-  <span class="p">}</span>
+  renderRow(rowData, sectionID, rowID) {
+    return (
+      &lt;TouchableHighlight
+          underlayColor='#dddddd'&gt;
+        &lt;View&gt;
+          &lt;Text&gt;{rowData.title}&lt;/Text&gt;
+        &lt;/View&gt;
+      &lt;/TouchableHighlight&gt;
+    );
+  }
 
-  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="p">(</span>
-      <span class="o">&lt;</span><span class="nx">ListView</span>
-        <span class="nx">dataSource</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">dataSource</span><span class="p">}</span>
-        <span class="nx">renderRow</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">renderRow</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">)}</span><span class="sr">/</span><span class="err">&gt;
-</span>    <span class="p">);</span>
-  <span class="p">}</span>
+  render() {
+    return (
+      &lt;ListView
+        dataSource={this.state.dataSource}
+        renderRow={this.renderRow.bind(this)}/&gt;
+    );
+  }
 
-<span class="p">}</span>
+}
 </code></pre></div>
 <p>以上代码使用到了更加特殊的组件 —— <code>ListView</code> —— 它在一个可滚动的容器中展现多排数据，类似 <code>UITableView</code>。你可以通过 <code>ListView.DataSource</code> 和一个方法来向 <code>ListView</code> 提供数据，这个方法每一行数据提供 UI 的实现。</p>
 
@@ -754,26 +752,26 @@ React packager ready.
 <p>以上定义了每一行即将要被渲染的列表样式。</p>
 
 <p>接着用以下代码替换 <code>renderRow()</code> 方法：</p>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">renderRow</span><span class="p">(</span><span class="nx">rowData</span><span class="p">,</span> <span class="nx">sectionID</span><span class="p">,</span> <span class="nx">rowID</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">price</span> <span class="o">=</span> <span class="nx">rowData</span><span class="p">.</span><span class="nx">price_formatted</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">' '</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+<div class="highlight"><pre><code class="language-jsx" data-lang="jsx">renderRow(rowData, sectionID, rowID) {
+  var price = rowData.price_formatted.split(' ')[0];
 
-  <span class="k">return</span> <span class="p">(</span>
-    <span class="o">&lt;</span><span class="nx">TouchableHighlight</span> <span class="nx">onPress</span><span class="o">=</span><span class="p">{()</span> <span class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">rowPressed</span><span class="p">(</span><span class="nx">rowData</span><span class="p">.</span><span class="nx">guid</span><span class="p">)}</span>
-        <span class="nx">underlayColor</span><span class="o">=</span><span class="s1">'#dddddd'</span><span class="o">&gt;</span>
-      <span class="o">&lt;</span><span class="nx">View</span><span class="o">&gt;</span>
-        <span class="o">&lt;</span><span class="nx">View</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">rowContainer</span><span class="p">}</span><span class="o">&gt;</span>
-          <span class="o">&lt;</span><span class="nx">Image</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">thumb</span><span class="p">}</span> <span class="nx">source</span><span class="o">=</span> <span class="sr">/</span><span class="err">&gt;
-</span>          <span class="o">&lt;</span><span class="nx">View</span>  <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">textContainer</span><span class="p">}</span><span class="o">&gt;</span>
-            <span class="o">&lt;</span><span class="nx">Text</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">price</span><span class="p">}</span><span class="o">&gt;</span><span class="err">£</span><span class="p">{</span><span class="nx">price</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/Text</span><span class="err">&gt;
-</span>            <span class="o">&lt;</span><span class="nx">Text</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">title</span><span class="p">}</span> 
-                  <span class="nx">numberOfLines</span><span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">}</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">rowData</span><span class="p">.</span><span class="nx">title</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/Text</span><span class="err">&gt;
-</span>          <span class="o">&lt;</span><span class="sr">/View</span><span class="err">&gt;
-</span>        <span class="o">&lt;</span><span class="sr">/View</span><span class="err">&gt;
-</span>        <span class="o">&lt;</span><span class="nx">View</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">separator</span><span class="p">}</span><span class="sr">/</span><span class="err">&gt;
-</span>      <span class="o">&lt;</span><span class="sr">/View</span><span class="err">&gt;
-</span>    <span class="o">&lt;</span><span class="sr">/TouchableHighlight</span><span class="err">&gt;
-</span>  <span class="p">);</span>
-<span class="p">}</span>
+  return (
+    &lt;TouchableHighlight onPress={() =&gt; this.rowPressed(rowData.guid)}
+        underlayColor='#dddddd'&gt;
+      &lt;View&gt;
+        &lt;View style={styles.rowContainer}&gt;
+          &lt;Image style={styles.thumb} source={{ uri: rowData.img_url }} /&gt;
+          &lt;View  style={styles.textContainer}&gt;
+            &lt;Text style={styles.price}&gt;£{price}&lt;/Text&gt;
+            &lt;Text style={styles.title} 
+                  numberOfLines={1}&gt;{rowData.title}&lt;/Text&gt;
+          &lt;/View&gt;
+        &lt;/View&gt;
+        &lt;View style={styles.separator}/&gt;
+      &lt;/View&gt;
+    &lt;/TouchableHighlight&gt;
+  );
+}
 </code></pre></div>
 <p>这对返回的价格数据做了一点操作，将其 &quot;300,000 GBP&rdquo; 固定格式中的 GBP 后缀给去掉。然后渲染每一行 UI 采用的是你已熟烂于心的技术了。这一次，略缩图的数据是以 URL 的方式提供的，React Native 不会在主线程对其进行解码。</p>
 
@@ -845,33 +843,33 @@ React packager ready.
 <span class="p">});</span>
 </code></pre></div>
 <p>再来增加组件：</p>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kr">class</span> <span class="nx">PropertyView</span> <span class="kr">extends</span> <span class="nx">Component</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-jsx" data-lang="jsx">class PropertyView extends Component {
 
-  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">property</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">property</span><span class="p">;</span>
-    <span class="kd">var</span> <span class="nx">stats</span> <span class="o">=</span> <span class="nx">property</span><span class="p">.</span><span class="nx">bedroom_number</span> <span class="o">+</span> <span class="s1">' bed '</span> <span class="o">+</span> <span class="nx">property</span><span class="p">.</span><span class="nx">property_type</span><span class="p">;</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">property</span><span class="p">.</span><span class="nx">bathroom_number</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">stats</span> <span class="o">+=</span> <span class="s1">', '</span> <span class="o">+</span> <span class="nx">property</span><span class="p">.</span><span class="nx">bathroom_number</span> <span class="o">+</span> <span class="s1">' '</span> <span class="o">+</span> <span class="p">(</span><span class="nx">property</span><span class="p">.</span><span class="nx">bathroom_number</span> <span class="o">&gt;</span> <span class="mi">1</span>
-        <span class="p">?</span> <span class="s1">'bathrooms'</span> <span class="p">:</span> <span class="s1">'bathroom'</span><span class="p">);</span>
-    <span class="p">}</span>
+  render() {
+    var property = this.props.property;
+    var stats = property.bedroom_number + ' bed ' + property.property_type;
+    if (property.bathroom_number) {
+      stats += ', ' + property.bathroom_number + ' ' + (property.bathroom_number &gt; 1
+        ? 'bathrooms' : 'bathroom');
+    }
 
-    <span class="kd">var</span> <span class="nx">price</span> <span class="o">=</span> <span class="nx">property</span><span class="p">.</span><span class="nx">price_formatted</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">' '</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+    var price = property.price_formatted.split(' ')[0];
 
-    <span class="k">return</span> <span class="p">(</span>
-      <span class="o">&lt;</span><span class="nx">View</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">container</span><span class="p">}</span><span class="o">&gt;</span>
-        <span class="o">&lt;</span><span class="nx">Image</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">image</span><span class="p">}</span> 
-            <span class="nx">source</span><span class="o">=</span> <span class="sr">/</span><span class="err">&gt;
-</span>        <span class="o">&lt;</span><span class="nx">View</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">heading</span><span class="p">}</span><span class="o">&gt;</span>
-          <span class="o">&lt;</span><span class="nx">Text</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">price</span><span class="p">}</span><span class="o">&gt;</span><span class="err">£</span><span class="p">{</span><span class="nx">price</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/Text</span><span class="err">&gt;
-</span>          <span class="o">&lt;</span><span class="nx">Text</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">title</span><span class="p">}</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">property</span><span class="p">.</span><span class="nx">title</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/Text</span><span class="err">&gt;
-</span>          <span class="o">&lt;</span><span class="nx">View</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">separator</span><span class="p">}</span><span class="sr">/</span><span class="err">&gt;
-</span>        <span class="o">&lt;</span><span class="sr">/View</span><span class="err">&gt;
-</span>        <span class="o">&lt;</span><span class="nx">Text</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">description</span><span class="p">}</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">stats</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/Text</span><span class="err">&gt;
-</span>        <span class="o">&lt;</span><span class="nx">Text</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">description</span><span class="p">}</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">property</span><span class="p">.</span><span class="nx">summary</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/Text</span><span class="err">&gt;
-</span>      <span class="o">&lt;</span><span class="sr">/View</span><span class="err">&gt;
-</span>    <span class="p">);</span>
-  <span class="p">}</span>
-<span class="p">}</span>
+    return (
+      &lt;View style={styles.container}&gt;
+        &lt;Image style={styles.image} 
+            source={{uri: property.img_url}} /&gt;
+        &lt;View style={styles.heading}&gt;
+          &lt;Text style={styles.price}&gt;£{price}&lt;/Text&gt;
+          &lt;Text style={styles.title}&gt;{property.title}&lt;/Text&gt;
+          &lt;View style={styles.separator}/&gt;
+        &lt;/View&gt;
+        &lt;Text style={styles.description}&gt;{stats}&lt;/Text&gt;
+        &lt;Text style={styles.description}&gt;{property.summary}&lt;/Text&gt;
+      &lt;/View&gt;
+    );
+  }
+}
 </code></pre></div>
 <p>第一部分的 <code>render()</code> 方法处理数据操作。通常来讲，由 API 返回来的数据往往不是很完美，所以我们要写一些简单的逻辑来处理得到我们想要的数据格式。</p>
 

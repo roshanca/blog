@@ -286,30 +286,30 @@
 <p>所以现代的 web 应用有这样的开发意识：everything in js is the better way. 正是 js 的模块化的可能性，成为了 web 功能模块（包含界面与交互）的组件化实现的基石。可以将 html 和 css 写在 js 之中（JSX），也可以以模板的形式它们三者写一起（Vue）：</p>
 
 <p>JSX 写法：</p>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kr">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">PropTypes</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'react'</span><span class="p">;</span>
-<span class="kr">import</span> <span class="nx">styles</span> <span class="nx">from</span> <span class="s1">'./Preview.css'</span><span class="p">;</span>
+<div class="highlight"><pre><code class="language-jsx" data-lang="jsx">import React, { PropTypes } from 'react';
+import styles from './Preview.css';
 
-<span class="kr">const</span> <span class="nx">Preview</span> <span class="o">=</span> <span class="p">({</span><span class="nx">url</span><span class="p">,</span> <span class="nx">user</span><span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="p">(</span>
-    <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">card</span><span class="p">}</span><span class="o">&gt;</span>
-      <span class="o">&lt;</span><span class="nx">img</span> <span class="nx">src</span><span class="o">=</span><span class="p">{</span><span class="nx">url</span><span class="p">}</span> <span class="nx">alt</span><span class="o">=</span><span class="s2">""</span> <span class="nx">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">normal</span><span class="p">}</span><span class="sr">/</span><span class="err">&gt;
-</span>      <span class="o">&lt;</span><span class="nx">Profile</span> <span class="nx">user</span><span class="o">=</span><span class="p">{</span><span class="nx">user</span><span class="p">}</span> <span class="sr">/</span><span class="err">&gt;
-</span>    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
-</span>  <span class="p">);</span>
-<span class="p">};</span>
+const Preview = ({url, user}) =&gt; {
+  return (
+    &lt;div className={styles.card}&gt;
+      &lt;img src={url} alt="" className={styles.normal}/&gt;
+      &lt;Profile user={user} /&gt;
+    &lt;/div&gt;
+  );
+};
 
-<span class="nx">Preview</span><span class="p">.</span><span class="nx">propTypes</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">url</span><span class="p">:</span> <span class="nx">PropTypes</span><span class="p">.</span><span class="nx">string</span><span class="p">,</span>
-  <span class="na">user</span><span class="p">:</span> <span class="nx">PropTypes</span><span class="p">.</span><span class="nx">object</span>
-<span class="p">};</span>
+Preview.propTypes = {
+  url: PropTypes.string,
+  user: PropTypes.object
+};
 
-<span class="kr">export</span> <span class="k">default</span> <span class="nx">Preview</span><span class="p">;</span>
+export default Preview;
 </code></pre></div>
 <p>Vue 的单文件形式：</p>
 <div class="highlight"><pre><code class="language-" data-lang="">&lt;template&gt;
   &lt;div id="app"&gt;
     &lt;img src="./assets/logo.png"&gt;
-    &lt;h1&gt;\&lt;/h1&gt;
+    &lt;h1&gt;\{{ msg }}&lt;/h1&gt;
   &lt;/div&gt;
 &lt;/template&gt;
 
