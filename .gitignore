@@ -4,7 +4,6 @@ _gist_cache
 _drafts/
 _site/
 _deploy
-Gemfile.lock
 .ruby-version
 .ruby-gemset
 

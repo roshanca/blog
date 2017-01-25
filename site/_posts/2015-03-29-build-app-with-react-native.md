@@ -62,7 +62,7 @@ React Native 代码在运行之前先要解决它的依赖问题。打开终端�
 $ npm install
 ```
 
-这是在用 Node 的包管理器在获取依赖。这与 CocoaPods 和 Carthage 的功能类似。一旦命令运行成功，你会发现一个叫 `node_modules ` 的文件夹被创建，大量的外部依赖文件就在其中。
+这是在用 Node 的包管理器在获取依赖。这与 CocoaPods 和 Carthage 的功能类似。一旦命令运行成功，你会发现一个叫 `node_modules` 的文件夹被创建，大量的外部依赖文件就在其中。
 
 最后一步是启动开发服务。只需在刚才的终端窗口中继续输入：
 
@@ -121,7 +121,7 @@ var React = require('react-native');
 
 在 `require` 语句下方，加入以下：
 
-```js
+```jsx
 var styles = React.StyleSheet.create({
   text: {
     color: 'black',
@@ -136,7 +136,7 @@ var styles = React.StyleSheet.create({
 
 回到应用本身！在同一文件中，在刚才的样式申明语句下加入以下代码：
 
-```js
+```jsx
 class PropertyFinderApp extends React.Component {
   render() {
     return React.createElement(React.Text, {style: styles.text}, "Hello World!");
@@ -190,7 +190,7 @@ http://localhost:8081/Examples/PropertyFinder/PropertyFinderApp.includeRequire.r
 
 确保应用还在运行中，回到编辑器重新编辑 `PropertyFinderApp.js`。修改你的组件渲染方法中的 `return` 语句：
 
-```js
+```jsx
 return <React.Text style={styles.text}>Hello World (Again)</React.Text>;
 ```
 
@@ -210,15 +210,15 @@ Okay，“Hello World” 玩够了，接下来尝试写个真正的应用吧！
 
 在 `PropertyFinderApp.js` 中，重新命名 `PropertyFinderApp ` 为 `HelloWorld`：
 
-```js
-class HelloWorld extends React.Component {
+```jsx
+class HelloWorld extends React.Component { ...
 ```
 
 保持 “Hello World” 文本再显示一会儿，但它将不再是你的应用的根组件了。
 
 接下来在 `HelloWorld` 组件下方增加以下类：
 
-```js
+```jsx
 class PropertyFinderApp extends React.Component {
   render() {
     return (
@@ -237,7 +237,7 @@ class PropertyFinderApp extends React.Component {
 
 在同一文件中，更新样式申明以包含 container 样式：
 
-```js
+```jsx
 var styles = React.StyleSheet.create({
   text: {
     color: 'black',
@@ -285,7 +285,7 @@ var {
 
 回到 `SearchPage.js` 文件，添加以下代码：
 
-```js
+```jsx
 var styles = StyleSheet.create({
   description: {
     marginBottom: 20,
@@ -305,7 +305,7 @@ var styles = StyleSheet.create({
 
 在样式下方添加组件自身代码：
 
-```js
+```jsx
 class SearchPage extends Component {
   render() {
     return (
@@ -372,18 +372,16 @@ React Native 采用了 [css-layout](https://github.com/facebook/css-layout) 库�
 
 该为其加上输入框和按钮了。打开 `SearchPage.js`，在第二个 `Text` 元素的闭合标签后加入以下代码：
 
-```js
+```jsx
 <View style={styles.flowRight}>
   <TextInput
     style={styles.searchInput}
     placeholder='Search via name or postcode'/>
-  <TouchableHighlight style={styles.button}
-      underlayColor='#99d9f4'>
+  <TouchableHighlight style={styles.button} underlayColor='#99d9f4'>
     <Text style={styles.buttonText}>Go</Text>
   </TouchableHighlight>
 </View>
-<TouchableHighlight style={styles.button}
-    underlayColor='#99d9f4'>
+<TouchableHighlight style={styles.button} underlayColor='#99d9f4'>
   <Text style={styles.buttonText}>Location</Text>
 </TouchableHighlight>
 ```
@@ -482,7 +480,7 @@ constructor(props) {
 
 看看怎么使用这个组件状态的。在 `render` 中，用以下代码替换 `TextInput` 元素：
 
-```js
+```jsx
 <TextInput
   style={styles.searchInput}
   value={this.state.searchString}
@@ -493,7 +491,7 @@ constructor(props) {
 
 第一步是为此动作创建一个事件方法。在 `SearchPage` 类定义中增加如下方法：
 
-```js
+```jsx
 onSearchTextChanged(event) {
   console.log('onSearchTextChanged');
   this.setState({ searchString: event.nativeEvent.text });
@@ -505,7 +503,7 @@ onSearchTextChanged(event) {
 
 为使文本变化时方法被调用，回到在 `render` 方法中的 `TextInput` 元素上，我们为其增添 `onChange` 属性，它看起来成了这样：
 
-```js
+```jsx
 <TextInput
   style={styles.searchInput}
   value={this.state.searchString}
@@ -567,7 +565,7 @@ this.state = {
 
 将以下逻辑加入到 `render` 的开头：
 
-```js
+```jsx
 var spinner = this.state.isLoading ?
   ( <ActivityIndicatorIOS
       hidden='true'
@@ -579,13 +577,13 @@ var spinner = this.state.isLoading ?
 
 JSX 在 `return` 中定义的搜索 UI 里，加入下列一行，位于 `Image` 下方：
 
-```js
+```jsx
 {spinner}
 ```
 
 现在，在 `TouchableHighlight` 包裹着的 "Go" 文本视图上增加以下属性：
 
-```js
+```jsx
 onPress={this.onSearchPressed.bind(this)}
 ```
 
@@ -718,7 +716,7 @@ var {
 
 接着添加组件自身：
 
-```js
+```jsx
 class SearchResults extends Component {
  
   constructor(props) {
@@ -827,7 +825,8 @@ var styles = StyleSheet.create({
 
 接着用以下代码替换 `renderRow()` 方法：
 
-```js
+{% raw %}
+```jsx
 renderRow(rowData, sectionID, rowID) {
   var price = rowData.price_formatted.split(' ')[0];
  
@@ -849,6 +848,7 @@ renderRow(rowData, sectionID, rowID) {
   );
 }
 ```
+{% endraw %}
 
 这对返回的价格数据做了一点操作，将其 "300,000 GBP" 固定格式中的 GBP 后缀给去掉。然后渲染每一行 UI 采用的是你已熟烂于心的技术了。这一次，略缩图的数据是以 URL 的方式提供的，React Native 不会在主线程对其进行解码。
 
@@ -930,7 +930,8 @@ var styles = StyleSheet.create({
 
 再来增加组件：
 
-```js
+{% raw %}
+```jsx
 class PropertyView extends Component {
  
   render() {
@@ -959,6 +960,7 @@ class PropertyView extends Component {
   }
 }
 ```
+{% endraw %}
 
 第一部分的 `render()` 方法处理数据操作。通常来讲，由 API 返回来的数据往往不是很完美，所以我们要写一些简单的逻辑来处理得到我们想要的数据格式。
 

@@ -1,6 +1,6 @@
 language: ruby
 rvm:
-  - 2.3.0
+  - 2.4.0
 install: bundle install
 script: bundle exec rake site:deploy --quiet
 env:
