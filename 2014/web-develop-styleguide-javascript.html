@@ -11,6 +11,7 @@
 	<link rel="alternate" type="application/rss+xml" title="Subscribe Feed" href="/feed.xml">
 	<link  href="/css/app.css" rel="stylesheet" media="all">
 	<link href="//cdn.bootcss.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lustria" rel="stylesheet">
     <!-- <link href='//fonts.useso.com/css?family=PT+Serif:400,700' rel='stylesheet' type='text/css'> -->
 	<script>
 	function loadSync(u,p,a){
@@ -57,7 +58,7 @@
 </div>
 	
 	</div>
-	<a href="/feed.xml" data-tip="true" data-tip-content="订阅" class="tip--top subscribe">
+	<a href="/feed.xml" class="subscribe">
 		<i class="fa fa-rss"></i>
 	</a>
 </header>
@@ -573,12 +574,12 @@
   <span class="c1">// Constructor function</span>
   <span class="kd">function</span> <span class="nx">GrannySmithApple</span><span class="p">()</span> <span class="p">{</span>
     <span class="c1">// Invoking parent constructor</span>
-    <span class="nx">Apple</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">constructor</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="s1">'Granny Smith'</span><span class="p">);</span>
+    <span class="nx">Apple</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="kd">constructor</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="s1">'Granny Smith'</span><span class="p">);</span>
   <span class="p">}</span>
   <span class="c1">// Set parent prototype while creating a copy with Object.create</span>
   <span class="nx">GrannySmithApple</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">Apple</span><span class="p">.</span><span class="nx">prototype</span><span class="p">);</span>
   <span class="c1">// Set constructor to the sub type, otherwise points to Apple</span>
-  <span class="nx">GrannySmithApple</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">=</span> <span class="nx">GrannySmithApple</span><span class="p">;</span>
+  <span class="nx">GrannySmithApple</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="kd">constructor</span> <span class="o">=</span> <span class="nx">GrannySmithApple</span><span class="p">;</span>
 
   <span class="c1">// Calling a super method</span>
   <span class="nx">GrannySmithApple</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">eat</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
@@ -989,10 +990,19 @@
 
       </div>
     </footer>
+    <section class="post-recent">
+  
+    <a class="relative-post previous" href="/2014/web-develop-styleguide-html"><span>前端编码风格规范之 HTML 规范</span></a>
+  
+  
+    <a class="relative-post next" href="/2014/2014-work-summary"><span>2014 年工作总结</span></a>
+  
+</section>
+
   </article>
 </main>
 
-<div class="post-comment">
+  <div class="post-comment">
 	<div id="disqus_thread" class="container"></div>
 </div>
 <script>

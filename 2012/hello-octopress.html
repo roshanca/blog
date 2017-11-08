@@ -11,6 +11,7 @@
 	<link rel="alternate" type="application/rss+xml" title="Subscribe Feed" href="/feed.xml">
 	<link  href="/css/app.css" rel="stylesheet" media="all">
 	<link href="//cdn.bootcss.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lustria" rel="stylesheet">
     <!-- <link href='//fonts.useso.com/css?family=PT+Serif:400,700' rel='stylesheet' type='text/css'> -->
 	<script>
 	function loadSync(u,p,a){
@@ -57,7 +58,7 @@
 </div>
 	
 	</div>
-	<a href="/feed.xml" data-tip="true" data-tip-content="订阅" class="tip--top subscribe">
+	<a href="/feed.xml" class="subscribe">
 		<i class="fa fa-rss"></i>
 	</a>
 </header>
@@ -166,8 +167,8 @@ heroku keys:add
 
 <p>编辑 <code>.gitignore</code> 去除 <code>public</code>，否则生成内容无法部署到 Heroku 上。</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">rake generate
-git add .
-git commit -m <span class="s1">'site updated'</span>
+git add <span class="nb">.</span>
+git commit <span class="nt">-m</span> <span class="s1">'site updated'</span>
 git push heroku master
 </code></pre></div>
 <h2>发表文章</h2>
@@ -225,10 +226,17 @@ git push heroku master
 
       </div>
     </footer>
+    <section class="post-recent">
+  
+  
+    <a class="relative-post next" href="/2012/osx-octopress"><span>OS X 下的 Octopress 搭建</span></a>
+  
+</section>
+
   </article>
 </main>
 
-<div class="post-comment">
+  <div class="post-comment">
 	<div id="disqus_thread" class="container"></div>
 </div>
 <script>

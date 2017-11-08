@@ -7,6 +7,18 @@
     <atom:link href="http://roshanca.com/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>搬瓦工安装 SS 服务端</title>
+        
+        
+          <description>&lt;p&gt;&lt;a href=&quot;https://bandwagonhost.com/aff.php?aff=18390&quot;&gt;搬瓦工（Bandwagon）&lt;/a&gt;是一家有口皆碑的 VPS 提供商，以性价比高而闻名。&lt;/p&gt;
+</description>
+        
+        <pubDate>Wed, 08 Nov 2017 00:00:00 +0000</pubDate>
+        <link>http://roshanca.com/2017/install-ss-for-bandwagonhost</link>
+        <guid isPermaLink="true">http://roshanca.com/2017/install-ss-for-bandwagonhost</guid>
+      </item>
+    
+      <item>
         <title>前端工程化体系</title>
         
         
@@ -114,18 +126,6 @@
         <pubDate>Sun, 07 Sep 2014 00:00:00 +0000</pubDate>
         <link>http://roshanca.com/2014/web-develop-styleguide-general</link>
         <guid isPermaLink="true">http://roshanca.com/2014/web-develop-styleguide-general</guid>
-      </item>
-    
-      <item>
-        <title>DIY 网件 R6300v2 路由器</title>
-        
-        
-          <description>&lt;p&gt;据说 Geek 都喜欢 &lt;abbr title=&quot;Network Attached Storage&quot;&gt;NAS&lt;/abbr&gt; 与离线下载。&lt;/p&gt;
-</description>
-        
-        <pubDate>Sun, 11 May 2014 21:41:00 +0000</pubDate>
-        <link>http://roshanca.com/2014/diy-netgear-r6300v2</link>
-        <guid isPermaLink="true">http://roshanca.com/2014/diy-netgear-r6300v2</guid>
       </item>
     
   </channel>

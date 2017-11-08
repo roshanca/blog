@@ -11,6 +11,7 @@
 	<link rel="alternate" type="application/rss+xml" title="Subscribe Feed" href="/feed.xml">
 	<link  href="/css/app.css" rel="stylesheet" media="all">
 	<link href="//cdn.bootcss.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lustria" rel="stylesheet">
     <!-- <link href='//fonts.useso.com/css?family=PT+Serif:400,700' rel='stylesheet' type='text/css'> -->
 	<script>
 	function loadSync(u,p,a){
@@ -57,7 +58,7 @@
 </div>
 	
 	</div>
-	<a href="/feed.xml" data-tip="true" data-tip-content="订阅" class="tip--top subscribe">
+	<a href="/feed.xml" class="subscribe">
 		<i class="fa fa-rss"></i>
 	</a>
 </header>
@@ -202,12 +203,12 @@
 
 <p>因为具体路由下，基本就是业务逻辑 controller 了：</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">router</span><span class="p">.</span><span class="nx">route</span><span class="p">(</span><span class="s1">'/:catalogId'</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">catalogController</span><span class="p">.</span><span class="nx">findOne</span><span class="p">)</span>
+  <span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">catalogController</span><span class="p">.</span><span class="nx">findOne</span><span class="p">)</span>
   <span class="p">.</span><span class="nx">put</span><span class="p">(</span><span class="nx">validate</span><span class="p">(</span><span class="nx">paramSchema</span><span class="p">.</span><span class="nx">updateCatalog</span><span class="p">),</span> <span class="nx">catalogController</span><span class="p">.</span><span class="nx">update</span><span class="p">)</span>
   <span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="nx">catalogController</span><span class="p">.</span><span class="nx">remove</span><span class="p">);</span>
 </code></pre></div>
 <p>还有一些简单的路由，就是负责页面渲染而已（特别是单页应用，基本上走客户端路由的路子了）：</p>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="nx">res</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="s1">'index'</span><span class="p">,</span> <span class="p">{</span>
     <span class="na">ip</span><span class="p">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">connection</span><span class="p">.</span><span class="nx">remoteAddress</span>
   <span class="p">});</span>
@@ -248,13 +249,13 @@
 </code></pre></div>
 <p>上文已提到过 Node 来做服务端模板渲染的有一个好处就是方便与静态资源衔接，是如何做到的呢？首先 web 应用经过前端构建工具 build 之后会生成静态资源映射表：<code>asset-manifest.json</code>，串联起来大概是这样：</p>
 <div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
-  </span><span class="nt">"main.css"</span><span class="p">:</span><span class="w"> </span><span class="s2">"static/css/main.ad87bbd6.css"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"main.css.map"</span><span class="p">:</span><span class="w"> </span><span class="s2">"static/css/main.ad87bbd6.css.map"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"main.js"</span><span class="p">:</span><span class="w"> </span><span class="s2">"static/js/main.a3907cec.js"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"main.js.map"</span><span class="p">:</span><span class="w"> </span><span class="s2">"static/js/main.a3907cec.js.map"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"static/media/yay.jpg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"static/media/yay.44dd3333.jpg"</span><span class="w">
+  </span><span class="s2">"main.css"</span><span class="p">:</span><span class="w"> </span><span class="s2">"static/css/main.ad87bbd6.css"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"main.css.map"</span><span class="p">:</span><span class="w"> </span><span class="s2">"static/css/main.ad87bbd6.css.map"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"main.js"</span><span class="p">:</span><span class="w"> </span><span class="s2">"static/js/main.a3907cec.js"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"main.js.map"</span><span class="p">:</span><span class="w"> </span><span class="s2">"static/js/main.a3907cec.js.map"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"static/media/yay.jpg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"static/media/yay.44dd3333.jpg"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kr">const</span> <span class="nx">manifest</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./asset-manifest.json'</span><span class="p">);</span>
+</span></code></pre></div><div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">const</span> <span class="nx">manifest</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./asset-manifest.json'</span><span class="p">);</span>
 
 <span class="nx">app</span><span class="p">.</span><span class="nx">locals</span><span class="p">.</span><span class="nx">assets</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">mainCss</span><span class="p">:</span> <span class="nx">manifest</span><span class="p">[</span><span class="s1">'main.css'</span><span class="p">],</span>
@@ -286,57 +287,57 @@
 <p>所以现代的 web 应用有这样的开发意识：everything in js is the better way. 正是 js 的模块化的可能性，成为了 web 功能模块（包含界面与交互）的组件化实现的基石。可以将 html 和 css 写在 js 之中（JSX），也可以以模板的形式它们三者写一起（Vue）：</p>
 
 <p>JSX 写法：</p>
-<div class="highlight"><pre><code class="language-jsx" data-lang="jsx">import React, { PropTypes } from 'react';
-import styles from './Preview.css';
+<div class="highlight"><pre><code class="language-jsx" data-lang="jsx"><span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">PropTypes</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'react'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">styles</span> <span class="k">from</span> <span class="s1">'./Preview.css'</span><span class="p">;</span>
 
-const Preview = ({url, user}) =&gt; {
-  return (
-    &lt;div className={styles.card}&gt;
-      &lt;img src={url} alt="" className={styles.normal}/&gt;
-      &lt;Profile user={user} /&gt;
-    &lt;/div&gt;
-  );
-};
+<span class="kd">const</span> <span class="nx">Preview</span> <span class="o">=</span> <span class="p">({</span><span class="nx">url</span><span class="p">,</span> <span class="nx">user</span><span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">className=</span><span class="si">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">card</span><span class="si">}</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src=</span><span class="si">{</span><span class="nx">url</span><span class="si">}</span> <span class="na">alt=</span><span class="s2">""</span> <span class="na">className=</span><span class="si">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">normal</span><span class="si">}</span><span class="p">/&gt;</span>
+      <span class="p">&lt;</span><span class="nc">Profile</span> <span class="na">user=</span><span class="si">{</span><span class="nx">user</span><span class="si">}</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">);</span>
+<span class="p">};</span>
 
-Preview.propTypes = {
-  url: PropTypes.string,
-  user: PropTypes.object
-};
+<span class="nx">Preview</span><span class="p">.</span><span class="nx">propTypes</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">url</span><span class="p">:</span> <span class="nx">PropTypes</span><span class="p">.</span><span class="nx">string</span><span class="p">,</span>
+  <span class="na">user</span><span class="p">:</span> <span class="nx">PropTypes</span><span class="p">.</span><span class="nx">object</span>
+<span class="p">};</span>
 
-export default Preview;
+<span class="k">export</span> <span class="k">default</span> <span class="nx">Preview</span><span class="p">;</span>
 </code></pre></div>
 <p>Vue 的单文件形式：</p>
-<div class="highlight"><pre><code class="language-" data-lang="">&lt;template&gt;
-  &lt;div id="app"&gt;
-    &lt;img src="./assets/logo.png"&gt;
-    &lt;h1&gt;\{{ msg }}&lt;/h1&gt;
-  &lt;/div&gt;
-&lt;/template&gt;
+<div class="highlight"><pre><code class="language-vue" data-lang="vue"><span class="nt">&lt;</span><span class="k">template</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"./assets/logo.png"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h1&gt;</span><span class="si">{{</span> <span class="nx">msg</span> <span class="si">}}</span><span class="nt">&lt;/h1&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/</span><span class="k">template</span><span class="nt">&gt;</span>
 
-&lt;script&gt;
-export default {
-  name: 'app',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
-    }
-  }
-}
-&lt;/script&gt;
+<span class="nt">&lt;</span><span class="k">script</span><span class="nt">&gt;</span>
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="s1">'app'</span><span class="p">,</span>
+  <span class="nx">data</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="na">msg</span><span class="p">:</span> <span class="s1">'Welcome to Your Vue.js App'</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="nt">&lt;/</span><span class="k">script</span><span class="nt">&gt;</span>
 
-&lt;style&gt;
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-h1 {
-  font-weight: normal;
-}
-&lt;/style&gt;
+<span class="nt">&lt;</span><span class="k">style</span><span class="nt">&gt;</span>
+<span class="nf">#app</span> <span class="p">{</span>
+  <span class="nl">font-family</span><span class="p">:</span> <span class="s2">'Avenir'</span><span class="p">,</span> <span class="n">Helvetica</span><span class="p">,</span> <span class="n">Arial</span><span class="p">,</span> <span class="nb">sans-serif</span><span class="p">;</span>
+  <span class="nl">-webkit-font-smoothing</span><span class="p">:</span> <span class="n">antialiased</span><span class="p">;</span>
+  <span class="nl">-moz-osx-font-smoothing</span><span class="p">:</span> <span class="n">grayscale</span><span class="p">;</span>
+  <span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="m">#2c3e50</span><span class="p">;</span>
+  <span class="nl">margin-top</span><span class="p">:</span> <span class="m">60px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">h1</span> <span class="p">{</span>
+  <span class="nl">font-weight</span><span class="p">:</span> <span class="nb">normal</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">&lt;/</span><span class="k">style</span><span class="nt">&gt;</span>
 </code></pre></div>
 <p>无论哪种形式，组件都不能直接在浏览器中使用（将来的 Web Components 可以，但可构建的组件绝对是更加有优势）。如果我们将浏览器看作是 web 应用的 runtime 环境，对比于 jvm 是 java 的 runtime，那前端的组件代码都是 java 级别的源码，要类似 java 那样通过编译打包成 war 方可使用。</p>
 
@@ -475,10 +476,19 @@ h1 {
 
       </div>
     </footer>
+    <section class="post-recent">
+  
+    <a class="relative-post previous" href="/2016/node-app-deploy-simple-guide"><span>Node APP 布署简易教程</span></a>
+  
+  
+    <a class="relative-post next" href="/2017/install-ss-for-bandwagonhost"><span>搬瓦工安装 SS 服务端</span></a>
+  
+</section>
+
   </article>
 </main>
 
-<div class="post-comment">
+  <div class="post-comment">
 	<div id="disqus_thread" class="container"></div>
 </div>
 <script>

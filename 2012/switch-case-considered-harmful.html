@@ -11,6 +11,7 @@
 	<link rel="alternate" type="application/rss+xml" title="Subscribe Feed" href="/feed.xml">
 	<link  href="/css/app.css" rel="stylesheet" media="all">
 	<link href="//cdn.bootcss.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lustria" rel="stylesheet">
     <!-- <link href='//fonts.useso.com/css?family=PT+Serif:400,700' rel='stylesheet' type='text/css'> -->
 	<script>
 	function loadSync(u,p,a){
@@ -57,7 +58,7 @@
 </div>
 	
 	</div>
-	<a href="/feed.xml" data-tip="true" data-tip-content="订阅" class="tip--top subscribe">
+	<a href="/feed.xml" class="subscribe">
 		<i class="fa fa-rss"></i>
 	</a>
 </header>
@@ -83,13 +84,13 @@
 <p>假设你要创建一个游戏程序，非玩家的格斗动作是基于一段特定算法来进行选择处理，作为字符串传给 <code>doAction</code> 方法。<code>switch ... case</code> 的形式如下：</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">doAction</span><span class="p">(</span><span class="nx">action</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">switch</span> <span class="p">(</span><span class="nx">action</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="s1">'hack'</span><span class="err">:</span>
+    <span class="k">case</span> <span class="s1">'hack'</span><span class="p">:</span>
         <span class="k">return</span> <span class="s1">'hack'</span><span class="p">;</span>
     <span class="k">break</span><span class="p">;</span>
-    <span class="k">case</span> <span class="s1">'slash'</span><span class="err">:</span>
+    <span class="k">case</span> <span class="s1">'slash'</span><span class="p">:</span>
         <span class="k">return</span> <span class="s1">'slash'</span><span class="p">;</span>
     <span class="k">break</span><span class="p">;</span>
-    <span class="k">case</span> <span class="s1">'run'</span><span class="err">:</span>
+    <span class="k">case</span> <span class="s1">'run'</span><span class="p">:</span>
         <span class="k">return</span> <span class="s1">'run'</span><span class="p">;</span>
     <span class="k">break</span><span class="p">;</span>
     <span class="nl">default</span><span class="p">:</span>
@@ -130,12 +131,12 @@
 <p><code>switch … case</code> 的写法是：</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">processToken</span> <span class="p">(</span><span class="nx">token</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">switch</span> <span class="p">(</span><span class="nx">token</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="s1">'{'</span><span class="err">:</span>
-    <span class="k">case</span> <span class="s1">'['</span><span class="err">:</span>
+    <span class="k">case</span> <span class="s1">'{'</span><span class="p">:</span>
+    <span class="k">case</span> <span class="s1">'['</span><span class="p">:</span>
       <span class="nx">handleOpen</span><span class="p">(</span><span class="nx">token</span><span class="p">);</span>
     <span class="k">break</span><span class="p">;</span>
-    <span class="k">case</span> <span class="s1">']'</span><span class="err">:</span>
-    <span class="k">case</span> <span class="s1">'}'</span><span class="err">:</span>
+    <span class="k">case</span> <span class="s1">']'</span><span class="p">:</span>
+    <span class="k">case</span> <span class="s1">'}'</span><span class="p">:</span>
       <span class="nx">handleClose</span><span class="p">(</span><span class="nx">token</span><span class="p">);</span>
     <span class="k">break</span><span class="p">;</span>
     <span class="nl">default</span><span class="p">:</span>
@@ -199,10 +200,19 @@
 
       </div>
     </footer>
+    <section class="post-recent">
+  
+    <a class="relative-post previous" href="/2012/todo-plugin-for-sublime"><span>TODO 插件 for Sublime Text 2</span></a>
+  
+  
+    <a class="relative-post next" href="/2013/delete-system-display-profile-mistakenly"><span>误删系统显示描述文件</span></a>
+  
+</section>
+
   </article>
 </main>
 
-<div class="post-comment">
+  <div class="post-comment">
 	<div id="disqus_thread" class="container"></div>
 </div>
 <script>
