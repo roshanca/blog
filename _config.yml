@@ -10,6 +10,11 @@ subtitle: just Roshan's blog
 permalink: /:year/:title
 # relative_permalinks: true
 
+# Paginate
+plugins: [jekyll-paginate]
+paginate: 10
+paginate_path: "archives/page:num"
+
 # Where things are
 source: site
 destination: ./_site

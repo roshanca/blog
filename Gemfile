@@ -6,4 +6,5 @@ end
 
 gem 'rake'
 gem 'jekyll'
+gem 'jekyll-paginate'
 gem 'redcarpet'

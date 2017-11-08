@@ -26,4 +26,10 @@
       @include tailhook;
     }
   }
+  .pagination {
+    color: #666;
+    > em, span {
+      color: #999;
+    }
+  }
 }
