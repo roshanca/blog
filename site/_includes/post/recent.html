@@ -1,0 +1,8 @@
+<section class="post-recent">
+  {% if page.previous %}
+    <a class="relative-post previous" href="{{ page.previous.url | prepend: site.baseurl }}"><span>{{ page.previous.title }}</span></a>
+  {% endif %}
+  {% if page.next %}
+    <a class="relative-post next" href="{{ page.next.url | prepend: site.baseurl }}"><span>{{ page.next.title }}</span></a>
+  {% endif %}
+</section>

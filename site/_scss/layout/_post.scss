@@ -200,3 +200,52 @@
     @extend %container;
   }
 }
+
+%title {
+  display: block;
+  font-weight: 700;
+  font-family: $sans;
+  font-size: 2rem;
+  color: #666;
+}
+
+.post-recent {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5rem;
+  .relative-post {
+    display: block;
+    width: 35%;
+    height: 8.5rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid #ddd;
+    text-align: center;
+    color: #a0a0a0;
+    font-size: 1.6rem;
+    > span {
+      display: block;
+      display: -webkit-box;
+      max-width: 100%;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    &:hover {
+      background-color: #333;
+      color: #fff;
+    }
+    &.previous {
+      &::before {
+        content: "Previous Post";
+        @extend %title;
+      }
+    }
+    &.next {
+      &::before {
+        content: "Next Post";
+        @extend %title;
+      }
+    }
+  }
+}

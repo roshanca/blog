@@ -16,8 +16,11 @@ layout: default
         {% include post/tag.html %}
       </div>
     </footer>
+    {% include post/recent.html %}
   </article>
 </main>
 {% if page.comments == true %}
-{% include post/disqus.html %}
+  {% if jekyll.environment == "production" %}
+     {% include post/disqus.html %}
+  {% endif %}
 {% endif %}
