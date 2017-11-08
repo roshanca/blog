@@ -249,11 +249,11 @@ export default Preview;
 Vue 的单文件形式：
 
 {% raw %}
-```
+```vue
 <template>
   <div id="app">
     <img src="./assets/logo.png">
-    <h1>\{{ msg }}</h1>
+    <h1>{{ msg }}</h1>
   </div>
 </template>
 
