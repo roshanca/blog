@@ -20,7 +20,5 @@ layout: default
   </article>
 </main>
 {% if page.comments == true %}
-  {% if jekyll.environment == "production" %}
-     {% include post/disqus.html %}
-  {% endif %}
+  {% include post/disqus.html %}
 {% endif %}
