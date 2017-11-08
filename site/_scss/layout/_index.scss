@@ -85,6 +85,10 @@
 
 .more {
   padding-left: 13.5rem;
+  > a {
+    font-style: italic;
+    color: #000;
+  }
   @include responsive(480px) {
     padding-left: 0;
   }

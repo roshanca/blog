@@ -113,16 +113,17 @@
   code {
     padding: 0 .5rem;
     font-family: $mono;
+    font-size: 90%;
     background-color: $code-bg-color;
   }
   pre {
     // padding: .8rem 1.6rem;
-    font-size: 90%;
+    // font-size: 90%;
     line-height: 1.5;
     // border-left: 4px solid #dadada;
-    // background-color: $pre-bg-color;
+    background-color: $pre-bg-color;
     // white-space: pre-wrap;
-    background-image: url(https://sf-static.b0.upaiyun.com/v-583bf474/global/img/blueprint.png);
+    // background-image: url(https://sf-static.b0.upaiyun.com/v-583bf474/global/img/blueprint.png);
     background-repeat: repeat;
     overflow-x: auto;
     code {
