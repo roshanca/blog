@@ -116,7 +116,7 @@ namespace :post do
       exit -1
     end
 
-    header = { "layout" => "post", "title" => title, "data" => date, "tags" => "unsort", "comments" => true }
+    header = { "layout" => "post", "title" => title, "data" => date, "tags" => "unsort", "toc" => true, "comments" => true }
     content = header.to_yaml + "---\n"
 
     if IO.write(filename, content)
