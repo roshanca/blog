@@ -39,7 +39,7 @@
 	<div class="header-inner">
 	
 		<a href="/" class="blog-title home">肉山·察</a>
-		<div>
+		<div class="header-icon">
 	<a href="//github.com/roshanca" class="social-link">
 		<i class="fa fa-github"></i>
 	</a>
@@ -69,6 +69,15 @@
       <h1 class="post-title">从 Heroku 迁移至 GitHub</h1>
     </header>
     <section class="post-content">
+      <nav class="post-toc">
+  <ul class="section-nav">
+</ul>
+  <svg class="toc-marker" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+    <path stroke="#444" stroke-width="3" fill="transparent" stroke-dasharray="0, 0, 0, 1000" stroke-linecap="round" stroke-linejoin="round"
+      transform="translate(-0.5, -0.5)" />
+  </svg>
+</nav>
+
       <p><a href="http://www.heroku.com/">Heroku</a> 太慢了。</p>
 
 <p>在 <a href="http://www.godaddy.com/">Godaddy</a> 上申请了个域名：<code>roshanca.com</code>，9.99$ 一年，但两年的费用成了 23$，我都不知道咋整的。。。仔细一看，才发现 9.99 是优惠价，而且只限第一年优惠。晕了，不过相对国内来说，还算是便宜的了。</p>
@@ -118,6 +127,7 @@
   
 </section>
 
+    <script src="/js/post.js"></script>
   </article>
 </main>
 
@@ -157,7 +167,7 @@ window.onscroll = function () {
 
 
 <footer id="footer" role="contentinfo">
-	<p>© Copyright 2012 - 2017 by Roshan Wu.</p>
+	<p>© Copyright 2012 - <script>document.write(new Date().getFullYear())</script> by Roshan Wu.</p>
 </footer>
 
 <div class="fork-github">

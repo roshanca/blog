@@ -39,7 +39,7 @@
 	<div class="header-inner">
 	
 		<a href="/" class="blog-title home">肉山·察</a>
-		<div>
+		<div class="header-icon">
 	<a href="//github.com/roshanca" class="social-link">
 		<i class="fa fa-github"></i>
 	</a>
@@ -69,20 +69,32 @@
       <h1 class="post-title">TODO 插件 for Sublime Text 2</h1>
     </header>
     <section class="post-content">
+      <nav class="post-toc">
+  <ul class="section-nav">
+<li class="toc-entry toc-h3"><a href="#自动关联图标">自动关联图标</a></li>
+</ul>
+  <svg class="toc-marker" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+    <path stroke="#444" stroke-width="3" fill="transparent" stroke-dasharray="0, 0, 0, 1000" stroke-linecap="round" stroke-linejoin="round"
+      transform="translate(-0.5, -0.5)" />
+  </svg>
+</nav>
+
       <p>用 ST2 来实现日常与工作中的 TODO，详细请查看这篇文章：<a href="http://lucifr.com/2012/09/18/sublime-text-extension-plaintasks/">《Sublime Text 2 插件：PlainTasks》</a></p>
 
 <p>安装与使用文中已经的很详细了，很感谢 Lucifr 翻译了 <a href="https://github.com/aziz/PlainTasks">PlainTasks</a> 自带的英文教程：</p>
 
-<p><script src='https://gist.github.com/4232437.js?file='></script><div><noscript><pre><code></code></pre></noscript></div></p>
+<p><script src="https://gist.github.com/4232437.js?file="></script></p><div><noscript><pre><code></code></pre></noscript></div>
 
-<h3>自动关联图标</h3>
+<h3>
+<a id="自动关联图标" class="anchor" href="#%E8%87%AA%E5%8A%A8%E5%85%B3%E8%81%94%E5%9B%BE%E6%A0%87" aria-hidden="true"><span class="octicon octicon-link"></span></a>自动关联图标</h3>
 
 <p>关于如何将 TODO 文档自动关联作者提供的那漂亮的图标，我去搜索了一番，具体做法如下：</p>
 
 <ol>
 <li> 右键点击 ST2 选择“显示包内容”，进入 <code>Contents =&gt; Resources</code>；</li>
 <li> 将图标文件 <code>TODO.icns</code> 复制到此目录下；</li>
-<li><p>返回 <code>Contents</code> 目录，编辑 <code>info.plist</code>，在键值 <code>CFBundleDocumentTypes</code> 内的首个 <code>&lt;array&gt;</code> 后加入以下代码：</p>
+<li>
+<p>返回 <code>Contents</code> 目录，编辑 <code>info.plist</code>，在键值 <code>CFBundleDocumentTypes</code> 内的首个 <code>&lt;array&gt;</code> 后加入以下代码：</p>
 <div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dict&gt;</span>
   <span class="nt">&lt;key&gt;</span>CFBundleTypeExtensions<span class="nt">&lt;/key&gt;</span>
   <span class="nt">&lt;array&gt;</span>
@@ -98,11 +110,14 @@
   <span class="nt">&lt;key&gt;</span>CFBundleTypeIconFile<span class="nt">&lt;/key&gt;</span>
   <span class="nt">&lt;string&gt;</span>TODO<span class="nt">&lt;/string&gt;</span>
 <span class="nt">&lt;/dict&gt;</span>
-</code></pre></div></li>
+</code></pre></div>
+</li>
 <li><p>保存，关闭退出 ST2；</p></li>
-<li><p>重建 Launchservice：在终端中输入：</p>
+<li>
+<p>重建 Launchservice：在终端中输入：</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister <span class="nt">-r</span> <span class="nt">-f</span> /Applications/Sublime<span class="se">\ </span>Text<span class="se">\ </span>2.app/
-</code></pre></div></li>
+</code></pre></div>
+</li>
 <li><p>注销电脑或者在终端中输入 <code>killall Finder</code>。</p></li>
 </ol>
 
@@ -134,6 +149,7 @@
   
 </section>
 
+    <script src="/js/post.js"></script>
   </article>
 </main>
 
@@ -173,7 +189,7 @@ window.onscroll = function () {
 
 
 <footer id="footer" role="contentinfo">
-	<p>© Copyright 2012 - 2017 by Roshan Wu.</p>
+	<p>© Copyright 2012 - <script>document.write(new Date().getFullYear())</script> by Roshan Wu.</p>
 </footer>
 
 <div class="fork-github">

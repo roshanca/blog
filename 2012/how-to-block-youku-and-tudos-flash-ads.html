@@ -39,7 +39,7 @@
 	<div class="header-inner">
 	
 		<a href="/" class="blog-title home">肉山·察</a>
-		<div>
+		<div class="header-icon">
 	<a href="//github.com/roshanca" class="social-link">
 		<i class="fa fa-github"></i>
 	</a>
@@ -69,33 +69,55 @@
       <h1 class="post-title">如何屏蔽优酷和土豆的 Flash 广告</h1>
     </header>
     <section class="post-content">
+      <nav class="post-toc">
+  <ul class="section-nav">
+<li class="toc-entry toc-h3"><a href="#host-修改法">host 修改法</a></li>
+<li class="toc-entry toc-h3"><a href="#userscript-注入法">userScript 注入法</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#update">update:</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h3"><a href="#html-5-转换法">HTML 5 转换法</a></li>
+</ul>
+  <svg class="toc-marker" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+    <path stroke="#444" stroke-width="3" fill="transparent" stroke-dasharray="0, 0, 0, 1000" stroke-linecap="round" stroke-linejoin="round"
+      transform="translate(-0.5, -0.5)" />
+  </svg>
+</nav>
+
       <p>大家出来混都不容易，按理说视频网站的播放不收费只内嵌点广告，无可厚非。可最近看来，这些视频网站的 Flash 内嵌广告，越来越长，直逼老婆娘的裹脚布，让人有点忍无可忍了。我见过最长的广告长达1分45秒，how about u？真叫人怀念那个15秒广告的年代啊！而且现如今广告的质量也不咋样，我曾在追一部无脑国产连续剧时（哎，哥也有无聊的时候啊），被生逼着看了好几遍的“苏菲”广告。质量差点也就算了，还不让跳过。看看人家 YouTube，5秒后可选 Skip 的设计多棒，不过人家也是对广告内容的自信。</p>
 
-<p>好了，言归正传，来看看有什么方法让优酷和土豆，甚至是奇艺、sina、网易、QQ、迅雷&hellip;等的视频广告消失不见。</p>
+<p>好了，言归正传，来看看有什么方法让优酷和土豆，甚至是奇艺、sina、网易、QQ、迅雷…等的视频广告消失不见。</p>
 
-<h3>host 修改法</h3>
+<h3>
+<a id="host-修改法" class="anchor" href="#host-%E4%BF%AE%E6%94%B9%E6%B3%95" aria-hidden="true"><span class="octicon octicon-link"></span></a>host 修改法</h3>
 
 <p>这是比较普遍的修改法，但效果不太尽人意。具体的可以参考以下文章：</p>
 
 <ul>
-<li>  <a href="http://www.gracecode.com/archives/3099/">MAC 下屏蔽优酷的黑屏等待</a></li>
-<li>  <a href="http://joys.name/2011/09/block-youku-ad.html">彻底屏蔽优酷广告：最新反“反屏蔽”的方法……</a></li>
+<li>  <a href="http://www.gracecode.com/archives/3099/">MAC 下屏蔽优酷的黑屏等待</a>
+</li>
+<li>  <a href="http://joys.name/2011/09/block-youku-ad.html">彻底屏蔽优酷广告：最新反“反屏蔽”的方法……</a>
+</li>
 </ul>
 
-<h3>userScript 注入法</h3>
+<h3>
+<a id="userscript-注入法" class="anchor" href="#userscript-%E6%B3%A8%E5%85%A5%E6%B3%95" aria-hidden="true"><span class="octicon octicon-link"></span></a>userScript 注入法</h3>
 
 <p>使用 <a href="http://userscripts.org">userScript</a> 的注入技术以达到不可告人的目的，说白了，就是允许用户脚本运行在 web 页面上，与其交互。So, 我们可以在页面加载或 Flash 载入前，做好多自己想做事情。有人就研究出了偷梁换柱的方法，见 <a href="http://player.opengg.me">OpenGG.Clean.Player</a>。注意：这个脚本是将整个 Flash 播放源替换了，所以 host 修改法解决不了的问题，在此得到了彻底的解决。</p>
 
 <p>简单说下如何使用。</p>
 
 <ul>
-<li>  Firefox：<a href="http://www.greasespot.net">Greasemonkey</a></li>
-<li>  Chrome：<a href="https://chrome.google.com/webstore/detail/gcalenpjmijncebpfijmoaglllgpjagf?hl=zh-CN&utm_source=chrome-ntp-launcher">Tampermonkey Beta</a> </li>
+<li>  Firefox：<a href="http://www.greasespot.net">Greasemonkey</a>
+</li>
+<li>  Chrome：<a href="https://chrome.google.com/webstore/detail/gcalenpjmijncebpfijmoaglllgpjagf?hl=zh-CN&amp;utm_source=chrome-ntp-launcher">Tampermonkey Beta</a> </li>
 </ul>
 
 <p>安装完相应的插件后，非常 simple 了，前往此偷梁换柱神奇脚本的地址：<a href="http://userscripts.org/scripts/show/120679">http://userscripts.org/scripts/show/120679</a>，点击右上角的 <code>Install</code> 即可。</p>
 
-<h4>update:</h4>
+<h4>
+<a id="update" class="anchor" href="#update" aria-hidden="true"><span class="octicon octicon-link"></span></a>update:</h4>
 
 <p><a href="http://player.opengg.me">OpenGG.Clean.Player</a> 在 Chrome Web Store 上上架了，用 Chrome 的童鞋可以直接访问以下地址进行安装了：</p>
 
@@ -103,7 +125,8 @@
 
 <p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/QQ20121115-1.png" alt="OpenGG.Clean.Player for Chrome"></p>
 
-<h3>HTML 5 转换法</h3>
+<h3>
+<a id="html-5-转换法" class="anchor" href="#html-5-%E8%BD%AC%E6%8D%A2%E6%B3%95" aria-hidden="true"><span class="octicon octicon-link"></span></a>HTML 5 转换法</h3>
 
 <p>可以说这是更高级的 userScript 注入法，对页面元素的改动更大。</p>
 
@@ -114,16 +137,21 @@
 <p>好吧，来看看怎么做，方法有三：</p>
 
 <ul>
-<li><p><a href="http://www.mac52ipod.cn/post/apple-safari-flv-html5-tudou-youku.php">更改 Safari UA</a>：若嫌要每次手工更改略显麻烦，可以在终端中执行以下代码设置 UA 默认为 iPad：</p>
+<li>
+<p><a href="http://www.mac52ipod.cn/post/apple-safari-flv-html5-tudou-youku.php">更改 Safari UA</a>：若嫌要每次手工更改略显麻烦，可以在终端中执行以下代码设置 UA 默认为 iPad：</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">defaults write com.apple.Safari CustomUserAgent “‘Mozilla/5.0 <span class="o">(</span>iPad<span class="p">;</span> CPU OS 5_1 like Mac OS X<span class="o">)</span> AppleWebKit/534.46 <span class="o">(</span>KHTML, like Gecko<span class="o">)</span> Version/5.1 Mobile/9B176 Safari/7534.48.3′”
 </code></pre></div>
 <p>要还原只需执行：</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">defaults delete com.apple.Safari CustomUserAgent
-</code></pre></div></li>
-<li><p><a href="http://zythum.free.bg/youkuhtml5playerbookmark/">一个在线转换优酷土豆视频的 bookmark</a>：also, safari supported only.</p>
+</code></pre></div>
+</li>
+<li>
+<p><a href="http://zythum.free.bg/youkuhtml5playerbookmark/">一个在线转换优酷土豆视频的 bookmark</a>：also, safari supported only.</p>
 
-<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/html5bookmark.jpg" alt="html5bookmark"></p></li>
-<li><p><a href="http://hoyois.github.com/safariextensions/clicktoplugin/">ClickToPlugin &amp; ClickToFlash</a>：这是老外写的 Safari Extension，前者是后者的扩展版。从字面上看是用于控制 Flash 等浏览器插件（Java, Silverlight etc.）加载的，实际上，as it says</p>
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/html5bookmark.jpg" alt="html5bookmark"></p>
+</li>
+<li>
+<p><a href="http://hoyois.github.com/safariextensions/clicktoplugin/">ClickToPlugin &amp; ClickToFlash</a>：这是老外写的 Safari Extension，前者是后者的扩展版。从字面上看是用于控制 Flash 等浏览器插件（Java, Silverlight etc.）加载的，实际上，as it says</p>
 
 <blockquote>
 <p>Further, it can replace many plug-in-based media players by Safari’s native HTML5 media player</p>
@@ -144,7 +172,8 @@
 
 <p>当然，目前来说，它还有许多不足：比如支持还不够广泛（许多微博的内嵌视频不支持），比如亮度对比度的调节、画面尺寸调节功能的缺失等等。</p>
 
-<p>但相对于其带来的巨大优势来说，这些小瑕疵都不算什么。</p></li>
+<p>但相对于其带来的巨大优势来说，这些小瑕疵都不算什么。</p>
+</li>
 </ul>
 
     </section>
@@ -175,6 +204,7 @@
   
 </section>
 
+    <script src="/js/post.js"></script>
   </article>
 </main>
 
@@ -214,7 +244,7 @@ window.onscroll = function () {
 
 
 <footer id="footer" role="contentinfo">
-	<p>© Copyright 2012 - 2017 by Roshan Wu.</p>
+	<p>© Copyright 2012 - <script>document.write(new Date().getFullYear())</script> by Roshan Wu.</p>
 </footer>
 
 <div class="fork-github">

@@ -39,7 +39,7 @@
 	<div class="header-inner">
 	
 		<a href="/" class="blog-title home">肉山·察</a>
-		<div>
+		<div class="header-icon">
 	<a href="//github.com/roshanca" class="social-link">
 		<i class="fa fa-github"></i>
 	</a>
@@ -69,6 +69,25 @@
       <h1 class="post-title">前端编码风格规范之一般规范</h1>
     </header>
     <section class="post-content">
+      <nav class="post-toc">
+  <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#一般规范">一般规范</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#文件资源命名">文件/资源命名</a></li>
+<li class="toc-entry toc-h3"><a href="#协议">协议</a></li>
+<li class="toc-entry toc-h3"><a href="#文本缩进">文本缩进</a></li>
+<li class="toc-entry toc-h3"><a href="#注释">注释</a></li>
+<li class="toc-entry toc-h3"><a href="#代码检查">代码检查</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#系列文章">系列文章</a></li>
+</ul>
+  <svg class="toc-marker" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+    <path stroke="#444" stroke-width="3" fill="transparent" stroke-dasharray="0, 0, 0, 1000" stroke-linecap="round" stroke-linejoin="round"
+      transform="translate(-0.5, -0.5)" />
+  </svg>
+</nav>
+
       <p>原文：<a href="https://github.com/gionkunz/chartist-js/blob/develop/CODINGSTYLE.md">Web Styleguide - Style guide to harmonize HTML, Javascript and CSS / SASS coding style</a></p>
 
 <p>这是一份旨在增强团队的开发协作，提高代码质量和打造开发基石的编码风格规范，其中包含了 HTML, JavaScript 和 CSS/SCSS 这几个部分。</p>
@@ -79,13 +98,15 @@
 
 <hr>
 
-<h2>一般规范</h2>
+<h2>
+<a id="一般规范" class="anchor" href="#%E4%B8%80%E8%88%AC%E8%A7%84%E8%8C%83" aria-hidden="true"><span class="octicon octicon-link"></span></a>一般规范</h2>
 
 <p>以下章节列举了一些可应用在 HTML, JavaScript 和 CSS/SCSS 上的通用规则。</p>
 
 <hr>
 
-<h3>文件/资源命名</h3>
+<h3>
+<a id="文件资源命名" class="anchor" href="#%E6%96%87%E4%BB%B6%E8%B5%84%E6%BA%90%E5%91%BD%E5%90%8D" aria-hidden="true"><span class="octicon octicon-link"></span></a>文件/资源命名</h3>
 
 <p>在 web 项目中，所有的文件名应该都遵循同一命名约定。以可读性而言，减号（-）是用来分隔文件名的不二之选。同时它也是常见的 URL 分隔符（i.e. <code>//example.com/blog/my-blog-entry</code> or <code>//s.example.com/images/big-black-background.jpg</code>），所以理所当然的，减号应该也是用来分隔资源名称的好选择。</p>
 
@@ -111,7 +132,8 @@ my-file.min.css
 </code></pre></div>
 <hr>
 
-<h3>协议</h3>
+<h3>
+<a id="协议" class="anchor" href="#%E5%8D%8F%E8%AE%AE" aria-hidden="true"><span class="octicon octicon-link"></span></a>协议</h3>
 
 <p>不要指定引入资源所带的具体协议。</p>
 
@@ -137,7 +159,8 @@ my-file.min.css
 </code></pre></div>
 <hr>
 
-<h3>文本缩进</h3>
+<h3>
+<a id="文本缩进" class="anchor" href="#%E6%96%87%E6%9C%AC%E7%BC%A9%E8%BF%9B" aria-hidden="true"><span class="octicon octicon-link"></span></a>文本缩进</h3>
 
 <p>一次缩进两个空格。</p>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;ul&gt;</span>
@@ -165,7 +188,8 @@ my-file.min.css
 </code></pre></div>
 <hr>
 
-<h3>注释</h3>
+<h3>
+<a id="注释" class="anchor" href="#%E6%B3%A8%E9%87%8A" aria-hidden="true"><span class="octicon octicon-link"></span></a>注释</h3>
 
 <p>注释是<strong>你自己</strong>与你的小伙伴们了解代码写法和目的的唯一途径。特别是在写一些看似琐碎的无关紧要的代码时，由于记忆点不深刻，注释就变得尤为重要了。</p>
 
@@ -194,7 +218,8 @@ my-file.min.css
 
 <hr>
 
-<h3>代码检查</h3>
+<h3>
+<a id="代码检查" class="anchor" href="#%E4%BB%A3%E7%A0%81%E6%A3%80%E6%9F%A5" aria-hidden="true"><span class="octicon octicon-link"></span></a>代码检查</h3>
 
 <p>对于比较宽松自由的编程语言来说，严格遵循编码规范和格式化风格指南就显得极为重要。遵循规范固然很好，但是有自动化流程来确保其执行情况，岂不更佳。Trust is good, control is better.</p>
 
@@ -202,7 +227,8 @@ my-file.min.css
 
 <hr>
 
-<h2>系列文章</h2>
+<h2>
+<a id="系列文章" class="anchor" href="#%E7%B3%BB%E5%88%97%E6%96%87%E7%AB%A0" aria-hidden="true"><span class="octicon octicon-link"></span></a>系列文章</h2>
 
 <ul>
 <li><a href="//roshanca.com/2014/web-develop-styleguide-html">前端编码风格规范之 HTML</a></li>
@@ -214,7 +240,7 @@ my-file.min.css
 <ol>
 
 <li id="fn1">
-<p>Compass 是一个基于 Sass 开源的 CSS 框架，而 Sass 是一个非常流行的 CSS 预编译器。&nbsp;<a href="#fnref1" rev="footnote">&#8617;</a></p>
+<p>Compass 是一个基于 Sass 开源的 CSS 框架，而 Sass 是一个非常流行的 CSS 预编译器。 <a href="#fnref1" rev="footnote">↩</a></p>
 </li>
 
 </ol>
@@ -244,6 +270,7 @@ my-file.min.css
   
 </section>
 
+    <script src="/js/post.js"></script>
   </article>
 </main>
 
@@ -283,7 +310,7 @@ window.onscroll = function () {
 
 
 <footer id="footer" role="contentinfo">
-	<p>© Copyright 2012 - 2017 by Roshan Wu.</p>
+	<p>© Copyright 2012 - <script>document.write(new Date().getFullYear())</script> by Roshan Wu.</p>
 </footer>
 
 <div class="fork-github">

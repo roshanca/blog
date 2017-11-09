@@ -39,7 +39,7 @@
 	<div class="header-inner">
 	
 		<a href="/" class="blog-title home">肉山·察</a>
-		<div>
+		<div class="header-icon">
 	<a href="//github.com/roshanca" class="social-link">
 		<i class="fa fa-github"></i>
 	</a>
@@ -69,6 +69,40 @@
       <h1 class="post-title">前端工程化体系</h1>
     </header>
     <section class="post-content">
+      <nav class="post-toc">
+  <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#node-服务层">Node 服务层</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#数据代理">数据代理</a></li>
+<li class="toc-entry toc-h3"><a href="#数据-mock">数据 Mock</a></li>
+<li class="toc-entry toc-h3"><a href="#url-路由">url 路由</a></li>
+<li class="toc-entry toc-h3"><a href="#服务端模板渲染">服务端模板渲染</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#web-应用开发层">Web 应用开发层</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#组件化和工程化">组件化和工程化</a></li>
+<li class="toc-entry toc-h3"><a href="#mdv">MDV</a></li>
+<li class="toc-entry toc-h3"><a href="#轮子">轮子</a></li>
+<li class="toc-entry toc-h3"><a href="#多终端和跨平台">多终端和跨平台</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#前端运维层">前端运维层</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#测试">测试</a></li>
+<li class="toc-entry toc-h3"><a href="#cicd">CI/CD</a></li>
+<li class="toc-entry toc-h3"><a href="#扩展与稳定性">扩展与稳定性</a></li>
+<li class="toc-entry toc-h3"><a href="#性能日志监控">性能日志监控</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#写在最后">写在最后</a></li>
+</ul>
+  <svg class="toc-marker" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+    <path stroke="#444" stroke-width="3" fill="transparent" stroke-dasharray="0, 0, 0, 1000" stroke-linecap="round" stroke-linejoin="round"
+      transform="translate(-0.5, -0.5)" />
+  </svg>
+</nav>
+
       <p>何谓前端工程化？即根据业务特点，将前端开发流程规范化、标准化。它主要包含不同业务场景的技术选型、代码规范、构建发布方案等。主要目地是为了提升前端开发工程师的开发效率与代码质量，降低前后端联调的沟通成本，使得前后端工程师更加专注于自身擅长领域。</p>
 
 <p>根据自身从业这些年的一些产品和项目经验，对前端工程体系的设计有一些自己的见解：</p>
@@ -90,9 +124,11 @@
 
 <p><a target="_blank" href="http://oigzv3evy.bkt.clouddn.com/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96%E4%BD%93%E7%B3%BB.png"><img src="http://oigzv3evy.bkt.clouddn.com/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96%E4%BD%93%E7%B3%BB.png" alt=""></a></p>
 
-<h2>Node 服务层</h2>
+<h2>
+<a id="node-服务层" class="anchor" href="#node-%E6%9C%8D%E5%8A%A1%E5%B1%82" aria-hidden="true"><span class="octicon octicon-link"></span></a>Node 服务层</h2>
 
-<h3>数据代理</h3>
+<h3>
+<a id="数据代理" class="anchor" href="#%E6%95%B0%E6%8D%AE%E4%BB%A3%E7%90%86" aria-hidden="true"><span class="octicon octicon-link"></span></a>数据代理</h3>
 
 <p>一般在 web 应用中，数据的来源分为两类：</p>
 
@@ -138,19 +174,22 @@
 
 <p>我在之前做公司的模拟炒股项目时，大概就是这样用滴：</p>
 
-<table><thead>
+<table>
+<thead>
 <tr>
 <th>账户系统</th>
 <th>行情系统</th>
 <th>交易系统</th>
 </tr>
-</thead><tbody>
+</thead>
+<tbody>
 <tr>
 <td>/api/account</td>
 <td>/api/stock</td>
 <td>/api/trade</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'url'</span><span class="p">);</span>
 
 <span class="c1">// 账户系统 API</span>
@@ -178,7 +217,8 @@
 
 <p>还有一点是因为下文中将要介绍的 Web 应用开发中，开发构建的工具本身就是基于 Node 的，构建后的静态资源如何在模板页面中引入，还是前端工程师最为清楚。所以虽模板属于服务端范畴，但与前端是结合的更加紧密的。</p>
 
-<h3>数据 Mock</h3>
+<h3>
+<a id="数据-mock" class="anchor" href="#%E6%95%B0%E6%8D%AE-mock" aria-hidden="true"><span class="octicon octicon-link"></span></a>数据 Mock</h3>
 
 <p>一般来说，项目开发前期，后端接口实现的任务未完成时，前端写好了页面只能等待。此时，如果后端有空可以造一些假数据，让前端可以继续开发调试。但我们鼓励前端工程师自己 mock 数据，为什么呢？</p>
 
@@ -197,7 +237,8 @@
 
 <p>比较完美的方案是两者结合再加上支持非 restful 的 mock，这个可能需要以后自己定制了。PS. 最近 github 上看到了一个利用 service workers 搞出来的一个 mock 服务： <a href="https://github.com/service-mocker/service-mocker">service-mocker</a>，不管是否适用，但要为这样的思路点赞。</p>
 
-<h3>url 路由</h3>
+<h3>
+<a id="url-路由" class="anchor" href="#url-%E8%B7%AF%E7%94%B1" aria-hidden="true"><span class="octicon octicon-link"></span></a>url 路由</h3>
 
 <p>前端来制定路由，也促使前端工程师更全面深入地了解业务。这属于设计范畴，需要经验加持。</p>
 
@@ -214,7 +255,8 @@
   <span class="p">});</span>
 <span class="p">});</span>
 </code></pre></div>
-<h3>服务端模板渲染</h3>
+<h3>
+<a id="服务端模板渲染" class="anchor" href="#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%A8%A1%E6%9D%BF%E6%B8%B2%E6%9F%93" aria-hidden="true"><span class="octicon octicon-link"></span></a>服务端模板渲染</h3>
 
 <p>对于单页应用来说，服务端模板只是一个壳(shell)而已：</p>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
@@ -276,11 +318,13 @@
   <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
 </code></pre></div>
-<h2>Web 应用开发层</h2>
+<h2>
+<a id="web-应用开发层" class="anchor" href="#web-%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E5%B1%82" aria-hidden="true"><span class="octicon octicon-link"></span></a>Web 应用开发层</h2>
 
 <p>这一部分应该是前端工程师的专长部分，也是其核心价值的体现之处。</p>
 
-<h3>组件化和工程化</h3>
+<h3>
+<a id="组件化和工程化" class="anchor" href="#%E7%BB%84%E4%BB%B6%E5%8C%96%E5%92%8C%E5%B7%A5%E7%A8%8B%E5%8C%96" aria-hidden="true"><span class="octicon octicon-link"></span></a>组件化和工程化</h3>
 
 <p>web 应用开发主要包含三个部分：html，css 和 js，三者之中，除了 js 在近几年才拥有了模块化机制以外，html 和 css 都是需要手工维护（难以维护），伴随着复制粘贴，时间一久其产生的代码冗余就像是 windows 上的 C 盘空间一样，不断发胖。</p>
 
@@ -347,7 +391,8 @@
 
 <p>如何更好的“串联”，这些都是工程问题，也是做为现代前端工程师的必备素质。</p>
 
-<h3>MDV</h3>
+<h3>
+<a id="mdv" class="anchor" href="#mdv" aria-hidden="true"><span class="octicon octicon-link"></span></a>MDV</h3>
 
 <p>MDV = <strong>模型驱动视图</strong>。从 2010 Google 推出 Angular 开始，到 2013 年 Facebook 推出 React，再到最近国人自创的小而美的 Vue，都一路贯穿着 web 开发新的思路：从<strong>手动操作 DOM</strong> 到<strong>数据绑定 + Virtual DOM</strong> 的转变。这也是 everything in js 极致体现：把 DOM 操作都干掉了，直接用基于 js plain object 的虚拟 DOM：</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'a'</span><span class="p">,</span> <span class="p">{</span>
@@ -363,13 +408,15 @@
 
 <p>当然，除了许多新的概念需要学习之外，组件间如何通信，异步数据如何管理等一系列问题也是随之而来的一些挑战。</p>
 
-<h3>轮子</h3>
+<h3>
+<a id="轮子" class="anchor" href="#%E8%BD%AE%E5%AD%90" aria-hidden="true"><span class="octicon octicon-link"></span></a>轮子</h3>
 
 <p>这里的轮子就是指组件。必须要根据公司的业务特点打造前端组件库，这里的指的组件，可以是无关业务的界面组件，也可能是功能模块，或者两者皆有。其目的就是为了方便复用，便于管理。涉及公司业务的我们定义为 private components，不涉及业务的我们如果做的优秀也可以开源，开源有什么好处？大家都懂的。</p>
 
 <p>另外我们也拥抱业界优秀的开源方案，比如蚂蚁金服的 ant-design，谷歌的 Material-UI 等，在巨人的肩膀上，我们可以更高效更快速地开发我们的项目，迭代我们的产品。</p>
 
-<h3>多终端和跨平台</h3>
+<h3>
+<a id="多终端和跨平台" class="anchor" href="#%E5%A4%9A%E7%BB%88%E7%AB%AF%E5%92%8C%E8%B7%A8%E5%B9%B3%E5%8F%B0" aria-hidden="true"><span class="octicon octicon-link"></span></a>多终端和跨平台</h3>
 
 <p>在这里要稍微强调一下我们的主战场也就是浏览器（可以看作是我们前端代码的运行环境）。可以想像的到，js 这个在短短 10 天之内创造出来的解释性语言之所以能够如此流行而且经久不衰，完全是托了浏览器这个全球数量最庞大分部最广的天然 js 解析器的福。它遍布世界上的每一个角落，你不得不用。所以了解语言宿主，当然也是至关重要的。</p>
 
@@ -396,9 +443,11 @@
 
 <p><img src="http://oigzv3evy.bkt.clouddn.com/v2-7ed1d5eb6ae15ea75dc4c79abfb081c0_r.png" alt=""></p>
 
-<h2>前端运维层</h2>
+<h2>
+<a id="前端运维层" class="anchor" href="#%E5%89%8D%E7%AB%AF%E8%BF%90%E7%BB%B4%E5%B1%82" aria-hidden="true"><span class="octicon octicon-link"></span></a>前端运维层</h2>
 
-<h3>测试</h3>
+<h3>
+<a id="测试" class="anchor" href="#%E6%B5%8B%E8%AF%95" aria-hidden="true"><span class="octicon octicon-link"></span></a>测试</h3>
 
 <p>在代码 build 之前有两部操作要做：</p>
 
@@ -413,20 +462,23 @@
 
 <p>Unit Test 在以往只重界面不重交互（页面状态管理）的传统 web 项目下并不常见，但在一些稍微有点复杂程度的前端项目中，单元测试就显得比较重要了。我之前的公司对项目开发的速度要求比较高，所以这一块比较少做。不过目前一些主流的前端框架都附带测试库与简单例子，比如 <a href="https://github.com/facebookincubator/create-react-app">create-react-app</a> 就自带了 <a href="https://github.com/facebook/jest">jest</a>。</p>
 
-<h3>CI/CD</h3>
+<h3>
+<a id="cicd" class="anchor" href="#cicd" aria-hidden="true"><span class="octicon octicon-link"></span></a>CI/CD</h3>
 
 <p>前端的布署主要分静态和动态两部分：</p>
 
 <ul>
 <li>静态主要是指一些静态资源，布署也比较简单，就是往 CDN 服务器上放即可</li>
-<li>动态就是 Node 服务层的东西，关于 Node App 的布署，可参考我之前写的<a href="/2016/node-app-deploy-simple-guide">这篇文章</a></li>
+<li>动态就是 Node 服务层的东西，关于 Node App 的布署，可参考我之前写的<a href="/2016/node-app-deploy-simple-guide">这篇文章</a>
+</li>
 </ul>
 
 <p>至于如何做到自动化以提升效率，主要利用 git hooks 通知到 CI 服务器，执行对应的脚本来实现。这里有许多方案可供选择。由于我在公司一直用的是 gitlab，所以之前只尝试过 <a href="https://about.gitlab.com/gitlab-ci/">gitlab-ci</a>，它能与 Docker 相结合，用起来还是比较爽的。</p>
 
 <p>其它比较常见的如 Jenkins, Travis CI 等。</p>
 
-<h3>扩展与稳定性</h3>
+<h3>
+<a id="扩展与稳定性" class="anchor" href="#%E6%89%A9%E5%B1%95%E4%B8%8E%E7%A8%B3%E5%AE%9A%E6%80%A7" aria-hidden="true"><span class="octicon octicon-link"></span></a>扩展与稳定性</h3>
 
 <p>遇到程序 crash 怎么办？现在 Node 上已经有非常多的进程重启模块，比如 pm2，forever 等。</p>
 
@@ -440,11 +492,13 @@
 
 <p><img src="http://oigzv3evy.bkt.clouddn.com/pm2restart" alt=""></p>
 
-<h3>性能日志监控</h3>
+<h3>
+<a id="性能日志监控" class="anchor" href="#%E6%80%A7%E8%83%BD%E6%97%A5%E5%BF%97%E7%9B%91%E6%8E%A7" aria-hidden="true"><span class="octicon octicon-link"></span></a>性能日志监控</h3>
 
 <p>监控可大可小，往小了说，可以是一个工具，往大了讲，也可以是一套系统，不仅仅可以有可视化的图表，还支持一系列的报警规则。如果公司的人力有限，估计投入产出比不高的，初期可以考虑一些优秀的在线服务，比如：keymetrics.io, Sentry.io 等，这些服务功能强大基本涵盖所有需求，而且易于集成。当然，好用的基本上都是需要付费的。</p>
 
-<h2>写在最后</h2>
+<h2>
+<a id="写在最后" class="anchor" href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E" aria-hidden="true"><span class="octicon octicon-link"></span></a>写在最后</h2>
 
 <p>文中没有提到的 Private NPM 和 Private Docker Registry 我用虚线框起来，是就目前来看很难做到，因为我们的代码库是内网的，而且公司目前是阿里云的重度使用者，Docker 要如要投入使用，要是没有自身的 IAAS 基础设施做支持估计也是玩不转。当然，这些都是没几个小公司能玩转的，有机会就尝试，但做为技术人，首要任务还是方案落地和解决实际的业务问题。</p>
 
@@ -453,7 +507,7 @@
 <ol>
 
 <li id="fn1">
-<p>React 只会逐层对比两颗随机树，这大大降低了 diff 算法的复杂度。并且在 web 组件中很少会将节点移动到不同的层级，经常只会在同一层级中移动。&nbsp;<a href="#fnref1" rev="footnote">&#8617;</a></p>
+<p>React 只会逐层对比两颗随机树，这大大降低了 diff 算法的复杂度。并且在 web 组件中很少会将节点移动到不同的层级，经常只会在同一层级中移动。 <a href="#fnref1" rev="footnote">↩</a></p>
 </li>
 
 </ol>
@@ -481,10 +535,11 @@
     <a class="relative-post previous" href="/2016/node-app-deploy-simple-guide"><span>Node APP 布署简易教程</span></a>
   
   
-    <a class="relative-post next" href="/2017/install-ss-for-bandwagonhost"><span>搬瓦工安装 SS 服务端</span></a>
+    <a class="relative-post next" href="/2017/install-ss-for-bandwagonhost"><span>购搬瓦工安装 SS 翻越“长城”</span></a>
   
 </section>
 
+    <script src="/js/post.js"></script>
   </article>
 </main>
 
@@ -524,7 +579,7 @@ window.onscroll = function () {
 
 
 <footer id="footer" role="contentinfo">
-	<p>© Copyright 2012 - 2017 by Roshan Wu.</p>
+	<p>© Copyright 2012 - <script>document.write(new Date().getFullYear())</script> by Roshan Wu.</p>
 </footer>
 
 <div class="fork-github">

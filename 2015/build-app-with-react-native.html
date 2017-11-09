@@ -39,7 +39,7 @@
 	<div class="header-inner">
 	
 		<a href="/" class="blog-title home">肉山·察</a>
-		<div>
+		<div class="header-icon">
 	<a href="//github.com/roshanca" class="social-link">
 		<i class="fa fa-github"></i>
 	</a>
@@ -69,6 +69,29 @@
       <h1 class="post-title">React Native：用 JavaScript 构建应用</h1>
     </header>
     <section class="post-content">
+      <nav class="post-toc">
+  <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#准备工作">准备工作</a></li>
+<li class="toc-entry toc-h2"><a href="#你好-react-native">你好 React Native</a></li>
+<li class="toc-entry toc-h2"><a href="#hello-world-jsx">Hello World JSX</a></li>
+<li class="toc-entry toc-h2"><a href="#添加导航">添加导航</a></li>
+<li class="toc-entry toc-h2"><a href="#创建搜索页">创建搜索页</a></li>
+<li class="toc-entry toc-h2"><a href="#用-flexbox-定义样式">用 Flexbox 定义样式</a></li>
+<li class="toc-entry toc-h2"><a href="#增加组件状态">增加组件状态</a></li>
+<li class="toc-entry toc-h2"><a href="#开始搜索">开始搜索</a></li>
+<li class="toc-entry toc-h2"><a href="#处理-api-请求">处理 API 请求</a></li>
+<li class="toc-entry toc-h2"><a href="#展示结果">展示结果</a></li>
+<li class="toc-entry toc-h2"><a href="#接触样式">接触样式</a></li>
+<li class="toc-entry toc-h2"><a href="#房产详细页视图">房产详细页视图</a></li>
+<li class="toc-entry toc-h2"><a href="#基于地理位置的搜索">基于地理位置的搜索</a></li>
+<li class="toc-entry toc-h2"><a href="#接下来该做什么">接下来该做什么？</a></li>
+</ul>
+  <svg class="toc-marker" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+    <path stroke="#444" stroke-width="3" fill="transparent" stroke-dasharray="0, 0, 0, 1000" stroke-linecap="round" stroke-linejoin="round"
+      transform="translate(-0.5, -0.5)" />
+  </svg>
+</nav>
+
       <p>原文：<a href="//www.raywenderlich.com/99473/introducing-react-native-building-apps-javascript">Introducing React Native: Building Apps with JavaScript</a></p>
 
 <hr>
@@ -84,7 +107,7 @@
 <li><p>React 引入了一种非常大胆新颖的实现方式来构建用户界面。简单来说，应用的 UI 被简单地表示为当前应用的状态的一个方法。</p></li>
 </ul>
 
-<p>React Native 的关键点是，它主要致力于为移动应用开发带来基于 <a href="//facebook.github.io/react/">React</a> 编程模式的巨大威力。它的目标并不是成为一个 &ldquo;一次编写到处运行&rdquo; 的跨平台工具，它的目标是 &ldquo;在任何地方都用一个框架”。这是个很重要的差别。这篇教程只针对 iOS，但是一旦你学习到了它的概念创建 Android 应用对你来说应该也不是什么难事。</p>
+<p>React Native 的关键点是，它主要致力于为移动应用开发带来基于 <a href="//facebook.github.io/react/">React</a> 编程模式的巨大威力。它的目标并不是成为一个 “一次编写到处运行” 的跨平台工具，它的目标是 “在任何地方都用一个框架”。这是个很重要的差别。这篇教程只针对 iOS，但是一旦你学习到了它的概念创建 Android 应用对你来说应该也不是什么难事。</p>
 
 <p>若你曾经写过 Objective-C 或 Swift，你可能对这项 JavaScript 来替代它们工作的技术不会感到特别兴奋。不过，作为一名 Swift 开发者，上述的第二点应该会激起你的兴趣。</p>
 
@@ -100,7 +123,8 @@
 
 <p>想要了解更多？继续阅读吧。</p>
 
-<h2>准备工作</h2>
+<h2>
+<a id="准备工作" class="anchor" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C" aria-hidden="true"><span class="octicon octicon-link"></span></a>准备工作</h2>
 
 <p>React Native 框架已经在 Github 上建立了<a href="https://github.com/facebook/react-native">仓库</a>，你可以通过 git 来克隆到本地，也可以选择下载 zip。一旦将它下载到了本地，在你开始写代码前，还有一些准备工作。</p>
 
@@ -146,7 +170,8 @@ React packager ready.
 
 <p>此时此刻，我建议你先跑一跑官方的例子，看看环境配置是否都正常运转。用 Xcode 打开 <code>react-native/Examples/Movies</code> 目录下的项目文件，编译运行，检查 <code>Movies</code> 应用有没有出现问题。</p>
 
-<h2>你好 React Native</h2>
+<h2>
+<a id="你好-react-native" class="anchor" href="#%E4%BD%A0%E5%A5%BD-react-native" aria-hidden="true"><span class="octicon octicon-link"></span></a>你好 React Native</h2>
 
 <p>在开始编写这款房产搜索应用之前，你将先创建一个极其简单的 Hello World 应用。在此过程中你将接触许多的组件和概念。</p>
 
@@ -172,7 +197,7 @@ React packager ready.
   <span class="p">}</span>
 <span class="p">});</span>
 </code></pre></div>
-<p>这句为 &quot;Hello World&rdquo; 文本单独定义了一个样式。如果你之前做过 web 开发，那你大概都认得这些属性名称。React Native 用<a href="//www.w3schools.com/css/">层叠样式表（CSS）</a>来定义应用 UI。</p>
+<p>这句为 "Hello World” 文本单独定义了一个样式。如果你之前做过 web 开发，那你大概都认得这些属性名称。React Native 用<a href="//www.w3schools.com/css/">层叠样式表（CSS）</a>来定义应用 UI。</p>
 
 <p>回到应用本身！在同一文件中，在刚才的样式申明语句下加入以下代码：</p>
 <div class="highlight"><pre><code class="language-jsx" data-lang="jsx"><span class="kd">class</span> <span class="nx">PropertyFinderApp</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
@@ -215,7 +240,8 @@ React packager ready.
 
 <p>当你的应用运行时，这段代码会被框架的核心加载与执行。在你的应用中，会加载 <code>PropertyFinderApp</code> 组件，然后构建原生 UIKit 视图。你会在接下来的教程中学到更多相关的内容。</p>
 
-<h2>Hello World JSX</h2>
+<h2>
+<a id="hello-world-jsx" class="anchor" href="#hello-world-jsx" aria-hidden="true"><span class="octicon octicon-link"></span></a>Hello World JSX</h2>
 
 <p>你的应用目前采用 <code>React.createElement</code> 来构建简单 UI，通过它 React 转变为相应的原生应用。你的 JavaScript 代码在当前格式下的可读性，不一会儿就会被更为复杂的多层嵌套的 UI 所迅速打破。</p>
 
@@ -232,7 +258,8 @@ React packager ready.
 
 <p>Okay，“Hello World” 玩够了，接下来尝试写个真正的应用吧！</p>
 
-<h2>添加导航</h2>
+<h2>
+<a id="添加导航" class="anchor" href="#%E6%B7%BB%E5%8A%A0%E5%AF%BC%E8%88%AA" aria-hidden="true"><span class="octicon octicon-link"></span></a>添加导航</h2>
 
 <p>房产查找应用采用的是那一套基于标准导航栈的行为体验，提供自 UIKit 的导航控制器。是时候添加这项行为了。</p>
 
@@ -278,7 +305,8 @@ React packager ready.
 
 <p>这是导航控制器与其根视图，它目前为 “Hello World” 文本。棒极了 —— 你现在为你的应用添加了适宜的基础导航结构，该到时候添加“真正”的 UI 了！</p>
 
-<h2>创建搜索页</h2>
+<h2>
+<a id="创建搜索页" class="anchor" href="#%E5%88%9B%E5%BB%BA%E6%90%9C%E7%B4%A2%E9%A1%B5" aria-hidden="true"><span class="octicon octicon-link"></span></a>创建搜索页</h2>
 
 <p>为工程新增名为 <code>SearchPage.js</code> 的文件，放置在与 <code>PropertyFinderApp.js</code> 同一目录中。为此文件添加以下代码：</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="s1">'use strict'</span><span class="p">;</span>
@@ -355,13 +383,14 @@ React packager ready.
 
 <p>这就是运用了的新组件：<code>SearchPage</code>，你刚刚添加的。</p>
 
-<h2>用 Flexbox 定义样式</h2>
+<h2>
+<a id="用-flexbox-定义样式" class="anchor" href="#%E7%94%A8-flexbox-%E5%AE%9A%E4%B9%89%E6%A0%B7%E5%BC%8F" aria-hidden="true"><span class="octicon octicon-link"></span></a>用 Flexbox 定义样式</h2>
 
 <p>到目前为止，你已经见过了基础的 CSS 属性诸如 margins，paddings 和 color，但你可能不太熟悉 <code>flexbox</code>， 这是不久前才被加入 CSS 规范的属性，它对于应用 UI 排版布局那是相当的有用处。</p>
 
 <p>React Native 采用了 <a href="https://github.com/facebook/css-layout">css-layout</a> 库，一个 JavaScript 对于 flexbox 标准的实现，它将布局转化成 C (for iOS) 和 Java (for Android)。</p>
 
-<p>它很了不起，因为 Facebook 已将其作为一个独立的项目来进行开发维护，旨在多种语言。自此诞生了不少新奇的应用，比如<a href="//blog.scottlogic.com/2015/02/02/svg-layout-flexbox.html">在 SVG 上应用 flexbox 布局</a>（是的，那是我的作品&hellip;但噢不，我难尝饱眠已久）。</p>
+<p>它很了不起，因为 Facebook 已将其作为一个独立的项目来进行开发维护，旨在多种语言。自此诞生了不少新奇的应用，比如<a href="//blog.scottlogic.com/2015/02/02/svg-layout-flexbox.html">在 SVG 上应用 flexbox 布局</a>（是的，那是我的作品…但噢不，我难尝饱眠已久）。</p>
 
 <p>在你的应用中，容器拥有默认的列布局，这意味着它的子元素是按垂直堆叠排列的，像这样：</p>
 
@@ -429,7 +458,7 @@ React packager ready.
 
 <p><img src="//cdn3.raywenderlich.com/wp-content/uploads/2015/03/react-searchpageinput.png" alt=""></p>
 
-<p>文本域和 &ldquo;Go&rdquo; 按钮要并列一排，所以你要将其都包裹在同一容器中，并给容器增加 <code>flexDirection: &#39;row&#39;</code> 的样式。不要为输入框和按钮设置具体的宽度，取而代之的是给它们一个 <code>flex</code> 值。文本域设置为 <code>flex: 4</code>，与此同时将按钮设置为 <code>flex: 1;</code>，所以它们的宽度是 4:1 比例。</p>
+<p>文本域和 “Go” 按钮要并列一排，所以你要将其都包裹在同一容器中，并给容器增加 <code>flexDirection: 'row'</code> 的样式。不要为输入框和按钮设置具体的宽度，取而代之的是给它们一个 <code>flex</code> 值。文本域设置为 <code>flex: 4</code>，与此同时将按钮设置为 <code>flex: 1;</code>，所以它们的宽度是 4:1 比例。</p>
 
 <p>你也许注意到了这些按钮，并不是真正的按钮！:] 在 UIKit 中，原生按钮比标签更不易点击，因此 React Native 团队决定直接在 JavaScript 中构建按钮来的更容易一些。在你的应用中，按钮使用 <code>TouchableHighlight</code> 来构建，这是一个 React Native 组件，当它被点击时它会变得透明从而使得其底层的颜色显露出来。</p>
 
@@ -442,7 +471,7 @@ React packager ready.
   <span class="na">height</span><span class="o">:</span> <span class="mi">138</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>语句 <code>require(&#39;image!house&#39;)</code> 用以引用定位在应用静态资源目录下的图片资源的。在 Xcode 中，打开 <code>Images.xcassets</code> 你会发现以上代码引用的 &ldquo;house&rdquo; 图标。</p>
+<p>语句 <code>require('image!house')</code> 用以引用定位在应用静态资源目录下的图片资源的。在 Xcode 中，打开 <code>Images.xcassets</code> 你会发现以上代码引用的 “house” 图标。</p>
 
 <p>回到模拟器按下 <code>Cmd+R</code> 欣赏你的新 UI 吧：</p>
 
@@ -450,7 +479,8 @@ React packager ready.
 
 <p>现在你的应用看上去不错，但缺少相应的功能。所以当务之急是增加应用的状态和表现行为。</p>
 
-<h2>增加组件状态</h2>
+<h2>
+<a id="增加组件状态" class="anchor" href="#%E5%A2%9E%E5%8A%A0%E7%BB%84%E4%BB%B6%E7%8A%B6%E6%80%81" aria-hidden="true"><span class="octicon octicon-link"></span></a>增加组件状态</h2>
 
 <p>每一个 React 组件都有自己的状态对象，它以键值的形式作为存储。在一个组件被渲染之前，我们必须先设置它的初始状态。</p>
 
@@ -495,7 +525,7 @@ React packager ready.
 </code></pre></div>
 <p>你稍后会对这些打印语句有所了解的！:]</p>
 
-<p>回到模拟器，按下 <code>Cmd+R</code>，你应该看到输入框内的初始文本显示为 &ldquo;london&rdquo; 并且一旦对其进行编辑一些调试语句就被打印在了 Xcode 的控制台里。</p>
+<p>回到模拟器，按下 <code>Cmd+R</code>，你应该看到输入框内的初始文本显示为 “london” 并且一旦对其进行编辑一些调试语句就被打印在了 Xcode 的控制台里。</p>
 
 <p><img src="//cdn3.raywenderlich.com/wp-content/uploads/2015/03/react-renderconsole.png" alt=""></p>
 
@@ -505,7 +535,8 @@ React packager ready.
 <li>初始调用 <code>render()</code> 以创建视图。</li>
 <li>当文本改变时执行 <code>onSearchTextChanged()</code>。</li>
 <li>接着更新组件状态反应在新的输入框文本上，后者又触发了另一轮 render。</li>
-<li><code>onSearchTextChanged()</code> 在日志中输出新的搜索字符串。</li>
+<li>
+<code>onSearchTextChanged()</code> 在日志中输出新的搜索字符串。</li>
 </ol>
 
 <p>无论何时，只要是应用一更新任意组件的状态，它都将会触发整个 UI 进行重新渲染，在此期间，所有组件的 <code>render</code> 方法都会调用执行。这是一个很赞的思路，因为它完全地对渲染逻辑进行了解耦，这些逻辑由影响 UI 的状态变化所产生。</p>
@@ -524,7 +555,8 @@ React packager ready.
 
 <p>你可以到时候再回头看这些东西，我们仍要继续完善当前的 app。删除打印信息语句，你不再需要它们来扰乱你的代码了。</p>
 
-<h2>开始搜索</h2>
+<h2>
+<a id="开始搜索" class="anchor" href="#%E5%BC%80%E5%A7%8B%E6%90%9C%E7%B4%A2" aria-hidden="true"><span class="octicon octicon-link"></span></a>开始搜索</h2>
 
 <p>为了实现搜索功能你需要在 “Go” 按钮的点击事件上做些文章。创建一个合适的 API 请求，并且为用户在此数据查询的等待过程中提供一个可视化的指示界面。</p>
 
@@ -548,7 +580,7 @@ React packager ready.
 <p>JSX 在 <code>return</code> 中定义的搜索 UI 里，加入下列一行，位于 <code>Image</code> 下方：</p>
 <div class="highlight"><pre><code class="language-jsx" data-lang="jsx"><span class="p">{</span><span class="nx">spinner</span><span class="p">}</span>
 </code></pre></div>
-<p>现在，在 <code>TouchableHighlight</code> 包裹着的 &ldquo;Go&rdquo; 文本视图上增加以下属性：</p>
+<p>现在，在 <code>TouchableHighlight</code> 包裹着的 “Go” 文本视图上增加以下属性：</p>
 <div class="highlight"><pre><code class="language-jsx" data-lang="jsx"><span class="nx">onPress</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">onSearchPressed</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">)}</span>
 </code></pre></div>
 <p>接着，在 <code>SearchPage</code> 类里添加以下方法：</p>
@@ -564,7 +596,7 @@ React packager ready.
 </code></pre></div>
 <p><code>_executeQuery()</code> 会执行最终的查询，但现在我们先让它简单地输出一些信息在控制台里，并将 <code>isLoading</code> 设置设置为 <code>true</code> 以便 UI 更新。</p>
 
-<p>当 &ldquo;Go&rdquo; 按钮被点击时，<code>onSearchPressed()</code> 将被执行以开展查询。</p>
+<p>当 “Go” 按钮被点击时，<code>onSearchPressed()</code> 将被执行以开展查询。</p>
 
 <p>最后，在 <code>SearchPage</code> 类申明之前加入以下工具类方法：</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">urlForQueryAndPage</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">value</span><span class="p">,</span> <span class="nx">pageNumber</span><span class="p">)</span> <span class="p">{</span>
@@ -587,7 +619,7 @@ React packager ready.
 </code></pre></div>
 <p>这个方法不依赖于 <code>SearchPage</code>，所以它以一个独立的函数而不是一个类方法的形式存在。它一开始创建了基于参数的查询字符串在 <code>data</code> 之中，接下来它将数据转换成要求的字符串格式，<code>name=value</code>结队成组并用 &amp; 字符连接着。这里的 <code>=&gt;</code> 语法是表示一个箭头函数，这是<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions">新近加入的 JavaScript 语言</a>中用以创建匿名函数的简要语法。</p>
 
-<p>回头看模拟器，按下 <code>Cmd+R</code> 重新载入应用并点击 &ldquo;Go&rdquo; 按钮，你将能看到旋转的动态指示器。查看 Xcode 控制台，你将看到如下：</p>
+<p>回头看模拟器，按下 <code>Cmd+R</code> 重新载入应用并点击 “Go” 按钮，你将能看到旋转的动态指示器。查看 Xcode 控制台，你将看到如下：</p>
 
 <p><img src="//cdn1.raywenderlich.com/wp-content/uploads/2015/03/SearchAcitivityIndicator.png" alt=""></p>
 
@@ -595,7 +627,8 @@ React packager ready.
 
 <p>下一步我们在应用中处理这项请求。</p>
 
-<h2>处理 API 请求</h2>
+<h2>
+<a id="处理-api-请求" class="anchor" href="#%E5%A4%84%E7%90%86-api-%E8%AF%B7%E6%B1%82" aria-hidden="true"><span class="octicon octicon-link"></span></a>处理 API 请求</h2>
 
 <p>还是在 <code>SearchPage.js</code> 中，更新初始状态，在构造方法中加入 <code>message</code> 变量：</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
@@ -633,13 +666,14 @@ React packager ready.
 </code></pre></div>
 <p>这将清除 <code>isLoading</code> 状态和请求成功后显示在调试日志内的房产数量信息。</p>
 
-<p>保存你的修改，然后回到模拟器刷新之，试着搜索关键字 &ldquo;london&quot;，你应该能在日志中看到 20 处房产已被找到的信息。接下来试着搜索一个不存在的地点，比如 &quot;narnia&quot;，迎接你的将是以下信息：</p>
+<p>保存你的修改，然后回到模拟器刷新之，试着搜索关键字 “london"，你应该能在日志中看到 20 处房产已被找到的信息。接下来试着搜索一个不存在的地点，比如 "narnia"，迎接你的将是以下信息：</p>
 
 <p><img src="//cdn5.raywenderlich.com/wp-content/uploads/2015/03/react-narnia.png" alt=""></p>
 
 <p>到了展现这伦敦真实位置的 20 处房产的时刻了。</p>
 
-<h2>展示结果</h2>
+<h2>
+<a id="展示结果" class="anchor" href="#%E5%B1%95%E7%A4%BA%E7%BB%93%E6%9E%9C" aria-hidden="true"><span class="octicon octicon-link"></span></a>展示结果</h2>
 
 <p>创建一个 <code>SearchResults.js</code> 文件，加入以下代码：</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="s1">'use strict'</span><span class="p">;</span>
@@ -717,7 +751,8 @@ React packager ready.
 
 <p>很高兴得到了我们期望已久的房产列表，但这列表展示略挫，让我们来让它变的更好一些。</p>
 
-<h2>接触样式</h2>
+<h2>
+<a id="接触样式" class="anchor" href="#%E6%8E%A5%E8%A7%A6%E6%A0%B7%E5%BC%8F" aria-hidden="true"><span class="octicon octicon-link"></span></a>接触样式</h2>
 
 <p>这些 React Native 代码自此应该一回生二回熟了，以此以下教程可以两步并作一步来快速讲解。</p>
 
@@ -774,7 +809,7 @@ React packager ready.
   <span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>这对返回的价格数据做了一点操作，将其 &quot;300,000 GBP&rdquo; 固定格式中的 GBP 后缀给去掉。然后渲染每一行 UI 采用的是你已熟烂于心的技术了。这一次，略缩图的数据是以 URL 的方式提供的，React Native 不会在主线程对其进行解码。</p>
+<p>这对返回的价格数据做了一点操作，将其 "300,000 GBP” 固定格式中的 GBP 后缀给去掉。然后渲染每一行 UI 采用的是你已熟烂于心的技术了。这一次，略缩图的数据是以 URL 的方式提供的，React Native 不会在主线程对其进行解码。</p>
 
 <p>注意 <code>TouchableHighlight</code> 组件的 <code>onPress</code> 属性，它利用了箭头函数来获取每一行的 <code>guid</code>。</p>
 
@@ -793,7 +828,8 @@ React packager ready.
 
 <p>到了添加应用最后的视图的时候了。</p>
 
-<h2>房产详细页视图</h2>
+<h2>
+<a id="房产详细页视图" class="anchor" href="#%E6%88%BF%E4%BA%A7%E8%AF%A6%E7%BB%86%E9%A1%B5%E8%A7%86%E5%9B%BE" aria-hidden="true"><span class="octicon octicon-link"></span></a>房产详细页视图</h2>
 
 <p>增加新文件 <code>PropertyView.js</code> 到项目中，接着在文件中加入代码：</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="s1">'use strict'</span><span class="p">;</span>
@@ -901,7 +937,8 @@ React packager ready.
 
 <p>至此你的应用已基本完成。还差一步就是允许用户搜索其周边房产。</p>
 
-<h2>基于地理位置的搜索</h2>
+<h2>
+<a id="基于地理位置的搜索" class="anchor" href="#%E5%9F%BA%E4%BA%8E%E5%9C%B0%E7%90%86%E4%BD%8D%E7%BD%AE%E7%9A%84%E6%90%9C%E7%B4%A2" aria-hidden="true"><span class="octicon octicon-link"></span></a>基于地理位置的搜索</h2>
 
 <p>在 Xcode 中，打开 <code>Info.plist</code> 新增一个键，通过点击右键选择 <code>Add Row</code> 来完成。键名为 <code>NSLocationWhenInUseUsageDescription</code>，并用取值为：</p>
 <div class="highlight"><pre><code class="language-" data-lang="">PropertyFinder would like to use your location to find nearby properties
@@ -912,7 +949,7 @@ React packager ready.
 
 <p>这副键值是用来提示用户确认是否要使用他们的地理位置的。</p>
 
-<p>打开 <code>SearchPage.js</code>，定位到 &ldquo;Location&rdquo; 按钮的 <code>TouchableHighlight</code> 上，加入以下属性值：</p>
+<p>打开 <code>SearchPage.js</code>，定位到 “Location” 按钮的 <code>TouchableHighlight</code> 上，加入以下属性值：</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">onPress</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">onLocationPressed</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">)}</span>
 </code></pre></div>
 <p>当你点击这个按钮时，它将执行 <code>onLocationPressed</code> —— 接下来要添加的。</p>
@@ -945,7 +982,8 @@ React packager ready.
 
 <p>虽然不如伦敦 —— 但起码住的起！:]</p>
 
-<h2>接下来该做什么？</h2>
+<h2>
+<a id="接下来该做什么" class="anchor" href="#%E6%8E%A5%E4%B8%8B%E6%9D%A5%E8%AF%A5%E5%81%9A%E4%BB%80%E4%B9%88" aria-hidden="true"><span class="octicon octicon-link"></span></a>接下来该做什么？</h2>
 
 <p>恭喜你完成了第一个 React Native 应用！你可以<a href="//cdn1.raywenderlich.com/wp-content/uploads/2015/03/PropertyFinder-Final1.zip">下载本教程的最终完成项目</a>跑起来试试。</p>
 
@@ -960,7 +998,7 @@ React packager ready.
 <ol>
 
 <li id="fn1">
-<p>译者注：抱歉，根本没发现任何的论坛链接，估计作者说的是文章下方的留言区。&nbsp;<a href="#fnref1" rev="footnote">&#8617;</a></p>
+<p>译者注：抱歉，根本没发现任何的论坛链接，估计作者说的是文章下方的留言区。 <a href="#fnref1" rev="footnote">↩</a></p>
 </li>
 
 </ol>
@@ -992,6 +1030,7 @@ React packager ready.
   
 </section>
 
+    <script src="/js/post.js"></script>
   </article>
 </main>
 
@@ -1031,7 +1070,7 @@ window.onscroll = function () {
 
 
 <footer id="footer" role="contentinfo">
-	<p>© Copyright 2012 - 2017 by Roshan Wu.</p>
+	<p>© Copyright 2012 - <script>document.write(new Date().getFullYear())</script> by Roshan Wu.</p>
 </footer>
 
 <div class="fork-github">

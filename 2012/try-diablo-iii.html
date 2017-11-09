@@ -39,7 +39,7 @@
 	<div class="header-inner">
 	
 		<a href="/" class="blog-title home">肉山·察</a>
-		<div>
+		<div class="header-icon">
 	<a href="//github.com/roshanca" class="social-link">
 		<i class="fa fa-github"></i>
 	</a>
@@ -69,6 +69,16 @@
       <h1 class="post-title">试玩暗黑破坏神3</h1>
     </header>
     <section class="post-content">
+      <nav class="post-toc">
+  <ul class="section-nav">
+<li class="toc-entry toc-h3"><a href="#总结">总结</a></li>
+</ul>
+  <svg class="toc-marker" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+    <path stroke="#444" stroke-width="3" fill="transparent" stroke-dasharray="0, 0, 0, 1000" stroke-linecap="round" stroke-linejoin="round"
+      transform="translate(-0.5, -0.5)" />
+  </svg>
+</nav>
+
       <p>上周从同事那 copy 来的暗黑破解版，居然近 10G，想想还是断了在公司本本上跑的念头，直接拿回家用台式机试试。看了下游戏推荐配置，也是勉强合格吧，那就二话不说，搞起～</p>
 
 <p>感谢<a href="http://bbs.3dmgame.com/">“3大妈”</a>出品的体验工具，让我们能在暗黑3 beta 版出世这么久的日子里，结束“看的着吃不着”的苦逼状态。虽然听说破解的有许多破解后遗症，但总比没有的好是吧。也有人坚持不碰破解版，怕破坏暗黑3在他们心中的完美形象，那是仁者见仁了。</p>
@@ -77,12 +87,15 @@
 
 <ul>
 <li>  莫要整中文路径；</li>
-<li>  VC2005 &amp; VC2010 忒大，咋整？完全没必要，去下个完整的包含 VC2010 SP1 runtime 的安装包（哈哈，这个只有 10M 大小），当然，前提是你已安装了 .NET Framework 4.0<br />
+<li>  VC2005 &amp; VC2010 忒大，咋整？完全没必要，去下个完整的包含 VC2010 SP1 runtime 的安装包（哈哈，这个只有 10M 大小），当然，前提是你已安装了 .NET Framework 4.0<br>
 
 <ul>
-<li> <a href="http://system.data.sqlite.org/downloads/1.0.79.0/sqlite-netFx40-setup-bundle-x86-2010-1.0.79.0.exe">x86下载</a></li>
-<li> <a href="http://system.data.sqlite.org/downloads/1.0.79.0/sqlite-netFx40-setup-bundle-x64-2010-1.0.79.0.exe">64位下载</a></li>
-</ul></li>
+<li> <a href="http://system.data.sqlite.org/downloads/1.0.79.0/sqlite-netFx40-setup-bundle-x86-2010-1.0.79.0.exe">x86下载</a>
+</li>
+<li> <a href="http://system.data.sqlite.org/downloads/1.0.79.0/sqlite-netFx40-setup-bundle-x64-2010-1.0.79.0.exe">64位下载</a>
+</li>
+</ul>
+</li>
 <li>  如果这样运行 MadCow 还是会出错，就依照下图，将此些选项全部勾上：</li>
 </ul>
 
@@ -90,7 +103,7 @@
 
 <p>好了，如果顺利的话，几分钟就可以搞定，下面开始 Diablo III 的体验之旅吧。下面是我自己录制的一个简短视频，巫医的角色。</p>
 
-<p><embed src="http://player.youku.com/player.php/sid/XMzY0Mjk3NTI0/v.swf" allowFullScreen="true" quality="high" width="480" height="400" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed></p>
+<p><embed src="http://player.youku.com/player.php/sid/XMzY0Mjk3NTI0/v.swf" allowfullscreen="true" quality="high" width="480" height="400" align="middle" allowscriptaccess="always" type="application/x-shockwave-flash"></embed></p>
 
 <p>bug 确实非常多，是个标准的<strong>体验版</strong>。列举一些：</p>
 
@@ -108,7 +121,8 @@
 <li>  还有很多很多，暂时想不起来了</li>
 </ul>
 
-<h3>总结</h3>
+<h3>
+<a id="总结" class="anchor" href="#%E6%80%BB%E7%BB%93" aria-hidden="true"><span class="octicon octicon-link"></span></a>总结</h3>
 
 <p>总体来说，这次的<strong>体验版</strong>，还是比较坑爹的，除了到处逛逛欣赏下风景，没啥事可做，无剧情，无用装备，无乐趣。我现在基本用来享受音效～</p>
 
@@ -144,6 +158,7 @@
   
 </section>
 
+    <script src="/js/post.js"></script>
   </article>
 </main>
 
@@ -183,7 +198,7 @@ window.onscroll = function () {
 
 
 <footer id="footer" role="contentinfo">
-	<p>© Copyright 2012 - 2017 by Roshan Wu.</p>
+	<p>© Copyright 2012 - <script>document.write(new Date().getFullYear())</script> by Roshan Wu.</p>
 </footer>
 
 <div class="fork-github">

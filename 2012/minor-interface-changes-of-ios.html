@@ -39,7 +39,7 @@
 	<div class="header-inner">
 	
 		<a href="/" class="blog-title home">肉山·察</a>
-		<div>
+		<div class="header-icon">
 	<a href="//github.com/roshanca" class="social-link">
 		<i class="fa fa-github"></i>
 	</a>
@@ -69,6 +69,15 @@
       <h1 class="post-title">iOS 像素级的界面变化</h1>
     </header>
     <section class="post-content">
+      <nav class="post-toc">
+  <ul class="section-nav">
+</ul>
+  <svg class="toc-marker" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+    <path stroke="#444" stroke-width="3" fill="transparent" stroke-dasharray="0, 0, 0, 1000" stroke-linecap="round" stroke-linejoin="round"
+      transform="translate(-0.5, -0.5)" />
+  </svg>
+</nav>
+
       <p>从 iOS4 到 iOS5，再到 iOS6，有些微小的像素级的界面改进，往往只有设计师才会注意到它们。</p>
 
 <p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/vm_01_iconbadge_zps013f3e6e.jpg" alt=""></p>
@@ -167,6 +176,7 @@
   
 </section>
 
+    <script src="/js/post.js"></script>
   </article>
 </main>
 
@@ -206,7 +216,7 @@ window.onscroll = function () {
 
 
 <footer id="footer" role="contentinfo">
-	<p>© Copyright 2012 - 2017 by Roshan Wu.</p>
+	<p>© Copyright 2012 - <script>document.write(new Date().getFullYear())</script> by Roshan Wu.</p>
 </footer>
 
 <div class="fork-github">

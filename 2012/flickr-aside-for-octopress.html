@@ -39,7 +39,7 @@
 	<div class="header-inner">
 	
 		<a href="/" class="blog-title home">肉山·察</a>
-		<div>
+		<div class="header-icon">
 	<a href="//github.com/roshanca" class="social-link">
 		<i class="fa fa-github"></i>
 	</a>
@@ -69,6 +69,15 @@
       <h1 class="post-title">为 Octopress 添加 Flickr 边栏</h1>
     </header>
     <section class="post-content">
+      <nav class="post-toc">
+  <ul class="section-nav">
+</ul>
+  <svg class="toc-marker" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+    <path stroke="#444" stroke-width="3" fill="transparent" stroke-dasharray="0, 0, 0, 1000" stroke-linecap="round" stroke-linejoin="round"
+      transform="translate(-0.5, -0.5)" />
+  </svg>
+</nav>
+
       <p>今天为自己的 Octopress 添加上了 Flickr 边栏，见右侧。</p>
 
 <p><img src="http://farm8.staticflickr.com/7061/6829895096_262b9ef4af.jpg" alt=""></p>
@@ -76,8 +85,12 @@
 <p>步骤如下：</p>
 
 <ol>
-<li><p>在 <code>source/_includes/custom/asides/</code> 目录下新建 <code>flickr.html</code>，粘贴如下代码：<script src='https://gist.github.com/1421792.js?file=flickr.html'></script><div><noscript><pre><code></code></pre></noscript></div>P.S. <code>script</code> 外链地址中所带的参数你可以进一步的自定义，比如我就将 <code>display</code> 的参数改为了 <code>random</code>，以随机显示我的照片～</p></li>
-<li><p>在 <code>_config.yml</code> 中添加：<script src='https://gist.github.com/1421792.js?file=Code%20added%20to%20_config.yml'></script><div><noscript><pre><code></code></pre></noscript></div>把 flickr_user 换成自己的 id。</p></li>
+<li>
+<p>在 <code>source/_includes/custom/asides/</code> 目录下新建 <code>flickr.html</code>，粘贴如下代码：<script src="https://gist.github.com/1421792.js?file=flickr.html"></script></p>
+<div><noscript><pre><code></code></pre></noscript></div>P.S. <code>script</code> 外链地址中所带的参数你可以进一步的自定义，比如我就将 <code>display</code> 的参数改为了 <code>random</code>，以随机显示我的照片～</li>
+<li>
+<p>在 <code>_config.yml</code> 中添加：<script src="https://gist.github.com/1421792.js?file=Code%20added%20to%20_config.yml"></script></p>
+<div><noscript><pre><code></code></pre></noscript></div>把 flickr_user 换成自己的 id。</li>
 <li><p>最后，在 <code>_config.yml</code> 中的 <code>default_asides</code> 里添加 <code>custom/asides/flickr.html</code>，即大功告成。</p></li>
 </ol>
 
@@ -107,6 +120,7 @@
   
 </section>
 
+    <script src="/js/post.js"></script>
   </article>
 </main>
 
@@ -146,7 +160,7 @@ window.onscroll = function () {
 
 
 <footer id="footer" role="contentinfo">
-	<p>© Copyright 2012 - 2017 by Roshan Wu.</p>
+	<p>© Copyright 2012 - <script>document.write(new Date().getFullYear())</script> by Roshan Wu.</p>
 </footer>
 
 <div class="fork-github">

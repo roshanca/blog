@@ -39,7 +39,7 @@
 	<div class="header-inner">
 	
 		<a href="/" class="blog-title home">肉山·察</a>
-		<div>
+		<div class="header-icon">
 	<a href="//github.com/roshanca" class="social-link">
 		<i class="fa fa-github"></i>
 	</a>
@@ -69,9 +69,25 @@
       <h1 class="post-title">JavaScript 中的一些坑（一）</h1>
     </header>
     <section class="post-content">
+      <nav class="post-toc">
+  <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#坑一全局变量">坑一：全局变量</a></li>
+<li class="toc-entry toc-h2"><a href="#坑二变量声明">坑二：变量声明</a></li>
+<li class="toc-entry toc-h2"><a href="#坑三函数声明">坑三：函数声明</a></li>
+<li class="toc-entry toc-h2"><a href="#坑四函数表达式">坑四：函数表达式</a></li>
+<li class="toc-entry toc-h2"><a href="#坑五函数的自执行">坑五：函数的自执行</a></li>
+<li class="toc-entry toc-h2"><a href="#坑六循环中的闭包">坑六：循环中的闭包</a></li>
+</ul>
+  <svg class="toc-marker" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+    <path stroke="#444" stroke-width="3" fill="transparent" stroke-dasharray="0, 0, 0, 1000" stroke-linecap="round" stroke-linejoin="round"
+      transform="translate(-0.5, -0.5)" />
+  </svg>
+</nav>
+
       <p>“坑”这个字，在此的意思是“陷阱”。由于 JavaScript “弱语言”的性质，使得其在使用过程中异常的宽松灵活，但也极为容易“中招”。</p>
 
-<h2>坑一：全局变量</h2>
+<h2>
+<a id="坑一全局变量" class="anchor" href="#%E5%9D%91%E4%B8%80%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F" aria-hidden="true"><span class="octicon octicon-link"></span></a>坑一：全局变量</h2>
 
 <blockquote>
 <p>JavaScript 通过函数管理作用域。在函数内部声明的变量只在这个函数内部，函数外面不可用。另一方面，全局变量就是在任何函数外面声明的或是未声明直接简单使用的。</p>
@@ -95,7 +111,8 @@
 
 <p>填坑：变量声明，最好一个个来，别搞批发~_~;</p>
 
-<h2>坑二：变量声明</h2>
+<h2>
+<a id="坑二变量声明" class="anchor" href="#%E5%9D%91%E4%BA%8C%E5%8F%98%E9%87%8F%E5%A3%B0%E6%98%8E" aria-hidden="true"><span class="octicon octicon-link"></span></a>坑二：变量声明</h2>
 
 <p>先来看坑：</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">myName</span> <span class="o">=</span> <span class="s2">"global"</span><span class="p">;</span>
@@ -108,7 +125,7 @@
 
 <span class="nx">foo</span><span class="p">();</span>
 </code></pre></div>
-<p>乍看上去，我们预计期望两次 <code>alert</code> 的结果分别为 &ldquo;global&rdquo; 与 &ldquo;local&quot;，但真实的结果是 &quot;undefined&rdquo; 与 &ldquo;local&quot;。why? 因为：</p>
+<p>乍看上去，我们预计期望两次 <code>alert</code> 的结果分别为 “global” 与 “local"，但真实的结果是 "undefined” 与 “local"。why? 因为：</p>
 
 <blockquote>
 <p>变量在同一作用域（同一函数）中，声明都是被提至作用域顶部先进行解析的。</p>
@@ -129,7 +146,7 @@
 
 <span class="nx">alert</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
 </code></pre></div>
-<p><code>a</code> 变量的声明被提前到了代码顶端，此时还未赋值。接下来进入 <code>if</code> 语句，判断条件中 <code>&quot;a&quot; in window</code> 已成立（<code>a</code> 已被声明为全局变量），所以判断语句计算结果为 <code>false</code>，直接就跳出 <code>if</code> 语句了，所以 <code>a</code> 的值为 <code>undefined</code>。</p>
+<p><code>a</code> 变量的声明被提前到了代码顶端，此时还未赋值。接下来进入 <code>if</code> 语句，判断条件中 <code>"a" in window</code> 已成立（<code>a</code> 已被声明为全局变量），所以判断语句计算结果为 <code>false</code>，直接就跳出 <code>if</code> 语句了，所以 <code>a</code> 的值为 <code>undefined</code>。</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">a</span><span class="p">;</span> <span class="c1">// "undefined"</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"a"</span> <span class="k">in</span> <span class="nb">window</span><span class="p">);</span> <span class="c1">// true</span>
 
@@ -141,7 +158,8 @@
 </code></pre></div>
 <p>填坑：变量声明，最好手动置于作用域顶部，对于无法当下赋值的变量，可采取先声明后赋值的手法。</p>
 
-<h2>坑三：函数声明</h2>
+<h2>
+<a id="坑三函数声明" class="anchor" href="#%E5%9D%91%E4%B8%89%E5%87%BD%E6%95%B0%E5%A3%B0%E6%98%8E" aria-hidden="true"><span class="octicon octicon-link"></span></a>坑三：函数声明</h2>
 
 <blockquote>
 <p>函数声明也是被提前至作用域顶部，先于任何表达式和语句被解析和求值的</p>
@@ -172,11 +190,12 @@
 
 <span class="nx">test</span><span class="p">();</span>
 </code></pre></div>
-<p>运行以上代码片段，看到的两次弹窗显示的都是 &quot;2&quot;，为什么不是分别为 &quot;1&rdquo; 和 &ldquo;2&rdquo; 呢？很简单，<code>test</code> 的声明先于 <code>test()</code> 被解析，由于后者覆盖前者，所以两次执行的结果都是 &ldquo;2&quot;。</p>
+<p>运行以上代码片段，看到的两次弹窗显示的都是 "2"，为什么不是分别为 "1” 和 “2” 呢？很简单，<code>test</code> 的声明先于 <code>test()</code> 被解析，由于后者覆盖前者，所以两次执行的结果都是 “2"。</p>
 
 <p>填坑：多数情况下，用函数表达式来代替函数声明是一个好习惯，特别是在一些语句块中。</p>
 
-<h2>坑四：函数表达式</h2>
+<h2>
+<a id="坑四函数表达式" class="anchor" href="#%E5%9D%91%E5%9B%9B%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F" aria-hidden="true"><span class="octicon octicon-link"></span></a>坑四：函数表达式</h2>
 
 <p>先看命名函数表达式，理所当然，就是它得有名字，例如：</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">bar</span> <span class="o">=</span> <span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
@@ -192,7 +211,8 @@
 </code></pre></div>
 <p>填坑：尽量少用命名函数表达式（除了一些递归以及 debug 的用途），切勿将函数名使用于外部。</p>
 
-<h2>坑五：函数的自执行</h2>
+<h2>
+<a id="坑五函数的自执行" class="anchor" href="#%E5%9D%91%E4%BA%94%E5%87%BD%E6%95%B0%E7%9A%84%E8%87%AA%E6%89%A7%E8%A1%8C" aria-hidden="true"><span class="octicon octicon-link"></span></a>坑五：函数的自执行</h2>
 
 <p>对于函数表达式，可以通过后面加上 <code>()</code> 立即执行。并且可在 <code>()</code> 中传递参数，而函数声明不可以。</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// (1) 这只是一个分组操作符，不是函数调用！</span>
@@ -201,7 +221,7 @@
   <span class="nx">alert</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>
 <span class="p">}(</span><span class="mi">1</span><span class="p">);</span>
 </code></pre></div>
-<p>以下代码片段分别执行都弹窗显示 &quot;1&quot;，因为在 <code>(1)</code> 之前，都为函数表达式，所以这里的 <code>()</code> 非分组操作符，而为运算符，表示调用执行。</p>
+<p>以下代码片段分别执行都弹窗显示 "1"，因为在 <code>(1)</code> 之前，都为函数表达式，所以这里的 <code>()</code> 非分组操作符，而为运算符，表示调用执行。</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// 标准的匿名函数表达式</span>
 <span class="kd">var</span> <span class="nx">bar</span> <span class="o">=</span> <span class="kd">function</span> <span class="nx">foo</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">alert</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>
@@ -230,7 +250,8 @@
 </code></pre></div>
 <p>填坑：要解决这个坑的关键在于，弄清楚形形色色的函数表达式之实质。</p>
 
-<h2>坑六：循环中的闭包</h2>
+<h2>
+<a id="坑六循环中的闭包" class="anchor" href="#%E5%9D%91%E5%85%AD%E5%BE%AA%E7%8E%AF%E4%B8%AD%E7%9A%84%E9%97%AD%E5%8C%85" aria-hidden="true"><span class="octicon octicon-link"></span></a>坑六：循环中的闭包</h2>
 
 <p>以下演示的是一个常见的坑：</p>
 
@@ -244,9 +265,9 @@
     <span class="p">}</span>       
 <span class="p">}</span>
 </code></pre></div>
-<p>我们预期当点击第 <code>i</code> 个链接时，得到此序列索引 <code>i</code> 的值，可实际无论点击哪个链接，得到的都是 <code>i</code> 在循环后的最终结果：&quot;5&quot;。</p>
+<p>我们预期当点击第 <code>i</code> 个链接时，得到此序列索引 <code>i</code> 的值，可实际无论点击哪个链接，得到的都是 <code>i</code> 在循环后的最终结果："5"。</p>
 
-<p>解释一下原因：当 <code>alert</code> 被调用时，<code>for</code> 循环内的匿名函数表达式，保持了对外部变量 <code>i</code> 的引用（闭包），此时循环已结束，<code>i</code> 的值被修改为 &quot;5&quot;。</p>
+<p>解释一下原因：当 <code>alert</code> 被调用时，<code>for</code> 循环内的匿名函数表达式，保持了对外部变量 <code>i</code> 的引用（闭包），此时循环已结束，<code>i</code> 的值被修改为 "5"。</p>
 
 <p>填坑：为了得到想要的结果，需要在每次循环中创建变量 <code>i</code> 的拷贝。以下演示正确的做法：</p>
 
@@ -298,6 +319,7 @@
   
 </section>
 
+    <script src="/js/post.js"></script>
   </article>
 </main>
 
@@ -337,7 +359,7 @@ window.onscroll = function () {
 
 
 <footer id="footer" role="contentinfo">
-	<p>© Copyright 2012 - 2017 by Roshan Wu.</p>
+	<p>© Copyright 2012 - <script>document.write(new Date().getFullYear())</script> by Roshan Wu.</p>
 </footer>
 
 <div class="fork-github">
