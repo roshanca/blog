@@ -1,37 +1,31 @@
 ---
 layout: post
-title: 搬瓦工安装 SS 服务端
+title: 购搬瓦工安装 SS 翻越“长城”
 data: 2017-11-08
 tags: vps
 toc: true
 comments: true
 ---
 
-[搬瓦工（Bandwagon）](https://bandwagonhost.com/aff.php?aff=18390)是一家有口皆碑的 VPS 提供商，以性价比高而闻名。
+[搬瓦工（Bandwagon）](https://bandwagonhost.com/aff.php?aff=18390)是一家有口皆碑的美国老牌 VPS 服务商，以性价比高而闻名。
 
 ## 购买
 
-国内用户购买的一般是选 [SPECIAL 10G KVM PROMO V3 - LOS ANGELES - CN2](https://bwh1.net/cart.php?a=confproduct&i=1) 这档产品，参数如下：
+国内用户购买的一般是选 SPECIAL 10G KVM PROMO V3 - LOS ANGELES - CN2 ([点击购买](https://bwh1.net/cart.php?a=confproduct&i=0)) 这档产品，参数如下：
 
-| SSD: |10 GB RAID-10 |
-| ------------ | ------------ |
-| RAM: |512 MB |
-| CPU: |1x Intel Xeon |
-| Transfer: |500 GB/mo |
-| Link speed: |1 Gigabit |
+| SSD | RAM | Transfer | Link speed | Price |
+| :-----------: |:-----: |:--------: | :-------: | :-------: |
+| 10 GB RAID-10 | 512 MB | 500 GB/mo | 1 Gigabit | $29.99/年 |
 
-30 刀一年，用优惠码：**BWH1ZBPVK** 购买可享 6.00% 的折扣幅度。
+差不多 30 刀一年，用优惠码 `BWH1ZBPVK` 购买可享 6.00% 的折扣幅度。
 
-洛杉矶机房的 ping 一般在 200 ms 左右，如若觉得还不能满足，可选香港机房：[SPECIAL 20G KVM PROMO V3 - HONG KONG](https://bwh1.net/aff.php?aff=18390&pid=61)。但一般要靠抢，常年都是 out of stock 的状态，手慢无😂。配置是比上一个高了一档：
+洛杉矶机房的 ping 一般在 200 ms 左右，如若觉得还不能满足，可选香港机房：SPECIAL 20G KVM PROMO V3 - HONG KONG ([点击购买](https://bwh1.net/aff.php?aff=18390&pid=61))。但一般要靠抢，常年都是 out of stock 的状态，手慢无😂。配置是比上一个高了一档：
 
-| SSD: |20 GB RAID-10 |
-| ------------ | ------------ |
-| RAM: |1024 MB |
-| CPU: |1x Intel Xeon |
-| Transfer: |100 GB/mo |
-| Link speed: |1 Gigabit |
+| SSD | RAM | Transfer | Link speed | Price |
+| :-----------: |:------: |:--------: | :-------: | :-------: |
+| 20 GB RAID-10 | 1024 MB | 100 GB/mo | 1 Gigabit | $9.99/月<br>$99.99/年 |
 
-但价格也高了一个层次，月付 9.99 刀，年付要 99.99 刀，不便宜啊。而且每月流量只有 100G，还不如洛杉矶的 500G 呢。优势就是超低的 ping（由于没买到没法测试 ping 到底有多低，估计应该和阿里云香港机房的 100ms 左右差不多），容量内存大一倍。
+但价格也高了一个层次，月付 9.99 刀，年付要 99.99 刀，实在是不便宜。而且每月流量只有 100G，还不如洛杉矶的 500G 呢。优势呢就是超低的 ping（估计应该和阿里云香港机房的 100ms 左右差不多），容量内存大一倍。
 
 买搬瓦工还有一个理由是支持支付宝支付，相对来说，其它很多国外的 VPS 服务商，用信用卡支付要填写一大堆资料，繁琐不说，有时候还要审核（预防信用卡欺诈等）一等好多天，甚是麻烦。
 

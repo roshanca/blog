@@ -40,14 +40,16 @@ table {
   width: 100%;
   border: 1px solid #e5e5e5;
   border-collapse: collapse;
+  th {
+    background-color: rgba(168, 168, 168, 0.8);
+  }
 }
 td,
 th {
   padding: .5rem 1rem;
   border: 1px solid #e5e5e5;
 }
-tbody tr:nth-child(odd) td,
-tbody tr:nth-child(odd) th {
+tbody tr:nth-child(even) td {
   background-color: #f9f9f9;
 }
 
