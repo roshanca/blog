@@ -3,6 +3,7 @@ layout: post
 title: "OS X 下的 Octopress 搭建"
 date: 2012-03-11 14:04
 tags: octopress mac
+toc: true
 comments: true
 ---
 

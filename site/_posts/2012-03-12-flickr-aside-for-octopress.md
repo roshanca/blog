@@ -3,6 +3,7 @@ layout: post
 title: "为 Octopress 添加 Flickr 边栏"
 date: 2012-03-12 21:30
 tags: octopress
+toc: true
 comments: true
 ---
 

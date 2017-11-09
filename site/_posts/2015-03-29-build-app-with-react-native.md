@@ -3,6 +3,7 @@ layout: post
 title: React Native：用 JavaScript 构建应用
 data: 2015-03-29
 tags: js react
+toc: true
 comments: true
 ---
 

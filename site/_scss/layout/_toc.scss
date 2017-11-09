@@ -1,0 +1,43 @@
+.post-toc {
+  position: fixed;
+  margin-left: 650px;
+  line-height: 2;
+  z-index: 9999;
+}
+
+.section-nav {
+  list-style: none;
+  padding-left: 0;
+  ul {
+    margin: 0;
+    padding-left: 2rem;
+  }
+  li {
+    list-style: none;
+    margin-bottom: 0 !important;
+  }
+  li a {
+    display: inline-block;
+    color: #aaa;
+    font-size: 1.6rem;
+    text-decoration: none;
+    border-bottom: 0 none;
+    transition: all 0.3s cubic-bezier(0.230, 1.000, 0.320, 1.000);
+  }
+  li.visible > a {
+    color: #111;
+    transform: translate( 5px );
+  }
+}
+
+.toc-marker {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  path {
+    transition: all 0.3s ease;
+  }
+}

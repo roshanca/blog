@@ -3,6 +3,7 @@ layout: post
 title: "一道 JavaScript 小题"
 date: 2012-10-15 14:01
 tags: javascript
+toc: true
 comments: true
 ---
 

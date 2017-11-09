@@ -3,6 +3,7 @@ layout: post
 title: "Hello Octopress"
 date: 2012-03-07 10:37
 tags: octopress
+toc: true
 comments: true
 ---
 

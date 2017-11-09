@@ -3,6 +3,7 @@ layout: post
 title: 前端编码风格规范之一般规范
 data: 2014-09-07
 tags: code
+toc: true
 comments: true
 ---
 

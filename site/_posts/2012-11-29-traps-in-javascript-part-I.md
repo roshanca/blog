@@ -3,6 +3,7 @@ layout: post
 title: "JavaScript 中的一些坑（一）"
 date: 2012-11-29 14:47
 tags: javascript
+toc: true
 comments: true
 ---
 

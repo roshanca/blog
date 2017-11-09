@@ -3,6 +3,7 @@ layout: post
 title: "试玩暗黑破坏神3"
 date: 2012-03-11 21:36
 tags: diablo game
+toc: true
 comments: true
 ---
 

@@ -3,6 +3,7 @@ layout: post
 title: 用 TypeScript 写一个贪食蛇小游戏
 data: 2015-09-03
 tags: javascript typescript
+toc: true
 comments: true
 ---
 

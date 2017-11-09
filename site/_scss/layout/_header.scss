@@ -4,7 +4,8 @@
 	text-align: center;
 	border-bottom: 1px solid #eee;
 	.header-inner {
-		@extend %container;
+    @extend %container;
+    text-align: center;
 	}
 	.blog-title {
 		position: relative;
@@ -38,7 +39,16 @@
         }
       }
     }
-	}
+  }
+  .header-icon {
+    display: flex;
+    justify-content: center;
+    > a {
+      display: block;
+      margin-left: 0.6rem;
+      margin-right: 0.6rem;
+    }
+  }
 	.blog-desc {
     font-size: 100%;
     font-family: $heading;
@@ -53,12 +63,12 @@
     display: block;
     width: 28px;
     height: 28px;
-    margin-left: -15px;
     line-height: 28px;
     color: lighten($heading-color, 44%);
     border: 1px solid #e0e0e0;
     border-radius: 100%;
     background-color: #fff;
+    transform: translateX(-50%);
     .fa {
       font-size: 14px;
       vertical-align: 2px;

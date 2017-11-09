@@ -3,6 +3,7 @@ layout: post
 title: 在 CentOS 7 上搭建 Docker 私有仓库
 data: 2016-07-24
 tags: docker
+toc: true
 comments: true
 ---
 

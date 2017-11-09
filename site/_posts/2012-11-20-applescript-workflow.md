@@ -3,6 +3,7 @@ layout: post
 title: "用 AppleScript 创建工作流"
 date: 2012-11-20 22:18
 tags: applescript octopress workflow
+toc: true
 comments: true
 ---
 

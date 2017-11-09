@@ -3,6 +3,7 @@ layout: post
 title: "误删系统显示描述文件"
 date: 2013-06-05 16:47
 tags: mac
+toc: true
 comments: true
 ---
 
