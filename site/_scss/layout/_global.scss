@@ -41,7 +41,8 @@ table {
   border: 1px solid #e5e5e5;
   border-collapse: collapse;
   th {
-    background-color: rgba(168, 168, 168, 0.8);
+    color: #fff;
+    background-color: $th-bg-color;
   }
 }
 td,
