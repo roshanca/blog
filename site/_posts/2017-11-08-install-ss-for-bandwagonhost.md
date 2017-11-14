@@ -55,15 +55,20 @@ comments: true
 
 ## 安装 SS 客户端
 
-- Mac: https://github.com/shadowsocks/ShadowsocksX-NG/releases/
-- Window[^2]: https://sourceforge.net/projects/shadowsocksgui/files/dist/
-- Android: https://play.google.com/store/apps/details?id=com.github.shadowsocks
-- iOS[^3]: https://github.com/shadowsocks/shadowsocks-iOS/wiki/Help
+- Mac: [下载地址][Mac]
+- Window: [下载地址][Window][^2]
+- Android: [下载地址][Android]
+- iOS: [下载地址][iOS][^3]
 
-[^2]: shadowsocks-win-xxx.zip 是 for windows 7 及之前的版本的，shadowsocks-win-dotnet-xxx.zip 是 for windows 8 以及现在最新的 windows 10 的。
+[^2]: *shadowsocks-win-xxx.zip* 是 for windows 7 及之前的版本的，*shadowsocks-win-dotnet-xxx.zip* 是 for windows 8 以及现在最新的 windows 10 的。
 
-[^3]: iOS 的 APP 只有在美国商店里有，你要是没有美国的 Apple 账户，那就算了。
+[^3]: iOS 的 APP 目前只限美国商店。你要是没有美国的 Apple 账户，那还是算了。
 
 安装好后，对照着之前配置好的服务端参数，进行一番配置，开启运行即可。
 
 ![](https://s10.mogucdn.com/mlcdn/c45406/171108_71j926h508135748gjg9bgk1fh5l4_488x331.png)
+
+[Mac]: https://github.com/shadowsocks/ShadowsocksX-NG/releases/
+[Window]: https://sourceforge.net/projects/shadowsocksgui/files/dist/
+[Android]: https://play.google.com/store/apps/details?id=com.github.shadowsocks
+[iOS]: https://github.com/shadowsocks/shadowsocks-iOS/wiki/Help
