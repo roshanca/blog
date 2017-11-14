@@ -21,7 +21,7 @@ gitk 是个 git 自带的 gui 小工具。
 
 Mac 自 OS X EI Capitan 版本之后，无法直接修改系统的 System 目录，需关闭系统保户才行。想要关闭，得先进入系统 Recover 模式：重启电脑，按住 `⌘ + R` 不放。
 
-进入 Recover 模式后，在菜单栏中选择 "Utilities -> Terminal"（实用工具 -> 终端），输入以下命令：
+进入 Recover 模式后，在菜单栏中选择 "Utilities → Terminal"（实用工具 → 终端），输入以下命令：
 
 ```
 csrutil status

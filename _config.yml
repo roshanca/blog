@@ -7,7 +7,7 @@ subtitle: just Roshan's blog
 # Permalinks
 #
 # Use of `relative_permalinks` ensures post links from the index work properly.
-permalink: /:year/:title
+permalink: /:year/:title/
 # relative_permalinks: true
 
 # Pluglins
