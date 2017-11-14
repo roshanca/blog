@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <link href="http://gmpg.org/xfn/11" rel="profile">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>编辑神器：Sublime Text 2 - 肉山·察</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	
+	<link rel="canonical" href="http://roshanca.com/2012/magical-sublime-text-2/">
+	<link rel="alternate" type="application/rss+xml" title="Subscribe Feed" href="/feed.xml">
+	<link  href="/css/app.css" rel="stylesheet" media="all">
+	<link href="//cdn.bootcss.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//fonts.googleapis.com/css?family=Lustria|Inconsolata" rel="stylesheet">
+    <!-- <link href='//fonts.useso.com/css?family=PT+Serif:400,700' rel='stylesheet' type='text/css'> -->
+	<script>
+	function loadSync(u,p,a){
+		if(!p && location.port)return {onload: null};
+		if(/\.js$/.test(u)){a='script'}else{a='link'};
+		var d=document,s=d.createElement(a),f=d.getElementsByTagName(a)[0];
+		if(a=='link'){s.href=u,s.rel='stylesheet'}else{s.src=u,s.async=true}
+		f.parentNode.insertBefore(s,f);return s;
+	}
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-15720258-1']);
+	_gaq.push(['_trackPageview']);
+	_gaq.push(['_trackPageLoadTime']);
+	loadSync('//ssl.google-analytics.com/ga.js');
+	if(/windows/i.test(navigator.userAgent)){document.getElementsByTagName('html')[0].className = 'windows'}
+    </script>
+    <!--[if lt IE 9]>
+    <script>window.location.href="http://browsehappy.com"</script>
+    <![endif]-->
+</head>
+
+<body>
+
+<header id="header" role="banner">
+	<div class="header-inner">
+	
+		<a href="/" class="blog-title home">肉山·察</a>
+		<div class="header-icon">
+	<a href="//github.com/roshanca" class="social-link">
+		<i class="fa fa-github"></i>
+	</a>
+
+	<a href="//twitter.com/roshan_wu" class="social-link">
+		<i class="fa fa-twitter"></i>
+	</a>
+
+	<a href="//weibo.com/jinfeixibi" class="social-link">
+		<i class="fa fa-weibo"></i>
+	</a>
+
+	<a href="//www.flickr.com/photos/roshanca/" class="social-link">
+		<i class="fa fa-flickr"></i>
+	</a>
+</div>
+	
+	</div>
+	<a href="/feed.xml" class="subscribe">
+		<i class="fa fa-rss"></i>
+	</a>
+</header>
+
+<main class="fluid" role="main">
+  <article class="post" role="article">
+    <header class="post-header">
+      <h1 class="post-title">编辑神器：Sublime Text 2</h1>
+    </header>
+    <section class="post-content">
+      <nav class="post-toc">
+  <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#下载">下载</a></li>
+<li class="toc-entry toc-h2"><a href="#破解">破解</a></li>
+<li class="toc-entry toc-h2"><a href="#使用技巧">使用技巧</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#多重选择multi-selection">多重选择(Multi-Selection)</a></li>
+<li class="toc-entry toc-h3"><a href="#随心所欲跳转goto-anything">随心所欲跳转(Goto Anything)</a></li>
+<li class="toc-entry toc-h3"><a href="#边栏side-bar">边栏(Side Bar)</a></li>
+<li class="toc-entry toc-h3"><a href="#命令面板command-palette">命令面板(Command Palette)</a></li>
+<li class="toc-entry toc-h3"><a href="#无干扰模式distraction-free-mode">无干扰模式(Distraction Free Mode)</a></li>
+<li class="toc-entry toc-h3"><a href="#迷你地图minimap">迷你地图(Minimap)</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#设置">设置</a></li>
+<li class="toc-entry toc-h2"><a href="#快捷键">快捷键</a></li>
+<li class="toc-entry toc-h2"><a href="#安装插件">安装插件</a></li>
+<li class="toc-entry toc-h2"><a href="#常用插件">常用插件</a></li>
+</ul>
+  <svg class="toc-marker" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+    <path stroke="#444" stroke-width="3" fill="transparent" stroke-dasharray="0, 0, 0, 1000" stroke-linecap="round" stroke-linejoin="round"
+      transform="translate(-0.5, -0.5)" />
+  </svg>
+</nav>
+
+      <p>Sublime Text 2 (以下简称 ST2)，无疑是我所用过的最好用的文本（代码）编辑器，没有之一！基于它的某些诱人特性，总让人在不经意间就眼前一亮，所以最近身边有好多同事都因无意一瞥，就被其吸引，继而让我推荐。</p>
+
+<p>先来说说它的优势所在：</p>
+
+<ul>
+<li>  <strong>启动快速，运行流畅</strong>，而且这是在拥有众多功能和加载许多插件的前提下，单凭这一点，就达到了我内心“神器”的标准；</li>
+<li>  <strong>UI 漂亮精美</strong>，内置多款主题，无论你喜欢深色背景，还是钟意浅色皮肤，它都能满足你；</li>
+<li>  支持各种流行编程语言的<strong>语法高亮</strong>，非常齐全，还可通过插件扩展；</li>
+<li>  <strong>代码自动补全提示</strong>，注意：它只是个编辑器，不是 IDE，虽然提示的代码有限，但十分实用（特别是写 CSS，太爽了）；</li>
+<li>  <strong>可定制性和可扩展性</strong>，这个可就因人而异了，有人嫌麻烦，有人要个性，但毫无疑问的是，ST2 因为这一点而无比强大！</li>
+</ul>
+
+<p>有没有心动呢？心动不如行动，赶紧来试试吧。</p>
+
+<h2>
+<a id="下载" class="anchor" href="#%E4%B8%8B%E8%BD%BD" aria-hidden="true"><span class="octicon octicon-link"></span></a>下载</h2>
+
+<ul>
+<li>  稳定版：<a href="http://www.sublimetext.com/2">Stable</a>
+</li>
+<li>  开发版：<a href="http://www.sublimetext.com/dev">Dev</a> - Semi-frequently updated, available to anyone.</li>
+<li>  内测版：<a href="http://www.sublimetext.com/nightly">Nightly</a> - Mostly frequently updated, available for registered users only.</li>
+</ul>
+
+<p>推荐下载开发版（Dev）。</p>
+
+<h2>
+<a id="破解" class="anchor" href="#%E7%A0%B4%E8%A7%A3" aria-hidden="true"><span class="octicon octicon-link"></span></a>破解</h2>
+
+<p>其实未注册的免费版跟付费版功能完全相同，只是前者主窗口右上角有 “UNREGISTERED” 的水印而已，还有就是偶尔的提示注册弹窗（频率低的可以忽略不记），所以破解<strong>我既不提倡，也觉得没那必要</strong>。过程我就不赘述了，请移步至以下链接。</p>
+
+<ul>
+<li>  <strong>OS X</strong> - <a href="http://mac.pcbeta.com/thread-114355-1-1.html">http://mac.pcbeta.com/thread-114355-1-1.html</a>
+</li>
+<li>  <strong>Windows &amp; Linux</strong> - <a href="http://i.wanz.im/2012/04/07/cracking_sublime-text2/">http://i.wanz.im/2012/04/07/cracking_sublime-text2/</a>
+</li>
+</ul>
+
+<h2>
+<a id="使用技巧" class="anchor" href="#%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7" aria-hidden="true"><span class="octicon octicon-link"></span></a>使用技巧</h2>
+
+<p>提示：因为本文基于 OS X 环境所写，所以为了更好的阅读下文，请先确保理解 OS X 与 Windows 下的键盘映射关系。见表：</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: left">OS X</th>
+<th style="text-align: center">符号</th>
+<th style="text-align: center">对应</th>
+<th style="text-align: left">Windows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left">Command</td>
+<td style="text-align: center">⌘</td>
+<td style="text-align: center">=&gt;</td>
+<td style="text-align: left">Ctrl</td>
+</tr>
+<tr>
+<td style="text-align: left">Shift</td>
+<td style="text-align: center">⇧</td>
+<td style="text-align: center">=&gt;</td>
+<td style="text-align: left">Shift</td>
+</tr>
+<tr>
+<td style="text-align: left">Option</td>
+<td style="text-align: center">⌥</td>
+<td style="text-align: center">=&gt;</td>
+<td style="text-align: left">Alt</td>
+</tr>
+<tr>
+<td style="text-align: left">Control</td>
+<td style="text-align: center">⌃</td>
+<td style="text-align: center">=&gt;</td>
+<td style="text-align: left">Ctrl</td>
+</tr>
+</tbody>
+</table>
+
+<h3>
+<a id="多重选择multi-selection" class="anchor" href="#%E5%A4%9A%E9%87%8D%E9%80%89%E6%8B%A9multi-selection" aria-hidden="true"><span class="octicon octicon-link"></span></a>多重选择(Multi-Selection)</h3>
+
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/rename.jpg" alt="Multi-Selection"></p>
+
+<p>这项功能实在是太强大了！太让人随心所欲了，使得许多需要用正则、高级搜索、替换才能完成的任务，变得轻松 easy，不禁让我感慨：“当年没这神器，是怎么活过来的？！”</p>
+
+<p>如何激活多重选择呢？</p>
+
+<ul>
+<li>  按住 <code>Command</code>，点击编辑区域内任何你所期望光标出现的位置；</li>
+<li>  通过多次 <code>Command + D</code>，即可将全文中与光标当前所在位置的词相同的词逐一加入选择。而在有词句选中状况下，通过 <code>Command + Control + G</code> 即可一次性选择全文中所有相同的词；</li>
+<li>  Windows 下可按住鼠标中键后拖动来进行垂直方向的纵列选择，OS X 下则是按住 <code>option</code> 键；</li>
+<li>  选中多行文本，通过 <code>Command + Shift + L</code> 来将光标打散至每行行尾。</li>
+</ul>
+
+<h3>
+<a id="随心所欲跳转goto-anything" class="anchor" href="#%E9%9A%8F%E5%BF%83%E6%89%80%E6%AC%B2%E8%B7%B3%E8%BD%ACgoto-anything" aria-hidden="true"><span class="octicon octicon-link"></span></a>随心所欲跳转(Goto Anything)</h3>
+
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/goto.jpg" alt="Goto Anything"></p>
+
+<p>许多 IDE 都有这个功能，切换当前打开的文档嘛。但 ST2 的 Goto Anything 已经完全超越了，当我们按下 <code>Command + P</code> 时看看都能做些什么：</p>
+
+<ul>
+<li>  切换文档，不单单是在当前打开的文档之间哦，包括了整个 Project，并可用关键字过滤</li>
+<li>  关键字以 <code>@</code> 开头，匹配的是文档中的函数以及其它关键内容（例如：HTML 中就匹配元素 id，这有些类似一般 IDE 中的 “outline” 的功能），它的快捷键是 <code>Command + R</code>
+</li>
+<li>  关键字以 <code>#</code> 开头，其实就是个全文搜索</li>
+<li>  关键字以 <code>:</code> 开头，后跟数字可跳转至相应的行，它的快捷键是 <code>Ctrl + G</code>
+</li>
+</ul>
+
+<h3>
+<a id="边栏side-bar" class="anchor" href="#%E8%BE%B9%E6%A0%8Fside-bar" aria-hidden="true"><span class="octicon octicon-link"></span></a>边栏(Side Bar)</h3>
+
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/Side-Bar.jpg" alt="Side Bar"></p>
+
+<p>很多编辑器（Notepad++ etc.）也有边栏，但 ST2 有点不同的是：单选左侧边栏中的文件，右侧自动出现文档预览（若选中的为图片等文件，则显示其二进制编码）。当你修改编辑它时，它才在 ST2 中以 Tab 的形式自动打开，so sweety ☺</p>
+
+<h3>
+<a id="命令面板command-palette" class="anchor" href="#%E5%91%BD%E4%BB%A4%E9%9D%A2%E6%9D%BFcommand-palette" aria-hidden="true"><span class="octicon octicon-link"></span></a>命令面板(Command Palette)</h3>
+
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/command_palette.jpg" alt="Command Palette"></p>
+
+<p>执行命令的快捷入口，我们一般以快捷键 <code>Command + Shift + P</code> 来快速调用，当然你也可以在菜单 <code>Tool</code> 下找到它。</p>
+
+<h3>
+<a id="无干扰模式distraction-free-mode" class="anchor" href="#%E6%97%A0%E5%B9%B2%E6%89%B0%E6%A8%A1%E5%BC%8Fdistraction-free-mode" aria-hidden="true"><span class="octicon octicon-link"></span></a>无干扰模式(Distraction Free Mode)</h3>
+
+<p>在菜单 <code>View</code> 中选择 <code>Enter Distraction Free Mode</code> 就可进入无干扰模式。快捷键为 <code>Ctrl + Shift + Command + F</code></p>
+
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/Distraction-Free-Mode.jpg" alt="Distraction Free Mode"></p>
+
+<p>通过修改 <code>Preferences -&gt; Settings - More -&gt; Distraction Free - User</code> 可以对防干扰模式进行一些设置：</p>
+<div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
+    </span><span class="s2">"line_numbers"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">      </span><span class="err">//</span><span class="w"> </span><span class="err">是否显示行号</span><span class="w">
+    </span><span class="s2">"gutter"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">            </span><span class="err">//</span><span class="w"> </span><span class="err">是否显示边列</span><span class="w">
+    </span><span class="s2">"draw_centered"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">      </span><span class="err">//</span><span class="w"> </span><span class="err">是否居中显示</span><span class="w">
+    </span><span class="s2">"wrap_width"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span><span class="w">           </span><span class="err">//</span><span class="w"> </span><span class="err">换行宽度(单位：字符)</span><span class="w">
+    </span><span class="s2">"word_wrap"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">          </span><span class="err">//</span><span class="w"> </span><span class="err">是否自动换行</span><span class="w">
+    </span><span class="s2">"scroll_past_end"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">     </span><span class="err">//</span><span class="w"> </span><span class="err">滚动能否超过结尾</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h3>
+<a id="迷你地图minimap" class="anchor" href="#%E8%BF%B7%E4%BD%A0%E5%9C%B0%E5%9B%BEminimap" aria-hidden="true"><span class="octicon octicon-link"></span></a>迷你地图(Minimap)</h3>
+
+<p>右侧默认显示迷你地图，这其实是个全局预览加模糊定位文档位置的功能。当然如果你像增大编辑可视面积，也可通过菜单 “View” 选择 “Hide Minimap” 将其关闭。</p>
+
+<h2>
+<a id="设置" class="anchor" href="#%E8%AE%BE%E7%BD%AE" aria-hidden="true"><span class="octicon octicon-link"></span></a>设置</h2>
+
+<p><code>Preferences -&gt; Settings - Default</code>，这个是 ST2 的默认设置，不建议修改此文件，而是通过修改 <code>Preferences -&gt; Settings - User</code> 来达到个性化的定制。例如，以下就是我的 User 设定：</p>
+<div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
+    </span><span class="s2">"folder_exclude_patterns"</span><span class="p">:</span><span class="w">
+    </span><span class="p">[</span><span class="w">
+        </span><span class="s2">".svn"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">".git"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">".hg"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"CVS"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">".idea"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"highlight_line"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"highlight_modified_tabs"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"scroll_past_end"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"tab_size"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"theme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Soda Dark.sublime-theme"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>根据字面意思相信你都能看懂分别代表什么意思，这里要提一下的是如何开启鼎鼎大名的 Vim 模式（重度 Coder 的大爱），请添加这句：</p>
+<div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
+    </span><span class="s2">"ignored_packages"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h2>
+<a id="快捷键" class="anchor" href="#%E5%BF%AB%E6%8D%B7%E9%94%AE" aria-hidden="true"><span class="octicon octicon-link"></span></a>快捷键</h2>
+
+<p>类似设置，你可以进入 <code>Preferences -&gt; Key Bindings - Default</code> 查看所有的快捷键设置，然后在 <code>Key Bindings - User</code> 来自定义快捷键。</p>
+
+<p>附上常用的快捷键：（Windows 用户请移步至 <strong><a href="http://istyles.blog.163.com/blog/static/1811003892011828111418654/">这里</a></strong>）</p>
+
+<div class="keyboard">
+    <table>
+        <thead>
+            <tr>
+                <th colspan="2">编辑</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>⌃⇧K</td>
+                <td>删除整行</td>
+            </tr>
+            <tr>
+                <td>⌘KK (⌃K)</td>
+                <td>从光标处删除至行尾</td>
+            </tr>
+            <tr>
+                <td>⌘⌫</td>
+                <td>从光标处删除至行首</td>
+            </tr>
+            <tr>
+                <td>⇧⌘↩</td>
+                <td>在当前行之前插入新行</td>
+            </tr>
+            <tr>
+                <td>⌘↩</td>
+                <td>在当前行之后插入新行</td>
+            </tr>
+            <tr>
+                <td>⌃⌘↑</td>
+                <td>上移一行</td>
+            </tr>
+            <tr>
+                <td>⌃⌘↓</td>
+                <td>下移一行</td>
+            </tr>
+            <tr>
+                <td>⌘]</td>
+                <td>缩进当前行</td>
+            </tr>
+            <tr>
+                <td>⌘[</td>
+                <td>反缩进当前行</td>
+            </tr>
+            <tr>
+                <td>⌘L</td>
+                <td>选择行 (重复按下将下一行加入选择)</td>
+            </tr>
+            <tr>
+                <td>⌘D</td>
+                <td>选择词 (重复按下时多重选择相同的词)</td>
+            </tr>
+            <tr>
+                <td>⌃⇧M</td>
+                <td>选择括号内的内容</td>
+            </tr>
+            <tr>
+                <td>⌃M</td>
+                <td>跳转至对应的括号</td>
+            </tr>
+            <tr>
+                <td>⇧⌘D</td>
+                <td>复制(多)行</td>
+            </tr>
+            <tr>
+                <td>⌘J</td>
+                <td>合并(多)行</td>
+            </tr>
+            <tr>
+                <td>⌘/</td>
+                <td>注释</td>
+            </tr>
+            <tr>
+                <td>⌥⌘/</td>
+                <td>块注释</td>
+            </tr>
+            <tr>
+                <td>⌘Y</td>
+                <td>恢复或重复</td>
+            </tr>
+            <tr>
+                <td>⇧⌘V</td>
+                <td>粘贴并自动缩进</td>
+            </tr>
+            <tr>
+                <td>⌘U</td>
+                <td>软撤销（可撤销光标移动）</td>
+            </tr>
+            <tr>
+                <td>⇧⌘U</td>
+                <td>软重做（可重做光标移动）</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <thead>
+            <tr>
+                <th colspan="2">查找/替换</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>⌘F</td>
+                <td>查找</td>
+            </tr>
+            <tr>
+                <td>⌥⌘F</td>
+                <td>替换</td>
+            </tr>
+            <tr>
+                <td>⇧⌘F</td>
+                <td>在文件中查找</td>
+            </tr>
+            <tr>
+                <td>⌘G</td>
+                <td>查找下一个</td>
+            </tr>
+            <tr>
+                <td>⌃⌘G</td>
+                <td>查找并选中全部</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <thead>
+            <tr>
+                <th colspan="2">XML/HTML</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>⇧⌘A</td>
+                <td>选择标签内的内容</td>
+            </tr>
+            <tr>
+                <td>⌃⇧W</td>
+                <td>嵌套标签</td>
+            </tr>
+            <tr>
+                <td>⌥⌘ .</td>
+                <td>闭合当前标签</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <thead>
+            <tr>
+                <th colspan="2">拆分窗口</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>⌥⌘[1,2,3,4,5]</td>
+                <td>单列、两列、三列、四列、栅格</td>
+            </tr>
+            <tr>
+                <td>⌥⇧⌘[2,3]</td>
+                <td>两栏、三栏</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <thead>
+            <tr>
+                <th colspan="2">其它</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>⌘P</td>
+                <td>随心所欲跳转</td>
+            </tr>
+            <tr>
+                <td>⇧⌘P</td>
+                <td>打开命令面板</td>
+            </tr>
+            <tr>
+                <td>⌘KB</td>
+                <td>切换侧边栏（我的已修改为 ⌃S）</td>
+            </tr>
+            <tr>
+                <td>⌃ `</td>
+                <td>打开 python 控制台</td>
+            </tr>
+            <tr>
+                <td>⌘T</td>
+                <td>前往文件</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<h2>
+<a id="安装插件" class="anchor" href="#%E5%AE%89%E8%A3%85%E6%8F%92%E4%BB%B6" aria-hidden="true"><span class="octicon octicon-link"></span></a>安装插件</h2>
+
+<p>ST2 的插件安装是通过所谓的 <a href="//sublime.wbond.net/">Package Control (包控制)</a> 来实现的。如果你用过 <code>npm</code> 或者 <code>spm</code> ，那你一定不会对这种包管理的方式感到陌生。</p>
+
+<p>安装 Package Control 的方法：</p>
+
+<ol>
+<li>打开 ST2，通过 <code>Ctrl + `</code> 调出 Console (控制台)</li>
+<li>
+<p>将以下代码粘贴进命令行中并回车：</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">urllib2</span><span class="p">,</span><span class="n">os</span><span class="p">;</span> <span class="n">pf</span><span class="o">=</span><span class="s">'Package Control.sublime-package'</span><span class="p">;</span> <span class="n">ipp</span><span class="o">=</span><span class="n">sublime</span><span class="o">.</span><span class="n">installed_packages_path</span><span class="p">();</span> <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">ipp</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">ipp</span><span class="p">)</span> <span class="k">else</span> <span class="bp">None</span><span class="p">;</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">install_opener</span><span class="p">(</span><span class="n">urllib2</span><span class="o">.</span><span class="n">build_opener</span><span class="p">(</span><span class="n">urllib2</span><span class="o">.</span><span class="n">ProxyHandler</span><span class="p">()));</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ipp</span><span class="p">,</span><span class="n">pf</span><span class="p">),</span><span class="s">'wb'</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="s">'http://sublime.wbond.net/'</span><span class="o">+</span><span class="n">pf</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">' '</span><span class="p">,</span><span class="s">'</span><span class="si">%20</span><span class="s">'</span><span class="p">))</span><span class="o">.</span><span class="n">read</span><span class="p">());</span> <span class="k">print</span> <span class="s">'Please restart Sublime Text to finish installation'</span>
+</code></pre></div>
+</li>
+<li><p>重启 ST2，如果在 <code>Preferences</code> 下见到 <code>Package Control</code> 这一项，就说明安装成功了。</p></li>
+</ol>
+
+<p>接下来我们就可以利用 Package Control 来安装插件了：</p>
+
+<ol>
+<li>
+<p>打开 ST2，通过 <code>Command + Shift + P</code> 打开命令面板，输入关键字调出 <code>Package Control: Install Package</code></p>
+
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/PCI.jpg" alt=""></p>
+</li>
+<li>
+<p>选择 <code>Package Control: Install Package</code>，稍等片刻后就可会出现插件列表，可输入插件名来在列表中查找选择所需插件</p>
+
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/PCI-RESULT.jpg" alt=""></p>
+</li>
+<li><p>等待安装（左下角 [ = ] 显示运行中），安装完毕后重启 ST2 即可</p></li>
+</ol>
+
+<h2>
+<a id="常用插件" class="anchor" href="#%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6" aria-hidden="true"><span class="octicon octicon-link"></span></a>常用插件</h2>
+
+<p>这里就简单罗列一些，包括了网上热评的和自己在用的。</p>
+
+<ul>
+<li>
+<p><strong>Alignment</strong></p>
+
+<p>这插件用于对齐代码赋值语句, 例如:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">var name = "sublimt"
+var version = "2.0.1"
+var title = "sublime text"
+</code></pre></div>
+<p>以上代码就能转化为：</p>
+<div class="highlight"><pre><code class="language-" data-lang="">var name    = "sublimt"
+var version = "2.0.1"
+var title   = "sublime text"
+</code></pre></div>
+</li>
+<li>
+<p><strong>Clipboard History</strong></p>
+
+<p>粘贴板历史记录，方便使用复制/剪切的内容。</p>
+</li>
+<li>
+<p><strong>ColorPicker</strong></p>
+
+<p>支持在各个平台下取色，没什么好说的。</p>
+</li>
+<li>
+<p><strong>Ctags</strong></p>
+
+<p>可以在代码里直接查看函数定义，比如看一个函数的定义或者类的定义。不过可惜无法在 OS X 下使用。</p>
+</li>
+<li>
+<p><strong>DocBlockr</strong></p>
+
+<p>自动生成标准 JSDoc 注释的好帮手，只需在函数声明定义上方输入 <code>/**</code> 然后回车，便会出现类似如下代码：</p>
+<div class="highlight"><pre><code class="language-" data-lang="">/**
+* [width description]
+* @param  {[type]} px [description]
+* @return {[type]}    [description]
+*/
+</code></pre></div>
+</li>
+<li>
+<p><strong>Emmet</strong></p>
+
+<p>你也许没听说它，但其前身：zen coding 可谓是鼎鼎大名（在前端界）。之所以更名，是因为它给自己的定位：</p>
+
+<blockquote>
+<p>the essential toolkit for web-developers</p>
+</blockquote>
+
+<p>作为资深前端插件，它不仅可安装在 ST2 上，基本上流行的 IDE (Aptana/Eclipse etc.) 与编辑器 (Notepad++/TextMate etc.)，它都提供支持。详细的使用文档：<a href="http://docs.emmet.io">Emmet Documentation</a>，<a href="https://github.com/sergeche/emmet-sublime">Emmet for ST2</a></p>
+</li>
+<li>
+<p><strong>GBK Encoding Support</strong></p>
+
+<p>解决对中文编码不支持的问题，必装吧。因为你发现 ST2 菜单中 <code>File -&gt; Reopen with Encoding</code> 压根就没有国标码！</p>
+</li>
+<li>
+<p><strong>JsFormat</strong></p>
+
+<p>格式化 JS，当然也包括 JSON，快捷键是 <code>Ctrl + Shift + F</code> 非常方便。</p>
+</li>
+<li>
+<p><strong>MarkdownEditing</strong></p>
+
+<blockquote>
+<p>MarkdownEditing 从视觉和便捷性上针对 Markdown 文档的编辑进行了一系列的优化。</p>
+</blockquote>
+
+<p>附上 <a href="http://wowubuntu.com/markdown/index.html">Markdown 语法说明 (简体中文版)</a>，and <a href="http://lucifr.com/2012/07/12/markdownediting-for-sublime-text-2/">MarkdownEditing 的详细中文介绍</a></p>
+</li>
+<li>
+<p><strong>Markdown Preview</strong></p>
+
+<p>能在浏览器中对当前 Markdown 文件进行预览。甚至生成相应的 HTML 文档。使用要用命令面板，输入相应的关键字查找 Markdown Preview 命令。当然，你也可以自定义快捷键。</p>
+</li>
+<li>
+<p><strong>SideBarEnhancements</strong></p>
+
+<p>加强在侧栏目录树中右键的选项。如图所示：</p>
+
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/sidebarenhancements.jpg" alt="SideBarEnhancements"></p>
+</li>
+<li><p>最后介绍一个 <strong>自动生成当天日期</strong> 的小插件，TextMate 用户一定不会陌生，命令是 <code>isoD + Tab</code>，此非官方插件，所以要使用的话，必须将 <a href="https://github.com/sunteya/sublime-user-package/blob/master/timestamp.py">timestamp.py</a> 这个文件加入到用户配置目录（<code>Packages -&gt; User</code>）下。</p></li>
+</ul>
+
+    </section>
+    <footer class="post-footer">
+      <div class="post-meta">
+        <time datetime="2012-12-02 22:49:00 +0000" class="updated" pubdate>Dec 02, 2012</time>
+
+        
+<span class="post-tag">
+	
+		<span class="tag">sublime</span>
+	
+		<span class="tag">tool</span>
+	
+</span>
+
+
+      </div>
+    </footer>
+    <section class="post-recent">
+  
+    <a class="relative-post previous" href="/2012/traps-in-javascript-part-I/"><span>JavaScript 中的一些坑（一）</span></a>
+  
+  
+    <a class="relative-post next" href="/2012/update-company-electronic-access-password/"><span>更新公司电子门禁密码</span></a>
+  
+</section>
+
+    <script src="/js/post.js"></script>
+  </article>
+</main>
+
+  <div class="post-comment">
+	<div id="disqus_thread" class="container"></div>
+</div>
+<script>
+function getElementTopLeft(elem) {
+	var top = 0;
+	var left = 0;
+	while(elem) {
+		top += elem.offsetTop;
+		left += elem.offsetLeft;
+
+		elem = elem.offsetParent;
+	}
+	return {top: top, left: left};
+}
+
+var disqus_shortname = 'roshanca';
+var disqus_elem = document.getElementById('disqus_thread');
+var disqus_init = false;
+
+window.onscroll = function () {
+	if (disqus_init) return;
+
+	var viewHeight = document.documentElement.clientHeight;
+	var scrollY = document.documentElement.scrollTop || document.body.scrollTop;
+
+	if(getElementTopLeft(disqus_elem).top < viewHeight + scrollY) {
+		loadSync('//' + disqus_shortname + '.disqus.com/embed.js');
+		disqus_init = true;
+	}
+}
+</script>
+
+
+
+<footer id="footer" role="contentinfo">
+	<p>© Copyright 2012 - <script>document.write(new Date().getFullYear())</script> by Roshan Wu.</p>
+</footer>
+
+<div class="fork-github">
+    <a href="https://github.com/roshanca/blog">View on GitHub</a>
+</div>
+
+</body>
+</html>

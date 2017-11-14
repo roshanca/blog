@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <link href="http://gmpg.org/xfn/11" rel="profile">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>iOS 像素级的界面变化 - 肉山·察</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	
+	<link rel="canonical" href="http://roshanca.com/2012/minor-interface-changes-of-ios/">
+	<link rel="alternate" type="application/rss+xml" title="Subscribe Feed" href="/feed.xml">
+	<link  href="/css/app.css" rel="stylesheet" media="all">
+	<link href="//cdn.bootcss.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//fonts.googleapis.com/css?family=Lustria|Inconsolata" rel="stylesheet">
+    <!-- <link href='//fonts.useso.com/css?family=PT+Serif:400,700' rel='stylesheet' type='text/css'> -->
+	<script>
+	function loadSync(u,p,a){
+		if(!p && location.port)return {onload: null};
+		if(/\.js$/.test(u)){a='script'}else{a='link'};
+		var d=document,s=d.createElement(a),f=d.getElementsByTagName(a)[0];
+		if(a=='link'){s.href=u,s.rel='stylesheet'}else{s.src=u,s.async=true}
+		f.parentNode.insertBefore(s,f);return s;
+	}
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-15720258-1']);
+	_gaq.push(['_trackPageview']);
+	_gaq.push(['_trackPageLoadTime']);
+	loadSync('//ssl.google-analytics.com/ga.js');
+	if(/windows/i.test(navigator.userAgent)){document.getElementsByTagName('html')[0].className = 'windows'}
+    </script>
+    <!--[if lt IE 9]>
+    <script>window.location.href="http://browsehappy.com"</script>
+    <![endif]-->
+</head>
+
+<body>
+
+<header id="header" role="banner">
+	<div class="header-inner">
+	
+		<a href="/" class="blog-title home">肉山·察</a>
+		<div class="header-icon">
+	<a href="//github.com/roshanca" class="social-link">
+		<i class="fa fa-github"></i>
+	</a>
+
+	<a href="//twitter.com/roshan_wu" class="social-link">
+		<i class="fa fa-twitter"></i>
+	</a>
+
+	<a href="//weibo.com/jinfeixibi" class="social-link">
+		<i class="fa fa-weibo"></i>
+	</a>
+
+	<a href="//www.flickr.com/photos/roshanca/" class="social-link">
+		<i class="fa fa-flickr"></i>
+	</a>
+</div>
+	
+	</div>
+	<a href="/feed.xml" class="subscribe">
+		<i class="fa fa-rss"></i>
+	</a>
+</header>
+
+<main class="fluid" role="main">
+  <article class="post" role="article">
+    <header class="post-header">
+      <h1 class="post-title">iOS 像素级的界面变化</h1>
+    </header>
+    <section class="post-content">
+      <nav class="post-toc">
+  <ul class="section-nav">
+</ul>
+  <svg class="toc-marker" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+    <path stroke="#444" stroke-width="3" fill="transparent" stroke-dasharray="0, 0, 0, 1000" stroke-linecap="round" stroke-linejoin="round"
+      transform="translate(-0.5, -0.5)" />
+  </svg>
+</nav>
+
+      <p>从 iOS4 到 iOS5，再到 iOS6，有些微小的像素级的界面改进，往往只有设计师才会注意到它们。</p>
+
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/vm_01_iconbadge_zps013f3e6e.jpg" alt=""></p>
+
+<p>app 右上角的提示徽标，阴影减弱，使得整体感更强了。</p>
+
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/vm_02_boxdesign_zps14f7570a.jpg" alt=""></p>
+
+<p>箱体设计，如设置面板中，更加立体。</p>
+
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/vm_04_messagetext_zps78c83a0b.jpg" alt=""></p>
+
+<p>消息文本加上了阴影高光，CSS 中的说法应该是 <code>text-shadow</code> 吧，我个人是非常喜欢这个效果。</p>
+
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/vm_03_rotatelock_zpscd7d4dbf.jpg" alt=""></p>
+
+<p>屏幕旋转锁定，我想是为了跟右边的启动音乐图标区分开来，表明它们不是同一类型的按钮（或许是我想多了）。</p>
+
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/vm_05_homeicon_zpsca574807.jpg" alt=""></p>
+
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/vm_05_homeicon2_zps97206dd3.jpg" alt=""></p>
+
+<p>左右对称了，没什么好说的。</p>
+
+<p>下面看看最近刚发布的 iOS6，又有哪些不易察觉的改变。</p>
+
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/__setting_zps190c9226.jpg" alt=""></p>
+
+<p>设置图标中的齿轮与 OS X 中的统一了起来，更加圆润。同时也去掉了高光。</p>
+
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/__clock_zps9b6d99ff.jpg" alt=""></p>
+
+<p>与设置图标类似，iOS 6 图标上的指针粗细是一致的，也去掉了锋利的感觉。看起来更像德国博朗出品的钟表。</p>
+
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/__header_zps900803ec.jpg" alt=""></p>
+
+<p>iOS 5 中的采用了高光效果，而 iOS 6 去掉了高光，改用了磨砂效果。大家知道 iPhone 5 的背壳就是磨砂效果，或许苹果是为了统一软硬件的质感吧。另外，iOS 6 的框架头部还加强了阴影效果。</p>
+
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/__actionsheet_zpsf2c5f1dd.jpg" alt=""></p>
+
+<p>同样的，也去掉了高光。</p>
+
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/__camera_zpseddab197.jpg" alt=""></p>
+
+<p>锁屏界面的相机图标看起来更加的圆润。</p>
+
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/__corner_zps3de29696.jpg" alt=""></p>
+
+<p>开始还没看出来，原来是键盘的边角由圆角改为了直角。我表示用了这么久从来没注意到过这个细节。</p>
+
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/__message_zpsd7b4f829.jpg" alt=""></p>
+
+<p>又是 <code>text-shadow</code>，高光从 2px 降至了 1px，立体感虽降低了些，可读性增加了。不过我还是喜欢原来的设计。</p>
+
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/__rotate_lock_zps20117574.jpg" alt=""> </p>
+
+<p>屏幕旋转锁定图标，同样是去掉了高光效果，细看能发现图标中的旋转标志更大一些，背景与设置图标统一了起来，表达出它属于设置一类的按钮。</p>
+
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/__serachbar_zpse36addbf.jpg" alt=""></p>
+
+<p>难道是为了呼应 iPhone 5 更薄的特性？</p>
+
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/__keyboard_zps03f2a3f8.jpg" alt=""></p>
+
+<p>iOS 5 的数字符号屏幕键盘高光是2px，按键采用相对平面的设计，但在 iOS 6 中高亮值变成了1px，按键上使用了渐变来体现立体感。</p>
+
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/__key_pitch_zpsb52122ad.jpg" alt=""></p>
+
+<p>增加了键盘按键大小，输入更加好按了。</p>
+
+<p>图片来源：<a href="http://stam-design-stam.blogspot.jp">Design Archive</a></p>
+
+    </section>
+    <footer class="post-footer">
+      <div class="post-meta">
+        <time datetime="2012-09-23 05:56:00 +0000" class="updated" pubdate>Sep 23, 2012</time>
+
+        
+<span class="post-tag">
+	
+		<span class="tag">apple</span>
+	
+		<span class="tag">ios</span>
+	
+</span>
+
+
+      </div>
+    </footer>
+    <section class="post-recent">
+  
+    <a class="relative-post previous" href="/2012/how-to-block-youku-and-tudos-flash-ads/"><span>如何屏蔽优酷和土豆的 Flash 广告</span></a>
+  
+  
+    <a class="relative-post next" href="/2012/javascript-tiny-quiz/"><span>一道 JavaScript 小题</span></a>
+  
+</section>
+
+    <script src="/js/post.js"></script>
+  </article>
+</main>
+
+  <div class="post-comment">
+	<div id="disqus_thread" class="container"></div>
+</div>
+<script>
+function getElementTopLeft(elem) {
+	var top = 0;
+	var left = 0;
+	while(elem) {
+		top += elem.offsetTop;
+		left += elem.offsetLeft;
+
+		elem = elem.offsetParent;
+	}
+	return {top: top, left: left};
+}
+
+var disqus_shortname = 'roshanca';
+var disqus_elem = document.getElementById('disqus_thread');
+var disqus_init = false;
+
+window.onscroll = function () {
+	if (disqus_init) return;
+
+	var viewHeight = document.documentElement.clientHeight;
+	var scrollY = document.documentElement.scrollTop || document.body.scrollTop;
+
+	if(getElementTopLeft(disqus_elem).top < viewHeight + scrollY) {
+		loadSync('//' + disqus_shortname + '.disqus.com/embed.js');
+		disqus_init = true;
+	}
+}
+</script>
+
+
+
+<footer id="footer" role="contentinfo">
+	<p>© Copyright 2012 - <script>document.write(new Date().getFullYear())</script> by Roshan Wu.</p>
+</footer>
+
+<div class="fork-github">
+    <a href="https://github.com/roshanca/blog">View on GitHub</a>
+</div>
+
+</body>
+</html>

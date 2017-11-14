@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <link href="http://gmpg.org/xfn/11" rel="profile">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>用 AppleScript 创建工作流 - 肉山·察</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	
+	<link rel="canonical" href="http://roshanca.com/2012/applescript-workflow/">
+	<link rel="alternate" type="application/rss+xml" title="Subscribe Feed" href="/feed.xml">
+	<link  href="/css/app.css" rel="stylesheet" media="all">
+	<link href="//cdn.bootcss.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//fonts.googleapis.com/css?family=Lustria|Inconsolata" rel="stylesheet">
+    <!-- <link href='//fonts.useso.com/css?family=PT+Serif:400,700' rel='stylesheet' type='text/css'> -->
+	<script>
+	function loadSync(u,p,a){
+		if(!p && location.port)return {onload: null};
+		if(/\.js$/.test(u)){a='script'}else{a='link'};
+		var d=document,s=d.createElement(a),f=d.getElementsByTagName(a)[0];
+		if(a=='link'){s.href=u,s.rel='stylesheet'}else{s.src=u,s.async=true}
+		f.parentNode.insertBefore(s,f);return s;
+	}
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-15720258-1']);
+	_gaq.push(['_trackPageview']);
+	_gaq.push(['_trackPageLoadTime']);
+	loadSync('//ssl.google-analytics.com/ga.js');
+	if(/windows/i.test(navigator.userAgent)){document.getElementsByTagName('html')[0].className = 'windows'}
+    </script>
+    <!--[if lt IE 9]>
+    <script>window.location.href="http://browsehappy.com"</script>
+    <![endif]-->
+</head>
+
+<body>
+
+<header id="header" role="banner">
+	<div class="header-inner">
+	
+		<a href="/" class="blog-title home">肉山·察</a>
+		<div class="header-icon">
+	<a href="//github.com/roshanca" class="social-link">
+		<i class="fa fa-github"></i>
+	</a>
+
+	<a href="//twitter.com/roshan_wu" class="social-link">
+		<i class="fa fa-twitter"></i>
+	</a>
+
+	<a href="//weibo.com/jinfeixibi" class="social-link">
+		<i class="fa fa-weibo"></i>
+	</a>
+
+	<a href="//www.flickr.com/photos/roshanca/" class="social-link">
+		<i class="fa fa-flickr"></i>
+	</a>
+</div>
+	
+	</div>
+	<a href="/feed.xml" class="subscribe">
+		<i class="fa fa-rss"></i>
+	</a>
+</header>
+
+<main class="fluid" role="main">
+  <article class="post" role="article">
+    <header class="post-header">
+      <h1 class="post-title">用 AppleScript 创建工作流</h1>
+    </header>
+    <section class="post-content">
+      <nav class="post-toc">
+  <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#什么是-applescript">什么是 AppleScript</a></li>
+<li class="toc-entry toc-h2"><a href="#入门">入门</a></li>
+<li class="toc-entry toc-h2"><a href="#进阶">进阶</a></li>
+<li class="toc-entry toc-h2"><a href="#实战">实战</a></li>
+</ul>
+  <svg class="toc-marker" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+    <path stroke="#444" stroke-width="3" fill="transparent" stroke-dasharray="0, 0, 0, 1000" stroke-linecap="round" stroke-linejoin="round"
+      transform="translate(-0.5, -0.5)" />
+  </svg>
+</nav>
+
+      <p>自从用了 <a href="http://octopress.org">Octopress</a>，每次写新文章 &amp; 生产部署，都要在终端中反复敲打几个命令，重复劳动。出于职业习惯，开始琢磨有没有偷懒的方法，用工具或者程序来代替这体力活。</p>
+
+<p>一开始看上了 OS X 自带的实用小工具小机器人——Automator，可以录制用户在系统中的各种操作而串联成工作流，有点类似 PhotoShop 中“动作”，也像一些应用程序中的 Macros（宏指令）。可试了一把后，觉得不太靠谱，这玩意儿不仅将你的动作记录了下来，废操作也一并囊括。而且执行工作流时，鼠标的控制权被强行夺取，感觉被人远程协助中，这让我除了傻呆呆地望着屏幕啥事也不能干。</p>
+
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/Automator.png" alt="Automator"></p>
+
+<p>后来试了试 AppleScript，感觉还是自己纯代码来写工作流比较爽，DIY 的空间更大而且执行起来更加高效。</p>
+
+<h2>
+<a id="什么是-applescript" class="anchor" href="#%E4%BB%80%E4%B9%88%E6%98%AF-applescript" aria-hidden="true"><span class="octicon octicon-link"></span></a>什么是 AppleScript</h2>
+
+<ul>
+<li>  一种脚本语言，和我们所知道的 VBScript 和 JavaScript 类似</li>
+<li>  内建于 OS X</li>
+<li>  用于实现应用程序控制</li>
+<li>  使繁琐重复的机械操作自动化</li>
+</ul>
+
+<h2>
+<a id="入门" class="anchor" href="#%E5%85%A5%E9%97%A8" aria-hidden="true"><span class="octicon octicon-link"></span></a>入门</h2>
+
+<p><a href="http://ishare.iask.sina.com.cn/f/14009129.html?w=MTQ0MjA5NTIzNg%3D%3D">AppleScrip 简明基础教程</a></p>
+
+<p>两个小例子：</p>
+
+<ol>
+<li>
+<p>让 Safari 打开一个 URL</p>
+<div class="highlight"><pre><code class="language-applescript" data-lang="applescript"><span class="k">tell</span><span class="w"> </span><span class="nb">application</span><span class="w"> </span><span class="s2">"Safari"</span><span class="w">
+    </span><span class="nb">open location</span><span class="w"> </span><span class="s2">"http://roshanca.com"</span><span class="w">
+</span><span class="k">end</span><span class="w"> </span><span class="k">tell</span><span class="w">
+</span></code></pre></div>
+</li>
+<li>
+<p>在桌面新建一个名为 “workflow” 的文件夹</p>
+<div class="highlight"><pre><code class="language-applescript" data-lang="applescript"><span class="k">tell</span><span class="w"> </span><span class="nb">application</span><span class="w"> </span><span class="s2">"Finder"</span><span class="w">
+    </span><span class="nb">make</span><span class="w"> </span><span class="nb">new</span><span class="w"> </span><span class="nv">folder</span><span class="w"> </span><span class="nb">at</span><span class="w"> </span><span class="nv">desktop</span><span class="w"> </span><span class="nv">with</span><span class="w"> </span><span class="na">properties</span><span class="w"> </span><span class="p">{</span><span class="na">name</span><span class="p">:</span><span class="s2">"workflow"</span><span class="p">}</span><span class="w">
+</span><span class="k">end</span><span class="w"> </span><span class="k">tell</span><span class="w">
+</span></code></pre></div>
+</li>
+</ol>
+
+<h2>
+<a id="进阶" class="anchor" href="#%E8%BF%9B%E9%98%B6" aria-hidden="true"><span class="octicon octicon-link"></span></a>进阶</h2>
+
+<p>也来两个小列子吧，感觉都还挺有用的~</p>
+
+<ol>
+<li>
+<p>转换日期格式</p>
+<div class="highlight"><pre><code class="language-applescript" data-lang="applescript"><span class="k">set</span><span class="w"> </span><span class="p">{</span><span class="nb">year</span><span class="p">:</span><span class="nv">y</span><span class="p">,</span><span class="w"> </span><span class="nb">month</span><span class="p">:</span><span class="nv">m</span><span class="p">,</span><span class="w"> </span><span class="nb">day</span><span class="p">:</span><span class="nv">d</span><span class="p">}</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="p">(</span><span class="nb">current date</span><span class="p">)</span><span class="w"> </span><span class="c1">-- date "2012年11月20日星期二 下午4:33:51"</span><span class="w">
+</span><span class="k">set</span><span class="w"> </span><span class="nv">dateList</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="p">{</span><span class="nv">y</span><span class="p">,</span><span class="w"> </span><span class="nv">m</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nv">d</span><span class="p">}</span><span class="w"> </span><span class="c1">-- {2012, Novemver * 1, 20} =&gt; {2012, 11, 20}</span><span class="w">
+</span><span class="k">set</span><span class="w"> </span><span class="nv">newDateList</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="nv">reverse</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nv">rest</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nv">dateList</span><span class="w"> </span><span class="c1">-- {20， 11}</span><span class="w">
+</span><span class="k">set</span><span class="w"> </span><span class="nv">theYear</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="nb">first</span><span class="w"> </span><span class="nb">item</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nv">dateList</span><span class="w"> </span><span class="k">as </span><span class="nc">string</span><span class="w"> </span><span class="c1">-- "2012"</span><span class="w">
+</span><span class="k">set</span><span class="w"> </span><span class="nv">restDate</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="s2">""</span><span class="w">
+
+</span><span class="k">repeat</span><span class="w"> </span><span class="nv">with</span><span class="w"> </span><span class="nv">theItem</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nv">newDateList</span><span class="w">
+    </span><span class="k">set</span><span class="w"> </span><span class="nv">restDate</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="s2">"-"</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">theItem</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">restDate</span><span class="w">
+</span><span class="k">end</span><span class="w"> </span><span class="k">repeat</span><span class="w">
+
+</span><span class="k">return</span><span class="w"> </span><span class="nv">theYear</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">restDate</span><span class="w"> </span><span class="c1">-- "2012-11-20"</span><span class="w">
+</span></code></pre></div>
+</li>
+<li>
+<p>获取用户文稿中最近修改文件的文件名（以下代码 <code>new_post.applescript</code> 中也有用到）</p>
+<div class="highlight"><pre><code class="language-applescript" data-lang="applescript"><span class="k">tell</span><span class="w"> </span><span class="nb">application</span><span class="w"> </span><span class="s2">"Finder"</span><span class="w">
+    </span><span class="k">set</span><span class="w"> </span><span class="nv">thePath</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="p">(</span><span class="nb">path to</span><span class="w"> </span><span class="nb">documents</span><span class="w"> </span><span class="nv">folder</span><span class="p">)</span><span class="w"> </span><span class="c1">-- 获取文稿文件夹路径</span><span class="w">
+    </span><span class="k">set</span><span class="w"> </span><span class="nv">fileList</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="nv">files</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nv">thePath</span><span class="w"> </span><span class="c1">-- 获取路径下的文件集合记录</span><span class="w">
+    </span><span class="k">set</span><span class="w"> </span><span class="nv">fileList</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="nv">sort</span><span class="w"> </span><span class="nv">fileList</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="nv">modification</span><span class="w"> </span><span class="nv">date</span><span class="w"> </span><span class="c1">-- 按最新修改排序</span><span class="w">
+    </span><span class="k">set</span><span class="w"> </span><span class="nv">fileName</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="na">name</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nb">first</span><span class="w"> </span><span class="nb">item</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nv">fileList</span><span class="w"> </span><span class="c1">-- 获取记录集中第一个文件的文件名</span><span class="w">
+    </span><span class="k">return</span><span class="w"> </span><span class="nv">fileName</span><span class="w">
+</span><span class="k">end</span><span class="w"> </span><span class="k">tell</span><span class="w">
+</span></code></pre></div>
+</li>
+</ol>
+
+<h2>
+<a id="实战" class="anchor" href="#%E5%AE%9E%E6%88%98" aria-hidden="true"><span class="octicon octicon-link"></span></a>实战</h2>
+
+<p><img src="http://i93.photobucket.com/albums/l57/ShakeSpace/applescript.png" alt="my AppleScripts"></p>
+
+<p>综合基础教程与谷歌搜索，自己写了两个 Script，分别用于创建博客新文章与博客本地预览。</p>
+
+<p><script src="https://gist.github.com/4118971.js?file=new_post.applescript"></script></p><div><noscript><pre><code></code></pre></noscript></div>
+
+<p><script src="https://gist.github.com/4118971.js?file=blog_preview.applescript"></script></p><div><noscript><pre><code></code></pre></noscript></div>
+
+    </section>
+    <footer class="post-footer">
+      <div class="post-meta">
+        <time datetime="2012-11-20 22:18:00 +0000" class="updated" pubdate>Nov 20, 2012</time>
+
+        
+<span class="post-tag">
+	
+		<span class="tag">applescript</span>
+	
+		<span class="tag">octopress</span>
+	
+		<span class="tag">workflow</span>
+	
+</span>
+
+
+      </div>
+    </footer>
+    <section class="post-recent">
+  
+    <a class="relative-post previous" href="/2012/javascript-tiny-quiz/"><span>一道 JavaScript 小题</span></a>
+  
+  
+    <a class="relative-post next" href="/2012/traps-in-javascript-part-I/"><span>JavaScript 中的一些坑（一）</span></a>
+  
+</section>
+
+    <script src="/js/post.js"></script>
+  </article>
+</main>
+
+  <div class="post-comment">
+	<div id="disqus_thread" class="container"></div>
+</div>
+<script>
+function getElementTopLeft(elem) {
+	var top = 0;
+	var left = 0;
+	while(elem) {
+		top += elem.offsetTop;
+		left += elem.offsetLeft;
+
+		elem = elem.offsetParent;
+	}
+	return {top: top, left: left};
+}
+
+var disqus_shortname = 'roshanca';
+var disqus_elem = document.getElementById('disqus_thread');
+var disqus_init = false;
+
+window.onscroll = function () {
+	if (disqus_init) return;
+
+	var viewHeight = document.documentElement.clientHeight;
+	var scrollY = document.documentElement.scrollTop || document.body.scrollTop;
+
+	if(getElementTopLeft(disqus_elem).top < viewHeight + scrollY) {
+		loadSync('//' + disqus_shortname + '.disqus.com/embed.js');
+		disqus_init = true;
+	}
+}
+</script>
+
+
+
+<footer id="footer" role="contentinfo">
+	<p>© Copyright 2012 - <script>document.write(new Date().getFullYear())</script> by Roshan Wu.</p>
+</footer>
+
+<div class="fork-github">
+    <a href="https://github.com/roshanca/blog">View on GitHub</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <link href="http://gmpg.org/xfn/11" rel="profile">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>购搬瓦工安装 SS 翻越“长城” - 肉山·察</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	
+	<link rel="canonical" href="http://roshanca.com/2017/install-ss-for-bandwagonhost/">
+	<link rel="alternate" type="application/rss+xml" title="Subscribe Feed" href="/feed.xml">
+	<link  href="/css/app.css" rel="stylesheet" media="all">
+	<link href="//cdn.bootcss.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//fonts.googleapis.com/css?family=Lustria|Inconsolata" rel="stylesheet">
+    <!-- <link href='//fonts.useso.com/css?family=PT+Serif:400,700' rel='stylesheet' type='text/css'> -->
+	<script>
+	function loadSync(u,p,a){
+		if(!p && location.port)return {onload: null};
+		if(/\.js$/.test(u)){a='script'}else{a='link'};
+		var d=document,s=d.createElement(a),f=d.getElementsByTagName(a)[0];
+		if(a=='link'){s.href=u,s.rel='stylesheet'}else{s.src=u,s.async=true}
+		f.parentNode.insertBefore(s,f);return s;
+	}
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-15720258-1']);
+	_gaq.push(['_trackPageview']);
+	_gaq.push(['_trackPageLoadTime']);
+	loadSync('//ssl.google-analytics.com/ga.js');
+	if(/windows/i.test(navigator.userAgent)){document.getElementsByTagName('html')[0].className = 'windows'}
+    </script>
+    <!--[if lt IE 9]>
+    <script>window.location.href="http://browsehappy.com"</script>
+    <![endif]-->
+</head>
+
+<body>
+
+<header id="header" role="banner">
+	<div class="header-inner">
+	
+		<a href="/" class="blog-title home">肉山·察</a>
+		<div class="header-icon">
+	<a href="//github.com/roshanca" class="social-link">
+		<i class="fa fa-github"></i>
+	</a>
+
+	<a href="//twitter.com/roshan_wu" class="social-link">
+		<i class="fa fa-twitter"></i>
+	</a>
+
+	<a href="//weibo.com/jinfeixibi" class="social-link">
+		<i class="fa fa-weibo"></i>
+	</a>
+
+	<a href="//www.flickr.com/photos/roshanca/" class="social-link">
+		<i class="fa fa-flickr"></i>
+	</a>
+</div>
+	
+	</div>
+	<a href="/feed.xml" class="subscribe">
+		<i class="fa fa-rss"></i>
+	</a>
+</header>
+
+<main class="fluid" role="main">
+  <article class="post" role="article">
+    <header class="post-header">
+      <h1 class="post-title">购搬瓦工安装 SS 翻越“长城”</h1>
+    </header>
+    <section class="post-content">
+      <nav class="post-toc">
+  <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#购买">购买</a></li>
+<li class="toc-entry toc-h2"><a href="#开启-bbr">开启 BBR</a></li>
+<li class="toc-entry toc-h2"><a href="#一键安装-ss-服务端">一键安装 SS 服务端</a></li>
+<li class="toc-entry toc-h2"><a href="#安装-ss-客户端">安装 SS 客户端</a></li>
+</ul>
+  <svg class="toc-marker" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+    <path stroke="#444" stroke-width="3" fill="transparent" stroke-dasharray="0, 0, 0, 1000" stroke-linecap="round" stroke-linejoin="round"
+      transform="translate(-0.5, -0.5)" />
+  </svg>
+</nav>
+
+      <p><a href="https://bandwagonhost.com/aff.php?aff=18390">搬瓦工（Bandwagon）</a>是一家有口皆碑的美国老牌 VPS 服务商，以性价比高而闻名。</p>
+
+<h2>
+<a id="购买" class="anchor" href="#%E8%B4%AD%E4%B9%B0" aria-hidden="true"><span class="octicon octicon-link"></span></a>购买</h2>
+
+<p>国内用户购买的一般是选 SPECIAL 10G KVM PROMO V3 - LOS ANGELES - CN2 (<a href="https://bwh1.net/cart.php?a=confproduct&amp;i=0">点击购买</a>) 这档产品，参数如下：</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">SSD</th>
+<th style="text-align: center">RAM</th>
+<th style="text-align: center">Transfer</th>
+<th style="text-align: center">Link speed</th>
+<th style="text-align: center">Price</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center">10 GB RAID-10</td>
+<td style="text-align: center">512 MB</td>
+<td style="text-align: center">500 GB/mo</td>
+<td style="text-align: center">1 Gigabit</td>
+<td style="text-align: center">$29.99/年</td>
+</tr>
+</tbody>
+</table>
+
+<p>差不多 30 刀一年，用优惠码 <code>BWH1ZBPVK</code> 购买可享 6.00% 的折扣幅度。</p>
+
+<p>洛杉矶机房的 ping 一般在 200 ms 左右，如若觉得还不能满足，可选香港机房：SPECIAL 20G KVM PROMO V3 - HONG KONG (<a href="https://bwh1.net/aff.php?aff=18390&amp;pid=61">点击购买</a>)。但一般要靠抢，常年都是 out of stock 的状态，手慢无😂。配置是比上一个高了一档：</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">SSD</th>
+<th style="text-align: center">RAM</th>
+<th style="text-align: center">Transfer</th>
+<th style="text-align: center">Link speed</th>
+<th style="text-align: center">Price</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center">20 GB RAID-10</td>
+<td style="text-align: center">1024 MB</td>
+<td style="text-align: center">100 GB/mo</td>
+<td style="text-align: center">1 Gigabit</td>
+<td style="text-align: center">$9.99/月<br>$99.99/年</td>
+</tr>
+</tbody>
+</table>
+
+<p>但价格也高了一个层次，月付 9.99 刀，年付要 99.99 刀，实在是不便宜。而且每月流量只有 100G，还不如洛杉矶的 500G 呢。优势呢就是超低的 ping（估计应该和阿里云香港机房的 100ms 左右差不多），容量内存大一倍。</p>
+
+<p>买搬瓦工还有一个理由是支持支付宝支付，相对来说，其它很多国外的 VPS 服务商，用信用卡支付要填写一大堆资料，繁琐不说，有时候还要审核（预防信用卡欺诈等）一等好多天，甚是麻烦。</p>
+
+<h2>
+<a id="开启-bbr" class="anchor" href="#%E5%BC%80%E5%90%AF-bbr" aria-hidden="true"><span class="octicon octicon-link"></span></a>开启 BBR</h2>
+
+<p>为了让 CN2 的速度更加理想，可以开启 BBR<sup id="fnref1"><a href="#fn1" rel="footnote">1</a></sup>。开启 BBR，需要内核版本的支持，不过搬瓦工也贴心的提供了支持 BBR 的系统模板，可以直接重新初始化系统，并选择带有 BBR 的系统模板即可：</p>
+
+<p><img src="https://s10.mogucdn.com/mlcdn/c45406/171108_1426akkj5f56jh7bc8ff5d79fgl8d_1135x631.jpg" alt=""></p>
+
+<h2>
+<a id="一键安装-ss-服务端" class="anchor" href="#%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85-ss-%E6%9C%8D%E5%8A%A1%E7%AB%AF" aria-hidden="true"><span class="octicon octicon-link"></span></a>一键安装 SS 服务端</h2>
+
+<p>在控制面版左侧菜单的底部，找到 Shadowsocks Server，选择后点击安装即可：</p>
+
+<p><img src="https://s10.mogucdn.com/mlcdn/c45406/171108_1g9ff4afd6lgbfeh1g4b8i82g4cgg_845x793.jpg" alt=""></p>
+
+<p>接下来等待一会儿会提示安装完成：</p>
+
+<p><img src="https://s10.mogucdn.com/mlcdn/c45406/171108_3f9h7ak8i56b199b4eceb7d2ik2f4_822x505.jpg" alt=""></p>
+
+<p>安装完成后即可看到服务的配置项，依次是：</p>
+
+<ul>
+<li>Shadowsocks server encryption: 加密方式</li>
+<li>Shadowsocks server port: 端口</li>
+<li>Shadowsocks server password: 密码</li>
+</ul>
+
+<h2>
+<a id="安装-ss-客户端" class="anchor" href="#%E5%AE%89%E8%A3%85-ss-%E5%AE%A2%E6%88%B7%E7%AB%AF" aria-hidden="true"><span class="octicon octicon-link"></span></a>安装 SS 客户端</h2>
+
+<ul>
+<li>Mac: <a href="https://github.com/shadowsocks/ShadowsocksX-NG/releases/">下载地址</a>
+</li>
+<li>Window: <a href="https://sourceforge.net/projects/shadowsocksgui/files/dist/">下载地址</a><sup id="fnref2"><a href="#fn2" rel="footnote">2</a></sup>
+</li>
+<li>Android: <a href="https://play.google.com/store/apps/details?id=com.github.shadowsocks">下载地址</a>
+</li>
+<li>iOS: <a href="https://github.com/shadowsocks/shadowsocks-iOS/wiki/Help">下载地址</a><sup id="fnref3"><a href="#fn3" rel="footnote">3</a></sup>
+</li>
+</ul>
+
+<p>安装好后，对照着之前配置好的服务端参数，进行一番配置，开启运行即可。</p>
+
+<p><img src="https://s10.mogucdn.com/mlcdn/c45406/171108_71j926h508135748gjg9bgk1fh5l4_488x331.png" alt=""></p>
+
+<div class="footnotes">
+<hr>
+<ol>
+
+<li id="fn1">
+<p>BBR 是来自于 Google 的黑科技，目的是通过优化和控制 TCP 的拥塞，充分利用带宽并降低延迟，起到神奇般的加速效果。 <a href="#fnref1" rev="footnote">↩</a></p>
+</li>
+
+<li id="fn2">
+<p><em>shadowsocks-win-xxx.zip</em> 是 for windows 7 及之前的版本的，<em>shadowsocks-win-dotnet-xxx.zip</em> 是 for windows 8 以及现在最新的 windows 10 的。 <a href="#fnref2" rev="footnote">↩</a></p>
+</li>
+
+<li id="fn3">
+<p>iOS 的 APP 目前只限美国商店。你要是没有美国的 Apple 账户，那还是算了。 <a href="#fnref3" rev="footnote">↩</a></p>
+</li>
+
+</ol>
+</div>
+
+    </section>
+    <footer class="post-footer">
+      <div class="post-meta">
+        <time datetime="2017-11-08 00:00:00 +0000" class="updated" pubdate>Nov 08, 2017</time>
+
+        
+<span class="post-tag">
+	
+		<span class="tag">vps</span>
+	
+</span>
+
+
+      </div>
+    </footer>
+    <section class="post-recent">
+  
+    <a class="relative-post previous" href="/2017/front-end-engineering-system/"><span>前端工程化体系</span></a>
+  
+  
+    <a class="relative-post next" href="/2017/make-gitk-retina-in-mac/"><span>Mac 中解决 gitk 模糊问题</span></a>
+  
+</section>
+
+    <script src="/js/post.js"></script>
+  </article>
+</main>
+
+  <div class="post-comment">
+	<div id="disqus_thread" class="container"></div>
+</div>
+<script>
+function getElementTopLeft(elem) {
+	var top = 0;
+	var left = 0;
+	while(elem) {
+		top += elem.offsetTop;
+		left += elem.offsetLeft;
+
+		elem = elem.offsetParent;
+	}
+	return {top: top, left: left};
+}
+
+var disqus_shortname = 'roshanca';
+var disqus_elem = document.getElementById('disqus_thread');
+var disqus_init = false;
+
+window.onscroll = function () {
+	if (disqus_init) return;
+
+	var viewHeight = document.documentElement.clientHeight;
+	var scrollY = document.documentElement.scrollTop || document.body.scrollTop;
+
+	if(getElementTopLeft(disqus_elem).top < viewHeight + scrollY) {
+		loadSync('//' + disqus_shortname + '.disqus.com/embed.js');
+		disqus_init = true;
+	}
+}
+</script>
+
+
+
+<footer id="footer" role="contentinfo">
+	<p>© Copyright 2012 - <script>document.write(new Date().getFullYear())</script> by Roshan Wu.</p>
+</footer>
+
+<div class="fork-github">
+    <a href="https://github.com/roshanca/blog">View on GitHub</a>
+</div>
+
+</body>
+</html>

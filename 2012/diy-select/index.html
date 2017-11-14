@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <link href="http://gmpg.org/xfn/11" rel="profile">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>Diy Select - 肉山·察</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	
+	<link rel="canonical" href="http://roshanca.com/2012/diy-select/">
+	<link rel="alternate" type="application/rss+xml" title="Subscribe Feed" href="/feed.xml">
+	<link  href="/css/app.css" rel="stylesheet" media="all">
+	<link href="//cdn.bootcss.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//fonts.googleapis.com/css?family=Lustria|Inconsolata" rel="stylesheet">
+    <!-- <link href='//fonts.useso.com/css?family=PT+Serif:400,700' rel='stylesheet' type='text/css'> -->
+	<script>
+	function loadSync(u,p,a){
+		if(!p && location.port)return {onload: null};
+		if(/\.js$/.test(u)){a='script'}else{a='link'};
+		var d=document,s=d.createElement(a),f=d.getElementsByTagName(a)[0];
+		if(a=='link'){s.href=u,s.rel='stylesheet'}else{s.src=u,s.async=true}
+		f.parentNode.insertBefore(s,f);return s;
+	}
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-15720258-1']);
+	_gaq.push(['_trackPageview']);
+	_gaq.push(['_trackPageLoadTime']);
+	loadSync('//ssl.google-analytics.com/ga.js');
+	if(/windows/i.test(navigator.userAgent)){document.getElementsByTagName('html')[0].className = 'windows'}
+    </script>
+    <!--[if lt IE 9]>
+    <script>window.location.href="http://browsehappy.com"</script>
+    <![endif]-->
+</head>
+
+<body>
+
+<header id="header" role="banner">
+	<div class="header-inner">
+	
+		<a href="/" class="blog-title home">肉山·察</a>
+		<div class="header-icon">
+	<a href="//github.com/roshanca" class="social-link">
+		<i class="fa fa-github"></i>
+	</a>
+
+	<a href="//twitter.com/roshan_wu" class="social-link">
+		<i class="fa fa-twitter"></i>
+	</a>
+
+	<a href="//weibo.com/jinfeixibi" class="social-link">
+		<i class="fa fa-weibo"></i>
+	</a>
+
+	<a href="//www.flickr.com/photos/roshanca/" class="social-link">
+		<i class="fa fa-flickr"></i>
+	</a>
+</div>
+	
+	</div>
+	<a href="/feed.xml" class="subscribe">
+		<i class="fa fa-rss"></i>
+	</a>
+</header>
+
+<main class="fluid" role="main">
+  <article class="post" role="article">
+    <header class="post-header">
+      <h1 class="post-title">Diy Select</h1>
+    </header>
+    <section class="post-content">
+      <nav class="post-toc">
+  <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#js-代码如下">JS 代码如下：</a></li>
+<li class="toc-entry toc-h2"><a href="#css-代码如下">CSS 代码如下：</a></li>
+<li class="toc-entry toc-h2"><a href="#箭头图标">箭头图标：</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#updated">updated：</a></li>
+</ul>
+</li>
+</ul>
+  <svg class="toc-marker" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+    <path stroke="#444" stroke-width="3" fill="transparent" stroke-dasharray="0, 0, 0, 1000" stroke-linecap="round" stroke-linejoin="round"
+      transform="translate(-0.5, -0.5)" />
+  </svg>
+</nav>
+
+      <p><code>&lt;select/&gt;</code> 在不同的系统不同的显示器下表现各异，无法统一。但可以用其它的 <code>HTMLElement</code> 来模拟，其好处是你可以对其使用自定义样式，而且在各个环境下保持一致；缺点也显而易见，毕竟是人工模拟，很难做到完美，比如浏览器窗口不是最大化时，由于 <code>&lt;select/&gt;</code> 属于窗体控件可溢出浏览器边界悬浮于视窗之上，而普通的 <code>HTMLElement</code> 无法做到这点。</p>
+
+<h2>
+<a id="js-代码如下" class="anchor" href="#js-%E4%BB%A3%E7%A0%81%E5%A6%82%E4%B8%8B" aria-hidden="true"><span class="octicon octicon-link"></span></a><del>JS 代码如下：</del>
+</h2>
+
+<h2>
+<a id="css-代码如下" class="anchor" href="#css-%E4%BB%A3%E7%A0%81%E5%A6%82%E4%B8%8B" aria-hidden="true"><span class="octicon octicon-link"></span></a><del>CSS 代码如下：</del>
+</h2>
+
+<h2>
+<a id="箭头图标" class="anchor" href="#%E7%AE%AD%E5%A4%B4%E5%9B%BE%E6%A0%87" aria-hidden="true"><span class="octicon octicon-link"></span></a><del>箭头图标：</del>
+</h2>
+
+<h3>
+<a id="updated" class="anchor" href="#updated" aria-hidden="true"><span class="octicon octicon-link"></span></a>updated：</h3>
+
+<p>项目已迁至 <a href="https://github.com/RoshanWu/diySelect">GitHub</a></p>
+
+<p>查看 Demo:</p>
+
+<iframe style="width: 100%; height: 1000px" frameborder="0" seamless="seamless" src="http://jsfiddle.net/wyBF5/embedded/result/light/"></iframe>
+
+    </section>
+    <footer class="post-footer">
+      <div class="post-meta">
+        <time datetime="2012-05-30 13:22:00 +0000" class="updated" pubdate>May 30, 2012</time>
+
+        
+<span class="post-tag">
+	
+		<span class="tag">javascript</span>
+	
+		<span class="tag">jquery</span>
+	
+</span>
+
+
+      </div>
+    </footer>
+    <section class="post-recent">
+  
+    <a class="relative-post previous" href="/2012/heroku-to-github/"><span>从 Heroku 迁移至 GitHub</span></a>
+  
+  
+    <a class="relative-post next" href="/2012/how-to-block-youku-and-tudos-flash-ads/"><span>如何屏蔽优酷和土豆的 Flash 广告</span></a>
+  
+</section>
+
+    <script src="/js/post.js"></script>
+  </article>
+</main>
+
+  <div class="post-comment">
+	<div id="disqus_thread" class="container"></div>
+</div>
+<script>
+function getElementTopLeft(elem) {
+	var top = 0;
+	var left = 0;
+	while(elem) {
+		top += elem.offsetTop;
+		left += elem.offsetLeft;
+
+		elem = elem.offsetParent;
+	}
+	return {top: top, left: left};
+}
+
+var disqus_shortname = 'roshanca';
+var disqus_elem = document.getElementById('disqus_thread');
+var disqus_init = false;
+
+window.onscroll = function () {
+	if (disqus_init) return;
+
+	var viewHeight = document.documentElement.clientHeight;
+	var scrollY = document.documentElement.scrollTop || document.body.scrollTop;
+
+	if(getElementTopLeft(disqus_elem).top < viewHeight + scrollY) {
+		loadSync('//' + disqus_shortname + '.disqus.com/embed.js');
+		disqus_init = true;
+	}
+}
+</script>
+
+
+
+<footer id="footer" role="contentinfo">
+	<p>© Copyright 2012 - <script>document.write(new Date().getFullYear())</script> by Roshan Wu.</p>
+</footer>
+
+<div class="fork-github">
+    <a href="https://github.com/roshanca/blog">View on GitHub</a>
+</div>
+
+</body>
+</html>
