@@ -7,6 +7,18 @@
     <atom:link href="http://roshanca.com/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>Mac 中解决 gitk 模糊问题</title>
+        
+        
+          <description>&lt;p&gt;gitk 是个 git 自带的 gui 小工具。&lt;/p&gt;
+</description>
+        
+        <pubDate>Tue, 14 Nov 2017 00:00:00 +0000</pubDate>
+        <link>http://roshanca.com/2017/make-gitk-retina-in-mac</link>
+        <guid isPermaLink="true">http://roshanca.com/2017/make-gitk-retina-in-mac</guid>
+      </item>
+    
+      <item>
         <title>购搬瓦工安装 SS 翻越“长城”</title>
         
         
@@ -114,18 +126,6 @@
         <pubDate>Tue, 09 Sep 2014 00:00:00 +0000</pubDate>
         <link>http://roshanca.com/2014/web-develop-styleguide-html</link>
         <guid isPermaLink="true">http://roshanca.com/2014/web-develop-styleguide-html</guid>
-      </item>
-    
-      <item>
-        <title>前端编码风格规范之一般规范</title>
-        
-        
-          <description>&lt;p&gt;原文：&lt;a href=&quot;https://github.com/gionkunz/chartist-js/blob/develop/CODINGSTYLE.md&quot;&gt;Web Styleguide - Style guide to harmonize HTML, Javascript and CSS / SASS coding style&lt;/a&gt;&lt;/p&gt;
-</description>
-        
-        <pubDate>Sun, 07 Sep 2014 00:00:00 +0000</pubDate>
-        <link>http://roshanca.com/2014/web-develop-styleguide-general</link>
-        <guid isPermaLink="true">http://roshanca.com/2014/web-develop-styleguide-general</guid>
       </item>
     
   </channel>

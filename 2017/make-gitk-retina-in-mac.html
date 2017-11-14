@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <link href="http://gmpg.org/xfn/11" rel="profile">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>Mac 中解决 gitk 模糊问题 - 肉山·察</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	
+	<link rel="canonical" href="http://roshanca.com/2017/make-gitk-retina-in-mac">
+	<link rel="alternate" type="application/rss+xml" title="Subscribe Feed" href="/feed.xml">
+	<link  href="/css/app.css" rel="stylesheet" media="all">
+	<link href="//cdn.bootcss.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//fonts.googleapis.com/css?family=Lustria|Inconsolata" rel="stylesheet">
+    <!-- <link href='//fonts.useso.com/css?family=PT+Serif:400,700' rel='stylesheet' type='text/css'> -->
+	<script>
+	function loadSync(u,p,a){
+		if(!p && location.port)return {onload: null};
+		if(/\.js$/.test(u)){a='script'}else{a='link'};
+		var d=document,s=d.createElement(a),f=d.getElementsByTagName(a)[0];
+		if(a=='link'){s.href=u,s.rel='stylesheet'}else{s.src=u,s.async=true}
+		f.parentNode.insertBefore(s,f);return s;
+	}
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-15720258-1']);
+	_gaq.push(['_trackPageview']);
+	_gaq.push(['_trackPageLoadTime']);
+	loadSync('//ssl.google-analytics.com/ga.js');
+	if(/windows/i.test(navigator.userAgent)){document.getElementsByTagName('html')[0].className = 'windows'}
+    </script>
+    <!--[if lt IE 9]>
+    <script>window.location.href="http://browsehappy.com"</script>
+    <![endif]-->
+</head>
+
+<body>
+
+<header id="header" role="banner">
+	<div class="header-inner">
+	
+		<a href="/" class="blog-title home">肉山·察</a>
+		<div class="header-icon">
+	<a href="//github.com/roshanca" class="social-link">
+		<i class="fa fa-github"></i>
+	</a>
+
+	<a href="//twitter.com/roshan_wu" class="social-link">
+		<i class="fa fa-twitter"></i>
+	</a>
+
+	<a href="//weibo.com/jinfeixibi" class="social-link">
+		<i class="fa fa-weibo"></i>
+	</a>
+
+	<a href="//www.flickr.com/photos/roshanca/" class="social-link">
+		<i class="fa fa-flickr"></i>
+	</a>
+</div>
+	
+	</div>
+	<a href="/feed.xml" class="subscribe">
+		<i class="fa fa-rss"></i>
+	</a>
+</header>
+
+<main class="fluid" role="main">
+  <article class="post" role="article">
+    <header class="post-header">
+      <h1 class="post-title">Mac 中解决 gitk 模糊问题</h1>
+    </header>
+    <section class="post-content">
+      <nav class="post-toc">
+  <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#临时关闭系统保护">临时关闭系统保护</a></li>
+<li class="toc-entry toc-h2"><a href="#修改-wishapp-的-infoplist">修改 Wish.app 的 Info.plist</a></li>
+<li class="toc-entry toc-h2"><a href="#更新-wishapp">更新 Wish.app</a></li>
+<li class="toc-entry toc-h2"><a href="#再次开启系统保户">再次开启系统保户</a></li>
+<li class="toc-entry toc-h2"><a href="#效果展示">效果展示</a></li>
+</ul>
+  <svg class="toc-marker" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+    <path stroke="#444" stroke-width="3" fill="transparent" stroke-dasharray="0, 0, 0, 1000" stroke-linecap="round" stroke-linejoin="round"
+      transform="translate(-0.5, -0.5)" />
+  </svg>
+</nav>
+
+      <p>gitk 是个 git 自带的 gui 小工具。</p>
+
+<blockquote>
+<p>用于显示仓库或所选的一系列提交的改动。它包含了提交的可视化图形，展现了各提交点之间的关联信息，以及各个版本的文件树。</p>
+</blockquote>
+
+<p>好用是挺好用，可年久未更，在 Retina 屏漫天飞的当下，显得有点丑陋了。如图所示：</p>
+
+<p><a href="https://s10.mogucdn.com/mlcdn/c45406/171114_87g4dk0195cfcceajclb63eei6e7b_1050x984.png" title="Origin Wish App"><img src="https://s10.mogucdn.com/mlcdn/c45406/171114_87g4dk0195cfcceajclb63eei6e7b_1050x984.png" alt="" title="Origin Wish App"></a></p>
+
+<p>如何不用一些第三方工具（e.g. <a href="http://retinizer.mikelpr.com/">retinizer</a>），顺利开启 gitk 的 retina 模式呢？Let’s do it~</p>
+
+<h2>
+<a id="临时关闭系统保护" class="anchor" href="#%E4%B8%B4%E6%97%B6%E5%85%B3%E9%97%AD%E7%B3%BB%E7%BB%9F%E4%BF%9D%E6%8A%A4" aria-hidden="true"><span class="octicon octicon-link"></span></a>临时关闭系统保护</h2>
+
+<p>Mac 自 OS X EI Capitan 版本之后，无法直接修改系统的 System 目录，需关闭系统保户才行。想要关闭，得先进入系统 Recover 模式：重启电脑，按住 <code>⌘ + R</code> 不放。</p>
+
+<p>进入 Recover 模式后，在菜单栏中选择 “Utilities -&gt; Terminal"（实用工具 -&gt; 终端），输入以下命令：</p>
+<div class="highlight"><pre><code class="language-" data-lang="">csrutil status
+</code></pre></div>
+<p>系统会提示保户状态是 enable 还是 disable，如果是 enable 的话，需要我们手动 disable 一下：</p>
+<div class="highlight"><pre><code class="language-" data-lang="">csrutl disable
+</code></pre></div>
+<p>重启进入正常模式。</p>
+
+<h2>
+<a id="修改-wishapp-的-infoplist" class="anchor" href="#%E4%BF%AE%E6%94%B9-wishapp-%E7%9A%84-infoplist" aria-hidden="true"><span class="octicon octicon-link"></span></a>修改 Wish.app 的 Info.plist</h2>
+
+<p>利用终端定位到 Wish.app 的目录：</p>
+<div class="highlight"><pre><code class="language-" data-lang="">cd /System/Library/Frameworks/Tk.framework/Versions/Current/Resources
+</code></pre></div>
+<p>打开 Info.plist</p>
+<div class="highlight"><pre><code class="language-" data-lang="">sudo vi Wish.app/Contents/Info.plist
+</code></pre></div>
+<p>在结束标签 <code>&lt;/dict&gt;</code> 之前，插入以下两行代码：</p>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;key&gt;</span>NSHighResolutionCapable<span class="nt">&lt;/key&gt;</span>
+<span class="nt">&lt;true/&gt;</span>
+</code></pre></div>
+<h2>
+<a id="更新-wishapp" class="anchor" href="#%E6%9B%B4%E6%96%B0-wishapp" aria-hidden="true"><span class="octicon octicon-link"></span></a>更新 Wish.app</h2>
+
+<p>要使其生效，需更新 Wish.app，有两种方式：</p>
+
+<ol>
+<li>
+<p>直接在终端中执行:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">sudo touch Wish.app
+</code></pre></div>
+</li>
+<li>
+<p>如果你不放心想做个备份的话，可以这样操作：</p>
+<div class="highlight"><pre><code class="language-" data-lang="">sudo cp -R Wish.app WishCopy.app
+sudo mv Wish.app WishOriginal.app
+sudo mv WishCopy.app Wish.app
+</code></pre></div>
+</li>
+</ol>
+
+<h2>
+<a id="再次开启系统保户" class="anchor" href="#%E5%86%8D%E6%AC%A1%E5%BC%80%E5%90%AF%E7%B3%BB%E7%BB%9F%E4%BF%9D%E6%88%B7" aria-hidden="true"><span class="octicon octicon-link"></span></a>再次开启系统保户</h2>
+
+<p>完成以上步骤后，重启按 <code>⌘ + R</code> 再次进入 Recover 模式，一样调出终端，输入：</p>
+<div class="highlight"><pre><code class="language-" data-lang="">csrutil enable
+</code></pre></div>
+<p>然后重启回到正常模式，done.</p>
+
+<h2>
+<a id="效果展示" class="anchor" href="#%E6%95%88%E6%9E%9C%E5%B1%95%E7%A4%BA" aria-hidden="true"><span class="octicon octicon-link"></span></a>效果展示</h2>
+
+<p><a href="https://s10.mogucdn.com/mlcdn/c45406/171114_1g8ak522be15bdfdd7hh6dhi60f44_1050x829.png" title="Retina Wish App"><img src="https://s10.mogucdn.com/mlcdn/c45406/171114_1g8ak522be15bdfdd7hh6dhi60f44_1050x829.png" alt="" title="Retina Wish App"></a></p>
+
+<p>稍微调整下字体后，立刻顺眼多了 (ಠ‿ಠ)</p>
+
+    </section>
+    <footer class="post-footer">
+      <div class="post-meta">
+        <time datetime="2017-11-14 00:00:00 +0000" class="updated" pubdate>Nov 14, 2017</time>
+
+        
+<span class="post-tag">
+	
+		<span class="tag">git</span>
+	
+</span>
+
+
+      </div>
+    </footer>
+    <section class="post-recent">
+  
+    <a class="relative-post previous" href="/2017/install-ss-for-bandwagonhost"><span>购搬瓦工安装 SS 翻越“长城”</span></a>
+  
+  
+</section>
+
+    <script src="/js/post.js"></script>
+  </article>
+</main>
+
+  <div class="post-comment">
+	<div id="disqus_thread" class="container"></div>
+</div>
+<script>
+function getElementTopLeft(elem) {
+	var top = 0;
+	var left = 0;
+	while(elem) {
+		top += elem.offsetTop;
+		left += elem.offsetLeft;
+
+		elem = elem.offsetParent;
+	}
+	return {top: top, left: left};
+}
+
+var disqus_shortname = 'roshanca';
+var disqus_elem = document.getElementById('disqus_thread');
+var disqus_init = false;
+
+window.onscroll = function () {
+	if (disqus_init) return;
+
+	var viewHeight = document.documentElement.clientHeight;
+	var scrollY = document.documentElement.scrollTop || document.body.scrollTop;
+
+	if(getElementTopLeft(disqus_elem).top < viewHeight + scrollY) {
+		loadSync('//' + disqus_shortname + '.disqus.com/embed.js');
+		disqus_init = true;
+	}
+}
+</script>
+
+
+
+<footer id="footer" role="contentinfo">
+	<p>© Copyright 2012 - <script>document.write(new Date().getFullYear())</script> by Roshan Wu.</p>
+</footer>
+
+<div class="fork-github">
+    <a href="https://github.com/roshanca/blog">View on GitHub</a>
+</div>
+
+</body>
+</html>
