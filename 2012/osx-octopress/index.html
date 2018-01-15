@@ -107,13 +107,13 @@
 <span class="nb">source</span> ~/.bash_profile
 </code></pre></div>
 <p>这个时候用下面命令可以验证 RVM 是否安装成功：</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">type </span>rvm | head <span class="nt">-1</span>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">type </span>rvm | <span class="nb">head</span> <span class="nt">-1</span>
 </code></pre></div>
 <p>如若看到 <code>rvm is a function</code> 表示已安装成功了。</p>
 
 <h2>
 <a id="安装-ruby" class="anchor" href="#%E5%AE%89%E8%A3%85-ruby" aria-hidden="true"><span class="octicon octicon-link"></span></a>安装 Ruby</h2>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">rvm install 1.9.3
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">rvm <span class="nb">install </span>1.9.3
 </code></pre></div>
 <p>如果失败，可以采用如下方式：</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">rvm reinstall 1.9.3 <span class="nt">--with-gcc</span><span class="o">=</span>clang

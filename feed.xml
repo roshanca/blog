@@ -7,6 +7,18 @@
     <atom:link href="http://roshanca.com/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>2017 年工作总结</title>
+        
+        
+          <description>&lt;p&gt;加入到蘑菇街还未满一年，自感历事不多，无彰可表，无绩可言。回望这一年，多是行事和心态上的转变。&lt;/p&gt;
+</description>
+        
+        <pubDate>Mon, 15 Jan 2018 00:00:00 +0000</pubDate>
+        <link>http://roshanca.com/2018/2017-work-summary/</link>
+        <guid isPermaLink="true">http://roshanca.com/2018/2017-work-summary/</guid>
+      </item>
+    
+      <item>
         <title>Mac 中解决 gitk 模糊问题</title>
         
         
@@ -60,7 +72,7 @@
         <title>在 CentOS 7 上搭建 Docker 私有仓库</title>
         
         
-          <description>&lt;p&gt;我们知道，执行 docker pull 某镜象，默认都是从 &lt;a href=&quot;https://hub.docker.com/&quot;&gt;Docker Hub&lt;/a&gt; 的公共仓库去获取的。这有点像全球最大的代码托管商：Github，但对于公司而言，也行我们更加需要是的自建的仓库服务，所以我们用自建的 Gitlab 代替 Github，那有什么可以替代 Docker Hub 呢？答案是：自建 Docker Registry。以下是自己的一点实践：&lt;/p&gt;
+          <description>&lt;p&gt;我们知道，执行 docker pull 某镜象，默认都是从 &lt;a href=&quot;https://hub.docker.com/&quot;&gt;Docker Hub&lt;/a&gt; 的公共仓库去获取的。这有点像全球最大的代码托管商：&lt;a href=&quot;https://github.com/&quot;&gt;Github&lt;/a&gt;。但对于公司企业而言，Maybe 更加需要是的自建的仓库服务，所以我们用自建的 Gitlab 代替 Github。那有什么可以替代 Docker Hub 呢？答案是：自建 Docker Registry。独自摸索了一阵子后，以下是自己的一点实践：&lt;/p&gt;
 </description>
         
         <pubDate>Sun, 24 Jul 2016 00:00:00 +0000</pubDate>
@@ -84,7 +96,7 @@
         <title>React Native：用 JavaScript 构建应用</title>
         
         
-          <description>&lt;p&gt;原文：&lt;a href=&quot;//www.raywenderlich.com/99473/introducing-react-native-building-apps-javascript&quot;&gt;Introducing React Native: Building Apps with JavaScript&lt;/a&gt;&lt;/p&gt;
+          <description>&lt;p&gt;此文为原创翻译，转载请注明出处。&lt;/p&gt;
 </description>
         
         <pubDate>Sun, 29 Mar 2015 00:00:00 +0000</pubDate>
@@ -114,18 +126,6 @@
         <pubDate>Fri, 12 Sep 2014 00:00:00 +0000</pubDate>
         <link>http://roshanca.com/2014/web-develop-styleguide-javascript/</link>
         <guid isPermaLink="true">http://roshanca.com/2014/web-develop-styleguide-javascript/</guid>
-      </item>
-    
-      <item>
-        <title>前端编码风格规范之 HTML 规范</title>
-        
-        
-          <description>&lt;p&gt;原文：&lt;a href=&quot;https://github.com/gionkunz/chartist-js/blob/develop/CODINGSTYLE.md&quot;&gt;Web Styleguide - Style guide to harmonize HTML, Javascript and CSS / SASS coding style&lt;/a&gt;&lt;/p&gt;
-</description>
-        
-        <pubDate>Tue, 09 Sep 2014 00:00:00 +0000</pubDate>
-        <link>http://roshanca.com/2014/web-develop-styleguide-html/</link>
-        <guid isPermaLink="true">http://roshanca.com/2014/web-develop-styleguide-html/</guid>
       </item>
     
   </channel>
