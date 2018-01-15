@@ -7,7 +7,7 @@ toc: true
 comments: true
 ---
 
-我们知道，执行 docker pull 某镜象，默认都是从 [Docker Hub](https://hub.docker.com/) 的公共仓库去获取的。这有点像全球最大的代码托管商：Github，但对于公司而言，也行我们更加需要是的自建的仓库服务，所以我们用自建的 Gitlab 代替 Github，那有什么可以替代 Docker Hub 呢？答案是：自建 Docker Registry。以下是自己的一点实践：
+我们知道，执行 docker pull 某镜象，默认都是从 [Docker Hub](https://hub.docker.com/) 的公共仓库去获取的。这有点像全球最大的代码托管商：[Github](https://github.com/)。但对于公司企业而言，Maybe 更加需要是的自建的仓库服务，所以我们用自建的 Gitlab 代替 Github。那有什么可以替代 Docker Hub 呢？答案是：自建 Docker Registry。独自摸索了一阵子后，以下是自己的一点实践：
 
 ## 安装环境
 
@@ -42,7 +42,7 @@ Server:
 DOCKER_OPTS="--insecure-registry myregistrydomain.com:5000"
 ```
 
-但重启 docker 后好像没反应，试了好多种类似的方案都不行。看来要换种思路。一路找下去找到了 Docker Registry 2.0，抛弃了 insecure 的运行方式，而是采用了自建证书的认证方式。
+但重启 docker 后好像没反应，试了好多种类似的方案都不行。看来要换种思路。一路找下去找到了 Docker Registry 2.0，抛弃了以上 insecure 的运行方式，采用了自建证书的认证方式。
 
 ### 生成证书
 
@@ -94,5 +94,4 @@ subjectAltName = IP:192.168.1.211
 
 再次重启 docker，问题解决。
 
-至此，`docker registry` 私有仓库安装成功。
-接下来可以随时登录公司的 VPN 去 pull 镜象了，正式登上 docker 这艘大船初步探入云时代了。
+至此，`docker registry` 私有仓库安装成功。接下来可以随时登录公司的 VPN 去 pull 镜象了。

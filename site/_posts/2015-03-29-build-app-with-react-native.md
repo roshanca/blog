@@ -7,6 +7,8 @@ toc: true
 comments: true
 ---
 
+此文为原创翻译，转载请注明出处。
+
 原文：[Introducing React Native: Building Apps with JavaScript](//www.raywenderlich.com/99473/introducing-react-native-building-apps-javascript)
 
 ---
@@ -31,7 +33,9 @@ React Native 的关键点是，它主要致力于为移动应用开发带来基�
 
 本篇教程以构建一个用于搜索英国城市房产登记项目的应用来向大家展示其工作原理。
 
-![](//cdn5.raywenderlich.com/wp-content/uploads/2015/03/PropertyFinder.png)
+[![][PropertyFinder-Flow]][PropertyFinder-Flow]
+
+[PropertyFinder-Flow]: //koenig-media.raywenderlich.com/uploads/2017/07/PropertyFinder-Flow-2.png
 
 如果你之前从未写过任何 JavaScript，别担心；此教程会为你讲解每一步的代码原理。React 用 CSS 属性定义样式，一般来说它是足够易读易懂的，但如果需要的话，你可以参考优秀的 [Mozilla 开发网络参考](https://developer.mozilla.org/en-US/docs/Web/CSS)。
 
