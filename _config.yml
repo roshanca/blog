@@ -16,7 +16,7 @@ plugins:
   - jekyll-toc
 
 # Paginate and path
-paginate: 10
+paginate: 20
 paginate_path: "archives/page:num"
 
 # Where things are

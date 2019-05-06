@@ -22,7 +22,7 @@ comments: true
 - Web 应用开发层：主要专注 Web 交互体验
 - 前端运维层：构建布署、日志监控等
 
-<a target="_blank" href="http://oigzv3evy.bkt.clouddn.com/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96%E4%BD%93%E7%B3%BB.png"><img src="http://oigzv3evy.bkt.clouddn.com/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96%E4%BD%93%E7%B3%BB.png" alt=""></a>
+<a target="_blank" href="https://user-gold-cdn.xitu.io/2017/1/23/69a02ddce900e9b9352d07ed98b49120.png?imageslim"><img src="https://user-gold-cdn.xitu.io/2017/1/23/69a02ddce900e9b9352d07ed98b49120.png?imageslim" alt=""></a>
 
 ## Node 服务层
 
@@ -33,7 +33,7 @@ comments: true
 - 用户交互产生的 ajax 请求（客户端发起）
 - 服务端模板渲染所需初始数据
 
-![](http://oigzv3evy.bkt.clouddn.com/%E5%89%8D%E7%AB%AF%E6%95%B0%E6%8D%AE%E8%B0%83%E7%94%A8%E9%93%BE.png)
+![](https://user-gold-cdn.xitu.io/2017/1/23/157451fc611bc267e5570b55d9362338.png?imageView2/0/w/1280/h/960/ignore-error/1)
 
 前者来说，传统的做法是后端直接提供 api 以供客户端调用，但面临微服务化逐渐成为主流的今天，后端系统也趋于拆分为众多后端服务，提供不同的 api，直接调用面临请求认证和跨域等众多问题，Node 做为中转站利用 `http-proxy` 将 http 请求和响应传输于前后两端，起到桥梁作用。
 
@@ -46,16 +46,16 @@ comments: true
 针对性能问题，我拿了公司项目的 api 几个接口做了些测试，不是非常精确，但也能看个大概。分别在 No throtting 和 Regular 4G （模拟移动端网络）的模式下，用 proxy（http-proxy 代理请求），direct（直接请求后端地址）和 node（利用 [request](https://www.npmjs.com/package/request) 模块发起请求）三种模式，做了 GET 和 POST 请求的延迟比对。在比对之前心里也大概有数，肯定是直接请求后端地址的延迟最低，毕竟加了 Node 一层，性能会由损耗。以下是测试结果：
 
 No throtting GET：
-![](http://oigzv3evy.bkt.clouddn.com/no-throtting-get)
+![](https://user-gold-cdn.xitu.io/2017/1/23/0c8ee83adfeb46defdeb391e6f4fe7b2?imageView2/0/w/1280/h/960/ignore-error/1)
 
 No throtting POST：
-![](http://oigzv3evy.bkt.clouddn.com/no-throtting-post)
+![](https://user-gold-cdn.xitu.io/2017/1/23/9985d2db94882907034fc60fa1479afd?imageView2/0/w/1280/h/960/ignore-error/1)
 
 Regular 4G GET：
-![](http://oigzv3evy.bkt.clouddn.com/regular-4g-get)
+![](https://user-gold-cdn.xitu.io/2017/1/23/e455379c9b66a5841d2f818710daa0e9?imageView2/0/w/1280/h/960/ignore-error/1)
 
 Regular 4G POST：
-![](http://oigzv3evy.bkt.clouddn.com/regular-4g-post)
+![](https://user-gold-cdn.xitu.io/2017/1/23/0698efd28f118421bea9bc45035d05a2?imageView2/0/w/1280/h/960/ignore-error/1)
 
 可以看出，GET 请求中 direct 是最快的，proxy 次之，node request 垫底，POST 则相差不明显。但延迟差距基本在 30ms 左右，是否可以接受，就要看自己的系统架构对性能的要求有多高了。对于我司目前的规模体量用户数来说，我认为基本是可以忽略的。
 
@@ -287,7 +287,7 @@ h1 {
 
 无论哪种形式，组件都不能直接在浏览器中使用（将来的 Web Components 可以，但可构建的组件绝对是更加有优势）。如果我们将浏览器看作是 web 应用的 runtime 环境，对比于 jvm 是 java 的 runtime，那前端的组件代码都是 java 级别的源码，要类似 java 那样通过编译打包成 war 方可使用。
 
-![](http://oigzv3evy.bkt.clouddn.com/QQ20170118-174412@2x.png)
+![](https://user-gold-cdn.xitu.io/2017/1/23/0201c54f0669e9b05461f399890d38fe?imageView2/0/w/1280/h/960/ignore-error/1)
 
 所以，为提升开发效率和代码质量，我们一般不直接写浏览器可读的 html, css 和 js，而是通过可模块化的“高级版” js，将一切资源进行串联，形成一系列业务或非业务组件，它们通过倚赖注入与模块输出、通过编译转换、通过合并或重组，最终生成浏览器可解析的代码。
 
@@ -307,8 +307,6 @@ var a = React.createElement('a', {
 React 首创的虚拟 DOM 有两大杀手锏大大提升了原生 DOM 操作效率低下的问题（特别是在移动端）：batching 和 diff。batching 把所有的 DOM 操作搜集起来，一次性提交给真实的 DOM；diff 算法时间复杂度也从标准的 diff 算法的 O(n^3 ) 降到了 O(n)[^2]。
 
 [^2]: React 只会逐层对比两颗随机树，这大大降低了 diff 算法的复杂度。并且在 web 组件中很少会将节点移动到不同的层级，经常只会在同一层级中移动。
-
-![](http://oigzv3evy.bkt.clouddn.com/react-diff.png)
 
 除了性能提升之外，由于思路的转变，在开发效率上也有很大提升：MDV 模式下很自然的就将 web 页面看做是一台状态机（State Machine），UI = f(state)， 界面上的变化皆由状态变化所导致，状态的变化来源一定为 M，即数据模型。我们将手动操作 DOM 的工作交给 MVVM 框架的数据绑定来做，界面的改变由数据的变化而自动完成，不仅十分高效，而且我们对于数据的流向更加清晰可控。在引入严格的函数式编程与不可变数据（immutable.js）后，还能使得结果可预测，方便做单元测试。
 
@@ -341,7 +339,7 @@ React 首创的虚拟 DOM 有两大杀手锏大大提升了原生 DOM 操作效�
 
 总体来说，Web 应用的开发主要技术特点就是（盗了[某熊的全栈之路](https://zhuanlan.zhihu.com/wxyyxc1992)的图，哈哈）：
 
-![](http://oigzv3evy.bkt.clouddn.com/v2-7ed1d5eb6ae15ea75dc4c79abfb081c0_r.png)
+![](https://user-gold-cdn.xitu.io/2017/1/23/fe01aef767294a0f196b0de4af7d3d23?imageView2/0/w/1280/h/960/ignore-error/1)
 
 ## 前端运维层
 
@@ -354,7 +352,7 @@ React 首创的虚拟 DOM 有两大杀手锏大大提升了原生 DOM 操作效�
 
 Lint 是根据代码规范的规则来制定的，不同的场景有不同的规则。比如是 node 环境还是浏览器环境，采用的模块化机制是 commonjs 还是 amd 等，都要分别配置。这里主要是为了保障代码没有明显的错误和拥有一致的风格。
 
-![](http://oigzv3evy.bkt.clouddn.com/2916377A-1DAF-4B8F-A160-E6C3FBA0AED8.png)
+![](https://user-gold-cdn.xitu.io/2017/1/23/08f928bf5e79701e2ee9f3b5e5fedb1d?imageView2/0/w/1280/h/960/ignore-error/1)
 
 Unit Test 在以往只重界面不重交互（页面状态管理）的传统 web 项目下并不常见，但在一些稍微有点复杂程度的前端项目中，单元测试就显得比较重要了。我之前的公司对项目开发的速度要求比较高，所以这一块比较少做。不过目前一些主流的前端框架都附带测试库与简单例子，比如 [create-react-app](https://github.com/facebookincubator/create-react-app) 就自带了 [jest](https://github.com/facebook/jest)。
 
@@ -377,11 +375,11 @@ Unit Test 在以往只重界面不重交互（页面状态管理）的传统 web
 
 这里以 pm2 为例：
 
-![](http://oigzv3evy.bkt.clouddn.com/pm2)
+![](https://user-gold-cdn.xitu.io/2017/1/23/6d7f315ecbb9905ad4d3267e72b128e0?imageView2/0/w/1280/h/960/ignore-error/1)
 
 然后我们手动制造一个崩溃，可以看到，可以看到第一个线程，restart显示为1，也就是说当崩溃的时候它会自动创建新的线程来继续服务。
 
-![](http://oigzv3evy.bkt.clouddn.com/pm2restart)
+![](https://user-gold-cdn.xitu.io/2017/1/23/3bcd95c3406508728fc9d258fbcc3a40?imageView2/0/w/1280/h/960/ignore-error/1)
 
 ### 性能日志监控
 
