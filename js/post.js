@@ -24,6 +24,14 @@ function drawPath() {
     var anchor = item.querySelector('a')
     var target = document.getElementById(anchor.getAttribute('href').slice(1))
 
+    anchor.addEventListener('click', (evt) => {
+      evt.preventDefault()
+      const { y } = target.getBoundingClientRect()
+      const [ _, hashString ] = target.href.split('#')
+
+      scrollBy(y, 300, () => window.location.hash = hashString)
+    })
+
     return {
       listItem: item,
       anchor: anchor,
@@ -73,7 +81,7 @@ function drawPath() {
 }
 
 function sync() {
-  var windowHeight = window.innerHeight
+  var windowHeight = window.screen.availHeight
 
   var pathStart = pathLength
   var pathEnd = 0
@@ -81,12 +89,9 @@ function sync() {
   var visibleItems = 0
 
   tocItems.forEach(function(item) {
-    var targetBounds = item.target.getBoundingClientRect()
+    var { y } = item.target.getBoundingClientRect()
 
-    if (
-      targetBounds.bottom > windowHeight * TOP_MARGIN &&
-      targetBounds.top < windowHeight * (1 - BOTTOM_MARGIN)
-    ) {
+    if ( y > 1 && y < windowHeight - 20) {
       pathStart = Math.min(item.pathStart, pathStart)
       pathEnd = Math.max(item.pathEnd, pathEnd)
 
@@ -107,7 +112,27 @@ function sync() {
       '1, ' + pathStart + ', ' + (pathEnd - pathStart) + ', ' + pathLength
     )
     tocPath.setAttribute('opacity', 1)
-  } else {
-    tocPath.setAttribute('opacity', 0)
   }
+}
+
+function scrollBy(distance, duration, callback) {
+  var initialY = document.scrollingElement.scrollTop
+  var y = initialY + distance
+  var baseY = (initialY + y) * 0.5
+  var diff = initialY - baseY
+  var startTime = performance.now()
+
+  function step() {
+    var normalizedTime = (performance.now() - startTime) / duration
+    if (normalizedTime > 1) {
+      normalizedTime = 1
+      callback && callback()
+    }
+    window.scrollTo(0, baseY + diff * Math.cos(normalizedTime * Math.PI))
+    if (normalizedTime < 1) {
+      window.requestAnimationFrame(step)
+    }
+  }
+
+  window.requestAnimationFrame(step)
 }

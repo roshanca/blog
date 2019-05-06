@@ -119,7 +119,7 @@
 <p>看了网上的各种 js 解决方案简直吓尿，都是写了个比较复杂的 function 来解决。如若无需兼容一些远古浏览器，js 自带的 <code>Array.prototype.toLocaleString()</code> 就可以解决问题。</p>
 
 <h2>
-<a class="anchor" href="#tofixed" aria-hidden="true"><span class="octicon octicon-link"></span></a>toFixed</h2>
+<a id="tofixed" class="anchor" href="#tofixed" aria-hidden="true"><span class="octicon octicon-link"></span></a>toFixed</h2>
 
 <p>我们看看情况一：</p>
 
@@ -134,7 +134,7 @@
 <p>大部分情况下，用用是够了，特别是数据约定的最小单位就是“分”的情况下。如需更加精确，就要考虑到 js 浮点数计算精度缺失的问题。具体的可以参考：<a href="http://www.chengfeilong.com/toFixed">toFixed 计算错误(依赖银行家舍入法的缺陷)解决方法</a></p>
 
 <h2>
-<a class="anchor" href="#tolocalestring" aria-hidden="true"><span class="octicon octicon-link"></span></a>toLocaleString</h2>
+<a id="tolocalestring" class="anchor" href="#tolocalestring" aria-hidden="true"><span class="octicon octicon-link"></span></a>toLocaleString</h2>
 
 <p>情况二是既要保留两位小数，又要加千位分隔符，<code>toFixed</code> 就不堪用了。那就轮到上面提到的 <code>toLocaleString</code> 登场了，详细的用法见：<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString">MDN web docs</a>。</p>
 
@@ -143,7 +143,7 @@
 <p>情况三看来也一并解决了。</p>
 
 <h2>
-<a class="anchor" href="#%E5%85%BC%E5%AE%B9%E6%80%A7" aria-hidden="true"><span class="octicon octicon-link"></span></a>兼容性</h2>
+<a id="兼容性" class="anchor" href="#%E5%85%BC%E5%AE%B9%E6%80%A7" aria-hidden="true"><span class="octicon octicon-link"></span></a>兼容性</h2>
 
 <p><code>toFixed</code> 基本上没什么兼容性的问题，<code>toLocaleString</code> 的兼容情况如下：</p>
 

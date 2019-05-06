@@ -93,7 +93,7 @@
       <p>我们知道，执行 docker pull 某镜象，默认都是从 <a href="https://hub.docker.com/">Docker Hub</a> 的公共仓库去获取的。这有点像全球最大的代码托管商：<a href="https://github.com/">Github</a>。但对于公司企业而言，Maybe 更加需要是的自建的仓库服务，所以我们用自建的 Gitlab 代替 Github。那有什么可以替代 Docker Hub 呢？答案是：自建 Docker Registry。独自摸索了一阵子后，以下是自己的一点实践：</p>
 
 <h2>
-<a class="anchor" href="#%E5%AE%89%E8%A3%85%E7%8E%AF%E5%A2%83" aria-hidden="true"><span class="octicon octicon-link"></span></a>安装环境</h2>
+<a id="安装环境" class="anchor" href="#%E5%AE%89%E8%A3%85%E7%8E%AF%E5%A2%83" aria-hidden="true"><span class="octicon octicon-link"></span></a>安装环境</h2>
 
 <p>docker-engine 使用了最新的 1.11.2 版本。</p>
 <div class="highlight"><pre><code class="language-" data-lang="">[root@crh211 ~]# docker version
@@ -116,7 +116,7 @@ Server:
 <p>操作系统采用 CentOS 7, 内核 <code>3.10.0-229.el7.x86_64</code></p>
 
 <h2>
-<a class="anchor" href="#docker-registry" aria-hidden="true"><span class="octicon octicon-link"></span></a>Docker Registry</h2>
+<a id="docker-registry" class="anchor" href="#docker-registry" aria-hidden="true"><span class="octicon octicon-link"></span></a>Docker Registry</h2>
 
 <p>一开始照着 <a href="https://yeasy.gitbooks.io/docker_practice/content/repository/local_repo.html">这里</a> 的教程安装了一下，发现在 push 镜象时，会报错。应该是跟 <code>https</code> 相关的问题，查阅了一下 <a href="https://docs.docker.com/registry/insecure/">官方资料</a>，依照提示想给 docker 启动增加参数：</p>
 <div class="highlight"><pre><code class="language-" data-lang="">DOCKER_OPTS="--insecure-registry myregistrydomain.com:5000"
@@ -124,7 +124,7 @@ Server:
 <p>但重启 docker 后好像没反应，试了好多种类似的方案都不行。看来要换种思路。一路找下去找到了 Docker Registry 2.0，抛弃了以上 insecure 的运行方式，采用了自建证书的认证方式。</p>
 
 <h3>
-<a class="anchor" href="#%E7%94%9F%E6%88%90%E8%AF%81%E4%B9%A6" aria-hidden="true"><span class="octicon octicon-link"></span></a>生成证书</h3>
+<a id="生成证书" class="anchor" href="#%E7%94%9F%E6%88%90%E8%AF%81%E4%B9%A6" aria-hidden="true"><span class="octicon octicon-link"></span></a>生成证书</h3>
 <div class="highlight"><pre><code class="language-" data-lang="">mkdir -p certs &amp;&amp; openssl req \
   -newkey rsa:4096 -nodes -sha256 -keyout certs/domain.key \
   -x509 -days 365 -out certs/domain.crt
@@ -140,7 +140,7 @@ Email Address []:wuwj@cairenhui.com
 <p>接下来将刚生成的 <code>certs/domain.crt</code> 复制到 <code>/etc/docker/certs.d/192.168.1.211:5000/ca.crt</code>，并<strong>重启 docker</strong>。</p>
 
 <h3>
-<a class="anchor" href="#%E5%AE%89%E8%A3%85-docker-registry-20" aria-hidden="true"><span class="octicon octicon-link"></span></a>安装 Docker Registry 2.0</h3>
+<a id="安装-docker-registry-20" class="anchor" href="#%E5%AE%89%E8%A3%85-docker-registry-20" aria-hidden="true"><span class="octicon octicon-link"></span></a>安装 Docker Registry 2.0</h3>
 <div class="highlight"><pre><code class="language-" data-lang="">docker run -d -p 5000:5000 --restart=always --name registry \
   -v /root/certs:/certs \
   -v /opt/data:/var/lib/registry \
@@ -149,13 +149,13 @@ Email Address []:wuwj@cairenhui.com
   registry:2
 </code></pre></div>
 <h2>
-<a class="anchor" href="#%E9%97%AE%E9%A2%98" aria-hidden="true"><span class="octicon octicon-link"></span></a>问题</h2>
+<a id="问题" class="anchor" href="#%E9%97%AE%E9%A2%98" aria-hidden="true"><span class="octicon octicon-link"></span></a>问题</h2>
 
 <p>安装完后在 push 镜象时还是遇到了一点小问题：</p>
 <div class="highlight"><pre><code class="language-" data-lang="">x509: cannot validate certificate for 192.168.1.211 because it doesn't contain any IP SANs
 </code></pre></div>
 <h3>
-<a class="anchor" href="#%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95" aria-hidden="true"><span class="octicon octicon-link"></span></a>解决办法：</h3>
+<a id="解决办法" class="anchor" href="#%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95" aria-hidden="true"><span class="octicon octicon-link"></span></a>解决办法：</h3>
 
 <p>修改 <code>/etc/pki/tls/openssl.cnf</code> 配置，在该文件中找到 <code>[ v3_ca ]</code>，在它下面添加如下内容：</p>
 <div class="highlight"><pre><code class="language-" data-lang="">[ v3_ca ]
