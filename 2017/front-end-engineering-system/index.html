@@ -11,8 +11,8 @@
 	<link rel="alternate" type="application/rss+xml" title="Subscribe Feed" href="/feed.xml">
 	<link href="/css/app.css" rel="stylesheet" media="all">
 	<link href="//cdn.bootcss.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-	<link href="//fonts.googleapis.com/css?family=Lustria|Inconsolata" rel="stylesheet">
-    <!-- <link href='//fonts.useso.com/css?family=PT+Serif:400,700' rel='stylesheet' type='text/css'> -->
+	<!-- <link href="//fonts.lug.ustc.edu.cn/css?family=Lustria|Inconsolata" rel="stylesheet"> -->
+  <!-- <link href='//fonts.useso.com/css?family=PT+Serif:400,700' rel='stylesheet' type='text/css'> -->
 	<script>
 	function loadSync(u,p,a){
 		if(!p && location.port)return {onload: null};
@@ -122,13 +122,13 @@
 <li>前端运维层：构建布署、日志监控等</li>
 </ul>
 
-<p><a target="_blank" href="http://oigzv3evy.bkt.clouddn.com/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96%E4%BD%93%E7%B3%BB.png"><img src="http://oigzv3evy.bkt.clouddn.com/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96%E4%BD%93%E7%B3%BB.png" alt=""></a></p>
+<p><a target="_blank" href="https://user-gold-cdn.xitu.io/2017/1/23/69a02ddce900e9b9352d07ed98b49120.png?imageslim"><img src="https://user-gold-cdn.xitu.io/2017/1/23/69a02ddce900e9b9352d07ed98b49120.png?imageslim" alt=""></a></p>
 
 <h2>
-<a id="node-服务层" class="anchor" href="#node-%E6%9C%8D%E5%8A%A1%E5%B1%82" aria-hidden="true"><span class="octicon octicon-link"></span></a>Node 服务层</h2>
+<a class="anchor" href="#node-%E6%9C%8D%E5%8A%A1%E5%B1%82" aria-hidden="true"><span class="octicon octicon-link"></span></a>Node 服务层</h2>
 
 <h3>
-<a id="数据代理" class="anchor" href="#%E6%95%B0%E6%8D%AE%E4%BB%A3%E7%90%86" aria-hidden="true"><span class="octicon octicon-link"></span></a>数据代理</h3>
+<a class="anchor" href="#%E6%95%B0%E6%8D%AE%E4%BB%A3%E7%90%86" aria-hidden="true"><span class="octicon octicon-link"></span></a>数据代理</h3>
 
 <p>一般在 web 应用中，数据的来源分为两类：</p>
 
@@ -137,7 +137,7 @@
 <li>服务端模板渲染所需初始数据</li>
 </ul>
 
-<p><img src="http://oigzv3evy.bkt.clouddn.com/%E5%89%8D%E7%AB%AF%E6%95%B0%E6%8D%AE%E8%B0%83%E7%94%A8%E9%93%BE.png" alt=""></p>
+<p><img src="https://user-gold-cdn.xitu.io/2017/1/23/157451fc611bc267e5570b55d9362338.png?imageView2/0/w/1280/h/960/ignore-error/1" alt=""></p>
 
 <p>前者来说，传统的做法是后端直接提供 api 以供客户端调用，但面临微服务化逐渐成为主流的今天，后端系统也趋于拆分为众多后端服务，提供不同的 api，直接调用面临请求认证和跨域等众多问题，Node 做为中转站利用 <code>http-proxy</code> 将 http 请求和响应传输于前后两端，起到桥梁作用。</p>
 
@@ -152,16 +152,16 @@
 <p>针对性能问题，我拿了公司项目的 api 几个接口做了些测试，不是非常精确，但也能看个大概。分别在 No throtting 和 Regular 4G （模拟移动端网络）的模式下，用 proxy（http-proxy 代理请求），direct（直接请求后端地址）和 node（利用 <a href="https://www.npmjs.com/package/request">request</a> 模块发起请求）三种模式，做了 GET 和 POST 请求的延迟比对。在比对之前心里也大概有数，肯定是直接请求后端地址的延迟最低，毕竟加了 Node 一层，性能会由损耗。以下是测试结果：</p>
 
 <p>No throtting GET：
-<img src="http://oigzv3evy.bkt.clouddn.com/no-throtting-get" alt=""></p>
+<img src="https://user-gold-cdn.xitu.io/2017/1/23/0c8ee83adfeb46defdeb391e6f4fe7b2?imageView2/0/w/1280/h/960/ignore-error/1" alt=""></p>
 
 <p>No throtting POST：
-<img src="http://oigzv3evy.bkt.clouddn.com/no-throtting-post" alt=""></p>
+<img src="https://user-gold-cdn.xitu.io/2017/1/23/9985d2db94882907034fc60fa1479afd?imageView2/0/w/1280/h/960/ignore-error/1" alt=""></p>
 
 <p>Regular 4G GET：
-<img src="http://oigzv3evy.bkt.clouddn.com/regular-4g-get" alt=""></p>
+<img src="https://user-gold-cdn.xitu.io/2017/1/23/e455379c9b66a5841d2f818710daa0e9?imageView2/0/w/1280/h/960/ignore-error/1" alt=""></p>
 
 <p>Regular 4G POST：
-<img src="http://oigzv3evy.bkt.clouddn.com/regular-4g-post" alt=""></p>
+<img src="https://user-gold-cdn.xitu.io/2017/1/23/0698efd28f118421bea9bc45035d05a2?imageView2/0/w/1280/h/960/ignore-error/1" alt=""></p>
 
 <p>可以看出，GET 请求中 direct 是最快的，proxy 次之，node request 垫底，POST 则相差不明显。但延迟差距基本在 30ms 左右，是否可以接受，就要看自己的系统架构对性能的要求有多高了。对于我司目前的规模体量用户数来说，我认为基本是可以忽略的。</p>
 
@@ -218,7 +218,7 @@
 <p>还有一点是因为下文中将要介绍的 Web 应用开发中，开发构建的工具本身就是基于 Node 的，构建后的静态资源如何在模板页面中引入，还是前端工程师最为清楚。所以虽模板属于服务端范畴，但与前端是结合的更加紧密的。</p>
 
 <h3>
-<a id="数据-mock" class="anchor" href="#%E6%95%B0%E6%8D%AE-mock" aria-hidden="true"><span class="octicon octicon-link"></span></a>数据 Mock</h3>
+<a class="anchor" href="#%E6%95%B0%E6%8D%AE-mock" aria-hidden="true"><span class="octicon octicon-link"></span></a>数据 Mock</h3>
 
 <p>一般来说，项目开发前期，后端接口实现的任务未完成时，前端写好了页面只能等待。此时，如果后端有空可以造一些假数据，让前端可以继续开发调试。但我们鼓励前端工程师自己 mock 数据，为什么呢？</p>
 
@@ -238,7 +238,7 @@
 <p>比较完美的方案是两者结合再加上支持非 restful 的 mock，这个可能需要以后自己定制了。PS. 最近 github 上看到了一个利用 service workers 搞出来的一个 mock 服务： <a href="https://github.com/service-mocker/service-mocker">service-mocker</a>，不管是否适用，但要为这样的思路点赞。</p>
 
 <h3>
-<a id="url-路由" class="anchor" href="#url-%E8%B7%AF%E7%94%B1" aria-hidden="true"><span class="octicon octicon-link"></span></a>url 路由</h3>
+<a class="anchor" href="#url-%E8%B7%AF%E7%94%B1" aria-hidden="true"><span class="octicon octicon-link"></span></a>url 路由</h3>
 
 <p>前端来制定路由，也促使前端工程师更全面深入地了解业务。这属于设计范畴，需要经验加持。</p>
 
@@ -256,7 +256,7 @@
 <span class="p">});</span>
 </code></pre></div>
 <h3>
-<a id="服务端模板渲染" class="anchor" href="#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%A8%A1%E6%9D%BF%E6%B8%B2%E6%9F%93" aria-hidden="true"><span class="octicon octicon-link"></span></a>服务端模板渲染</h3>
+<a class="anchor" href="#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%A8%A1%E6%9D%BF%E6%B8%B2%E6%9F%93" aria-hidden="true"><span class="octicon octicon-link"></span></a>服务端模板渲染</h3>
 
 <p>对于单页应用来说，服务端模板只是一个壳(shell)而已：</p>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
@@ -319,12 +319,12 @@
 <span class="nt">&lt;/html&gt;</span>
 </code></pre></div>
 <h2>
-<a id="web-应用开发层" class="anchor" href="#web-%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E5%B1%82" aria-hidden="true"><span class="octicon octicon-link"></span></a>Web 应用开发层</h2>
+<a class="anchor" href="#web-%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E5%B1%82" aria-hidden="true"><span class="octicon octicon-link"></span></a>Web 应用开发层</h2>
 
 <p>这一部分应该是前端工程师的专长部分，也是其核心价值的体现之处。</p>
 
 <h3>
-<a id="组件化和工程化" class="anchor" href="#%E7%BB%84%E4%BB%B6%E5%8C%96%E5%92%8C%E5%B7%A5%E7%A8%8B%E5%8C%96" aria-hidden="true"><span class="octicon octicon-link"></span></a>组件化和工程化</h3>
+<a class="anchor" href="#%E7%BB%84%E4%BB%B6%E5%8C%96%E5%92%8C%E5%B7%A5%E7%A8%8B%E5%8C%96" aria-hidden="true"><span class="octicon octicon-link"></span></a>组件化和工程化</h3>
 
 <p>web 应用开发主要包含三个部分：html，css 和 js，三者之中，除了 js 在近几年才拥有了模块化机制以外，html 和 css 都是需要手工维护（难以维护），伴随着复制粘贴，时间一久其产生的代码冗余就像是 windows 上的 C 盘空间一样，不断发胖。</p>
 
@@ -385,14 +385,14 @@
 </code></pre></div>
 <p>无论哪种形式，组件都不能直接在浏览器中使用（将来的 Web Components 可以，但可构建的组件绝对是更加有优势）。如果我们将浏览器看作是 web 应用的 runtime 环境，对比于 jvm 是 java 的 runtime，那前端的组件代码都是 java 级别的源码，要类似 java 那样通过编译打包成 war 方可使用。</p>
 
-<p><img src="http://oigzv3evy.bkt.clouddn.com/QQ20170118-174412@2x.png" alt=""></p>
+<p><img src="https://user-gold-cdn.xitu.io/2017/1/23/0201c54f0669e9b05461f399890d38fe?imageView2/0/w/1280/h/960/ignore-error/1" alt=""></p>
 
 <p>所以，为提升开发效率和代码质量，我们一般不直接写浏览器可读的 html, css 和 js，而是通过可模块化的“高级版” js，将一切资源进行串联，形成一系列业务或非业务组件，它们通过倚赖注入与模块输出、通过编译转换、通过合并或重组，最终生成浏览器可解析的代码。</p>
 
 <p>如何更好的“串联”，这些都是工程问题，也是做为现代前端工程师的必备素质。</p>
 
 <h3>
-<a id="mdv" class="anchor" href="#mdv" aria-hidden="true"><span class="octicon octicon-link"></span></a>MDV</h3>
+<a class="anchor" href="#mdv" aria-hidden="true"><span class="octicon octicon-link"></span></a>MDV</h3>
 
 <p>MDV = <strong>模型驱动视图</strong>。从 2010 Google 推出 Angular 开始，到 2013 年 Facebook 推出 React，再到最近国人自创的小而美的 Vue，都一路贯穿着 web 开发新的思路：从<strong>手动操作 DOM</strong> 到<strong>数据绑定 + Virtual DOM</strong> 的转变。这也是 everything in js 极致体现：把 DOM 操作都干掉了，直接用基于 js plain object 的虚拟 DOM：</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'a'</span><span class="p">,</span> <span class="p">{</span>
@@ -402,21 +402,19 @@
 </code></pre></div>
 <p>React 首创的虚拟 DOM 有两大杀手锏大大提升了原生 DOM 操作效率低下的问题（特别是在移动端）：batching 和 diff。batching 把所有的 DOM 操作搜集起来，一次性提交给真实的 DOM；diff 算法时间复杂度也从标准的 diff 算法的 O(n<sup>3</sup> ) 降到了 O(n)<sup id="fnref1"><a href="#fn1" rel="footnote">1</a></sup>。</p>
 
-<p><img src="http://oigzv3evy.bkt.clouddn.com/react-diff.png" alt=""></p>
-
 <p>除了性能提升之外，由于思路的转变，在开发效率上也有很大提升：MDV 模式下很自然的就将 web 页面看做是一台状态机（State Machine），UI = f(state)， 界面上的变化皆由状态变化所导致，状态的变化来源一定为 M，即数据模型。我们将手动操作 DOM 的工作交给 MVVM 框架的数据绑定来做，界面的改变由数据的变化而自动完成，不仅十分高效，而且我们对于数据的流向更加清晰可控。在引入严格的函数式编程与不可变数据（immutable.js）后，还能使得结果可预测，方便做单元测试。</p>
 
 <p>当然，除了许多新的概念需要学习之外，组件间如何通信，异步数据如何管理等一系列问题也是随之而来的一些挑战。</p>
 
 <h3>
-<a id="轮子" class="anchor" href="#%E8%BD%AE%E5%AD%90" aria-hidden="true"><span class="octicon octicon-link"></span></a>轮子</h3>
+<a class="anchor" href="#%E8%BD%AE%E5%AD%90" aria-hidden="true"><span class="octicon octicon-link"></span></a>轮子</h3>
 
 <p>这里的轮子就是指组件。必须要根据公司的业务特点打造前端组件库，这里的指的组件，可以是无关业务的界面组件，也可能是功能模块，或者两者皆有。其目的就是为了方便复用，便于管理。涉及公司业务的我们定义为 private components，不涉及业务的我们如果做的优秀也可以开源，开源有什么好处？大家都懂的。</p>
 
 <p>另外我们也拥抱业界优秀的开源方案，比如蚂蚁金服的 ant-design，谷歌的 Material-UI 等，在巨人的肩膀上，我们可以更高效更快速地开发我们的项目，迭代我们的产品。</p>
 
 <h3>
-<a id="多终端和跨平台" class="anchor" href="#%E5%A4%9A%E7%BB%88%E7%AB%AF%E5%92%8C%E8%B7%A8%E5%B9%B3%E5%8F%B0" aria-hidden="true"><span class="octicon octicon-link"></span></a>多终端和跨平台</h3>
+<a class="anchor" href="#%E5%A4%9A%E7%BB%88%E7%AB%AF%E5%92%8C%E8%B7%A8%E5%B9%B3%E5%8F%B0" aria-hidden="true"><span class="octicon octicon-link"></span></a>多终端和跨平台</h3>
 
 <p>在这里要稍微强调一下我们的主战场也就是浏览器（可以看作是我们前端代码的运行环境）。可以想像的到，js 这个在短短 10 天之内创造出来的解释性语言之所以能够如此流行而且经久不衰，完全是托了浏览器这个全球数量最庞大分部最广的天然 js 解析器的福。它遍布世界上的每一个角落，你不得不用。所以了解语言宿主，当然也是至关重要的。</p>
 
@@ -441,13 +439,13 @@
 
 <p>总体来说，Web 应用的开发主要技术特点就是（盗了<a href="https://zhuanlan.zhihu.com/wxyyxc1992">某熊的全栈之路</a>的图，哈哈）：</p>
 
-<p><img src="http://oigzv3evy.bkt.clouddn.com/v2-7ed1d5eb6ae15ea75dc4c79abfb081c0_r.png" alt=""></p>
+<p><img src="https://user-gold-cdn.xitu.io/2017/1/23/fe01aef767294a0f196b0de4af7d3d23?imageView2/0/w/1280/h/960/ignore-error/1" alt=""></p>
 
 <h2>
-<a id="前端运维层" class="anchor" href="#%E5%89%8D%E7%AB%AF%E8%BF%90%E7%BB%B4%E5%B1%82" aria-hidden="true"><span class="octicon octicon-link"></span></a>前端运维层</h2>
+<a class="anchor" href="#%E5%89%8D%E7%AB%AF%E8%BF%90%E7%BB%B4%E5%B1%82" aria-hidden="true"><span class="octicon octicon-link"></span></a>前端运维层</h2>
 
 <h3>
-<a id="测试" class="anchor" href="#%E6%B5%8B%E8%AF%95" aria-hidden="true"><span class="octicon octicon-link"></span></a>测试</h3>
+<a class="anchor" href="#%E6%B5%8B%E8%AF%95" aria-hidden="true"><span class="octicon octicon-link"></span></a>测试</h3>
 
 <p>在代码 build 之前有两部操作要做：</p>
 
@@ -458,12 +456,12 @@
 
 <p>Lint 是根据代码规范的规则来制定的，不同的场景有不同的规则。比如是 node 环境还是浏览器环境，采用的模块化机制是 commonjs 还是 amd 等，都要分别配置。这里主要是为了保障代码没有明显的错误和拥有一致的风格。</p>
 
-<p><img src="http://oigzv3evy.bkt.clouddn.com/2916377A-1DAF-4B8F-A160-E6C3FBA0AED8.png" alt=""></p>
+<p><img src="https://user-gold-cdn.xitu.io/2017/1/23/08f928bf5e79701e2ee9f3b5e5fedb1d?imageView2/0/w/1280/h/960/ignore-error/1" alt=""></p>
 
 <p>Unit Test 在以往只重界面不重交互（页面状态管理）的传统 web 项目下并不常见，但在一些稍微有点复杂程度的前端项目中，单元测试就显得比较重要了。我之前的公司对项目开发的速度要求比较高，所以这一块比较少做。不过目前一些主流的前端框架都附带测试库与简单例子，比如 <a href="https://github.com/facebookincubator/create-react-app">create-react-app</a> 就自带了 <a href="https://github.com/facebook/jest">jest</a>。</p>
 
 <h3>
-<a id="cicd" class="anchor" href="#cicd" aria-hidden="true"><span class="octicon octicon-link"></span></a>CI/CD</h3>
+<a class="anchor" href="#cicd" aria-hidden="true"><span class="octicon octicon-link"></span></a>CI/CD</h3>
 
 <p>前端的布署主要分静态和动态两部分：</p>
 
@@ -478,7 +476,7 @@
 <p>其它比较常见的如 Jenkins, Travis CI 等。</p>
 
 <h3>
-<a id="扩展与稳定性" class="anchor" href="#%E6%89%A9%E5%B1%95%E4%B8%8E%E7%A8%B3%E5%AE%9A%E6%80%A7" aria-hidden="true"><span class="octicon octicon-link"></span></a>扩展与稳定性</h3>
+<a class="anchor" href="#%E6%89%A9%E5%B1%95%E4%B8%8E%E7%A8%B3%E5%AE%9A%E6%80%A7" aria-hidden="true"><span class="octicon octicon-link"></span></a>扩展与稳定性</h3>
 
 <p>遇到程序 crash 怎么办？现在 Node 上已经有非常多的进程重启模块，比如 pm2，forever 等。</p>
 
@@ -486,19 +484,19 @@
 
 <p>这里以 pm2 为例：</p>
 
-<p><img src="http://oigzv3evy.bkt.clouddn.com/pm2" alt=""></p>
+<p><img src="https://user-gold-cdn.xitu.io/2017/1/23/6d7f315ecbb9905ad4d3267e72b128e0?imageView2/0/w/1280/h/960/ignore-error/1" alt=""></p>
 
 <p>然后我们手动制造一个崩溃，可以看到，可以看到第一个线程，restart显示为1，也就是说当崩溃的时候它会自动创建新的线程来继续服务。</p>
 
-<p><img src="http://oigzv3evy.bkt.clouddn.com/pm2restart" alt=""></p>
+<p><img src="https://user-gold-cdn.xitu.io/2017/1/23/3bcd95c3406508728fc9d258fbcc3a40?imageView2/0/w/1280/h/960/ignore-error/1" alt=""></p>
 
 <h3>
-<a id="性能日志监控" class="anchor" href="#%E6%80%A7%E8%83%BD%E6%97%A5%E5%BF%97%E7%9B%91%E6%8E%A7" aria-hidden="true"><span class="octicon octicon-link"></span></a>性能日志监控</h3>
+<a class="anchor" href="#%E6%80%A7%E8%83%BD%E6%97%A5%E5%BF%97%E7%9B%91%E6%8E%A7" aria-hidden="true"><span class="octicon octicon-link"></span></a>性能日志监控</h3>
 
 <p>监控可大可小，往小了说，可以是一个工具，往大了讲，也可以是一套系统，不仅仅可以有可视化的图表，还支持一系列的报警规则。如果公司的人力有限，估计投入产出比不高的，初期可以考虑一些优秀的在线服务，比如：keymetrics.io, Sentry.io 等，这些服务功能强大基本涵盖所有需求，而且易于集成。当然，好用的基本上都是需要付费的。</p>
 
 <h2>
-<a id="写在最后" class="anchor" href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E" aria-hidden="true"><span class="octicon octicon-link"></span></a>写在最后</h2>
+<a class="anchor" href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E" aria-hidden="true"><span class="octicon octicon-link"></span></a>写在最后</h2>
 
 <p>文中没有提到的 Private NPM 和 Private Docker Registry 我用虚线框起来，是就目前来看很难做到，因为我们的代码库是内网的，而且公司目前是阿里云的重度使用者，Docker 要如要投入使用，要是没有自身的 IAAS 基础设施做支持估计也是玩不转。当然，这些都是没几个小公司能玩转的，有机会就尝试，但做为技术人，首要任务还是方案落地和解决实际的业务问题。</p>
 

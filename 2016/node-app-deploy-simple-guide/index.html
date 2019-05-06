@@ -11,8 +11,8 @@
 	<link rel="alternate" type="application/rss+xml" title="Subscribe Feed" href="/feed.xml">
 	<link href="/css/app.css" rel="stylesheet" media="all">
 	<link href="//cdn.bootcss.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-	<link href="//fonts.googleapis.com/css?family=Lustria|Inconsolata" rel="stylesheet">
-    <!-- <link href='//fonts.useso.com/css?family=PT+Serif:400,700' rel='stylesheet' type='text/css'> -->
+	<!-- <link href="//fonts.lug.ustc.edu.cn/css?family=Lustria|Inconsolata" rel="stylesheet"> -->
+  <!-- <link href='//fonts.useso.com/css?family=PT+Serif:400,700' rel='stylesheet' type='text/css'> -->
 	<script>
 	function loadSync(u,p,a){
 		if(!p && location.port)return {onload: null};
@@ -91,12 +91,12 @@
 </nav>
 
       <h2>
-<a id="环境-system" class="anchor" href="#%E7%8E%AF%E5%A2%83-system" aria-hidden="true"><span class="octicon octicon-link"></span></a>环境 (System)：</h2>
+<a class="anchor" href="#%E7%8E%AF%E5%A2%83-system" aria-hidden="true"><span class="octicon octicon-link"></span></a>环境 (System)：</h2>
 
 <p>CentOS 7</p>
 
 <h2>
-<a id="准备-requirement" class="anchor" href="#%E5%87%86%E5%A4%87-requirement" aria-hidden="true"><span class="octicon octicon-link"></span></a>准备 (Requirement)</h2>
+<a class="anchor" href="#%E5%87%86%E5%A4%87-requirement" aria-hidden="true"><span class="octicon octicon-link"></span></a>准备 (Requirement)</h2>
 
 <ul>
 <li>
@@ -110,7 +110,7 @@
 </ul>
 
 <h2>
-<a id="安装-install" class="anchor" href="#%E5%AE%89%E8%A3%85-install" aria-hidden="true"><span class="octicon octicon-link"></span></a>安装 (Install)</h2>
+<a class="anchor" href="#%E5%AE%89%E8%A3%85-install" aria-hidden="true"><span class="octicon octicon-link"></span></a>安装 (Install)</h2>
 
 <p>一般在 Linux 系统中安装程序有三种方式：</p>
 
@@ -123,7 +123,7 @@
 <p>这里推荐用第二种。</p>
 
 <h3>
-<a id="install-git1" class="anchor" href="#install-git1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install git<sup id="fnref1"><a href="#fn1" rel="footnote">1</a></sup>
+<a class="anchor" href="#install-git1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install git<sup id="fnref1"><a href="#fn1" rel="footnote">1</a></sup>
 </h3>
 
 <ol>
@@ -154,7 +154,7 @@ make prefix=/usr/local install
 </ol>
 
 <h3>
-<a id="安装-node-和-npm" class="anchor" href="#%E5%AE%89%E8%A3%85-node-%E5%92%8C-npm" aria-hidden="true"><span class="octicon octicon-link"></span></a>安装 node 和 npm：</h3>
+<a class="anchor" href="#%E5%AE%89%E8%A3%85-node-%E5%92%8C-npm" aria-hidden="true"><span class="octicon octicon-link"></span></a>安装 node 和 npm：</h3>
 
 <ol>
 <li>
@@ -195,11 +195,11 @@ source ~/.bashrc
 </ol>
 
 <h3>
-<a id="安装-pm2" class="anchor" href="#%E5%AE%89%E8%A3%85-pm2" aria-hidden="true"><span class="octicon octicon-link"></span></a>安装 pm2：</h3>
+<a class="anchor" href="#%E5%AE%89%E8%A3%85-pm2" aria-hidden="true"><span class="octicon octicon-link"></span></a>安装 pm2：</h3>
 <div class="highlight"><pre><code class="language-" data-lang="">npm install -g pm2
 </code></pre></div>
 <h2>
-<a id="布署-deploy" class="anchor" href="#%E5%B8%83%E7%BD%B2-deploy" aria-hidden="true"><span class="octicon octicon-link"></span></a>布署 (Deploy)</h2>
+<a class="anchor" href="#%E5%B8%83%E7%BD%B2-deploy" aria-hidden="true"><span class="octicon octicon-link"></span></a>布署 (Deploy)</h2>
 
 <p>布署分为不用 git 和基于 git 两种方式。前者主要是用于 git 代码网络属于内网的环境下。</p>
 
@@ -244,7 +244,7 @@ npm install --production
 <p>至此，无论是否使用 git，布署都已完成。</p>
 
 <h2>
-<a id="运行-run" class="anchor" href="#%E8%BF%90%E8%A1%8C-run" aria-hidden="true"><span class="octicon octicon-link"></span></a>运行 (Run)</h2>
+<a class="anchor" href="#%E8%BF%90%E8%A1%8C-run" aria-hidden="true"><span class="octicon octicon-link"></span></a>运行 (Run)</h2>
 
 <p>在项目根目录下，运行 <code>pm2 start pm2.json</code> 即可。</p>
 
@@ -268,7 +268,7 @@ npm install --production
 <p>更多的命令用法请查看：<a href="https://github.com/Unitech/pm2#main-features">https://github.com/Unitech/pm2#main-features</a></p>
 
 <h2>
-<a id="更新或回滚-updaterollback" class="anchor" href="#%E6%9B%B4%E6%96%B0%E6%88%96%E5%9B%9E%E6%BB%9A-updaterollback" aria-hidden="true"><span class="octicon octicon-link"></span></a>更新或回滚 (Update/Rollback)</h2>
+<a class="anchor" href="#%E6%9B%B4%E6%96%B0%E6%88%96%E5%9B%9E%E6%BB%9A-updaterollback" aria-hidden="true"><span class="octicon octicon-link"></span></a>更新或回滚 (Update/Rollback)</h2>
 
 <ol>
 <li>不使用 git：之前已提到过，直接在 gitlab 上下载 tag 包，解压缩覆盖至服务器</li>

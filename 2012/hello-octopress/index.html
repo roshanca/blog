@@ -11,8 +11,8 @@
 	<link rel="alternate" type="application/rss+xml" title="Subscribe Feed" href="/feed.xml">
 	<link href="/css/app.css" rel="stylesheet" media="all">
 	<link href="//cdn.bootcss.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-	<link href="//fonts.googleapis.com/css?family=Lustria|Inconsolata" rel="stylesheet">
-    <!-- <link href='//fonts.useso.com/css?family=PT+Serif:400,700' rel='stylesheet' type='text/css'> -->
+	<!-- <link href="//fonts.lug.ustc.edu.cn/css?family=Lustria|Inconsolata" rel="stylesheet"> -->
+  <!-- <link href='//fonts.useso.com/css?family=PT+Serif:400,700' rel='stylesheet' type='text/css'> -->
 	<script>
 	function loadSync(u,p,a){
 		if(!p && location.port)return {onload: null};
@@ -73,7 +73,7 @@
   <ul class="section-nav">
 <li class="toc-entry toc-h2"><a href="#安装环境">安装环境</a></li>
 <li class="toc-entry toc-h2"><a href="#下载-ruby-以及开发工具-devkit">下载 Ruby 以及开发工具 DevKit</a></li>
-<li class="toc-entry toc-h2"><a href="#安装-ruby--devkit">安装 Ruby & DevKit</a></li>
+<li class="toc-entry toc-h2"><a href="#安装-ruby--devkit">安装 Ruby &amp; DevKit</a></li>
 <li class="toc-entry toc-h2"><a href="#重头戏安装-octopress">重头戏，安装 Octopress</a>
 <ul>
 <li class="toc-entry toc-h3"><a href="#安装依赖包">安装依赖包</a></li>
@@ -105,7 +105,7 @@
 <p>自己在安装和使用的过程中也遇到了一些问题，在此记录一下。</p>
 
 <h2>
-<a id="安装环境" class="anchor" href="#%E5%AE%89%E8%A3%85%E7%8E%AF%E5%A2%83" aria-hidden="true"><span class="octicon octicon-link"></span></a>安装环境</h2>
+<a class="anchor" href="#%E5%AE%89%E8%A3%85%E7%8E%AF%E5%A2%83" aria-hidden="true"><span class="octicon octicon-link"></span></a>安装环境</h2>
 
 <ul>
 <li>  win 7 sp1</li>
@@ -113,7 +113,7 @@
 </ul>
 
 <h2>
-<a id="下载-ruby-以及开发工具-devkit" class="anchor" href="#%E4%B8%8B%E8%BD%BD-ruby-%E4%BB%A5%E5%8F%8A%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7-devkit" aria-hidden="true"><span class="octicon octicon-link"></span></a>下载 Ruby 以及开发工具 DevKit</h2>
+<a class="anchor" href="#%E4%B8%8B%E8%BD%BD-ruby-%E4%BB%A5%E5%8F%8A%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7-devkit" aria-hidden="true"><span class="octicon octicon-link"></span></a>下载 Ruby 以及开发工具 DevKit</h2>
 
 <ul>
 <li>  <a href="http://rubyinstaller.org/downloads/">RubyInstaller</a>（我下载的是 1.9.3 的版本）<br>
@@ -123,7 +123,7 @@
 </ul>
 
 <h2>
-<a id="安装-ruby--devkit" class="anchor" href="#%E5%AE%89%E8%A3%85-ruby--devkit" aria-hidden="true"><span class="octicon octicon-link"></span></a>安装 Ruby &amp; DevKit</h2>
+<a class="anchor" href="#%E5%AE%89%E8%A3%85-ruby--devkit" aria-hidden="true"><span class="octicon octicon-link"></span></a>安装 Ruby &amp; DevKit</h2>
 
 <p>安装完 ruby 后会自动将其路径添加至系统变量的 PATH 中，否者需手动添加。<code>Win + R</code> 键入 <code>cmd</code> 打开命令行 输入 <code>ruby -v</code> 确认 ruby 是否已成功安装。</p>
 
@@ -133,7 +133,7 @@
 <p>就依照提示在 C 分区下创建目录路径 <code>msys/1.0</code>，再将文件都转移其中，这回 <code>msys.bat</code> 可以启动了。</p>
 
 <h2>
-<a id="重头戏安装-octopress" class="anchor" href="#%E9%87%8D%E5%A4%B4%E6%88%8F%E5%AE%89%E8%A3%85-octopress" aria-hidden="true"><span class="octicon octicon-link"></span></a>重头戏，安装 Octopress</h2>
+<a class="anchor" href="#%E9%87%8D%E5%A4%B4%E6%88%8F%E5%AE%89%E8%A3%85-octopress" aria-hidden="true"><span class="octicon octicon-link"></span></a>重头戏，安装 Octopress</h2>
 
 <p>打开 Aptana，新建 Ruby Project，Generate APP 选项中选择 Clone a existing git project，然后在 Location 中填入</p>
 <div class="highlight"><pre><code class="language-" data-lang="">git://github.com/imathis/octopress.git
@@ -145,21 +145,21 @@
 <p>那好，就先打开 DevKit，cd 定位到你新建的 Ruby Project，也就是 Octopress 主程序。</p>
 
 <h3>
-<a id="安装依赖包" class="anchor" href="#%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96%E5%8C%85" aria-hidden="true"><span class="octicon octicon-link"></span></a>安装依赖包</h3>
+<a class="anchor" href="#%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96%E5%8C%85" aria-hidden="true"><span class="octicon octicon-link"></span></a>安装依赖包</h3>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">gem <span class="nb">install </span>bundler
 bundle <span class="nb">install</span>
 </code></pre></div>
 <h3>
-<a id="安装默认主题" class="anchor" href="#%E5%AE%89%E8%A3%85%E9%BB%98%E8%AE%A4%E4%B8%BB%E9%A2%98" aria-hidden="true"><span class="octicon octicon-link"></span></a>安装默认主题</h3>
+<a class="anchor" href="#%E5%AE%89%E8%A3%85%E9%BB%98%E8%AE%A4%E4%B8%BB%E9%A2%98" aria-hidden="true"><span class="octicon octicon-link"></span></a>安装默认主题</h3>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">rake <span class="nb">install</span>
 </code></pre></div>
 <h2>
-<a id="配置-octopress" class="anchor" href="#%E9%85%8D%E7%BD%AE-octopress" aria-hidden="true"><span class="octicon octicon-link"></span></a>配置 Octopress</h2>
+<a class="anchor" href="#%E9%85%8D%E7%BD%AE-octopress" aria-hidden="true"><span class="octicon octicon-link"></span></a>配置 Octopress</h2>
 
 <p>关于网站的信息都可在 <code>_config.yml</code> 里的到配置，具体的可参见<a href="http://octopress.org/docs/configuring/">这里</a>。</p>
 
 <h2>
-<a id="本地预览" class="anchor" href="#%E6%9C%AC%E5%9C%B0%E9%A2%84%E8%A7%88" aria-hidden="true"><span class="octicon octicon-link"></span></a>本地预览</h2>
+<a class="anchor" href="#%E6%9C%AC%E5%9C%B0%E9%A2%84%E8%A7%88" aria-hidden="true"><span class="octicon octicon-link"></span></a>本地预览</h2>
 
 <p>从这步开始，可以用 Aptana 中的 Terminal 更加方便的输命令行了。</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">rake generate
@@ -176,7 +176,7 @@ rake preview
 <div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">if</span> <span class="n">chunked?</span> <span class="o">||</span> <span class="vi">@header</span><span class="p">[</span><span class="s1">'content-length'</span><span class="p">]</span> <span class="o">||</span> <span class="vi">@status</span> <span class="o">==</span> <span class="mi">304</span> <span class="o">||</span> <span class="vi">@status</span> <span class="o">==</span> <span class="mi">204</span>
 </code></pre></div>
 <h2>
-<a id="部署-heroku" class="anchor" href="#%E9%83%A8%E7%BD%B2-heroku" aria-hidden="true"><span class="octicon octicon-link"></span></a>部署 Heroku</h2>
+<a class="anchor" href="#%E9%83%A8%E7%BD%B2-heroku" aria-hidden="true"><span class="octicon octicon-link"></span></a>部署 Heroku</h2>
 
 <p>你得先有个 Heroku 账号，<a href="https://api.heroku.com/signup">注册一个</a>！</p>
 
@@ -206,7 +206,7 @@ git commit <span class="nt">-m</span> <span class="s1">'site updated'</span>
 git push heroku master
 </code></pre></div>
 <h2>
-<a id="发表文章" class="anchor" href="#%E5%8F%91%E8%A1%A8%E6%96%87%E7%AB%A0" aria-hidden="true"><span class="octicon octicon-link"></span></a>发表文章</h2>
+<a class="anchor" href="#%E5%8F%91%E8%A1%A8%E6%96%87%E7%AB%A0" aria-hidden="true"><span class="octicon octicon-link"></span></a>发表文章</h2>
 
 <p>只需一句</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">rake new_post[<span class="s2">"title"</span><span class="o">]</span>
@@ -238,7 +238,7 @@ git push heroku master
 </ol>
 
 <h2>
-<a id="参考文章部分地址需-fanq1ang" class="anchor" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0%E9%83%A8%E5%88%86%E5%9C%B0%E5%9D%80%E9%9C%80-fanq1ang" aria-hidden="true"><span class="octicon octicon-link"></span></a>参考文章（部分地址需 FanQ1ang）</h2>
+<a class="anchor" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0%E9%83%A8%E5%88%86%E5%9C%B0%E5%9D%80%E9%9C%80-fanq1ang" aria-hidden="true"><span class="octicon octicon-link"></span></a>参考文章（部分地址需 FanQ1ang）</h2>
 
 <ul>
 <li>  <a href="https://bugs.ruby-lang.org/attachments/2300/204_304_keep_alive.patch">https://bugs.ruby-lang.org/attachments/2300/204_304_keep_alive.patch</a>
