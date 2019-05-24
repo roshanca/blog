@@ -191,6 +191,12 @@
   iframe {
     margin-bottom: 2.4rem;
   }
+  .anchorjs-link {
+    border-bottom: 0 none;
+    &:hover {
+      @include opacity(.8);
+    }
+  }
 }
 
 .post-comment {

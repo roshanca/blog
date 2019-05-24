@@ -26,7 +26,7 @@ $tipMargin: rem(5px);
     box-sizing: border-box;
     transition: all $animDuration ease 0s;
     position: absolute;
-    opacity: 0;
+    @include opacity(0);
     visibility: hidden;
     z-index: 1;
     left: 50%;
@@ -60,7 +60,7 @@ $tipMargin: rem(5px);
     &:before,
     &:after {
       visibility: visible;
-      opacity: 1;
+      @include opacity(1);
       transform: translateY(-$tipMargin);
     }
   }

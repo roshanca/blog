@@ -32,7 +32,7 @@
       left: 0;
       height: 1px;
       background-color: #fff;
-      opacity: .8;
+      @include opacity(.8);
     }
     &::after {
       bottom: 1px;
