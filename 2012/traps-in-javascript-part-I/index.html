@@ -70,7 +70,7 @@
     </header>
     <section class="post-content">
       <nav class="post-toc">
-  <ul class="section-nav">
+        <ul class="section-nav">
 <li class="toc-entry toc-h2"><a href="#坑一全局变量">坑一：全局变量</a></li>
 <li class="toc-entry toc-h2"><a href="#坑二变量声明">坑二：变量声明</a></li>
 <li class="toc-entry toc-h2"><a href="#坑三函数声明">坑三：函数声明</a></li>
@@ -78,16 +78,15 @@
 <li class="toc-entry toc-h2"><a href="#坑五函数的自执行">坑五：函数的自执行</a></li>
 <li class="toc-entry toc-h2"><a href="#坑六循环中的闭包">坑六：循环中的闭包</a></li>
 </ul>
-  <svg class="toc-marker" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
-    <path stroke="#444" stroke-width="3" fill="transparent" stroke-dasharray="0, 0, 0, 1000" stroke-linecap="round" stroke-linejoin="round"
-      transform="translate(-0.5, -0.5)" />
-  </svg>
-</nav>
-
+        <svg class="toc-marker" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+          <path stroke="#444" stroke-width="3" fill="transparent" stroke-dasharray="0, 0, 0, 1000" stroke-linecap="round" stroke-linejoin="round"
+            transform="translate(-0.5, -0.5)" />
+        </svg>
+      </nav>
       <p>“坑”这个字，在此的意思是“陷阱”。由于 JavaScript “弱语言”的性质，使得其在使用过程中异常的宽松灵活，但也极为容易“中招”。</p>
 
 <h2>
-<a id="坑一全局变量" class="anchor" href="#%E5%9D%91%E4%B8%80%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F" aria-hidden="true"><span class="octicon octicon-link"></span></a>坑一：全局变量</h2>
+<a class="anchor" href="#%E5%9D%91%E4%B8%80%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F" aria-hidden="true"><span class="octicon octicon-link"></span></a>坑一：全局变量</h2>
 
 <blockquote>
 <p>JavaScript 通过函数管理作用域。在函数内部声明的变量只在这个函数内部，函数外面不可用。另一方面，全局变量就是在任何函数外面声明的或是未声明直接简单使用的。</p>
@@ -112,7 +111,7 @@
 <p>填坑：变量声明，最好一个个来，别搞批发~_~;</p>
 
 <h2>
-<a id="坑二变量声明" class="anchor" href="#%E5%9D%91%E4%BA%8C%E5%8F%98%E9%87%8F%E5%A3%B0%E6%98%8E" aria-hidden="true"><span class="octicon octicon-link"></span></a>坑二：变量声明</h2>
+<a class="anchor" href="#%E5%9D%91%E4%BA%8C%E5%8F%98%E9%87%8F%E5%A3%B0%E6%98%8E" aria-hidden="true"><span class="octicon octicon-link"></span></a>坑二：变量声明</h2>
 
 <p>先来看坑：</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">myName</span> <span class="o">=</span> <span class="s2">"global"</span><span class="p">;</span>
@@ -159,7 +158,7 @@
 <p>填坑：变量声明，最好手动置于作用域顶部，对于无法当下赋值的变量，可采取先声明后赋值的手法。</p>
 
 <h2>
-<a id="坑三函数声明" class="anchor" href="#%E5%9D%91%E4%B8%89%E5%87%BD%E6%95%B0%E5%A3%B0%E6%98%8E" aria-hidden="true"><span class="octicon octicon-link"></span></a>坑三：函数声明</h2>
+<a class="anchor" href="#%E5%9D%91%E4%B8%89%E5%87%BD%E6%95%B0%E5%A3%B0%E6%98%8E" aria-hidden="true"><span class="octicon octicon-link"></span></a>坑三：函数声明</h2>
 
 <blockquote>
 <p>函数声明也是被提前至作用域顶部，先于任何表达式和语句被解析和求值的</p>
@@ -195,7 +194,7 @@
 <p>填坑：多数情况下，用函数表达式来代替函数声明是一个好习惯，特别是在一些语句块中。</p>
 
 <h2>
-<a id="坑四函数表达式" class="anchor" href="#%E5%9D%91%E5%9B%9B%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F" aria-hidden="true"><span class="octicon octicon-link"></span></a>坑四：函数表达式</h2>
+<a class="anchor" href="#%E5%9D%91%E5%9B%9B%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F" aria-hidden="true"><span class="octicon octicon-link"></span></a>坑四：函数表达式</h2>
 
 <p>先看命名函数表达式，理所当然，就是它得有名字，例如：</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">bar</span> <span class="o">=</span> <span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
@@ -212,7 +211,7 @@
 <p>填坑：尽量少用命名函数表达式（除了一些递归以及 debug 的用途），切勿将函数名使用于外部。</p>
 
 <h2>
-<a id="坑五函数的自执行" class="anchor" href="#%E5%9D%91%E4%BA%94%E5%87%BD%E6%95%B0%E7%9A%84%E8%87%AA%E6%89%A7%E8%A1%8C" aria-hidden="true"><span class="octicon octicon-link"></span></a>坑五：函数的自执行</h2>
+<a class="anchor" href="#%E5%9D%91%E4%BA%94%E5%87%BD%E6%95%B0%E7%9A%84%E8%87%AA%E6%89%A7%E8%A1%8C" aria-hidden="true"><span class="octicon octicon-link"></span></a>坑五：函数的自执行</h2>
 
 <p>对于函数表达式，可以通过后面加上 <code>()</code> 立即执行。并且可在 <code>()</code> 中传递参数，而函数声明不可以。</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// (1) 这只是一个分组操作符，不是函数调用！</span>
@@ -251,7 +250,7 @@
 <p>填坑：要解决这个坑的关键在于，弄清楚形形色色的函数表达式之实质。</p>
 
 <h2>
-<a id="坑六循环中的闭包" class="anchor" href="#%E5%9D%91%E5%85%AD%E5%BE%AA%E7%8E%AF%E4%B8%AD%E7%9A%84%E9%97%AD%E5%8C%85" aria-hidden="true"><span class="octicon octicon-link"></span></a>坑六：循环中的闭包</h2>
+<a class="anchor" href="#%E5%9D%91%E5%85%AD%E5%BE%AA%E7%8E%AF%E4%B8%AD%E7%9A%84%E9%97%AD%E5%8C%85" aria-hidden="true"><span class="octicon octicon-link"></span></a>坑六：循环中的闭包</h2>
 
 <p>以下演示的是一个常见的坑：</p>
 
@@ -319,6 +318,7 @@
   
 </section>
 
+    <script src="/js/anchor.min.js"></script>
     <script src="/js/post.js"></script>
   </article>
 </main>

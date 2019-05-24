@@ -70,19 +70,18 @@
     </header>
     <section class="post-content">
       <nav class="post-toc">
-  <ul class="section-nav">
+        <ul class="section-nav">
 <li class="toc-entry toc-h2"><a href="#临时关闭系统保护">临时关闭系统保护</a></li>
 <li class="toc-entry toc-h2"><a href="#修改-wishapp-的-infoplist">修改 Wish.app 的 Info.plist</a></li>
 <li class="toc-entry toc-h2"><a href="#更新-wishapp">更新 Wish.app</a></li>
 <li class="toc-entry toc-h2"><a href="#再次开启系统保户">再次开启系统保户</a></li>
 <li class="toc-entry toc-h2"><a href="#效果展示">效果展示</a></li>
 </ul>
-  <svg class="toc-marker" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
-    <path stroke="#444" stroke-width="3" fill="transparent" stroke-dasharray="0, 0, 0, 1000" stroke-linecap="round" stroke-linejoin="round"
-      transform="translate(-0.5, -0.5)" />
-  </svg>
-</nav>
-
+        <svg class="toc-marker" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+          <path stroke="#444" stroke-width="3" fill="transparent" stroke-dasharray="0, 0, 0, 1000" stroke-linecap="round" stroke-linejoin="round"
+            transform="translate(-0.5, -0.5)" />
+        </svg>
+      </nav>
       <p>gitk 是个 git 自带的 gui 小工具。</p>
 
 <blockquote>
@@ -96,7 +95,7 @@
 <p>如何不用一些第三方工具（e.g. <a href="http://retinizer.mikelpr.com/">retinizer</a>），顺利开启 gitk 的 retina 模式呢？Let’s do it~</p>
 
 <h2>
-<a id="临时关闭系统保护" class="anchor" href="#%E4%B8%B4%E6%97%B6%E5%85%B3%E9%97%AD%E7%B3%BB%E7%BB%9F%E4%BF%9D%E6%8A%A4" aria-hidden="true"><span class="octicon octicon-link"></span></a>临时关闭系统保护</h2>
+<a class="anchor" href="#%E4%B8%B4%E6%97%B6%E5%85%B3%E9%97%AD%E7%B3%BB%E7%BB%9F%E4%BF%9D%E6%8A%A4" aria-hidden="true"><span class="octicon octicon-link"></span></a>临时关闭系统保护</h2>
 
 <p>Mac 自 OS X EI Capitan 版本之后，无法直接修改系统的 System 目录，需关闭系统保户才行。想要关闭，得先进入系统 Recover 模式：重启电脑，按住 <code>⌘ + R</code> 不放。</p>
 
@@ -109,7 +108,7 @@
 <p>重启进入正常模式。</p>
 
 <h2>
-<a id="修改-wishapp-的-infoplist" class="anchor" href="#%E4%BF%AE%E6%94%B9-wishapp-%E7%9A%84-infoplist" aria-hidden="true"><span class="octicon octicon-link"></span></a>修改 Wish.app 的 Info.plist</h2>
+<a class="anchor" href="#%E4%BF%AE%E6%94%B9-wishapp-%E7%9A%84-infoplist" aria-hidden="true"><span class="octicon octicon-link"></span></a>修改 Wish.app 的 Info.plist</h2>
 
 <p>利用终端定位到 Wish.app 的目录：</p>
 <div class="highlight"><pre><code class="language-" data-lang="">cd /System/Library/Frameworks/Tk.framework/Versions/Current/Resources
@@ -122,7 +121,7 @@
 <span class="nt">&lt;true/&gt;</span>
 </code></pre></div>
 <h2>
-<a id="更新-wishapp" class="anchor" href="#%E6%9B%B4%E6%96%B0-wishapp" aria-hidden="true"><span class="octicon octicon-link"></span></a>更新 Wish.app</h2>
+<a class="anchor" href="#%E6%9B%B4%E6%96%B0-wishapp" aria-hidden="true"><span class="octicon octicon-link"></span></a>更新 Wish.app</h2>
 
 <p>要使其生效，需更新 Wish.app，有两种方式：</p>
 
@@ -142,7 +141,7 @@ sudo mv WishCopy.app Wish.app
 </ol>
 
 <h2>
-<a id="再次开启系统保户" class="anchor" href="#%E5%86%8D%E6%AC%A1%E5%BC%80%E5%90%AF%E7%B3%BB%E7%BB%9F%E4%BF%9D%E6%88%B7" aria-hidden="true"><span class="octicon octicon-link"></span></a>再次开启系统保户</h2>
+<a class="anchor" href="#%E5%86%8D%E6%AC%A1%E5%BC%80%E5%90%AF%E7%B3%BB%E7%BB%9F%E4%BF%9D%E6%88%B7" aria-hidden="true"><span class="octicon octicon-link"></span></a>再次开启系统保户</h2>
 
 <p>完成以上步骤后，重启按 <code>⌘ + R</code> 再次进入 Recover 模式，一样调出终端，输入：</p>
 <div class="highlight"><pre><code class="language-" data-lang="">csrutil enable
@@ -150,7 +149,7 @@ sudo mv WishCopy.app Wish.app
 <p>然后重启回到正常模式，done.</p>
 
 <h2>
-<a id="效果展示" class="anchor" href="#%E6%95%88%E6%9E%9C%E5%B1%95%E7%A4%BA" aria-hidden="true"><span class="octicon octicon-link"></span></a>效果展示</h2>
+<a class="anchor" href="#%E6%95%88%E6%9E%9C%E5%B1%95%E7%A4%BA" aria-hidden="true"><span class="octicon octicon-link"></span></a>效果展示</h2>
 
 <p><a href="https://s10.mogucdn.com/mlcdn/c45406/171114_1g8ak522be15bdfdd7hh6dhi60f44_1050x829.png" title="Retina Wish App"><img src="https://s10.mogucdn.com/mlcdn/c45406/171114_1g8ak522be15bdfdd7hh6dhi60f44_1050x829.png" alt="" title="Retina Wish App"></a></p>
 
@@ -180,6 +179,7 @@ sudo mv WishCopy.app Wish.app
   
 </section>
 
+    <script src="/js/anchor.min.js"></script>
     <script src="/js/post.js"></script>
   </article>
 </main>

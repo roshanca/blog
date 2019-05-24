@@ -70,7 +70,7 @@
     </header>
     <section class="post-content">
       <nav class="post-toc">
-  <ul class="section-nav">
+        <ul class="section-nav">
 <li class="toc-entry toc-h2"><a href="#html-规范">HTML 规范</a>
 <ul>
 <li class="toc-entry toc-h3"><a href="#文档类型">文档类型</a></li>
@@ -92,21 +92,20 @@
 </li>
 <li class="toc-entry toc-h2"><a href="#系列文章">系列文章</a></li>
 </ul>
-  <svg class="toc-marker" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
-    <path stroke="#444" stroke-width="3" fill="transparent" stroke-dasharray="0, 0, 0, 1000" stroke-linecap="round" stroke-linejoin="round"
-      transform="translate(-0.5, -0.5)" />
-  </svg>
-</nav>
-
+        <svg class="toc-marker" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+          <path stroke="#444" stroke-width="3" fill="transparent" stroke-dasharray="0, 0, 0, 1000" stroke-linecap="round" stroke-linejoin="round"
+            transform="translate(-0.5, -0.5)" />
+        </svg>
+      </nav>
       <p>原文：<a href="https://github.com/gionkunz/chartist-js/blob/develop/CODINGSTYLE.md">Web Styleguide - Style guide to harmonize HTML, Javascript and CSS / SASS coding style</a></p>
 
 <h2>
-<a id="html-规范" class="anchor" href="#html-%E8%A7%84%E8%8C%83" aria-hidden="true"><span class="octicon octicon-link"></span></a>HTML 规范</h2>
+<a class="anchor" href="#html-%E8%A7%84%E8%8C%83" aria-hidden="true"><span class="octicon octicon-link"></span></a>HTML 规范</h2>
 
 <hr>
 
 <h3>
-<a id="文档类型" class="anchor" href="#%E6%96%87%E6%A1%A3%E7%B1%BB%E5%9E%8B" aria-hidden="true"><span class="octicon octicon-link"></span></a>文档类型</h3>
+<a class="anchor" href="#%E6%96%87%E6%A1%A3%E7%B1%BB%E5%9E%8B" aria-hidden="true"><span class="octicon octicon-link"></span></a>文档类型</h3>
 
 <p>推荐使用 HTML5 的文档类型申明： <code>&lt;!DOCTYPE html&gt;</code>.</p>
 
@@ -117,7 +116,7 @@
 <hr>
 
 <h3>
-<a id="html-验证" class="anchor" href="#html-%E9%AA%8C%E8%AF%81" aria-hidden="true"><span class="octicon octicon-link"></span></a>HTML 验证</h3>
+<a class="anchor" href="#html-%E9%AA%8C%E8%AF%81" aria-hidden="true"><span class="octicon octicon-link"></span></a>HTML 验证</h3>
 
 <p>一般情况下，建议使用能通过标准规范验证的 HTML 代码，除非在性能优化和控制文件大小上不得不做出让步。</p>
 
@@ -136,7 +135,7 @@
 <span class="nt">&lt;article&gt;</span>This is only a test.<span class="nt">&lt;/article&gt;</span>
 </code></pre></div>
 <h3>
-<a id="省略可选标签" class="anchor" href="#%E7%9C%81%E7%95%A5%E5%8F%AF%E9%80%89%E6%A0%87%E7%AD%BE" aria-hidden="true"><span class="octicon octicon-link"></span></a>省略可选标签</h3>
+<a class="anchor" href="#%E7%9C%81%E7%95%A5%E5%8F%AF%E9%80%89%E6%A0%87%E7%AD%BE" aria-hidden="true"><span class="octicon octicon-link"></span></a>省略可选标签</h3>
 
 <p>HTML5 规范中规定了 HTML 标签是可以省略的。但从可读性来说，在开发的源文件中最好不要这样做，因为省略标签可能会导致一些问题。</p>
 
@@ -145,7 +144,7 @@
 <hr>
 
 <h3>
-<a id="脚本加载" class="anchor" href="#%E8%84%9A%E6%9C%AC%E5%8A%A0%E8%BD%BD" aria-hidden="true"><span class="octicon octicon-link"></span></a>脚本加载</h3>
+<a class="anchor" href="#%E8%84%9A%E6%9C%AC%E5%8A%A0%E8%BD%BD" aria-hidden="true"><span class="octicon octicon-link"></span></a>脚本加载</h3>
 
 <p>出于性能考虑，脚本异步加载很关键。一段脚本放置在 <code>&lt;head&gt;</code> 内，比如 <code>&lt;script src="main.js"&gt;&lt;/script&gt;</code>，其加载会一直阻塞 DOM 解析，直至它完全地加载和执行完毕。这会造成页面显示的延迟。特别是一些重量级的脚本，对用户体验来说那真是一个巨大的影响。</p>
 
@@ -183,7 +182,7 @@
 <hr>
 
 <h3>
-<a id="语义化" class="anchor" href="#%E8%AF%AD%E4%B9%89%E5%8C%96" aria-hidden="true"><span class="octicon octicon-link"></span></a>语义化</h3>
+<a class="anchor" href="#%E8%AF%AD%E4%B9%89%E5%8C%96" aria-hidden="true"><span class="octicon octicon-link"></span></a>语义化</h3>
 
 <p>根据元素（有时被错误地称作“标签”）其被创造出来时的初始意义来使用它。打个比方，用 heading 元素来定义头部标题，p 元素来定义文字段落，用 a 元素来定义链接锚点，等等。</p>
 
@@ -291,7 +290,7 @@
 <hr>
 
 <h3>
-<a id="多媒体回溯" class="anchor" href="#%E5%A4%9A%E5%AA%92%E4%BD%93%E5%9B%9E%E6%BA%AF" aria-hidden="true"><span class="octicon octicon-link"></span></a>多媒体回溯</h3>
+<a class="anchor" href="#%E5%A4%9A%E5%AA%92%E4%BD%93%E5%9B%9E%E6%BA%AF" aria-hidden="true"><span class="octicon octicon-link"></span></a>多媒体回溯</h3>
 
 <p>对页面上的媒体而言，像图片、视频、canvas 动画等，要确保其有可替代的接入接口。图片文件我们可采用有意义的备选文本（alt），视频和音频文件我们可以为其加上说明文字或字幕。</p>
 
@@ -316,7 +315,7 @@
 <hr>
 
 <h3>
-<a id="关注点分离" class="anchor" href="#%E5%85%B3%E6%B3%A8%E7%82%B9%E5%88%86%E7%A6%BB" aria-hidden="true"><span class="octicon octicon-link"></span></a>关注点分离</h3>
+<a class="anchor" href="#%E5%85%B3%E6%B3%A8%E7%82%B9%E5%88%86%E7%A6%BB" aria-hidden="true"><span class="octicon octicon-link"></span></a>关注点分离</h3>
 
 <p>理解 web 中如何和为何区分不同的关注点，这很重要。这里的关注点主要指的是：信息（HTML 结构）、外观（CSS）和行为（JavaScript）。为了使它们成为可维护的干净整洁的代码，我们要尽可能的将它们分离开来。</p>
 
@@ -384,7 +383,7 @@
 <hr>
 
 <h3>
-<a id="html-内容至上" class="anchor" href="#html-%E5%86%85%E5%AE%B9%E8%87%B3%E4%B8%8A" aria-hidden="true"><span class="octicon octicon-link"></span></a>HTML 内容至上</h3>
+<a class="anchor" href="#html-%E5%86%85%E5%AE%B9%E8%87%B3%E4%B8%8A" aria-hidden="true"><span class="octicon octicon-link"></span></a>HTML 内容至上</h3>
 
 <p>不要让非内容信息污染了你的 HTML。现在貌似有一种倾向：通过 HTML 来解决设计问题，这是显然是不对的。HTML 就应该只关注内容。</p>
 
@@ -451,7 +450,7 @@
 <hr>
 
 <h3>
-<a id="type-属性" class="anchor" href="#type-%E5%B1%9E%E6%80%A7" aria-hidden="true"><span class="octicon octicon-link"></span></a>Type 属性</h3>
+<a class="anchor" href="#type-%E5%B1%9E%E6%80%A7" aria-hidden="true"><span class="octicon octicon-link"></span></a>Type 属性</h3>
 
 <p>省略样式表与脚本上的 type 属性。鉴于 HTML5 中以上两者默认的 type 值就是 text/css 和 text/javascript，所以 type 属性一般是可以忽略掉的。甚至在老旧版本的浏览器中这么做也是安全可靠的。</p>
 
@@ -466,7 +465,7 @@
 <hr>
 
 <h3>
-<a id="可用性" class="anchor" href="#%E5%8F%AF%E7%94%A8%E6%80%A7" aria-hidden="true"><span class="octicon octicon-link"></span></a>可用性</h3>
+<a class="anchor" href="#%E5%8F%AF%E7%94%A8%E6%80%A7" aria-hidden="true"><span class="octicon octicon-link"></span></a>可用性</h3>
 
 <p>如果 HTML5 语义化标签使用得当，许多可用性问题已经引刃而解。ARIA 规则在一些语义化的元素上可为其添上默认的可用性角色属性，使用得当的话已使网站的可用性大部分成立。假如你使用 <code>nav</code>, <code>aside</code>, <code>main</code>, <code>footer</code> 等元素，ARIA 规则会在其上应用一些关联的默认值。
 更多细节可参考 <a href="http://rawgit.com/w3c/aria-in-html/master/index.html#recommendations-table">ARIA specification</a></p>
@@ -476,7 +475,7 @@
 <hr>
 
 <h3>
-<a id="tab-index-在可用性上的运用" class="anchor" href="#tab-index-%E5%9C%A8%E5%8F%AF%E7%94%A8%E6%80%A7%E4%B8%8A%E7%9A%84%E8%BF%90%E7%94%A8" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tab Index 在可用性上的运用</h3>
+<a class="anchor" href="#tab-index-%E5%9C%A8%E5%8F%AF%E7%94%A8%E6%80%A7%E4%B8%8A%E7%9A%84%E8%BF%90%E7%94%A8" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tab Index 在可用性上的运用</h3>
 
 <p>检查文档中的 tab 切换顺序并传值给元素上的 tabindex，这可以依据元素的重要性来重新排列其 tab 切换顺序。你可以设置 <code>tabindex="-1"</code> 在任何元素上来禁用其 tab 切换。</p>
 
@@ -485,7 +484,7 @@
 <hr>
 
 <h3>
-<a id="微格式在-seo-和可用性上的运用" class="anchor" href="#%E5%BE%AE%E6%A0%BC%E5%BC%8F%E5%9C%A8-seo-%E5%92%8C%E5%8F%AF%E7%94%A8%E6%80%A7%E4%B8%8A%E7%9A%84%E8%BF%90%E7%94%A8" aria-hidden="true"><span class="octicon octicon-link"></span></a>微格式在 SEO 和可用性上的运用</h3>
+<a class="anchor" href="#%E5%BE%AE%E6%A0%BC%E5%BC%8F%E5%9C%A8-seo-%E5%92%8C%E5%8F%AF%E7%94%A8%E6%80%A7%E4%B8%8A%E7%9A%84%E8%BF%90%E7%94%A8" aria-hidden="true"><span class="octicon octicon-link"></span></a>微格式在 SEO 和可用性上的运用</h3>
 
 <p>如果 SEO 和可用性环境条件允许的话，建议考虑采用微格式。微格式是通过在元素标签上申明一系列特定数据来达成特定语义的方法。</p>
 
@@ -516,7 +515,7 @@
 <hr>
 
 <h3>
-<a id="id-和锚点" class="anchor" href="#id-%E5%92%8C%E9%94%9A%E7%82%B9" aria-hidden="true"><span class="octicon octicon-link"></span></a>ID 和锚点</h3>
+<a class="anchor" href="#id-%E5%92%8C%E9%94%9A%E7%82%B9" aria-hidden="true"><span class="octicon octicon-link"></span></a>ID 和锚点</h3>
 
 <p>通常一个比较好的做法是将页面内所有的头部标题元素都加上 ID. 这样做，页面 URL 的 hash 中带上对应的 ID 名称，即形成描点，方便跳转至对应元素所处位置。</p>
 
@@ -526,7 +525,7 @@
 <hr>
 
 <h3>
-<a id="格式化规则" class="anchor" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%A7%84%E5%88%99" aria-hidden="true"><span class="octicon octicon-link"></span></a>格式化规则</h3>
+<a class="anchor" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%A7%84%E5%88%99" aria-hidden="true"><span class="octicon octicon-link"></span></a>格式化规则</h3>
 
 <p>在每一个块状元素，列表元素和表格元素后，加上一新空白行，并对其子孙元素进行缩进。内联元素写在一行内，块状元素还有列表和表格要另起一行。</p>
 
@@ -561,7 +560,7 @@
 <hr>
 
 <h3>
-<a id="html-引号" class="anchor" href="#html-%E5%BC%95%E5%8F%B7" aria-hidden="true"><span class="octicon octicon-link"></span></a>HTML 引号</h3>
+<a class="anchor" href="#html-%E5%BC%95%E5%8F%B7" aria-hidden="true"><span class="octicon octicon-link"></span></a>HTML 引号</h3>
 
 <p>使用双引号(“”) 而不是单引号(“) 。</p>
 
@@ -574,7 +573,7 @@
 <hr>
 
 <h2>
-<a id="系列文章" class="anchor" href="#%E7%B3%BB%E5%88%97%E6%96%87%E7%AB%A0" aria-hidden="true"><span class="octicon octicon-link"></span></a>系列文章</h2>
+<a class="anchor" href="#%E7%B3%BB%E5%88%97%E6%96%87%E7%AB%A0" aria-hidden="true"><span class="octicon octicon-link"></span></a>系列文章</h2>
 
 <ul>
 <li><a href="//roshanca.com/2014/web-develop-styleguide-general">前端编码风格规范之一般规范</a></li>
@@ -616,6 +615,7 @@
   
 </section>
 
+    <script src="/js/anchor.min.js"></script>
     <script src="/js/post.js"></script>
   </article>
 </main>

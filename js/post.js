@@ -22,7 +22,11 @@ function drawPath() {
   // Cache element references and measurements
   tocItems = tocItems.map(function(item) {
     var anchor = item.querySelector('a')
-    var target = document.getElementById(anchor.getAttribute('href').slice(1))
+    var targetAnchors = document.getElementsByClassName('anchor')
+    targetAnchors = [].slice.call(targetAnchors)
+    var target = targetAnchors.filter(targetElement => {
+      return targetElement.hash.slice(1) === encodeURIComponent(anchor.getAttribute('href').slice(1))
+    })[0]
 
     anchor.addEventListener('click', (evt) => {
       evt.preventDefault()
@@ -136,3 +140,6 @@ function scrollBy(distance, duration, callback) {
 
   window.requestAnimationFrame(step)
 }
+
+var anchors = new AnchorJS()
+anchors.add()
