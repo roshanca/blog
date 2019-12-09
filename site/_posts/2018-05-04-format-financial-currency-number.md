@@ -2,7 +2,7 @@
 layout: post
 title: 对数字的金融货币格式化
 data: 2018-05-04
-tags: unsort
+tags: javascript format
 toc: true
 comments: true
 ---

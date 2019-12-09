@@ -2,9 +2,10 @@
 layout: post
 title: 前端工程化体系
 data: 2017-01-21
-tags: frontend node
+tags: frontend node engineering
 toc: true
 comments: true
+sticky: true
 ---
 
 何谓前端工程化？即根据业务特点，将前端开发流程规范化、标准化。它主要包含不同业务场景的技术选型、代码规范、构建发布方案等。主要目地是为了提升前端开发工程师的开发效率与代码质量，降低前后端联调的沟通成本，使得前后端工程师更加专注于自身擅长领域。

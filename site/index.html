@@ -5,15 +5,28 @@ index: true
 
 <main role="main">
   <section class="index-section">
-  <h2>latest updates</h2>
-  <ul class="article">
-  {% for post in site.posts limit: 5 %}
+    <h2>sticky posts</h2>
+    <ul class="article">
+    {% assign sticky_posts = site.posts | where_exp: "p", "p.sticky == true" %}
+    {% for post in sticky_posts limit: 5 %}
     <li>
       <time datetime="{{ post.date }}">{{ post.date | date: "<span class='year'>%Y</span>-<span class='month'>%m</span>-<span class='day'>%d</span>"}}</time>
-      <a class="full-article" href="{{ post.url }}">{{ post.title }}</a>
+      <a class="full-article" href="{{ post.url }}">{{ post.title }}</a> <i class="fa fa-thumb-tack"></i>
     </li>
-  {% endfor %}
-  </ul>
+    {% endfor %}
+    </ul>
+  </section>
+  <section class="index-section">
+    <h2>latest updates</h2>
+    <ul class="article">
+    {% assign filtered_posts = site.posts | where_exp: "p", "p.sticky != true" %}
+    {% for post in filtered_posts limit: 5 %}
+      <li>
+        <time datetime="{{ post.date }}">{{ post.date | date: "<span class='year'>%Y</span>-<span class='month'>%m</span>-<span class='day'>%d</span>"}}</time>
+        <a class="full-article" href="{{ post.url }}">{{ post.title }}</a>
+      </li>
+    {% endfor %}
+    </ul>
     <small class="more"
       ><a href="/archives">More <i class="fa fa-angle-double-right"></i></a
     ></small>

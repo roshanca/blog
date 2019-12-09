@@ -122,7 +122,9 @@ npm install -g pm2
 
 为了更好的版本管理与更轻松的解决版本倚赖，推荐使用 git。
 
-git 的传输协议有 https 和 ssh 两种，我们采用更加安全快速的后者。服务器只需 git 的只读权限，因此不必配置 git user，只需生成 ssh key 做为项目的 deploy key（gitlab 项目右上角的菜单中选择 "Deploy Keys"，在此添加服务器的公钥 "id_rsa.pub" 中的内容）。
+git 的传输协议有 https 和 ssh 两种，我们采用更加安全快速的后者。服务器只需 git 的只读权限，因此不必配置 git user，只需生成 **ssh key** 做为项目的 deploy key[^2]。
+
+[^2]: gitlab 项目右上角的菜单中选择 "Deploy Keys"，在此添加服务器的公钥 "id_rsa.pub" 中的内容
 
 (ps. 关于如何生成 ssh key，[可参见此](http://git.cairenhui.com/gitlab/how-to-use/wikis/Generating-SSH-keys)，这里要输入的邮箱改为服务器名即可)。
   
