@@ -484,7 +484,13 @@
 <span class="k">this</span><span class="p">.</span><span class="nx">blocks</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span>
 <span class="k">this</span><span class="p">.</span><span class="nx">blocks</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">blocks</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="nx">pos</span><span class="p">]</span>
 </code></pre></div>
-<p>也只有在动态的弱语言里能做到这一点。但简单方便之余带来的副作用是不太好理解，所以如果是一些团队协作的项目，我个人的建议是宁可放弃掉一些实现效率，为了今后的可维护性和扩展性，尽量写的清晰一些，不要爽了自己却坑了队友。TypeScript 在这一点上是符合我的理念的，此处如果真的使用了这项黑魔法它会报错：<code>An index expression argument must be of type 'string', 'number', 'symbol', or 'any'</code>，不会让你走捷径胡来了。</p>
+<p>也只有在动态的弱语言里能做到这一点。但简单方便之余带来的副作用是不太好理解，所以如果是一些团队协作的项目，我个人的建议是宁可放弃掉一些实现效率，为了今后的可维护性和扩展性，尽量写的清晰一些，不要爽了自己却坑了队友。TypeScript 在这一点上是符合我的理念的，此处如果真的使用了这项黑魔法它会报错：</p>
+
+<blockquote>
+<p>An index expression argument must be of type ‘string’, ‘number’, ‘symbol’, or ‘any’</p>
+</blockquote>
+
+<p>不会让你走捷径胡来了。</p>
 
 <p>随着项目的复杂程度递增，其优势也愈发明显。单单是静态类型检测就可以将多少潜在问题扼杀在编译阶段了。</p>
 
