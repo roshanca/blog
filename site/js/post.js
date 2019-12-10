@@ -33,7 +33,7 @@ function drawPath() {
       const { y } = target.getBoundingClientRect()
       const [ _, hashString ] = target.href.split('#')
 
-      scrollBy(y, 300, () => window.location.hash = hashString)
+      scrollBy(y - 2, 300, () => window.location.hash = hashString)
     })
 
     return {
@@ -125,6 +125,7 @@ function scrollBy(distance, duration, callback) {
   var baseY = (initialY + y) * 0.5
   var diff = initialY - baseY
   var startTime = performance.now()
+  console.log(diff)
 
   function step() {
     var normalizedTime = (performance.now() - startTime) / duration

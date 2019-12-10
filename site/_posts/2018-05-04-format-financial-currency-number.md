@@ -18,15 +18,15 @@ comments: true
 
 - 情况一：
 
-  > ![](https://s10.mogucdn.com/mlcdn/c45406/180504_5363k12cijga0aaggl5hk19690gl5_137x33.png)
+  ![](https://s10.mogucdn.com/mlcdn/c45406/180504_5363k12cijga0aaggl5hk19690gl5_137x33.png)
 
 - 情况二：
 
-  > ![](https://s10.mogucdn.com/mlcdn/c45406/180504_2lekfjgfbi1i210kl57l31klc7lei_405x265.png)
+  ![](https://s10.mogucdn.com/mlcdn/c45406/180504_2lekfjgfbi1i210kl57l31klc7lei_405x265.png)
 
 - 情况三：
 
-  > ![](https://s10.mogucdn.com/mlcdn/c45406/180504_28k0l1d4e9be6bdh75hah6ek2eafb_190x64.png)
+  ![](https://s10.mogucdn.com/mlcdn/c45406/180504_28k0l1d4e9be6bdh75hah6ek2eafb_190x64.png)
 
 看了网上的各种 js 解决方案简直吓尿，都是写了个比较复杂的 function 来解决。如若无需兼容一些远古浏览器，js 自带的 `Array.prototype.toLocaleString()` 就可以解决问题。
 

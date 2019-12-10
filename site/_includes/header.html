@@ -1,14 +1,17 @@
 <header id="header" role="banner">
-	<div class="header-inner">
 	{% if page.index == true %}
+	<div class="header-inner">
 		<h1 class="blog-title">{{ site.title }}</h1>
 		<h2 class="blog-desc">{{ site.subtitle }}</h2>
-	{% else %}
+  </div>
+  <a href="/feed.xml" class="subscribe">
+    <i class="fa fa-rss"></i>
+  </a>
+  {% else %}
+  <div class="header-inner"></div>
 		<a href="/" class="blog-title home">{{ site.title }}</a>
-		<div class="header-icon">{% include social-service.html %}</div>
+    <div class="header-icon">{% include social-service.html %}</div>
+  </div>
+  <a href="//lab.roshanca.com/resume/" class="author"></a>
 	{% endif %}
-	</div>
-	<a href="/feed.xml" class="subscribe">
-		<i class="fa fa-rss"></i>
-	</a>
 </header>

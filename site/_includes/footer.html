@@ -1,3 +1,7 @@
 <footer id="footer" role="contentinfo">
 	<p>© Copyright 2012 - <script>document.write(new Date().getFullYear())</script> by Roshan Wu.</p>
 </footer>
+{% if page.toc == true %}
+<script src="/js/anchor.min.js"></script>
+<script src="/js/post.js"></script>
+{% endif %}

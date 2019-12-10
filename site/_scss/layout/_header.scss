@@ -58,20 +58,34 @@
   .subscribe {
     position: absolute;
     left: 50%;
-    bottom: -15px;
+    bottom: -1.5rem;
     z-index: 9;
     display: block;
-    width: 28px;
-    height: 28px;
-    line-height: 28px;
+    width: 2.8rem;
+    height: 2.8rem;
+    line-height: 2.8rem;
     color: lighten($heading-color, 44%);
     border: 1px solid #e0e0e0;
     border-radius: 100%;
     background-color: #fff;
     transform: translateX(-50%);
     .fa {
-      font-size: 14px;
+      font-size: 1.4rem;
       vertical-align: 2px;
     }
+  }
+  .author {
+    position: absolute;
+    left: 50%;
+    bottom: -1.5rem;
+    z-index: 9;
+    width: 2.8rem;
+    height: 2.8rem;
+    transform: translateX(-50%);
+    border-radius: 100%;
+    background-color: #fff;
+    background-image: url(https://s10.mogucdn.com/mlcdn/c024f5/180222_2h5h9g9li42049l6b6fa7280gh09c_1024x1024.jpg_50x50.v1cS5.81.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 }
