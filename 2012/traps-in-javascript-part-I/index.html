@@ -34,12 +34,11 @@
 </head>
 
 <body>
-
 <header id="header" role="banner">
-	<div class="header-inner">
 	
+  <div class="header-inner"></div>
 		<a href="/" class="blog-title home">肉山·察</a>
-		<div class="header-icon">
+    <div class="header-icon">
 	<a href="//github.com/roshanca" class="social-link">
 		<i class="fa fa-github"></i>
 	</a>
@@ -56,11 +55,9 @@
 		<i class="fa fa-flickr"></i>
 	</a>
 </div>
+  </div>
+  <a href="//lab.roshanca.com/resume/" class="author"></a>
 	
-	</div>
-	<a href="/feed.xml" class="subscribe">
-		<i class="fa fa-rss"></i>
-	</a>
 </header>
 
 <main class="fluid" role="main">
@@ -85,6 +82,8 @@
       </nav>
       <p>“坑”这个字，在此的意思是“陷阱”。由于 JavaScript “弱语言”的性质，使得其在使用过程中异常的宽松灵活，但也极为容易“中招”。</p>
 
+<hr>
+
 <h2>
 <a class="anchor" href="#%E5%9D%91%E4%B8%80%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F" aria-hidden="true"><span class="octicon octicon-link"></span></a>坑一：全局变量</h2>
 
@@ -108,7 +107,9 @@
 </code></pre></div>
 <p>所以 <code>b</code> 是全局变量。</p>
 
-<p>填坑：变量声明，最好一个个来，别搞批发~_~;</p>
+<p>填坑：变量声明，最好一个个来，别搞批发 🙄</p>
+
+<hr>
 
 <h2>
 <a class="anchor" href="#%E5%9D%91%E4%BA%8C%E5%8F%98%E9%87%8F%E5%A3%B0%E6%98%8E" aria-hidden="true"><span class="octicon octicon-link"></span></a>坑二：变量声明</h2>
@@ -157,6 +158,8 @@
 </code></pre></div>
 <p>填坑：变量声明，最好手动置于作用域顶部，对于无法当下赋值的变量，可采取先声明后赋值的手法。</p>
 
+<hr>
+
 <h2>
 <a class="anchor" href="#%E5%9D%91%E4%B8%89%E5%87%BD%E6%95%B0%E5%A3%B0%E6%98%8E" aria-hidden="true"><span class="octicon octicon-link"></span></a>坑三：函数声明</h2>
 
@@ -193,6 +196,8 @@
 
 <p>填坑：多数情况下，用函数表达式来代替函数声明是一个好习惯，特别是在一些语句块中。</p>
 
+<hr>
+
 <h2>
 <a class="anchor" href="#%E5%9D%91%E5%9B%9B%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F" aria-hidden="true"><span class="octicon octicon-link"></span></a>坑四：函数表达式</h2>
 
@@ -209,6 +214,8 @@
 <span class="nx">foo</span><span class="p">();</span> <span class="c1">// 出错：ReferenceError</span>
 </code></pre></div>
 <p>填坑：尽量少用命名函数表达式（除了一些递归以及 debug 的用途），切勿将函数名使用于外部。</p>
+
+<hr>
 
 <h2>
 <a class="anchor" href="#%E5%9D%91%E4%BA%94%E5%87%BD%E6%95%B0%E7%9A%84%E8%87%AA%E6%89%A7%E8%A1%8C" aria-hidden="true"><span class="octicon octicon-link"></span></a>坑五：函数的自执行</h2>
@@ -248,6 +255,8 @@
 <span class="p">}(</span><span class="mi">1</span><span class="p">);</span><span class="err">​</span>
 </code></pre></div>
 <p>填坑：要解决这个坑的关键在于，弄清楚形形色色的函数表达式之实质。</p>
+
+<hr>
 
 <h2>
 <a class="anchor" href="#%E5%9D%91%E5%85%AD%E5%BE%AA%E7%8E%AF%E4%B8%AD%E7%9A%84%E9%97%AD%E5%8C%85" aria-hidden="true"><span class="octicon octicon-link"></span></a>坑六：循环中的闭包</h2>
@@ -294,6 +303,8 @@
 </code></pre></div>
 <p>It works too.</p>
 
+<hr>
+
     </section>
     <footer class="post-footer">
       <div class="post-meta">
@@ -318,8 +329,6 @@
   
 </section>
 
-    <script src="/js/anchor.min.js"></script>
-    <script src="/js/post.js"></script>
   </article>
 </main>
 
@@ -358,13 +367,17 @@ window.onscroll = function () {
 
 
 
+<div class="fork-github">
+    <a href="https://github.com/roshanca/blog">View on GitHub</a>
+</div>
+
 <footer id="footer" role="contentinfo">
 	<p>© Copyright 2012 - <script>document.write(new Date().getFullYear())</script> by Roshan Wu.</p>
 </footer>
 
-<div class="fork-github">
-    <a href="https://github.com/roshanca/blog">View on GitHub</a>
-</div>
+<script src="/js/anchor.min.js"></script>
+<script src="/js/post.js"></script>
+
 
 </body>
 </html>
