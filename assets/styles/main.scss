@@ -1,14 +1,13 @@
 ---
-# Import from _scss.
+# Import from _sass.
 ---
 
 @charset "UTF-8";
 
-@import "typo";
+@import "global";
 @import "setting";
 @import "helper";
 @import "layout";
 @import "font";
-@import "tip";
 @import "highlight";
 @import "compatible";

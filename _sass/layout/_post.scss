@@ -1,3 +1,11 @@
+%title {
+  display: block;
+  font-weight: 700;
+  font-family: $sans;
+  font-size: 2rem;
+  color: #666;
+}
+
 .post {
   padding-top: 1.5rem;
   @extend %container;
@@ -39,17 +47,18 @@
       display: block;
       @include responsive(960px) {
         display: inline;
-        padding-left: .3rem;
+        padding-left: 0.3rem;
       }
       &:before {
-        content: "#";
+        content: '#';
         font-style: italic;
         color: #999;
       }
     }
   }
   p,
-  ul, ol,
+  ul,
+  ol,
   blockquote,
   pre,
   table {
@@ -60,7 +69,9 @@
     max-width: 100%;
     margin: 0 auto;
   }
-  h1, h2, h3 {
+  h1,
+  h2,
+  h3 {
     margin-bottom: 1.2rem;
     font-family: $title;
     font-weight: 700;
@@ -73,7 +84,8 @@
   h3 {
     font-size: 2.4rem;
   }
-  ol, ul {
+  ol,
+  ul {
     padding-left: 4rem;
     ul {
       list-style: circle outside;
@@ -96,7 +108,7 @@
     border: 0 none;
     overflow: visible;
     &::before {
-      content: "• • •";
+      content: '• • •';
       width: 100%;
       display: block;
       text-align: center;
@@ -115,28 +127,28 @@
       position: absolute;
       left: 0;
       top: 0;
-      content: "\f10d";
+      content: '\f10d';
       font-family: FontAwesome;
       color: lighten($quote-color, 30%);
     }
     p {
-      margin-bottom: .5rem;
+      margin-bottom: 0.5rem;
     }
   }
   code {
-    padding: 0 .5rem;
+    padding: 0 0.5rem;
     font-family: $mono;
     background-color: $code-bg-color;
   }
   pre {
-    // padding: .8rem 1.6rem;
+    padding: .8rem 1.6rem;
     // font-size: 90%;
     line-height: 1.5;
     // border-left: 4px solid #dadada;
     background-color: $pre-bg-color;
     // white-space: pre-wrap;
     // background-image: url(https://sf-static.b0.upaiyun.com/v-583bf474/global/img/blueprint.png);
-    background-repeat: repeat;
+    // background-repeat: repeat;
     overflow-x: auto;
     code {
       padding: 0;
@@ -190,8 +202,8 @@
     th {
       text-align: left;
       &:before {
-        margin-right: .5rem;
-        content: "\f11c";
+        margin-right: 0.5rem;
+        content: '\f11c';
         font-family: FontAwesome;
         color: lighten($text-color, 22%);
       }
@@ -207,12 +219,18 @@
   .anchorjs-link {
     border-bottom: 0 none;
     &:hover {
-      @include opacity(.8);
+      @include opacity(0.8);
     }
   }
   figure {
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     text-align: center;
+
+    figcaption {
+      margin-top: 1.25rem;
+      font-size: 1.4rem;
+      font-style: italic;
+    }
   }
 }
 
@@ -221,14 +239,6 @@
   .container {
     @extend %container;
   }
-}
-
-%title {
-  display: block;
-  font-weight: 700;
-  font-family: $sans;
-  font-size: 2rem;
-  color: #666;
 }
 
 .post-recent {
@@ -265,13 +275,13 @@
     }
     &.previous {
       &::before {
-        content: "Previous Post";
+        content: 'Previous Post';
         @extend %title;
       }
     }
     &.next {
       &::before {
-        content: "Next Post";
+        content: 'Next Post';
         @extend %title;
       }
     }

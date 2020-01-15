@@ -1,0 +1,6 @@
+---
+# robots
+---
+
+User-agent: *
+Disallow: /assets/

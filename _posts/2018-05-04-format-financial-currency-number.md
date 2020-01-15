@@ -16,15 +16,9 @@ comments: true
 
 来点图示：
 
-- 情况一：
-
   ![](https://s10.mogucdn.com/mlcdn/c45406/180504_5363k12cijga0aaggl5hk19690gl5_137x33.png)
 
-- 情况二：
-
   ![](https://s10.mogucdn.com/mlcdn/c45406/180504_2lekfjgfbi1i210kl57l31klc7lei_405x265.png)
-
-- 情况三：
 
   ![](https://s10.mogucdn.com/mlcdn/c45406/180504_28k0l1d4e9be6bdh75hah6ek2eafb_190x64.png)
 
@@ -32,7 +26,7 @@ comments: true
 
 ## toFixed
 
-我们看看情况一：
+我们看看场景一：
 
 比如后端返回金额为分，我们赋给一个变量 `amount`，那保留两位小数，大部分人的解决方案是 `(amount / 100).toFixed(2)`。
 
@@ -40,22 +34,24 @@ comments: true
 
 > 所谓银行家舍入法，其实质是一种四舍六入五取偶（又称四舍六入五留双）法。简单来说就是：四舍六入五考虑，五后非零就进一，五后为零看奇偶，五前为偶应舍去，五前为奇要进一。
 
-大部分情况下，用用是够了，特别是数据约定的最小单位就是“分”的情况下。如需更加精确，就要考虑到 js 浮点数计算精度缺失的问题。具体的可以参考：[toFixed 计算错误(依赖银行家舍入法的缺陷)解决方法](http://www.chengfeilong.com/toFixed)
+大部分情况下，用用是够了，特别是数据约定的最小单位就是“分”的情况下。如需更加精确，就要考虑到 js 浮点数计算精度缺失的问题。具体的可以参考：
+
+> [toFixed 计算错误(依赖银行家舍入法的缺陷)解决方法](http://www.chengfeilong.com/toFixed)
 
 ## toLocaleString
 
-情况二是既要保留两位小数，又要加千位分隔符，`toFixed` 就不堪用了。那就轮到上面提到的 `toLocaleString` 登场了，详细的用法见：[MDN web docs](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString)。
+更复杂一点的场景是既要保留两位小数，又要加千位分隔符，`toFixed` 就不堪用了。那就轮到上面提到的 `toLocaleString` 登场了，详细的用法见：[MDN web docs](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString)。
 
 {% gist roshanca/97c180d8b5fb5867bb5c8f5bf4808d3c currency.js %}
-
-情况三看来也一并解决了。
 
 ## 兼容性
 
 `toFixed` 基本上没什么兼容性的问题，`toLocaleString` 的兼容情况如下：
 
-- IE >= 11
-- Android >= 4.4
-- iOS >= 10
+{% include image.html
+  src="https://s10.mogucdn.com/mlcdn/c45406/200115_0allh45hchf7gb13d4g78h69i1ib8_2082x1162.png"
+  alt=""
+  caption="toLocaleString 的兼容性"
+%}
 
 可以看到，移动端主流设备已基本覆盖。

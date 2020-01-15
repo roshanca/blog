@@ -9,10 +9,10 @@
 # Examples:
 #
 # Input: {% jsfiddle ccWP7 %}
-# Output: <iframe style="width: 100%; height: 300px" src="http://jsfiddle.net/ccWP7/embedded/js,resources,html,css,result/light/"></iframe>
+# Output: <iframe style="width: 100%; height: 300px" src="https://jsfiddle.net/ccWP7/embedded/js,resources,html,css,result/light/"></iframe>
 #
 # Input: {% jsfiddle ccWP7 js,html,result %}
-# Output: <iframe style="width: 100%; height: 300px" src="http://jsfiddle.net/ccWP7/embedded/js,html,result/light/"></iframe>
+# Output: <iframe style="width: 100%; height: 300px" src="https://jsfiddle.net/ccWP7/embedded/js,html,result/light/"></iframe>
 #
 
 module Jekyll
@@ -29,7 +29,7 @@ module Jekyll
 
     def render(context)
       if @fiddle
-        "<iframe style=\"width: #{@width}; height: #{@height}\" frameborder=\"0\" seamless=\"seamless\" src=\"http://jsfiddle.net/#{@fiddle}/embedded/#{@sequence}/#{@skin}/\"></iframe>"
+        "<iframe style=\"width: #{@width}; height: #{@height}\" frameborder=\"0\" seamless=\"seamless\" src=\"//jsfiddle.net/#{@fiddle}/embedded/#{@sequence}/#{@skin}/\"></iframe>"
       else
         "Error processing input, expected syntax: {% jsfiddle shorttag [tabs] [skin] [height] [width] %}"
       end
