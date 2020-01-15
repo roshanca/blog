@@ -5,11 +5,11 @@
 	<link href="https://gmpg.org/xfn/11" rel="profile">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<title>2014 年工作总结 - 肉山·察</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
   
 	<link rel="canonical" href="https://roshanca.com/2014/2014-work-summary/">
-	<link rel="alternate" type="application/rss+xml" title="Subscribe Feed" href="/feed.xml">
-	<link href="/css/app.css" rel="stylesheet" media="all">
+	<link rel="alternate" type="application/atom+xml" title="Subscribe Feed" href="/feed.xml">
+	<link href="/assets/styles/main.css" rel="stylesheet" media="all">
 	<link href="//cdn.bootcss.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 	<!-- <link href="//fonts.lug.ustc.edu.cn/css?family=Lustria|Inconsolata" rel="stylesheet"> -->
   <!-- <link href='//fonts.useso.com/css?family=PT+Serif:400,700' rel='stylesheet' type='text/css'> -->
@@ -50,10 +50,6 @@
 	<a href="//weibo.com/jinfeixibi" class="social-link">
 		<i class="fa fa-weibo"></i>
 	</a>
-
-	<a href="//www.flickr.com/photos/roshanca/" class="social-link">
-		<i class="fa fa-flickr"></i>
-	</a>
 </div>
   </div>
   <a href="//lab.roshanca.com/resume/" class="author"></a>
@@ -68,10 +64,6 @@
     <section class="post-content">
       <nav class="post-toc">
         <ul class="section-nav">
-<li class="toc-entry toc-h2"><a href="#成长">成长</a></li>
-<li class="toc-entry toc-h2"><a href="#困难">困难</a></li>
-<li class="toc-entry toc-h2"><a href="#期望">期望</a></li>
-<li class="toc-entry toc-h2"><a href="#团队">团队</a></li>
 </ul>
         <svg class="toc-marker" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
           <path stroke="#444" stroke-width="3" fill="transparent" stroke-dasharray="0, 0, 0, 1000" stroke-linecap="round" stroke-linejoin="round"
@@ -80,8 +72,7 @@
       </nav>
       <p>2014 马上就要画上句点，回首这一年，感慨良多。最大的感受是工作上的充实：今年公司自创业以来业务量最多的一年，真是锻炼人的一年呐。</p>
 
-<h2>
-<a class="anchor" href="#%E6%88%90%E9%95%BF" aria-hidden="true"><span class="octicon octicon-link"></span></a>成长</h2>
+<p>##成长</p>
 
 <p>自去年网上开户的项目开始没多久，自己便开始尝试编写自动化构建脚本，自动部署至公司服务器提供预览，自动上传提交，效率有了质的飞跃。今年在其他项目上，采用了更加流行的且学习成本更低的 <a href="http://gruntjs.com">grunt</a> 和 <a href="http://gulpjs.com">gulp</a> 来做 workflow，现已成为了我们团队的标配。</p>
 
@@ -89,15 +80,14 @@
 
 <p>在这趟移动端开发之旅中，我也尝试了新的开发模式，按照 MVC 的思想将前后端的代码尽可能进行了分离，将后端业务操作的 JS 代码锁定了在 Controller 这一层，而对应的 View 层，主要是一些 DOM 操作，交给更加专业的前端来做。页面模板的渲染不同于传统做法放在了客户端来做，一开始采用的是流行的 <a href="http://mustache.github.io/">Mustache</a> 和 <a href="http://handlebarsjs.com/">Handlebars</a>，后来用 F7 自带的 <a href="http://www.idangero.us/framework7/docs/template7.html">Template7</a>。只需前后端将数据结构名称等约定好，前端开发用本地模拟数据，交付给后端后再换用真实数据，这样就完全地干掉了 JSP 等这些服务端的模板。目的很简单：<strong>让专业的人做专业的事</strong>。</p>
 
-<h2>
-<a class="anchor" href="#%E5%9B%B0%E9%9A%BE" aria-hidden="true"><span class="octicon octicon-link"></span></a>困难</h2>
+<p>##困难</p>
 
 <p>这个项目做下来，很大的感受是让我们公司的 Java 开发们接受新事物比较困难。他们的理由有这么几点：</p>
 
 <ol>
-<li> 能用就行，这个没必要吧；</li>
-<li> 这个不稳定吧，别把原来的给搞坏咯；</li>
-<li> 这个不是太懂，感觉还是原来的好用（不想学习）。</li>
+  <li>能用就行，这个没必要吧；</li>
+  <li>这个不稳定吧，别把原来的给搞坏咯；</li>
+  <li>这个不是太懂，感觉还是原来的好用（不想学习）。</li>
 </ol>
 
 <p><strong>后端相较前端而言，特别是金融行业，更加追求“稳定”二字，思维也更加封闭。</strong></p>
@@ -111,25 +101,24 @@
 <p>一、<strong>前端们安装后端环境，跑后端服务来写前端页面</strong>。我是比较反感这样的做法的：</p>
 
 <ol>
-<li> 后端环境往往很重，配置依赖颇多，没有后端开发经验的话，难以驾驭；</li>
-<li> 对前端开发调试不友好，由于基于后端提供的数据，不如自己模拟数据来的灵活；</li>
-<li> 后端跑的 http 服务一般是 tomcat，这跟前端们自己的服务还是有差距的，缺少了比如 less 编译、浏览器 live reload 等功能，非常的不方便。</li>
+  <li>后端环境往往很重，配置依赖颇多，没有后端开发经验的话，难以驾驭；</li>
+  <li>对前端开发调试不友好，由于基于后端提供的数据，不如自己模拟数据来的灵活；</li>
+  <li>后端跑的 http 服务一般是 tomcat，这跟前端们自己的服务还是有差距的，缺少了比如 less 编译、浏览器 live reload 等功能，非常的不方便。</li>
 </ol>
 
 <p>二、而如果不这样做，<strong>前端后端拥有各自的开发环境</strong>，缺点也很明显：</p>
 
 <ol>
-<li> 这样一来，前端的产出物往往要通过后端二次包装（嵌套为 JSP，静态资源引用加版本号避免缓存等），一些前端资源的合并压缩，被放到了后端来做，做的不好不说，有时候甚至压根就没做；</li>
-<li> 效率也很低，可以想象，每次前端的改动，无法直接应用到最终产品端，都要由后端通过前端的提交版本比对来进行修改。有时如果 SVN 出了点问题，历史版本被清空了， 就会变得比较棘手了。</li>
-<li> 随着时间推移，后端加入了许多自己的代码，将许多的页面和 JS 都改的面目全非，与前端的版本越来越分离，会搞成后端不想动前端不想改的烂摊子。</li>
+  <li>这样一来，前端的产出物往往要通过后端二次包装（嵌套为 JSP，静态资源引用加版本号避免缓存等），一些前端资源的合并压缩，被放到了后端来做，做的不好不说，有时候甚至压根就没做；</li>
+  <li>效率也很低，可以想象，每次前端的改动，无法直接应用到最终产品端，都要由后端通过前端的提交版本比对来进行修改。有时如果 SVN 出了点问题，历史版本被清空了， 就会变得比较棘手了。</li>
+  <li>随着时间推移，后端加入了许多自己的代码，将许多的页面和 JS 都改的面目全非，与前端的版本越来越分离，会搞成后端不想动前端不想改的烂摊子。</li>
 </ol>
 
 <p>写代码的人很多，写文档的人太少。优先面向机器还是面向人，这是一个问题。</p>
 
 <p>太过追求开发速度，不注重代码质量导致后期的 debug 成本过高。</p>
 
-<h2>
-<a class="anchor" href="#%E6%9C%9F%E6%9C%9B" aria-hidden="true"><span class="octicon octicon-link"></span></a>期望</h2>
+<p>##期望</p>
 
 <p>对于刚起步的创业公司而言（如果三年也算刚起步），我觉得以上几点困难有些不是那么的要紧，毕竟“快上线”和“占领市场，占得先机”才是关键。但是要想做强做大，我相信迟早都是要直面这些问题的。</p>
 
@@ -147,10 +136,9 @@
 
 <p>加钱招人是一条路，但斯以为，人海战术固然可行，可<strong>在开发效率上提升一些岂不是更好</strong>？打一个比方：测试MM抱怨出包繁琐，容易出错。是否有人愿意跳出来，写一个自动化的打包服务造福于团队？</p>
 
-<h2>
-<a class="anchor" href="#%E5%9B%A2%E9%98%9F" aria-hidden="true"><span class="octicon octicon-link"></span></a>团队</h2>
+<p>##团队</p>
 
-<p>今年新招的应届生MM，我还是比较满意的。思路清晰，一点就通，平日里也较积极主动，就是有时候比较马虎。比如有一次跑来问我：为什么 <code>rake generate</code> 的命令报错。我一看原来是 generate 的单词她拼错了。</p>
+<p>今年新招的应届生MM，我还是比较满意的。思路清晰，一点就通，平日里也较积极主动，就是有时候比较马虎。比如有一次跑来问我：为什么 <code class="highlighter-rouge">rake generate</code> 的命令报错。我一看原来是 generate 的单词她拼错了。</p>
 
 <p>另一位前端GG，稍令人担忧一些。老请假是一方面，解决问题的思路也是不尽如人意，依赖性太强了。好在底子还可以，这一年通过网厅的项目，也得到了不少的锻炼。</p>
 
@@ -226,8 +214,8 @@ window.onscroll = function () {
 	<p>© Copyright 2012 - <script>document.write(new Date().getFullYear())</script> by Roshan Wu.</p>
 </footer>
 
-<script src="/js/anchor.min.js"></script>
-<script src="/js/post.js"></script>
+<script src="/assets/scripts/anchor.min.js"></script>
+<script src="/assets/scripts/post.js"></script>
 
 
 </body>

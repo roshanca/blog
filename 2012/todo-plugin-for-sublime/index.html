@@ -5,11 +5,11 @@
 	<link href="https://gmpg.org/xfn/11" rel="profile">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<title>TODO 插件 for Sublime Text 2 - 肉山·察</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
   
 	<link rel="canonical" href="https://roshanca.com/2012/todo-plugin-for-sublime/">
-	<link rel="alternate" type="application/rss+xml" title="Subscribe Feed" href="/feed.xml">
-	<link href="/css/app.css" rel="stylesheet" media="all">
+	<link rel="alternate" type="application/atom+xml" title="Subscribe Feed" href="/feed.xml">
+	<link href="/assets/styles/main.css" rel="stylesheet" media="all">
 	<link href="//cdn.bootcss.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 	<!-- <link href="//fonts.lug.ustc.edu.cn/css?family=Lustria|Inconsolata" rel="stylesheet"> -->
   <!-- <link href='//fonts.useso.com/css?family=PT+Serif:400,700' rel='stylesheet' type='text/css'> -->
@@ -50,10 +50,6 @@
 	<a href="//weibo.com/jinfeixibi" class="social-link">
 		<i class="fa fa-weibo"></i>
 	</a>
-
-	<a href="//www.flickr.com/photos/roshanca/" class="social-link">
-		<i class="fa fa-flickr"></i>
-	</a>
 </div>
   </div>
   <a href="//lab.roshanca.com/resume/" class="author"></a>
@@ -79,19 +75,22 @@
 
 <p>安装与使用文中已经的很详细了，很感谢 Lucifr 翻译了 <a href="https://github.com/aziz/PlainTasks">PlainTasks</a> 自带的英文教程：</p>
 
-<p><script src="https://gist.github.com/4232437.js?file="></script></p><div><noscript><pre><code></code></pre></noscript></div>
+<script src="https://gist.github.com/4232437.js?file="></script>
+<div><noscript><pre><code></code></pre></noscript></div>
 
-<h3>
+<h3 id="自动关联图标">
 <a class="anchor" href="#%E8%87%AA%E5%8A%A8%E5%85%B3%E8%81%94%E5%9B%BE%E6%A0%87" aria-hidden="true"><span class="octicon octicon-link"></span></a>自动关联图标</h3>
 
 <p>关于如何将 TODO 文档自动关联作者提供的那漂亮的图标，我去搜索了一番，具体做法如下：</p>
 
 <ol>
-<li> 右键点击 ST2 选择“显示包内容”，进入 <code>Contents =&gt; Resources</code>；</li>
-<li> 将图标文件 <code>TODO.icns</code> 复制到此目录下；</li>
-<li>
-<p>返回 <code>Contents</code> 目录，编辑 <code>info.plist</code>，在键值 <code>CFBundleDocumentTypes</code> 内的首个 <code>&lt;array&gt;</code> 后加入以下代码：</p>
-<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dict&gt;</span>
+  <li>右键点击 ST2 选择“显示包内容”，进入 <code class="highlighter-rouge">Contents =&gt; Resources</code>；</li>
+  <li>将图标文件 <code class="highlighter-rouge">TODO.icns</code> 复制到此目录下；</li>
+  <li>
+    <p>返回 <code class="highlighter-rouge">Contents</code> 目录，编辑 <code class="highlighter-rouge">info.plist</code>，在键值 <code class="highlighter-rouge">CFBundleDocumentTypes</code> 内的首个 <code class="highlighter-rouge">&lt;array&gt;</code> 后加入以下代码：</p>
+
+    <div class="language-xml highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nt">&lt;dict&gt;</span>
   <span class="nt">&lt;key&gt;</span>CFBundleTypeExtensions<span class="nt">&lt;/key&gt;</span>
   <span class="nt">&lt;array&gt;</span>
     <span class="nt">&lt;string&gt;</span>todo<span class="nt">&lt;/string&gt;</span>
@@ -106,15 +105,17 @@
   <span class="nt">&lt;key&gt;</span>CFBundleTypeIconFile<span class="nt">&lt;/key&gt;</span>
   <span class="nt">&lt;string&gt;</span>TODO<span class="nt">&lt;/string&gt;</span>
 <span class="nt">&lt;/dict&gt;</span>
-</code></pre></div>
-</li>
-<li><p>保存，关闭退出 ST2；</p></li>
-<li>
-<p>重建 Launchservice：在终端中输入：</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister <span class="nt">-r</span> <span class="nt">-f</span> /Applications/Sublime<span class="se">\ </span>Text<span class="se">\ </span>2.app/
-</code></pre></div>
-</li>
-<li><p>注销电脑或者在终端中输入 <code>killall Finder</code>。</p></li>
+</code></pre></div>    </div>
+  </li>
+  <li>保存，关闭退出 ST2；</li>
+  <li>
+    <p>重建 Launchservice：在终端中输入：</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister <span class="nt">-r</span> <span class="nt">-f</span> /Applications/Sublime<span class="se">\ </span>Text<span class="se">\ </span>2.app/
+</code></pre></div>    </div>
+  </li>
+  <li>注销电脑或者在终端中输入 <code class="highlighter-rouge">killall Finder</code>。</li>
 </ol>
 
 <p>ok，新建一个 TODO 文档，保存至电脑看看效果吧 ☺</p>
@@ -191,8 +192,8 @@ window.onscroll = function () {
 	<p>© Copyright 2012 - <script>document.write(new Date().getFullYear())</script> by Roshan Wu.</p>
 </footer>
 
-<script src="/js/anchor.min.js"></script>
-<script src="/js/post.js"></script>
+<script src="/assets/scripts/anchor.min.js"></script>
+<script src="/assets/scripts/post.js"></script>
 
 
 </body>

@@ -5,11 +5,11 @@
 	<link href="https://gmpg.org/xfn/11" rel="profile">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<title>DIY 网件 R6300v2 路由器 - 肉山·察</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
   
 	<link rel="canonical" href="https://roshanca.com/2014/diy-netgear-r6300v2/">
-	<link rel="alternate" type="application/rss+xml" title="Subscribe Feed" href="/feed.xml">
-	<link href="/css/app.css" rel="stylesheet" media="all">
+	<link rel="alternate" type="application/atom+xml" title="Subscribe Feed" href="/feed.xml">
+	<link href="/assets/styles/main.css" rel="stylesheet" media="all">
 	<link href="//cdn.bootcss.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 	<!-- <link href="//fonts.lug.ustc.edu.cn/css?family=Lustria|Inconsolata" rel="stylesheet"> -->
   <!-- <link href='//fonts.useso.com/css?family=PT+Serif:400,700' rel='stylesheet' type='text/css'> -->
@@ -50,10 +50,6 @@
 	<a href="//weibo.com/jinfeixibi" class="social-link">
 		<i class="fa fa-weibo"></i>
 	</a>
-
-	<a href="//www.flickr.com/photos/roshanca/" class="social-link">
-		<i class="fa fa-flickr"></i>
-	</a>
 </div>
   </div>
   <a href="//lab.roshanca.com/resume/" class="author"></a>
@@ -91,43 +87,49 @@
 <p>网件 R6300v2 以其风骚的外形（电磁炉造型）、强大的硬件（ARM双核处理器800MHZ，256M内存 etc.）和领先的 AC 千兆无线路由协议，深深地吸引了我。入手把玩了一段时间后，发现它能给的和我想要的，距离还是相差那么一点点。</p>
 
 <ul>
-<li>  <strong>NAS</strong>：木有问题啦，USB 3.0/2.0 接口各一个，扩展无鸭梨。瓶颈主要在传输速率上：除了一台新买的 iPad 外，其余电子设备都太过老久，不支持 AC 千兆协议；</li>
-<li>  <strong>离线下载</strong>：只支持 BT 下载… what？在迅雷一桶浆糊的天朝，这简直弱爆了；</li>
-<li>  <strong>无线媒体内容服务</strong>：虽说支持了 DLNA 协议，可实际用下来，稳定性和实用性都欠佳。还有一点，<strong>不支持 MKV 内嵌字幕</strong>是硬伤啊，让哥肿么看欧美大片？？？</li>
+  <li>
+<strong>NAS</strong>：木有问题啦，USB 3.0/2.0 接口各一个，扩展无鸭梨。瓶颈主要在传输速率上：除了一台新买的 iPad 外，其余电子设备都太过老久，不支持 AC 千兆协议；</li>
+  <li>
+<strong>离线下载</strong>：只支持 BT 下载… what？在迅雷一桶浆糊的天朝，这简直弱爆了；</li>
+  <li>
+<strong>无线媒体内容服务</strong>：虽说支持了 DLNA 协议，可实际用下来，稳定性和实用性都欠佳。还有一点，<strong>不支持 MKV 内嵌字幕</strong>是硬伤啊，让哥肿么看欧美大片？？？</li>
 </ul>
 
 <p>还是那句老话：自己动手，丰衣足食。以此三点为目标，开始折腾。</p>
 
-<h2>
+<h2 id="刷-dd-wrt-固件">
 <a class="anchor" href="#%E5%88%B7-dd-wrt-%E5%9B%BA%E4%BB%B6" aria-hidden="true"><span class="octicon octicon-link"></span></a>刷 DD-WRT 固件</h2>
-
 <p>原厂固件有什么不好？之前听说 R6300v2 自带固件网络不稳定，我好像没怎么碰到过。但 DD-WRT 的稳定性应该在它之上不用说，而且还支持 5G 网络的无线频道自动选择，这个是官方所不支持的。最为重要的一点是，它是上迅雷固件的先决条件。</p>
 
-<p>刷机的整个过程，依照 <a href="http://luyou.xunlei.com/thread-426-1-1.html">http://luyou.xunlei.com/thread-426-1-1.html</a> 的教程，step by step 就行了，非常 easy~</p>
+<p>刷机的整个过程，依照 http://luyou.xunlei.com/thread-426-1-1.html 的教程，step by step 就行了，非常 easy~</p>
 
-<p>附上固件下载地址（持续更新）：<a href="http://www.desipro.de/ddwrt/K3-AC-Arm/">http://www.desipro.de/ddwrt/K3-AC-Arm/</a></p>
+<p>附上固件下载地址（持续更新）：http://www.desipro.de/ddwrt/K3-AC-Arm/</p>
 
-<h2>
+<h2 id="刷迅雷固件">
 <a class="anchor" href="#%E5%88%B7%E8%BF%85%E9%9B%B7%E5%9B%BA%E4%BB%B6" aria-hidden="true"><span class="octicon octicon-link"></span></a>刷迅雷固件</h2>
-
 <p>毫无疑问，这是为了实现离线下载。这里的指的离线下载，又比迅雷下载软件自带的离线功能，更高一级：后者是将资源离线下到迅雷的云端，而前者则直接下到路由挂载的硬盘上，接着通过无线内网直接读取，更加便利了。</p>
 
-<p>同样，刷机的教程，网上也有，比如 <a href="http://luyou.xunlei.com/thread-768-1-1.html">http://luyou.xunlei.com/thread-768-1-1.html</a>.</p>
+<p>同样，刷机的教程，网上也有，比如 http://luyou.xunlei.com/thread-768-1-1.html.</p>
 
 <p>但 Mac 用户有着天然的优势，根本无需用到此教程中的 winscp 和 putty 软件，下面就来看看如何用终端来取代它们的吧：</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">ssh root@192.168.0.1
-</code></pre></div>
-<p>默认的路由 IP 一般是 <code>192.168.1.1</code>，我是为了连公司 VPN 时 IP 不与公司网段冲突而重新设置的 <code>192.168.0.1</code>。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh root@192.168.0.1
+</code></pre></div></div>
+
+<p>默认的路由 IP 一般是 <code class="highlighter-rouge">192.168.1.1</code>，我是为了连公司 VPN 时 IP 不与公司网段冲突而重新设置的 <code class="highlighter-rouge">192.168.0.1</code>。</p>
 
 <p>接着提示你输入路由密码，应该就可以看到以下界面了：</p>
 
 <p><img src="https://s10.mogucdn.com/mlcdn/c45406/190506_2akaib8j817d33eie931kfe32bd3j_800x621.webp" alt=""></p>
 
 <p>新建一个终端窗口或者标签页，接下来把下载好的迅雷固件文件夹，拷贝至路由器的指定目录下：</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">scp <span class="nt">-P</span> 22 <span class="nt">-r</span> ~/Downloads/Xware1 root@192.168.0.1:/jffs/
-</code></pre></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scp <span class="nt">-P</span> 22 <span class="nt">-r</span> ~/Downloads/Xware1 root@192.168.0.1:/jffs/
+</code></pre></div></div>
+
 <p>再次输入密码，完成传输任务，切换回 ssh 界面，继续操作：</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">cd</span> /jffs
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> /jffs
 
 <span class="c"># 将拷贝好的迅雷固件文件夹改名为 xunlei</span>
 <span class="nb">mv </span>Xware1 xunlei
@@ -139,67 +141,68 @@
 
 <span class="c"># 启动迅雷离线服务</span>
 ./portal
-</code></pre></div>
+</code></pre></div></div>
+
 <p>其它步骤教程中都有，不再赘述。</p>
 
-<p>完成后我就开始疯狂下载 1080p 的电影了。建议上班前挂上准备好的资源，到公司登录 <a href="http://yuancheng.xunlei.com">http://yuancheng.xunlei.com</a> 开始下载，下班后回到家就看片了，还是蛮不错的赶脚。家里 20M 的带宽，下载速度基本上有 2M 多吧。袄，忘了说，我是迅雷会员，非会员这速度可能要打个折扣。</p>
+<p>完成后我就开始疯狂下载 1080p 的电影了。建议上班前挂上准备好的资源，到公司登录 http://yuancheng.xunlei.com 开始下载，下班后回到家就看片了，还是蛮不错的赶脚。家里 20M 的带宽，下载速度基本上有 2M 多吧。袄，忘了说，我是迅雷会员，非会员这速度可能要打个折扣。</p>
 
 <p><img src="https://s10.mogucdn.com/mlcdn/c45406/191209_0f4ai2l23575ffj99ie40ab8707k8_798x247.png" alt=""></p>
 
-<h2>
+<h2 id="nas-">
 <a class="anchor" href="#nas-" aria-hidden="true"><span class="octicon octicon-link"></span></a>NAS <img style="display:inline;vertical-align:-5px" src="https://s10.mogucdn.com/mlcdn/c45406/190506_81bke3e633i2cecidlf8a9gbc5j26_512x512.png" width="32" height="32" alt="NAS icon">
 </h2>
-
-<p>普通的文件的共享，需开启 “File Sharing” 和 “Samba Server"，在路由管理界面（<code>http://192.168.0.1</code>）中的“服务 - NAS”下可以找到它们。</p>
+<p>普通的文件的共享，需开启 “File Sharing” 和 “Samba Server”，在路由管理界面（<code class="highlighter-rouge">http://192.168.0.1</code>）中的“服务 - NAS”下可以找到它们。</p>
 
 <p><img src="https://s10.mogucdn.com/mlcdn/c45406/191209_7gd90k7fe569daa8a56k8lgdekd6a_798x332.png" alt=""></p>
 
 <p><img src="https://s10.mogucdn.com/mlcdn/c45406/191209_65889gak4cgaa3f2ddac997cfd4ki_799x190.png" alt=""></p>
 
-<p>需特别注意的是，PC 和 Mac 都必须将工作组设置成 <code>WORKGROUP</code>。</p>
+<p>需特别注意的是，PC 和 Mac 都必须将工作组设置成 <code class="highlighter-rouge">WORKGROUP</code>。</p>
 
 <p><img src="https://s10.mogucdn.com/mlcdn/c45406/191209_8b3a3c51g1c22ded3h8b08ibbjg8d_799x687.png" alt=""></p>
 
-<h2>
+<h2 id="dlna-">
 <a class="anchor" href="#dlna-" aria-hidden="true"><span class="octicon octicon-link"></span></a>DLNA <embed src="http://upload.wikimedia.org/wikipedia/en/f/f0/Dlna.svg" width="91" height="24" type="image/svg+xml" codebase="http://www.adobe.com/svg/viewer/install"></embed>
 </h2>
+<p>如果家中电视支持 DLNA，那太赞了，开启路由 “DLNA Server”，直接在电视上欣赏路由 NAS 中的视频、照片、音乐吧。</p>
 
-<p>如果家中电视支持 DLNA，那太赞了，开启路由 "DLNA Server"，直接在电视上欣赏路由 NAS 中的视频、照片、音乐吧。</p>
+<p><img src="https://s10.mogucdn.com/mlcdn/c45406/191209_424bfi7c763582dlc9g8i57h2954d_798x300.png" alt=""></p>
 
-<p><img src="https://s10.mogucdn.com/mlcdn/c45406/191209_424bfi7c763582dlc9g8i57h2954d_798x300.png" alt=""> </p>
+<p>经测试，DD-WRT 提供的 DLNA 服务更加稳定可靠，也许是因为 <code class="highlighter-rouge">Linux</code> 系统强大的缘故吧。<del>更为可喜的是，它还直接解决了 MKV 字幕的问题，妈妈再也不用担心我看不了欧美大片了。</del></p>
 
-<p>经测试，DD-WRT 提供的 DLNA 服务更加稳定可靠，也许是因为 <code>Linux</code> 系统强大的缘故吧。<del>更为可喜的是，它还直接解决了 MKV 字幕的问题，妈妈再也不用担心我看不了欧美大片了。</del></p>
-
-<h3>
+<h3 id="update">
 <a class="anchor" href="#update" aria-hidden="true"><span class="octicon octicon-link"></span></a>Update</h3>
+<p>经测试，通过 DLNA 播放 <code class="highlighter-rouge">MKV</code> 视频，主要看接收端（电视）对于视频的支持，而并不取决于发布端（路由）。</p>
 
-<p>经测试，通过 DLNA 播放 <code>MKV</code> 视频，主要看接收端（电视）对于视频的支持，而并不取决于发布端（路由）。</p>
+<p>我的家里有两台电视：Sony(KDL-47W800A) 和 LeTV(S40)，目前只有前者在使用 DLNA 播放视频时支持显示 <code class="highlighter-rouge">MKV</code> 内置字幕，对乐视略失望☹</p>
 
-<p>我的家里有两台电视：Sony(KDL-47W800A) 和 LeTV(S40)，目前只有前者在使用 DLNA 播放视频时支持显示 <code>MKV</code> 内置字幕，对乐视略失望☹</p>
+<p>对于一些比较老旧的设备，还有一个音轨的问题。估计一些电视暂不支持 <abbr title="Digital Theater Systems">DTS</abbr> 音轨，看 NAS 上的蓝光电影就比较悲剧了，因为这类片子一般都是 DTS 的音轨。此时就要将音轨转至 AC3。DTS 转 AC3，网上有着众多的教程与工具，这里我推荐最 Geek 的做法：<code class="highlighter-rouge">ffmpeg</code> + 终端提取 AC3 音轨，再用 <a href="http://www.bunkus.org/videotools/mkvtoolnix/">Mkvtoolnix</a> 将其 merge 到 MKV 文件中。</p>
 
-<p>对于一些比较老旧的设备，还有一个音轨的问题。估计一些电视暂不支持 <abbr title="Digital Theater Systems">DTS</abbr> 音轨，看 NAS 上的蓝光电影就比较悲剧了，因为这类片子一般都是 DTS 的音轨。此时就要将音轨转至 AC3。DTS 转 AC3，网上有着众多的教程与工具，这里我推荐最 Geek 的做法：<code>ffmpeg</code> + 终端提取 AC3 音轨，再用 <a href="http://www.bunkus.org/videotools/mkvtoolnix/">Mkvtoolnix</a> 将其 merge 到 MKV 文件中。</p>
-
-<h3>
+<h3 id="安装-ffmpeg">
 <a class="anchor" href="#%E5%AE%89%E8%A3%85-ffmpeg" aria-hidden="true"><span class="octicon octicon-link"></span></a>安装 ffmpeg</h3>
+<p>推荐 <code class="highlighter-rouge">brew</code>（如何安装 <code class="highlighter-rouge">brew</code> 与本主题关系不大，请自行搜索了）：</p>
 
-<p>推荐 <code>brew</code>（如何安装 <code>brew</code> 与本主题关系不大，请自行搜索了）：</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">brew doctor
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew doctor
 
 <span class="c"># 提示 Your system is ready to brew.</span>
 <span class="c"># 再进行下一步，否则先通过 brew update 将组件都更新到最新</span>
 
 brew <span class="nb">install </span>ffmeg
-</code></pre></div>
-<h3>
+</code></pre></div></div>
+
+<h3 id="使用-ffmpeg">
 <a class="anchor" href="#%E4%BD%BF%E7%94%A8-ffmpeg" aria-hidden="true"><span class="octicon octicon-link"></span></a>使用 ffmpeg</h3>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">ffmpeg <span class="nt">-i</span> &lt;INPUT_video_filename&gt; <span class="nt">-map</span> 0:1 <span class="nt">-acodec</span> ac3 <span class="nt">-ab</span> 448k <span class="nt">-ac</span> 6 &lt;OUTPUT_audio_filename&gt;.ac3
-</code></pre></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ffmpeg <span class="nt">-i</span> &lt;INPUT_video_filename&gt; <span class="nt">-map</span> 0:1 <span class="nt">-acodec</span> ac3 <span class="nt">-ab</span> 448k <span class="nt">-ac</span> 6 &lt;OUTPUT_audio_filename&gt;.ac3
+</code></pre></div></div>
+
 <ul>
-<li>  -i ☞ 输入文件（一般是 MKV）</li>
-<li>  -map ☞ 要转换的声道 (0:1 是第一声道的意思)</li>
-<li>  -acodec ☞ 输出音轨文件的编码 (ac3 毫无疑问)</li>
-<li>  -ab ☞ 码率 (448k is OK)</li>
-<li>  -ac ☞ 声道数量 (6 = 5.1)</li>
+  <li>-i ☞ 输入文件（一般是 MKV）</li>
+  <li>-map ☞ 要转换的声道 (0:1 是第一声道的意思)</li>
+  <li>-acodec ☞ 输出音轨文件的编码 (ac3 毫无疑问)</li>
+  <li>-ab ☞ 码率 (448k is OK)</li>
+  <li>-ac ☞ 声道数量 (6 = 5.1)</li>
 </ul>
 
     </section>
@@ -274,8 +277,8 @@ window.onscroll = function () {
 	<p>© Copyright 2012 - <script>document.write(new Date().getFullYear())</script> by Roshan Wu.</p>
 </footer>
 
-<script src="/js/anchor.min.js"></script>
-<script src="/js/post.js"></script>
+<script src="/assets/scripts/anchor.min.js"></script>
+<script src="/assets/scripts/post.js"></script>
 
 
 </body>

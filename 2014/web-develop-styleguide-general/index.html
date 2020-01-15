@@ -5,11 +5,11 @@
 	<link href="https://gmpg.org/xfn/11" rel="profile">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<title>前端编码风格规范之一般规范 - 肉山·察</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
   
 	<link rel="canonical" href="https://roshanca.com/2014/web-develop-styleguide-general/">
-	<link rel="alternate" type="application/rss+xml" title="Subscribe Feed" href="/feed.xml">
-	<link href="/css/app.css" rel="stylesheet" media="all">
+	<link rel="alternate" type="application/atom+xml" title="Subscribe Feed" href="/feed.xml">
+	<link href="/assets/styles/main.css" rel="stylesheet" media="all">
 	<link href="//cdn.bootcss.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 	<!-- <link href="//fonts.lug.ustc.edu.cn/css?family=Lustria|Inconsolata" rel="stylesheet"> -->
   <!-- <link href='//fonts.useso.com/css?family=PT+Serif:400,700' rel='stylesheet' type='text/css'> -->
@@ -49,10 +49,6 @@
 
 	<a href="//weibo.com/jinfeixibi" class="social-link">
 		<i class="fa fa-weibo"></i>
-	</a>
-
-	<a href="//www.flickr.com/photos/roshanca/" class="social-link">
-		<i class="fa fa-flickr"></i>
 	</a>
 </div>
   </div>
@@ -94,84 +90,101 @@
 
 <hr>
 
-<h2>
+<h2 id="一般规范">
 <a class="anchor" href="#%E4%B8%80%E8%88%AC%E8%A7%84%E8%8C%83" aria-hidden="true"><span class="octicon octicon-link"></span></a>一般规范</h2>
 
 <p>以下章节列举了一些可应用在 HTML, JavaScript 和 CSS/SCSS 上的通用规则。</p>
 
 <hr>
 
-<h3>
+<h3 id="文件资源命名">
 <a class="anchor" href="#%E6%96%87%E4%BB%B6%E8%B5%84%E6%BA%90%E5%91%BD%E5%90%8D" aria-hidden="true"><span class="octicon octicon-link"></span></a>文件/资源命名</h3>
 
-<p>在 web 项目中，所有的文件名应该都遵循同一命名约定。以可读性而言，减号（-）是用来分隔文件名的不二之选。同时它也是常见的 URL 分隔符（i.e. <code>//example.com/blog/my-blog-entry</code> or <code>//s.example.com/images/big-black-background.jpg</code>），所以理所当然的，减号应该也是用来分隔资源名称的好选择。</p>
+<p>在 web 项目中，所有的文件名应该都遵循同一命名约定。以可读性而言，减号（-）是用来分隔文件名的不二之选。同时它也是常见的 URL 分隔符（i.e. <code class="highlighter-rouge">//example.com/blog/my-blog-entry</code> or <code class="highlighter-rouge">//s.example.com/images/big-black-background.jpg</code>），所以理所当然的，减号应该也是用来分隔资源名称的好选择。</p>
 
-<p>请确保文件命名总是以字母开头而不是数字。而以特殊字符开头命名的文件，一般都有特殊的含义与用处（比如 compass<sup id="fnref1"><a href="#fn1" rel="footnote">1</a></sup> 中的下划线就是用来标记跳过直接编译的文件用的）。</p>
+<p>请确保文件命名总是以字母开头而不是数字。而以特殊字符开头命名的文件，一般都有特殊的含义与用处（比如 compass<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> 中的下划线就是用来标记跳过直接编译的文件用的）。</p>
 
 <p>资源的字母名称必须全为小写，这是因为在某些对大小写字母敏感的操作系统中，当文件通过工具压缩混淆后，或者人为修改过后，大小写不同而导致引用文件不同的错误，很难被发现。</p>
 
-<p>还有一些情况下，需要对文件增加前后缀或特定的扩展名（比如 .min.js, .min.css），抑或一串前缀（比如 <code>3fa89b.main.min.css</code>）。这种情况下，建议使用点分隔符来区分这些在文件名中带有清晰意义的元数据。</p>
+<p>还有一些情况下，需要对文件增加前后缀或特定的扩展名（比如 .min.js, .min.css），抑或一串前缀（比如 <code class="highlighter-rouge">3fa89b.main.min.css</code>）。这种情况下，建议使用点分隔符来区分这些在文件名中带有清晰意义的元数据。</p>
 
 <p><strong>不推荐</strong></p>
-<div class="highlight"><pre><code class="language-" data-lang="">MyScript.js
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>MyScript.js
 myCamelCaseName.css
 i_love_underscores.html
 1001-scripts.js
 my-file-min.css
-</code></pre></div>
+</code></pre></div></div>
+
 <p><strong>推荐</strong></p>
-<div class="highlight"><pre><code class="language-" data-lang="">my-script.js
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>my-script.js
 my-camel-case-name.css
 i-love-underscores.html
 thousand-and-one-scripts.js
 my-file.min.css
-</code></pre></div>
+</code></pre></div></div>
+
 <hr>
 
-<h3>
+<h3 id="协议">
 <a class="anchor" href="#%E5%8D%8F%E8%AE%AE" aria-hidden="true"><span class="octicon octicon-link"></span></a>协议</h3>
 
 <p>不要指定引入资源所带的具体协议。</p>
 
-<p>当引入图片或其他媒体文件，还有样式和脚本时，URLs 所指向的具体路径，不要指定协议部分（<code>http:</code>, <code>https:</code>），除非这两者协议都不可用。</p>
+<p>当引入图片或其他媒体文件，还有样式和脚本时，URLs 所指向的具体路径，不要指定协议部分（<code class="highlighter-rouge">http:</code>, <code class="highlighter-rouge">https:</code>），除非这两者协议都不可用。</p>
 
 <p>不指定协议使得 URL 从绝对的获取路径转变为相对的，在请求资源协议无法确定时非常好用，而且还能为文件大小节省几个字节。</p>
 
 <p><strong>不推荐</strong></p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"http://cdn.com/foundation.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-</code></pre></div>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"http://cdn.com/foundation.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre></div></div>
+
 <p><strong>推荐</strong></p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"//cdn.com/foundation.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-</code></pre></div>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"//cdn.com/foundation.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre></div></div>
+
 <p><strong>不推荐</strong></p>
-<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.example</span> <span class="p">{</span>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.example</span> <span class="p">{</span>
   <span class="nl">background</span><span class="p">:</span> <span class="sx">url(http://static.example.com/images/bg.jpg)</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre></div></div>
+
 <p><strong>推荐</strong></p>
-<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.example</span> <span class="p">{</span>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.example</span> <span class="p">{</span>
   <span class="nl">background</span><span class="p">:</span> <span class="sx">url(//static.example.com/images/bg.jpg)</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre></div></div>
+
 <hr>
 
-<h3>
+<h3 id="文本缩进">
 <a class="anchor" href="#%E6%96%87%E6%9C%AC%E7%BC%A9%E8%BF%9B" aria-hidden="true"><span class="octicon octicon-link"></span></a>文本缩进</h3>
 
 <p>一次缩进两个空格。</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;ul&gt;</span>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;ul&gt;</span>
   <span class="nt">&lt;li&gt;</span>Fantastic<span class="nt">&lt;/li&gt;</span>
   <span class="nt">&lt;li&gt;</span>Great<span class="nt">&lt;/li&gt;</span>
   <span class="nt">&lt;li&gt;</span>
     <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Test<span class="nt">&lt;/a&gt;</span>
   <span class="nt">&lt;/li&gt;</span>
 <span class="nt">&lt;/ul&gt;</span>
-</code></pre></div><div class="highlight"><pre><code class="language-css" data-lang="css"><span class="k">@media</span> <span class="n">screen</span> <span class="n">and</span> <span class="p">(</span><span class="n">min-width</span><span class="p">:</span> <span class="m">1100px</span><span class="p">)</span> <span class="p">{</span>
+</code></pre></div></div>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@media</span> <span class="n">screen</span> <span class="n">and</span> <span class="p">(</span><span class="n">min-width</span><span class="p">:</span> <span class="m">1100px</span><span class="p">)</span> <span class="p">{</span>
   <span class="nt">body</span> <span class="p">{</span>
     <span class="nl">font-size</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div><div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</code></pre></div></div>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
   <span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
 
   <span class="kd">function</span> <span class="nx">y</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
@@ -181,10 +194,11 @@ my-file.min.css
 
   <span class="p">}</span>
 <span class="p">}());</span>
-</code></pre></div>
+</code></pre></div></div>
+
 <hr>
 
-<h3>
+<h3 id="注释">
 <a class="anchor" href="#%E6%B3%A8%E9%87%8A" aria-hidden="true"><span class="octicon octicon-link"></span></a>注释</h3>
 
 <p>注释是<strong>你自己</strong>与你的小伙伴们了解代码写法和目的的唯一途径。特别是在写一些看似琐碎的无关紧要的代码时，由于记忆点不深刻，注释就变得尤为重要了。</p>
@@ -194,27 +208,31 @@ my-file.min.css
 <p>当你写注释时一定要注意：不要写你的代码都干了些什么，而要写你的代码为什么要这么写，背后的考量是什么。当然也可以加入所思考问题或是解决方案的链接地址。</p>
 
 <p><strong>不推荐</strong></p>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">offset</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">offset</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 
 <span class="k">if</span><span class="p">(</span><span class="nx">includeLabels</span><span class="p">)</span> <span class="p">{</span>
   <span class="c1">// Add offset of 20</span>
   <span class="nx">offset</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre></div></div>
+
 <p><strong>推荐</strong></p>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">offset</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">offset</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 
 <span class="k">if</span><span class="p">(</span><span class="nx">includeLabels</span><span class="p">)</span> <span class="p">{</span>
   <span class="c1">// If the labels are included we need to have a minimum offset of 20 pixels</span>
   <span class="c1">// We need to set it explicitly because of the following bug: http://somebrowservendor.com/issue-tracker/ISSUE-1</span>
   <span class="nx">offset</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre></div></div>
+
 <p>一些注释工具可以帮助你写出更好的注释。<a href="http://usejsdoc.org/">JSDoc</a> 或 <a href="http://yui.github.io/yuidoc/">YUIDoc</a> 就是用来写 JavaScript 注释用的。你甚至可以使用工具来为这些注释生成文档，这也是激励开发者们写注释的一个好方法，因为一旦有了这样方便的生成文档的工具，他们通常会开始花更多时间在注释细节上。</p>
 
 <hr>
 
-<h3>
+<h3 id="代码检查">
 <a class="anchor" href="#%E4%BB%A3%E7%A0%81%E6%A3%80%E6%9F%A5" aria-hidden="true"><span class="octicon octicon-link"></span></a>代码检查</h3>
 
 <p>对于比较宽松自由的编程语言来说，严格遵循编码规范和格式化风格指南就显得极为重要。遵循规范固然很好，但是有自动化流程来确保其执行情况，岂不更佳。Trust is good, control is better.</p>
@@ -223,23 +241,19 @@ my-file.min.css
 
 <hr>
 
-<h2>
+<h2 id="系列文章">
 <a class="anchor" href="#%E7%B3%BB%E5%88%97%E6%96%87%E7%AB%A0" aria-hidden="true"><span class="octicon octicon-link"></span></a>系列文章</h2>
 
 <ul>
-<li><a href="//roshanca.com/2014/web-develop-styleguide-html">前端编码风格规范之 HTML</a></li>
-<li><a href="//roshanca.com/2014/web-develop-styleguide-javascript">前端编码风格规范之 JavaScript</a></li>
+  <li><a href="//roshanca.com/2014/web-develop-styleguide-html">前端编码风格规范之 HTML</a></li>
+  <li><a href="//roshanca.com/2014/web-develop-styleguide-javascript">前端编码风格规范之 JavaScript</a></li>
 </ul>
-
 <div class="footnotes">
-<hr>
-<ol>
-
-<li id="fn1">
-<p>Compass 是一个基于 Sass 开源的 CSS 框架，而 Sass 是一个非常流行的 CSS 预编译器。 <a href="#fnref1" rev="footnote">↩</a></p>
-</li>
-
-</ol>
+  <ol>
+    <li id="fn:1">
+      <p>Compass 是一个基于 Sass 开源的 CSS 框架，而 Sass 是一个非常流行的 CSS 预编译器。 <a href="#fnref:1" class="reversefootnote">↩</a></p>
+    </li>
+  </ol>
 </div>
 
     </section>
@@ -312,8 +326,8 @@ window.onscroll = function () {
 	<p>© Copyright 2012 - <script>document.write(new Date().getFullYear())</script> by Roshan Wu.</p>
 </footer>
 
-<script src="/js/anchor.min.js"></script>
-<script src="/js/post.js"></script>
+<script src="/assets/scripts/anchor.min.js"></script>
+<script src="/assets/scripts/post.js"></script>
 
 
 </body>

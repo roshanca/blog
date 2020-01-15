@@ -5,11 +5,11 @@
 	<link href="https://gmpg.org/xfn/11" rel="profile">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<title>前端编码风格规范之 HTML 规范 - 肉山·察</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
   
 	<link rel="canonical" href="https://roshanca.com/2014/web-develop-styleguide-html/">
-	<link rel="alternate" type="application/rss+xml" title="Subscribe Feed" href="/feed.xml">
-	<link href="/css/app.css" rel="stylesheet" media="all">
+	<link rel="alternate" type="application/atom+xml" title="Subscribe Feed" href="/feed.xml">
+	<link href="/assets/styles/main.css" rel="stylesheet" media="all">
 	<link href="//cdn.bootcss.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 	<!-- <link href="//fonts.lug.ustc.edu.cn/css?family=Lustria|Inconsolata" rel="stylesheet"> -->
   <!-- <link href='//fonts.useso.com/css?family=PT+Serif:400,700' rel='stylesheet' type='text/css'> -->
@@ -49,10 +49,6 @@
 
 	<a href="//weibo.com/jinfeixibi" class="social-link">
 		<i class="fa fa-weibo"></i>
-	</a>
-
-	<a href="//www.flickr.com/photos/roshanca/" class="social-link">
-		<i class="fa fa-flickr"></i>
 	</a>
 </div>
   </div>
@@ -96,23 +92,23 @@
       </nav>
       <p>原文：<a href="https://github.com/gionkunz/chartist-js/blob/develop/CODINGSTYLE.md">Web Styleguide - Style guide to harmonize HTML, Javascript and CSS / SASS coding style</a></p>
 
-<h2>
+<h2 id="html-规范">
 <a class="anchor" href="#html-%E8%A7%84%E8%8C%83" aria-hidden="true"><span class="octicon octicon-link"></span></a>HTML 规范</h2>
 
 <hr>
 
-<h3>
+<h3 id="文档类型">
 <a class="anchor" href="#%E6%96%87%E6%A1%A3%E7%B1%BB%E5%9E%8B" aria-hidden="true"><span class="octicon octicon-link"></span></a>文档类型</h3>
 
-<p>推荐使用 HTML5 的文档类型申明： <code>&lt;!DOCTYPE html&gt;</code>.</p>
+<p>推荐使用 HTML5 的文档类型申明： <code class="highlighter-rouge"><span class="cp">&lt;!DOCTYPE html&gt;</span></code>.</p>
 
-<p>（建议使用 text/html 格式的 HTML。避免使用 XHTML。XHTML 以及它的属性，比如 <code>application/xhtml+xml</code> 在浏览器中的应用支持与优化空间都十分有限）。</p>
+<p>（建议使用 text/html 格式的 HTML。避免使用 XHTML。XHTML 以及它的属性，比如 <code class="highlighter-rouge">application/xhtml+xml</code> 在浏览器中的应用支持与优化空间都十分有限）。</p>
 
-<p>HTML 中最好不要将无内容的空白元素<sup id="fnref1"><a href="#fn1" rel="footnote">1</a></sup> 的标签闭合，例如：使用 <code>&lt;br&gt;</code> 而非 <code>&lt;br /&gt;</code>.</p>
+<p>HTML 中最好不要将无内容的空白元素<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> 的标签闭合，例如：使用 <code class="highlighter-rouge">&lt;br&gt;</code> 而非 <code class="highlighter-rouge">&lt;br /&gt;</code>.</p>
 
 <hr>
 
-<h3>
+<h3 id="html-验证">
 <a class="anchor" href="#html-%E9%AA%8C%E8%AF%81" aria-hidden="true"><span class="octicon octicon-link"></span></a>HTML 验证</h3>
 
 <p>一般情况下，建议使用能通过标准规范验证的 HTML 代码，除非在性能优化和控制文件大小上不得不做出让步。</p>
@@ -122,16 +118,20 @@
 <p>规范化的 HTML 是显现技术要求与局限的显著质量基线，它促进了 HTML 被更好地运用。</p>
 
 <p><strong>不推荐</strong></p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;title&gt;</span>Test<span class="nt">&lt;/title&gt;</span>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;title&gt;</span>Test<span class="nt">&lt;/title&gt;</span>
 <span class="nt">&lt;article&gt;</span>This is only a test.
-</code></pre></div>
+</code></pre></div></div>
+
 <p><strong>推荐</strong></p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
 <span class="nt">&lt;title&gt;</span>Test<span class="nt">&lt;/title&gt;</span>
 <span class="nt">&lt;article&gt;</span>This is only a test.<span class="nt">&lt;/article&gt;</span>
-</code></pre></div>
-<h3>
+</code></pre></div></div>
+
+<h3 id="省略可选标签">
 <a class="anchor" href="#%E7%9C%81%E7%95%A5%E5%8F%AF%E9%80%89%E6%A0%87%E7%AD%BE" aria-hidden="true"><span class="octicon octicon-link"></span></a>省略可选标签</h3>
 
 <p>HTML5 规范中规定了 HTML 标签是可以省略的。但从可读性来说，在开发的源文件中最好不要这样做，因为省略标签可能会导致一些问题。</p>
@@ -140,12 +140,12 @@
 
 <hr>
 
-<h3>
+<h3 id="脚本加载">
 <a class="anchor" href="#%E8%84%9A%E6%9C%AC%E5%8A%A0%E8%BD%BD" aria-hidden="true"><span class="octicon octicon-link"></span></a>脚本加载</h3>
 
-<p>出于性能考虑，脚本异步加载很关键。一段脚本放置在 <code>&lt;head&gt;</code> 内，比如 <code>&lt;script src="main.js"&gt;&lt;/script&gt;</code>，其加载会一直阻塞 DOM 解析，直至它完全地加载和执行完毕。这会造成页面显示的延迟。特别是一些重量级的脚本，对用户体验来说那真是一个巨大的影响。</p>
+<p>出于性能考虑，脚本异步加载很关键。一段脚本放置在 <code class="highlighter-rouge">&lt;head&gt;</code> 内，比如 <code class="highlighter-rouge">&lt;script src="main.js"&gt;&lt;/script&gt;</code>，其加载会一直阻塞 DOM 解析，直至它完全地加载和执行完毕。这会造成页面显示的延迟。特别是一些重量级的脚本，对用户体验来说那真是一个巨大的影响。</p>
 
-<p>异步加载脚本可缓解这种性能影响。如果只需兼容 IE10+，可将 HTML5 的 async 属性加至脚本中，它可防止阻塞 DOM 的解析，甚至你可以将脚本引用写在 <code>&lt;head&gt;</code> 里也没有影响。</p>
+<p>异步加载脚本可缓解这种性能影响。如果只需兼容 IE10+，可将 HTML5 的 async 属性加至脚本中，它可防止阻塞 DOM 的解析，甚至你可以将脚本引用写在 <code class="highlighter-rouge">&lt;head&gt;</code> 里也没有影响。</p>
 
 <p>如需兼容老旧的浏览器，实践表明可使用用来动态注入脚本的脚本加载器。你可以考虑 <a href="http://yepnopejs.com/">yepnope</a> 或 <a href="http://labjs.com/">labjs</a>。注入脚本的一个问题是：<a href="https://www.igvita.com/2014/05/20/script-injected-async-scripts-considered-harmful/">一直要等到 CSS 对象文档已就绪，它们才开始加载</a>（短暂地在 CSS 加载完毕之后），这就对需要及时触发的 JS 造成了一定的延迟，这多多少少也影响了用户体验吧。</p>
 
@@ -154,7 +154,8 @@
 <p>脚本引用写在 body 结束标签之前，并带上 async 属性。这虽然在老旧浏览器中不会异步加载脚本，但它只阻塞了 body 结束标签之前的 DOM 解析，这就大大降低了其阻塞影响。而在现代浏览器中，脚本将在 DOM 解析器发现 body 尾部的 script 标签才进行加载，此时加载属于异步加载，不会阻塞 CSSOM（但其执行仍发生在 CSSOM 之后）。</p>
 
 <p><strong>所有浏览器中，推荐</strong></p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;html&gt;</span>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;html&gt;</span>
   <span class="nt">&lt;head&gt;</span>
     <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"main.css"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;/head&gt;</span>
@@ -164,9 +165,11 @@
     <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"main.js"</span> <span class="na">async</span><span class="nt">&gt;&lt;/script&gt;</span>
   <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
-</code></pre></div>
+</code></pre></div></div>
+
 <p><strong>只在现代浏览器中，推荐</strong></p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;html&gt;</span>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;html&gt;</span>
   <span class="nt">&lt;head&gt;</span>
     <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"main.css"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"main.js"</span> <span class="na">async</span><span class="nt">&gt;&lt;/script&gt;</span>
@@ -175,10 +178,11 @@
     <span class="c">&lt;!-- body goes here --&gt;</span>
   <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
-</code></pre></div>
+</code></pre></div></div>
+
 <hr>
 
-<h3>
+<h3 id="语义化">
 <a class="anchor" href="#%E8%AF%AD%E4%B9%89%E5%8C%96" aria-hidden="true"><span class="octicon octicon-link"></span></a>语义化</h3>
 
 <p>根据元素（有时被错误地称作“标签”）其被创造出来时的初始意义来使用它。打个比方，用 heading 元素来定义头部标题，p 元素来定义文字段落，用 a 元素来定义链接锚点，等等。</p>
@@ -188,7 +192,8 @@
 <p>以下示例列出了一些的语义化 HTML 主要情况：</p>
 
 <p><strong>不推荐</strong></p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;b&gt;</span>My page title<span class="nt">&lt;/b&gt;</span>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;b&gt;</span>My page title<span class="nt">&lt;/b&gt;</span>
 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"top-navigation"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#home"</span><span class="nt">&gt;</span>Home<span class="nt">&lt;/a&gt;&lt;/div&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#news"</span><span class="nt">&gt;</span>News<span class="nt">&lt;/a&gt;&lt;/div&gt;</span>
@@ -217,9 +222,11 @@
 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"page-footer"</span><span class="nt">&gt;</span>
   Copyright 2014
 <span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+</code></pre></div></div>
+
 <p><strong>推荐</strong></p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- The page header should go into a header element --&gt;</span>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- The page header should go into a header element --&gt;</span>
 <span class="nt">&lt;header&gt;</span>
   <span class="c">&lt;!-- As this title belongs to the page structure it's a heading and h1 should be used --&gt;</span>
   <span class="nt">&lt;h1&gt;</span>My page title<span class="nt">&lt;/h1&gt;</span>
@@ -283,35 +290,44 @@
 <span class="nt">&lt;footer</span> <span class="na">class=</span><span class="s">"page-footer"</span><span class="nt">&gt;</span>
   Copyright 2014
 <span class="nt">&lt;/footer&gt;</span>
-</code></pre></div>
+</code></pre></div></div>
+
 <hr>
 
-<h3>
+<h3 id="多媒体回溯">
 <a class="anchor" href="#%E5%A4%9A%E5%AA%92%E4%BD%93%E5%9B%9E%E6%BA%AF" aria-hidden="true"><span class="octicon octicon-link"></span></a>多媒体回溯</h3>
 
 <p>对页面上的媒体而言，像图片、视频、canvas 动画等，要确保其有可替代的接入接口。图片文件我们可采用有意义的备选文本（alt），视频和音频文件我们可以为其加上说明文字或字幕。</p>
 
 <p>提供可替代内容对可用性来说十分重要。试想，一位盲人用户如何能知晓一张图片是什么，要是没有 @alt 的话。</p>
 
-<p>（图片的 alt 属性是可不填写内容的，纯装饰性的图片就可用这么做：<code>alt=""</code>）。</p>
+<p>（图片的 alt 属性是可不填写内容的，纯装饰性的图片就可用这么做：<code class="highlighter-rouge">alt=""</code>）。</p>
 
 <p><strong>不推荐</strong></p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"luke-skywalker.jpg"</span><span class="nt">&gt;</span>
-</code></pre></div>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"luke-skywalker.jpg"</span><span class="nt">&gt;</span>
+</code></pre></div></div>
+
 <p><strong>推荐</strong></p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"luke-skywalker.jpg"</span> <span class="na">alt=</span><span class="s">"Luke skywalker riding an alien horse"</span><span class="nt">&gt;</span>
-</code></pre></div>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"luke-skywalker.jpg"</span> <span class="na">alt=</span><span class="s">"Luke skywalker riding an alien horse"</span><span class="nt">&gt;</span>
+</code></pre></div></div>
+
 <p>尽量用 alt 标签去描述图片，设想你需要对于那些只能通过语音或者看不见图片的用户表达图片到底是什么。</p>
 
 <p><strong>不推荐</strong></p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"huge-spaceship-approaching-earth.jpg"</span> <span class="na">alt=</span><span class="s">"Header image"</span><span class="nt">&gt;</span>
-</code></pre></div>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"huge-spaceship-approaching-earth.jpg"</span> <span class="na">alt=</span><span class="s">"Header image"</span><span class="nt">&gt;</span>
+</code></pre></div></div>
+
 <p><strong>推荐</strong></p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"huge-spaceship-approaching-earth.jpg"</span> <span class="na">alt=</span><span class="s">"A huge spaceship that is approaching the earth"</span><span class="nt">&gt;</span>
-</code></pre></div>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"huge-spaceship-approaching-earth.jpg"</span> <span class="na">alt=</span><span class="s">"A huge spaceship that is approaching the earth"</span><span class="nt">&gt;</span>
+</code></pre></div></div>
+
 <hr>
 
-<h3>
+<h3 id="关注点分离">
 <a class="anchor" href="#%E5%85%B3%E6%B3%A8%E7%82%B9%E5%88%86%E7%A6%BB" aria-hidden="true"><span class="octicon octicon-link"></span></a>关注点分离</h3>
 
 <p>理解 web 中如何和为何区分不同的关注点，这很重要。这里的关注点主要指的是：信息（HTML 结构）、外观（CSS）和行为（JavaScript）。为了使它们成为可维护的干净整洁的代码，我们要尽可能的将它们分离开来。</p>
@@ -325,17 +341,18 @@
 <p>清晰的分层意味着：</p>
 
 <ul>
-<li>  不使用超过一到两张样式表（i.e. main.css, vendor.css）</li>
-<li>  不使用超过一到两个脚本（学会用合并脚本）</li>
-<li>  不使用行内样式（<code>&lt;style&gt;.no-good {}&lt;/style&gt;</code>）</li>
-<li>  不在元素上使用 style 属性（<code>&lt;hr style="border-top: 5px solid black"&gt;</code>）</li>
-<li>  不使用行内脚本（<code>&lt;script&gt;alert('no good')&lt;/script&gt;</code>）</li>
-<li>  不使用表象元素（i.e. <code>&lt;b&gt;</code>, <code>&lt;u&gt;</code>, <code>&lt;center&gt;</code>, <code>&lt;font&gt;</code>, <code>&lt;b&gt;</code>）</li>
-<li>  不使用表象 class 名（i.e. red, left, center）</li>
+  <li>不使用超过一到两张样式表（i.e. main.css, vendor.css）</li>
+  <li>不使用超过一到两个脚本（学会用合并脚本）</li>
+  <li>不使用行内样式（<code class="highlighter-rouge">&lt;style&gt;.no-good {}&lt;/style&gt;</code>）</li>
+  <li>不在元素上使用 style 属性（<code class="highlighter-rouge">&lt;hr style="border-top: 5px solid black"&gt;</code>）</li>
+  <li>不使用行内脚本（<code class="highlighter-rouge">&lt;script&gt;alert('no good')&lt;/script&gt;</code>）</li>
+  <li>不使用表象元素（i.e. <code class="highlighter-rouge">&lt;b&gt;</code>, <code class="highlighter-rouge">&lt;u&gt;</code>, <code class="highlighter-rouge">&lt;center&gt;</code>, <code class="highlighter-rouge">&lt;font&gt;</code>, <code class="highlighter-rouge">&lt;b&gt;</code>）</li>
+  <li>不使用表象 class 名（i.e. red, left, center）</li>
 </ul>
 
 <p><strong>不推荐</strong></p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="nt">&lt;html&gt;</span>
 <span class="nt">&lt;head&gt;</span>
   <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"base.css"</span><span class="nt">&gt;</span>
@@ -348,14 +365,16 @@
   <span class="nt">&lt;b&gt;</span>I'm a subtitle and I'm bold!<span class="nt">&lt;/b&gt;</span>
   <span class="nt">&lt;center&gt;</span>Dare you center me!<span class="nt">&lt;/center&gt;</span>
   <span class="nt">&lt;script&gt;</span>
-    <span class="nx">alert</span><span class="p">(</span><span class="s1">'Just dont...'</span><span class="p">);</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">Just dont...</span><span class="dl">'</span><span class="p">);</span>
   <span class="nt">&lt;/script&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"red"</span><span class="nt">&gt;</span>I'm important!<span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
-</code></pre></div>
+</code></pre></div></div>
+
 <p><strong>推荐</strong></p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="nt">&lt;html&gt;</span>
 <span class="nt">&lt;head&gt;</span>
   <span class="c">&lt;!-- Concatinate your style sheets into a single one --&gt;</span>
@@ -376,10 +395,11 @@
   <span class="nt">&lt;script </span><span class="na">async</span> <span class="na">src=</span><span class="s">"main.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
-</code></pre></div>
+</code></pre></div></div>
+
 <hr>
 
-<h3>
+<h3 id="html-内容至上">
 <a class="anchor" href="#html-%E5%86%85%E5%AE%B9%E8%87%B3%E4%B8%8A" aria-hidden="true"><span class="octicon octicon-link"></span></a>HTML 内容至上</h3>
 
 <p>不要让非内容信息污染了你的 HTML。现在貌似有一种倾向：通过 HTML 来解决设计问题，这是显然是不对的。HTML 就应该只关注内容。</p>
@@ -387,31 +407,38 @@
 <p>HTML 标签的目的，就是为了不断地展示内容信息。</p>
 
 <ul>
-<li>  不要引入一些特定的 HTML 结构来解决一些视觉设计问题</li>
-<li>  不要将 <code>img</code> 元素当做专门用来做视觉设计的元素</li>
+  <li>不要引入一些特定的 HTML 结构来解决一些视觉设计问题</li>
+  <li>不要将 <code class="highlighter-rouge">img</code> 元素当做专门用来做视觉设计的元素</li>
 </ul>
 
 <p>以下例子展示了误将 HTML 用来解决设计问题的这两种情况：</p>
 
 <p><strong>不推荐</strong></p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- We should not introduce an additional element just to solve a design problem  --&gt;</span>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- We should not introduce an additional element just to solve a design problem  --&gt;</span>
 <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"text-box"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"square"</span><span class="nt">&gt;&lt;/span&gt;</span>
   See the square next to me?
 <span class="nt">&lt;/span&gt;</span>
-</code></pre></div><div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.text-box</span> <span class="o">&gt;</span> <span class="nc">.square</span> <span class="p">{</span>
+</code></pre></div></div>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.text-box</span> <span class="o">&gt;</span> <span class="nc">.square</span> <span class="p">{</span>
   <span class="nl">display</span><span class="p">:</span> <span class="n">inline-block</span><span class="p">;</span>
   <span class="nl">width</span><span class="p">:</span> <span class="m">1rem</span><span class="p">;</span>
   <span class="nl">height</span><span class="p">:</span> <span class="m">1rem</span><span class="p">;</span>
   <span class="nl">background-color</span><span class="p">:</span> <span class="no">red</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre></div></div>
+
 <p><strong>推荐</strong></p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- That's clean markup! --&gt;</span>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- That's clean markup! --&gt;</span>
 <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"text-box"</span><span class="nt">&gt;</span>
   See the square next to me?
 <span class="nt">&lt;/span&gt;</span>
-</code></pre></div><div class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/* We use a :before pseudo element to solve the design problem of placing a colored square in front of the text content */</span>
+</code></pre></div></div>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">/* We use a :before pseudo element to solve the design problem of placing a colored square in front of the text content */</span>
 <span class="nc">.text-box</span><span class="nd">:before</span> <span class="p">{</span>
   <span class="nl">content</span><span class="p">:</span> <span class="s1">""</span><span class="p">;</span>
   <span class="nl">display</span><span class="p">:</span> <span class="n">inline-block</span><span class="p">;</span>
@@ -419,22 +446,28 @@
   <span class="nl">height</span><span class="p">:</span> <span class="m">1rem</span><span class="p">;</span>
   <span class="nl">background-color</span><span class="p">:</span> <span class="no">red</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre></div></div>
+
 <p>图片和 SVG 图形能被引入到 HTML 中的唯一理由是它们呈现出了与内容相关的一些信息。</p>
 
 <p><strong>不推荐</strong></p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- Content images should never be used for design elements!  --&gt;</span>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- Content images should never be used for design elements!  --&gt;</span>
 <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"text-box"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"square.svg"</span> <span class="na">alt=</span><span class="s">"Square"</span> <span class="nt">/&gt;</span>
   See the square next to me?
 <span class="nt">&lt;/span&gt;</span>
-</code></pre></div>
+</code></pre></div></div>
+
 <p><strong>推荐</strong></p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- That's clean markup! --&gt;</span>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- That's clean markup! --&gt;</span>
 <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"text-box"</span><span class="nt">&gt;</span>
   See the square next to me?
 <span class="nt">&lt;/span&gt;</span>
-</code></pre></div><div class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/* We use a :before pseudo element with a background image to solve the problem */</span>
+</code></pre></div></div>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">/* We use a :before pseudo element with a background image to solve the problem */</span>
 <span class="nc">.text-box</span><span class="nd">:before</span> <span class="p">{</span>
   <span class="nl">content</span><span class="p">:</span> <span class="s1">""</span><span class="p">;</span>
   <span class="nl">display</span><span class="p">:</span> <span class="n">inline-block</span><span class="p">;</span>
@@ -443,44 +476,49 @@
   <span class="nl">background</span><span class="p">:</span> <span class="sx">url(square.svg)</span> <span class="nb">no-repeat</span><span class="p">;</span>
   <span class="nl">background-size</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre></div></div>
+
 <hr>
 
-<h3>
+<h3 id="type-属性">
 <a class="anchor" href="#type-%E5%B1%9E%E6%80%A7" aria-hidden="true"><span class="octicon octicon-link"></span></a>Type 属性</h3>
 
 <p>省略样式表与脚本上的 type 属性。鉴于 HTML5 中以上两者默认的 type 值就是 text/css 和 text/javascript，所以 type 属性一般是可以忽略掉的。甚至在老旧版本的浏览器中这么做也是安全可靠的。</p>
 
 <p><strong>不推荐</strong></p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"main.css"</span> <span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"main.css"</span> <span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span>
 <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"main.js"</span> <span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;&lt;/script&gt;</span>
-</code></pre></div>
+</code></pre></div></div>
+
 <p><strong>推荐</strong></p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"main.css"</span><span class="nt">&gt;</span>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"main.css"</span><span class="nt">&gt;</span>
 <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"main.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-</code></pre></div>
+</code></pre></div></div>
+
 <hr>
 
-<h3>
+<h3 id="可用性">
 <a class="anchor" href="#%E5%8F%AF%E7%94%A8%E6%80%A7" aria-hidden="true"><span class="octicon octicon-link"></span></a>可用性</h3>
 
-<p>如果 HTML5 语义化标签使用得当，许多可用性问题已经引刃而解。ARIA 规则在一些语义化的元素上可为其添上默认的可用性角色属性，使用得当的话已使网站的可用性大部分成立。假如你使用 <code>nav</code>, <code>aside</code>, <code>main</code>, <code>footer</code> 等元素，ARIA 规则会在其上应用一些关联的默认值。
+<p>如果 HTML5 语义化标签使用得当，许多可用性问题已经引刃而解。ARIA 规则在一些语义化的元素上可为其添上默认的可用性角色属性，使用得当的话已使网站的可用性大部分成立。假如你使用 <code class="highlighter-rouge">nav</code>, <code class="highlighter-rouge">aside</code>, <code class="highlighter-rouge">main</code>, <code class="highlighter-rouge">footer</code> 等元素，ARIA 规则会在其上应用一些关联的默认值。
 更多细节可参考 <a href="http://rawgit.com/w3c/aria-in-html/master/index.html#recommendations-table">ARIA specification</a></p>
 
-<p>另外一些角色属性则能够用来呈现更多可用性情景（i.e. <code>role="tab"</code>）。</p>
+<p>另外一些角色属性则能够用来呈现更多可用性情景（i.e. <code class="highlighter-rouge">role="tab"</code>）。</p>
 
 <hr>
 
-<h3>
+<h3 id="tab-index-在可用性上的运用">
 <a class="anchor" href="#tab-index-%E5%9C%A8%E5%8F%AF%E7%94%A8%E6%80%A7%E4%B8%8A%E7%9A%84%E8%BF%90%E7%94%A8" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tab Index 在可用性上的运用</h3>
 
-<p>检查文档中的 tab 切换顺序并传值给元素上的 tabindex，这可以依据元素的重要性来重新排列其 tab 切换顺序。你可以设置 <code>tabindex="-1"</code> 在任何元素上来禁用其 tab 切换。</p>
+<p>检查文档中的 tab 切换顺序并传值给元素上的 tabindex，这可以依据元素的重要性来重新排列其 tab 切换顺序。你可以设置 <code class="highlighter-rouge">tabindex="-1"</code> 在任何元素上来禁用其 tab 切换。</p>
 
-<p>当你在一个默认不可聚焦的元素上增加了功能，你应该总是为其加上 <code>tabindex</code> 属性使其变为可聚焦状态，而且这也会激活其 CSS 的伪类 <code>:focus</code>。选择合适的 <code>tabindex</code> 值，或是直接使用 <code>tabindex="0"</code> 将元素们组织成同一 tab 顺序水平，并强制干预其自然阅读顺序。  </p>
+<p>当你在一个默认不可聚焦的元素上增加了功能，你应该总是为其加上 <code class="highlighter-rouge">tabindex</code> 属性使其变为可聚焦状态，而且这也会激活其 CSS 的伪类 <code class="highlighter-rouge">:focus</code>。选择合适的 <code class="highlighter-rouge">tabindex</code> 值，或是直接使用 <code class="highlighter-rouge">tabindex="0"</code> 将元素们组织成同一 tab 顺序水平，并强制干预其自然阅读顺序。</p>
 
 <hr>
 
-<h3>
+<h3 id="微格式在-seo-和可用性上的运用">
 <a class="anchor" href="#%E5%BE%AE%E6%A0%BC%E5%BC%8F%E5%9C%A8-seo-%E5%92%8C%E5%8F%AF%E7%94%A8%E6%80%A7%E4%B8%8A%E7%9A%84%E8%BF%90%E7%94%A8" aria-hidden="true"><span class="octicon octicon-link"></span></a>微格式在 SEO 和可用性上的运用</h3>
 
 <p>如果 SEO 和可用性环境条件允许的话，建议考虑采用微格式。微格式是通过在元素标签上申明一系列特定数据来达成特定语义的方法。</p>
@@ -492,15 +530,18 @@
 <p>看一个电影网站的简单例子：</p>
 
 <p><strong>不带微格式</strong></p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div&gt;</span>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div&gt;</span>
  <span class="nt">&lt;h1&gt;</span>Avatar<span class="nt">&lt;/h1&gt;</span>
  <span class="nt">&lt;span&gt;</span>Director: James Cameron (born August 16, 1954)<span class="nt">&lt;/span&gt;</span>
  <span class="nt">&lt;span&gt;</span>Science fiction<span class="nt">&lt;/span&gt;</span>
  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"../movies/avatar-theatrical-trailer.html"</span><span class="nt">&gt;</span>Trailer<span class="nt">&lt;/a&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+</code></pre></div></div>
+
 <p><strong>带有微格式</strong></p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">itemscope</span> <span class="na">itemtype =</span><span class="s">"http://schema.org/Movie"</span><span class="nt">&gt;</span>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">itemscope</span> <span class="na">itemtype =</span><span class="s">"http://schema.org/Movie"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;h1</span> <span class="na">itemprop=</span><span class="s">"name"</span><span class="nt">&gt;</span>Avatar<span class="nt">&lt;/h1&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">itemprop=</span><span class="s">"director"</span> <span class="na">itemscope</span> <span class="na">itemtype=</span><span class="s">"http://schema.org/Person"</span><span class="nt">&gt;</span>
   Director: <span class="nt">&lt;span</span> <span class="na">itemprop=</span><span class="s">"name"</span><span class="nt">&gt;</span>James Cameron<span class="nt">&lt;/span&gt;</span> (born <span class="nt">&lt;span</span> <span class="na">itemprop=</span><span class="s">"birthDate"</span><span class="nt">&gt;</span>August 16, 1954)<span class="nt">&lt;/span&gt;</span>
@@ -508,20 +549,23 @@
   <span class="nt">&lt;span</span> <span class="na">itemprop=</span><span class="s">"genre"</span><span class="nt">&gt;</span>Science fiction<span class="nt">&lt;/span&gt;</span>
   <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"../movies/avatar-theatrical-trailer.html"</span> <span class="na">itemprop=</span><span class="s">"trailer"</span><span class="nt">&gt;</span>Trailer<span class="nt">&lt;/a&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+</code></pre></div></div>
+
 <hr>
 
-<h3>
+<h3 id="id-和锚点">
 <a class="anchor" href="#id-%E5%92%8C%E9%94%9A%E7%82%B9" aria-hidden="true"><span class="octicon octicon-link"></span></a>ID 和锚点</h3>
 
 <p>通常一个比较好的做法是将页面内所有的头部标题元素都加上 ID. 这样做，页面 URL 的 hash 中带上对应的 ID 名称，即形成描点，方便跳转至对应元素所处位置。</p>
 
-<p>打个比方，当你在浏览器中输入 URL <code>http://your-site.com/about#best-practices</code>，浏览器将定位至以下 H3 上。</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;h3</span> <span class="na">id=</span><span class="s">"best-practices"</span><span class="nt">&gt;</span>Best practices<span class="nt">&lt;/h3&gt;</span>
-</code></pre></div>
+<p>打个比方，当你在浏览器中输入 URL <code class="highlighter-rouge">http://your-site.com/about#best-practices</code>，浏览器将定位至以下 H3 上。</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;h3</span> <span class="na">id=</span><span class="s">"best-practices"</span><span class="nt">&gt;</span>Best practices<span class="nt">&lt;/h3&gt;</span>
+</code></pre></div></div>
+
 <hr>
 
-<h3>
+<h3 id="格式化规则">
 <a class="anchor" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%A7%84%E5%88%99" aria-hidden="true"><span class="octicon octicon-link"></span></a>格式化规则</h3>
 
 <p>在每一个块状元素，列表元素和表格元素后，加上一新空白行，并对其子孙元素进行缩进。内联元素写在一行内，块状元素还有列表和表格要另起一行。</p>
@@ -529,7 +573,8 @@
 <p>（如果由于换行的空格引发了不可预计的问题，那将所有元素并入一行也是可以接受的，格式警告总好过错误警告）。</p>
 
 <p><strong>推荐</strong></p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;blockquote&gt;</span>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;blockquote&gt;</span>
   <span class="nt">&lt;p&gt;&lt;em&gt;</span>Space<span class="nt">&lt;/em&gt;</span>, the final frontier.<span class="nt">&lt;/p&gt;</span>
 <span class="nt">&lt;/blockquote&gt;</span>
 
@@ -553,39 +598,40 @@
     <span class="nt">&lt;/tr&gt;</span>
   <span class="nt">&lt;/tbody&gt;</span>
 <span class="nt">&lt;/table&gt;</span>
-</code></pre></div>
+</code></pre></div></div>
+
 <hr>
 
-<h3>
+<h3 id="html-引号">
 <a class="anchor" href="#html-%E5%BC%95%E5%8F%B7" aria-hidden="true"><span class="octicon octicon-link"></span></a>HTML 引号</h3>
 
-<p>使用双引号(“”) 而不是单引号(“) 。</p>
+<p>使用双引号(“”) 而不是单引号(‘’) 。</p>
 
 <p><strong>不推荐</strong></p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">'news-article'</span><span class="nt">&gt;&lt;/div&gt;</span>
-</code></pre></div>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">'news-article'</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre></div></div>
+
 <p><strong>推荐</strong></p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"news-article"</span><span class="nt">&gt;&lt;/div&gt;</span>
-</code></pre></div>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"news-article"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre></div></div>
+
 <hr>
 
-<h2>
+<h2 id="系列文章">
 <a class="anchor" href="#%E7%B3%BB%E5%88%97%E6%96%87%E7%AB%A0" aria-hidden="true"><span class="octicon octicon-link"></span></a>系列文章</h2>
 
 <ul>
-<li><a href="//roshanca.com/2014/web-develop-styleguide-general">前端编码风格规范之一般规范</a></li>
-<li><a href="//roshanca.com/2014/web-develop-styleguide-javascript">前端编码风格规范之 JavaScript</a></li>
+  <li><a href="//roshanca.com/2014/web-develop-styleguide-general">前端编码风格规范之一般规范</a></li>
+  <li><a href="//roshanca.com/2014/web-develop-styleguide-javascript">前端编码风格规范之 JavaScript</a></li>
 </ul>
-
 <div class="footnotes">
-<hr>
-<ol>
-
-<li id="fn1">
-<p>此处的空白元素指的是以下元素：<code>area</code>, <code>base</code>, <code>br</code>, <code>col</code>, <code>command</code>, <code>embed</code>, <code>hr</code>, <code>img</code>, <code>input</code>, <code>keygen</code>, <code>link</code>, <code>meta</code>, <code>param</code>, <code>source</code>, <code>track</code>, <code>wbr</code> <a href="#fnref1" rev="footnote">↩</a></p>
-</li>
-
-</ol>
+  <ol>
+    <li id="fn:1">
+      <p>此处的空白元素指的是以下元素：<code class="highlighter-rouge">area</code>, <code class="highlighter-rouge">base</code>, <code class="highlighter-rouge">br</code>, <code class="highlighter-rouge">col</code>, <code class="highlighter-rouge">command</code>, <code class="highlighter-rouge">embed</code>, <code class="highlighter-rouge">hr</code>, <code class="highlighter-rouge">img</code>, <code class="highlighter-rouge">input</code>, <code class="highlighter-rouge">keygen</code>, <code class="highlighter-rouge">link</code>, <code class="highlighter-rouge">meta</code>, <code class="highlighter-rouge">param</code>, <code class="highlighter-rouge">source</code>, <code class="highlighter-rouge">track</code>, <code class="highlighter-rouge">wbr</code> <a href="#fnref:1" class="reversefootnote">↩</a></p>
+    </li>
+  </ol>
 </div>
 
     </section>
@@ -658,8 +704,8 @@ window.onscroll = function () {
 	<p>© Copyright 2012 - <script>document.write(new Date().getFullYear())</script> by Roshan Wu.</p>
 </footer>
 
-<script src="/js/anchor.min.js"></script>
-<script src="/js/post.js"></script>
+<script src="/assets/scripts/anchor.min.js"></script>
+<script src="/assets/scripts/post.js"></script>
 
 
 </body>

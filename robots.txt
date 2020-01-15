@@ -1,4 +1,2 @@
 User-agent: *
 Disallow: /assets/
-
-Sitemap: https://roshanca.com/sitemap.xml

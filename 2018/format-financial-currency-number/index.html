@@ -5,11 +5,11 @@
 	<link href="https://gmpg.org/xfn/11" rel="profile">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<title>对数字的金融货币格式化 - 肉山·察</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
   
 	<link rel="canonical" href="https://roshanca.com/2018/format-financial-currency-number/">
-	<link rel="alternate" type="application/rss+xml" title="Subscribe Feed" href="/feed.xml">
-	<link href="/css/app.css" rel="stylesheet" media="all">
+	<link rel="alternate" type="application/atom+xml" title="Subscribe Feed" href="/feed.xml">
+	<link href="/assets/styles/main.css" rel="stylesheet" media="all">
 	<link href="//cdn.bootcss.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 	<!-- <link href="//fonts.lug.ustc.edu.cn/css?family=Lustria|Inconsolata" rel="stylesheet"> -->
   <!-- <link href='//fonts.useso.com/css?family=PT+Serif:400,700' rel='stylesheet' type='text/css'> -->
@@ -50,10 +50,6 @@
 	<a href="//weibo.com/jinfeixibi" class="social-link">
 		<i class="fa fa-weibo"></i>
 	</a>
-
-	<a href="//www.flickr.com/photos/roshanca/" class="social-link">
-		<i class="fa fa-flickr"></i>
-	</a>
 </div>
   </div>
   <a href="//lab.roshanca.com/resume/" class="author"></a>
@@ -80,68 +76,62 @@
       <p>浸淫金融行业多年，这样的需求做了太多。解释下金融货币格式化，主要包含两点：</p>
 
 <ol>
-<li>保留小数两位（单位元，意思就是要精确到分）</li>
-<li>千位分隔符（显得严肃且专业）</li>
+  <li>保留小数两位（单位元，意思就是要精确到分）</li>
+  <li>千位分隔符（显得严肃且专业）</li>
 </ol>
 
 <p>另外还可能附带一些小要求：比如显示货币符号“￥”、“$” 等等。</p>
 
 <p>来点图示：</p>
 
-<ul>
-<li>情况一：</li>
-</ul>
-
 <p><img src="https://s10.mogucdn.com/mlcdn/c45406/180504_5363k12cijga0aaggl5hk19690gl5_137x33.png" alt=""></p>
-
-<ul>
-<li>情况二：</li>
-</ul>
 
 <p><img src="https://s10.mogucdn.com/mlcdn/c45406/180504_2lekfjgfbi1i210kl57l31klc7lei_405x265.png" alt=""></p>
 
-<ul>
-<li>情况三：</li>
-</ul>
-
 <p><img src="https://s10.mogucdn.com/mlcdn/c45406/180504_28k0l1d4e9be6bdh75hah6ek2eafb_190x64.png" alt=""></p>
 
-<p>看了网上的各种 js 解决方案简直吓尿，都是写了个比较复杂的 function 来解决。如若无需兼容一些远古浏览器，js 自带的 <code>Array.prototype.toLocaleString()</code> 就可以解决问题。</p>
+<p>看了网上的各种 js 解决方案简直吓尿，都是写了个比较复杂的 function 来解决。如若无需兼容一些远古浏览器，js 自带的 <code class="highlighter-rouge">Array.prototype.toLocaleString()</code> 就可以解决问题。</p>
 
-<h2>
+<h2 id="tofixed">
 <a class="anchor" href="#tofixed" aria-hidden="true"><span class="octicon octicon-link"></span></a>toFixed</h2>
 
-<p>我们看看情况一：</p>
+<p>我们看看场景一：</p>
 
-<p>比如后端返回金额为分，我们赋给一个变量 <code>amount</code>，那保留两位小数，大部分人的解决方案是 <code>(amount / 100).toFixed(2)</code>。</p>
+<p>比如后端返回金额为分，我们赋给一个变量 <code class="highlighter-rouge">amount</code>，那保留两位小数，大部分人的解决方案是 <code class="highlighter-rouge">(amount / 100).toFixed(2)</code>。</p>
 
-<p>可是要注意 <code>toFixed</code> 使用的是银行家舍入规则：</p>
+<p>可是要注意 <code class="highlighter-rouge">toFixed</code> 使用的是银行家舍入规则：</p>
 
 <blockquote>
-<p>所谓银行家舍入法，其实质是一种四舍六入五取偶（又称四舍六入五留双）法。简单来说就是：四舍六入五考虑，五后非零就进一，五后为零看奇偶，五前为偶应舍去，五前为奇要进一。</p>
+  <p>所谓银行家舍入法，其实质是一种四舍六入五取偶（又称四舍六入五留双）法。简单来说就是：四舍六入五考虑，五后非零就进一，五后为零看奇偶，五前为偶应舍去，五前为奇要进一。</p>
 </blockquote>
 
-<p>大部分情况下，用用是够了，特别是数据约定的最小单位就是“分”的情况下。如需更加精确，就要考虑到 js 浮点数计算精度缺失的问题。具体的可以参考：<a href="http://www.chengfeilong.com/toFixed">toFixed 计算错误(依赖银行家舍入法的缺陷)解决方法</a></p>
+<p>大部分情况下，用用是够了，特别是数据约定的最小单位就是“分”的情况下。如需更加精确，就要考虑到 js 浮点数计算精度缺失的问题。具体的可以参考：</p>
 
-<h2>
+<blockquote>
+  <p><a href="http://www.chengfeilong.com/toFixed">toFixed 计算错误(依赖银行家舍入法的缺陷)解决方法</a></p>
+</blockquote>
+
+<h2 id="tolocalestring">
 <a class="anchor" href="#tolocalestring" aria-hidden="true"><span class="octicon octicon-link"></span></a>toLocaleString</h2>
 
-<p>情况二是既要保留两位小数，又要加千位分隔符，<code>toFixed</code> 就不堪用了。那就轮到上面提到的 <code>toLocaleString</code> 登场了，详细的用法见：<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString">MDN web docs</a>。</p>
+<p>更复杂一点的场景是既要保留两位小数，又要加千位分隔符，<code class="highlighter-rouge">toFixed</code> 就不堪用了。那就轮到上面提到的 <code class="highlighter-rouge">toLocaleString</code> 登场了，详细的用法见：<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString">MDN web docs</a>。</p>
 
-<p><script src="https://gist.github.com/97c180d8b5fb5867bb5c8f5bf4808d3c.js?file=currency.js"></script></p><div><noscript><pre><code></code></pre></noscript></div>
+<script src="https://gist.github.com/97c180d8b5fb5867bb5c8f5bf4808d3c.js?file=currency.js"></script>
+<div><noscript><pre><code></code></pre></noscript></div>
 
-<p>情况三看来也一并解决了。</p>
-
-<h2>
+<h2 id="兼容性">
 <a class="anchor" href="#%E5%85%BC%E5%AE%B9%E6%80%A7" aria-hidden="true"><span class="octicon octicon-link"></span></a>兼容性</h2>
 
-<p><code>toFixed</code> 基本上没什么兼容性的问题，<code>toLocaleString</code> 的兼容情况如下：</p>
+<p><code class="highlighter-rouge">toFixed</code> 基本上没什么兼容性的问题，<code class="highlighter-rouge">toLocaleString</code> 的兼容情况如下：</p>
 
-<ul>
-<li>IE &gt;= 11</li>
-<li>Android &gt;= 4.4</li>
-<li>iOS &gt;= 10</li>
-</ul>
+<!-- _includes/image.html -->
+<figure class="graphic">
+  
+    <img src="https://s10.mogucdn.com/mlcdn/c45406/200115_0allh45hchf7gb13d4g78h69i1ib8_2082x1162.png" alt="">
+     
+  <figcaption>toLocaleString 的兼容性</figcaption>
+  
+</figure>
 
 <p>可以看到，移动端主流设备已基本覆盖。</p>
 
@@ -215,8 +205,8 @@ window.onscroll = function () {
 	<p>© Copyright 2012 - <script>document.write(new Date().getFullYear())</script> by Roshan Wu.</p>
 </footer>
 
-<script src="/js/anchor.min.js"></script>
-<script src="/js/post.js"></script>
+<script src="/assets/scripts/anchor.min.js"></script>
+<script src="/assets/scripts/post.js"></script>
 
 
 </body>

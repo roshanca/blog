@@ -5,11 +5,11 @@
 	<link href="https://gmpg.org/xfn/11" rel="profile">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<title>Diy Select - 肉山·察</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
   
 	<link rel="canonical" href="https://roshanca.com/2012/diy-select/">
-	<link rel="alternate" type="application/rss+xml" title="Subscribe Feed" href="/feed.xml">
-	<link href="/css/app.css" rel="stylesheet" media="all">
+	<link rel="alternate" type="application/atom+xml" title="Subscribe Feed" href="/feed.xml">
+	<link href="/assets/styles/main.css" rel="stylesheet" media="all">
 	<link href="//cdn.bootcss.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 	<!-- <link href="//fonts.lug.ustc.edu.cn/css?family=Lustria|Inconsolata" rel="stylesheet"> -->
   <!-- <link href='//fonts.useso.com/css?family=PT+Serif:400,700' rel='stylesheet' type='text/css'> -->
@@ -50,10 +50,6 @@
 	<a href="//weibo.com/jinfeixibi" class="social-link">
 		<i class="fa fa-weibo"></i>
 	</a>
-
-	<a href="//www.flickr.com/photos/roshanca/" class="social-link">
-		<i class="fa fa-flickr"></i>
-	</a>
 </div>
   </div>
   <a href="//lab.roshanca.com/resume/" class="author"></a>
@@ -81,28 +77,28 @@
             transform="translate(-0.5, -0.5)" />
         </svg>
       </nav>
-      <p><code>&lt;select/&gt;</code> 在不同的系统不同的显示器下表现各异，无法统一。但可以用其它的 <code>HTMLElement</code> 来模拟，其好处是你可以对其使用自定义样式，而且在各个环境下保持一致；缺点也显而易见，毕竟是人工模拟，很难做到完美，比如浏览器窗口不是最大化时，由于 <code>&lt;select/&gt;</code> 属于窗体控件可溢出浏览器边界悬浮于视窗之上，而普通的 <code>HTMLElement</code> 无法做到这点。</p>
+      <p><code class="highlighter-rouge">&lt;select/&gt;</code> 在不同的系统不同的显示器下表现各异，无法统一。但可以用其它的 <code class="highlighter-rouge">HTMLElement</code> 来模拟，其好处是你可以对其使用自定义样式，而且在各个环境下保持一致；缺点也显而易见，毕竟是人工模拟，很难做到完美，比如浏览器窗口不是最大化时，由于 <code class="highlighter-rouge">&lt;select/&gt;</code> 属于窗体控件可溢出浏览器边界悬浮于视窗之上，而普通的 <code class="highlighter-rouge">HTMLElement</code> 无法做到这点。</p>
 
-<h2>
+<h2 id="js-代码如下">
 <a class="anchor" href="#js-%E4%BB%A3%E7%A0%81%E5%A6%82%E4%B8%8B" aria-hidden="true"><span class="octicon octicon-link"></span></a><del>JS 代码如下：</del>
 </h2>
 
-<h2>
+<h2 id="css-代码如下">
 <a class="anchor" href="#css-%E4%BB%A3%E7%A0%81%E5%A6%82%E4%B8%8B" aria-hidden="true"><span class="octicon octicon-link"></span></a><del>CSS 代码如下：</del>
 </h2>
 
-<h2>
+<h2 id="箭头图标">
 <a class="anchor" href="#%E7%AE%AD%E5%A4%B4%E5%9B%BE%E6%A0%87" aria-hidden="true"><span class="octicon octicon-link"></span></a><del>箭头图标：</del>
 </h2>
 
-<h3>
+<h3 id="updated">
 <a class="anchor" href="#updated" aria-hidden="true"><span class="octicon octicon-link"></span></a>updated：</h3>
 
 <p>项目已迁至 <a href="https://github.com/RoshanWu/diySelect">GitHub</a></p>
 
 <p>查看 Demo:</p>
 
-<iframe style="width: 100%; height: 1000px" frameborder="0" seamless="seamless" src="http://jsfiddle.net/wyBF5/embedded/result/light/"></iframe>
+<iframe style="width: 100%; height: 1000px" frameborder="0" seamless="seamless" src="//jsfiddle.net/wyBF5/embedded/result/light/"></iframe>
 
     </section>
     <footer class="post-footer">
@@ -176,8 +172,8 @@ window.onscroll = function () {
 	<p>© Copyright 2012 - <script>document.write(new Date().getFullYear())</script> by Roshan Wu.</p>
 </footer>
 
-<script src="/js/anchor.min.js"></script>
-<script src="/js/post.js"></script>
+<script src="/assets/scripts/anchor.min.js"></script>
+<script src="/assets/scripts/post.js"></script>
 
 
 </body>

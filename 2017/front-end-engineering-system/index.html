@@ -5,11 +5,11 @@
 	<link href="https://gmpg.org/xfn/11" rel="profile">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<title>前端工程化体系 - 肉山·察</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
   
 	<link rel="canonical" href="https://roshanca.com/2017/front-end-engineering-system/">
-	<link rel="alternate" type="application/rss+xml" title="Subscribe Feed" href="/feed.xml">
-	<link href="/css/app.css" rel="stylesheet" media="all">
+	<link rel="alternate" type="application/atom+xml" title="Subscribe Feed" href="/feed.xml">
+	<link href="/assets/styles/main.css" rel="stylesheet" media="all">
 	<link href="//cdn.bootcss.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 	<!-- <link href="//fonts.lug.ustc.edu.cn/css?family=Lustria|Inconsolata" rel="stylesheet"> -->
   <!-- <link href='//fonts.useso.com/css?family=PT+Serif:400,700' rel='stylesheet' type='text/css'> -->
@@ -49,10 +49,6 @@
 
 	<a href="//weibo.com/jinfeixibi" class="social-link">
 		<i class="fa fa-weibo"></i>
-	</a>
-
-	<a href="//www.flickr.com/photos/roshanca/" class="social-link">
-		<i class="fa fa-flickr"></i>
 	</a>
 </div>
   </div>
@@ -104,181 +100,220 @@
 <p>本人从业这几年有积累了一些产品和项目经验，对前端工程体系的设计有一些自己的见解：</p>
 
 <ul>
-<li>前端开发应该是“自成体系”的，包括运维布署、日志监控等</li>
-<li>针对不同的场景有不同的解决方案，并不是一套大而全的框架体系。比如针对以产品宣传展示为主的网页(Site)，采用多页模式和响应式设计开发；以用户交互为主的且无强烈 SEO 要求的应用(Application)，采用单页模式开发</li>
-<li>产品组件化，为提高复用性尽量将组件的颗粒度分细一些，且低耦合高内聚</li>
-<li>避免重复造轮子，引入一些优秀的开源资源，取长补短</li>
+  <li>前端开发应该是“自成体系”的，包括运维布署、日志监控等</li>
+  <li>针对不同的场景有不同的解决方案，并不是一套大而全的框架体系。比如针对以产品宣传展示为主的网页(Site)，采用多页模式和响应式设计开发；以用户交互为主的且无强烈 SEO 要求的应用(Application)，采用单页模式开发</li>
+  <li>产品组件化，为提高复用性尽量将组件的颗粒度分细一些，且低耦合高内聚</li>
+  <li>避免重复造轮子，引入一些优秀的开源资源，取长补短</li>
 </ul>
 
 <p>根据以上思考，大致将自己理解的前端工程体系分为三大块：</p>
 
 <ul>
-<li>Node 服务层：主要做数据的代理和 Mock，url 的路由分发，还有模板渲染</li>
-<li>Web 应用开发层：主要专注 Web 交互体验</li>
-<li>前端运维层：构建布署、日志监控等</li>
+  <li>Node 服务层：主要做数据的代理和 Mock，url 的路由分发，还有模板渲染</li>
+  <li>Web 应用开发层：主要专注 Web 交互体验</li>
+  <li>前端运维层：构建布署、日志监控等</li>
 </ul>
 
-<figure>
-  <a target="_blank" href="https://s10.mogucdn.com/mlcdn/c45406/191209_40l28id1i239ji26d686icbbb5jed_1001x537.png">
+<!-- _includes/image.html -->
+<figure class="graphic">
+  
+  <a href="https://s10.mogucdn.com/mlcdn/c45406/191209_40l28id1i239ji26d686icbbb5jed_1001x537.png">
+    
     <img src="https://s10.mogucdn.com/mlcdn/c45406/191209_40l28id1i239ji26d686icbbb5jed_1001x537.png" alt="">
-    <figcaption>点击放大</figcaption>
+    
   </a>
-</figure> 
+   
+  <figcaption>点击查看原图</figcaption>
+  
+</figure>
 
 <hr>
 
-<h2>
+<h2 id="node-服务层">
 <a class="anchor" href="#node-%E6%9C%8D%E5%8A%A1%E5%B1%82" aria-hidden="true"><span class="octicon octicon-link"></span></a>Node 服务层</h2>
 
-<h3>
+<h3 id="数据代理">
 <a class="anchor" href="#%E6%95%B0%E6%8D%AE%E4%BB%A3%E7%90%86" aria-hidden="true"><span class="octicon octicon-link"></span></a>数据代理</h3>
 
 <p>一般在 web 应用中，数据的来源分为两类：</p>
 
 <ul>
-<li>用户交互产生的 ajax 请求（客户端发起）</li>
-<li>服务端模板渲染所需初始数据</li>
+  <li>用户交互产生的 ajax 请求（客户端发起）</li>
+  <li>服务端模板渲染所需初始数据</li>
 </ul>
 
 <p><img src="https://s10.mogucdn.com/mlcdn/c45406/191209_50j4je49cc5hk95kf52c012kc46b6_1259x734.png" alt=""></p>
 
-<p>前者来说，传统的做法是后端直接提供 api 以供客户端调用，但面临微服务化逐渐成为主流的今天，后端系统也趋于拆分为众多后端服务，提供不同的 api，直接调用面临请求认证和跨域等众多问题，Node 做为中转站利用 <code>http-proxy</code> 将 http 请求和响应传输于前后两端，起到桥梁作用。</p>
+<p>前者来说，传统的做法是后端直接提供 api 以供客户端调用，但面临微服务化逐渐成为主流的今天，后端系统也趋于拆分为众多后端服务，提供不同的 api，直接调用面临请求认证和跨域等众多问题，Node 做为中转站利用 <code class="highlighter-rouge">http-proxy</code> 将 http 请求和响应传输于前后两端，起到桥梁作用。</p>
 
 <p>有人说直接请求后端 api 岂不是性能更佳？跨域问题直接用 CORS（Cross-origin resource sharing）不是也能解决？</p>
 
 <p>我们先来看跨域问题：首先 CORS 有兼容性问题（不支持 IE10 及以下），其次还有一些限制或者说是自身局限：</p>
 
 <blockquote>
-<p>需要注意的是，如果要发送Cookie，Access-Control-Allow-Origin就不能设为星号，必须指定明确的、与请求网页一致的域名。同时，Cookie依然遵循同源政策，只有用服务器域名设置的Cookie才会上传，其他域名的Cookie并不会上传，且（跨源）原网页代码中的document.cookie也无法读取服务器域名下的Cookie。</p>
+  <p>需要注意的是，如果要发送Cookie，Access-Control-Allow-Origin就不能设为星号，必须指定明确的、与请求网页一致的域名。同时，Cookie依然遵循同源政策，只有用服务器域名设置的Cookie才会上传，其他域名的Cookie并不会上传，且（跨源）原网页代码中的document.cookie也无法读取服务器域名下的Cookie。</p>
 </blockquote>
 
 <p>针对性能问题，我拿了公司项目的 api 几个接口做了些测试，不是非常精确，但也能看个大概。分别在 No throtting 和 Regular 4G （模拟移动端网络）的模式下，用 proxy（http-proxy 代理请求），direct（直接请求后端地址）和 node（利用 <a href="https://www.npmjs.com/package/request">request</a> 模块发起请求）三种模式，做了 GET 和 POST 请求的延迟比对。在比对之前心里也大概有数，肯定是直接请求后端地址的延迟最低，毕竟加了 Node 一层，性能会由损耗。以下是测试结果：</p>
 
-<p>No throtting GET：
-<img src="https://s10.mogucdn.com/mlcdn/c45406/191209_31020jdgacaida759g78jkl6dif32_1280x733.png" alt=""></p>
+<!-- _includes/image.html -->
+<figure class="graphic">
+  
+    <img src="https://s10.mogucdn.com/mlcdn/c45406/191209_31020jdgacaida759g78jkl6dif32_1280x733.png" alt="">
+     
+  <figcaption>No throtting GET</figcaption>
+  
+</figure>
 
-<p>No throtting POST：
-<img src="https://s10.mogucdn.com/mlcdn/c45406/191209_03gk9h936b8d6keh3l0ljaa878j9i_1280x695.png" alt=""></p>
+<!-- _includes/image.html -->
+<figure class="graphic">
+  
+    <img src="https://s10.mogucdn.com/mlcdn/c45406/191209_03gk9h936b8d6keh3l0ljaa878j9i_1280x695.png" alt="">
+     
+  <figcaption>No throtting POST</figcaption>
+  
+</figure>
 
-<p>Regular 4G GET：
-<img src="https://s10.mogucdn.com/mlcdn/c45406/191209_5c016g94bl21df74l1hd9d49ejfj5_1280x726.png" alt=""></p>
+<!-- _includes/image.html -->
+<figure class="graphic">
+  
+    <img src="https://s10.mogucdn.com/mlcdn/c45406/191209_5c016g94bl21df74l1hd9d49ejfj5_1280x726.png" alt="">
+     
+  <figcaption>Regular 4G GET</figcaption>
+  
+</figure>
 
-<p>Regular 4G POST：
-<img src="https://s10.mogucdn.com/mlcdn/c45406/191209_1dbf8cc9ec26517ihgc15jgc79e1b_1280x727.png" alt=""></p>
+<!-- _includes/image.html -->
+<figure class="graphic">
+  
+    <img src="https://s10.mogucdn.com/mlcdn/c45406/191209_1dbf8cc9ec26517ihgc15jgc79e1b_1280x727.png" alt="">
+     
+  <figcaption>Regular 4G POST</figcaption>
+  
+</figure>
 
 <p>可以看出，GET 请求中 direct 是最快的，proxy 次之，node request 垫底，POST 则相差不明显。但延迟差距基本在 30ms 左右，是否可以接受，就要看自己的系统架构对性能的要求有多高了。对于我司目前的规模体量用户数来说，我认为基本是可以忽略的。</p>
 
 <p>但为什么一定要用 Node 来做 http 请求的代理转发？我的理由：</p>
 
 <ol>
-<li>前期前端开发过程中 mock 可与后期后端接口做平滑过渡，客户端可做到无感知。甚至还能在 mock 数据和真实数据之间来回切换，十分灵活</li>
-<li>当后端服务增多时，特别是内部系统，跨域调用很成问题，Node 代理转发从根本上解决跨域问题，不用担心 Cookie 丢失等问题。而且在 Node 层针对 http 的请求和相应能做进一步拦截和根据业务需求定制这些二次加工，适用于更加广泛的场景</li>
+  <li>前期前端开发过程中 mock 可与后期后端接口做平滑过渡，客户端可做到无感知。甚至还能在 mock 数据和真实数据之间来回切换，十分灵活</li>
+  <li>当后端服务增多时，特别是内部系统，跨域调用很成问题，Node 代理转发从根本上解决跨域问题，不用担心 Cookie 丢失等问题。而且在 Node 层针对 http 的请求和相应能做进一步拦截和根据业务需求定制这些二次加工，适用于更加广泛的场景</li>
 </ol>
 
 <p>我在之前做公司的模拟炒股项目时，大概就是这样用滴：</p>
 
 <table>
-<thead>
-<tr>
-<th>账户系统</th>
-<th>行情系统</th>
-<th>交易系统</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>/api/account</td>
-<td>/api/stock</td>
-<td>/api/trade</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>账户系统</th>
+      <th>行情系统</th>
+      <th>交易系统</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>/api/account</td>
+      <td>/api/stock</td>
+      <td>/api/trade</td>
+    </tr>
+  </tbody>
 </table>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'url'</span><span class="p">);</span>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">url</span><span class="dl">'</span><span class="p">);</span>
 
 <span class="c1">// 账户系统 API</span>
-<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s1">'/api/account'</span><span class="p">,</span> <span class="nx">proxy</span><span class="p">(</span><span class="nx">config</span><span class="p">.</span><span class="nx">api</span><span class="p">.</span><span class="nx">accout</span><span class="p">,</span> <span class="p">{</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/account</span><span class="dl">'</span><span class="p">,</span> <span class="nx">proxy</span><span class="p">(</span><span class="nx">config</span><span class="p">.</span><span class="nx">api</span><span class="p">.</span><span class="nx">accout</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">forwardPath</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">url</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">url</span><span class="p">).</span><span class="nx">path</span><span class="p">;</span>
   <span class="p">}</span>
 <span class="p">}));</span>
 
 <span class="c1">// 股票行情 API</span>
-<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s1">'/api/stock'</span><span class="p">,</span> <span class="nx">proxy</span><span class="p">(</span><span class="nx">config</span><span class="p">.</span><span class="nx">api</span><span class="p">.</span><span class="nx">stock</span><span class="p">,</span> <span class="p">{</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/stock</span><span class="dl">'</span><span class="p">,</span> <span class="nx">proxy</span><span class="p">(</span><span class="nx">config</span><span class="p">.</span><span class="nx">api</span><span class="p">.</span><span class="nx">stock</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">forwardPath</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">url</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">url</span><span class="p">).</span><span class="nx">path</span><span class="p">;</span>
   <span class="p">}</span>
 <span class="p">}));</span>
 
 <span class="c1">// 股票交易 API　</span>
-<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s1">'/api/trade'</span><span class="p">,</span> <span class="nx">proxy</span><span class="p">(</span><span class="nx">config</span><span class="p">.</span><span class="nx">api</span><span class="p">.</span><span class="nx">trade</span><span class="p">,</span> <span class="p">{</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/trade</span><span class="dl">'</span><span class="p">,</span> <span class="nx">proxy</span><span class="p">(</span><span class="nx">config</span><span class="p">.</span><span class="nx">api</span><span class="p">.</span><span class="nx">trade</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">forwardPath</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">url</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">url</span><span class="p">).</span><span class="nx">path</span><span class="p">;</span>
   <span class="p">}</span>
 <span class="p">}));</span>
-</code></pre></div>
+</code></pre></div></div>
+
 <p>至于服务端渲染，之前一直是用 JSP or PHP 等后端模板来做。现在又多了一种选择，Node 本身就是个服务端，而且模板本身是属于视觉层和数据层的结合品。在前后端分离的比较合理的条件下，让前端工程师来写服务端模板更加适合，因为此时 Node 服务层应该不包含复杂的数据运算（CPU 密集型非 Node 擅长场景），这里的数据来源都是比较直接和清晰的，顶多要对这些数据做些业务加工处理而已。但对前端人员来说，了解业务逻辑是必备的，也是必需的，我们倡导的。</p>
 
 <p>还有一点是因为下文中将要介绍的 Web 应用开发中，开发构建的工具本身就是基于 Node 的，构建后的静态资源如何在模板页面中引入，还是前端工程师最为清楚。所以虽模板属于服务端范畴，但与前端是结合的更加紧密的。</p>
 
-<h3>
+<h3 id="数据-mock">
 <a class="anchor" href="#%E6%95%B0%E6%8D%AE-mock" aria-hidden="true"><span class="octicon octicon-link"></span></a>数据 Mock</h3>
 
 <p>一般来说，项目开发前期，后端接口实现的任务未完成时，前端写好了页面只能等待。此时，如果后端有空可以造一些假数据，让前端可以继续开发调试。但我们鼓励前端工程师自己 mock 数据，为什么呢？</p>
 
 <ul>
-<li>更好的了解业务</li>
-<li>做为数据接口的第一级消费者，前端应该更清楚怎样的数据结构，适合页面展示。比如某个字段，用数组好，还是用字符串拼接好等等</li>
-<li>mock 效率更高，实现简单：json-server，mockjs</li>
+  <li>更好的了解业务</li>
+  <li>做为数据接口的第一级消费者，前端应该更清楚怎样的数据结构，适合页面展示。比如某个字段，用数组好，还是用字符串拼接好等等</li>
+  <li>mock 效率更高，实现简单：json-server，mockjs</li>
 </ul>
 
 <p>但目前这两种简单的 mock 工具都不是太适合当前公司的项目场景，因为我们公司大部分接口都不是 restful 的，所以用下来遇到两个问题：</p>
 
 <ul>
-<li>json-server 只支持 restful，而且只能生成 json 文件不够灵活</li>
-<li>mockjs 是比较灵活高效，但做不到数据的持久化</li>
+  <li>json-server 只支持 restful，而且只能生成 json 文件不够灵活</li>
+  <li>mockjs 是比较灵活高效，但做不到数据的持久化</li>
 </ul>
 
 <p>比较完美的方案是两者结合再加上支持非 restful 的 mock，这个可能需要以后自己定制了。PS. 最近 github 上看到了一个利用 service workers 搞出来的一个 mock 服务： <a href="https://github.com/service-mocker/service-mocker">service-mocker</a>，不管是否适用，但要为这样的思路点赞。</p>
 
-<h3>
+<h3 id="url-路由">
 <a class="anchor" href="#url-%E8%B7%AF%E7%94%B1" aria-hidden="true"><span class="octicon octicon-link"></span></a>url 路由</h3>
 
 <p>前端来制定路由，也促使前端工程师更全面深入地了解业务。这属于设计范畴，需要经验加持。</p>
 
 <p>因为具体路由下，基本就是业务逻辑 controller 了：</p>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">router</span><span class="p">.</span><span class="nx">route</span><span class="p">(</span><span class="s1">'/:catalogId'</span><span class="p">)</span>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">router</span><span class="p">.</span><span class="nx">route</span><span class="p">(</span><span class="dl">'</span><span class="s1">/:catalogId</span><span class="dl">'</span><span class="p">)</span>
   <span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">catalogController</span><span class="p">.</span><span class="nx">findOne</span><span class="p">)</span>
   <span class="p">.</span><span class="nx">put</span><span class="p">(</span><span class="nx">validate</span><span class="p">(</span><span class="nx">paramSchema</span><span class="p">.</span><span class="nx">updateCatalog</span><span class="p">),</span> <span class="nx">catalogController</span><span class="p">.</span><span class="nx">update</span><span class="p">)</span>
   <span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="nx">catalogController</span><span class="p">.</span><span class="nx">remove</span><span class="p">);</span>
-</code></pre></div>
+</code></pre></div></div>
+
 <p>还有一些简单的路由，就是负责页面渲染而已（特别是单页应用，基本上走客户端路由的路子了）：</p>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="nx">res</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="s1">'index'</span><span class="p">,</span> <span class="p">{</span>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="dl">'</span><span class="s1">index</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
     <span class="na">ip</span><span class="p">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">connection</span><span class="p">.</span><span class="nx">remoteAddress</span>
   <span class="p">});</span>
 <span class="p">});</span>
-</code></pre></div>
-<h3>
+</code></pre></div></div>
+
+<h3 id="服务端模板渲染">
 <a class="anchor" href="#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%A8%A1%E6%9D%BF%E6%B8%B2%E6%9F%93" aria-hidden="true"><span class="octicon octicon-link"></span></a>服务端模板渲染</h3>
 
 <p>对于单页应用来说，服务端模板只是一个壳(shell)而已：</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;head&gt;</span>
     <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">/&gt;</span>
     <span class="nt">&lt;title&gt;</span>Single Page Application<span class="nt">&lt;/title&gt;</span>
-    <span class="nt">&lt;script&gt;</span><span class="nb">window</span><span class="p">.</span><span class="nx">serverData</span><span class="o">=</span><span class="p">{</span><span class="na">foo</span><span class="p">:</span> <span class="s1">'来自服务端数据'</span><span class="p">}</span><span class="nt">&lt;/script&gt;</span>
+    <span class="nt">&lt;script&gt;</span><span class="nb">window</span><span class="p">.</span><span class="nx">serverData</span><span class="o">=</span><span class="p">{</span><span class="na">foo</span><span class="p">:</span> <span class="dl">'</span><span class="s1">来自服务端数据</span><span class="dl">'</span><span class="p">}</span><span class="nt">&lt;/script&gt;</span>
   <span class="nt">&lt;/head&gt;</span>
   <span class="nt">&lt;body&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app"</span><span class="nt">&gt;&lt;/div&gt;</span>
     <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"//cdn/file-5917b08e4c7569d461b1.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
   <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
-</code></pre></div>
-<p>我们看到这里只通过 <code>window.serverData</code> 提供了简单的服务端数据。</p>
+</code></pre></div></div>
+
+<p>我们看到这里只通过 <code class="highlighter-rouge">window.serverData</code> 提供了简单的服务端数据。</p>
 
 <p>对于多页应用来说，我们会引入 layout, include 等模板方案提取公共部分页面以达到最大复用：</p>
-<div class="highlight"><pre><code class="language-" data-lang="">./views
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./views
 ├── layout
 │   ├── default.jade
 │   ├── bootstrap.jade
@@ -291,42 +326,49 @@
 ├── templates
 │   └── ...
 └── index.jade
-</code></pre></div>
-<p>上文已提到过 Node 来做服务端模板渲染的有一个好处就是方便与静态资源衔接，是如何做到的呢？首先 web 应用经过前端构建工具 build 之后会生成静态资源映射表：<code>asset-manifest.json</code>，串联起来大概是这样：</p>
-<div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
-  </span><span class="s2">"main.css"</span><span class="p">:</span><span class="w"> </span><span class="s2">"static/css/main.ad87bbd6.css"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"main.css.map"</span><span class="p">:</span><span class="w"> </span><span class="s2">"static/css/main.ad87bbd6.css.map"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"main.js"</span><span class="p">:</span><span class="w"> </span><span class="s2">"static/js/main.a3907cec.js"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"main.js.map"</span><span class="p">:</span><span class="w"> </span><span class="s2">"static/js/main.a3907cec.js.map"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"static/media/yay.jpg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"static/media/yay.44dd3333.jpg"</span><span class="w">
+</code></pre></div></div>
+
+<p>上文已提到过 Node 来做服务端模板渲染的有一个好处就是方便与静态资源衔接，是如何做到的呢？首先 web 应用经过前端构建工具 build 之后会生成静态资源映射表：<code class="highlighter-rouge">asset-manifest.json</code>，串联起来大概是这样：</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"main.css"</span><span class="p">:</span><span class="w"> </span><span class="s2">"static/css/main.ad87bbd6.css"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"main.css.map"</span><span class="p">:</span><span class="w"> </span><span class="s2">"static/css/main.ad87bbd6.css.map"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"main.js"</span><span class="p">:</span><span class="w"> </span><span class="s2">"static/js/main.a3907cec.js"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"main.js.map"</span><span class="p">:</span><span class="w"> </span><span class="s2">"static/js/main.a3907cec.js.map"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"static/media/yay.jpg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"static/media/yay.44dd3333.jpg"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">const</span> <span class="nx">manifest</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./asset-manifest.json'</span><span class="p">);</span>
+</span></code></pre></div></div>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">manifest</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">./asset-manifest.json</span><span class="dl">'</span><span class="p">);</span>
 
 <span class="nx">app</span><span class="p">.</span><span class="nx">locals</span><span class="p">.</span><span class="nx">assets</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">mainCss</span><span class="p">:</span> <span class="nx">manifest</span><span class="p">[</span><span class="s1">'main.css'</span><span class="p">],</span>
-  <span class="na">mainJs</span><span class="p">:</span> <span class="nx">manifest</span><span class="p">[</span><span class="s1">'main.js'</span><span class="p">],</span>
+  <span class="na">mainCss</span><span class="p">:</span> <span class="nx">manifest</span><span class="p">[</span><span class="dl">'</span><span class="s1">main.css</span><span class="dl">'</span><span class="p">],</span>
+  <span class="na">mainJs</span><span class="p">:</span> <span class="nx">manifest</span><span class="p">[</span><span class="dl">'</span><span class="s1">main.js</span><span class="dl">'</span><span class="p">],</span>
   <span class="p">...</span>
 <span class="p">};</span>
-</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+</code></pre></div></div>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;head&gt;</span>
     <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">/&gt;</span>
     <span class="nt">&lt;title&gt;</span>Single Page Application<span class="nt">&lt;/title&gt;</span>
     <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"&lt;%= assets.mainCss %&gt;"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;script&gt;</span><span class="nb">window</span><span class="p">.</span><span class="nx">serverData</span><span class="o">=</span><span class="p">{</span><span class="na">foo</span><span class="p">:</span> <span class="s1">'来自服务端数据'</span><span class="p">}</span><span class="nt">&lt;/script&gt;</span>
+    <span class="nt">&lt;script&gt;</span><span class="nb">window</span><span class="p">.</span><span class="nx">serverData</span><span class="o">=</span><span class="p">{</span><span class="na">foo</span><span class="p">:</span> <span class="dl">'</span><span class="s1">来自服务端数据</span><span class="dl">'</span><span class="p">}</span><span class="nt">&lt;/script&gt;</span>
   <span class="nt">&lt;/head&gt;</span>
   <span class="nt">&lt;body&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app"</span><span class="nt">&gt;&lt;/div&gt;</span>
     <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"&lt;%= assets.mainJs %&gt;"</span><span class="nt">&gt;&lt;/script&gt;</span>
   <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
-</code></pre></div>
-<h2>
+</code></pre></div></div>
+
+<h2 id="web-应用开发层">
 <a class="anchor" href="#web-%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E5%B1%82" aria-hidden="true"><span class="octicon octicon-link"></span></a>Web 应用开发层</h2>
 
 <p>这一部分应该是前端工程师的专长部分，也是其核心价值的体现之处。</p>
 
-<h3>
+<h3 id="组件化和工程化">
 <a class="anchor" href="#%E7%BB%84%E4%BB%B6%E5%8C%96%E5%92%8C%E5%B7%A5%E7%A8%8B%E5%8C%96" aria-hidden="true"><span class="octicon octicon-link"></span></a>组件化和工程化</h3>
 
 <p>web 应用开发主要包含三个部分：html，css 和 js，三者之中，除了 js 在近几年才拥有了模块化机制以外，html 和 css 都是需要手工维护（难以维护），伴随着复制粘贴，时间一久其产生的代码冗余就像是 windows 上的 C 盘空间一样，不断发胖。</p>
@@ -334,8 +376,9 @@
 <p>所以现代的 web 应用有这样的开发意识：everything in js is the better way. 正是 js 的模块化的可能性，成为了 web 功能模块（包含界面与交互）的组件化实现的基石。可以将 html 和 css 写在 js 之中（JSX），也可以以模板的形式它们三者写一起（Vue）：</p>
 
 <p>JSX 写法：</p>
-<div class="highlight"><pre><code class="language-jsx" data-lang="jsx"><span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">PropTypes</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'react'</span><span class="p">;</span>
-<span class="k">import</span> <span class="nx">styles</span> <span class="k">from</span> <span class="s1">'./Preview.css'</span><span class="p">;</span>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">PropTypes</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">styles</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./Preview.css</span><span class="dl">'</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">Preview</span> <span class="o">=</span> <span class="p">({</span><span class="nx">url</span><span class="p">,</span> <span class="nx">user</span><span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="k">return</span> <span class="p">(</span>
@@ -352,9 +395,11 @@
 <span class="p">};</span>
 
 <span class="k">export</span> <span class="k">default</span> <span class="nx">Preview</span><span class="p">;</span>
-</code></pre></div>
+</code></pre></div></div>
+
 <p>Vue 的单文件形式：</p>
-<div class="highlight"><pre><code class="language-vue" data-lang="vue"><span class="nt">&lt;</span><span class="k">template</span><span class="nt">&gt;</span>
+
+<div class="language-vue highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;</span><span class="k">template</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"./assets/logo.png"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;h1&gt;</span><span class="si">{{</span> <span class="nx">msg</span> <span class="si">}}</span><span class="nt">&lt;/h1&gt;</span>
@@ -363,10 +408,10 @@
 
 <span class="nt">&lt;</span><span class="k">script</span><span class="nt">&gt;</span>
 <span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
-  <span class="na">name</span><span class="p">:</span> <span class="s1">'app'</span><span class="p">,</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">app</span><span class="dl">'</span><span class="p">,</span>
   <span class="nx">data</span> <span class="p">()</span> <span class="p">{</span>
     <span class="k">return</span> <span class="p">{</span>
-      <span class="na">msg</span><span class="p">:</span> <span class="s1">'Welcome to Your Vue.js App'</span>
+      <span class="na">msg</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Welcome to Your Vue.js App</span><span class="dl">'</span>
     <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">}</span>
@@ -385,7 +430,8 @@
   <span class="nl">font-weight</span><span class="p">:</span> <span class="nb">normal</span><span class="p">;</span>
 <span class="p">}</span>
 <span class="nt">&lt;/</span><span class="k">style</span><span class="nt">&gt;</span>
-</code></pre></div>
+</code></pre></div></div>
+
 <p>无论哪种形式，组件都不能直接在浏览器中使用（将来的 Web Components 可以，但可构建的组件绝对是更加有优势）。如果我们将浏览器看作是 web 应用的 runtime 环境，对比于 jvm 是 java 的 runtime，那前端的组件代码都是 java 级别的源码，要类似 java 那样通过编译打包成 war 方可使用。</p>
 
 <p><img src="https://s10.mogucdn.com/mlcdn/c45406/191209_7dkdhib588ke63cc76djac4h0c60h_1280x525.png" alt=""></p>
@@ -394,29 +440,31 @@
 
 <p>如何更好的“串联”，这些都是工程问题，也是做为现代前端工程师的必备素质。</p>
 
-<h3>
+<h3 id="mdv">
 <a class="anchor" href="#mdv" aria-hidden="true"><span class="octicon octicon-link"></span></a>MDV</h3>
 
 <p>MDV = <strong>模型驱动视图</strong>。从 2010 Google 推出 Angular 开始，到 2013 年 Facebook 推出 React，再到最近国人自创的小而美的 Vue，都一路贯穿着 web 开发新的思路：从<strong>手动操作 DOM</strong> 到<strong>数据绑定 + Virtual DOM</strong> 的转变。这也是 everything in js 极致体现：把 DOM 操作都干掉了，直接用基于 js plain object 的虚拟 DOM：</p>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'a'</span><span class="p">,</span> <span class="p">{</span>
-  <span class="na">className</span><span class="p">:</span> <span class="s1">'link'</span><span class="p">,</span>
-  <span class="na">href</span><span class="p">:</span> <span class="s1">'https://github.com/facebook/react'</span>
-<span class="p">},</span> <span class="s1">'React'</span><span class="p">);</span>
-</code></pre></div>
-<p>React 首创的虚拟 DOM 有两大杀手锏大大提升了原生 DOM 操作效率低下的问题（特别是在移动端）：batching 和 diff。batching 把所有的 DOM 操作搜集起来，一次性提交给真实的 DOM；diff 算法时间复杂度也从标准的 diff 算法的 O(n<sup>3</sup> ) 降到了 O(n)<sup id="fnref1"><a href="#fn1" rel="footnote">1</a></sup>。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">a</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">className</span><span class="p">:</span> <span class="dl">'</span><span class="s1">link</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">href</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://github.com/facebook/react</span><span class="dl">'</span>
+<span class="p">},</span> <span class="dl">'</span><span class="s1">React</span><span class="dl">'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>React 首创的虚拟 DOM 有两大杀手锏大大提升了原生 DOM 操作效率低下的问题（特别是在移动端）：batching 和 diff。batching 把所有的 DOM 操作搜集起来，一次性提交给真实的 DOM；diff 算法时间复杂度也从标准的 diff 算法的 O(n^3 ) 降到了 O(n)<sup id="fnref:2"><a href="#fn:2" class="footnote">1</a></sup>。</p>
 
 <p>除了性能提升之外，由于思路的转变，在开发效率上也有很大提升：MDV 模式下很自然的就将 web 页面看做是一台状态机（State Machine），UI = f(state)， 界面上的变化皆由状态变化所导致，状态的变化来源一定为 M，即数据模型。我们将手动操作 DOM 的工作交给 MVVM 框架的数据绑定来做，界面的改变由数据的变化而自动完成，不仅十分高效，而且我们对于数据的流向更加清晰可控。在引入严格的函数式编程与不可变数据（immutable.js）后，还能使得结果可预测，方便做单元测试。</p>
 
 <p>当然，除了许多新的概念需要学习之外，组件间如何通信，异步数据如何管理等一系列问题也是随之而来的一些挑战。</p>
 
-<h3>
+<h3 id="轮子">
 <a class="anchor" href="#%E8%BD%AE%E5%AD%90" aria-hidden="true"><span class="octicon octicon-link"></span></a>轮子</h3>
 
 <p>这里的轮子就是指组件。必须要根据公司的业务特点打造前端组件库，这里的指的组件，可以是无关业务的界面组件，也可能是功能模块，或者两者皆有。其目的就是为了方便复用，便于管理。涉及公司业务的我们定义为 private components，不涉及业务的我们如果做的优秀也可以开源，开源有什么好处？大家都懂的。</p>
 
 <p>另外我们也拥抱业界优秀的开源方案，比如蚂蚁金服的 ant-design，谷歌的 Material-UI 等，在巨人的肩膀上，我们可以更高效更快速地开发我们的项目，迭代我们的产品。</p>
 
-<h3>
+<h3 id="多终端和跨平台">
 <a class="anchor" href="#%E5%A4%9A%E7%BB%88%E7%AB%AF%E5%92%8C%E8%B7%A8%E5%B9%B3%E5%8F%B0" aria-hidden="true"><span class="octicon octicon-link"></span></a>多终端和跨平台</h3>
 
 <p>在这里要稍微强调一下我们的主战场也就是浏览器（可以看作是我们前端代码的运行环境）。可以想像的到，js 这个在短短 10 天之内创造出来的解释性语言之所以能够如此流行而且经久不衰，完全是托了浏览器这个全球数量最庞大分部最广的天然 js 解析器的福。它遍布世界上的每一个角落，你不得不用。所以了解语言宿主，当然也是至关重要的。</p>
@@ -424,8 +472,8 @@
 <p>根据浏览器内核来分，前端应该关注的浏览器环境应该包括：</p>
 
 <ul>
-<li>移动端：微信 X5 内核，iOS Webkit，Android Webkit</li>
-<li>PC 端：Trident（IE），Gecko（FireFox），Webkit（Safari），Bink（Chrome），Presto（Opera，已放弃）</li>
+  <li>移动端：微信 X5 内核，iOS Webkit，Android Webkit</li>
+  <li>PC 端：Trident（IE），Gecko（FireFox），Webkit（Safari），Bink（Chrome），Presto（Opera，已放弃）</li>
 </ul>
 
 <p>可以看出来，最主要的战场，是 Webkit（移动端上的 Webkit 主要看系统 SDK）。在国内来说，由于微信的关系，我们还需要比较关注的是 X5（特别是近期的微信小程序推出）。</p>
@@ -433,9 +481,9 @@
 <p>根据平台来分：</p>
 
 <ul>
-<li>移动端：Cordova，React Native，Weex</li>
-<li>桌面端：node-webkit（NW.js）, Electron</li>
-<li>穿戴设备：WebVR</li>
+  <li>移动端：Cordova，React Native，Weex</li>
+  <li>桌面端：node-webkit（NW.js）, Electron</li>
+  <li>穿戴设备：WebVR</li>
 </ul>
 
 <p>关于终端适配和跨平台的挑战，前者在于一些兼容性的问题，这个根据之前的工程化的方案，将 html, css, js 视作“编译”资源，在通过“编译工具”构建后，让工具自动地根据不同内核生成相应的适配代码，降低开发成本。后者对前端工程师的要求较高，需要复合性的知识和能力，但带来的收益巨大。值得一提的是 React 的目标宗旨就是：write  once，run everywhere，它也正朝着这个方向在不断前进。</p>
@@ -444,17 +492,17 @@
 
 <p><img src="https://s10.mogucdn.com/mlcdn/c45406/191209_4l52ah044bfj23b251494f3l781kk_715x225.png" alt=""></p>
 
-<h2>
+<h2 id="前端运维层">
 <a class="anchor" href="#%E5%89%8D%E7%AB%AF%E8%BF%90%E7%BB%B4%E5%B1%82" aria-hidden="true"><span class="octicon octicon-link"></span></a>前端运维层</h2>
 
-<h3>
+<h3 id="测试">
 <a class="anchor" href="#%E6%B5%8B%E8%AF%95" aria-hidden="true"><span class="octicon octicon-link"></span></a>测试</h3>
 
 <p>在代码 build 之前有两部操作要做：</p>
 
 <ul>
-<li>代码层面的 Lint</li>
-<li>功能层面的 Unit Test</li>
+  <li>代码层面的 Lint</li>
+  <li>功能层面的 Unit Test</li>
 </ul>
 
 <p>Lint 是根据代码规范的规则来制定的，不同的场景有不同的规则。比如是 node 环境还是浏览器环境，采用的模块化机制是 commonjs 还是 amd 等，都要分别配置。这里主要是为了保障代码没有明显的错误和拥有一致的风格。</p>
@@ -463,14 +511,14 @@
 
 <p>Unit Test 在以往只重界面不重交互（页面状态管理）的传统 web 项目下并不常见，但在一些稍微有点复杂程度的前端项目中，单元测试就显得比较重要了。我之前的公司对项目开发的速度要求比较高，所以这一块比较少做。不过目前一些主流的前端框架都附带测试库与简单例子，比如 <a href="https://github.com/facebookincubator/create-react-app">create-react-app</a> 就自带了 <a href="https://github.com/facebook/jest">jest</a>。</p>
 
-<h3>
+<h3 id="cicd">
 <a class="anchor" href="#cicd" aria-hidden="true"><span class="octicon octicon-link"></span></a>CI/CD</h3>
 
 <p>前端的布署主要分静态和动态两部分：</p>
 
 <ul>
-<li>静态主要是指一些静态资源，布署也比较简单，就是往 CDN 服务器上放即可</li>
-<li>动态就是 Node 服务层的东西，关于 Node App 的布署，可参考我之前写的<a href="/2016/node-app-deploy-simple-guide">这篇文章</a>
+  <li>静态主要是指一些静态资源，布署也比较简单，就是往 CDN 服务器上放即可</li>
+  <li>动态就是 Node 服务层的东西，关于 Node App 的布署，可参考我之前写的<a href="/2016/node-app-deploy-simple-guide">这篇文章</a>
 </li>
 </ul>
 
@@ -478,7 +526,7 @@
 
 <p>其它比较常见的如 Jenkins, Travis CI 等。</p>
 
-<h3>
+<h3 id="扩展与稳定性">
 <a class="anchor" href="#%E6%89%A9%E5%B1%95%E4%B8%8E%E7%A8%B3%E5%AE%9A%E6%80%A7" aria-hidden="true"><span class="octicon octicon-link"></span></a>扩展与稳定性</h3>
 
 <p>遇到程序 crash 怎么办？现在 Node 上已经有非常多的进程重启模块，比如 pm2，forever 等。</p>
@@ -493,25 +541,21 @@
 
 <p><img src="https://s10.mogucdn.com/mlcdn/c45406/191209_8g908a83kb22ak55j85il60db6g2f_1280x578.png" alt=""></p>
 
-<h3>
+<h3 id="性能日志监控">
 <a class="anchor" href="#%E6%80%A7%E8%83%BD%E6%97%A5%E5%BF%97%E7%9B%91%E6%8E%A7" aria-hidden="true"><span class="octicon octicon-link"></span></a>性能日志监控</h3>
 
 <p>监控可大可小，往小了说，可以是一个工具，往大了讲，也可以是一套系统，不仅仅可以有可视化的图表，还支持一系列的报警规则。如果公司的人力有限，估计投入产出比不高的，初期可以考虑一些优秀的在线服务，比如：keymetrics.io, Sentry.io 等，这些服务功能强大基本涵盖所有需求，而且易于集成。当然，好用的基本上都是需要付费的。</p>
 
-<h2>
+<h2 id="写在最后">
 <a class="anchor" href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E" aria-hidden="true"><span class="octicon octicon-link"></span></a>写在最后</h2>
 
 <p>文中没有提到的 Private NPM 和 Private Docker Registry 我用虚线框起来，是就目前来看很难做到，因为我们的代码库是内网的，而且公司目前是阿里云的重度使用者，Docker 要如要投入使用，要是没有自身的 IAAS 基础设施做支持估计也是玩不转。当然，这些都是没几个小公司能玩转的，有机会就尝试，但做为技术人，首要任务还是方案落地和解决实际的业务问题。</p>
-
 <div class="footnotes">
-<hr>
-<ol>
-
-<li id="fn1">
-<p>React 只会逐层对比两颗随机树，这大大降低了 diff 算法的复杂度。并且在 web 组件中很少会将节点移动到不同的层级，经常只会在同一层级中移动。 <a href="#fnref1" rev="footnote">↩</a></p>
-</li>
-
-</ol>
+  <ol>
+    <li id="fn:2">
+      <p>React 只会逐层对比两颗随机树，这大大降低了 diff 算法的复杂度。并且在 web 组件中很少会将节点移动到不同的层级，经常只会在同一层级中移动。 <a href="#fnref:2" class="reversefootnote">↩</a></p>
+    </li>
+  </ol>
 </div>
 
     </section>
@@ -588,8 +632,8 @@ window.onscroll = function () {
 	<p>© Copyright 2012 - <script>document.write(new Date().getFullYear())</script> by Roshan Wu.</p>
 </footer>
 
-<script src="/js/anchor.min.js"></script>
-<script src="/js/post.js"></script>
+<script src="/assets/scripts/anchor.min.js"></script>
+<script src="/assets/scripts/post.js"></script>
 
 
 </body>

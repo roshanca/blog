@@ -5,11 +5,11 @@
 	<link href="https://gmpg.org/xfn/11" rel="profile">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<title>Node APP 布署简易教程 - 肉山·察</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
   
 	<link rel="canonical" href="https://roshanca.com/2016/node-app-deploy-simple-guide/">
-	<link rel="alternate" type="application/rss+xml" title="Subscribe Feed" href="/feed.xml">
-	<link href="/css/app.css" rel="stylesheet" media="all">
+	<link rel="alternate" type="application/atom+xml" title="Subscribe Feed" href="/feed.xml">
+	<link href="/assets/styles/main.css" rel="stylesheet" media="all">
 	<link href="//cdn.bootcss.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 	<!-- <link href="//fonts.lug.ustc.edu.cn/css?family=Lustria|Inconsolata" rel="stylesheet"> -->
   <!-- <link href='//fonts.useso.com/css?family=PT+Serif:400,700' rel='stylesheet' type='text/css'> -->
@@ -50,10 +50,6 @@
 	<a href="//weibo.com/jinfeixibi" class="social-link">
 		<i class="fa fa-weibo"></i>
 	</a>
-
-	<a href="//www.flickr.com/photos/roshanca/" class="social-link">
-		<i class="fa fa-flickr"></i>
-	</a>
 </div>
   </div>
   <a href="//lab.roshanca.com/resume/" class="author"></a>
@@ -72,7 +68,7 @@
 <li class="toc-entry toc-h2"><a href="#准备-requirement">准备 (Requirement)</a></li>
 <li class="toc-entry toc-h2"><a href="#安装-install">安装 (Install)</a>
 <ul>
-<li class="toc-entry toc-h3"><a href="#install-git1">Install git1</a></li>
+<li class="toc-entry toc-h3"><a href="#install-git">Install git1</a></li>
 <li class="toc-entry toc-h3"><a href="#安装-node-和-npm">安装 node 和 npm：</a></li>
 <li class="toc-entry toc-h3"><a href="#安装-pm2">安装 pm2：</a></li>
 </ul>
@@ -86,115 +82,136 @@
             transform="translate(-0.5, -0.5)" />
         </svg>
       </nav>
-      <h2>
+      <h2 id="环境-system">
 <a class="anchor" href="#%E7%8E%AF%E5%A2%83-system" aria-hidden="true"><span class="octicon octicon-link"></span></a>环境 (System)：</h2>
-
 <p>CentOS 7</p>
 
-<h2>
+<h2 id="准备-requirement">
 <a class="anchor" href="#%E5%87%86%E5%A4%87-requirement" aria-hidden="true"><span class="octicon octicon-link"></span></a>准备 (Requirement)</h2>
 
 <ul>
-<li>
+  <li>
 <strong>git</strong>: 分布式代码版本管理工具</li>
-<li>
+  <li>
 <strong>node</strong>: 基于 Chrome V8 引擎的 JavaScript 服务端运行环境</li>
-<li>
+  <li>
 <strong>npm</strong>: node 的倚赖包管理器</li>
-<li>
+  <li>
 <strong>pm2</strong>: node 应用进程管理器</li>
 </ul>
 
-<h2>
+<h2 id="安装-install">
 <a class="anchor" href="#%E5%AE%89%E8%A3%85-install" aria-hidden="true"><span class="octicon octicon-link"></span></a>安装 (Install)</h2>
 
 <p>一般在 Linux 系统中安装程序有三种方式：</p>
 
 <ol>
-<li>下载源码，手动编译</li>
-<li>直接下载二进制文件</li>
-<li>用 yum 安装</li>
+  <li>下载源码，手动编译</li>
+  <li>直接下载二进制文件</li>
+  <li>用 yum 安装</li>
 </ol>
 
 <p>这里推荐用第二种。</p>
 
-<h3>
-<a class="anchor" href="#install-git1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install git<sup id="fnref1"><a href="#fn1" rel="footnote">1</a></sup>
+<h3 id="install-git">
+<a class="anchor" href="#install-git" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install git<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>
 </h3>
 
 <ol>
-<li>
-<p>安装倚赖：</p>
-<div class="highlight"><pre><code class="language-" data-lang="">yum install -y curl-devel expat-devel gettext-devel openssl-devel zlib-devel gcc perl-ExtUtils-MakeMaker
-</code></pre></div>
-</li>
-<li>
-<p>前往 <a href="https://github.com/git/git/releases">github</a> 下载安装包，拷贝至 <code>/usr/src</code>，或者直接用 wget：</p>
-<div class="highlight"><pre><code class="language-" data-lang="">cd /usr/src
-yum install -y wget
-wget https://www.kernel.org/pub/software/scm/git/git-2.10.2.tar.gz
-tar xvzf git-2.10.2.tar.gz
-</code></pre></div>
-</li>
-<li>
-<p>make 安装：</p>
-<div class="highlight"><pre><code class="language-" data-lang="">make prefix=/usr/local all
-make prefix=/usr/local install
-</code></pre></div>
-</li>
-<li>
-<p>检查 git 是否安装成功：</p>
-<div class="highlight"><pre><code class="language-" data-lang="">git --version
-</code></pre></div>
-</li>
+  <li>
+    <p>安装倚赖：</p>
+
+    <div class="highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> yum install -y curl-devel expat-devel gettext-devel openssl-devel zlib-devel gcc perl-ExtUtils-MakeMaker
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>前往 <a href="https://github.com/git/git/releases">github</a> 下载安装包，拷贝至 <code class="highlighter-rouge">/usr/src</code>，或者直接用 wget：</p>
+
+    <div class="highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> cd /usr/src
+ yum install -y wget
+ wget https://www.kernel.org/pub/software/scm/git/git-2.10.2.tar.gz
+ tar xvzf git-2.10.2.tar.gz
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>make 安装：</p>
+
+    <div class="highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> make prefix=/usr/local all
+ make prefix=/usr/local install
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>检查 git 是否安装成功：</p>
+
+    <div class="highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> git --version
+</code></pre></div>    </div>
+  </li>
 </ol>
 
-<h3>
+<h3 id="安装-node-和-npm">
 <a class="anchor" href="#%E5%AE%89%E8%A3%85-node-%E5%92%8C-npm" aria-hidden="true"><span class="octicon octicon-link"></span></a>安装 node 和 npm：</h3>
 
 <ol>
-<li>
-<p>前往 <a href="https://nodejs.org/en/download/">node official site</a> 下载对应的编译好的 Linux 源码，或者直接用 wget 下载：</p>
-<div class="highlight"><pre><code class="language-" data-lang="">cd /usr/src
-wget https://nodejs.org/dist/v6.9.1/node-v6.9.1-linux-x64.tar.xz
-tar xvf node-v6.9.1-linux-x64.tar.xz
-</code></pre></div>
-</li>
-<li>
-<p>创建软链接至 <code>/usr/local/bin</code></p>
-<div class="highlight"><pre><code class="language-" data-lang="">ln -s /usr/src/node-v6.9.1-linux-x64/bin/node /usr/local/bin/node
-ln -s /usr/src/node-v6.9.1-linux-x64/bin/npm /usr/local/bin/npm
-</code></pre></div>
-</li>
-<li>
-<p>检查 node 与 npm 是否生效</p>
-<div class="highlight"><pre><code class="language-" data-lang="">node -v
-npm -v
-</code></pre></div>
-</li>
-<li>
-<p>接下来要配置一下 npm，将 npm 的默认全局安装路径自定义到 <code>/$HOME/.node</code>:</p>
-<div class="highlight"><pre><code class="language-" data-lang="">npm config set prefix $HOME/.node
-</code></pre></div>
-</li>
-<li>
-<p>添加国内 registry:</p>
-<div class="highlight"><pre><code class="language-" data-lang="">npm config set registry https://registry.npm.taobao.org/
-</code></pre></div>
-</li>
-<li>
-<p>配置系统路径，使 npm 全局安装的模块命令行 bin 生效：</p>
-<div class="highlight"><pre><code class="language-" data-lang="">echo "export PATH=$PATH:$HOME/.node/bin" &gt;&gt; ~/.bashrc
-source ~/.bashrc
-</code></pre></div>
-</li>
+  <li>
+    <p>前往 <a href="https://nodejs.org/en/download/">node official site</a> 下载对应的编译好的 Linux 源码，或者直接用 wget 下载：</p>
+
+    <div class="highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> cd /usr/src
+ wget https://nodejs.org/dist/v6.9.1/node-v6.9.1-linux-x64.tar.xz
+ tar xvf node-v6.9.1-linux-x64.tar.xz
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>创建软链接至 <code class="highlighter-rouge">/usr/local/bin</code></p>
+
+    <div class="highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> ln -s /usr/src/node-v6.9.1-linux-x64/bin/node /usr/local/bin/node
+ ln -s /usr/src/node-v6.9.1-linux-x64/bin/npm /usr/local/bin/npm
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>检查 node 与 npm 是否生效</p>
+
+    <div class="highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> node -v
+ npm -v
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>接下来要配置一下 npm，将 npm 的默认全局安装路径自定义到 <code class="highlighter-rouge">/$HOME/.node</code>:</p>
+
+    <div class="highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> npm config set prefix $HOME/.node
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>添加国内 registry:</p>
+
+    <div class="highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> npm config set registry https://registry.npm.taobao.org/
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>配置系统路径，使 npm 全局安装的模块命令行 bin 生效：</p>
+
+    <div class="highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> echo "export PATH=$PATH:$HOME/.node/bin" &gt;&gt; ~/.bashrc
+ source ~/.bashrc
+</code></pre></div>    </div>
+  </li>
 </ol>
 
-<h3>
+<h3 id="安装-pm2">
 <a class="anchor" href="#%E5%AE%89%E8%A3%85-pm2" aria-hidden="true"><span class="octicon octicon-link"></span></a>安装 pm2：</h3>
-<div class="highlight"><pre><code class="language-" data-lang="">npm install -g pm2
-</code></pre></div>
-<h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install -g pm2
+</code></pre></div></div>
+
+<h2 id="布署-deploy">
 <a class="anchor" href="#%E5%B8%83%E7%BD%B2-deploy" aria-hidden="true"><span class="octicon octicon-link"></span></a>布署 (Deploy)</h2>
 
 <p>布署分为不用 git 和基于 git 两种方式。前者主要是用于 git 代码网络属于内网的环境下。</p>
@@ -205,95 +222,104 @@ source ~/.bashrc
 
 <p>为了更好的版本管理与更轻松的解决版本倚赖，推荐使用 git。</p>
 
-<p>git 的传输协议有 https 和 ssh 两种，我们采用更加安全快速的后者。服务器只需 git 的只读权限，因此不必配置 git user，只需生成 <strong>ssh key</strong> 做为项目的 deploy key<sup id="fnref2"><a href="#fn2" rel="footnote">2</a></sup>。</p>
+<p>git 的传输协议有 https 和 ssh 两种，我们采用更加安全快速的后者。服务器只需 git 的只读权限，因此不必配置 git user，只需生成 <strong>ssh key</strong> 做为项目的 deploy key<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>。</p>
 
 <p>(ps. 关于如何生成 ssh key，<a href="http://git.cairenhui.com/gitlab/how-to-use/wikis/Generating-SSH-keys">可参见此</a>，这里要输入的邮箱改为服务器名即可)。</p>
 
 <ol>
-<li>
-<p>接下来 clone 项目代码至服务器：</p>
-<div class="highlight"><pre><code class="language-" data-lang="">git clone git@git.cairenhui.com:&lt;GROUP&gt;/&lt;PROJECT&gt;.git &lt;NODE_APP_DIR&gt;
-</code></pre></div>
-<p><em>注：尖括号内的为变量</em></p>
-</li>
-<li>
-<p>检出版本 </p>
-<div class="highlight"><pre><code class="language-" data-lang="">// 查看当前所有版本
-git tag
+  <li>
+    <p>接下来 clone 项目代码至服务器：</p>
 
-// 切换到指定版本，这里的 &lt;TAG&gt; 是演示，比如可以是 1.0.0
-git checkout &lt;TAG&gt;
-</code></pre></div>
-</li>
-<li>
-<p>安装倚赖：</p>
-<div class="highlight"><pre><code class="language-" data-lang="">// 如果没用到 bower，跳过此步骤
-bower install --allow-root
+    <div class="highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> git clone git@git.cairenhui.com:&lt;GROUP&gt;/&lt;PROJECT&gt;.git &lt;NODE_APP_DIR&gt;
+</code></pre></div>    </div>
+    <p><em>注：尖括号内的为变量</em></p>
+  </li>
+  <li>
+    <p>检出版本</p>
 
-// 安装 node 倚赖包
-npm install --production
-</code></pre></div>
-<p><em>注：不采用 git 布署的话，只需执行最后一步</em></p>
-</li>
+    <div class="highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> // 查看当前所有版本
+ git tag
+    
+ // 切换到指定版本，这里的 &lt;TAG&gt; 是演示，比如可以是 1.0.0
+ git checkout &lt;TAG&gt;
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>安装倚赖：</p>
+
+    <div class="highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> // 如果没用到 bower，跳过此步骤
+ bower install --allow-root
+
+ // 安装 node 倚赖包
+ npm install --production
+</code></pre></div>    </div>
+    <p><em>注：不采用 git 布署的话，只需执行最后一步</em></p>
+  </li>
 </ol>
 
 <p>至此，无论是否使用 git，布署都已完成。</p>
 
-<h2>
+<h2 id="运行-run">
 <a class="anchor" href="#%E8%BF%90%E8%A1%8C-run" aria-hidden="true"><span class="octicon octicon-link"></span></a>运行 (Run)</h2>
 
-<p>在项目根目录下，运行 <code>pm2 start pm2.json</code> 即可。</p>
+<p>在项目根目录下，运行 <code class="highlighter-rouge">pm2 start pm2.json</code> 即可。</p>
 
-<p><code>pm2.json</code> 中的 <code>name</code> 字段为 App name，pm2 可以全局地操作它：<code>pm2 stop &lt;APP_NAME&gt;</code></p>
+<p><code class="highlighter-rouge">pm2.json</code> 中的 <code class="highlighter-rouge">name</code> 字段为 App name，pm2 可以全局地操作它：<code class="highlighter-rouge">pm2 stop &lt;APP_NAME&gt;</code></p>
 
 <p>另外有几个比较有用的命令：</p>
 
 <ul>
-<li>查看所有的 node 应用进程：<code>pm2 list</code>
+  <li>查看所有的 node 应用进程：<code class="highlighter-rouge">pm2 list</code>
 </li>
-<li>查看某个应用的具体信息：<code>pm2 show &lt;APP_NAME&gt;</code>
+  <li>查看某个应用的具体信息：<code class="highlighter-rouge">pm2 show &lt;APP_NAME&gt;</code>
 </li>
-<li>监控 CPU / Memory: <code>pm2 monit</code>
+  <li>监控 CPU / Memory: <code class="highlighter-rouge">pm2 monit</code>
 </li>
-<li>查看应用消息日志：<code>pm2 logs &lt;APP_NAME&gt;</code>
+  <li>查看应用消息日志：<code class="highlighter-rouge">pm2 logs &lt;APP_NAME&gt;</code>
 </li>
-<li>重启应用程序：<code>pm2 restart &lt;APP_NAME&gt;</code>
+  <li>重启应用程序：<code class="highlighter-rouge">pm2 restart &lt;APP_NAME&gt;</code>
 </li>
 </ul>
 
-<p>更多的命令用法请查看：<a href="https://github.com/Unitech/pm2#main-features">https://github.com/Unitech/pm2#main-features</a></p>
+<p>更多的命令用法请查看：https://github.com/Unitech/pm2#main-features</p>
 
-<h2>
+<h2 id="更新或回滚-updaterollback">
 <a class="anchor" href="#%E6%9B%B4%E6%96%B0%E6%88%96%E5%9B%9E%E6%BB%9A-updaterollback" aria-hidden="true"><span class="octicon octicon-link"></span></a>更新或回滚 (Update/Rollback)</h2>
 
 <ol>
-<li>不使用 git：之前已提到过，直接在 gitlab 上下载 tag 包，解压缩覆盖至服务器</li>
-<li>
-<p>使用 git：先通过 git 获取更新</p>
-<div class="highlight"><pre><code class="language-" data-lang="">git fetch origin --tags
-</code></pre></div>
-<p>再切换：</p>
-<div class="highlight"><pre><code class="language-" data-lang="">git checkout &lt;NEW_TAG&gt;
-</code></pre></div>
-<p>回滚也非常简单：</p>
-<div class="highlight"><pre><code class="language-" data-lang="">git checkout &lt;PREV_TAG&gt;
-</code></pre></div>
-</li>
-</ol>
+  <li>不使用 git：之前已提到过，直接在 gitlab 上下载 tag 包，解压缩覆盖至服务器</li>
+  <li>
+    <p>使用 git：先通过 git 获取更新</p>
 
+    <div class="highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> git fetch origin --tags
+</code></pre></div>    </div>
+
+    <p>再切换：</p>
+
+    <div class="highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> git checkout &lt;NEW_TAG&gt;
+</code></pre></div>    </div>
+
+    <p>回滚也非常简单：</p>
+
+    <div class="highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> git checkout &lt;PREV_TAG&gt;
+</code></pre></div>    </div>
+  </li>
+</ol>
 <div class="footnotes">
-<hr>
-<ol>
-
-<li id="fn1">
-<p>如果系统有自带的 git，可执行 <code>yum remove -y git</code> 删除 <a href="#fnref1" rev="footnote">↩</a></p>
-</li>
-
-<li id="fn2">
-<p>gitlab 项目右上角的菜单中选择 “Deploy Keys"，在此添加服务器的公钥 "id_rsa.pub” 中的内容 <a href="#fnref2" rev="footnote">↩</a></p>
-</li>
-
-</ol>
+  <ol>
+    <li id="fn:1">
+      <p>如果系统有自带的 git，可执行 <code class="highlighter-rouge">yum remove -y git</code> 删除 <a href="#fnref:1" class="reversefootnote">↩</a></p>
+    </li>
+    <li id="fn:2">
+      <p>gitlab 项目右上角的菜单中选择 “Deploy Keys”，在此添加服务器的公钥 “id_rsa.pub” 中的内容 <a href="#fnref:2" class="reversefootnote">↩</a></p>
+    </li>
+  </ol>
 </div>
 
     </section>
@@ -368,8 +394,8 @@ window.onscroll = function () {
 	<p>© Copyright 2012 - <script>document.write(new Date().getFullYear())</script> by Roshan Wu.</p>
 </footer>
 
-<script src="/js/anchor.min.js"></script>
-<script src="/js/post.js"></script>
+<script src="/assets/scripts/anchor.min.js"></script>
+<script src="/assets/scripts/post.js"></script>
 
 
 </body>
