@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://roshanca.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://roshanca.com/" rel="alternate" type="text/html" /><updated>2020-01-15T09:36:41+00:00</updated><id>https://roshanca.com/feed.xml</id><title type="html">肉山·察</title><subtitle>just Roshan's blog</subtitle><entry><title type="html">对数字的金融货币格式化</title><link href="https://roshanca.com/2018/format-financial-currency-number/" rel="alternate" type="text/html" title="对数字的金融货币格式化" /><published>2018-05-04T00:00:00+00:00</published><updated>2018-05-04T00:00:00+00:00</updated><id>https://roshanca.com/2018/format-financial-currency-number</id><content type="html" xml:base="https://roshanca.com/2018/format-financial-currency-number/">&lt;p&gt;浸淫金融行业多年，这样的需求做了太多。解释下金融货币格式化，主要包含两点：&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://roshanca.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://roshanca.com/" rel="alternate" type="text/html" /><updated>2020-04-16T09:48:21+00:00</updated><id>https://roshanca.com/feed.xml</id><title type="html">肉山·察</title><subtitle>just Roshan's blog</subtitle><entry><title type="html">对数字的金融货币格式化</title><link href="https://roshanca.com/2018/format-financial-currency-number/" rel="alternate" type="text/html" title="对数字的金融货币格式化" /><published>2018-05-04T00:00:00+00:00</published><updated>2018-05-04T00:00:00+00:00</updated><id>https://roshanca.com/2018/format-financial-currency-number</id><content type="html" xml:base="https://roshanca.com/2018/format-financial-currency-number/">&lt;p&gt;浸淫金融行业多年，这样的需求做了太多。解释下金融货币格式化，主要包含两点：&lt;/p&gt;
 
 &lt;ol&gt;
   &lt;li&gt;保留小数两位（单位元，意思就是要精确到分）&lt;/li&gt;
@@ -2484,7 +2484,7 @@ React packager ready.
   &lt;/ol&gt;
 &lt;/div&gt;</content><author><name></name></author><category term="js" /><category term="react" /><summary type="html">此文为原创翻译，转载请注明出处。</summary></entry><entry><title type="html">2014 年工作总结</title><link href="https://roshanca.com/2014/2014-work-summary/" rel="alternate" type="text/html" title="2014 年工作总结" /><published>2014-12-31T16:23:00+00:00</published><updated>2014-12-31T16:23:00+00:00</updated><id>https://roshanca.com/2014/2014-work-summary</id><content type="html" xml:base="https://roshanca.com/2014/2014-work-summary/">&lt;p&gt;2014 马上就要画上句点，回首这一年，感慨良多。最大的感受是工作上的充实：今年公司自创业以来业务量最多的一年，真是锻炼人的一年呐。&lt;/p&gt;
 
-&lt;p&gt;##成长&lt;/p&gt;
+&lt;h2 id=&quot;成长&quot;&gt;成长&lt;/h2&gt;
 
 &lt;p&gt;自去年网上开户的项目开始没多久，自己便开始尝试编写自动化构建脚本，自动部署至公司服务器提供预览，自动上传提交，效率有了质的飞跃。今年在其他项目上，采用了更加流行的且学习成本更低的 &lt;a href=&quot;http://gruntjs.com&quot;&gt;grunt&lt;/a&gt; 和 &lt;a href=&quot;http://gulpjs.com&quot;&gt;gulp&lt;/a&gt; 来做 workflow，现已成为了我们团队的标配。&lt;/p&gt;
 
@@ -2492,7 +2492,7 @@ React packager ready.
 
 &lt;p&gt;在这趟移动端开发之旅中，我也尝试了新的开发模式，按照 MVC 的思想将前后端的代码尽可能进行了分离，将后端业务操作的 JS 代码锁定了在 Controller 这一层，而对应的 View 层，主要是一些 DOM 操作，交给更加专业的前端来做。页面模板的渲染不同于传统做法放在了客户端来做，一开始采用的是流行的 &lt;a href=&quot;http://mustache.github.io/&quot;&gt;Mustache&lt;/a&gt; 和 &lt;a href=&quot;http://handlebarsjs.com/&quot;&gt;Handlebars&lt;/a&gt;，后来用 F7 自带的 &lt;a href=&quot;http://www.idangero.us/framework7/docs/template7.html&quot;&gt;Template7&lt;/a&gt;。只需前后端将数据结构名称等约定好，前端开发用本地模拟数据，交付给后端后再换用真实数据，这样就完全地干掉了 JSP 等这些服务端的模板。目的很简单：&lt;strong&gt;让专业的人做专业的事&lt;/strong&gt;。&lt;/p&gt;
 
-&lt;p&gt;##困难&lt;/p&gt;
+&lt;h2 id=&quot;困难&quot;&gt;困难&lt;/h2&gt;
 
 &lt;p&gt;这个项目做下来，很大的感受是让我们公司的 Java 开发们接受新事物比较困难。他们的理由有这么几点：&lt;/p&gt;
 
@@ -2530,7 +2530,7 @@ React packager ready.
 
 &lt;p&gt;太过追求开发速度，不注重代码质量导致后期的 debug 成本过高。&lt;/p&gt;
 
-&lt;p&gt;##期望&lt;/p&gt;
+&lt;h2 id=&quot;期望&quot;&gt;期望&lt;/h2&gt;
 
 &lt;p&gt;对于刚起步的创业公司而言（如果三年也算刚起步），我觉得以上几点困难有些不是那么的要紧，毕竟“快上线”和“占领市场，占得先机”才是关键。但是要想做强做大，我相信迟早都是要直面这些问题的。&lt;/p&gt;
 
@@ -2548,7 +2548,7 @@ React packager ready.
 
 &lt;p&gt;加钱招人是一条路，但斯以为，人海战术固然可行，可&lt;strong&gt;在开发效率上提升一些岂不是更好&lt;/strong&gt;？打一个比方：测试MM抱怨出包繁琐，容易出错。是否有人愿意跳出来，写一个自动化的打包服务造福于团队？&lt;/p&gt;
 
-&lt;p&gt;##团队&lt;/p&gt;
+&lt;h2 id=&quot;团队&quot;&gt;团队&lt;/h2&gt;
 
 &lt;p&gt;今年新招的应届生MM，我还是比较满意的。思路清晰，一点就通，平日里也较积极主动，就是有时候比较马虎。比如有一次跑来问我：为什么 &lt;code class=&quot;highlighter-rouge&quot;&gt;rake generate&lt;/code&gt; 的命令报错。我一看原来是 generate 的单词她拼错了。&lt;/p&gt;
 
