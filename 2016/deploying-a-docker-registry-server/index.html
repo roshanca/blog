@@ -1,62 +1,84 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-Hans">
 <head>
-	<meta charset="utf-8">
-	<link href="https://gmpg.org/xfn/11" rel="profile">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title>在 CentOS 7 上搭建 Docker 私有仓库 - 肉山·察</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
-  
-	<link rel="canonical" href="https://roshanca.com/2016/deploying-a-docker-registry-server/">
-	<link rel="alternate" type="application/atom+xml" title="Subscribe Feed" href="/feed.xml">
-	<link href="/assets/styles/main.css" rel="stylesheet" media="all">
-	<link href="//cdn.bootcss.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-	<!-- <link href="//fonts.lug.ustc.edu.cn/css?family=Lustria|Inconsolata" rel="stylesheet"> -->
-  <!-- <link href='//fonts.useso.com/css?family=PT+Serif:400,700' rel='stylesheet' type='text/css'> -->
-	<script>
-	function loadSync(u,p,a){
-		if(!p && location.port)return {onload: null};
-		if(/\.js$/.test(u)){a='script'}else{a='link'};
-		var d=document,s=d.createElement(a),f=d.getElementsByTagName(a)[0];
-		if(a=='link'){s.href=u,s.rel='stylesheet'}else{s.src=u,s.async=true}
-		f.parentNode.insertBefore(s,f);return s;
-	}
-	var _gaq = _gaq || [];
-	_gaq.push(['_setAccount', 'UA-15720258-1']);
-	_gaq.push(['_trackPageview']);
-	_gaq.push(['_trackPageLoadTime']);
-	loadSync('//ssl.google-analytics.com/ga.js');
-	if(/windows/i.test(navigator.userAgent)){document.getElementsByTagName('html')[0].className = 'windows'}
-    </script>
-    <!--[if lt IE 9]>
-    <script>window.location.href="//browsehappy.com"</script>
-    <![endif]-->
+  <meta charset="utf-8">
+  <link href="//gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>在 CentOS 7 上搭建 Docker 私有仓库 - 肉山·察</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
+  <!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>在 CentOS 7 上搭建 Docker 私有仓库 | 肉山·察</title>
+<meta name="generator" content="Jekyll v4.0.1" />
+<meta property="og:title" content="在 CentOS 7 上搭建 Docker 私有仓库" />
+<meta property="og:locale" content="zh_Hans" />
+<meta name="description" content="我们知道，执行 docker pull 某镜象，默认都是从 Docker Hub 的公共仓库去获取的。这有点像全球最大的代码托管商：Github。但对于公司企业而言，Maybe 更加需要是的自建的仓库服务，所以我们用自建的 Gitlab 代替 Github。那有什么可以替代 Docker Hub 呢？答案是：自建 Docker Registry。独自摸索了一阵子后，以下是自己的一点实践：" />
+<meta property="og:description" content="我们知道，执行 docker pull 某镜象，默认都是从 Docker Hub 的公共仓库去获取的。这有点像全球最大的代码托管商：Github。但对于公司企业而言，Maybe 更加需要是的自建的仓库服务，所以我们用自建的 Gitlab 代替 Github。那有什么可以替代 Docker Hub 呢？答案是：自建 Docker Registry。独自摸索了一阵子后，以下是自己的一点实践：" />
+<link rel="canonical" href="https://roshanca.com/2016/deploying-a-docker-registry-server/" />
+<meta property="og:url" content="https://roshanca.com/2016/deploying-a-docker-registry-server/" />
+<meta property="og:site_name" content="肉山·察" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2016-07-24T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="在 CentOS 7 上搭建 Docker 私有仓库" />
+<meta name="twitter:site" content="@roshan_wu" />
+<meta name="twitter:creator" content="@roshan_wu" />
+<script type="application/ld+json">
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://roshanca.com/2016/deploying-a-docker-registry-server/"},"description":"我们知道，执行 docker pull 某镜象，默认都是从 Docker Hub 的公共仓库去获取的。这有点像全球最大的代码托管商：Github。但对于公司企业而言，Maybe 更加需要是的自建的仓库服务，所以我们用自建的 Gitlab 代替 Github。那有什么可以替代 Docker Hub 呢？答案是：自建 Docker Registry。独自摸索了一阵子后，以下是自己的一点实践：","headline":"在 CentOS 7 上搭建 Docker 私有仓库","dateModified":"2016-07-24T00:00:00+00:00","datePublished":"2016-07-24T00:00:00+00:00","@type":"BlogPosting","url":"https://roshanca.com/2016/deploying-a-docker-registry-server/","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link href="/assets/styles/main.css" rel="stylesheet"><link type="application/atom+xml" rel="alternate" href="https://roshanca.com/feed.xml" title="肉山·察" /><link href="//cdn.bootcss.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <script>
+    function loadSync(u,p,a){
+      if(!p && location.port)return {onload: null};
+      if(/\.js$/.test(u)){a='script'}else{a='link'};
+      var d=document,s=d.createElement(a),f=d.getElementsByTagName(a)[0];
+      if(a=='link'){s.href=u,s.rel='stylesheet'}else{s.src=u,s.async=true}
+      f.parentNode.insertBefore(s,f);return s;
+    }
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-15720258-1']);
+    _gaq.push(['_trackPageview']);
+    _gaq.push(['_trackPageLoadTime']);
+    loadSync('//ssl.google-analytics.com/ga.js');
+    if(/windows/i.test(navigator.userAgent)){document.getElementsByTagName('html')[0].className = 'windows'}
+  </script>
+  <!--[if lt IE 9]>
+  <script>window.location.href="//browsehappy.com"</script>
+  <![endif]-->
 </head>
 
 <body>
 <header id="header" role="banner">
-	
-  <div class="header-inner"></div>
-		<a href="/" class="blog-title home">肉山·察</a>
+  
+  <div class="header-inner">
+    <a href="/" class="blog-title home">肉山·察</a>
+    
+    <div class="post-title">在 CentOS 7 上搭建 Docker 私有仓库</div>
+    
     <div class="header-icon">
-	<a href="//github.com/roshanca" class="social-link">
-		<i class="fa fa-github"></i>
-	</a>
+<a href="//github.com/roshanca" class="social-link">
+  <i class="fa fa-github"></i>
+</a>
 
-	<a href="//twitter.com/roshan_wu" class="social-link">
-		<i class="fa fa-twitter"></i>
-	</a>
+<a href="//twitter.com/roshan_wu" class="social-link">
+  <i class="fa fa-twitter"></i>
+</a>
 
-	<a href="//weibo.com/jinfeixibi" class="social-link">
-		<i class="fa fa-weibo"></i>
-	</a>
+<a href="//www.instagram.com/roshanca/" class="social-link">
+  <i class="fa fa-instagram"></i>
+</a>
+
+<a href="/feed.xml" class="social-link">
+  <i class="fa fa-rss"></i>
+</a>
+
 </div>
   </div>
-  <a href="//lab.roshanca.com/resume/" class="author"></a>
-	
+  <i class="author"></i>
+  
 </header>
 
-<main class="fluid" role="main">
+<div class="scroll-view">
+  <main class="fluid" role="main">
   <article class="post" role="article">
     <header class="post-header">
       <h1 class="post-title">在 CentOS 7 上搭建 Docker 私有仓库</h1>
@@ -125,14 +147,14 @@ Server:
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkdir -p certs &amp;&amp; openssl req \
   -newkey rsa:4096 -nodes -sha256 -keyout certs/domain.key \
   -x509 -days 365 -out certs/domain.crt
-  
+
 Country Name (2 letter code) [AU]:CN
 State or Province Name (full name) [Some-State]:Zhengjiang
 Locality Name (eg, city) []:Hangzhou
 Organization Name (eg, company) [Internet Widgits Pty Ltd]:Cairenhui
 Organizational Unit Name (eg, section) []:FE
 Common Name (e.g. server FQDN or YOUR name) []:192.168.1.211:5000
-Email Address []:wuwj@cairenhui.com  
+Email Address []:wuwj@cairenhui.com
 </code></pre></div></div>
 
 <p>接下来将刚生成的 <code class="highlighter-rouge">certs/domain.crt</code> 复制到 <code class="highlighter-rouge">/etc/docker/certs.d/192.168.1.211:5000/ca.crt</code>，并<strong>重启 docker</strong>。</p>
@@ -173,13 +195,15 @@ subjectAltName = IP:192.168.1.211
     </section>
     <footer class="post-footer">
       <div class="post-meta">
-        <time datetime="2016-07-24 00:00:00 +0000" class="updated" pubdate>Jul 24, 2016</time>
+        <a href="" rel="full-article"><time datetime="2016-07-24 00:00:00 +0000" class="updated" pubdate>Jul 24, 2016</time></a>
 
         
 <span class="post-tag">
-	
-		<span class="tag">docker</span>
-	
+  
+  <a class="tag" href="/archives/tag/docker">docker</a>
+  
+  <a class="tag" href="/archives/tag/centos">centos</a>
+  
 </span>
 
 
@@ -187,62 +211,70 @@ subjectAltName = IP:192.168.1.211
     </footer>
     <section class="post-recent">
   
-    <a class="relative-post previous" href="/2015/write-a-simple-snake-game-with-typescript/"><span>用 TypeScript 写一个贪食蛇小游戏</span></a>
-  
-  
-    <a class="relative-post next" href="/2016/node-app-deploy-simple-guide/"><span>Node APP 布署简易教程</span></a>
+  <i class="fa fa-angle-double-left"></i>
+  <a class="relative-post previous" href="/2015/write-a-simple-snake-game-with-typescript/"
+    ><span>用 TypeScript 写一个贪食蛇小游戏</span></a
+  >
+   
+  <a class="relative-post next" href="/2016/node-app-deploy-simple-guide/"
+    ><span>Node APP 布署简易教程</span></a
+  >
+  <i class="fa fa-angle-double-right"></i>
   
 </section>
 
   </article>
-</main>
-
-  <div class="post-comment">
-	<div id="disqus_thread" class="container"></div>
+  
+    <div class="post-comment">
+  <div id="disqus_thread" class="container"></div>
 </div>
 <script>
-function getElementTopLeft(elem) {
-	var top = 0;
-	var left = 0;
-	while(elem) {
-		top += elem.offsetTop;
-		left += elem.offsetLeft;
+  function getElementTopLeft(elem) {
+    var top = 0
+    var left = 0
+    while (elem) {
+      top += elem.offsetTop
+      left += elem.offsetLeft
 
-		elem = elem.offsetParent;
-	}
-	return {top: top, left: left};
-}
+      elem = elem.offsetParent
+    }
+    return { top: top, left: left }
+  }
 
-var disqus_shortname = 'roshanca';
-var disqus_elem = document.getElementById('disqus_thread');
-var disqus_init = false;
+  var disqus_shortname = 'roshanca'
+  var disqus_elem = document.getElementById('disqus_thread')
+  var disqus_init = false
 
-window.onscroll = function () {
-	if (disqus_init) return;
+  document.querySelector('.scroll-view').addEventListener('scroll', (evt) => {
+    if (disqus_init) return
 
-	var viewHeight = document.documentElement.clientHeight;
-	var scrollY = document.documentElement.scrollTop || document.body.scrollTop;
+    var viewHeight = document.documentElement.clientHeight
+    var scrollY = (evt.target || evt.srcElement).scrollTop
 
-	if(getElementTopLeft(disqus_elem).top < viewHeight + scrollY) {
-		loadSync('//' + disqus_shortname + '.disqus.com/embed.js');
-		disqus_init = true;
-	}
-}
+    if (getElementTopLeft(disqus_elem).top < viewHeight + scrollY) {
+      loadSync('//' + disqus_shortname + '.disqus.com/embed.js')
+      disqus_init = true
+    }
+  }, false)
 </script>
 
+  
+</main>
 
-
-<div class="fork-github">
-    <a href="https://github.com/roshanca/blog">View on GitHub</a>
-</div>
-
-<footer id="footer" role="contentinfo">
-	<p>© Copyright 2012 - <script>document.write(new Date().getFullYear())</script> by Roshan Wu.</p>
+  <footer id="footer" role="contentinfo">
+  <p>
+    © Copyright 2012 -
+    <script>
+      document.write(new Date().getFullYear())
+    </script>
+  </p>
 </footer>
 
 <script src="/assets/scripts/anchor.min.js"></script>
-<script src="/assets/scripts/post.js"></script>
+<script src="/assets/scripts/toc.js"></script>
 
+<script src="/assets/scripts/common.js"></script>
 
+</div>
 </body>
 </html>

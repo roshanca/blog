@@ -1,62 +1,84 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-Hans">
 <head>
-	<meta charset="utf-8">
-	<link href="https://gmpg.org/xfn/11" rel="profile">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title>前端编码风格规范之 JavaScript 规范 - 肉山·察</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
-  
-	<link rel="canonical" href="https://roshanca.com/2014/web-develop-styleguide-javascript/">
-	<link rel="alternate" type="application/atom+xml" title="Subscribe Feed" href="/feed.xml">
-	<link href="/assets/styles/main.css" rel="stylesheet" media="all">
-	<link href="//cdn.bootcss.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-	<!-- <link href="//fonts.lug.ustc.edu.cn/css?family=Lustria|Inconsolata" rel="stylesheet"> -->
-  <!-- <link href='//fonts.useso.com/css?family=PT+Serif:400,700' rel='stylesheet' type='text/css'> -->
-	<script>
-	function loadSync(u,p,a){
-		if(!p && location.port)return {onload: null};
-		if(/\.js$/.test(u)){a='script'}else{a='link'};
-		var d=document,s=d.createElement(a),f=d.getElementsByTagName(a)[0];
-		if(a=='link'){s.href=u,s.rel='stylesheet'}else{s.src=u,s.async=true}
-		f.parentNode.insertBefore(s,f);return s;
-	}
-	var _gaq = _gaq || [];
-	_gaq.push(['_setAccount', 'UA-15720258-1']);
-	_gaq.push(['_trackPageview']);
-	_gaq.push(['_trackPageLoadTime']);
-	loadSync('//ssl.google-analytics.com/ga.js');
-	if(/windows/i.test(navigator.userAgent)){document.getElementsByTagName('html')[0].className = 'windows'}
-    </script>
-    <!--[if lt IE 9]>
-    <script>window.location.href="//browsehappy.com"</script>
-    <![endif]-->
+  <meta charset="utf-8">
+  <link href="//gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>前端编码风格规范之 JavaScript 规范 - 肉山·察</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
+  <!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>前端编码风格规范之 JavaScript 规范 | 肉山·察</title>
+<meta name="generator" content="Jekyll v4.0.1" />
+<meta property="og:title" content="前端编码风格规范之 JavaScript 规范" />
+<meta property="og:locale" content="zh_Hans" />
+<meta name="description" content="原文：Web Styleguide - Style guide to harmonize HTML, Javascript and CSS / SASS coding style" />
+<meta property="og:description" content="原文：Web Styleguide - Style guide to harmonize HTML, Javascript and CSS / SASS coding style" />
+<link rel="canonical" href="https://roshanca.com/2014/web-develop-styleguide-javascript/" />
+<meta property="og:url" content="https://roshanca.com/2014/web-develop-styleguide-javascript/" />
+<meta property="og:site_name" content="肉山·察" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2014-09-12T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="前端编码风格规范之 JavaScript 规范" />
+<meta name="twitter:site" content="@roshan_wu" />
+<meta name="twitter:creator" content="@roshan_wu" />
+<script type="application/ld+json">
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://roshanca.com/2014/web-develop-styleguide-javascript/"},"description":"原文：Web Styleguide - Style guide to harmonize HTML, Javascript and CSS / SASS coding style","headline":"前端编码风格规范之 JavaScript 规范","dateModified":"2014-09-12T00:00:00+00:00","datePublished":"2014-09-12T00:00:00+00:00","@type":"BlogPosting","url":"https://roshanca.com/2014/web-develop-styleguide-javascript/","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link href="/assets/styles/main.css" rel="stylesheet"><link type="application/atom+xml" rel="alternate" href="https://roshanca.com/feed.xml" title="肉山·察" /><link href="//cdn.bootcss.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <script>
+    function loadSync(u,p,a){
+      if(!p && location.port)return {onload: null};
+      if(/\.js$/.test(u)){a='script'}else{a='link'};
+      var d=document,s=d.createElement(a),f=d.getElementsByTagName(a)[0];
+      if(a=='link'){s.href=u,s.rel='stylesheet'}else{s.src=u,s.async=true}
+      f.parentNode.insertBefore(s,f);return s;
+    }
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-15720258-1']);
+    _gaq.push(['_trackPageview']);
+    _gaq.push(['_trackPageLoadTime']);
+    loadSync('//ssl.google-analytics.com/ga.js');
+    if(/windows/i.test(navigator.userAgent)){document.getElementsByTagName('html')[0].className = 'windows'}
+  </script>
+  <!--[if lt IE 9]>
+  <script>window.location.href="//browsehappy.com"</script>
+  <![endif]-->
 </head>
 
 <body>
 <header id="header" role="banner">
-	
-  <div class="header-inner"></div>
-		<a href="/" class="blog-title home">肉山·察</a>
+  
+  <div class="header-inner">
+    <a href="/" class="blog-title home">肉山·察</a>
+    
+    <div class="post-title">前端编码风格规范之 JavaScript 规范</div>
+    
     <div class="header-icon">
-	<a href="//github.com/roshanca" class="social-link">
-		<i class="fa fa-github"></i>
-	</a>
+<a href="//github.com/roshanca" class="social-link">
+  <i class="fa fa-github"></i>
+</a>
 
-	<a href="//twitter.com/roshan_wu" class="social-link">
-		<i class="fa fa-twitter"></i>
-	</a>
+<a href="//twitter.com/roshan_wu" class="social-link">
+  <i class="fa fa-twitter"></i>
+</a>
 
-	<a href="//weibo.com/jinfeixibi" class="social-link">
-		<i class="fa fa-weibo"></i>
-	</a>
+<a href="//www.instagram.com/roshanca/" class="social-link">
+  <i class="fa fa-instagram"></i>
+</a>
+
+<a href="/feed.xml" class="social-link">
+  <i class="fa fa-rss"></i>
+</a>
+
 </div>
   </div>
-  <a href="//lab.roshanca.com/resume/" class="author"></a>
-	
+  <i class="author"></i>
+  
 </header>
 
-<main class="fluid" role="main">
+<div class="scroll-view">
+  <main class="fluid" role="main">
   <article class="post" role="article">
     <header class="post-header">
       <h1 class="post-title">前端编码风格规范之 JavaScript 规范</h1>
@@ -545,7 +567,7 @@
 <h3 id="分号">
 <a class="anchor" href="#%E5%88%86%E5%8F%B7" aria-hidden="true"><span class="octicon octicon-link"></span></a>分号</h3>
 
-<p>总是使用分号，因为隐式的代码嵌套会引发难以察觉的问题。当然我们更要从根本上来杜绝这些问题<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> 。以下几个示例展示了缺少分号的危害：</p>
+<p>总是使用分号，因为隐式的代码嵌套会引发难以察觉的问题。当然我们更要从根本上来杜绝这些问题<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote">1</a></sup> 。以下几个示例展示了缺少分号的危害：</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 1.</span>
 <span class="nx">MyClass</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">myMethod</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
@@ -584,7 +606,7 @@
 
 <p><strong>Why?</strong></p>
 
-<p>JavaScript 中语句要以分号结束，否则它将会继续执行下去，不管换不换行。以上的每一个示例中，函数声明或对象或数组，都变成了在一句语句体内。要知道闭合圆括号并不代表语句结束，JavaScript 不会终结语句，除非它的下一个 token 是一个中缀符<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup> 或者是圆括号操作符。</p>
+<p>JavaScript 中语句要以分号结束，否则它将会继续执行下去，不管换不换行。以上的每一个示例中，函数声明或对象或数组，都变成了在一句语句体内。要知道闭合圆括号并不代表语句结束，JavaScript 不会终结语句，除非它的下一个 token 是一个中缀符<sup id="fnref:2" role="doc-noteref"><a href="#fn:2" class="footnote">2</a></sup> 或者是圆括号操作符。</p>
 
 <p>这真是让人大吃一惊，所以乖乖地给语句末加上分号吧。</p>
 
@@ -1059,7 +1081,7 @@
 <h3 id="自定义-tostring-方法">
 <a class="anchor" href="#%E8%87%AA%E5%AE%9A%E4%B9%89-tostring-%E6%96%B9%E6%B3%95" aria-hidden="true"><span class="octicon octicon-link"></span></a>自定义 toString() 方法</h3>
 
-<p>你可以通过自定义 <code class="highlighter-rouge">toString()</code> 来控制对象字符串化。这很好，但你必须保证你的方法总是成功并不会有其它副作用。如果你的方法达不到这样的标准，那将会引发严重的问题。如果 <code class="highlighter-rouge">toString()</code> 调用了一个方法，这个方法做了一个断言<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup> ，当断言失败，它可能会输出它所在对象的名称，当然对象也需要调用 <code class="highlighter-rouge">toString()</code>。</p>
+<p>你可以通过自定义 <code class="highlighter-rouge">toString()</code> 来控制对象字符串化。这很好，但你必须保证你的方法总是成功并不会有其它副作用。如果你的方法达不到这样的标准，那将会引发严重的问题。如果 <code class="highlighter-rouge">toString()</code> 调用了一个方法，这个方法做了一个断言<sup id="fnref:3" role="doc-noteref"><a href="#fn:3" class="footnote">3</a></sup> ，当断言失败，它可能会输出它所在对象的名称，当然对象也需要调用 <code class="highlighter-rouge">toString()</code>。</p>
 
 <hr>
 
@@ -1105,19 +1127,19 @@
 <a class="anchor" href="#%E7%B3%BB%E5%88%97%E6%96%87%E7%AB%A0" aria-hidden="true"><span class="octicon octicon-link"></span></a>系列文章</h2>
 
 <ul>
-  <li><a href="//roshanca.com/2014/web-develop-styleguide-general">前端编码风格规范之一般规范</a></li>
-  <li><a href="//roshanca.com/2014/web-develop-styleguide-html">前端编码风格规范之 HTML</a></li>
+  <li><a href="/2014/web-develop-styleguide-general">前端编码风格规范之一般规范</a></li>
+  <li><a href="/2014/web-develop-styleguide-html">前端编码风格规范之 HTML</a></li>
 </ul>
-<div class="footnotes">
+<div class="footnotes" role="doc-endnotes">
   <ol>
-    <li id="fn:1">
-      <p>作者指的是采用严格规范的语句写法，从根本上杜绝由分号缺失而引起的代码歧义。 <a href="#fnref:1" class="reversefootnote">↩</a></p>
+    <li id="fn:1" role="doc-endnote">
+      <p>作者指的是采用严格规范的语句写法，从根本上杜绝由分号缺失而引起的代码歧义。 <a href="#fnref:1" class="reversefootnote" role="doc-backlink">↩</a></p>
     </li>
-    <li id="fn:2">
-      <p>中缀符，指的是像 <code class="highlighter-rouge">x + y</code> 中的 <code class="highlighter-rouge">+</code>。 <a href="#fnref:2" class="reversefootnote">↩</a></p>
+    <li id="fn:2" role="doc-endnote">
+      <p>中缀符，指的是像 <code class="highlighter-rouge">x + y</code> 中的 <code class="highlighter-rouge">+</code>。 <a href="#fnref:2" class="reversefootnote" role="doc-backlink">↩</a></p>
     </li>
-    <li id="fn:3">
-      <p>断言一般指程序员在测试测序时的假设，一般是一些布尔表达式，当返回是 true 时，断言为真，代码运行会继续进行；如果条件判断为 false，代码运行停止，你的应用被终止。 <a href="#fnref:3" class="reversefootnote">↩</a></p>
+    <li id="fn:3" role="doc-endnote">
+      <p>断言一般指程序员在测试测序时的假设，一般是一些布尔表达式，当返回是 true 时，断言为真，代码运行会继续进行；如果条件判断为 false，代码运行停止，你的应用被终止。 <a href="#fnref:3" class="reversefootnote" role="doc-backlink">↩</a></p>
     </li>
   </ol>
 </div>
@@ -1125,13 +1147,17 @@
     </section>
     <footer class="post-footer">
       <div class="post-meta">
-        <time datetime="2014-09-12 00:00:00 +0000" class="updated" pubdate>Sep 12, 2014</time>
+        <a href="" rel="full-article"><time datetime="2014-09-12 00:00:00 +0000" class="updated" pubdate>Sep 12, 2014</time></a>
 
         
 <span class="post-tag">
-	
-		<span class="tag">code</span>
-	
+  
+  <a class="tag" href="/archives/tag/code">code</a>
+  
+  <a class="tag" href="/archives/tag/javascript">javascript</a>
+  
+  <a class="tag" href="/archives/tag/translate">translate</a>
+  
 </span>
 
 
@@ -1139,62 +1165,70 @@
     </footer>
     <section class="post-recent">
   
-    <a class="relative-post previous" href="/2014/web-develop-styleguide-html/"><span>前端编码风格规范之 HTML 规范</span></a>
-  
-  
-    <a class="relative-post next" href="/2014/2014-work-summary/"><span>2014 年工作总结</span></a>
+  <i class="fa fa-angle-double-left"></i>
+  <a class="relative-post previous" href="/2014/web-develop-styleguide-html/"
+    ><span>前端编码风格规范之 HTML 规范</span></a
+  >
+   
+  <a class="relative-post next" href="/2014/2014-work-summary/"
+    ><span>2014 年工作总结</span></a
+  >
+  <i class="fa fa-angle-double-right"></i>
   
 </section>
 
   </article>
-</main>
-
-  <div class="post-comment">
-	<div id="disqus_thread" class="container"></div>
+  
+    <div class="post-comment">
+  <div id="disqus_thread" class="container"></div>
 </div>
 <script>
-function getElementTopLeft(elem) {
-	var top = 0;
-	var left = 0;
-	while(elem) {
-		top += elem.offsetTop;
-		left += elem.offsetLeft;
+  function getElementTopLeft(elem) {
+    var top = 0
+    var left = 0
+    while (elem) {
+      top += elem.offsetTop
+      left += elem.offsetLeft
 
-		elem = elem.offsetParent;
-	}
-	return {top: top, left: left};
-}
+      elem = elem.offsetParent
+    }
+    return { top: top, left: left }
+  }
 
-var disqus_shortname = 'roshanca';
-var disqus_elem = document.getElementById('disqus_thread');
-var disqus_init = false;
+  var disqus_shortname = 'roshanca'
+  var disqus_elem = document.getElementById('disqus_thread')
+  var disqus_init = false
 
-window.onscroll = function () {
-	if (disqus_init) return;
+  document.querySelector('.scroll-view').addEventListener('scroll', (evt) => {
+    if (disqus_init) return
 
-	var viewHeight = document.documentElement.clientHeight;
-	var scrollY = document.documentElement.scrollTop || document.body.scrollTop;
+    var viewHeight = document.documentElement.clientHeight
+    var scrollY = (evt.target || evt.srcElement).scrollTop
 
-	if(getElementTopLeft(disqus_elem).top < viewHeight + scrollY) {
-		loadSync('//' + disqus_shortname + '.disqus.com/embed.js');
-		disqus_init = true;
-	}
-}
+    if (getElementTopLeft(disqus_elem).top < viewHeight + scrollY) {
+      loadSync('//' + disqus_shortname + '.disqus.com/embed.js')
+      disqus_init = true
+    }
+  }, false)
 </script>
 
+  
+</main>
 
-
-<div class="fork-github">
-    <a href="https://github.com/roshanca/blog">View on GitHub</a>
-</div>
-
-<footer id="footer" role="contentinfo">
-	<p>© Copyright 2012 - <script>document.write(new Date().getFullYear())</script> by Roshan Wu.</p>
+  <footer id="footer" role="contentinfo">
+  <p>
+    © Copyright 2012 -
+    <script>
+      document.write(new Date().getFullYear())
+    </script>
+  </p>
 </footer>
 
 <script src="/assets/scripts/anchor.min.js"></script>
-<script src="/assets/scripts/post.js"></script>
+<script src="/assets/scripts/toc.js"></script>
 
+<script src="/assets/scripts/common.js"></script>
 
+</div>
 </body>
 </html>

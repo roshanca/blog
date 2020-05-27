@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <link href="//gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>用 Canvas 实现一个极简贪食蛇 - 肉山·察</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
+  <!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>用 Canvas 实现一个极简贪食蛇 | 肉山·察</title>
+<meta name="generator" content="Jekyll v4.0.1" />
+<meta property="og:title" content="用 Canvas 实现一个极简贪食蛇" />
+<meta property="og:locale" content="zh_Hans" />
+<meta name="description" content="笔者曾经在学习 TS 时写过一个贪食蛇小游戏，但那是基于 DOM 的，代码较为啰唆（毕竟是用来学习基于静态类型的 TS）。这次无意间看见网上某位高人写的贪食蛇小游戏，寥寥几行代码搞定，叹为观止。初看代码，是很大程度地利用了 JS 弱语言的灵活度，以少量代码做了大量的工作，是真正体现了 JS 在脚本领域无人能敌的强大本领。" />
+<meta property="og:description" content="笔者曾经在学习 TS 时写过一个贪食蛇小游戏，但那是基于 DOM 的，代码较为啰唆（毕竟是用来学习基于静态类型的 TS）。这次无意间看见网上某位高人写的贪食蛇小游戏，寥寥几行代码搞定，叹为观止。初看代码，是很大程度地利用了 JS 弱语言的灵活度，以少量代码做了大量的工作，是真正体现了 JS 在脚本领域无人能敌的强大本领。" />
+<link rel="canonical" href="https://roshanca.com/2020/Implement-a-minimalist-greedy-snake-with-canvas/" />
+<meta property="og:url" content="https://roshanca.com/2020/Implement-a-minimalist-greedy-snake-with-canvas/" />
+<meta property="og:site_name" content="肉山·察" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-05-20T15:43:09+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="用 Canvas 实现一个极简贪食蛇" />
+<meta name="twitter:site" content="@roshan_wu" />
+<meta name="twitter:creator" content="@roshan_wu" />
+<script type="application/ld+json">
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://roshanca.com/2020/Implement-a-minimalist-greedy-snake-with-canvas/"},"description":"笔者曾经在学习 TS 时写过一个贪食蛇小游戏，但那是基于 DOM 的，代码较为啰唆（毕竟是用来学习基于静态类型的 TS）。这次无意间看见网上某位高人写的贪食蛇小游戏，寥寥几行代码搞定，叹为观止。初看代码，是很大程度地利用了 JS 弱语言的灵活度，以少量代码做了大量的工作，是真正体现了 JS 在脚本领域无人能敌的强大本领。","headline":"用 Canvas 实现一个极简贪食蛇","dateModified":"2020-05-20T15:43:09+00:00","datePublished":"2020-05-20T15:43:09+00:00","@type":"BlogPosting","url":"https://roshanca.com/2020/Implement-a-minimalist-greedy-snake-with-canvas/","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link href="/assets/styles/main.css" rel="stylesheet"><link type="application/atom+xml" rel="alternate" href="https://roshanca.com/feed.xml" title="肉山·察" /><link href="//cdn.bootcss.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <script>
+    function loadSync(u,p,a){
+      if(!p && location.port)return {onload: null};
+      if(/\.js$/.test(u)){a='script'}else{a='link'};
+      var d=document,s=d.createElement(a),f=d.getElementsByTagName(a)[0];
+      if(a=='link'){s.href=u,s.rel='stylesheet'}else{s.src=u,s.async=true}
+      f.parentNode.insertBefore(s,f);return s;
+    }
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-15720258-1']);
+    _gaq.push(['_trackPageview']);
+    _gaq.push(['_trackPageLoadTime']);
+    loadSync('//ssl.google-analytics.com/ga.js');
+    if(/windows/i.test(navigator.userAgent)){document.getElementsByTagName('html')[0].className = 'windows'}
+  </script>
+  <!--[if lt IE 9]>
+  <script>window.location.href="//browsehappy.com"</script>
+  <![endif]-->
+</head>
+
+<body>
+<header id="header" role="banner">
+  
+  <div class="header-inner">
+    <a href="/" class="blog-title home">肉山·察</a>
+    
+    <div class="post-title">用 Canvas 实现一个极简贪食蛇</div>
+    
+    <div class="header-icon">
+<a href="//github.com/roshanca" class="social-link">
+  <i class="fa fa-github"></i>
+</a>
+
+<a href="//twitter.com/roshan_wu" class="social-link">
+  <i class="fa fa-twitter"></i>
+</a>
+
+<a href="//www.instagram.com/roshanca/" class="social-link">
+  <i class="fa fa-instagram"></i>
+</a>
+
+<a href="/feed.xml" class="social-link">
+  <i class="fa fa-rss"></i>
+</a>
+
+</div>
+  </div>
+  <i class="author"></i>
+  
+</header>
+
+<div class="scroll-view">
+  <main class="fluid" role="main">
+  <article class="post" role="article">
+    <header class="post-header">
+      <h1 class="post-title">用 Canvas 实现一个极简贪食蛇</h1>
+    </header>
+    <section class="post-content">
+      <nav class="post-toc">
+        <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#画蛇不添足">画蛇不添足</a></li>
+<li class="toc-entry toc-h2"><a href="#direction">direction</a></li>
+<li class="toc-entry toc-h2"><a href="#条件判断">条件判断</a></li>
+<li class="toc-entry toc-h2"><a href="#iife">IIFE</a></li>
+<li class="toc-entry toc-h2"><a href="#argumentscallee">arguments.callee</a></li>
+</ul>
+        <svg class="toc-marker" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+          <path stroke="#444" stroke-width="3" fill="transparent" stroke-dasharray="0, 0, 0, 1000" stroke-linecap="round" stroke-linejoin="round"
+            transform="translate(-0.5, -0.5)" />
+        </svg>
+      </nav>
+      <p>笔者曾经在学习 TS 时写过一个<a href="/2015/write-a-simple-snake-game-with-typescript/">贪食蛇小游戏</a>，但那是基于 DOM 的，代码较为啰唆（毕竟是用来学习基于静态类型的 TS）。这次无意间看见网上某位高人写的贪食蛇小游戏，寥寥几行代码搞定，叹为观止。初看代码，是很大程度地利用了 JS 弱语言的灵活度，以少量代码做了大量的工作，是真正体现了 JS 在脚本领域无人能敌的强大本领。</p>
+
+<p>接下来晒下代码，然后做一些思路解读，以便于理解其原理。</p>
+
+<p>首先用 HTML 和 CSS 布置好画布（Canvas）:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1.0"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;title&gt;</span>Snake Game<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"./index.css"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;canvas</span> <span class="na">width=</span><span class="s">"400"</span> <span class="na">height=</span><span class="s">"400"</span><span class="nt">&gt;</span>Sorry, your browser does not support canvas<span class="nt">&lt;/canvas&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"./index.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">body</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+  <span class="nl">justify-content</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+  <span class="nl">align-items</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">100vh</span><span class="p">;</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">padding</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">canvas</span> <span class="p">{</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="no">black</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>通过以上代码我们在页面中央开辟了一块 400 × 400 像素的黑底画布。以 20 × 20 做为一个基本单位，将画布划分为 20 行 20 列的方阵。如图所示：</p>
+
+<p><img src="https://s10.mogucdn.com/mlcdn/c45406/200520_6cbd63jcb3a6heed1a4chig2h77eg_1332x1324.png" alt=""></p>
+
+<p>大体的思路就是用绿色来填充这些小格子来表示蛇身，用黄色的一格来代表随机出现的食物。蛇身要动，要有个定时器，按一定的频率去更新画布。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/** @type {HTMLCanvasElement} */</span>
+<span class="kd">const</span> <span class="nx">canvas</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">canvas</span><span class="dl">'</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">box</span> <span class="o">=</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">getContext</span><span class="p">(</span><span class="dl">'</span><span class="s1">2d</span><span class="dl">'</span><span class="p">)</span>
+
+<span class="kd">let</span> <span class="nx">snake</span> <span class="o">=</span> <span class="p">[</span><span class="mi">41</span><span class="p">,</span> <span class="mi">40</span><span class="p">]</span>
+<span class="kd">let</span> <span class="nx">food</span> <span class="o">=</span> <span class="mi">43</span>
+<span class="kd">let</span> <span class="nx">direction</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="kd">let</span> <span class="nx">n</span>
+
+<span class="kd">const</span> <span class="nx">draw</span> <span class="o">=</span> <span class="p">(</span><span class="nx">seat</span><span class="p">,</span> <span class="nx">color</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">box</span><span class="p">.</span><span class="nx">fillStyle</span> <span class="o">=</span> <span class="nx">color</span>
+  <span class="nx">box</span><span class="p">.</span><span class="nx">fillRect</span><span class="p">((</span><span class="nx">seat</span> <span class="o">%</span> <span class="mi">20</span><span class="p">)</span> <span class="o">*</span> <span class="mi">20</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="o">~~</span><span class="p">(</span><span class="nx">seat</span> <span class="o">/</span> <span class="mi">20</span><span class="p">)</span> <span class="o">*</span> <span class="mi">20</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">18</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="nb">document</span><span class="p">.</span><span class="nx">onkeydown</span> <span class="o">=</span> <span class="p">(</span><span class="nx">evt</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">direction</span> <span class="o">=</span>
+    <span class="nx">snake</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="nx">snake</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="p">(</span><span class="nx">n</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">][(</span><span class="nx">evt</span> <span class="o">||</span> <span class="nx">event</span><span class="p">).</span><span class="nx">keyCode</span> <span class="o">-</span> <span class="mi">37</span><span class="p">]</span> <span class="o">||</span> <span class="nx">direction</span><span class="p">)</span>
+      <span class="p">?</span> <span class="nx">direction</span>
+      <span class="p">:</span> <span class="nx">n</span>
+<span class="p">}</span>
+
+<span class="o">!</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="nx">snake</span><span class="p">.</span><span class="nx">unshift</span><span class="p">((</span><span class="nx">n</span> <span class="o">=</span> <span class="nx">snake</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="nx">direction</span><span class="p">))</span>
+
+  <span class="k">if</span> <span class="p">(</span>
+    <span class="nx">snake</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">||</span>
+    <span class="nx">n</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span>
+    <span class="nx">n</span> <span class="o">&gt;</span> <span class="mi">399</span> <span class="o">||</span>
+    <span class="p">(</span><span class="nx">direction</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="nx">n</span> <span class="o">%</span> <span class="mi">20</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">||</span>
+    <span class="p">(</span><span class="nx">direction</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="nx">n</span> <span class="o">%</span> <span class="mi">20</span> <span class="o">==</span> <span class="mi">19</span><span class="p">)</span>
+  <span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">GAME OVER!</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">}</span>
+
+  <span class="nx">draw</span><span class="p">(</span><span class="nx">n</span><span class="p">,</span> <span class="dl">'</span><span class="s1">lime</span><span class="dl">'</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="nx">n</span> <span class="o">==</span> <span class="nx">food</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">while</span> <span class="p">(</span><span class="nx">snake</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">((</span><span class="nx">food</span> <span class="o">=</span> <span class="o">~~</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="mi">400</span><span class="p">)))</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="nx">draw</span><span class="p">(</span><span class="nx">food</span><span class="p">,</span> <span class="dl">'</span><span class="s1">yellow</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">draw</span><span class="p">(</span><span class="nx">snake</span><span class="p">.</span><span class="nx">pop</span><span class="p">(),</span> <span class="dl">'</span><span class="s1">black</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">}</span>
+
+  <span class="nx">setTimeout</span><span class="p">(</span><span class="nx">arguments</span><span class="p">.</span><span class="nx">callee</span><span class="p">,</span> <span class="mi">150</span><span class="p">)</span>
+<span class="p">})()</span>
+</code></pre></div></div>
+
+<p>通常这种情况下我们都拿二维数组来代表一个点，或一个格子，比如 <code class="highlighter-rouge">[0, 0]</code> 就是左上角第一个格子。但这次不一样，作者是按从左到右，至上而下，依次来标记这些格子的，这样我们就标记出了 0~399 个格子。</p>
+
+<h2 id="画蛇不添足">
+<a class="anchor" href="#%E7%94%BB%E8%9B%87%E4%B8%8D%E6%B7%BB%E8%B6%B3" aria-hidden="true"><span class="octicon octicon-link"></span></a>画蛇不添足</h2>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">snake</span> <span class="o">=</span> <span class="p">[</span><span class="mi">41</span><span class="p">,</span> <span class="mi">40</span><span class="p">]</span>
+<span class="kd">let</span> <span class="nx">food</span> <span class="o">=</span> <span class="mi">43</span>
+<span class="kd">let</span> <span class="nx">direction</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="kd">let</span> <span class="nx">n</span>
+</code></pre></div></div>
+
+<p>蛇身用一维数组来表示即可。<code class="highlighter-rouge">food</code> 代表食物出现的位置，<code class="highlighter-rouge">direction</code> 表示蛇头下一次运动的转向位移量。最有意思的是这个 <code class="highlighter-rouge">n</code>，它是用来记录蛇身单位时间内的移动位移，也就是蛇运动动画当前帧的绘制目标格子。看到这一行：</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">snake</span><span class="p">.</span><span class="nx">unshift</span><span class="p">((</span><span class="nx">n</span> <span class="o">=</span> <span class="nx">snake</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="nx">direction</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>这里是两步操作：</p>
+
+<ol>
+  <li>先将蛇头根据方向转向获取到下一步的位移量，赋值给 <code class="highlighter-rouge">n</code>;</li>
+  <li>蛇身把下一步的位移 <code class="highlighter-rouge">n</code> 做为新的蛇头，加入到一维数组里。</li>
+</ol>
+
+<p>这里还比较好理解。那么接下来看到如何在 canvas 上画格子：</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">draw</span> <span class="o">=</span> <span class="p">(</span><span class="nx">seat</span><span class="p">,</span> <span class="nx">color</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">box</span><span class="p">.</span><span class="nx">fillStyle</span> <span class="o">=</span> <span class="nx">color</span>
+  <span class="nx">box</span><span class="p">.</span><span class="nx">fillRect</span><span class="p">((</span><span class="nx">seat</span> <span class="o">%</span> <span class="mi">20</span><span class="p">)</span> <span class="o">*</span> <span class="mi">20</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="o">~~</span><span class="p">(</span><span class="nx">seat</span> <span class="o">/</span> <span class="mi">20</span><span class="p">)</span> <span class="o">*</span> <span class="mi">20</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">18</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="p">...</span>
+
+<span class="nx">draw</span><span class="p">(</span><span class="nx">n</span><span class="p">,</span> <span class="dl">'</span><span class="s1">lime</span><span class="dl">'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>根据 20 × 20 的划分标记，我们通过 <code class="highlighter-rouge">seat / 20</code> 取整来得到行，<code class="highlighter-rouge">seat % 20</code> 来获得列。行和列应该都是 0~19 之间的整数。如果用 <code class="highlighter-rouge">row</code> 和 <code class="highlighter-rouge">col</code> 分别表示其行和列的结果，按道理应该是这般绘制：<code class="highlighter-rouge">box.fillRect(col * 20, row * 20, 20, 20)</code>——这是画满格的情况。留个一像素的内边距，就是原示例中的写法。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="nx">n</span> <span class="o">==</span> <span class="nx">food</span><span class="p">)</span> <span class="p">{</span>
+  <span class="p">...</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="nx">draw</span><span class="p">(</span><span class="nx">snake</span><span class="p">.</span><span class="nx">pop</span><span class="p">(),</span> <span class="dl">'</span><span class="s1">black</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>后续 <code class="highlighter-rouge">n == food</code> 时表示蛇吃到食物，那就进入到再随机生成食物的逻辑。结合 else 的逻辑，通篇看下来现在我们可以把在一帧内的蛇身操作放在一起看了：</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// next step</span>
+<span class="nx">n</span> <span class="o">=</span> <span class="nx">snake</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="nx">direction</span>
+
+<span class="c1">// append head</span>
+<span class="nx">snake</span><span class="p">.</span><span class="nx">unshift</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span>
+
+<span class="c1">// cut off tail</span>
+<span class="nx">snake</span><span class="p">.</span><span class="nx">pop</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h2 id="direction">
+<a class="anchor" href="#direction" aria-hidden="true"><span class="octicon octicon-link"></span></a>direction</h2>
+
+<p><code class="highlighter-rouge">direction</code> 的计算也颇为巧妙：</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">document</span><span class="p">.</span><span class="nx">onkeydown</span> <span class="o">=</span> <span class="p">(</span><span class="nx">evt</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">direction</span> <span class="o">=</span>
+    <span class="nx">snake</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="nx">snake</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="p">(</span><span class="nx">n</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">][(</span><span class="nx">evt</span> <span class="o">||</span> <span class="nx">event</span><span class="p">).</span><span class="nx">keyCode</span> <span class="o">-</span> <span class="mi">37</span><span class="p">]</span> <span class="o">||</span> <span class="nx">direction</span><span class="p">)</span>
+      <span class="p">?</span> <span class="nx">direction</span>
+      <span class="p">:</span> <span class="nx">n</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>数组 <code class="highlighter-rouge">[-1, -20, 1, 20]</code> 做为四个方向的位移量<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote">1</a></sup>，而 <code class="highlighter-rouge">(evt || event).keyCode - 37</code> 做为其索引值，按不同方向键可以取到其对应的偏移量。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">][(</span><span class="nx">evt</span> <span class="o">||</span> <span class="nx">event</span><span class="p">).</span><span class="nx">keyCode</span> <span class="o">-</span> <span class="mi">37</span><span class="p">]</span> <span class="o">||</span> <span class="nx">direction</span>
+</code></pre></div></div>
+
+<p>这里的巧妙之处在于<strong>如果按下的按键不是方向键，在数组中将得不到对应的值</strong>。所以 <code class="highlighter-rouge">...|| direction</code> 这步操作，可以使得 <code class="highlighter-rouge">n</code> 取到原来 <code class="highlighter-rouge">direction</code> 的值，而不是 <code class="highlighter-rouge">undefined</code>。所以此时 <code class="highlighter-rouge">n</code> 的取值，要么是数组 <code class="highlighter-rouge">[-1, -20, 1, 20]</code> 中的某个值，要么就是前一个 <code class="highlighter-rouge">direction</code> 的值。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">snake</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="nx">snake</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="p">...</span> <span class="p">?</span> <span class="nx">direction</span> <span class="p">:</span> <span class="nx">n</span>
+</code></pre></div></div>
+
+<p>我们已经能很完美地拿到 <code class="highlighter-rouge">n</code> 的值了，那上面的这个三元判断又是怎么回事呢？答案是防反转。就是当按键方向与蛇运动方向相反时，如果没有这个判断的话，就会错乱。<code class="highlighter-rouge">snake[1] - snake[0]</code> 可视为当前的反方向，即 <code class="highlighter-rouge">-direction</code>，如果此时 <code class="highlighter-rouge">n</code> 真的取值为 <code class="highlighter-rouge">-direction</code>，则需将其矫正为 <code class="highlighter-rouge">direction</code>。</p>
+
+<h2 id="条件判断">
+<a class="anchor" href="#%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD" aria-hidden="true"><span class="octicon octicon-link"></span></a>条件判断</h2>
+
+<p>好了，其它就较为简单了。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// GAME OVER 的判断条件</span>
+
+<span class="k">if</span> <span class="p">(</span>
+  <span class="c1">// 蛇头碰到自身</span>
+  <span class="nx">snake</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">||</span>
+  <span class="c1">// 碰到上边界</span>
+  <span class="nx">n</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span>
+  <span class="c1">// 碰到下边界</span>
+  <span class="nx">n</span> <span class="o">&gt;</span> <span class="mi">399</span> <span class="o">||</span>
+  <span class="c1">// 碰到右边界</span>
+  <span class="p">(</span><span class="nx">direction</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="nx">n</span> <span class="o">%</span> <span class="mi">20</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">||</span>
+  <span class="c1">// 碰到左边界</span>
+  <span class="p">(</span><span class="nx">direction</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="nx">n</span> <span class="o">%</span> <span class="mi">20</span> <span class="o">==</span> <span class="mi">19</span><span class="p">)</span>
+<span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">GAME OVER!</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">while</span> <span class="p">(</span><span class="nx">snake</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">((</span><span class="nx">food</span> <span class="o">=</span> <span class="o">~~</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="mi">400</span><span class="p">)))</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">);</span>
+
+<span class="c1">// 这句可翻译为</span>
+<span class="k">do</span> <span class="p">{</span>
+  <span class="nx">food</span> <span class="o">=</span> <span class="o">~~</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="mi">400</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nx">snake</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">food</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>在随机生成 food 位置的同时，也避免了生成位与蛇身重合的问题。</p>
+
+<h2 id="iife">
+<a class="anchor" href="#iife" aria-hidden="true"><span class="octicon octicon-link"></span></a>IIFE</h2>
+
+<p>看到最后一部分：</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">!</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="p">...</span>
+<span class="p">})()</span>
+</code></pre></div></div>
+
+<p>这是一个立即执行函数（IIFE），这里有<a href="/2012/traps-in-javascript-part-I#%E5%9D%91%E4%BA%94%E5%87%BD%E6%95%B0%E7%9A%84%E8%87%AA%E6%89%A7%E8%A1%8C">介绍</a>。</p>
+
+<h2 id="argumentscallee">
+<a class="anchor" href="#argumentscallee" aria-hidden="true"><span class="octicon octicon-link"></span></a>arguments.callee</h2>
+
+<p><code class="highlighter-rouge">arguments.callee</code> 指的是：</p>
+
+<blockquote>
+  <p>引用参数所属的当前执行函数 —— <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments">MDN web docs</a></p>
+</blockquote>
+
+<p>所以这里 <code class="highlighter-rouge">setTimeout</code> 就能让这段函数不停地执行下去。当然我们也可以通过写个申明函数，用 <code class="highlighter-rouge">setInterval</code> 去做轮询，但不如作者的这个写法简洁灵活。</p>
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>分别为：左、上、右、下。 <a href="#fnref:1" class="reversefootnote" role="doc-backlink">↩</a></p>
+    </li>
+  </ol>
+</div>
+
+    </section>
+    <footer class="post-footer">
+      <div class="post-meta">
+        <a href="" rel="full-article"><time datetime="2020-05-20 15:43:09 +0000" class="updated" pubdate>May 20, 2020</time></a>
+
+        
+<span class="post-tag">
+  
+  <a class="tag" href="/archives/tag/javascript">javascript</a>
+  
+  <a class="tag" href="/archives/tag/canvas">canvas</a>
+  
+  <a class="tag" href="/archives/tag/game">game</a>
+  
+</span>
+
+
+      </div>
+    </footer>
+    <section class="post-recent">
+  
+  <i class="fa fa-angle-double-left"></i>
+  <a class="relative-post previous" href="/2018/format-financial-currency-number/"
+    ><span>对数字的金融货币格式化</span></a
+  >
+   
+</section>
+
+  </article>
+  
+</main>
+
+  <footer id="footer" role="contentinfo">
+  <p>
+    © Copyright 2012 -
+    <script>
+      document.write(new Date().getFullYear())
+    </script>
+  </p>
+</footer>
+
+<script src="/assets/scripts/anchor.min.js"></script>
+<script src="/assets/scripts/toc.js"></script>
+
+<script src="/assets/scripts/common.js"></script>
+
+</div>
+</body>
+</html>

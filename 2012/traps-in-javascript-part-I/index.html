@@ -1,62 +1,84 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-Hans">
 <head>
-	<meta charset="utf-8">
-	<link href="https://gmpg.org/xfn/11" rel="profile">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title>JavaScript 中的一些坑（一） - 肉山·察</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
-  
-	<link rel="canonical" href="https://roshanca.com/2012/traps-in-javascript-part-I/">
-	<link rel="alternate" type="application/atom+xml" title="Subscribe Feed" href="/feed.xml">
-	<link href="/assets/styles/main.css" rel="stylesheet" media="all">
-	<link href="//cdn.bootcss.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-	<!-- <link href="//fonts.lug.ustc.edu.cn/css?family=Lustria|Inconsolata" rel="stylesheet"> -->
-  <!-- <link href='//fonts.useso.com/css?family=PT+Serif:400,700' rel='stylesheet' type='text/css'> -->
-	<script>
-	function loadSync(u,p,a){
-		if(!p && location.port)return {onload: null};
-		if(/\.js$/.test(u)){a='script'}else{a='link'};
-		var d=document,s=d.createElement(a),f=d.getElementsByTagName(a)[0];
-		if(a=='link'){s.href=u,s.rel='stylesheet'}else{s.src=u,s.async=true}
-		f.parentNode.insertBefore(s,f);return s;
-	}
-	var _gaq = _gaq || [];
-	_gaq.push(['_setAccount', 'UA-15720258-1']);
-	_gaq.push(['_trackPageview']);
-	_gaq.push(['_trackPageLoadTime']);
-	loadSync('//ssl.google-analytics.com/ga.js');
-	if(/windows/i.test(navigator.userAgent)){document.getElementsByTagName('html')[0].className = 'windows'}
-    </script>
-    <!--[if lt IE 9]>
-    <script>window.location.href="//browsehappy.com"</script>
-    <![endif]-->
+  <meta charset="utf-8">
+  <link href="//gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>JavaScript 中的一些坑（一） - 肉山·察</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
+  <!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>JavaScript 中的一些坑（一） | 肉山·察</title>
+<meta name="generator" content="Jekyll v4.0.1" />
+<meta property="og:title" content="JavaScript 中的一些坑（一）" />
+<meta property="og:locale" content="zh_Hans" />
+<meta name="description" content="“坑”这个字，在此的意思是“陷阱”。由于 JavaScript “弱语言”的性质，使得其在使用过程中异常的宽松灵活，但也极为容易“中招”。" />
+<meta property="og:description" content="“坑”这个字，在此的意思是“陷阱”。由于 JavaScript “弱语言”的性质，使得其在使用过程中异常的宽松灵活，但也极为容易“中招”。" />
+<link rel="canonical" href="https://roshanca.com/2012/traps-in-javascript-part-I/" />
+<meta property="og:url" content="https://roshanca.com/2012/traps-in-javascript-part-I/" />
+<meta property="og:site_name" content="肉山·察" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2012-11-29T14:47:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="JavaScript 中的一些坑（一）" />
+<meta name="twitter:site" content="@roshan_wu" />
+<meta name="twitter:creator" content="@roshan_wu" />
+<script type="application/ld+json">
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://roshanca.com/2012/traps-in-javascript-part-I/"},"description":"“坑”这个字，在此的意思是“陷阱”。由于 JavaScript “弱语言”的性质，使得其在使用过程中异常的宽松灵活，但也极为容易“中招”。","headline":"JavaScript 中的一些坑（一）","dateModified":"2012-11-29T14:47:00+00:00","datePublished":"2012-11-29T14:47:00+00:00","@type":"BlogPosting","url":"https://roshanca.com/2012/traps-in-javascript-part-I/","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link href="/assets/styles/main.css" rel="stylesheet"><link type="application/atom+xml" rel="alternate" href="https://roshanca.com/feed.xml" title="肉山·察" /><link href="//cdn.bootcss.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <script>
+    function loadSync(u,p,a){
+      if(!p && location.port)return {onload: null};
+      if(/\.js$/.test(u)){a='script'}else{a='link'};
+      var d=document,s=d.createElement(a),f=d.getElementsByTagName(a)[0];
+      if(a=='link'){s.href=u,s.rel='stylesheet'}else{s.src=u,s.async=true}
+      f.parentNode.insertBefore(s,f);return s;
+    }
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-15720258-1']);
+    _gaq.push(['_trackPageview']);
+    _gaq.push(['_trackPageLoadTime']);
+    loadSync('//ssl.google-analytics.com/ga.js');
+    if(/windows/i.test(navigator.userAgent)){document.getElementsByTagName('html')[0].className = 'windows'}
+  </script>
+  <!--[if lt IE 9]>
+  <script>window.location.href="//browsehappy.com"</script>
+  <![endif]-->
 </head>
 
 <body>
 <header id="header" role="banner">
-	
-  <div class="header-inner"></div>
-		<a href="/" class="blog-title home">肉山·察</a>
+  
+  <div class="header-inner">
+    <a href="/" class="blog-title home">肉山·察</a>
+    
+    <div class="post-title">JavaScript 中的一些坑（一）</div>
+    
     <div class="header-icon">
-	<a href="//github.com/roshanca" class="social-link">
-		<i class="fa fa-github"></i>
-	</a>
+<a href="//github.com/roshanca" class="social-link">
+  <i class="fa fa-github"></i>
+</a>
 
-	<a href="//twitter.com/roshan_wu" class="social-link">
-		<i class="fa fa-twitter"></i>
-	</a>
+<a href="//twitter.com/roshan_wu" class="social-link">
+  <i class="fa fa-twitter"></i>
+</a>
 
-	<a href="//weibo.com/jinfeixibi" class="social-link">
-		<i class="fa fa-weibo"></i>
-	</a>
+<a href="//www.instagram.com/roshanca/" class="social-link">
+  <i class="fa fa-instagram"></i>
+</a>
+
+<a href="/feed.xml" class="social-link">
+  <i class="fa fa-rss"></i>
+</a>
+
 </div>
   </div>
-  <a href="//lab.roshanca.com/resume/" class="author"></a>
-	
+  <i class="author"></i>
+  
 </header>
 
-<main class="fluid" role="main">
+<div class="scroll-view">
+  <main class="fluid" role="main">
   <article class="post" role="article">
     <header class="post-header">
       <h1 class="post-title">JavaScript 中的一些坑（一）</h1>
@@ -94,16 +116,16 @@
 <p>可你以为用了 <code class="highlighter-rouge">var</code> 就 ok 了？来看看这个坑：</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
-	<span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="nx">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-	<span class="c1">// body...</span>
+  <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="nx">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="c1">// body...</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
 <p>也许你期望得到的是两个局部变量，但 <code class="highlighter-rouge">b</code> 却是货真价实的全局变量。why? Because <strong>赋值运算是自右往左的</strong>，所以这相当于：</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
-	<span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">(</span><span class="nx">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
-	<span class="c1">// body...</span>
+  <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">(</span><span class="nx">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
+  <span class="c1">// body...</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
@@ -121,9 +143,9 @@
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">myName</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">global</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
-	<span class="nx">alert</span><span class="p">(</span><span class="nx">myName</span><span class="p">);</span>
-	<span class="kd">var</span> <span class="nx">myName</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">local</span><span class="dl">"</span><span class="p">;</span>
-	<span class="nx">alert</span><span class="p">(</span><span class="nx">myName</span><span class="p">);</span>
+  <span class="nx">alert</span><span class="p">(</span><span class="nx">myName</span><span class="p">);</span>
+  <span class="kd">var</span> <span class="nx">myName</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">local</span><span class="dl">"</span><span class="p">;</span>
+  <span class="nx">alert</span><span class="p">(</span><span class="nx">myName</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="nx">foo</span><span class="p">();</span>
@@ -137,17 +159,17 @@
 <p>所以以上代码片段的执行行为可能就像这样：</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
-	<span class="kd">var</span> <span class="nx">myName</span><span class="p">;</span>
-	<span class="nx">alert</span><span class="p">(</span><span class="nx">myName</span><span class="p">);</span> <span class="c1">// "undefined"</span>
-	<span class="nx">myName</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">local</span><span class="dl">"</span><span class="p">;</span>
-	<span class="nx">alert</span><span class="p">(</span><span class="nx">myName</span><span class="p">);</span> <span class="c1">// "local"</span>
+  <span class="kd">var</span> <span class="nx">myName</span><span class="p">;</span>
+  <span class="nx">alert</span><span class="p">(</span><span class="nx">myName</span><span class="p">);</span> <span class="c1">// "undefined"</span>
+  <span class="nx">myName</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">local</span><span class="dl">"</span><span class="p">;</span>
+  <span class="nx">alert</span><span class="p">(</span><span class="nx">myName</span><span class="p">);</span> <span class="c1">// "local"</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
 <p>用另一个坑来测试下你是否真的理解了预解析：</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="dl">"</span><span class="s2">a</span><span class="dl">"</span> <span class="k">in</span> <span class="nb">window</span><span class="p">))</span> <span class="p">{</span>
-	<span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="nx">alert</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
@@ -159,7 +181,7 @@
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">a</span><span class="dl">"</span> <span class="k">in</span> <span class="nb">window</span><span class="p">);</span> <span class="c1">// true</span>
 
 <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="dl">"</span><span class="s2">a</span><span class="dl">"</span> <span class="k">in</span> <span class="nb">window</span><span class="p">))</span> <span class="p">{</span>
-	<span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// 不执行</span>
+  <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// 不执行</span>
 <span class="p">}</span>
 
 <span class="nx">alert</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span> <span class="c1">// "undefined"</span>
@@ -179,7 +201,7 @@
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">alert</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">foo</span><span class="p">);</span> <span class="c1">// "function"</span>
 
 <span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
-	<span class="c1">// body...</span>
+  <span class="c1">// body...</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
@@ -188,20 +210,20 @@
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">alert</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">foo</span><span class="p">);</span> <span class="c1">// "undefined"</span>
 
 <span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-	<span class="c1">// body...</span>
+  <span class="c1">// body...</span>
 <span class="p">};</span>
 </code></pre></div></div>
 
 <p>明白了这个道理的你，是否还会踩以下的坑呢？</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">test</span><span class="p">()</span> <span class="p">{</span>
-	<span class="nx">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">);</span>
+  <span class="nx">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="nx">test</span><span class="p">();</span>
 
 <span class="kd">function</span> <span class="nx">test</span><span class="p">()</span> <span class="p">{</span>
-	<span class="nx">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">2</span><span class="dl">"</span><span class="p">);</span>
+  <span class="nx">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">2</span><span class="dl">"</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="nx">test</span><span class="p">();</span>
@@ -219,14 +241,14 @@
 <p>先看命名函数表达式，理所当然，就是它得有名字，例如：</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">bar</span> <span class="o">=</span> <span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
-	<span class="c1">// body...</span>
+  <span class="c1">// body...</span>
 <span class="p">};</span>
 </code></pre></div></div>
 
 <p>要注意的是：函数名只对其函数内部可见。如以下坑：</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">bar</span> <span class="o">=</span> <span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
-	<span class="nx">foo</span><span class="p">();</span> <span class="c1">// 正常运行</span>
+  <span class="nx">foo</span><span class="p">();</span> <span class="c1">// 正常运行</span>
 <span class="p">};</span>
 
 <span class="nx">foo</span><span class="p">();</span> <span class="c1">// 出错：ReferenceError</span>
@@ -286,15 +308,15 @@
 
 <p>以下演示的是一个常见的坑：</p>
 
-<iframe style="width: 100%; height: 300px" frameborder="0" seamless="seamless" src="//jsfiddle.net/GNDd4/embedded/result,html,js/light/"></iframe>
+<script async="" src="//jsfiddle.net/GNDd4/embed/result,html,js/dark/"></script>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">links</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="dl">"</span><span class="s2">ul</span><span class="dl">"</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="dl">"</span><span class="s2">a</span><span class="dl">"</span><span class="p">);</span>
 
 <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">l</span> <span class="o">=</span> <span class="nx">links</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">l</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-	<span class="nx">links</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">onclick</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-		<span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
-		<span class="nx">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">You click link #</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">i</span><span class="p">);</span>        
-	<span class="p">}</span>		
+  <span class="nx">links</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">onclick</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">You click link #</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">i</span><span class="p">);</span>
+  <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
@@ -304,29 +326,29 @@
 
 <p>填坑：为了得到想要的结果，需要在每次循环中创建变量 <code class="highlighter-rouge">i</code> 的拷贝。以下演示正确的做法：</p>
 
-<iframe style="width: 100%; height: 300px" frameborder="0" seamless="seamless" src="//jsfiddle.net/UTy8Z/embedded/result,html,js/light/"></iframe>
+<script async="" src="//jsfiddle.net/UTy8Z/embed/result,html,js/dark/"></script>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">links</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="dl">"</span><span class="s2">ul</span><span class="dl">"</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="dl">"</span><span class="s2">a</span><span class="dl">"</span><span class="p">);</span>
 
 <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">l</span> <span class="o">=</span> <span class="nx">links</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">l</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-	<span class="nx">links</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">onclick</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">index</span><span class="p">)</span> <span class="p">{</span>
-		<span class="k">return</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-			<span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
-			<span class="nx">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">You click link #</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">index</span><span class="p">);</span>        
-		<span class="p">}</span>
-	<span class="p">})(</span><span class="nx">i</span><span class="p">);</span>
+  <span class="nx">links</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">onclick</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">index</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+      <span class="nx">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">You click link #</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">index</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">})(</span><span class="nx">i</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
 <p>可以看到，<code class="highlighter-rouge">(function () { ... })()</code> 的形式，就是上文提到的<strong>函数的自执行</strong>，<code class="highlighter-rouge">i</code> 作为参数传给了 <code class="highlighter-rouge">index</code>，<code class="highlighter-rouge">alert</code> 再次执行时，它就拥有了对 <code class="highlighter-rouge">index</code> 的引用，此时这个值是不会被循环改变的。当然，明白了道理后，你也可以这样写：</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">l</span> <span class="o">=</span> <span class="nx">links</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">l</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-	<span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">index</span><span class="p">)</span> <span class="p">{</span>
-		<span class="nx">links</span><span class="p">[</span><span class="nx">index</span><span class="p">].</span><span class="nx">onclick</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-			<span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
-			<span class="nx">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">You click link #</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">index</span><span class="p">);</span>        
-		<span class="p">}</span>
-	<span class="p">})(</span><span class="nx">i</span><span class="p">);</span>
+  <span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">index</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">links</span><span class="p">[</span><span class="nx">index</span><span class="p">].</span><span class="nx">onclick</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+      <span class="nx">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">You click link #</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">index</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">})(</span><span class="nx">i</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
@@ -338,13 +360,13 @@
     </section>
     <footer class="post-footer">
       <div class="post-meta">
-        <time datetime="2012-11-29 14:47:00 +0000" class="updated" pubdate>Nov 29, 2012</time>
+        <a href="" rel="full-article"><time datetime="2012-11-29 14:47:00 +0000" class="updated" pubdate>Nov 29, 2012</time></a>
 
         
 <span class="post-tag">
-	
-		<span class="tag">javascript</span>
-	
+  
+  <a class="tag" href="/archives/tag/javascript">javascript</a>
+  
 </span>
 
 
@@ -352,62 +374,70 @@
     </footer>
     <section class="post-recent">
   
-    <a class="relative-post previous" href="/2012/applescript-workflow/"><span>用 AppleScript 创建工作流</span></a>
-  
-  
-    <a class="relative-post next" href="/2012/magical-sublime-text-2/"><span>编辑神器：Sublime Text 2</span></a>
+  <i class="fa fa-angle-double-left"></i>
+  <a class="relative-post previous" href="/2012/applescript-workflow/"
+    ><span>用 AppleScript 创建工作流</span></a
+  >
+   
+  <a class="relative-post next" href="/2012/magical-sublime-text-2/"
+    ><span>编辑神器：Sublime Text 2</span></a
+  >
+  <i class="fa fa-angle-double-right"></i>
   
 </section>
 
   </article>
-</main>
-
-  <div class="post-comment">
-	<div id="disqus_thread" class="container"></div>
+  
+    <div class="post-comment">
+  <div id="disqus_thread" class="container"></div>
 </div>
 <script>
-function getElementTopLeft(elem) {
-	var top = 0;
-	var left = 0;
-	while(elem) {
-		top += elem.offsetTop;
-		left += elem.offsetLeft;
+  function getElementTopLeft(elem) {
+    var top = 0
+    var left = 0
+    while (elem) {
+      top += elem.offsetTop
+      left += elem.offsetLeft
 
-		elem = elem.offsetParent;
-	}
-	return {top: top, left: left};
-}
+      elem = elem.offsetParent
+    }
+    return { top: top, left: left }
+  }
 
-var disqus_shortname = 'roshanca';
-var disqus_elem = document.getElementById('disqus_thread');
-var disqus_init = false;
+  var disqus_shortname = 'roshanca'
+  var disqus_elem = document.getElementById('disqus_thread')
+  var disqus_init = false
 
-window.onscroll = function () {
-	if (disqus_init) return;
+  document.querySelector('.scroll-view').addEventListener('scroll', (evt) => {
+    if (disqus_init) return
 
-	var viewHeight = document.documentElement.clientHeight;
-	var scrollY = document.documentElement.scrollTop || document.body.scrollTop;
+    var viewHeight = document.documentElement.clientHeight
+    var scrollY = (evt.target || evt.srcElement).scrollTop
 
-	if(getElementTopLeft(disqus_elem).top < viewHeight + scrollY) {
-		loadSync('//' + disqus_shortname + '.disqus.com/embed.js');
-		disqus_init = true;
-	}
-}
+    if (getElementTopLeft(disqus_elem).top < viewHeight + scrollY) {
+      loadSync('//' + disqus_shortname + '.disqus.com/embed.js')
+      disqus_init = true
+    }
+  }, false)
 </script>
 
+  
+</main>
 
-
-<div class="fork-github">
-    <a href="https://github.com/roshanca/blog">View on GitHub</a>
-</div>
-
-<footer id="footer" role="contentinfo">
-	<p>© Copyright 2012 - <script>document.write(new Date().getFullYear())</script> by Roshan Wu.</p>
+  <footer id="footer" role="contentinfo">
+  <p>
+    © Copyright 2012 -
+    <script>
+      document.write(new Date().getFullYear())
+    </script>
+  </p>
 </footer>
 
 <script src="/assets/scripts/anchor.min.js"></script>
-<script src="/assets/scripts/post.js"></script>
+<script src="/assets/scripts/toc.js"></script>
 
+<script src="/assets/scripts/common.js"></script>
 
+</div>
 </body>
 </html>

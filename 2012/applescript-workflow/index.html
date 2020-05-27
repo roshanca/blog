@@ -1,62 +1,84 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-Hans">
 <head>
-	<meta charset="utf-8">
-	<link href="https://gmpg.org/xfn/11" rel="profile">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title>用 AppleScript 创建工作流 - 肉山·察</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
-  
-	<link rel="canonical" href="https://roshanca.com/2012/applescript-workflow/">
-	<link rel="alternate" type="application/atom+xml" title="Subscribe Feed" href="/feed.xml">
-	<link href="/assets/styles/main.css" rel="stylesheet" media="all">
-	<link href="//cdn.bootcss.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-	<!-- <link href="//fonts.lug.ustc.edu.cn/css?family=Lustria|Inconsolata" rel="stylesheet"> -->
-  <!-- <link href='//fonts.useso.com/css?family=PT+Serif:400,700' rel='stylesheet' type='text/css'> -->
-	<script>
-	function loadSync(u,p,a){
-		if(!p && location.port)return {onload: null};
-		if(/\.js$/.test(u)){a='script'}else{a='link'};
-		var d=document,s=d.createElement(a),f=d.getElementsByTagName(a)[0];
-		if(a=='link'){s.href=u,s.rel='stylesheet'}else{s.src=u,s.async=true}
-		f.parentNode.insertBefore(s,f);return s;
-	}
-	var _gaq = _gaq || [];
-	_gaq.push(['_setAccount', 'UA-15720258-1']);
-	_gaq.push(['_trackPageview']);
-	_gaq.push(['_trackPageLoadTime']);
-	loadSync('//ssl.google-analytics.com/ga.js');
-	if(/windows/i.test(navigator.userAgent)){document.getElementsByTagName('html')[0].className = 'windows'}
-    </script>
-    <!--[if lt IE 9]>
-    <script>window.location.href="//browsehappy.com"</script>
-    <![endif]-->
+  <meta charset="utf-8">
+  <link href="//gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>用 AppleScript 创建工作流 - 肉山·察</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
+  <!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>用 AppleScript 创建工作流 | 肉山·察</title>
+<meta name="generator" content="Jekyll v4.0.1" />
+<meta property="og:title" content="用 AppleScript 创建工作流" />
+<meta property="og:locale" content="zh_Hans" />
+<meta name="description" content="自从用了 Octopress，每次写新文章 &amp; 生产部署，都要在终端中反复敲打几个命令，重复劳动。出于职业习惯，开始琢磨有没有偷懒的方法，用工具或者程序来代替这体力活。" />
+<meta property="og:description" content="自从用了 Octopress，每次写新文章 &amp; 生产部署，都要在终端中反复敲打几个命令，重复劳动。出于职业习惯，开始琢磨有没有偷懒的方法，用工具或者程序来代替这体力活。" />
+<link rel="canonical" href="https://roshanca.com/2012/applescript-workflow/" />
+<meta property="og:url" content="https://roshanca.com/2012/applescript-workflow/" />
+<meta property="og:site_name" content="肉山·察" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2012-11-20T22:18:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="用 AppleScript 创建工作流" />
+<meta name="twitter:site" content="@roshan_wu" />
+<meta name="twitter:creator" content="@roshan_wu" />
+<script type="application/ld+json">
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://roshanca.com/2012/applescript-workflow/"},"description":"自从用了 Octopress，每次写新文章 &amp; 生产部署，都要在终端中反复敲打几个命令，重复劳动。出于职业习惯，开始琢磨有没有偷懒的方法，用工具或者程序来代替这体力活。","headline":"用 AppleScript 创建工作流","dateModified":"2012-11-20T22:18:00+00:00","datePublished":"2012-11-20T22:18:00+00:00","@type":"BlogPosting","url":"https://roshanca.com/2012/applescript-workflow/","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link href="/assets/styles/main.css" rel="stylesheet"><link type="application/atom+xml" rel="alternate" href="https://roshanca.com/feed.xml" title="肉山·察" /><link href="//cdn.bootcss.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <script>
+    function loadSync(u,p,a){
+      if(!p && location.port)return {onload: null};
+      if(/\.js$/.test(u)){a='script'}else{a='link'};
+      var d=document,s=d.createElement(a),f=d.getElementsByTagName(a)[0];
+      if(a=='link'){s.href=u,s.rel='stylesheet'}else{s.src=u,s.async=true}
+      f.parentNode.insertBefore(s,f);return s;
+    }
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-15720258-1']);
+    _gaq.push(['_trackPageview']);
+    _gaq.push(['_trackPageLoadTime']);
+    loadSync('//ssl.google-analytics.com/ga.js');
+    if(/windows/i.test(navigator.userAgent)){document.getElementsByTagName('html')[0].className = 'windows'}
+  </script>
+  <!--[if lt IE 9]>
+  <script>window.location.href="//browsehappy.com"</script>
+  <![endif]-->
 </head>
 
 <body>
 <header id="header" role="banner">
-	
-  <div class="header-inner"></div>
-		<a href="/" class="blog-title home">肉山·察</a>
+  
+  <div class="header-inner">
+    <a href="/" class="blog-title home">肉山·察</a>
+    
+    <div class="post-title">用 AppleScript 创建工作流</div>
+    
     <div class="header-icon">
-	<a href="//github.com/roshanca" class="social-link">
-		<i class="fa fa-github"></i>
-	</a>
+<a href="//github.com/roshanca" class="social-link">
+  <i class="fa fa-github"></i>
+</a>
 
-	<a href="//twitter.com/roshan_wu" class="social-link">
-		<i class="fa fa-twitter"></i>
-	</a>
+<a href="//twitter.com/roshan_wu" class="social-link">
+  <i class="fa fa-twitter"></i>
+</a>
 
-	<a href="//weibo.com/jinfeixibi" class="social-link">
-		<i class="fa fa-weibo"></i>
-	</a>
+<a href="//www.instagram.com/roshanca/" class="social-link">
+  <i class="fa fa-instagram"></i>
+</a>
+
+<a href="/feed.xml" class="social-link">
+  <i class="fa fa-rss"></i>
+</a>
+
 </div>
   </div>
-  <a href="//lab.roshanca.com/resume/" class="author"></a>
-	
+  <i class="author"></i>
+  
 </header>
 
-<main class="fluid" role="main">
+<div class="scroll-view">
+  <main class="fluid" role="main">
   <article class="post" role="article">
     <header class="post-header">
       <h1 class="post-title">用 AppleScript 创建工作流</h1>
@@ -100,26 +122,25 @@
 <p>两个小例子：</p>
 
 <ol>
-  <li>让 Safari 打开一个 URL</li>
+  <li>
+    <p>让 Safari 打开一个 URL</p>
+
+    <div class="language-applescript highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="k">tell</span><span class="w"> </span><span class="nb">application</span><span class="w"> </span><span class="s2">"Safari"</span><span class="w">
+     </span><span class="nb">open location</span><span class="w"> </span><span class="s2">"http://roshanca.com"</span><span class="w">
+ </span><span class="k">end</span><span class="w"> </span><span class="k">tell</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>在桌面新建一个名为 “workflow” 的文件夹</p>
+
+    <div class="language-applescript highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="k">tell</span><span class="w"> </span><span class="nb">application</span><span class="w"> </span><span class="s2">"Finder"</span><span class="w">
+     </span><span class="nb">make</span><span class="w"> </span><span class="nb">new</span><span class="w"> </span><span class="nv">folder</span><span class="w"> </span><span class="nb">at</span><span class="w"> </span><span class="nv">desktop</span><span class="w"> </span><span class="nv">with</span><span class="w"> </span><span class="na">properties</span><span class="w"> </span><span class="p">{</span><span class="na">name</span><span class="p">:</span><span class="s2">"workflow"</span><span class="p">}</span><span class="w">
+ </span><span class="k">end</span><span class="w"> </span><span class="k">tell</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
 </ol>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>``` applescript
-tell application "Safari"
-    open location "http://roshanca.com"
-end tell
-```
-</code></pre></div></div>
-
-<ol>
-  <li>在桌面新建一个名为 “workflow” 的文件夹</li>
-</ol>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>``` applescript
-tell application "Finder"
-    make new folder at desktop with properties {name:"workflow"}
-end tell
-```
-</code></pre></div></div>
 
 <h2 id="进阶">
 <a class="anchor" href="#%E8%BF%9B%E9%98%B6" aria-hidden="true"><span class="octicon octicon-link"></span></a>进阶</h2>
@@ -127,38 +148,37 @@ end tell
 <p>也来两个小列子吧，感觉都还挺有用的~</p>
 
 <ol>
-  <li>转换日期格式</li>
+  <li>
+    <p>转换日期格式</p>
+
+    <div class="language-applescript highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="p">{</span><span class="nb">year</span><span class="p">:</span><span class="nv">y</span><span class="p">,</span><span class="w"> </span><span class="nb">month</span><span class="p">:</span><span class="nv">m</span><span class="p">,</span><span class="w"> </span><span class="nb">day</span><span class="p">:</span><span class="nv">d</span><span class="p">}</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="p">(</span><span class="nb">current date</span><span class="p">)</span><span class="w"> </span><span class="c1">-- date "2012年11月20日星期二 下午4:33:51"</span><span class="w">
+ </span><span class="k">set</span><span class="w"> </span><span class="nv">dateList</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="p">{</span><span class="nv">y</span><span class="p">,</span><span class="w"> </span><span class="nv">m</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nv">d</span><span class="p">}</span><span class="w"> </span><span class="c1">-- {2012, Novemver * 1, 20} =&gt; {2012, 11, 20}</span><span class="w">
+ </span><span class="k">set</span><span class="w"> </span><span class="nv">newDateList</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="nv">reverse</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nv">rest</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nv">dateList</span><span class="w"> </span><span class="c1">-- {20， 11}</span><span class="w">
+ </span><span class="k">set</span><span class="w"> </span><span class="nv">theYear</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="nb">first</span><span class="w"> </span><span class="nb">item</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nv">dateList</span><span class="w"> </span><span class="k">as </span><span class="nc">string</span><span class="w"> </span><span class="c1">-- "2012"</span><span class="w">
+ </span><span class="k">set</span><span class="w"> </span><span class="nv">restDate</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="s2">""</span><span class="w">
+
+ </span><span class="k">repeat</span><span class="w"> </span><span class="nv">with</span><span class="w"> </span><span class="nv">theItem</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nv">newDateList</span><span class="w">
+     </span><span class="k">set</span><span class="w"> </span><span class="nv">restDate</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="s2">"-"</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">theItem</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">restDate</span><span class="w">
+ </span><span class="k">end</span><span class="w"> </span><span class="k">repeat</span><span class="w">
+
+ </span><span class="nb">return</span><span class="w"> </span><span class="nv">theYear</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">restDate</span><span class="w"> </span><span class="c1">-- "2012-11-20"</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>获取用户文稿中最近修改文件的文件名（以下代码 <code class="highlighter-rouge">new_post.applescript</code> 中也有用到）</p>
+
+    <div class="language-applescript highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="k">tell</span><span class="w"> </span><span class="nb">application</span><span class="w"> </span><span class="s2">"Finder"</span><span class="w">
+     </span><span class="k">set</span><span class="w"> </span><span class="nv">thePath</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="p">(</span><span class="nb">path to</span><span class="w"> </span><span class="nb">documents</span><span class="w"> </span><span class="nv">folder</span><span class="p">)</span><span class="w"> </span><span class="c1">-- 获取文稿文件夹路径</span><span class="w">
+     </span><span class="k">set</span><span class="w"> </span><span class="nv">fileList</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="nv">files</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nv">thePath</span><span class="w"> </span><span class="c1">-- 获取路径下的文件集合记录</span><span class="w">
+     </span><span class="k">set</span><span class="w"> </span><span class="nv">fileList</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="nv">sort</span><span class="w"> </span><span class="nv">fileList</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="nv">modification</span><span class="w"> </span><span class="nv">date</span><span class="w"> </span><span class="c1">-- 按最新修改排序</span><span class="w">
+     </span><span class="k">set</span><span class="w"> </span><span class="nv">fileName</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="na">name</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nb">first</span><span class="w"> </span><span class="nb">item</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nv">fileList</span><span class="w"> </span><span class="c1">-- 获取记录集中第一个文件的文件名</span><span class="w">
+     </span><span class="nb">return</span><span class="w"> </span><span class="nv">fileName</span><span class="w">
+ </span><span class="k">end</span><span class="w"> </span><span class="k">tell</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
 </ol>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>``` applescript
-set {year:y, month:m, day:d} to (current date) -- date "2012年11月20日星期二 下午4:33:51"
-set dateList to {y, m * 1, d} -- {2012, Novemver * 1, 20} =&gt; {2012, 11, 20}
-set newDateList to reverse of rest of dateList -- {20， 11}
-set theYear to first item of dateList as string -- "2012"
-set restDate to ""
-
-repeat with theItem in newDateList
-    set restDate to "-" &amp; theItem &amp; restDate
-end repeat
-
-return theYear &amp; restDate -- "2012-11-20"
-```
-</code></pre></div></div>
-
-<ol>
-  <li>获取用户文稿中最近修改文件的文件名（以下代码 <code class="highlighter-rouge">new_post.applescript</code> 中也有用到）</li>
-</ol>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>``` applescript
-tell application "Finder"
-    set thePath to (path to documents folder) -- 获取文稿文件夹路径
-    set fileList to files in thePath -- 获取路径下的文件集合记录
-    set fileList to sort fileList by modification date -- 按最新修改排序
-    set fileName to name of first item in fileList -- 获取记录集中第一个文件的文件名
-    return fileName
-end tell
-```
-</code></pre></div></div>
 
 <h2 id="实战">
 <a class="anchor" href="#%E5%AE%9E%E6%88%98" aria-hidden="true"><span class="octicon octicon-link"></span></a>实战</h2>
@@ -167,26 +187,128 @@ end tell
 
 <p>综合基础教程与谷歌搜索，自己写了两个 Script，分别用于创建博客新文章与博客本地预览。</p>
 
-<script src="https://gist.github.com/4118971.js?file=new_post.applescript"></script>
-<div><noscript><pre><code></code></pre></noscript></div>
+<noscript><pre>tell application "Finder"
+    activate
+	display dialog "填入文章标题" default answer "title"
+	set postTitle to text returned of result as text
+end tell
 
-<script src="https://gist.github.com/4118971.js?file=blog_preview.applescript"></script>
-<div><noscript><pre><code></code></pre></noscript></div>
+tell application "Terminal"
+	activate
+	
+	if (count of windows) is 0 then
+		tell application "System Events"
+			keystroke "n" using {command down}
+		end tell
+	else
+		activate
+	end if
+	
+	repeat with win in windows
+		try
+			if get frontmost of win is true then
+				set currentTab to selected tab of win
+				if currentTab is not busy then
+					do script "cd ~/Ruby_app/blog" in currentTab
+					do script "rake new_post['" &amp; postTitle &amp; "']" in currentTab
+					delay 1
+					set post to getRecentFileName() of postHandle
+					do script "subl source/_posts/" &amp; post in currentTab
+				end if
+			end if
+		end try
+	end repeat
+end tell
+
+script postHandle
+	on getRecentFileName()
+		tell application "Finder"
+			set thePath to alias ((path to home folder as text) &amp; "Ruby_app:blog:source:_posts:")
+			set fileList to files in thePath
+			set fileList to sort fileList by modification date
+			set fileName to name of first item in fileList
+			return fileName
+		end tell
+	end getRecentFileName
+end script</pre></noscript>
+<script src="https://gist.github.com/roshanca/4118971.js?file=new_post.applescript"> </script>
+
+<noscript><pre>global projectDir
+set homePath to POSIX path of (path to home folder)
+set projectDir to homePath &amp; "Ruby_app/Blog"
+
+on goToProjectDir()
+	return "cd " &amp; projectDir
+end goToProjectDir
+
+on serveWithJekyll()
+	return "bundle exec jekyll serve --watch"
+end serveWithJekyll
+
+on commandLine(currentTab)
+	tell application "Terminal"
+		do script my goToProjectDir() in currentTab
+		do script my serveWithJekyll() in currentTab
+	end tell
+end commandLine
+
+on preview()
+	delay 3
+	tell application "Google Chrome"
+		set myTab to make new tab at end of tabs of window 1
+		set URL of myTab to "http://localhost:4000"
+		
+		activate
+	end tell
+end preview
+
+on newTerminalTab()
+	tell application "Terminal" to activate
+	tell application "System Events" to tell process "Terminal" to keystroke "t" using command down
+end newTerminalTab
+
+on newTerminalWindow()
+	tell application "Terminal" to activate
+	tell application "System Events" to tell process "Terminal" to keystroke "n" using command down
+end newTerminalWindow
+
+tell application "Terminal"
+	if (count of windows) is 0 then
+		my newTerminalWindow()
+	end if
+	
+	activate
+	delay 1
+	
+	set currentTab to selected tab of front window
+	if currentTab is not busy then
+		my commandLine(currentTab)
+	else
+		my newTerminalTab()
+		set currentTab to selected tab of front window
+		my commandLine(currentTab)
+	end if
+	
+	my preview()
+end tell
+</pre></noscript>
+<script src="https://gist.github.com/roshanca/4118971.js?file=blog_preview.applescript"> </script>
+
 
     </section>
     <footer class="post-footer">
       <div class="post-meta">
-        <time datetime="2012-11-20 22:18:00 +0000" class="updated" pubdate>Nov 20, 2012</time>
+        <a href="" rel="full-article"><time datetime="2012-11-20 22:18:00 +0000" class="updated" pubdate>Nov 20, 2012</time></a>
 
         
 <span class="post-tag">
-	
-		<span class="tag">applescript</span>
-	
-		<span class="tag">octopress</span>
-	
-		<span class="tag">workflow</span>
-	
+  
+  <a class="tag" href="/archives/tag/applescript">applescript</a>
+  
+  <a class="tag" href="/archives/tag/octopress">octopress</a>
+  
+  <a class="tag" href="/archives/tag/workflow">workflow</a>
+  
 </span>
 
 
@@ -194,62 +316,70 @@ end tell
     </footer>
     <section class="post-recent">
   
-    <a class="relative-post previous" href="/2012/javascript-tiny-quiz/"><span>一道 JavaScript 小题</span></a>
-  
-  
-    <a class="relative-post next" href="/2012/traps-in-javascript-part-I/"><span>JavaScript 中的一些坑（一）</span></a>
+  <i class="fa fa-angle-double-left"></i>
+  <a class="relative-post previous" href="/2012/javascript-tiny-quiz/"
+    ><span>一道 JavaScript 小题</span></a
+  >
+   
+  <a class="relative-post next" href="/2012/traps-in-javascript-part-I/"
+    ><span>JavaScript 中的一些坑（一）</span></a
+  >
+  <i class="fa fa-angle-double-right"></i>
   
 </section>
 
   </article>
-</main>
-
-  <div class="post-comment">
-	<div id="disqus_thread" class="container"></div>
+  
+    <div class="post-comment">
+  <div id="disqus_thread" class="container"></div>
 </div>
 <script>
-function getElementTopLeft(elem) {
-	var top = 0;
-	var left = 0;
-	while(elem) {
-		top += elem.offsetTop;
-		left += elem.offsetLeft;
+  function getElementTopLeft(elem) {
+    var top = 0
+    var left = 0
+    while (elem) {
+      top += elem.offsetTop
+      left += elem.offsetLeft
 
-		elem = elem.offsetParent;
-	}
-	return {top: top, left: left};
-}
+      elem = elem.offsetParent
+    }
+    return { top: top, left: left }
+  }
 
-var disqus_shortname = 'roshanca';
-var disqus_elem = document.getElementById('disqus_thread');
-var disqus_init = false;
+  var disqus_shortname = 'roshanca'
+  var disqus_elem = document.getElementById('disqus_thread')
+  var disqus_init = false
 
-window.onscroll = function () {
-	if (disqus_init) return;
+  document.querySelector('.scroll-view').addEventListener('scroll', (evt) => {
+    if (disqus_init) return
 
-	var viewHeight = document.documentElement.clientHeight;
-	var scrollY = document.documentElement.scrollTop || document.body.scrollTop;
+    var viewHeight = document.documentElement.clientHeight
+    var scrollY = (evt.target || evt.srcElement).scrollTop
 
-	if(getElementTopLeft(disqus_elem).top < viewHeight + scrollY) {
-		loadSync('//' + disqus_shortname + '.disqus.com/embed.js');
-		disqus_init = true;
-	}
-}
+    if (getElementTopLeft(disqus_elem).top < viewHeight + scrollY) {
+      loadSync('//' + disqus_shortname + '.disqus.com/embed.js')
+      disqus_init = true
+    }
+  }, false)
 </script>
 
+  
+</main>
 
-
-<div class="fork-github">
-    <a href="https://github.com/roshanca/blog">View on GitHub</a>
-</div>
-
-<footer id="footer" role="contentinfo">
-	<p>© Copyright 2012 - <script>document.write(new Date().getFullYear())</script> by Roshan Wu.</p>
+  <footer id="footer" role="contentinfo">
+  <p>
+    © Copyright 2012 -
+    <script>
+      document.write(new Date().getFullYear())
+    </script>
+  </p>
 </footer>
 
 <script src="/assets/scripts/anchor.min.js"></script>
-<script src="/assets/scripts/post.js"></script>
+<script src="/assets/scripts/toc.js"></script>
 
+<script src="/assets/scripts/common.js"></script>
 
+</div>
 </body>
 </html>

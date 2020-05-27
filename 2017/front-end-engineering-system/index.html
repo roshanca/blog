@@ -1,62 +1,84 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-Hans">
 <head>
-	<meta charset="utf-8">
-	<link href="https://gmpg.org/xfn/11" rel="profile">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title>前端工程化体系 - 肉山·察</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
-  
-	<link rel="canonical" href="https://roshanca.com/2017/front-end-engineering-system/">
-	<link rel="alternate" type="application/atom+xml" title="Subscribe Feed" href="/feed.xml">
-	<link href="/assets/styles/main.css" rel="stylesheet" media="all">
-	<link href="//cdn.bootcss.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-	<!-- <link href="//fonts.lug.ustc.edu.cn/css?family=Lustria|Inconsolata" rel="stylesheet"> -->
-  <!-- <link href='//fonts.useso.com/css?family=PT+Serif:400,700' rel='stylesheet' type='text/css'> -->
-	<script>
-	function loadSync(u,p,a){
-		if(!p && location.port)return {onload: null};
-		if(/\.js$/.test(u)){a='script'}else{a='link'};
-		var d=document,s=d.createElement(a),f=d.getElementsByTagName(a)[0];
-		if(a=='link'){s.href=u,s.rel='stylesheet'}else{s.src=u,s.async=true}
-		f.parentNode.insertBefore(s,f);return s;
-	}
-	var _gaq = _gaq || [];
-	_gaq.push(['_setAccount', 'UA-15720258-1']);
-	_gaq.push(['_trackPageview']);
-	_gaq.push(['_trackPageLoadTime']);
-	loadSync('//ssl.google-analytics.com/ga.js');
-	if(/windows/i.test(navigator.userAgent)){document.getElementsByTagName('html')[0].className = 'windows'}
-    </script>
-    <!--[if lt IE 9]>
-    <script>window.location.href="//browsehappy.com"</script>
-    <![endif]-->
+  <meta charset="utf-8">
+  <link href="//gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>前端工程化体系 - 肉山·察</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
+  <!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>前端工程化体系 | 肉山·察</title>
+<meta name="generator" content="Jekyll v4.0.1" />
+<meta property="og:title" content="前端工程化体系" />
+<meta property="og:locale" content="zh_Hans" />
+<meta name="description" content="何谓前端工程化？即根据业务特点，将前端开发流程规范化、标准化。它主要包含不同业务场景的技术选型、代码规范、构建发布方案等。主要目地是为了提升前端开发工程师的开发效率与代码质量，降低前后端联调的沟通成本，使得前后端工程师更加专注于自身擅长领域。" />
+<meta property="og:description" content="何谓前端工程化？即根据业务特点，将前端开发流程规范化、标准化。它主要包含不同业务场景的技术选型、代码规范、构建发布方案等。主要目地是为了提升前端开发工程师的开发效率与代码质量，降低前后端联调的沟通成本，使得前后端工程师更加专注于自身擅长领域。" />
+<link rel="canonical" href="https://roshanca.com/2017/front-end-engineering-system/" />
+<meta property="og:url" content="https://roshanca.com/2017/front-end-engineering-system/" />
+<meta property="og:site_name" content="肉山·察" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2017-01-21T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="前端工程化体系" />
+<meta name="twitter:site" content="@roshan_wu" />
+<meta name="twitter:creator" content="@roshan_wu" />
+<script type="application/ld+json">
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://roshanca.com/2017/front-end-engineering-system/"},"description":"何谓前端工程化？即根据业务特点，将前端开发流程规范化、标准化。它主要包含不同业务场景的技术选型、代码规范、构建发布方案等。主要目地是为了提升前端开发工程师的开发效率与代码质量，降低前后端联调的沟通成本，使得前后端工程师更加专注于自身擅长领域。","headline":"前端工程化体系","dateModified":"2017-01-21T00:00:00+00:00","datePublished":"2017-01-21T00:00:00+00:00","@type":"BlogPosting","url":"https://roshanca.com/2017/front-end-engineering-system/","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link href="/assets/styles/main.css" rel="stylesheet"><link type="application/atom+xml" rel="alternate" href="https://roshanca.com/feed.xml" title="肉山·察" /><link href="//cdn.bootcss.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <script>
+    function loadSync(u,p,a){
+      if(!p && location.port)return {onload: null};
+      if(/\.js$/.test(u)){a='script'}else{a='link'};
+      var d=document,s=d.createElement(a),f=d.getElementsByTagName(a)[0];
+      if(a=='link'){s.href=u,s.rel='stylesheet'}else{s.src=u,s.async=true}
+      f.parentNode.insertBefore(s,f);return s;
+    }
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-15720258-1']);
+    _gaq.push(['_trackPageview']);
+    _gaq.push(['_trackPageLoadTime']);
+    loadSync('//ssl.google-analytics.com/ga.js');
+    if(/windows/i.test(navigator.userAgent)){document.getElementsByTagName('html')[0].className = 'windows'}
+  </script>
+  <!--[if lt IE 9]>
+  <script>window.location.href="//browsehappy.com"</script>
+  <![endif]-->
 </head>
 
 <body>
 <header id="header" role="banner">
-	
-  <div class="header-inner"></div>
-		<a href="/" class="blog-title home">肉山·察</a>
+  
+  <div class="header-inner">
+    <a href="/" class="blog-title home">肉山·察</a>
+    
+    <div class="post-title">前端工程化体系</div>
+    
     <div class="header-icon">
-	<a href="//github.com/roshanca" class="social-link">
-		<i class="fa fa-github"></i>
-	</a>
+<a href="//github.com/roshanca" class="social-link">
+  <i class="fa fa-github"></i>
+</a>
 
-	<a href="//twitter.com/roshan_wu" class="social-link">
-		<i class="fa fa-twitter"></i>
-	</a>
+<a href="//twitter.com/roshan_wu" class="social-link">
+  <i class="fa fa-twitter"></i>
+</a>
 
-	<a href="//weibo.com/jinfeixibi" class="social-link">
-		<i class="fa fa-weibo"></i>
-	</a>
+<a href="//www.instagram.com/roshanca/" class="social-link">
+  <i class="fa fa-instagram"></i>
+</a>
+
+<a href="/feed.xml" class="social-link">
+  <i class="fa fa-rss"></i>
+</a>
+
 </div>
   </div>
-  <a href="//lab.roshanca.com/resume/" class="author"></a>
-	
+  <i class="author"></i>
+  
 </header>
 
-<main class="fluid" role="main">
+<div class="scroll-view">
+  <main class="fluid" role="main">
   <article class="post" role="article">
     <header class="post-header">
       <h1 class="post-title">前端工程化体系</h1>
@@ -114,17 +136,9 @@
   <li>前端运维层：构建布署、日志监控等</li>
 </ul>
 
-<!-- _includes/image.html -->
-<figure class="graphic">
-  
-  <a href="https://s10.mogucdn.com/mlcdn/c45406/191209_40l28id1i239ji26d686icbbb5jed_1001x537.png">
-    
-    <img src="https://s10.mogucdn.com/mlcdn/c45406/191209_40l28id1i239ji26d686icbbb5jed_1001x537.png" alt="">
-    
-  </a>
-   
+<figure>
+<p><img src="https://s10.mogucdn.com/mlcdn/c45406/191209_40l28id1i239ji26d686icbbb5jed_1001x537.png" alt=""></p>
   <figcaption>点击查看原图</figcaption>
-  
 </figure>
 
 <hr>
@@ -156,40 +170,24 @@
 
 <p>针对性能问题，我拿了公司项目的 api 几个接口做了些测试，不是非常精确，但也能看个大概。分别在 No throtting 和 Regular 4G （模拟移动端网络）的模式下，用 proxy（http-proxy 代理请求），direct（直接请求后端地址）和 node（利用 <a href="https://www.npmjs.com/package/request">request</a> 模块发起请求）三种模式，做了 GET 和 POST 请求的延迟比对。在比对之前心里也大概有数，肯定是直接请求后端地址的延迟最低，毕竟加了 Node 一层，性能会由损耗。以下是测试结果：</p>
 
-<!-- _includes/image.html -->
-<figure class="graphic">
-  
-    <img src="https://s10.mogucdn.com/mlcdn/c45406/191209_31020jdgacaida759g78jkl6dif32_1280x733.png" alt="">
-     
+<figure>
+<p><img src="https://s10.mogucdn.com/mlcdn/c45406/191209_31020jdgacaida759g78jkl6dif32_1280x733.png" alt=""></p>
   <figcaption>No throtting GET</figcaption>
-  
 </figure>
 
-<!-- _includes/image.html -->
-<figure class="graphic">
-  
-    <img src="https://s10.mogucdn.com/mlcdn/c45406/191209_03gk9h936b8d6keh3l0ljaa878j9i_1280x695.png" alt="">
-     
+<figure>
+<p><img src="https://s10.mogucdn.com/mlcdn/c45406/191209_03gk9h936b8d6keh3l0ljaa878j9i_1280x695.png" alt=""></p>
   <figcaption>No throtting POST</figcaption>
-  
 </figure>
 
-<!-- _includes/image.html -->
-<figure class="graphic">
-  
-    <img src="https://s10.mogucdn.com/mlcdn/c45406/191209_5c016g94bl21df74l1hd9d49ejfj5_1280x726.png" alt="">
-     
+<figure>
+<p><img src="https://s10.mogucdn.com/mlcdn/c45406/191209_5c016g94bl21df74l1hd9d49ejfj5_1280x726.png" alt=""></p>
   <figcaption>Regular 4G GET</figcaption>
-  
 </figure>
 
-<!-- _includes/image.html -->
-<figure class="graphic">
-  
-    <img src="https://s10.mogucdn.com/mlcdn/c45406/191209_1dbf8cc9ec26517ihgc15jgc79e1b_1280x727.png" alt="">
-     
+<figure>
+<p><img src="https://s10.mogucdn.com/mlcdn/c45406/191209_1dbf8cc9ec26517ihgc15jgc79e1b_1280x727.png" alt=""></p>
   <figcaption>Regular 4G POST</figcaption>
-  
 </figure>
 
 <p>可以看出，GET 请求中 direct 是最快的，proxy 次之，node request 垫底，POST 则相差不明显。但延迟差距基本在 30ms 左右，是否可以接受，就要看自己的系统架构对性能的要求有多高了。对于我司目前的规模体量用户数来说，我认为基本是可以忽略的。</p>
@@ -451,7 +449,7 @@
 <span class="p">},</span> <span class="dl">'</span><span class="s1">React</span><span class="dl">'</span><span class="p">);</span>
 </code></pre></div></div>
 
-<p>React 首创的虚拟 DOM 有两大杀手锏大大提升了原生 DOM 操作效率低下的问题（特别是在移动端）：batching 和 diff。batching 把所有的 DOM 操作搜集起来，一次性提交给真实的 DOM；diff 算法时间复杂度也从标准的 diff 算法的 O(n^3 ) 降到了 O(n)<sup id="fnref:2"><a href="#fn:2" class="footnote">1</a></sup>。</p>
+<p>React 首创的虚拟 DOM 有两大杀手锏大大提升了原生 DOM 操作效率低下的问题（特别是在移动端）：batching 和 diff。batching 把所有的 DOM 操作搜集起来，一次性提交给真实的 DOM；diff 算法时间复杂度也从标准的 diff 算法的 O(n^3 ) 降到了 O(n)<sup id="fnref:2" role="doc-noteref"><a href="#fn:2" class="footnote">1</a></sup>。</p>
 
 <p>除了性能提升之外，由于思路的转变，在开发效率上也有很大提升：MDV 模式下很自然的就将 web 页面看做是一台状态机（State Machine），UI = f(state)， 界面上的变化皆由状态变化所导致，状态的变化来源一定为 M，即数据模型。我们将手动操作 DOM 的工作交给 MVVM 框架的数据绑定来做，界面的改变由数据的变化而自动完成，不仅十分高效，而且我们对于数据的流向更加清晰可控。在引入严格的函数式编程与不可变数据（immutable.js）后，还能使得结果可预测，方便做单元测试。</p>
 
@@ -550,10 +548,10 @@
 <a class="anchor" href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E" aria-hidden="true"><span class="octicon octicon-link"></span></a>写在最后</h2>
 
 <p>文中没有提到的 Private NPM 和 Private Docker Registry 我用虚线框起来，是就目前来看很难做到，因为我们的代码库是内网的，而且公司目前是阿里云的重度使用者，Docker 要如要投入使用，要是没有自身的 IAAS 基础设施做支持估计也是玩不转。当然，这些都是没几个小公司能玩转的，有机会就尝试，但做为技术人，首要任务还是方案落地和解决实际的业务问题。</p>
-<div class="footnotes">
+<div class="footnotes" role="doc-endnotes">
   <ol>
-    <li id="fn:2">
-      <p>React 只会逐层对比两颗随机树，这大大降低了 diff 算法的复杂度。并且在 web 组件中很少会将节点移动到不同的层级，经常只会在同一层级中移动。 <a href="#fnref:2" class="reversefootnote">↩</a></p>
+    <li id="fn:2" role="doc-endnote">
+      <p>React 只会逐层对比两颗随机树，这大大降低了 diff 算法的复杂度。并且在 web 组件中很少会将节点移动到不同的层级，经常只会在同一层级中移动。 <a href="#fnref:2" class="reversefootnote" role="doc-backlink">↩</a></p>
     </li>
   </ol>
 </div>
@@ -561,17 +559,17 @@
     </section>
     <footer class="post-footer">
       <div class="post-meta">
-        <time datetime="2017-01-21 00:00:00 +0000" class="updated" pubdate>Jan 21, 2017</time>
+        <a href="" rel="full-article"><time datetime="2017-01-21 00:00:00 +0000" class="updated" pubdate>Jan 21, 2017</time></a>
 
         
 <span class="post-tag">
-	
-		<span class="tag">frontend</span>
-	
-		<span class="tag">node</span>
-	
-		<span class="tag">engineering</span>
-	
+  
+  <a class="tag" href="/archives/tag/frontend">frontend</a>
+  
+  <a class="tag" href="/archives/tag/node">node</a>
+  
+  <a class="tag" href="/archives/tag/engineering">engineering</a>
+  
 </span>
 
 
@@ -579,62 +577,70 @@
     </footer>
     <section class="post-recent">
   
-    <a class="relative-post previous" href="/2016/node-app-deploy-simple-guide/"><span>Node APP 布署简易教程</span></a>
-  
-  
-    <a class="relative-post next" href="/2017/install-ss-for-bandwagonhost/"><span>购搬瓦工安装 SS 翻越“长城”</span></a>
+  <i class="fa fa-angle-double-left"></i>
+  <a class="relative-post previous" href="/2016/node-app-deploy-simple-guide/"
+    ><span>Node APP 布署简易教程</span></a
+  >
+   
+  <a class="relative-post next" href="/2017/install-ss-for-bandwagonhost/"
+    ><span>购搬瓦工安装 SS 翻越“长城”</span></a
+  >
+  <i class="fa fa-angle-double-right"></i>
   
 </section>
 
   </article>
-</main>
-
-  <div class="post-comment">
-	<div id="disqus_thread" class="container"></div>
+  
+    <div class="post-comment">
+  <div id="disqus_thread" class="container"></div>
 </div>
 <script>
-function getElementTopLeft(elem) {
-	var top = 0;
-	var left = 0;
-	while(elem) {
-		top += elem.offsetTop;
-		left += elem.offsetLeft;
+  function getElementTopLeft(elem) {
+    var top = 0
+    var left = 0
+    while (elem) {
+      top += elem.offsetTop
+      left += elem.offsetLeft
 
-		elem = elem.offsetParent;
-	}
-	return {top: top, left: left};
-}
+      elem = elem.offsetParent
+    }
+    return { top: top, left: left }
+  }
 
-var disqus_shortname = 'roshanca';
-var disqus_elem = document.getElementById('disqus_thread');
-var disqus_init = false;
+  var disqus_shortname = 'roshanca'
+  var disqus_elem = document.getElementById('disqus_thread')
+  var disqus_init = false
 
-window.onscroll = function () {
-	if (disqus_init) return;
+  document.querySelector('.scroll-view').addEventListener('scroll', (evt) => {
+    if (disqus_init) return
 
-	var viewHeight = document.documentElement.clientHeight;
-	var scrollY = document.documentElement.scrollTop || document.body.scrollTop;
+    var viewHeight = document.documentElement.clientHeight
+    var scrollY = (evt.target || evt.srcElement).scrollTop
 
-	if(getElementTopLeft(disqus_elem).top < viewHeight + scrollY) {
-		loadSync('//' + disqus_shortname + '.disqus.com/embed.js');
-		disqus_init = true;
-	}
-}
+    if (getElementTopLeft(disqus_elem).top < viewHeight + scrollY) {
+      loadSync('//' + disqus_shortname + '.disqus.com/embed.js')
+      disqus_init = true
+    }
+  }, false)
 </script>
 
+  
+</main>
 
-
-<div class="fork-github">
-    <a href="https://github.com/roshanca/blog">View on GitHub</a>
-</div>
-
-<footer id="footer" role="contentinfo">
-	<p>© Copyright 2012 - <script>document.write(new Date().getFullYear())</script> by Roshan Wu.</p>
+  <footer id="footer" role="contentinfo">
+  <p>
+    © Copyright 2012 -
+    <script>
+      document.write(new Date().getFullYear())
+    </script>
+  </p>
 </footer>
 
 <script src="/assets/scripts/anchor.min.js"></script>
-<script src="/assets/scripts/post.js"></script>
+<script src="/assets/scripts/toc.js"></script>
 
+<script src="/assets/scripts/common.js"></script>
 
+</div>
 </body>
 </html>

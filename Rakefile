@@ -174,7 +174,7 @@ namespace :site do
   desc "Generate the site and serve locally"
   task :serve do
     check_destination
-    sh "bundle exec jekyll serve"
+    sh "bundle exec jekyll serve 2>/dev/null"
   end
 
   desc "Generate the site and push changes to remote origin"
