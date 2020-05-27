@@ -1,43 +1,77 @@
 #header {
   position: relative;
-	padding: 4rem 0;
-	text-align: center;
-	border-bottom: 1px solid #eee;
-	.header-inner {
+  padding: 4rem 0;
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid #e5e7eb;
+  transition: padding 0.3s ease-out;
+  &.fold {
+    padding: 2rem 0;
+    .blog-title {
+      font-size: 3.5rem;
+      &:before,
+      &:after {
+        font-size: 2.4rem;
+        transition: all .3s ease-out;
+      }
+      &:before {
+        top: 1rem;
+        left: -1.6rem;
+      }
+      &:after {
+        top: 1rem;
+        right: -2.6rem;
+      }
+    }
+  }
+  .header-inner {
     @extend %container;
-    text-align: center;
-	}
-	.blog-title {
-		position: relative;
-		@include inline-block;
-		font-family: "Hiragino Mincho ProN", $heading;
-		font-size: 5rem;
-		font-weight: bold;
-		color: $heading-color;
+  }
+  .blog-title {
+    position: relative;
+    @include inline-block;
+    font-family: 'Hiragino Mincho ProN', $heading;
+    font-size: 5rem;
+    font-weight: bold;
+    color: $heading-color;
     border-bottom: 0 none;
-		text-decoration: none;
-		&:before {
-			content: "<";
-			@extend %title-pseudo;
-			left: -2rem;
-		}
-		&:after {
-			content: "/>";
-			@extend %title-pseudo;
-			right: -3rem;
-		}
+    text-decoration: none;
+    transition: all 0.3s ease-out;
+    &:before {
+      content: '<';
+      @extend %title-pseudo;
+      left: -2rem;
+    }
+    &:after {
+      content: '/>';
+      @extend %title-pseudo;
+      right: -3rem;
+    }
     &.home {
       &:hover {
         &:before {
-          content: "<<";
+          content: '<<';
           left: -3.5rem;
-          transition: all .5s ease;
+          transition: all 0.5s ease;
         }
         &:after {
           @include opacity(0);
-          transition: all .5s ease;
+          transition: all 0.5s ease;
         }
       }
+    }
+  }
+  .post-title {
+    display: none;
+    font-size: 1.8rem;
+    &.show {
+      display: block;
+    }
+    &::before {
+      content: '— ';
+    }
+    &::after {
+      content: ' —';
     }
   }
   .header-icon {
@@ -49,13 +83,13 @@
       margin-right: 0.6rem;
     }
   }
-	.blog-desc {
+  .blog-desc {
     font-size: 100%;
     font-family: $heading;
     text-transform: capitalize;
-		color: lighten($heading-color, 44%);
-	}
-  .subscribe {
+    color: lighten($heading-color, 44%);
+  }
+  .archive {
     position: absolute;
     left: 50%;
     bottom: -1.5rem;
@@ -70,6 +104,7 @@
     background-color: #fff;
     transform: translateX(-50%);
     .fa {
+      color: #666;
       font-size: 1.4rem;
       vertical-align: 2px;
     }
@@ -87,5 +122,12 @@
     background-image: url(https://s10.mogucdn.com/mlcdn/c024f5/180222_2h5h9g9li42049l6b6fa7280gh09c_1024x1024.jpg_50x50.v1cS5.81.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+    transition: opacity 0.3s ease-out;
+  }
+  .transparent {
+    @include opacity(0);
+  }
+  .remove {
+    @include remove;
   }
 }

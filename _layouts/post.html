@@ -25,7 +25,7 @@ layout: default
     </footer>
     {% include post/recent.html %}
   </article>
+  {% if page.comments == true %}
+    {% include post/disqus.html %}
+  {% endif %}
 </main>
-{% if page.comments == true %}
-  {% include post/disqus.html %}
-{% endif %}

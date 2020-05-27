@@ -1,18 +1,19 @@
 'use strict'
 
-var toc = document.querySelector('.section-nav')
-var tocPath = document.querySelector('.toc-marker path')
-var tocItems
+const scrollView = document.querySelector('.scroll-view')
+const toc = document.querySelector('.section-nav')
+const tocPath = document.querySelector('.toc-marker path')
+let tocItems
 
 // Factor of screen size that the element must cross
 // before it's considered visible
-var TOP_MARGIN = 0.1
-var BOTTOM_MARGIN = 0.2
+const TOP_MARGIN = 0.1
+const BOTTOM_MARGIN = 0.2
 
-var pathLength
+let pathLength
 
 window.addEventListener('resize', drawPath, false)
-window.addEventListener('scroll', sync, false)
+scrollView.addEventListener('scroll', sync, false)
 
 drawPath()
 
@@ -20,39 +21,33 @@ function drawPath() {
   tocItems = [].slice.call(toc.querySelectorAll('li'))
 
   // Cache element references and measurements
-  tocItems = tocItems.map(function(item) {
-    var anchor = item.querySelector('a')
-    var targetAnchors = document.getElementsByClassName('anchor')
+  tocItems = tocItems.map(function (item) {
+    const anchor = item.querySelector('a')
+    let targetAnchors = document.getElementsByClassName('anchor')
     targetAnchors = [].slice.call(targetAnchors)
-    var target = targetAnchors.filter(targetElement => {
-      return targetElement.hash.slice(1) === encodeURIComponent(anchor.getAttribute('href').slice(1))
+    const target = targetAnchors.filter((targetElement) => {
+      return (
+        targetElement.hash.slice(1) === encodeURIComponent(anchor.getAttribute('href').slice(1))
+      )
     })[0]
-
-    anchor.addEventListener('click', (evt) => {
-      evt.preventDefault()
-      const { y } = target.getBoundingClientRect()
-      const [ _, hashString ] = target.href.split('#')
-
-      scrollBy(y - 2, 300, () => window.location.hash = hashString)
-    })
 
     return {
       listItem: item,
-      anchor: anchor,
-      target: target
+      anchor,
+      target
     }
   })
 
   // Remove missing targets
-  tocItems = tocItems.filter(function(item) {
+  tocItems = tocItems.filter(function (item) {
     return !!item.target
   })
 
-  var path = []
-  var pathIndent
+  let path = []
+  let pathIndent
 
-  tocItems.forEach(function(item, i) {
-    var x = item.anchor.offsetLeft - 5,
+  tocItems.forEach(function (item, i) {
+    let x = item.anchor.offsetLeft - 5,
       y = item.anchor.offsetTop,
       height = item.anchor.offsetHeight
 
@@ -85,17 +80,17 @@ function drawPath() {
 }
 
 function sync() {
-  var windowHeight = window.screen.availHeight
+  const windowHeight = window.screen.availHeight
 
-  var pathStart = pathLength
-  var pathEnd = 0
+  let pathStart = pathLength
+  let pathEnd = 0
 
-  var visibleItems = 0
+  let visibleItems = 0
 
-  tocItems.forEach(function(item) {
-    var { y } = item.target.getBoundingClientRect()
+  tocItems.forEach(function (item) {
+    const { y } = item.target.getBoundingClientRect()
 
-    if ( y > 1 && y < windowHeight - 20) {
+    if (y > 1 && y < windowHeight - 20) {
       pathStart = Math.min(item.pathStart, pathStart)
       pathEnd = Math.max(item.pathEnd, pathEnd)
 
@@ -119,21 +114,36 @@ function sync() {
   }
 }
 
+/**
+ * scroll to anchor smoothly
+ */
+toc.querySelectorAll('a').forEach(anchor => {
+  anchor.addEventListener('click', (evt) => {
+    evt.preventDefault()
+
+    const { target } = tocItems.find(item => item.anchor === anchor)
+    const { y } = target.getBoundingClientRect()
+    const [_, hashString] = target.href.split('#')
+
+    scrollBy(y - 2, 300, () => (window.location.hash = hashString))
+  }, false)
+})
+
 function scrollBy(distance, duration, callback) {
-  var initialY = document.scrollingElement.scrollTop
-  var y = initialY + distance
-  var baseY = (initialY + y) * 0.5
-  var diff = initialY - baseY
-  var startTime = performance.now()
-  console.log(diff)
+  const initialY = scrollView.scrollTop
+  const y = initialY + distance
+  const baseY = (initialY + y) * 0.5
+  const diff = initialY - baseY
+  const startTime = performance.now()
+  const headerHeight = document.getElementById('header').clientHeight
 
   function step() {
-    var normalizedTime = (performance.now() - startTime) / duration
+    let normalizedTime = (performance.now() - startTime) / duration
     if (normalizedTime > 1) {
       normalizedTime = 1
       callback && callback()
     }
-    window.scrollTo(0, baseY + diff * Math.cos(normalizedTime * Math.PI))
+    scrollView.scrollTo(0, baseY + diff * Math.cos(normalizedTime * Math.PI) - headerHeight)
     if (normalizedTime < 1) {
       window.requestAnimationFrame(step)
     }
@@ -142,5 +152,12 @@ function scrollBy(distance, duration, callback) {
   window.requestAnimationFrame(step)
 }
 
-var anchors = new AnchorJS()
+/**
+ * anchor config
+ */
+const anchors = new AnchorJS()
+anchors.options = {
+  placement: 'left',
+  icon: ''
+}
 anchors.add()

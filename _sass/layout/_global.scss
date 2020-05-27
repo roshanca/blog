@@ -1,28 +1,47 @@
+html,
+body {
+  height: 100%;
+}
+
 html {
-	font-size: 62.5%;
+  font-size: 62.5%;
 }
 
 body {
-	font-family: $serif;
-	font-size: 2rem;
-	line-height: 1.5;
-	color: $text-color;
+  font-family: $serif;
+  font-size: 2rem;
+  line-height: 1.5;
+  color: $text-color;
   @extend %word-break;
   text-rendering: optimizelegibility;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  .scroll-view {
+    flex: 1;
+    flex-grow: 1;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+  }
 }
 
-h1,h2,h3,h4 {
+h1,
+h2,
+h3,
+h4 {
   font-size: 100%;
 }
 
 a {
-	color: $link-color;
+  color: $link-color;
   // color: saturate($link-color, 50%);
-  border-bottom: .1rem solid rgba(68, 68, 68, .5);
+  border-bottom: 0.1rem solid rgba(68, 68, 68, 0.5);
   text-decoration: none;
-	&:hover {
-		@include opacity(.8);
-	}
+  transition: all 0.5s;
+  &:hover {
+    @include opacity(0.6);
+  }
 }
 
 abbr {
@@ -47,30 +66,33 @@ table {
 }
 td,
 th {
-  padding: .5rem 1rem;
+  padding: 0.5rem 1rem;
   border: 1px solid #e5e5e5;
 }
 tbody tr:nth-child(even) td {
   background-color: #f1f1f1;
 }
 
-button, input, select, textarea {
+button,
+input,
+select,
+textarea {
   font-family: $sans;
 }
 
 .fluid {
-	max-width: 960px;
-	margin: 0 auto;
+  max-width: 960px;
+  margin: 0 auto;
 }
 
 .social-link {
-	margin-right: .8rem;
+  margin-right: 1rem;
   border-bottom: 0 none;
-	text-decoration: none;
+  text-decoration: none;
 }
 
 ::selection {
-	background-color: #ddd;
-	color: #000;
-	text-shadow: none;
+  background-color: #ddd;
+  color: #000;
+  text-shadow: none;
 }

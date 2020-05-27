@@ -2,7 +2,7 @@
 layout: post
 title: 前端编码风格规范之 HTML 规范
 data: 2014-09-09
-tags: code
+tags: code html translate
 toc: true
 comments: true
 ---
@@ -438,7 +438,7 @@ HTML 标签的目的，就是为了不断地展示内容信息。
 
 检查文档中的 tab 切换顺序并传值给元素上的 tabindex，这可以依据元素的重要性来重新排列其 tab 切换顺序。你可以设置 `tabindex="-1"` 在任何元素上来禁用其 tab 切换。
 
-当你在一个默认不可聚焦的元素上增加了功能，你应该总是为其加上 `tabindex` 属性使其变为可聚焦状态，而且这也会激活其 CSS 的伪类 `:focus`。选择合适的 `tabindex` 值，或是直接使用 `tabindex="0"` 将元素们组织成同一 tab 顺序水平，并强制干预其自然阅读顺序。  
+当你在一个默认不可聚焦的元素上增加了功能，你应该总是为其加上 `tabindex` 属性使其变为可聚焦状态，而且这也会激活其 CSS 的伪类 `:focus`。选择合适的 `tabindex` 值，或是直接使用 `tabindex="0"` 将元素们组织成同一 tab 顺序水平，并强制干预其自然阅读顺序。
 
 ***
 
@@ -547,5 +547,5 @@ HTML 标签的目的，就是为了不断地展示内容信息。
 
 ## 系列文章
 
-* [前端编码风格规范之一般规范](//roshanca.com/2014/web-develop-styleguide-general)
-* [前端编码风格规范之 JavaScript](//roshanca.com/2014/web-develop-styleguide-javascript)
+* [前端编码风格规范之一般规范](/2014/web-develop-styleguide-general)
+* [前端编码风格规范之 JavaScript](/2014/web-develop-styleguide-javascript)

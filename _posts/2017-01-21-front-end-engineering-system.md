@@ -23,12 +23,9 @@ sticky: true
 - Web 应用开发层：主要专注 Web 交互体验
 - 前端运维层：构建布署、日志监控等
 
-{% include image.html
-  url="https://s10.mogucdn.com/mlcdn/c45406/191209_40l28id1i239ji26d686icbbb5jed_1001x537.png"
-  src="https://s10.mogucdn.com/mlcdn/c45406/191209_40l28id1i239ji26d686icbbb5jed_1001x537.png"
-  alt=""
-  caption="点击查看原图"
-%}
+{% figure caption:"点击查看原图" %}
+![](https://s10.mogucdn.com/mlcdn/c45406/191209_40l28id1i239ji26d686icbbb5jed_1001x537.png)
+{% endfigure %}
 
 ---
 
@@ -53,29 +50,21 @@ sticky: true
 
 针对性能问题，我拿了公司项目的 api 几个接口做了些测试，不是非常精确，但也能看个大概。分别在 No throtting 和 Regular 4G （模拟移动端网络）的模式下，用 proxy（http-proxy 代理请求），direct（直接请求后端地址）和 node（利用 [request](https://www.npmjs.com/package/request) 模块发起请求）三种模式，做了 GET 和 POST 请求的延迟比对。在比对之前心里也大概有数，肯定是直接请求后端地址的延迟最低，毕竟加了 Node 一层，性能会由损耗。以下是测试结果：
 
-{% include image.html
-  src="https://s10.mogucdn.com/mlcdn/c45406/191209_31020jdgacaida759g78jkl6dif32_1280x733.png"
-  alt=""
-  caption="No throtting GET"
-%}
+{% figure caption:"No throtting GET" %}
+![](https://s10.mogucdn.com/mlcdn/c45406/191209_31020jdgacaida759g78jkl6dif32_1280x733.png)
+{% endfigure %}
 
-{% include image.html
-  src="https://s10.mogucdn.com/mlcdn/c45406/191209_03gk9h936b8d6keh3l0ljaa878j9i_1280x695.png"
-  alt=""
-  caption="No throtting POST"
-%}
+{% figure caption:"No throtting POST" %}
+![](https://s10.mogucdn.com/mlcdn/c45406/191209_03gk9h936b8d6keh3l0ljaa878j9i_1280x695.png)
+{% endfigure %}
 
-{% include image.html
-  src="https://s10.mogucdn.com/mlcdn/c45406/191209_5c016g94bl21df74l1hd9d49ejfj5_1280x726.png"
-  alt=""
-  caption="Regular 4G GET"
-%}
+{% figure caption:"Regular 4G GET" %}
+![](https://s10.mogucdn.com/mlcdn/c45406/191209_5c016g94bl21df74l1hd9d49ejfj5_1280x726.png)
+{% endfigure %}
 
-{% include image.html
-  src="https://s10.mogucdn.com/mlcdn/c45406/191209_1dbf8cc9ec26517ihgc15jgc79e1b_1280x727.png"
-  alt=""
-  caption="Regular 4G POST"
-%}
+{% figure caption:"Regular 4G POST" %}
+![](https://s10.mogucdn.com/mlcdn/c45406/191209_1dbf8cc9ec26517ihgc15jgc79e1b_1280x727.png)
+{% endfigure %}
 
 可以看出，GET 请求中 direct 是最快的，proxy 次之，node request 垫底，POST 则相差不明显。但延迟差距基本在 30ms 左右，是否可以接受，就要看自己的系统架构对性能的要求有多高了。对于我司目前的规模体量用户数来说，我认为基本是可以忽略的。
 

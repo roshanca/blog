@@ -2,7 +2,7 @@
 layout: post
 title: Node APP 布署简易教程
 data: 2016-11-30
-tags: node deploy
+tags: node deploy centos
 toc: true
 comments: true
 ---
@@ -39,7 +39,7 @@ CentOS 7
     ```
     yum install -y curl-devel expat-devel gettext-devel openssl-devel zlib-devel gcc perl-ExtUtils-MakeMaker
     ```
-  
+
 1. 前往 [github](https://github.com/git/git/releases) 下载安装包，拷贝至 `/usr/src`，或者直接用 wget：
 
     ```
@@ -48,7 +48,7 @@ CentOS 7
     wget https://www.kernel.org/pub/software/scm/git/git-2.10.2.tar.gz
     tar xvzf git-2.10.2.tar.gz
     ```
-  
+
 1. make 安装：
 
     ```
@@ -71,21 +71,21 @@ CentOS 7
     wget https://nodejs.org/dist/v6.9.1/node-v6.9.1-linux-x64.tar.xz
     tar xvf node-v6.9.1-linux-x64.tar.xz
     ```
-  
+
 1. 创建软链接至 `/usr/local/bin`
 
     ```
     ln -s /usr/src/node-v6.9.1-linux-x64/bin/node /usr/local/bin/node
     ln -s /usr/src/node-v6.9.1-linux-x64/bin/npm /usr/local/bin/npm
     ```
-  
+
 1. 检查 node 与 npm 是否生效
 
     ```
     node -v
     npm -v
-    ``` 
-  
+    ```
+
 1. 接下来要配置一下 npm，将 npm 的默认全局安装路径自定义到 `/$HOME/.node`:
 
     ```
@@ -97,20 +97,20 @@ CentOS 7
     ```
     npm config set registry https://registry.npm.taobao.org/
     ```
-  
+
 1. 配置系统路径，使 npm 全局安装的模块命令行 bin 生效：
 
     ```
     echo "export PATH=$PATH:$HOME/.node/bin" >> ~/.bashrc
     source ~/.bashrc
-    ``` 
+    ```
 
 ### 安装 pm2：
 
 ```
 npm install -g pm2
 ```
-  
+
 布署 (Deploy)
 ---
 
@@ -127,27 +127,27 @@ git 的传输协议有 https 和 ssh 两种，我们采用更加安全快速的�
 [^2]: gitlab 项目右上角的菜单中选择 "Deploy Keys"，在此添加服务器的公钥 "id_rsa.pub" 中的内容
 
 (ps. 关于如何生成 ssh key，[可参见此](http://git.cairenhui.com/gitlab/how-to-use/wikis/Generating-SSH-keys)，这里要输入的邮箱改为服务器名即可)。
-  
+
 1. 接下来 clone 项目代码至服务器：
 
     ```
     git clone git@git.cairenhui.com:<GROUP>/<PROJECT>.git <NODE_APP_DIR>
     ```
 *注：尖括号内的为变量*
-  
-1. 检出版本 
+
+1. 检出版本
 
     ```
     // 查看当前所有版本
     git tag
-    
+
     // 切换到指定版本，这里的 <TAG> 是演示，比如可以是 1.0.0
     git checkout <TAG>
     ```
-  
+
 1. 安装倚赖：
 
-    ``` 
+    ```
     // 如果没用到 bower，跳过此步骤
     bower install --allow-root
 
@@ -155,7 +155,7 @@ git 的传输协议有 https 和 ssh 两种，我们采用更加安全快速的�
     npm install --production
     ```
 *注：不采用 git 布署的话，只需执行最后一步*
-  
+
 至此，无论是否使用 git，布署都已完成。
 
 运行 (Run)
@@ -184,15 +184,15 @@ git 的传输协议有 https 和 ssh 两种，我们采用更加安全快速的�
     ```
     git fetch origin --tags
     ```
-  
+
     再切换：
-  
+
     ```
     git checkout <NEW_TAG>
     ```
-  
+
     回滚也非常简单：
-  
+
     ```
     git checkout <PREV_TAG>
     ```

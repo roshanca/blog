@@ -4,7 +4,7 @@ title: "为 Octopress 添加 Flickr 边栏"
 date: 2012-03-12 21:30
 tags: octopress
 toc: true
-comments: true
+comments: false
 ---
 
 今天为自己的 Octopress 添加上了 Flickr 边栏，见右侧。
@@ -18,5 +18,5 @@ comments: true
 1.  在 `_config.yml` 中添加：{% gist 1421792 Code%20added%20to%20_config.yml %}把 flickr_user 换成自己的 id。
 
 1.  最后，在 `_config.yml` 中的 `default_asides` 里添加 `custom/asides/flickr.html`，即大功告成。
-	
+
 本方法作者：[lucifr](http://lucifr.com/)

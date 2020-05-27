@@ -4,7 +4,7 @@ title: "试玩暗黑破坏神3"
 date: 2012-03-11 21:36
 tags: diablo game
 toc: true
-comments: true
+comments: false
 ---
 
 上周从同事那 copy 来的暗黑破解版，居然近 10G，想想还是断了在公司本本上跑的念头，直接拿回家用台式机试试。看了下游戏推荐配置，也是勉强合格吧，那就二话不说，搞起～

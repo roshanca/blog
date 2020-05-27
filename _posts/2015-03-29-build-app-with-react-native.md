@@ -2,7 +2,7 @@
 layout: post
 title: React Native：用 JavaScript 构建应用
 data: 2015-03-29
-tags: js react
+tags: javascript react translate
 toc: true
 comments: true
 ---
@@ -79,22 +79,22 @@ $ npm start
 
 ```
 $ npm start
- 
+
 > react-native@0.1.0 start /Users/colineberhardt/Projects/react-native
 > ./packager/packager.sh
- 
- 
+
+
  ===============================================================
- |  Running packager on port 8081.       
- |  Keep this packager running while developing on any JS         
- |  projects. Feel free to close this tab and run your own      
- |  packager instance if you prefer.                              
- |                                                              
- |     https://github.com/facebook/react-native                 
- |                                                              
+ |  Running packager on port 8081.
+ |  Keep this packager running while developing on any JS
+ |  projects. Feel free to close this tab and run your own
+ |  packager instance if you prefer.
+ |
+ |     https://github.com/facebook/react-native
+ |
  ===============================================================
- 
- 
+
+
 React packager ready.
 ```
 
@@ -270,7 +270,7 @@ var styles = React.StyleSheet.create({
 
 ```js
 'use strict';
- 
+
 var React = require('react-native');
 var {
   StyleSheet,
@@ -502,7 +502,7 @@ onSearchTextChanged(event) {
   this.setState({ searchString: event.nativeEvent.text });
   console.log(this.state.searchString);
 }
-```  
+```
 
 这可从事件的 `text` 属性获取值并且用它来更新组件状态，同时也增加了一些打印信息的代码用以测试。
 
@@ -599,7 +599,7 @@ _executeQuery(query) {
   console.log(query);
   this.setState({ isLoading: true });
 }
- 
+
 onSearchPressed() {
   var query = urlForQueryAndPage('place_name', this.state.searchString, 1);
   this._executeQuery(query);
@@ -623,11 +623,11 @@ function urlForQueryAndPage(key, value, pageNumber) {
       page: pageNumber
   };
   data[key] = value;
- 
+
   var querystring = Object.keys(data)
     .map(key => key + '=' + encodeURIComponent(data[key]))
     .join('&');
- 
+
   return '//api.nestoria.co.uk/api?' + querystring;
 };
 ```
@@ -668,7 +668,7 @@ this.state = {
 fetch(query)
   .then(response => response.json())
   .then(json => this._handleResponse(json.response))
-  .catch(error => 
+  .catch(error =>
      this.setState({
       isLoading: false,
       message: 'Something bad happened ' + error
@@ -704,11 +704,11 @@ _handleResponse(response) {
 
 ```js
 'use strict';
- 
+
 var React = require('react-native');
 var {
   StyleSheet,
-  Image, 
+  Image,
   View,
   TouchableHighlight,
   ListView,
@@ -723,7 +723,7 @@ var {
 
 ```jsx
 class SearchResults extends Component {
- 
+
   constructor(props) {
     super(props);
     var dataSource = new ListView.DataSource(
@@ -732,7 +732,7 @@ class SearchResults extends Component {
       dataSource: dataSource.cloneWithRows(this.props.listings)
     };
   }
- 
+
   renderRow(rowData, sectionID, rowID) {
     return (
       <TouchableHighlight
@@ -743,7 +743,7 @@ class SearchResults extends Component {
       </TouchableHighlight>
     );
   }
- 
+
   render() {
     return (
       <ListView
@@ -751,7 +751,7 @@ class SearchResults extends Component {
         renderRow={this.renderRow.bind(this)}/>
     );
   }
- 
+
 }
 ```
 
@@ -834,7 +834,7 @@ var styles = StyleSheet.create({
 ```jsx
 renderRow(rowData, sectionID, rowID) {
   var price = rowData.price_formatted.split(' ')[0];
- 
+
   return (
     <TouchableHighlight onPress={() => this.rowPressed(rowData.guid)}
         underlayColor='#dddddd'>
@@ -843,7 +843,7 @@ renderRow(rowData, sectionID, rowID) {
           <Image style={styles.thumb} source={{ uri: rowData.img_url }} />
           <View  style={styles.textContainer}>
             <Text style={styles.price}>£{price}</Text>
-            <Text style={styles.title} 
+            <Text style={styles.title}
                   numberOfLines={1}>{rowData.title}</Text>
           </View>
         </View>
@@ -883,11 +883,11 @@ rowPressed(propertyGuid) {
 
 ```js
 'use strict';
- 
+
 var React = require('react-native');
 var {
   StyleSheet,
-  Image, 
+  Image,
   View,
   Text,
   Component
@@ -938,7 +938,7 @@ var styles = StyleSheet.create({
 {% raw %}
 ```jsx
 class PropertyView extends Component {
- 
+
   render() {
     var property = this.props.property;
     var stats = property.bedroom_number + ' bed ' + property.property_type;
@@ -946,12 +946,12 @@ class PropertyView extends Component {
       stats += ', ' + property.bathroom_number + ' ' + (property.bathroom_number > 1
         ? 'bathrooms' : 'bathroom');
     }
- 
+
     var price = property.price_formatted.split(' ')[0];
- 
+
     return (
       <View style={styles.container}>
-        <Image style={styles.image} 
+        <Image style={styles.image}
             source={{uri: property.img_url}} />
         <View style={styles.heading}>
           <Text style={styles.price}>£{price}</Text>
@@ -988,7 +988,7 @@ var PropertyView = require('./PropertyView');
 ```js
 rowPressed(propertyGuid) {
   var property = this.props.listings.filter(prop => prop.guid === propertyGuid)[0];
- 
+
   this.props.navigator.push({
     title: "Property",
     component: PropertyView,

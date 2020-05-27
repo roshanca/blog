@@ -1,16 +1,17 @@
 %container {
-	position: relative;
-	width: 80%;
-	max-width: 750px;
-	margin: 0 auto;
-	zoom: 1;
+  position: relative;
+  width: 80%;
+  max-width: 750px;
+  margin: 0 auto;
+  zoom: 1;
 }
 
 %title-pseudo {
-	position: absolute;
-	top: 2rem;
-	font-size: 3rem;
-	color: lighten($heading-color, 44%);
+  position: absolute;
+  top: 1.8rem;
+  font-size: 3rem;
+  color: lighten($heading-color, 44%);
+  transition: all 0.5s ease;
 }
 
 %word-break {

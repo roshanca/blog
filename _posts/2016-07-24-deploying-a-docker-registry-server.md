@@ -2,7 +2,7 @@
 layout: post
 title: 在 CentOS 7 上搭建 Docker 私有仓库
 data: 2016-07-24
-tags: docker
+tags: docker centos
 toc: true
 comments: true
 ---
@@ -51,14 +51,14 @@ DOCKER_OPTS="--insecure-registry myregistrydomain.com:5000"
 mkdir -p certs && openssl req \
   -newkey rsa:4096 -nodes -sha256 -keyout certs/domain.key \
   -x509 -days 365 -out certs/domain.crt
-  
+
 Country Name (2 letter code) [AU]:CN
 State or Province Name (full name) [Some-State]:Zhengjiang
 Locality Name (eg, city) []:Hangzhou
 Organization Name (eg, company) [Internet Widgits Pty Ltd]:Cairenhui
 Organizational Unit Name (eg, section) []:FE
 Common Name (e.g. server FQDN or YOUR name) []:192.168.1.211:5000
-Email Address []:wuwj@cairenhui.com  
+Email Address []:wuwj@cairenhui.com
 ```
 
 接下来将刚生成的 `certs/domain.crt` 复制到 `/etc/docker/certs.d/192.168.1.211:5000/ca.crt`，并**重启 docker**。

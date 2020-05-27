@@ -2,7 +2,7 @@
 layout: post
 title: Mac 中解决 gitk 模糊问题
 data: 2017-11-14
-tags: git
+tags: git mac
 toc: true
 comments: true
 ---

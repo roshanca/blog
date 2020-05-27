@@ -28,17 +28,17 @@ comments: true
 
 两个小例子：
 
-1.   让 Safari 打开一个 URL
+1. 让 Safari 打开一个 URL
 
-    ``` applescript
+    ```applescript
     tell application "Safari"
         open location "http://roshanca.com"
     end tell
     ```
 
-1.   在桌面新建一个名为 "workflow" 的文件夹
+1. 在桌面新建一个名为 "workflow" 的文件夹
 
-    ``` applescript
+    ```applescript
     tell application "Finder"
         make new folder at desktop with properties {name:"workflow"}
     end tell
@@ -48,9 +48,9 @@ comments: true
 
 也来两个小列子吧，感觉都还挺有用的~
 
-1.   转换日期格式
+1. 转换日期格式
 
-    ``` applescript
+    ```applescript
     set {year:y, month:m, day:d} to (current date) -- date "2012年11月20日星期二 下午4:33:51"
     set dateList to {y, m * 1, d} -- {2012, Novemver * 1, 20} => {2012, 11, 20}
     set newDateList to reverse of rest of dateList -- {20， 11}
@@ -64,9 +64,9 @@ comments: true
     return theYear & restDate -- "2012-11-20"
     ```
 
-1.   获取用户文稿中最近修改文件的文件名（以下代码 `new_post.applescript` 中也有用到）
+1. 获取用户文稿中最近修改文件的文件名（以下代码 `new_post.applescript` 中也有用到）
 
-    ``` applescript
+    ```applescript
     tell application "Finder"
         set thePath to (path to documents folder) -- 获取文稿文件夹路径
         set fileList to files in thePath -- 获取路径下的文件集合记录

@@ -4,7 +4,7 @@ title: "从 Heroku 迁移至 GitHub"
 date: 2012-04-10 17:00
 tags: octopress github
 toc: true
-comments: true
+comments: false
 ---
 
 [Heroku](http://www.heroku.com/) 太慢了。

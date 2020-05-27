@@ -1,0 +1,16 @@
+---
+layout: archive
+---
+
+<h1>Archive of posts from <mark>{{ page.date | date: "%Y" }}</mark></h1>
+
+<ul class="posts">
+  {% for post in page.posts %}
+  <li>
+    <time datetime="{{ post.date | datetime | date_to_xmlschema }}" pubdate>
+      {{ post.date | date: "<span class='month'>%b</span> <span class='day'>%d</span>"}}
+    </time>
+    <a class="post-link" href="{{ post.url | prepend: site.baseurl }}" rel="full-article">{{ post.title }}</a>
+  </li>
+  {% endfor %}
+</ul>

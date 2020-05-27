@@ -2,7 +2,7 @@
 layout: post
 title: "Switch … Case 不被推荐使用"
 date: 2012-12-12 10:11
-tag: javascript
+tags: javascript translate
 toc: true
 comments: true
 ---

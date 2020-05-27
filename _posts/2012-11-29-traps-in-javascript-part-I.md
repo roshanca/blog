@@ -22,8 +22,8 @@ sticky: true
 
 ``` js
 function foo() {
-	var a = b = 0;
-	// body...
+  var a = b = 0;
+  // body...
 }
 ```
 
@@ -31,8 +31,8 @@ function foo() {
 
 ``` js
 function foo() {
-	var a = (b = 0);
-	// body...
+  var a = (b = 0);
+  // body...
 }
 ```
 
@@ -50,9 +50,9 @@ function foo() {
 myName = "global";
 
 function foo() {
-	alert(myName);
-	var myName = "local";
-	alert(myName);
+  alert(myName);
+  var myName = "local";
+  alert(myName);
 }
 
 foo();
@@ -65,10 +65,10 @@ foo();
 
 ``` js
 function foo() {
-	var myName;
-	alert(myName); // "undefined"
-	myName = "local";
-	alert(myName); // "local"
+  var myName;
+  alert(myName); // "undefined"
+  myName = "local";
+  alert(myName); // "local"
 }
 ```
 
@@ -76,7 +76,7 @@ function foo() {
 
 ``` js
 if (!("a" in window)) {
-	var a = 1;
+  var a = 1;
 }
 
 alert(a);
@@ -89,7 +89,7 @@ var a; // "undefined"
 console.log("a" in window); // true
 
 if (!("a" in window)) {
-	var a = 1; // 不执行
+  var a = 1; // 不执行
 }
 
 alert(a); // "undefined"
@@ -107,7 +107,7 @@ alert(a); // "undefined"
 alert(typeof foo); // "function"
 
 function foo() {
-	// body...
+  // body...
 }
 ```
 
@@ -117,7 +117,7 @@ function foo() {
 alert(typeof foo); // "undefined"
 
 var foo = function () {
-	// body...
+  // body...
 };
 ```
 
@@ -125,13 +125,13 @@ var foo = function () {
 
 ``` js
 function test() {
-	alert("1");
+  alert("1");
 }
 
 test();
 
 function test() {
-	alert("2");
+  alert("2");
 }
 
 test();
@@ -149,7 +149,7 @@ test();
 
 ``` js
 var bar = function foo() {
-	// body...
+  // body...
 };
 ```
 
@@ -157,7 +157,7 @@ var bar = function foo() {
 
 ``` js
 var bar = function foo() {
-	foo(); // 正常运行
+  foo(); // 正常运行
 };
 
 foo(); // 出错：ReferenceError
@@ -217,16 +217,16 @@ true && function foo(x) {
 
 以下演示的是一个常见的坑：
 
-{% jsfiddle GNDd4 result,html,js %}
+{% jsfiddle GNDd4 result,html,js dark %}
 
 ``` js
 var links = document.getElementsByTagName("ul")[0].getElementsByTagName("a");
 
 for (var i = 0, l = links.length; i < l; i++) {
-	links[i].onclick = function (e) {
-		e.preventDefault();
-		alert("You click link #" + i);        
-	}		
+  links[i].onclick = function (e) {
+    e.preventDefault();
+    alert("You click link #" + i);
+  }
 }
 ```
 
@@ -236,18 +236,18 @@ for (var i = 0, l = links.length; i < l; i++) {
 
 填坑：为了得到想要的结果，需要在每次循环中创建变量 `i` 的拷贝。以下演示正确的做法：
 
-{% jsfiddle UTy8Z result,html,js %}
+{% jsfiddle UTy8Z result,html,js dark %}
 
 ``` js
 var links = document.getElementsByTagName("ul")[0].getElementsByTagName("a");
 
 for (var i = 0, l = links.length; i < l; i++) {
-	links[i].onclick = (function (index) {
-		return function (e) {
-			e.preventDefault();
-			alert("You click link #" + index);        
-		}
-	})(i);
+  links[i].onclick = (function (index) {
+    return function (e) {
+      e.preventDefault();
+      alert("You click link #" + index);
+    }
+  })(i);
 }
 ```
 
@@ -255,12 +255,12 @@ for (var i = 0, l = links.length; i < l; i++) {
 
 ``` js
 for (var i = 0, l = links.length; i < l; i++) {
-	(function (index) {
-		links[index].onclick = function (e) {
-			e.preventDefault();
-			alert("You click link #" + index);        
-		}
-	})(i);
+  (function (index) {
+    links[index].onclick = function (e) {
+      e.preventDefault();
+      alert("You click link #" + index);
+    }
+  })(i);
 }
 ```
 

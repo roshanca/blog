@@ -1,1 +1,1 @@
-<time datetime="{{ page.date }}" class="updated" pubdate>{{ page.date | date: "%h %d, %Y" }}</time>
+<a href="{{ post.url | prepend: site.baseurl }}" rel="full-article"><time datetime="{{ page.date }}" class="updated" pubdate>{{ page.date | date: "%h %d, %Y" }}</time></a>

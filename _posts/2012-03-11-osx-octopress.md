@@ -2,9 +2,9 @@
 layout: post
 title: "OS X 下的 Octopress 搭建"
 date: 2012-03-11 14:04
-tags: octopress mac
+tags: octopress
 toc: true
-comments: true
+comments: false
 ---
 
 终于将家中的 [Hackintosh](http://baike.baidu.com/view/2173094.htm) 完善了，尝试下在 Mac 中搭建 Octopress吧。

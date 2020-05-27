@@ -4,7 +4,7 @@ title: "Hello Octopress"
 date: 2012-03-07 10:37
 tags: octopress
 toc: true
-comments: true
+comments: false
 ---
 
 这个网站使用 [Octopress](http://octopress.org/) 架设，并通过免费的 [Heroku](http://www.heroku.com/) 部署到网上。

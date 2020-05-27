@@ -2,7 +2,7 @@
 layout: post
 title: 前端编码风格规范之 JavaScript 规范
 data: 2014-09-12
-tags: code
+tags: code javascript translate
 toc: true
 comments: true
 ---
@@ -1025,5 +1025,5 @@ return x === 10 ? 'valid' : 'invalid';
 
 ## 系列文章
 
-* [前端编码风格规范之一般规范](//roshanca.com/2014/web-develop-styleguide-general)
-* [前端编码风格规范之 HTML](//roshanca.com/2014/web-develop-styleguide-html)
+* [前端编码风格规范之一般规范](/2014/web-develop-styleguide-general)
+* [前端编码风格规范之 HTML](/2014/web-develop-styleguide-html)

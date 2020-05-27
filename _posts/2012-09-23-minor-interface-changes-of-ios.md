@@ -2,7 +2,7 @@
 layout: post
 title: "iOS 像素级的界面变化"
 date: 2012-09-23 05:56
-tags: apple ios
+tags: apple ios ui
 toc: true
 comments: true
 ---
@@ -61,7 +61,7 @@ iOS 5 中的采用了高光效果，而 iOS 6 去掉了高光，改用了磨砂�
 
 又是 `text-shadow`，高光从 2px 降至了 1px，立体感虽降低了些，可读性增加了。不过我还是喜欢原来的设计。
 
-![](http://i93.photobucket.com/albums/l57/ShakeSpace/__rotate_lock_zps20117574.jpg) 
+![](http://i93.photobucket.com/albums/l57/ShakeSpace/__rotate_lock_zps20117574.jpg)
 
 屏幕旋转锁定图标，同样是去掉了高光效果，细看能发现图标中的旋转标志更大一些，背景与设置图标统一了起来，表达出它属于设置一类的按钮。
 

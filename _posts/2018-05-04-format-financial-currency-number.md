@@ -2,7 +2,7 @@
 layout: post
 title: 对数字的金融货币格式化
 data: 2018-05-04
-tags: javascript format
+tags: javascript
 toc: true
 comments: true
 ---
@@ -48,10 +48,8 @@ comments: true
 
 `toFixed` 基本上没什么兼容性的问题，`toLocaleString` 的兼容情况如下：
 
-{% include image.html
-  src="https://s10.mogucdn.com/mlcdn/c45406/200115_0allh45hchf7gb13d4g78h69i1ib8_2082x1162.png"
-  alt=""
-  caption="toLocaleString 的兼容性"
-%}
+{% figure caption:"*toLocaleString* 的兼容性" %}
+![](https://s10.mogucdn.com/mlcdn/c45406/200115_0allh45hchf7gb13d4g78h69i1ib8_2082x1162.png)
+{% endfigure %}
 
 可以看到，移动端主流设备已基本覆盖。

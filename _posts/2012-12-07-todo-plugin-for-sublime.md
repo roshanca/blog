@@ -2,7 +2,7 @@
 layout: post
 title: "TODO 插件 for Sublime Text 2"
 date: 2012-12-07 20:30
-tags: sublime tool
+tags: sublime editor ide
 toc: true
 comments: true
 ---

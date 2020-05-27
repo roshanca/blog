@@ -2,7 +2,7 @@
 layout: post
 title: 前端编码风格规范之一般规范
 data: 2014-09-07
-tags: code
+tags: code translate
 toc: true
 comments: true
 ---
@@ -177,5 +177,5 @@ if(includeLabels) {
 
 ## 系列文章
 
-* [前端编码风格规范之 HTML](//roshanca.com/2014/web-develop-styleguide-html)
-* [前端编码风格规范之 JavaScript](//roshanca.com/2014/web-develop-styleguide-javascript)
+* [前端编码风格规范之 HTML](/2014/web-develop-styleguide-html)
+* [前端编码风格规范之 JavaScript](/2014/web-develop-styleguide-javascript)

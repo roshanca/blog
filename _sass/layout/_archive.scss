@@ -1,13 +1,40 @@
 #archive {
+  @extend %container;
+  h1 {
+    margin: 5rem 0;
+    font-size: 3.6rem;
+    font-weight: bold;
+    line-height: 4rem;
+    text-align: center;
+  }
   h2 {
+    margin-bottom: 1.2rem;
     color: lighten($text-color, 10%);
+    font-size: 3rem;
+    font-weight: bold;
+    border-bottom: 1px solid #eee;
     // border-bottom: 0;
     // @include tailhook(.5rem);
+    > a {
+      border-bottom: 0 none;
+    }
   }
   ul {
     list-style: none;
+    &.archive-list {
+      padding-left: 4rem;
+      margin-bottom: 2.4rem;
+      @include responsive(480px) {
+        padding-left: 1rem;
+      }
+    }
     @include responsive(480px) {
-      padding-left: 1rem;
+      time {
+        text-align: justify;
+      }
+    }
+    li {
+      margin-bottom: 1.2rem;
     }
   }
   time {

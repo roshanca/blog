@@ -1,32 +1,28 @@
 ---
-title: "Archives"
-layout: page
+layout: archive
 ---
 
-<div id="archive">
-  {% assign is_first = true %}
-  {% for post in site.posts %}
-    {% capture this_year %}{{ post.date | date: "%Y" }}{% endcapture %}
-    {% unless year == this_year %}
-    {% assign year = this_year %}
-    {% if is_first %}
-    {% assign is_first = false %}
-    {% else %}
-    </ul>
-    {% endif %}
+<h1>Archives</h1>
 
-    <h2>{{ year }}</h2>
-    <ul>
-    {% endunless %}
-    <li>
-      <time datetime="{{ post.date | datetime | date_to_xmlschema }}" pubdate>
-        {{ post.date | date: "<span class='month'>%b</span> <span class='day'>%d</span>"}}
-      </time>
-      <a href="{{ post.url }}" rel="full-article">{{ post.title }}</a>
-    </li>
-  {% endfor %}
-
-  {% if paginator.total_pages > 1 %}
-  <div class="pagination">1</div>
+{% assign is_first = true %}
+{% for post in site.posts %}
+  {% capture this_year %}{{ post.date | date: "%Y" }}{% endcapture %}
+  {% unless year == this_year %}
+  {% assign year = this_year %}
+  {% if is_first %}
+  {% assign is_first = false %}
+  {% else %}
+  </ul>
   {% endif %}
-</div>
+
+  <h2><a href="/archives/year/{{ year }}">{{ year }}</a></h2>
+  <ul class="posts archive-list">
+  {% endunless %}
+  <li>
+    <time datetime="{{ post.date | datetime | date_to_xmlschema }}" pubdate>
+      {{ post.date | date: "<span class='month'>%b</span> <span class='day'>%d</span>"}}
+    </time>
+    <a class="post-link" href="{{ post.url | prepend: site.baseurl }}" rel="full-article">{{ post.title }}</a>
+  </li>
+{% endfor %}
+

@@ -2,7 +2,7 @@
 layout: post
 title: 用 TypeScript 写一个贪食蛇小游戏
 data: 2015-09-03
-tags: javascript typescript
+tags: javascript typescript game
 toc: true
 comments: true
 ---
@@ -160,7 +160,7 @@ class Floor {
     private row: number
     private col: number
     public blocks: Block[] // 提供给 Snake 使用的 block 集合
-    
+
     constructor(options?) {
         options = options || {};
         this.table = document.createElement('table')
@@ -169,11 +169,11 @@ class Floor {
         this.col = options.col || 20
         this.blocks = []
     }
-    
+
     initialize() {
         let x: number
         let y: number
-        
+
         for (y = 0; y < this.row; y++) {
             let tr = <HTMLTableRowElement>this.table.insertRow(-1)
             for (x = 0; x < this.col; x++) {
@@ -186,7 +186,7 @@ class Floor {
                 })
             }
         }
-        
+
         this.parent.appendChild(this.table)
     }
 }
@@ -199,19 +199,19 @@ class Snake {
     private initLength: number
     private bodies: Block[]
     private speed: number
-    
+
     constructor(options?) {
         options = options || {}
         this.initLength = options.initLength || 3
         this.speed = options.speed || 300
         this.bodies = []
     }
-    
+
     born() {
         for (let i = this.initLength - 1; i >= 0; i--) {
             this.bodies.push(floor.blocks[i]) // floor 是 Floor 的一个实例
         }
-        
+
         this.bodies.forEach(body => {
             body.type = FLOOR.BODY
             body.node.className = body.type // 着色
@@ -236,25 +236,25 @@ class Snake {
         let head: Block = this.bodies[0]
         let tail: Block = this.bodies[this.bodies.length - 1]
         let next: Block = this.sbling(head) // 获取 head 右侧的 block
-        
+
         // body move
         for (let i = this.bodies.length - 1; i > 0; i--) {
             this.bodies[i] = this.bodies[i - 1]
         }
-        
+
         next.type = FLOOR.BODY
         this.bodies[0] = next
-        
+
         // clear original tail
         tail.type = FLOOR.SPACE
         tail.node.className = tail.type
-        
+
         // change color of blocks
         this.blocks.forEach(block => {
             block.node.className = block.type
         })
     }
-    
+
     sbling(source: Block): Block {
         return this.blocks.filter((block) => {
             if (source.pos.x + 1 === block.pos.x
@@ -287,21 +287,21 @@ class Snake {
     ...
     private direction: Direction
     private offsets: Array<number[]>
-    
+
     constructor(options?) {
         ...
         this.direction = Direction.right
         this.offsets = [[-1, 0], [0, -1], [+1, 0], [0, +1]]
     }
     ...
-    
+
     move() {
         let head: Block = this.bodies[0]
         let tail: Block = this.bodies[this.bodies.length - 1]
         let next: Block = this.sbling(head, this.direction)
         ...
     }
-    
+
     sbling(source: Block, direction: Direction): Block {
         return this.blocks.filter((block) => {
             if (source.pos.x + this.offsets[direction][0] === block.pos.x
@@ -320,7 +320,7 @@ born() {
     ...
     let keyHandler = (e: KeyboardEvent): void  => {
         const keyCode: number = e.keyCode || e.which || e.charCode
-        
+
         switch (keyCode) {
             case KeyCode.left:
                 if (this.direction !== Direction.right) {
@@ -344,7 +344,7 @@ born() {
                 break
         }
     }
-    
+
     document.addEventListener('keydown', keyHandler, false)
 }
 ```
@@ -360,14 +360,14 @@ class Floor() {
             x: Math.floor(Math.random() * this.col),
             y: Math.floor(Math.random() * this.row)
         }
-        
+
         // 根据位置获取食物 block
         let food = this.blocks.filter((block) => {
             if (block.pos.x === pos.x && block.pos.y === pos.y) {
                 return true
             }
         })[0]
-        
+
         food.type = FLOOR.FOOD
         food.node.className = food.type
     }
@@ -381,29 +381,29 @@ class Snake {
     ...
     born() {
         ...
-        
+
         // generate food
         floor.genFood()
-        
+
         // keep moving
         setInterval(function() { this.move(); }.bind(this), this.speed)
     }
-    
+
     move() {
         ...
-        
+
         if (next.type === FLOOR.FOOD) {
             this.eat(next)
         }
-        
+
         // body move
         for (let i = this.bodies.length - 1; i > 0; i--) {
             this.bodies[i] = this.bodies[i - 1]
         }
-        
+
         ...
     }
-    
+
     eat(block: Block) {
         this.bodies.push(block)
         floor.genFood()
@@ -418,16 +418,16 @@ move() {
     let head: Block = this.bodies[0]
     let tail: Block = this.bodies[this.bodies.length - 1]
     let next: Block = this.sbling(head, this.direction)
-      
+
     if (!next || next.type === FLOOR.BODY) {
         this.die()
         return
     }
-      
+
     if (next.type === FLOOR.FOOD) {
         this.eat(next)
     }
-    
+
     ...
 }
 ```

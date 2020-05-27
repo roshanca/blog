@@ -2,7 +2,7 @@
 layout: post
 title: "如何屏蔽优酷和土豆的 Flash 广告"
 date: 2012-09-13 13:17
-tags: flash html5 video
+tags: flash video
 toc: true
 comments: true
 ---
@@ -23,7 +23,7 @@ comments: true
 简单说下如何使用。
 
 -   Firefox：[Greasemonkey](http://www.greasespot.net)
--   Chrome：[Tampermonkey Beta](https://chrome.google.com/webstore/detail/gcalenpjmijncebpfijmoaglllgpjagf?hl=zh-CN&utm_source=chrome-ntp-launcher) 
+-   Chrome：[Tampermonkey Beta](https://chrome.google.com/webstore/detail/gcalenpjmijncebpfijmoaglllgpjagf?hl=zh-CN&utm_source=chrome-ntp-launcher)
 
 安装完相应的插件后，非常 simple 了，前往此偷梁换柱神奇脚本的地址：<http://userscripts.org/scripts/show/120679>，点击右上角的 `Install` 即可。
 
@@ -45,8 +45,8 @@ comments: true
 好吧，来看看怎么做，方法有三：
 
 -   [更改 Safari UA](http://www.mac52ipod.cn/post/apple-safari-flv-html5-tudou-youku.php)：若嫌要每次手工更改略显麻烦，可以在终端中执行以下代码设置 UA 默认为 iPad：
-        
-    ``` bash 
+
+    ``` bash
     defaults write com.apple.Safari CustomUserAgent “‘Mozilla/5.0 (iPad; CPU OS 5_1 like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko) Version/5.1 Mobile/9B176 Safari/7534.48.3′”
     ```
 
@@ -69,7 +69,7 @@ comments: true
     ![preview](http://i93.photobucket.com/albums/l57/ShakeSpace/preview.jpg)
 
     它的优势显而易见：
-    
+
     -   降温：据我观测，看同样的视频，从用 Flash 到 HTML 5，我的设备温度从50多度下降至40度左右；
     -   减噪：温度低了，风扇转速自然就下来了；
     -   网页加载更快：因为所有插件都被阻止，直到用户点击才去请求加载插件内容。
