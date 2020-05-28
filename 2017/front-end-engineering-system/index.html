@@ -137,7 +137,7 @@
 </ul>
 
 <figure>
-<p><img src="https://s10.mogucdn.com/mlcdn/c45406/191209_40l28id1i239ji26d686icbbb5jed_1001x537.png" alt=""></p>
+<a href="https://s10.mogucdn.com/mlcdn/c45406/191209_40l28id1i239ji26d686icbbb5jed_1001x537.png"><img src="https://s10.mogucdn.com/mlcdn/c45406/191209_40l28id1i239ji26d686icbbb5jed_1001x537.png" alt=""></a>
   <figcaption>点击查看原图</figcaption>
 </figure>
 
@@ -171,22 +171,22 @@
 <p>针对性能问题，我拿了公司项目的 api 几个接口做了些测试，不是非常精确，但也能看个大概。分别在 No throtting 和 Regular 4G （模拟移动端网络）的模式下，用 proxy（http-proxy 代理请求），direct（直接请求后端地址）和 node（利用 <a href="https://www.npmjs.com/package/request">request</a> 模块发起请求）三种模式，做了 GET 和 POST 请求的延迟比对。在比对之前心里也大概有数，肯定是直接请求后端地址的延迟最低，毕竟加了 Node 一层，性能会由损耗。以下是测试结果：</p>
 
 <figure>
-<p><img src="https://s10.mogucdn.com/mlcdn/c45406/191209_31020jdgacaida759g78jkl6dif32_1280x733.png" alt=""></p>
+<img src="https://s10.mogucdn.com/mlcdn/c45406/191209_31020jdgacaida759g78jkl6dif32_1280x733.png" alt="">
   <figcaption>No throtting GET</figcaption>
 </figure>
 
 <figure>
-<p><img src="https://s10.mogucdn.com/mlcdn/c45406/191209_03gk9h936b8d6keh3l0ljaa878j9i_1280x695.png" alt=""></p>
+<img src="https://s10.mogucdn.com/mlcdn/c45406/191209_03gk9h936b8d6keh3l0ljaa878j9i_1280x695.png" alt="">
   <figcaption>No throtting POST</figcaption>
 </figure>
 
 <figure>
-<p><img src="https://s10.mogucdn.com/mlcdn/c45406/191209_5c016g94bl21df74l1hd9d49ejfj5_1280x726.png" alt=""></p>
+<img src="https://s10.mogucdn.com/mlcdn/c45406/191209_5c016g94bl21df74l1hd9d49ejfj5_1280x726.png" alt="">
   <figcaption>Regular 4G GET</figcaption>
 </figure>
 
 <figure>
-<p><img src="https://s10.mogucdn.com/mlcdn/c45406/191209_1dbf8cc9ec26517ihgc15jgc79e1b_1280x727.png" alt=""></p>
+<img src="https://s10.mogucdn.com/mlcdn/c45406/191209_1dbf8cc9ec26517ihgc15jgc79e1b_1280x727.png" alt="">
   <figcaption>Regular 4G POST</figcaption>
 </figure>
 

@@ -1,4 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-Hans"><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="https://roshanca.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://roshanca.com/" rel="alternate" type="text/html" hreflang="zh-Hans" /><updated>2020-05-27T03:22:36+00:00</updated><id>https://roshanca.com/feed.xml</id><title type="html">肉山·察</title><subtitle>just Roshan's blog</subtitle><author><name>{&quot;twitter&quot;=&gt;&quot;roshan_wu&quot;}</name></author><entry><title type="html">用 Canvas 实现一个极简贪食蛇</title><link href="https://roshanca.com/2020/Implement-a-minimalist-greedy-snake-with-canvas/" rel="alternate" type="text/html" title="用 Canvas 实现一个极简贪食蛇" /><published>2020-05-20T15:43:09+00:00</published><updated>2020-05-20T15:43:09+00:00</updated><id>https://roshanca.com/2020/Implement-a-minimalist-greedy-snake-with-canvas</id><content type="html" xml:base="https://roshanca.com/2020/Implement-a-minimalist-greedy-snake-with-canvas/">&lt;p&gt;笔者曾经在学习 TS 时写过一个&lt;a href=&quot;/2015/write-a-simple-snake-game-with-typescript/&quot;&gt;贪食蛇小游戏&lt;/a&gt;，但那是基于 DOM 的，代码较为啰唆（毕竟是用来学习基于静态类型的 TS）。这次无意间看见网上某位高人写的贪食蛇小游戏，寥寥几行代码搞定，叹为观止。初看代码，是很大程度地利用了 JS 弱语言的灵活度，以少量代码做了大量的工作，是真正体现了 JS 在脚本领域无人能敌的强大本领。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-Hans"><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="https://roshanca.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://roshanca.com/" rel="alternate" type="text/html" hreflang="zh-Hans" /><updated>2020-05-28T17:01:09+00:00</updated><id>https://roshanca.com/feed.xml</id><title type="html">肉山·察</title><subtitle>just Roshan's blog</subtitle><author><name>{&quot;twitter&quot;=&gt;&quot;roshan_wu&quot;}</name></author><entry><title type="html">用 Canvas 实现一个极简贪食蛇</title><link href="https://roshanca.com/2020/Implement-a-minimalist-greedy-snake-with-canvas/" rel="alternate" type="text/html" title="用 Canvas 实现一个极简贪食蛇" /><published>2020-05-20T15:43:09+00:00</published><updated>2020-05-20T15:43:09+00:00</updated><id>https://roshanca.com/2020/Implement-a-minimalist-greedy-snake-with-canvas</id><content type="html" xml:base="https://roshanca.com/2020/Implement-a-minimalist-greedy-snake-with-canvas/">&lt;p&gt;👉 &lt;a href=&quot;https://lab.roshanca.com/greedy-snake/&quot;&gt;Demo&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;笔者曾经在学习 TS 时写过一个&lt;a href=&quot;/2015/write-a-simple-snake-game-with-typescript/&quot;&gt;贪食蛇小游戏&lt;/a&gt;，但那是基于 DOM 的，代码较为啰唆（毕竟是用来学习基于静态类型的 TS）。这次无意间看见网上某位高人写的贪食蛇小游戏，寥寥几行代码搞定，叹为观止。初看代码，是很大程度地利用了 JS 弱语言的灵活度，以少量代码做了大量的工作，是真正体现了 JS 在脚本领域无人能敌的强大本领。&lt;/p&gt;
 
 &lt;p&gt;接下来晒下代码，然后做一些思路解读，以便于理解其原理。&lt;/p&gt;
 
@@ -208,22 +210,20 @@
 
 &lt;p&gt;这是一个立即执行函数（IIFE），这里有&lt;a href=&quot;/2012/traps-in-javascript-part-I#坑五函数的自执行&quot;&gt;介绍&lt;/a&gt;。&lt;/p&gt;
 
-&lt;h2 id=&quot;argumentscallee&quot;&gt;arguments.callee&lt;/h2&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;arguments.callee&lt;/code&gt; 指的是：&lt;/p&gt;
+&lt;p&gt;顺便提一下其中的 &lt;code class=&quot;highlighter-rouge&quot;&gt;arguments.callee&lt;/code&gt;，指的是：&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;引用参数所属的当前执行函数 —— &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments&quot;&gt;MDN web docs&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;所以这里 &lt;code class=&quot;highlighter-rouge&quot;&gt;setTimeout&lt;/code&gt; 就能让这段函数不停地执行下去。当然我们也可以通过写个申明函数，用 &lt;code class=&quot;highlighter-rouge&quot;&gt;setInterval&lt;/code&gt; 去做轮询，但不如作者的这个写法简洁灵活。&lt;/p&gt;
+&lt;p&gt;所以这里 &lt;code class=&quot;highlighter-rouge&quot;&gt;setTimeout&lt;/code&gt; 就能让这段函数不停地执行下去。当然我们也可以换作 &lt;code class=&quot;highlighter-rouge&quot;&gt;setInterval&lt;/code&gt; 来实现。&lt;/p&gt;
 &lt;div class=&quot;footnotes&quot; role=&quot;doc-endnotes&quot;&gt;
   &lt;ol&gt;
     &lt;li id=&quot;fn:1&quot; role=&quot;doc-endnote&quot;&gt;
       &lt;p&gt;分别为：左、上、右、下。 &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
   &lt;/ol&gt;
-&lt;/div&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;roshan_wu&quot;}</name></author><category term="javascript" /><category term="canvas" /><category term="game" /><summary type="html">笔者曾经在学习 TS 时写过一个贪食蛇小游戏，但那是基于 DOM 的，代码较为啰唆（毕竟是用来学习基于静态类型的 TS）。这次无意间看见网上某位高人写的贪食蛇小游戏，寥寥几行代码搞定，叹为观止。初看代码，是很大程度地利用了 JS 弱语言的灵活度，以少量代码做了大量的工作，是真正体现了 JS 在脚本领域无人能敌的强大本领。</summary></entry><entry><title type="html">对数字的金融货币格式化</title><link href="https://roshanca.com/2018/format-financial-currency-number/" rel="alternate" type="text/html" title="对数字的金融货币格式化" /><published>2018-05-04T00:00:00+00:00</published><updated>2018-05-04T00:00:00+00:00</updated><id>https://roshanca.com/2018/format-financial-currency-number</id><content type="html" xml:base="https://roshanca.com/2018/format-financial-currency-number/">&lt;p&gt;浸淫金融行业多年，这样的需求做了太多。解释下金融货币格式化，主要包含两点：&lt;/p&gt;
+&lt;/div&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;roshan_wu&quot;}</name></author><category term="javascript" /><category term="canvas" /><category term="game" /><summary type="html">👉 Demo</summary></entry><entry><title type="html">对数字的金融货币格式化</title><link href="https://roshanca.com/2018/format-financial-currency-number/" rel="alternate" type="text/html" title="对数字的金融货币格式化" /><published>2018-05-04T00:00:00+00:00</published><updated>2018-05-04T00:00:00+00:00</updated><id>https://roshanca.com/2018/format-financial-currency-number</id><content type="html" xml:base="https://roshanca.com/2018/format-financial-currency-number/">&lt;p&gt;浸淫金融行业多年，这样的需求做了太多。解释下金融货币格式化，主要包含两点：&lt;/p&gt;
 
 &lt;ol&gt;
   &lt;li&gt;保留小数两位（单位元，意思就是要精确到分）&lt;/li&gt;
@@ -281,7 +281,7 @@ num.toLocaleString(&amp;#39;zh&amp;#39;, { style: &amp;#39;decimal&amp;#39;, min
 &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;toFixed&lt;/code&gt; 基本上没什么兼容性的问题，&lt;code class=&quot;highlighter-rouge&quot;&gt;toLocaleString&lt;/code&gt; 的兼容情况如下：&lt;/p&gt;
 
 &lt;figure&gt;
-&lt;p&gt;&lt;img src=&quot;https://s10.mogucdn.com/mlcdn/c45406/200115_0allh45hchf7gb13d4g78h69i1ib8_2082x1162.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;https://s10.mogucdn.com/mlcdn/c45406/200115_0allh45hchf7gb13d4g78h69i1ib8_2082x1162.png&quot; alt=&quot;&quot; /&gt;
   &lt;figcaption&gt;&lt;em&gt;toLocaleString&lt;/em&gt; 的兼容性&lt;/figcaption&gt;
 &lt;/figure&gt;
 
@@ -547,7 +547,7 @@ num.toLocaleString(&amp;#39;zh&amp;#39;, { style: &amp;#39;decimal&amp;#39;, min
 &lt;/ul&gt;
 
 &lt;figure&gt;
-&lt;p&gt;&lt;img src=&quot;https://s10.mogucdn.com/mlcdn/c45406/191209_40l28id1i239ji26d686icbbb5jed_1001x537.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;a href=&quot;https://s10.mogucdn.com/mlcdn/c45406/191209_40l28id1i239ji26d686icbbb5jed_1001x537.png&quot;&gt;&lt;img src=&quot;https://s10.mogucdn.com/mlcdn/c45406/191209_40l28id1i239ji26d686icbbb5jed_1001x537.png&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;
   &lt;figcaption&gt;点击查看原图&lt;/figcaption&gt;
 &lt;/figure&gt;
 
@@ -579,22 +579,22 @@ num.toLocaleString(&amp;#39;zh&amp;#39;, { style: &amp;#39;decimal&amp;#39;, min
 &lt;p&gt;针对性能问题，我拿了公司项目的 api 几个接口做了些测试，不是非常精确，但也能看个大概。分别在 No throtting 和 Regular 4G （模拟移动端网络）的模式下，用 proxy（http-proxy 代理请求），direct（直接请求后端地址）和 node（利用 &lt;a href=&quot;https://www.npmjs.com/package/request&quot;&gt;request&lt;/a&gt; 模块发起请求）三种模式，做了 GET 和 POST 请求的延迟比对。在比对之前心里也大概有数，肯定是直接请求后端地址的延迟最低，毕竟加了 Node 一层，性能会由损耗。以下是测试结果：&lt;/p&gt;
 
 &lt;figure&gt;
-&lt;p&gt;&lt;img src=&quot;https://s10.mogucdn.com/mlcdn/c45406/191209_31020jdgacaida759g78jkl6dif32_1280x733.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;https://s10.mogucdn.com/mlcdn/c45406/191209_31020jdgacaida759g78jkl6dif32_1280x733.png&quot; alt=&quot;&quot; /&gt;
   &lt;figcaption&gt;No throtting GET&lt;/figcaption&gt;
 &lt;/figure&gt;
 
 &lt;figure&gt;
-&lt;p&gt;&lt;img src=&quot;https://s10.mogucdn.com/mlcdn/c45406/191209_03gk9h936b8d6keh3l0ljaa878j9i_1280x695.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;https://s10.mogucdn.com/mlcdn/c45406/191209_03gk9h936b8d6keh3l0ljaa878j9i_1280x695.png&quot; alt=&quot;&quot; /&gt;
   &lt;figcaption&gt;No throtting POST&lt;/figcaption&gt;
 &lt;/figure&gt;
 
 &lt;figure&gt;
-&lt;p&gt;&lt;img src=&quot;https://s10.mogucdn.com/mlcdn/c45406/191209_5c016g94bl21df74l1hd9d49ejfj5_1280x726.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;https://s10.mogucdn.com/mlcdn/c45406/191209_5c016g94bl21df74l1hd9d49ejfj5_1280x726.png&quot; alt=&quot;&quot; /&gt;
   &lt;figcaption&gt;Regular 4G GET&lt;/figcaption&gt;
 &lt;/figure&gt;
 
 &lt;figure&gt;
-&lt;p&gt;&lt;img src=&quot;https://s10.mogucdn.com/mlcdn/c45406/191209_1dbf8cc9ec26517ihgc15jgc79e1b_1280x727.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;https://s10.mogucdn.com/mlcdn/c45406/191209_1dbf8cc9ec26517ihgc15jgc79e1b_1280x727.png&quot; alt=&quot;&quot; /&gt;
   &lt;figcaption&gt;Regular 4G POST&lt;/figcaption&gt;
 &lt;/figure&gt;
 
@@ -1677,7 +1677,7 @@ subjectAltName = IP:192.168.1.211
 
 &lt;p&gt;随着项目的复杂程度递增，其优势也愈发明显。单单是静态类型检测就可以将多少潜在问题扼杀在编译阶段了。&lt;/p&gt;
 
-&lt;p&gt;而回头看我们的互联网世界，恰巧碰上富应用的时代，而且随着这几年计算机硬件性能提升，加上 JavaScript 自身的不断优化，我相信我们的应用还会对交互的要求越来越高，对代码的复杂程度也会越来越高。应用自身的规模也越来越大，特别是一些跨平台的应用。这些都让 TypeScript 的优势愈加明显。&lt;/p&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;roshan_wu&quot;}</name></author><category term="javascript" /><category term="typescript" /><category term="game" /><summary type="html">TypeScript &amp;amp; VS code</summary></entry><entry><title type="html">React Native：用 JavaScript 构建应用</title><link href="https://roshanca.com/2015/build-app-with-react-native/" rel="alternate" type="text/html" title="React Native：用 JavaScript 构建应用" /><published>2015-03-29T00:00:00+00:00</published><updated>2015-03-29T00:00:00+00:00</updated><id>https://roshanca.com/2015/build-app-with-react-native</id><content type="html" xml:base="https://roshanca.com/2015/build-app-with-react-native/">&lt;p&gt;此文为原创翻译，转载请注明出处。&lt;/p&gt;
+&lt;p&gt;而回头看我们的互联网世界，恰巧碰上富应用的时代，而且随着这几年计算机硬件性能提升，加上 JavaScript 自身的不断优化，我相信我们的应用还会对交互的要求越来越高，对代码的复杂程度也会越来越高。应用自身的规模也越来越大，特别是一些跨平台的应用。这些都让 TypeScript 的优势愈加明显。&lt;/p&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;roshan_wu&quot;}</name></author><category term="javascript" /><category term="typescript" /><category term="game" /><summary type="html">TypeScript &amp;amp; VS code</summary></entry><entry><title type="html">【译】React Native：用 JavaScript 构建应用</title><link href="https://roshanca.com/2015/build-app-with-react-native/" rel="alternate" type="text/html" title="【译】React Native：用 JavaScript 构建应用" /><published>2015-03-29T00:00:00+00:00</published><updated>2015-03-29T00:00:00+00:00</updated><id>https://roshanca.com/2015/build-app-with-react-native</id><content type="html" xml:base="https://roshanca.com/2015/build-app-with-react-native/">&lt;p&gt;此文为原创翻译，转载请注明出处。&lt;/p&gt;
 
 &lt;p&gt;原文：&lt;a href=&quot;//www.raywenderlich.com/99473/introducing-react-native-building-apps-javascript&quot;&gt;Introducing React Native: Building Apps with JavaScript&lt;/a&gt;&lt;/p&gt;
 
