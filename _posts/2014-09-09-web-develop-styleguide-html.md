@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 前端编码风格规范之 HTML 规范
+title: 【译】前端编码风格规范之 HTML 规范
 data: 2014-09-09
 tags: code html translate
 toc: true
@@ -428,7 +428,7 @@ HTML 标签的目的，就是为了不断地展示内容信息。
 ### 可用性
 
 如果 HTML5 语义化标签使用得当，许多可用性问题已经引刃而解。ARIA 规则在一些语义化的元素上可为其添上默认的可用性角色属性，使用得当的话已使网站的可用性大部分成立。假如你使用 `nav`, `aside`, `main`, `footer` 等元素，ARIA 规则会在其上应用一些关联的默认值。
-更多细节可参考 [ARIA specification](http://rawgit.com/w3c/aria-in-html/master/index.html#recommendations-table)
+更多细节可参考 [ARIA specification](http://rawgit.com/w3c/aria-in-html/master/index.html#recommendations-table)。
 
 另外一些角色属性则能够用来呈现更多可用性情景（i.e. `role="tab"`）。
 
@@ -547,5 +547,5 @@ HTML 标签的目的，就是为了不断地展示内容信息。
 
 ## 系列文章
 
-* [前端编码风格规范之一般规范](/2014/web-develop-styleguide-general)
-* [前端编码风格规范之 JavaScript](/2014/web-develop-styleguide-javascript)
+* [【译】前端编码风格规范之一般规范](/2014/web-develop-styleguide-general)
+* [【译】前端编码风格规范之 JavaScript](/2014/web-develop-styleguide-javascript)

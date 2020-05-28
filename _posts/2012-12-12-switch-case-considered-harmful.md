@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Switch … Case 不被推荐使用"
+title: "【译】Switch … Case 不被推荐使用"
 date: 2012-12-12 10:11
 tags: javascript translate
 toc: true

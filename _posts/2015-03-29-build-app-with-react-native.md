@@ -1,6 +1,6 @@
 ---
 layout: post
-title: React Native：用 JavaScript 构建应用
+title: 【译】React Native：用 JavaScript 构建应用
 data: 2015-03-29
 tags: javascript react translate
 toc: true

@@ -7,6 +7,8 @@ toc: true
 comments: false
 ---
 
+👉 [Demo](https://lab.roshanca.com/greedy-snake/)
+
 笔者曾经在学习 TS 时写过一个[贪食蛇小游戏](/2015/write-a-simple-snake-game-with-typescript/)，但那是基于 DOM 的，代码较为啰唆（毕竟是用来学习基于静态类型的 TS）。这次无意间看见网上某位高人写的贪食蛇小游戏，寥寥几行代码搞定，叹为观止。初看代码，是很大程度地利用了 JS 弱语言的灵活度，以少量代码做了大量的工作，是真正体现了 JS 在脚本领域无人能敌的强大本领。
 
 接下来晒下代码，然后做一些思路解读，以便于理解其原理。
@@ -231,10 +233,8 @@ do {
 
 这是一个立即执行函数（IIFE），这里有[介绍](/2012/traps-in-javascript-part-I#坑五函数的自执行)。
 
-## arguments.callee
-
-`arguments.callee` 指的是：
+顺便提一下其中的 `arguments.callee`，指的是：
 
 > 引用参数所属的当前执行函数 —— [MDN web docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments)
 
-所以这里 `setTimeout` 就能让这段函数不停地执行下去。当然我们也可以通过写个申明函数，用 `setInterval` 去做轮询，但不如作者的这个写法简洁灵活。
+所以这里 `setTimeout` 就能让这段函数不停地执行下去。当然我们也可以换作 `setInterval` 来实现。

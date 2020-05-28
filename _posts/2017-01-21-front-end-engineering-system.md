@@ -24,7 +24,7 @@ sticky: true
 - 前端运维层：构建布署、日志监控等
 
 {% figure caption:"点击查看原图" %}
-![](https://s10.mogucdn.com/mlcdn/c45406/191209_40l28id1i239ji26d686icbbb5jed_1001x537.png)
+[![](https://s10.mogucdn.com/mlcdn/c45406/191209_40l28id1i239ji26d686icbbb5jed_1001x537.png)](https://s10.mogucdn.com/mlcdn/c45406/191209_40l28id1i239ji26d686icbbb5jed_1001x537.png)
 {% endfigure %}
 
 ---

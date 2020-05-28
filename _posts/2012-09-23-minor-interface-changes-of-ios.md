@@ -4,7 +4,7 @@ title: "iOS 像素级的界面变化"
 date: 2012-09-23 05:56
 tags: apple ios ui
 toc: true
-comments: true
+comments: false
 ---
 
 从 iOS4 到 iOS5，再到 iOS6，有些微小的像素级的界面改进，往往只有设计师才会注意到它们。
