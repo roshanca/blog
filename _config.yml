@@ -49,6 +49,9 @@ plugins:
   - jekyll-toc
   - jekyll-gist
 
+jekyll-figure:
+  paragraphs: false
+
 jekyll-archives:
   enabled:
     - year

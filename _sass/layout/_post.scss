@@ -8,7 +8,6 @@
 }
 
 .post {
-  padding-top: 1.5rem;
   @extend %container;
   .post-header {
     padding: 3rem 0;
@@ -17,7 +16,6 @@
     margin-bottom: 0;
     font-size: 3.6rem;
     font-weight: bold;
-    line-height: 4rem;
     text-align: center;
   }
   .post-content {
@@ -33,7 +31,7 @@
     top: 11.3rem;
     right: 100%;
     width: 13.5rem;
-    padding-right: 2rem;
+    padding-right: 3rem;
     @include responsive(960px) {
       position: static;
       width: 100%;
@@ -228,6 +226,8 @@
     }
   }
   .footnotes {
+    padding-top: 1rem;
+    border-top: 1px solid #e7e9ee;
     font-size: 90%;
     color: lighten($text-color, 22%);
   }
@@ -258,10 +258,11 @@
   sup > a[href^="#fn"] {
     display: inline-block;
     text-indent: 0;
-    width: 14px;
-    height: 14px;
+    width: 1.4rem;
+    height: 1.4rem;
     text-align: center;
     font-family: $sans;
+    font-size: 1.2rem;
     border-bottom: 0;
     background-color: rgba(0,0,0,.3);
     color: #fff;
@@ -270,7 +271,7 @@
     transition: all .1s ease;
     text-emphasis: none;
     margin-left: 2px;
-    line-height: 1.2;
+    line-height: 1.4;
     &:hover {
       background-color: rgba(0,0,0,.9);
     }

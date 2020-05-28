@@ -34,24 +34,27 @@
       }
     }
     li {
+      display: flex;
       margin-bottom: 1.2rem;
     }
   }
   time {
-    display: inline-block;
+    display: flex;
+    justify-content: space-between;
     min-width: 10rem;
+    padding-top: 0.3rem;
     text-align: right;
     font-family: $sans;
     font-size: 90%;
     color: lighten($link-color, 22%);
     &:after {
       content: "—";
-      margin: 0 1rem;
+      margin: 0 1.5rem 0 1rem;
     }
-    @include responsive(480px) {
-      display: block;
-      @include tailhook;
-    }
+    // @include responsive(480px) {
+    //   display: block;
+    //   @include tailhook;
+    // }
   }
   .pagination {
     color: #666;

@@ -57,17 +57,17 @@ sup {
 table {
   margin-bottom: 1rem;
   width: 100%;
-  border: 1px solid #e5e5e5;
-  border-collapse: collapse;
+  // border: 1px solid #e5e5e5;
+  border-collapse: separate;
   th {
-    color: #fff;
-    background-color: $th-bg-color;
+    font-weight: bold;
+    border-bottom-width: 2px !important;
   }
 }
 td,
 th {
   padding: 0.5rem 1rem;
-  border: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
 }
 tbody tr:nth-child(even) td {
   background-color: #f1f1f1;

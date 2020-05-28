@@ -11,7 +11,7 @@ index: true
     {% for post in sticky_posts limit: 5 %}
     <li>
       <time datetime="{{ post.date }}">{{ post.date | date: "<span class='year'>%Y</span>-<span class='month'>%m</span>-<span class='day'>%d</span>"}}</time>
-      <a class="full-article" href="{{ post.url }}">{{ post.title }}</a> <i class="fa fa-thumb-tack"></i>
+      <a class="post-link" href="{{ post.url | prepend: site.baseurl }}" rel="full-article">{{ post.title }}</a> <i class="fa fa-thumb-tack"></i>
     </li>
     {% endfor %}
     </ul>
@@ -23,7 +23,7 @@ index: true
     {% for post in filtered_posts limit: 5 %}
       <li>
         <time datetime="{{ post.date }}">{{ post.date | date: "<span class='year'>%Y</span>-<span class='month'>%m</span>-<span class='day'>%d</span>"}}</time>
-        <a class="full-article" href="{{ post.url }}">{{ post.title }}</a>
+        <a class="post-link" href="{{ post.url | prepend: site.baseurl }}" rel="full-article">{{ post.title }}</a>
       </li>
     {% endfor %}
     </ul>

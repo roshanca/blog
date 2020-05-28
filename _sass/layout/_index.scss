@@ -52,12 +52,12 @@
     @include responsive(480px) {
       margin: 0 0 1rem 0;
     }
-    a[rel] {
-      margin-left: 1rem;
-      @include responsive(480px) {
-        margin-left: 0;
-      }
-    }
+    // a[rel] {
+    //   margin-left: 1rem;
+    //   @include responsive(480px) {
+    //     margin-left: 0;
+    //   }
+    // }
     time {
       font-family: $sans;
       font-size: 90%;
