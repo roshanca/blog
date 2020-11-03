@@ -5,7 +5,8 @@
     <h2 class="blog-desc">{{ site.description }}</h2>
   </div>
   <a href="/archives" class="archive tip--top" data-tip="true" data-tip-content="Archives">
-    <i class="fa fa-archive"></i>
+    <i class="fa fa-inbox"></i>
+    <span hidden>inbox</span>
   </a>
   {% else %}
   <div class="header-inner">
@@ -15,6 +16,8 @@
     {% endif %}
     <div class="header-icon">{% include social-service.html %}</div>
   </div>
-  <i class="author"></i>
+  <a href="/" class="author">
+    <span hidden>{{ site.title }}</span>
+  </a>
   {% endif %}
 </header>
