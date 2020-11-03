@@ -32,3 +32,10 @@ scrollElement.addEventListener(
   },
   false
 )
+
+// Site footer copyright year
+const siteFooter = document.getElementById('footer')
+const innerFooter = siteFooter.getElementsByTagName('p')[0]
+const nowYear = new Date().getFullYear()
+
+innerFooter.textContent += nowYear

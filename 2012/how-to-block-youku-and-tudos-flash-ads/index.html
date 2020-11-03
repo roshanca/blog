@@ -25,8 +25,9 @@
 <script type="application/ld+json">
 {"mainEntityOfPage":{"@type":"WebPage","@id":"https://roshanca.com/2012/how-to-block-youku-and-tudos-flash-ads/"},"description":"大家出来混都不容易，按理说视频网站的播放不收费只内嵌点广告，无可厚非。可最近看来，这些视频网站的 Flash 内嵌广告，越来越长，直逼老婆娘的裹脚布，让人有点忍无可忍了。我见过最长的广告长达1分45秒，how about u？真叫人怀念那个15秒广告的年代啊！而且现如今广告的质量也不咋样，我曾在追一部无脑国产连续剧时（哎，哥也有无聊的时候啊），被生逼着看了好几遍的“苏菲”广告。质量差点也就算了，还不让跳过。看看人家 YouTube，5秒后可选 Skip 的设计多棒，不过人家也是对广告内容的自信。","headline":"如何屏蔽优酷和土豆的 Flash 广告","dateModified":"2012-09-13T13:17:00+00:00","datePublished":"2012-09-13T13:17:00+00:00","@type":"BlogPosting","url":"https://roshanca.com/2012/how-to-block-youku-and-tudos-flash-ads/","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
-<link href="/assets/styles/main.css" rel="stylesheet"><link type="application/atom+xml" rel="alternate" href="https://roshanca.com/feed.xml" title="肉山·察" /><link href="//cdn.bootcss.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-  <script>
+<link href="/assets/styles/main.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="preload" href="//cdn.bootcss.com/font-awesome/4.1.0/fonts/fontawesome-webfont.woff?v=4.1.0" as="font" crossorigin><link type="application/atom+xml" rel="alternate" href="https://roshanca.com/feed.xml" title="肉山·察" /><script>
     function loadSync(u,p,a){
       if(!p && location.port)return {onload: null};
       if(/\.js$/.test(u)){a='script'}else{a='link'};
@@ -57,23 +58,29 @@
     <div class="header-icon">
 <a href="//github.com/roshanca" class="social-link">
   <i class="fa fa-github"></i>
+  <span hidden>github</span>
 </a>
 
 <a href="//twitter.com/roshan_wu" class="social-link">
   <i class="fa fa-twitter"></i>
+  <span hidden>twitter</span>
 </a>
 
 <a href="//www.instagram.com/roshanca/" class="social-link">
   <i class="fa fa-instagram"></i>
+  <span hidden>instagram</span>
 </a>
 
 <a href="/feed.xml" class="social-link">
   <i class="fa fa-rss"></i>
+  <span hidden>rss</span>
 </a>
 
 </div>
   </div>
-  <i class="author"></i>
+  <a href="/" class="author">
+    <span hidden>肉山·察</span>
+  </a>
   
 </header>
 
@@ -257,9 +264,6 @@
   <footer id="footer" role="contentinfo">
   <p>
     © Copyright 2012 -
-    <script>
-      document.write(new Date().getFullYear())
-    </script>
   </p>
 </footer>
 
