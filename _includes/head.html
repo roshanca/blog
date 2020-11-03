@@ -9,8 +9,9 @@
   {% capture canonical %}{{ site.url }}{% if site.permalink contains '.html' %}{{ page.url }}{% else %}{{ page.url | remove:'index.html' }}{% endif %}{% endcapture %}
   {%- seo -%}
   <link href="{{ '/assets/styles/main.css' | relative_url}}" rel="stylesheet">
-  {%- feed_meta -%}
   <link href="//cdn.bootcss.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="preload" href="//cdn.bootcss.com/font-awesome/4.1.0/fonts/fontawesome-webfont.woff?v=4.1.0" as="font" crossorigin>
+  {%- feed_meta -%}
   <script>
     function loadSync(u,p,a){
       if(!p && location.port)return {onload: null};
