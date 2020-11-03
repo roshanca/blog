@@ -87,7 +87,7 @@
     font-size: 100%;
     font-family: $heading;
     text-transform: capitalize;
-    color: lighten($heading-color, 44%);
+    color: lighten($heading-color, 36%);
   }
   .archive {
     position: absolute;
@@ -98,7 +98,7 @@
     width: 2.8rem;
     height: 2.8rem;
     line-height: 2.8rem;
-    color: lighten($heading-color, 44%);
+    color: lighten($heading-color, 36%);
     border: 1px solid #e0e0e0;
     border-radius: 100%;
     background-color: #fff;
