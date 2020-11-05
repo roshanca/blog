@@ -1,6 +1,78 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-Hans"><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="https://roshanca.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://roshanca.com/" rel="alternate" type="text/html" hreflang="zh-Hans" /><updated>2020-11-03T14:08:55+00:00</updated><id>https://roshanca.com/feed.xml</id><title type="html">肉山·察</title><subtitle>just Roshan's blog</subtitle><author><name>{&quot;twitter&quot;=&gt;&quot;roshan_wu&quot;}</name></author><entry><title type="html">用 Canvas 实现一个极简贪食蛇</title><link href="https://roshanca.com/2020/Implement-a-minimalist-greedy-snake-with-canvas/" rel="alternate" type="text/html" title="用 Canvas 实现一个极简贪食蛇" /><published>2020-05-20T15:43:09+00:00</published><updated>2020-05-20T15:43:09+00:00</updated><id>https://roshanca.com/2020/Implement-a-minimalist-greedy-snake-with-canvas</id><content type="html" xml:base="https://roshanca.com/2020/Implement-a-minimalist-greedy-snake-with-canvas/">&lt;p&gt;👉 &lt;a href=&quot;https://lab.roshanca.com/greedy-snake/&quot;&gt;Demo&lt;/a&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-Hans"><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="https://roshanca.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://roshanca.com/" rel="alternate" type="text/html" hreflang="zh-Hans" /><updated>2020-11-05T13:16:58+00:00</updated><id>https://roshanca.com/feed.xml</id><title type="html">肉山·察</title><subtitle>just Roshan's blog</subtitle><author><name>{&quot;twitter&quot;=&gt;&quot;roshan_wu&quot;}</name></author><entry><title type="html">页面性能(W3C)指标说明及定义</title><link href="https://roshanca.com/2020/performance-indicators/" rel="alternate" type="text/html" title="页面性能(W3C)指标说明及定义" /><published>2020-11-05T00:00:00+00:00</published><updated>2020-11-05T00:00:00+00:00</updated><id>https://roshanca.com/2020/performance-indicators</id><content type="html" xml:base="https://roshanca.com/2020/performance-indicators/">&lt;h2 id=&quot;性能指标说明及定义&quot;&gt;性能指标说明及定义&lt;/h2&gt;
+
+&lt;figure&gt;
+&lt;a href=&quot;https://s10.mogucdn.com/mlcdn/c45406/201105_8cig0b7bk130j5010lkf890g0dfh9_1473x879.png&quot;&gt;&lt;img src=&quot;https://s10.mogucdn.com/mlcdn/c45406/201105_8cig0b7bk130j5010lkf890g0dfh9_1473x879.png&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;
+  &lt;figcaption&gt;图 1 (来源：www.w3.org)&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h2 id=&quot;指标说明&quot;&gt;指标说明&lt;/h2&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;指标名称&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;描述&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;计算方式&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;首字节&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;收到首字节的时间&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;responseStart - fetchStart&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;DOM Ready&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;HTML加载完成时间&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;domContentLoadedEventEnd - fetchStart&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;页面完全加载&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;页面完全加载时间&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;loadEventStart - fetchStart&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;DNS查询&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;DNS解析耗时&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;domainLookupEnd - domainLookupStart&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;TCP连接&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;TCP链接耗时&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;connectEnd - connectStart&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;请求响应&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Time to First Byte(TTFB)&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;responseStart - requestStart&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;内容传输&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;数据传输耗时&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;responseEnd - responseStart&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;DOM解析&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;DOM 解析耗时&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;domInteractive - responseEnd&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;资源加载&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;资源加载耗时(页面中同步加载的资源)&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;loadEventStart - domContentLoadedEventEnd&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;参考&quot;&gt;参考&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.w3.org/TR/navigation-timing/?spm=a2c4g.11186623.2.15.59982e88Be3sxh&quot;&gt;https://www.w3.org/TR/navigation-timing/?spm=a2c4g.11186623.2.15.59982e88Be3sxh&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;roshan_wu&quot;}</name></author><category term="performance" /><category term="javascript" /><summary type="html">性能指标说明及定义</summary></entry><entry><title type="html">用 Canvas 实现一个极简贪食蛇</title><link href="https://roshanca.com/2020/Implement-a-minimalist-greedy-snake-with-canvas/" rel="alternate" type="text/html" title="用 Canvas 实现一个极简贪食蛇" /><published>2020-05-20T15:43:09+00:00</published><updated>2020-05-20T15:43:09+00:00</updated><id>https://roshanca.com/2020/Implement-a-minimalist-greedy-snake-with-canvas</id><content type="html" xml:base="https://roshanca.com/2020/Implement-a-minimalist-greedy-snake-with-canvas/">&lt;h2 id=&quot;前言&quot;&gt;前言&lt;/h2&gt;
 
 &lt;p&gt;笔者曾经在学习 TS 时写过一个&lt;a href=&quot;/2015/write-a-simple-snake-game-with-typescript/&quot;&gt;贪食蛇小游戏&lt;/a&gt;，但那是基于 DOM 的，代码较为啰唆（毕竟是用来学习基于静态类型的 TS）。这次无意间看见网上某位高人写的贪食蛇小游戏，寥寥几行代码搞定，叹为观止。初看代码，是很大程度地利用了 JS 弱语言的灵活度，以少量代码做了大量的工作，是真正体现了 JS 在脚本领域无人能敌的强大本领。&lt;/p&gt;
+
+&lt;p&gt;先来看看 👉 &lt;a href=&quot;https://lab.roshanca.com/greedy-snake/&quot;&gt;Demo&lt;/a&gt;。&lt;/p&gt;
 
 &lt;p&gt;接下来晒下代码，然后做一些思路解读，以便于理解其原理。&lt;/p&gt;
 
@@ -223,7 +295,7 @@
       &lt;p&gt;分别为：左、上、右、下。 &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
   &lt;/ol&gt;
-&lt;/div&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;roshan_wu&quot;}</name></author><category term="javascript" /><category term="canvas" /><category term="game" /><summary type="html">👉 Demo</summary></entry><entry><title type="html">对数字的金融货币格式化</title><link href="https://roshanca.com/2018/format-financial-currency-number/" rel="alternate" type="text/html" title="对数字的金融货币格式化" /><published>2018-05-04T00:00:00+00:00</published><updated>2018-05-04T00:00:00+00:00</updated><id>https://roshanca.com/2018/format-financial-currency-number</id><content type="html" xml:base="https://roshanca.com/2018/format-financial-currency-number/">&lt;p&gt;浸淫金融行业多年，这样的需求做了太多。解释下金融货币格式化，主要包含两点：&lt;/p&gt;
+&lt;/div&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;roshan_wu&quot;}</name></author><category term="javascript" /><category term="canvas" /><category term="game" /><summary type="html">前言</summary></entry><entry><title type="html">对数字的金融货币格式化</title><link href="https://roshanca.com/2018/format-financial-currency-number/" rel="alternate" type="text/html" title="对数字的金融货币格式化" /><published>2018-05-04T00:00:00+00:00</published><updated>2018-05-04T00:00:00+00:00</updated><id>https://roshanca.com/2018/format-financial-currency-number</id><content type="html" xml:base="https://roshanca.com/2018/format-financial-currency-number/">&lt;p&gt;浸淫金融行业多年，这样的需求做了太多。解释下金融货币格式化，主要包含两点：&lt;/p&gt;
 
 &lt;ol&gt;
   &lt;li&gt;保留小数两位（单位元，意思就是要精确到分）&lt;/li&gt;
@@ -541,14 +613,14 @@ num.toLocaleString(&amp;#39;zh&amp;#39;, { style: &amp;#39;decimal&amp;#39;, min
 &lt;p&gt;根据以上思考，大致将自己理解的前端工程体系分为三大块：&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Node 服务层：主要做数据的代理和 Mock，url 的路由分发，还有模板渲染&lt;/li&gt;
-  &lt;li&gt;Web 应用开发层：主要专注 Web 交互体验&lt;/li&gt;
-  &lt;li&gt;前端运维层：构建布署、日志监控等&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Node 服务层&lt;/strong&gt;：主要做数据的代理和 Mock，url 的路由分发，还有模板渲染&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Web 应用开发层&lt;/strong&gt;：主要专注 Web 交互体验&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;前端运维层&lt;/strong&gt;：构建布署、日志监控等&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;figure&gt;
 &lt;a href=&quot;https://s10.mogucdn.com/mlcdn/c45406/191209_40l28id1i239ji26d686icbbb5jed_1001x537.png&quot;&gt;&lt;img src=&quot;https://s10.mogucdn.com/mlcdn/c45406/191209_40l28id1i239ji26d686icbbb5jed_1001x537.png&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;
-  &lt;figcaption&gt;点击查看原图&lt;/figcaption&gt;
+  &lt;figcaption&gt;图1: 点击查看原图&lt;/figcaption&gt;
 &lt;/figure&gt;
 
 &lt;hr /&gt;
@@ -564,9 +636,12 @@ num.toLocaleString(&amp;#39;zh&amp;#39;, { style: &amp;#39;decimal&amp;#39;, min
   &lt;li&gt;服务端模板渲染所需初始数据&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://s10.mogucdn.com/mlcdn/c45406/191209_50j4je49cc5hk95kf52c012kc46b6_1259x734.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;
+&lt;img src=&quot;https://s10.mogucdn.com/mlcdn/c45406/191209_50j4je49cc5hk95kf52c012kc46b6_1259x734.png&quot; alt=&quot;&quot; /&gt;
+  &lt;figcaption&gt;图2: 页面数据的两种来源&lt;/figcaption&gt;
+&lt;/figure&gt;
 
-&lt;p&gt;前者来说，传统的做法是后端直接提供 api 以供客户端调用，但面临微服务化逐渐成为主流的今天，后端系统也趋于拆分为众多后端服务，提供不同的 api，直接调用面临请求认证和跨域等众多问题，Node 做为中转站利用 &lt;code class=&quot;highlighter-rouge&quot;&gt;http-proxy&lt;/code&gt; 将 http 请求和响应传输于前后两端，起到桥梁作用。&lt;/p&gt;
+&lt;p&gt;前者来说，传统的做法是后端直接提供接口给供客户端调用，但面临微服务化逐渐成为主流的今天，后端系统也趋于拆分为众多后端服务，提供不同的 api，直接调用面临请求认证和跨域等众多问题，Node 做为中转站利用 &lt;code class=&quot;highlighter-rouge&quot;&gt;http-proxy&lt;/code&gt; 将 http 请求和响应传输于前后两端，起到桥梁作用。&lt;/p&gt;
 
 &lt;p&gt;有人说直接请求后端 api 岂不是性能更佳？跨域问题直接用 CORS（Cross-origin resource sharing）不是也能解决？&lt;/p&gt;
 
@@ -661,7 +736,7 @@ num.toLocaleString(&amp;#39;zh&amp;#39;, { style: &amp;#39;decimal&amp;#39;, min
 &lt;ul&gt;
   &lt;li&gt;更好的了解业务&lt;/li&gt;
   &lt;li&gt;做为数据接口的第一级消费者，前端应该更清楚怎样的数据结构，适合页面展示。比如某个字段，用数组好，还是用字符串拼接好等等&lt;/li&gt;
-  &lt;li&gt;mock 效率更高，实现简单：json-server，mockjs&lt;/li&gt;
+  &lt;li&gt;mock 效率更高，实现简单：&lt;a href=&quot;https://github.com/typicode/json-server&quot;&gt;json-server&lt;/a&gt;，&lt;a href=&quot;http://mockjs.com/&quot;&gt;mockjs&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;但目前这两种简单的 mock 工具都不是太适合当前公司的项目场景，因为我们公司大部分接口都不是 restful 的，所以用下来遇到两个问题：&lt;/p&gt;
@@ -671,7 +746,7 @@ num.toLocaleString(&amp;#39;zh&amp;#39;, { style: &amp;#39;decimal&amp;#39;, min
   &lt;li&gt;mockjs 是比较灵活高效，但做不到数据的持久化&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;比较完美的方案是两者结合再加上支持非 restful 的 mock，这个可能需要以后自己定制了。PS. 最近 github 上看到了一个利用 service workers 搞出来的一个 mock 服务： &lt;a href=&quot;https://github.com/service-mocker/service-mocker&quot;&gt;service-mocker&lt;/a&gt;，不管是否适用，但要为这样的思路点赞。&lt;/p&gt;
+&lt;p&gt;比较完美的方案是两者结合再加上支持非 restful 的 mock，这个可能需要以后自己定制了。PS. 最近 github 上看到了一个以 service workers 为出发点创造出来的一个 mock 服务： &lt;a href=&quot;https://github.com/service-mocker/service-mocker&quot;&gt;service-mocker&lt;/a&gt;，不管是否适用，要为这样的思路点赞。&lt;/p&gt;
 
 &lt;h3 id=&quot;url-路由&quot;&gt;url 路由&lt;/h3&gt;
 
@@ -779,6 +854,7 @@ num.toLocaleString(&amp;#39;zh&amp;#39;, { style: &amp;#39;decimal&amp;#39;, min
 &lt;p&gt;JSX 写法：&lt;/p&gt;
 
 &lt;div class=&quot;language-jsx highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;React&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;PropTypes&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;react&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Profile&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;../components/Profile&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;styles&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;./Preview.css&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 
 &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Preview&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
@@ -801,34 +877,33 @@ num.toLocaleString(&amp;#39;zh&amp;#39;, { style: &amp;#39;decimal&amp;#39;, min
 &lt;p&gt;Vue 的单文件形式：&lt;/p&gt;
 
 &lt;div class=&quot;language-vue highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;template&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;app&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;./assets/logo.png&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;msg&lt;/span&gt; &lt;span class=&quot;si&quot;&gt;}}&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;card&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;:src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;url&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;alt=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;normal&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Profile&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;:user=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;user&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
   &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
 &lt;span class=&quot;nt&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;template&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
 
 &lt;span class=&quot;nt&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;Welcome to Your Vue.js App&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;card&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;props&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
   &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;nt&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
 
 &lt;span class=&quot;nt&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;#app&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;font-family&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;'Avenir'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Helvetica&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Arial&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sans-serif&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;-webkit-font-smoothing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;antialiased&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;-moz-osx-font-smoothing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;grayscale&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;text-align&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;center&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;#2c3e50&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;margin-top&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;60px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nc&quot;&gt;.card&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;padding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;10px&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;15px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;border&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1px&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;solid&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;#333&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;h1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;font-weight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;normal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;nc&quot;&gt;.normal&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;#666&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;nt&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -853,7 +928,7 @@ num.toLocaleString(&amp;#39;zh&amp;#39;, { style: &amp;#39;decimal&amp;#39;, min
 
 &lt;p&gt;React 首创的虚拟 DOM 有两大杀手锏大大提升了原生 DOM 操作效率低下的问题（特别是在移动端）：batching 和 diff。batching 把所有的 DOM 操作搜集起来，一次性提交给真实的 DOM；diff 算法时间复杂度也从标准的 diff 算法的 O(n^3 ) 降到了 O(n)&lt;sup id=&quot;fnref:2&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;。&lt;/p&gt;
 
-&lt;p&gt;除了性能提升之外，由于思路的转变，在开发效率上也有很大提升：MDV 模式下很自然的就将 web 页面看做是一台状态机（State Machine），UI = f(state)， 界面上的变化皆由状态变化所导致，状态的变化来源一定为 M，即数据模型。我们将手动操作 DOM 的工作交给 MVVM 框架的数据绑定来做，界面的改变由数据的变化而自动完成，不仅十分高效，而且我们对于数据的流向更加清晰可控。在引入严格的函数式编程与不可变数据（immutable.js）后，还能使得结果可预测，方便做单元测试。&lt;/p&gt;
+&lt;p&gt;除了性能提升之外，由于思路的转变，在开发效率上也有很大提升：MDV 模式下很自然的就将 web 页面看做是一台状态机（State Machine），&lt;strong&gt;UI = f(state)&lt;/strong&gt;， 界面上的变化皆由状态变化所导致，状态的变化来源一定为 M，即数据模型。我们将手动操作 DOM 的工作交给 MVVM 框架的数据绑定来做，界面的改变由数据的变化而自动完成，不仅十分高效，而且我们对于数据的流向更加清晰可控。在引入严格的函数式编程与不可变数据（immutable.js）后，还能使得结果可预测，方便做单元测试。&lt;/p&gt;
 
 &lt;p&gt;当然，除了许多新的概念需要学习之外，组件间如何通信，异步数据如何管理等一系列问题也是随之而来的一些挑战。&lt;/p&gt;
 
@@ -870,8 +945,21 @@ num.toLocaleString(&amp;#39;zh&amp;#39;, { style: &amp;#39;decimal&amp;#39;, min
 &lt;p&gt;根据浏览器内核来分，前端应该关注的浏览器环境应该包括：&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;移动端：微信 X5 内核，iOS Webkit，Android Webkit&lt;/li&gt;
-  &lt;li&gt;PC 端：Trident（IE），Gecko（FireFox），Webkit（Safari），Bink（Chrome），Presto（Opera，已放弃）&lt;/li&gt;
+  &lt;li&gt;移动端：
+    &lt;ul&gt;
+      &lt;li&gt;微信 X5 内核&lt;/li&gt;
+      &lt;li&gt;Android: Webview&lt;/li&gt;
+      &lt;li&gt;iOS: WK, UIWebview&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;PC 端：
+    &lt;ul&gt;
+      &lt;li&gt;Trident（IE）&lt;/li&gt;
+      &lt;li&gt;Webkit（Safari），Blink（Chrome）&lt;/li&gt;
+      &lt;li&gt;Gecko（FireFox，已放弃）&lt;/li&gt;
+      &lt;li&gt;Presto（Opera，已放弃）&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;可以看出来，最主要的战场，是 Webkit（移动端上的 Webkit 主要看系统 SDK）。在国内来说，由于微信的关系，我们还需要比较关注的是 X5（特别是近期的微信小程序推出）。&lt;/p&gt;
@@ -947,7 +1035,7 @@ num.toLocaleString(&amp;#39;zh&amp;#39;, { style: &amp;#39;decimal&amp;#39;, min
       &lt;p&gt;React 只会逐层对比两颗随机树，这大大降低了 diff 算法的复杂度。并且在 web 组件中很少会将节点移动到不同的层级，经常只会在同一层级中移动。 &lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
   &lt;/ol&gt;
-&lt;/div&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;roshan_wu&quot;}</name></author><category term="frontend" /><category term="node" /><category term="engineering" /><summary type="html">何谓前端工程化？即根据业务特点，将前端开发流程规范化、标准化。它主要包含不同业务场景的技术选型、代码规范、构建发布方案等。主要目地是为了提升前端开发工程师的开发效率与代码质量，降低前后端联调的沟通成本，使得前后端工程师更加专注于自身擅长领域。</summary></entry><entry><title type="html">Node APP 布署简易教程</title><link href="https://roshanca.com/2016/node-app-deploy-simple-guide/" rel="alternate" type="text/html" title="Node APP 布署简易教程" /><published>2016-11-30T00:00:00+00:00</published><updated>2016-11-30T00:00:00+00:00</updated><id>https://roshanca.com/2016/node-app-deploy-simple-guide</id><content type="html" xml:base="https://roshanca.com/2016/node-app-deploy-simple-guide/">&lt;h2 id=&quot;环境-system&quot;&gt;环境 (System)：&lt;/h2&gt;
+&lt;/div&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;roshan_wu&quot;}</name></author><category term="node" /><category term="engineering" /><summary type="html">何谓前端工程化？即根据业务特点，将前端开发流程规范化、标准化。它主要包含不同业务场景的技术选型、代码规范、构建发布方案等。主要目地是为了提升前端开发工程师的开发效率与代码质量，降低前后端联调的沟通成本，使得前后端工程师更加专注于自身擅长领域。</summary></entry><entry><title type="html">Node APP 布署简易教程</title><link href="https://roshanca.com/2016/node-app-deploy-simple-guide/" rel="alternate" type="text/html" title="Node APP 布署简易教程" /><published>2016-11-30T00:00:00+00:00</published><updated>2016-11-30T00:00:00+00:00</updated><id>https://roshanca.com/2016/node-app-deploy-simple-guide</id><content type="html" xml:base="https://roshanca.com/2016/node-app-deploy-simple-guide/">&lt;h2 id=&quot;环境-system&quot;&gt;环境 (System)：&lt;/h2&gt;
 &lt;p&gt;CentOS 7&lt;/p&gt;
 
 &lt;h2 id=&quot;准备-requirement&quot;&gt;准备 (Requirement)&lt;/h2&gt;
@@ -1150,7 +1238,7 @@ num.toLocaleString(&amp;#39;zh&amp;#39;, { style: &amp;#39;decimal&amp;#39;, min
       &lt;p&gt;gitlab 项目右上角的菜单中选择 “Deploy Keys”，在此添加服务器的公钥 “id_rsa.pub” 中的内容 &lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
   &lt;/ol&gt;
-&lt;/div&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;roshan_wu&quot;}</name></author><category term="node" /><category term="deploy" /><category term="centos" /><summary type="html">环境 (System)： CentOS 7</summary></entry><entry><title type="html">在 CentOS 7 上搭建 Docker 私有仓库</title><link href="https://roshanca.com/2016/deploying-a-docker-registry-server/" rel="alternate" type="text/html" title="在 CentOS 7 上搭建 Docker 私有仓库" /><published>2016-07-24T00:00:00+00:00</published><updated>2016-07-24T00:00:00+00:00</updated><id>https://roshanca.com/2016/deploying-a-docker-registry-server</id><content type="html" xml:base="https://roshanca.com/2016/deploying-a-docker-registry-server/">&lt;p&gt;我们知道，执行 docker pull 某镜象，默认都是从 &lt;a href=&quot;https://hub.docker.com/&quot;&gt;Docker Hub&lt;/a&gt; 的公共仓库去获取的。这有点像全球最大的代码托管商：&lt;a href=&quot;https://github.com/&quot;&gt;Github&lt;/a&gt;。但对于公司企业而言，Maybe 更加需要是的自建的仓库服务，所以我们用自建的 Gitlab 代替 Github。那有什么可以替代 Docker Hub 呢？答案是：自建 Docker Registry。独自摸索了一阵子后，以下是自己的一点实践：&lt;/p&gt;
+&lt;/div&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;roshan_wu&quot;}</name></author><category term="node" /><category term="centos" /><category term="engineering" /><summary type="html">环境 (System)： CentOS 7</summary></entry><entry><title type="html">在 CentOS 7 上搭建 Docker 私有仓库</title><link href="https://roshanca.com/2016/deploying-a-docker-registry-server/" rel="alternate" type="text/html" title="在 CentOS 7 上搭建 Docker 私有仓库" /><published>2016-07-24T00:00:00+00:00</published><updated>2016-07-24T00:00:00+00:00</updated><id>https://roshanca.com/2016/deploying-a-docker-registry-server</id><content type="html" xml:base="https://roshanca.com/2016/deploying-a-docker-registry-server/">&lt;p&gt;我们知道，执行 docker pull 某镜象，默认都是从 &lt;a href=&quot;https://hub.docker.com/&quot;&gt;Docker Hub&lt;/a&gt; 的公共仓库去获取的。这有点像全球最大的代码托管商：&lt;a href=&quot;https://github.com/&quot;&gt;Github&lt;/a&gt;。但对于公司企业而言，Maybe 更加需要是的自建的仓库服务，所以我们用自建的 Gitlab 代替 Github。那有什么可以替代 Docker Hub 呢？答案是：自建 Docker Registry。独自摸索了一阵子后，以下是自己的一点实践：&lt;/p&gt;
 
 &lt;h2 id=&quot;安装环境&quot;&gt;安装环境&lt;/h2&gt;
 
@@ -1677,1015 +1765,4 @@ subjectAltName = IP:192.168.1.211
 
 &lt;p&gt;随着项目的复杂程度递增，其优势也愈发明显。单单是静态类型检测就可以将多少潜在问题扼杀在编译阶段了。&lt;/p&gt;
 
-&lt;p&gt;而回头看我们的互联网世界，恰巧碰上富应用的时代，而且随着这几年计算机硬件性能提升，加上 JavaScript 自身的不断优化，我相信我们的应用还会对交互的要求越来越高，对代码的复杂程度也会越来越高。应用自身的规模也越来越大，特别是一些跨平台的应用。这些都让 TypeScript 的优势愈加明显。&lt;/p&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;roshan_wu&quot;}</name></author><category term="javascript" /><category term="typescript" /><category term="game" /><summary type="html">TypeScript &amp;amp; VS code</summary></entry><entry><title type="html">【译】React Native：用 JavaScript 构建应用</title><link href="https://roshanca.com/2015/build-app-with-react-native/" rel="alternate" type="text/html" title="【译】React Native：用 JavaScript 构建应用" /><published>2015-03-29T00:00:00+00:00</published><updated>2015-03-29T00:00:00+00:00</updated><id>https://roshanca.com/2015/build-app-with-react-native</id><content type="html" xml:base="https://roshanca.com/2015/build-app-with-react-native/">&lt;p&gt;此文为原创翻译，转载请注明出处。&lt;/p&gt;
-
-&lt;p&gt;原文：&lt;a href=&quot;//www.raywenderlich.com/99473/introducing-react-native-building-apps-javascript&quot;&gt;Introducing React Native: Building Apps with JavaScript&lt;/a&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;几个月前 Facebook 才刚向世人展露 &lt;a href=&quot;//facebook.github.io/react-native/&quot;&gt;React Native&lt;/a&gt;：一个用 JavaScript 来构建原生 iOS 应用的框架，现在它的 Beta &lt;a href=&quot;https://github.com/facebook/react-native&quot;&gt;版官方源码&lt;/a&gt;就已被放上了 github。&lt;/p&gt;
-
-&lt;p&gt;人们用 JavaScript 和 HTML5 写 iOS 应用，再用 &lt;a href=&quot;//phonegap.com/&quot;&gt;PhoneGap&lt;/a&gt; 进行封装，这样的工作模式有一阵子了，React Native 到底有何不同呢？&lt;/p&gt;
-
-&lt;p&gt;React Native 完全不是一码事，人们对其带来的两点倍感兴奋：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;在 React Native 中，虽然你的应用逻辑是用 JavaScript 所写，然而应用的 UI 可完全是原生的；因此你不能用 HTML5 来绘制 UI 了，这是一个妥协。&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;React 引入了一种非常大胆新颖的实现方式来构建用户界面。简单来说，应用的 UI 被简单地表示为当前应用的状态的一个方法。&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;React Native 的关键点是，它主要致力于为移动应用开发带来基于 &lt;a href=&quot;//facebook.github.io/react/&quot;&gt;React&lt;/a&gt; 编程模式的巨大威力。它的目标并不是成为一个 “一次编写到处运行” 的跨平台工具，它的目标是 “在任何地方都用一个框架”。这是个很重要的差别。这篇教程只针对 iOS，但是一旦你学习到了它的概念创建 Android 应用对你来说应该也不是什么难事。&lt;/p&gt;
-
-&lt;p&gt;若你曾经写过 Objective-C 或 Swift，你可能对这项 JavaScript 来替代它们工作的技术不会感到特别兴奋。不过，作为一名 Swift 开发者，上述的第二点应该会激起你的兴趣。&lt;/p&gt;
-
-&lt;p&gt;通过 Swift，毫无疑问你已学到了更多函数式的编码算法和那些鼓励你转变或不变的技术。但是，在你构建 UI 的方式上，它与用 Objective-C 开发时并没多大不同：它仍是基于 UIKit 的实现。&lt;/p&gt;
-
-&lt;p&gt;通过虚拟 DOM 和反射机制等概念，React 将函数式编程直接带入 UI 层。&lt;/p&gt;
-
-&lt;p&gt;本篇教程以构建一个用于搜索英国城市房产登记项目的应用来向大家展示其工作原理。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;//koenig-media.raywenderlich.com/uploads/2017/07/PropertyFinder-Flow-2.png&quot;&gt;&lt;img src=&quot;//koenig-media.raywenderlich.com/uploads/2017/07/PropertyFinder-Flow-2.png&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;如果你之前从未写过任何 JavaScript，别担心；此教程会为你讲解每一步的代码原理。React 用 CSS 属性定义样式，一般来说它是足够易读易懂的，但如果需要的话，你可以参考优秀的 &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/CSS&quot;&gt;Mozilla 开发网络参考&lt;/a&gt;。&lt;/p&gt;
-
-&lt;p&gt;想要了解更多？继续阅读吧。&lt;/p&gt;
-
-&lt;h2 id=&quot;准备工作&quot;&gt;准备工作&lt;/h2&gt;
-
-&lt;p&gt;React Native 框架已经在 Github 上建立了&lt;a href=&quot;https://github.com/facebook/react-native&quot;&gt;仓库&lt;/a&gt;，你可以通过 git 来克隆到本地，也可以选择下载 zip。一旦将它下载到了本地，在你开始写代码前，还有一些准备工作。&lt;/p&gt;
-
-&lt;p&gt;React Native 用到了 &lt;a href=&quot;https://nodejs.org/&quot;&gt;Node.js&lt;/a&gt;，一个 JavaScript 的运行环境，用来构建你的 JavaScript 代码。如果你还未安装它，那是时候装一个了。&lt;/p&gt;
-
-&lt;p&gt;第一步，&lt;a href=&quot;//brew.sh/&quot;&gt;安装 Homebrew&lt;/a&gt;，按照 Homebrew 网站上的指示做，然后安装 Node.js，你可以通过终端窗口输入：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ brew install node
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;接下来，用 &lt;code class=&quot;highlighter-rouge&quot;&gt;homebrew&lt;/code&gt; 安装 &lt;a href=&quot;https://facebook.github.io/watchman/&quot;&gt;watchman&lt;/a&gt;，一个来自 Facebook 的文件 watcher 工具：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ brew install watchman
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;这是 React Native 用来观察代码变化并相应地作出重新构建用的，这好比每次你保存文件后 Xcode 就为你做了一次 build。&lt;/p&gt;
-
-&lt;p&gt;React Native 代码在运行之前先要解决它的依赖问题。打开终端窗口定位至 React Native 目录下，并执行：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ npm install
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;这是在用 Node 的包管理器在获取依赖。这与 CocoaPods 和 Carthage 的功能类似。一旦命令运行成功，你会发现一个叫 &lt;code class=&quot;highlighter-rouge&quot;&gt;node_modules&lt;/code&gt; 的文件夹被创建，大量的外部依赖文件就在其中。&lt;/p&gt;
-
-&lt;p&gt;最后一步是启动开发服务。只需在刚才的终端窗口中继续输入：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ npm start
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;一旦执行，你会看到以下信息：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ npm start
-
-&amp;gt; react-native@0.1.0 start /Users/colineberhardt/Projects/react-native
-&amp;gt; ./packager/packager.sh
-
-
- ===============================================================
- |  Running packager on port 8081.
- |  Keep this packager running while developing on any JS
- |  projects. Feel free to close this tab and run your own
- |  packager instance if you prefer.
- |
- |     https://github.com/facebook/react-native
- |
- ===============================================================
-
-
-React packager ready.
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;这就对了，我们有了一个好的开头！将运行着脚本的终端窗口暂时搁置一边，我们继续教程。&lt;/p&gt;
-
-&lt;p&gt;此时此刻，我建议你先跑一跑官方的例子，看看环境配置是否都正常运转。用 Xcode 打开 &lt;code class=&quot;highlighter-rouge&quot;&gt;react-native/Examples/Movies&lt;/code&gt; 目录下的项目文件，编译运行，检查 &lt;code class=&quot;highlighter-rouge&quot;&gt;Movies&lt;/code&gt; 应用有没有出现问题。&lt;/p&gt;
-
-&lt;h2 id=&quot;你好-react-native&quot;&gt;你好 React Native&lt;/h2&gt;
-
-&lt;p&gt;在开始编写这款房产搜索应用之前，你将先创建一个极其简单的 Hello World 应用。在此过程中你将接触许多的组件和概念。&lt;/p&gt;
-
-&lt;p&gt;下载并解压缩这篇教程的&lt;a href=&quot;//cdn5.raywenderlich.com/wp-content/uploads/2015/03/PropertyFinderStarter.zip&quot;&gt;起步项目&lt;/a&gt;，将其移至 &lt;code class=&quot;highlighter-rouge&quot;&gt;react-native/Examples&lt;/code&gt; 目录下。一旦解压完毕，用 Xcode 打开 &lt;code class=&quot;highlighter-rouge&quot;&gt;PropertyFinder&lt;/code&gt; 项目文件。先不着急编译运行，你得先写一些 JavaScript。&lt;/p&gt;
-
-&lt;p&gt;用你的编辑器打开 &lt;code class=&quot;highlighter-rouge&quot;&gt;PropertyFinderApp.js&lt;/code&gt; 在文件的开头加入以下这句：&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;use strict&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;用以启动严格模式，它将带来更加严格的错误处理，提醒禁止使用一些不太理想的 JavaScript 语言特性。简而言之，它有助于我们写出更好的 JavaScript 代码。&lt;/p&gt;
-
-&lt;p&gt;接下来，加入以下这行：&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;React&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;react-native&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;这将加载 &lt;code class=&quot;highlighter-rouge&quot;&gt;react-native&lt;/code&gt; 模块并将其赋值给变量 &lt;code class=&quot;highlighter-rouge&quot;&gt;React&lt;/code&gt;。React Native 采用与 Node.js 相同的模块加载技术，利用 &lt;code class=&quot;highlighter-rouge&quot;&gt;require&lt;/code&gt; 方法导入。大致类似 Swift 中关联和导入库。&lt;/p&gt;
-
-&lt;p&gt;在 &lt;code class=&quot;highlighter-rouge&quot;&gt;require&lt;/code&gt; 语句下方，加入以下：&lt;/p&gt;
-
-&lt;div class=&quot;language-jsx highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;styles&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;React&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;StyleSheet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;black&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;backgroundColor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;white&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;fontSize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;margin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;80&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;这句为 “Hello World” 文本单独定义了一个样式。如果你之前做过 web 开发，那你大概都认得这些属性名称。React Native 用&lt;a href=&quot;//www.w3schools.com/css/&quot;&gt;层叠样式表（CSS）&lt;/a&gt;来定义应用 UI。&lt;/p&gt;
-
-&lt;p&gt;回到应用本身！在同一文件中，在刚才的样式申明语句下加入以下代码：&lt;/p&gt;
-
-&lt;div class=&quot;language-jsx highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;PropertyFinderApp&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;React&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Component&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;React&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;createElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;React&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;styles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Hello World!&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;是的，这是一个 JavaScript 类！&lt;/p&gt;
-
-&lt;p&gt;类概念在 ECMAScript 6 (ES6) 中才被引入。尽管 JavaScript 在不断地进化，web 开发者们仍然被老旧的浏览器的兼容性所限制。React Native 运行在 JavaScriptCore 中，因此，你可以运用现代语言的高级功能，而不必担心老旧浏览器不支持的问题。&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;PropertyFinderApp&lt;/code&gt; 扩展自 &lt;code class=&quot;highlighter-rouge&quot;&gt;React.Component&lt;/code&gt;, React 最基础的 UI 组件。组件包含了不可变的属性，和可变的状态变量，并且曝露了一个用来渲染组件的方法。目前应用足以简单，只需一个渲染方法。&lt;/p&gt;
-
-&lt;p&gt;React Native 组件不属于 UIKit 类，但它们是有一些异曲同工。框架会将 React 组件树转化为所需的原生 UI。&lt;/p&gt;
-
-&lt;p&gt;最后，在文件底部加入：&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;React&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;AppRegistry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;registerComponent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;PropertyFinderApp&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;PropertyFinderApp&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;AppRegistry&lt;/code&gt; 定义了一个指向应用的入口并且提供了根组件。&lt;/p&gt;
-
-&lt;p&gt;保存 &lt;code class=&quot;highlighter-rouge&quot;&gt;PropertyFinderApp.js&lt;/code&gt; 的改动，并回到 Xcode。确保 &lt;code class=&quot;highlighter-rouge&quot;&gt;PropertyFinder&lt;/code&gt; 配置中指定过了具体的 iPhone 模拟器后，就可以开始编译运行了。没过几秒你就可以看见你的 “Hello World” 应用：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;//cdn2.raywenderlich.com/wp-content/uploads/2015/03/react-helloworld.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;那个跑在模拟器中的 JavaScript 应用，被渲染成了原生 UI，根本看不见浏览器的存在！&lt;/p&gt;
-
-&lt;p&gt;还是信不过我？:] 你可以自己验证：在 Xcode 中，选择菜单 &lt;code class=&quot;highlighter-rouge&quot;&gt;Debug\View Debugging\Capture View Hierarchy&lt;/code&gt; 看一看原生视图的层级结构。你在任何地方都找不到 &lt;code class=&quot;highlighter-rouge&quot;&gt;UIWebView&lt;/code&gt; 的实例。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;//cdn4.raywenderlich.com/wp-content/uploads/2015/03/ViewDebugging.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;是不是对其背后的运作原理感到好奇？在 Xcode 中打开 &lt;code class=&quot;highlighter-rouge&quot;&gt;AppDelegate.m&lt;/code&gt; 并定位到 &lt;code class=&quot;highlighter-rouge&quot;&gt;application:didFinishLaunchingWithOptions:&lt;/code&gt; 这句，这个方法构建了一个 &lt;code class=&quot;highlighter-rouge&quot;&gt;RCTRootView&lt;/code&gt;，它加载了 JavaScript 应用并渲染了其对应的 view。&lt;/p&gt;
-
-&lt;p&gt;当应用开始运行时，&lt;code class=&quot;highlighter-rouge&quot;&gt;RCTRootView&lt;/code&gt; 从以下 URL 来加载应用：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;http://localhost:8081/Examples/PropertyFinder/PropertyFinderApp.includeRequire.runModule.bundle
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;回想起在教程开始时当你在终端窗口中执行 &lt;code class=&quot;highlighter-rouge&quot;&gt;npm start&lt;/code&gt; 了吧，它其实是开启了一个容器和服务用以处理以上请求。&lt;/p&gt;
-
-&lt;p&gt;在 Safari 中打开这个 URL，你可以看到应用的 JavaScript 代码。你应该能找到你的 “Hello World” 应用代码，被包围在 React Native 框架代码之中。&lt;/p&gt;
-
-&lt;p&gt;当你的应用运行时，这段代码会被框架的核心加载与执行。在你的应用中，会加载 &lt;code class=&quot;highlighter-rouge&quot;&gt;PropertyFinderApp&lt;/code&gt; 组件，然后构建原生 UIKit 视图。你会在接下来的教程中学到更多相关的内容。&lt;/p&gt;
-
-&lt;h2 id=&quot;hello-world-jsx&quot;&gt;Hello World JSX&lt;/h2&gt;
-
-&lt;p&gt;你的应用目前采用 &lt;code class=&quot;highlighter-rouge&quot;&gt;React.createElement&lt;/code&gt; 来构建简单 UI，通过它 React 转变为相应的原生应用。你的 JavaScript 代码在当前格式下的可读性，不一会儿就会被更为复杂的多层嵌套的 UI 所迅速打破。&lt;/p&gt;
-
-&lt;p&gt;确保应用还在运行中，回到编辑器重新编辑 &lt;code class=&quot;highlighter-rouge&quot;&gt;PropertyFinderApp.js&lt;/code&gt;。修改你的组件渲染方法中的 &lt;code class=&quot;highlighter-rouge&quot;&gt;return&lt;/code&gt; 语句：&lt;/p&gt;
-
-&lt;div class=&quot;language-jsx highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;React&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Text&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;styles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;Hello World (Again)&lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;React&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;这是 &lt;a href=&quot;//facebook.github.io/react/docs/jsx-in-depth.html&quot;&gt;JSX&lt;/a&gt;，或是 JavaScript 语法扩展，它采用类 HTML 语法来混入你的 JavaScript 代码中。如果你是一名 web 开发者，你会对此感到非常熟悉。我们将在接下来的通篇文章中都使用 JSX 语法。&lt;/p&gt;
-
-&lt;p&gt;保存 &lt;code class=&quot;highlighter-rouge&quot;&gt;PropertyFinderApp.js&lt;/code&gt; 并回到模拟器中，按下 &lt;code class=&quot;highlighter-rouge&quot;&gt;Cmd+R&lt;/code&gt; 你会发现你的应用刷新了界面将信息更新为了“Hello World (Again)”。&lt;/p&gt;
-
-&lt;p&gt;重新运行 React Native 应用方便至极，就像刷新浏览器一般简单！:]&lt;/p&gt;
-
-&lt;p&gt;从此只需关注 JavaScript 文件，一直保持着程序运行，在对 &lt;code class=&quot;highlighter-rouge&quot;&gt;PropertyFinderApp.js&lt;/code&gt; 修改保存后，简单的刷新调试。&lt;/p&gt;
-
-&lt;p&gt;Okay，“Hello World” 玩够了，接下来尝试写个真正的应用吧！&lt;/p&gt;
-
-&lt;h2 id=&quot;添加导航&quot;&gt;添加导航&lt;/h2&gt;
-
-&lt;p&gt;房产查找应用采用的是那一套基于标准导航栈的行为体验，提供自 UIKit 的导航控制器。是时候添加这项行为了。&lt;/p&gt;
-
-&lt;p&gt;在 &lt;code class=&quot;highlighter-rouge&quot;&gt;PropertyFinderApp.js&lt;/code&gt; 中，重新命名 &lt;code class=&quot;highlighter-rouge&quot;&gt;PropertyFinderApp &lt;/code&gt; 为 &lt;code class=&quot;highlighter-rouge&quot;&gt;HelloWorld&lt;/code&gt;：&lt;/p&gt;
-
-&lt;div class=&quot;language-jsx highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;HelloWorld&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;React&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Component&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;保持 “Hello World” 文本再显示一会儿，但它将不再是你的应用的根组件了。&lt;/p&gt;
-
-&lt;p&gt;接下来在 &lt;code class=&quot;highlighter-rouge&quot;&gt;HelloWorld&lt;/code&gt; 组件下方增加以下类：&lt;/p&gt;
-
-&lt;div class=&quot;language-jsx highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;PropertyFinderApp&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;React&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Component&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;React&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;NavigatorIOS&lt;/span&gt;
-        &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;styles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;container&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;na&quot;&gt;initialRoute=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-          &lt;span class=&quot;na&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;Property Finder&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-          &lt;span class=&quot;na&quot;&gt;component&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;HelloWorld&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;/&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;这构建了一个导航控制器，应用了样式，设定了初始路由指向 &lt;code class=&quot;highlighter-rouge&quot;&gt;HelloWorld&lt;/code&gt; 组件。在 web 开发中，&lt;code class=&quot;highlighter-rouge&quot;&gt;路由&lt;/code&gt; 是一项用来定义应用导航组织结构的技术：在此应用中，哪些页面，或路由被映射至 URLs。&lt;/p&gt;
-
-&lt;p&gt;在同一文件中，更新样式申明以包含 container 样式：&lt;/p&gt;
-
-&lt;div class=&quot;language-jsx highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;styles&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;React&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;StyleSheet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;black&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;backgroundColor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;white&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;fontSize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;margin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;80&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;container&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;flex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;稍后你会看到关于 &lt;code class=&quot;highlighter-rouge&quot;&gt;flex: 1&lt;/code&gt; 的介绍。&lt;/p&gt;
-
-&lt;p&gt;让我们回到模拟器并且按下 &lt;code class=&quot;highlighter-rouge&quot;&gt;Cmd+R&lt;/code&gt; 发现 UI 变成了这样：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;//cdn4.raywenderlich.com/wp-content/uploads/2015/03/react-helloworldagain.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;这是导航控制器与其根视图，它目前为 “Hello World” 文本。棒极了 —— 你现在为你的应用添加了适宜的基础导航结构，该到时候添加“真正”的 UI 了！&lt;/p&gt;
-
-&lt;h2 id=&quot;创建搜索页&quot;&gt;创建搜索页&lt;/h2&gt;
-
-&lt;p&gt;为工程新增名为 &lt;code class=&quot;highlighter-rouge&quot;&gt;SearchPage.js&lt;/code&gt; 的文件，放置在与 &lt;code class=&quot;highlighter-rouge&quot;&gt;PropertyFinderApp.js&lt;/code&gt; 同一目录中。为此文件添加以下代码：&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;use strict&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;React&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;react-native&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;StyleSheet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;Text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;TextInput&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;View&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;TouchableHighlight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;ActivityIndicatorIOS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;Image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;Component&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;React&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;你已经在之前见过了严格模式的定义与 react-native 的导入，但接下来的赋值语句可是全新的。&lt;/p&gt;
-
-&lt;p&gt;这是&lt;strong&gt;解构赋值语句&lt;/strong&gt;，它让你抽取出多个对象属性并用单条语句将其赋值给变量。所以，接下来你的代码中，可置 &lt;code class=&quot;highlighter-rouge&quot;&gt;React&lt;/code&gt; 前缀。打个比方，你可以通过 &lt;code class=&quot;highlighter-rouge&quot;&gt;React.StyleSheet&lt;/code&gt; 直接引用到 &lt;code class=&quot;highlighter-rouge&quot;&gt;StyleSheet&lt;/code&gt;。解构赋值对于操作数组也是颇有用处，它也是&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment&quot;&gt;非常值得学习的&lt;/a&gt;。&lt;/p&gt;
-
-&lt;p&gt;回到 &lt;code class=&quot;highlighter-rouge&quot;&gt;SearchPage.js&lt;/code&gt; 文件，添加以下代码：&lt;/p&gt;
-
-&lt;div class=&quot;language-jsx highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;styles&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;StyleSheet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;marginBottom&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;fontSize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;18&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;textAlign&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;center&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;#656565&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;container&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;padding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;marginTop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;65&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;alignItems&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;center&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;同样的，这些是标准的 CSS 属性。像这样设置样式不如用界面构建工具来的直观，但它好过在你的 &lt;code class=&quot;highlighter-rouge&quot;&gt;viewDidLoad()&lt;/code&gt; 方法中一个接着一个来设置视图属性！:]&lt;/p&gt;
-
-&lt;p&gt;在样式下方添加组件自身代码：&lt;/p&gt;
-
-&lt;div class=&quot;language-jsx highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;SearchPage&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Component&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;View&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;styles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;container&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Text&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;styles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
-          Search for houses to buy!
-        &lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Text&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;styles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
-          Search by place-name, postcode or search near your location.
-        &lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;View&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;render&lt;/code&gt; 是 JSX 和与之提供的结构的重大示例。透过这样的方式，你可以对这些组件构建成的 UI 一目了然：一个容器两个文本标签。&lt;/p&gt;
-
-&lt;p&gt;最后，我们在文件的结尾处添加：&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;exports&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;SearchPage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;用以输出 &lt;code class=&quot;highlighter-rouge&quot;&gt;SearchPage&lt;/code&gt; 类，它规定了其它文件允许引用的部分。&lt;/p&gt;
-
-&lt;p&gt;接着的步骤是要更新应用的路由以便初始化路由。&lt;/p&gt;
-
-&lt;p&gt;打开 &lt;code class=&quot;highlighter-rouge&quot;&gt;PropertyFinderApp.js&lt;/code&gt;，在文件顶部 &lt;code class=&quot;highlighter-rouge&quot;&gt;require&lt;/code&gt; 方法后加入：&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;SearchPage&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;./SearchPage&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;PropertyFinderApp&lt;/code&gt; 类中的 &lt;code class=&quot;highlighter-rouge&quot;&gt;render&lt;/code&gt; 方法内，更新 &lt;code class=&quot;highlighter-rouge&quot;&gt;initialRoute&lt;/code&gt; 以引用新增页面，如下所示：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;component: SearchPage
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;此刻你可以移除 &lt;code class=&quot;highlighter-rouge&quot;&gt;HelloWorld&lt;/code&gt; 类和与之相关的样式了。如过你愿意，你将再也不需要那段代码了。&lt;/p&gt;
-
-&lt;p&gt;回到模拟器，敲打 &lt;code class=&quot;highlighter-rouge&quot;&gt;Cmd+R&lt;/code&gt; 查看新 UI：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;//cdn1.raywenderlich.com/wp-content/uploads/2015/03/react-searchstarter.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;这就是运用了的新组件：&lt;code class=&quot;highlighter-rouge&quot;&gt;SearchPage&lt;/code&gt;，你刚刚添加的。&lt;/p&gt;
-
-&lt;h2 id=&quot;用-flexbox-定义样式&quot;&gt;用 Flexbox 定义样式&lt;/h2&gt;
-
-&lt;p&gt;到目前为止，你已经见过了基础的 CSS 属性诸如 margins，paddings 和 color，但你可能不太熟悉 &lt;code class=&quot;highlighter-rouge&quot;&gt;flexbox&lt;/code&gt;， 这是不久前才被加入 CSS 规范的属性，它对于应用 UI 排版布局那是相当的有用处。&lt;/p&gt;
-
-&lt;p&gt;React Native 采用了 &lt;a href=&quot;https://github.com/facebook/css-layout&quot;&gt;css-layout&lt;/a&gt; 库，一个 JavaScript 对于 flexbox 标准的实现，它将布局转化成 C (for iOS) 和 Java (for Android)。&lt;/p&gt;
-
-&lt;p&gt;它很了不起，因为 Facebook 已将其作为一个独立的项目来进行开发维护，旨在多种语言。自此诞生了不少新奇的应用，比如&lt;a href=&quot;//blog.scottlogic.com/2015/02/02/svg-layout-flexbox.html&quot;&gt;在 SVG 上应用 flexbox 布局&lt;/a&gt;（是的，那是我的作品…但噢不，我难尝饱眠已久）。&lt;/p&gt;
-
-&lt;p&gt;在你的应用中，容器拥有默认的列布局，这意味着它的子元素是按垂直堆叠排列的，像这样：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;//cdn3.raywenderlich.com/wp-content/uploads/2015/03/FlexStack.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;这被称为&lt;strong&gt;主轴&lt;/strong&gt;，它的排列可垂直可水平。&lt;/p&gt;
-
-&lt;p&gt;每个子元素的垂直位置，由其 margin，height 和 padding 来共同决定。容器也设置了 &lt;code class=&quot;highlighter-rouge&quot;&gt;alignItems&lt;/code&gt; 属性为 &lt;code class=&quot;highlighter-rouge&quot;&gt;center&lt;/code&gt;，这将影响其水平轴交叉轴上的排列，导致文本居中。&lt;/p&gt;
-
-&lt;p&gt;该为其加上输入框和按钮了。打开 &lt;code class=&quot;highlighter-rouge&quot;&gt;SearchPage.js&lt;/code&gt;，在第二个 &lt;code class=&quot;highlighter-rouge&quot;&gt;Text&lt;/code&gt; 元素的闭合标签后加入以下代码：&lt;/p&gt;
-
-&lt;div class=&quot;language-jsx highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;View&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;styles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;flowRight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;TextInput&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;styles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;searchInput&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;placeholder=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Search via name or postcode'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;/&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;TouchableHighlight&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;styles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;button&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;underlayColor=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'#99d9f4'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Text&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;styles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;buttonText&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;Go&lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;TouchableHighlight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;View&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;TouchableHighlight&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;styles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;button&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;underlayColor=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'#99d9f4'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Text&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;styles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;buttonText&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;Location&lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;TouchableHighlight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;目前你已增加了两个顶级视图：一个拥有着一文本输入框和一按钮，另一个只包含了一按钮。一会儿再跟你解释如何定义这些元素样式的。&lt;/p&gt;
-
-&lt;p&gt;接下来，添加相应的样式到你的 &lt;code class=&quot;highlighter-rouge&quot;&gt;styles&lt;/code&gt; 定义中：&lt;/p&gt;
-
-&lt;div class=&quot;language-coffeescript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;flowRight&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;flexDirection&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'row'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;alignItems&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'center'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;alignSelf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'stretch'&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;buttonText&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;fontSize&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;18&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'white'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;alignSelf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'center'&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;button&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;36&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;flex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;flexDirection&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'row'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;backgroundColor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'#48BBEC'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;borderColor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'#48BBEC'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;borderWidth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;borderRadius&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;marginBottom&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;alignSelf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'stretch'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;justifyContent&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'center'&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;searchInput&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;36&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;padding&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;marginRight&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;flex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;fontSize&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;18&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;borderWidth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;borderColor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'#48BBEC'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;borderRadius&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'#48BBEC'&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;格外小心它的格式，每一个样式属性定义块后必须用逗号来隔开。这意味着在 &lt;code class=&quot;highlighter-rouge&quot;&gt;container&lt;/code&gt; 的样式定义结尾处也要有逗号。&lt;/p&gt;
-
-&lt;p&gt;这些样式将应用在你刚添加的输入框和按钮上。&lt;/p&gt;
-
-&lt;p&gt;回到模拟器按下 &lt;code class=&quot;highlighter-rouge&quot;&gt;Cmd+R&lt;/code&gt; 以刷新 UI：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;//cdn3.raywenderlich.com/wp-content/uploads/2015/03/react-searchpageinput.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;文本域和 “Go” 按钮要并列一排，所以你要将其都包裹在同一容器中，并给容器增加 &lt;code class=&quot;highlighter-rouge&quot;&gt;flexDirection: 'row'&lt;/code&gt; 的样式。不要为输入框和按钮设置具体的宽度，取而代之的是给它们一个 &lt;code class=&quot;highlighter-rouge&quot;&gt;flex&lt;/code&gt; 值。文本域设置为 &lt;code class=&quot;highlighter-rouge&quot;&gt;flex: 4&lt;/code&gt;，与此同时将按钮设置为 &lt;code class=&quot;highlighter-rouge&quot;&gt;flex: 1;&lt;/code&gt;，所以它们的宽度是 4:1 比例。&lt;/p&gt;
-
-&lt;p&gt;你也许注意到了这些按钮，并不是真正的按钮！:] 在 UIKit 中，原生按钮比标签更不易点击，因此 React Native 团队决定直接在 JavaScript 中构建按钮来的更容易一些。在你的应用中，按钮使用 &lt;code class=&quot;highlighter-rouge&quot;&gt;TouchableHighlight&lt;/code&gt; 来构建，这是一个 React Native 组件，当它被点击时它会变得透明从而使得其底层的颜色显露出来。&lt;/p&gt;
-
-&lt;p&gt;最后，完善应用搜索页面还差一张房子的图片。在 &lt;code class=&quot;highlighter-rouge&quot;&gt;location&lt;/code&gt; 按钮的 &lt;code class=&quot;highlighter-rouge&quot;&gt;TouchableHighlight&lt;/code&gt; 组件后加入：&lt;/p&gt;
-
-&lt;div class=&quot;language-coffeescript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Image&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;source&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'image!house'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)}&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;styles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;现在，在样式列表中增加图片相应的样式，别忘了它与它之前的样式定义之间要加入逗号。&lt;/p&gt;
-
-&lt;div class=&quot;language-coffeescript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;217&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;138&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;语句 &lt;code class=&quot;highlighter-rouge&quot;&gt;require('image!house')&lt;/code&gt; 用以引用定位在应用静态资源目录下的图片资源的。在 Xcode 中，打开 &lt;code class=&quot;highlighter-rouge&quot;&gt;Images.xcassets&lt;/code&gt; 你会发现以上代码引用的 “house” 图标。&lt;/p&gt;
-
-&lt;p&gt;回到模拟器按下 &lt;code class=&quot;highlighter-rouge&quot;&gt;Cmd+R&lt;/code&gt; 欣赏你的新 UI 吧：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;//cdn2.raywenderlich.com/wp-content/uploads/2015/03/react-searchpagehouse.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;现在你的应用看上去不错，但缺少相应的功能。所以当务之急是增加应用的状态和表现行为。&lt;/p&gt;
-
-&lt;h2 id=&quot;增加组件状态&quot;&gt;增加组件状态&lt;/h2&gt;
-
-&lt;p&gt;每一个 React 组件都有自己的状态对象，它以键值的形式作为存储。在一个组件被渲染之前，我们必须先设置它的初始状态。&lt;/p&gt;
-
-&lt;p&gt;在 &lt;code class=&quot;highlighter-rouge&quot;&gt;SearchPage.js&lt;/code&gt; 中，为 &lt;code class=&quot;highlighter-rouge&quot;&gt;SearchPage&lt;/code&gt; 类加入以下代码，加在 &lt;code class=&quot;highlighter-rouge&quot;&gt;render()&lt;/code&gt; 之前：&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;constructor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;props&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;props&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;searchString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;london&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;组件当前拥有了 &lt;code class=&quot;highlighter-rouge&quot;&gt;state&lt;/code&gt; 变量，其中的 &lt;code class=&quot;highlighter-rouge&quot;&gt;searchString&lt;/code&gt; 被设置成了一个初始值：&lt;code class=&quot;highlighter-rouge&quot;&gt;london&lt;/code&gt;。&lt;/p&gt;
-
-&lt;p&gt;看看怎么使用这个组件状态的。在 &lt;code class=&quot;highlighter-rouge&quot;&gt;render&lt;/code&gt; 中，用以下代码替换 &lt;code class=&quot;highlighter-rouge&quot;&gt;TextInput&lt;/code&gt; 元素：&lt;/p&gt;
-
-&lt;div class=&quot;language-jsx highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;TextInput&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;styles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;searchInput&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;searchString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;placeholder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;Search via name or postcode&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;此处将 &lt;code class=&quot;highlighter-rouge&quot;&gt;TextInput&lt;/code&gt; 的 value 属性 —— 那是向用户展示文本用的 —— 设置为了当下 &lt;code class=&quot;highlighter-rouge&quot;&gt;searchString&lt;/code&gt; 状态变量的值。这只是用以处理初始状态的设置，那接下来当用户编辑本文又会发生什么呢？&lt;/p&gt;
-
-&lt;p&gt;第一步是为此动作创建一个事件方法。在 &lt;code class=&quot;highlighter-rouge&quot;&gt;SearchPage&lt;/code&gt; 类定义中增加如下方法：&lt;/p&gt;
-
-&lt;div class=&quot;language-jsx highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;onSearchTextChanged&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;onSearchTextChanged&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;searchString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;nativeEvent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;searchString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;这可从事件的 &lt;code class=&quot;highlighter-rouge&quot;&gt;text&lt;/code&gt; 属性获取值并且用它来更新组件状态，同时也增加了一些打印信息的代码用以测试。&lt;/p&gt;
-
-&lt;p&gt;为使文本变化时方法被调用，回到在 &lt;code class=&quot;highlighter-rouge&quot;&gt;render&lt;/code&gt; 方法中的 &lt;code class=&quot;highlighter-rouge&quot;&gt;TextInput&lt;/code&gt; 元素上，我们为其增添 &lt;code class=&quot;highlighter-rouge&quot;&gt;onChange&lt;/code&gt; 属性，它看起来成了这样：&lt;/p&gt;
-
-&lt;div class=&quot;language-jsx highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;TextInput&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;styles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;searchInput&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;searchString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;onChange&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;onSearchTextChanged&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;bind&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)}&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;placeholder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;Search via name or postcode&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;只要用户一改变输入文本，&lt;code class=&quot;highlighter-rouge&quot;&gt;onChange&lt;/code&gt; 即刻被触发，&lt;code class=&quot;highlighter-rouge&quot;&gt;onSearchTextChanged&lt;/code&gt; 方法被执行。&lt;/p&gt;
-
-&lt;p&gt;在你刷新应用前我们再做一步操作：将下列打印语句加入到 &lt;code class=&quot;highlighter-rouge&quot;&gt;render()&lt;/code&gt; 顶部，&lt;code class=&quot;highlighter-rouge&quot;&gt;return&lt;/code&gt; 之前：&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;SearchPage.render&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;你稍后会对这些打印语句有所了解的！:]&lt;/p&gt;
-
-&lt;p&gt;回到模拟器，按下 &lt;code class=&quot;highlighter-rouge&quot;&gt;Cmd+R&lt;/code&gt;，你应该看到输入框内的初始文本显示为 “london” 并且一旦对其进行编辑一些调试语句就被打印在了 Xcode 的控制台里。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;//cdn3.raywenderlich.com/wp-content/uploads/2015/03/react-renderconsole.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;查看以上截图，打印语句的顺序有些奇怪：&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;初始调用 &lt;code class=&quot;highlighter-rouge&quot;&gt;render()&lt;/code&gt; 以创建视图。&lt;/li&gt;
-  &lt;li&gt;当文本改变时执行 &lt;code class=&quot;highlighter-rouge&quot;&gt;onSearchTextChanged()&lt;/code&gt;。&lt;/li&gt;
-  &lt;li&gt;接着更新组件状态反应在新的输入框文本上，后者又触发了另一轮 render。&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;onSearchTextChanged()&lt;/code&gt; 在日志中输出新的搜索字符串。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;无论何时，只要是应用一更新任意组件的状态，它都将会触发整个 UI 进行重新渲染，在此期间，所有组件的 &lt;code class=&quot;highlighter-rouge&quot;&gt;render&lt;/code&gt; 方法都会调用执行。这是一个很赞的思路，因为它完全地对渲染逻辑进行了解耦，这些逻辑由影响 UI 的状态变化所产生。&lt;/p&gt;
-
-&lt;p&gt;在其它众多的 UI 框架中，要么是由你负责手动地更新基于 UI 的状态变化，要么是利用某种绑定框架来创建一个的应用状态和它的 UI 呈现之间内在关联。&lt;/p&gt;
-
-&lt;p&gt;看，举个例子，我的文章：实现&lt;a href=&quot;//www.raywenderlich.com/74106/mvvm-tutorial-with-reactivecocoa-part-1&quot;&gt;在 ReactiveCocoa 中的 MVVM 模式&lt;/a&gt;。&lt;/p&gt;
-
-&lt;p&gt;用 React，你不必再为究竟是哪一部分的 UI 也许受到了状态变化的影响而感到担心，整个 UI 都像是作为一个你的应用状态的方法函数来进行简单传递。&lt;/p&gt;
-
-&lt;p&gt;这一刻你可能会指出这套概念当中的一个缺点。没错，就是 —— 性能。&lt;/p&gt;
-
-&lt;p&gt;当然了你不可能删除整个 UI 再重新生成，每次一有状态改变就这么做？这可是 React 聪明之处。每一次 UI 渲染，它都会将渲染方法返回的视图树与当前的 UIKit 视图进行比对。比对的结果中相差异的部分才是 React 需要对当前视图做出更新的部分，也就是说，只有改动的一小部分才会被真正的重新渲染生成。&lt;/p&gt;
-
-&lt;p&gt;令人刮目相看的是这新奇的理念使得 ReactJS 如此独特 —— 虚拟 DOM (文档对象模型, web 文档的可视树)和反射机制 —— 运用在 iOS 应用之中。&lt;/p&gt;
-
-&lt;p&gt;你可以到时候再回头看这些东西，我们仍要继续完善当前的 app。删除打印信息语句，你不再需要它们来扰乱你的代码了。&lt;/p&gt;
-
-&lt;h2 id=&quot;开始搜索&quot;&gt;开始搜索&lt;/h2&gt;
-
-&lt;p&gt;为了实现搜索功能你需要在 “Go” 按钮的点击事件上做些文章。创建一个合适的 API 请求，并且为用户在此数据查询的等待过程中提供一个可视化的指示界面。&lt;/p&gt;
-
-&lt;p&gt;在 &lt;code class=&quot;highlighter-rouge&quot;&gt;SearchPage.js&lt;/code&gt; 中，更新初始状态：&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;searchString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;london&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;isLoading&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;新增的 &lt;code class=&quot;highlighter-rouge&quot;&gt;isLoading&lt;/code&gt; 属性用来跟踪数据查询是否完成。&lt;/p&gt;
-
-&lt;p&gt;将以下逻辑加入到 &lt;code class=&quot;highlighter-rouge&quot;&gt;render&lt;/code&gt; 的开头：&lt;/p&gt;
-
-&lt;div class=&quot;language-jsx highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;spinner&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;isLoading&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;ActivityIndicatorIOS&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;hidden=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'true'&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;size=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'large'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;/&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;View&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;/&amp;gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;这是一个三元的 &lt;code class=&quot;highlighter-rouge&quot;&gt;if&lt;/code&gt; 判断语句，它的执行结果不是增加一个动态指示器就是一个空视图，这取决于组件的 &lt;code class=&quot;highlighter-rouge&quot;&gt;isLoading&lt;/code&gt; 状态。因为整个组件每次都会渲染，所以你可以对 JSX 和 JavaScript 逻辑代码随意混用。&lt;/p&gt;
-
-&lt;p&gt;JSX 在 &lt;code class=&quot;highlighter-rouge&quot;&gt;return&lt;/code&gt; 中定义的搜索 UI 里，加入下列一行，位于 &lt;code class=&quot;highlighter-rouge&quot;&gt;Image&lt;/code&gt; 下方：&lt;/p&gt;
-
-&lt;div class=&quot;language-jsx highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;spinner&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;现在，在 &lt;code class=&quot;highlighter-rouge&quot;&gt;TouchableHighlight&lt;/code&gt; 包裹着的 “Go” 文本视图上增加以下属性：&lt;/p&gt;
-
-&lt;div class=&quot;language-jsx highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;onPress&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;onSearchPressed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;bind&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;接着，在 &lt;code class=&quot;highlighter-rouge&quot;&gt;SearchPage&lt;/code&gt; 类里添加以下方法：&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;_executeQuery&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;isLoading&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;nx&quot;&gt;onSearchPressed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;query&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;urlForQueryAndPage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;place_name&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;searchString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;_executeQuery&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;_executeQuery()&lt;/code&gt; 会执行最终的查询，但现在我们先让它简单地输出一些信息在控制台里，并将 &lt;code class=&quot;highlighter-rouge&quot;&gt;isLoading&lt;/code&gt; 设置设置为 &lt;code class=&quot;highlighter-rouge&quot;&gt;true&lt;/code&gt; 以便 UI 更新。&lt;/p&gt;
-
-&lt;p&gt;当 “Go” 按钮被点击时，&lt;code class=&quot;highlighter-rouge&quot;&gt;onSearchPressed()&lt;/code&gt; 将被执行以开展查询。&lt;/p&gt;
-
-&lt;p&gt;最后，在 &lt;code class=&quot;highlighter-rouge&quot;&gt;SearchPage&lt;/code&gt; 类申明之前加入以下工具类方法：&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;urlForQueryAndPage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;pageNumber&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;country&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;uk&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;pretty&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;encoding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;listing_type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;buy&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;action&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;search_listings&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;pageNumber&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;querystring&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;keys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;key&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;key&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;encodeURIComponent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]))&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;//api.nestoria.co.uk/api?&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;querystring&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;这个方法不依赖于 &lt;code class=&quot;highlighter-rouge&quot;&gt;SearchPage&lt;/code&gt;，所以它以一个独立的函数而不是一个类方法的形式存在。它一开始创建了基于参数的查询字符串在 &lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt; 之中，接下来它将数据转换成要求的字符串格式，&lt;code class=&quot;highlighter-rouge&quot;&gt;name=value&lt;/code&gt;结队成组并用 &amp;amp; 字符连接着。这里的 &lt;code class=&quot;highlighter-rouge&quot;&gt;=&amp;gt;&lt;/code&gt; 语法是表示一个箭头函数，这是&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions&quot;&gt;新近加入的 JavaScript 语言&lt;/a&gt;中用以创建匿名函数的简要语法。&lt;/p&gt;
-
-&lt;p&gt;回头看模拟器，按下 &lt;code class=&quot;highlighter-rouge&quot;&gt;Cmd+R&lt;/code&gt; 重新载入应用并点击 “Go” 按钮，你将能看到旋转的动态指示器。查看 Xcode 控制台，你将看到如下：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;//cdn1.raywenderlich.com/wp-content/uploads/2015/03/SearchAcitivityIndicator.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;菊花图展现在视图中数据请求 URL 显示在控制台日志里。复制粘贴这段 URL 到你的浏览器中看看结果如何。你将会看到大段的 JSON 对象，别担心 —— 你不必了解它！你将编写代码解析它。&lt;/p&gt;
-
-&lt;p&gt;下一步我们在应用中处理这项请求。&lt;/p&gt;
-
-&lt;h2 id=&quot;处理-api-请求&quot;&gt;处理 API 请求&lt;/h2&gt;
-
-&lt;p&gt;还是在 &lt;code class=&quot;highlighter-rouge&quot;&gt;SearchPage.js&lt;/code&gt; 中，更新初始状态，在构造方法中加入 &lt;code class=&quot;highlighter-rouge&quot;&gt;message&lt;/code&gt; 变量：&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;searchString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;london&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;isLoading&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;''&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;在 &lt;code class=&quot;highlighter-rouge&quot;&gt;render&lt;/code&gt; 中，在 UI 底部加入：&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Text&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;styles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/Text&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;它为向用户显示了信息条数。&lt;/p&gt;
-
-&lt;p&gt;在 &lt;code class=&quot;highlighter-rouge&quot;&gt;SearchPage&lt;/code&gt; 类中，加入以下代码到 &lt;code class=&quot;highlighter-rouge&quot;&gt;_executeQuery()&lt;/code&gt; 结尾处：&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;fetch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;json&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;_handleResponse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;catch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt;
-     &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;isLoading&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;Something bad happened &lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;
-   &lt;span class=&quot;p&quot;&gt;}));&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;这里采用了 &lt;code class=&quot;highlighter-rouge&quot;&gt;fetch&lt;/code&gt; 函数，它是 &lt;a href=&quot;https://fetch.spec.whatwg.org/&quot;&gt;Web API 中的一部分&lt;/a&gt;，提供了大量改进的针对 &lt;code class=&quot;highlighter-rouge&quot;&gt;XMLHttpRequest&lt;/code&gt; 的 API。异步响应将以一个 &lt;a href=&quot;http://www.html5rocks.com/en/tutorials/es6/promises/&quot;&gt;promise&lt;/a&gt; 的形式返回，在成功回路中将解析的 JSON 提供给一个接下来要新增的方法。&lt;/p&gt;
-
-&lt;p&gt;最后一步是增加下列方法到 &lt;code class=&quot;highlighter-rouge&quot;&gt;SearchPage&lt;/code&gt;：&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;_handleResponse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;isLoading&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;''&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;application_response_code&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;substr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;Properties found: &lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;listings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;Location not recognized; please try again.&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;这将清除 &lt;code class=&quot;highlighter-rouge&quot;&gt;isLoading&lt;/code&gt; 状态和请求成功后显示在调试日志内的房产数量信息。&lt;/p&gt;
-
-&lt;p&gt;保存你的修改，然后回到模拟器刷新之，试着搜索关键字 “london”，你应该能在日志中看到 20 处房产已被找到的信息。接下来试着搜索一个不存在的地点，比如 “narnia”，迎接你的将是以下信息：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;//cdn5.raywenderlich.com/wp-content/uploads/2015/03/react-narnia.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;到了展现这伦敦真实位置的 20 处房产的时刻了。&lt;/p&gt;
-
-&lt;h2 id=&quot;展示结果&quot;&gt;展示结果&lt;/h2&gt;
-
-&lt;p&gt;创建一个 &lt;code class=&quot;highlighter-rouge&quot;&gt;SearchResults.js&lt;/code&gt; 文件，加入以下代码：&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;use strict&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;React&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;react-native&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;StyleSheet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;Image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;View&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;TouchableHighlight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;ListView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;Text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;Component&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;React&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;对，没错，一个包含着 &lt;code class=&quot;highlighter-rouge&quot;&gt;react-native&lt;/code&gt; 模块的 &lt;code class=&quot;highlighter-rouge&quot;&gt;require&lt;/code&gt; 语句，还有一个解构赋值。这些都在之前提过了对吧？&lt;/p&gt;
-
-&lt;p&gt;接着添加组件自身：&lt;/p&gt;
-
-&lt;div class=&quot;language-jsx highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;SearchResults&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Component&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-
-  &lt;span class=&quot;kd&quot;&gt;constructor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;props&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;props&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;dataSource&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ListView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;DataSource&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;rowHasChanged&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;r1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;r2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;r1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;guid&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!==&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;r2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;guid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;dataSource&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;dataSource&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cloneWithRows&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;props&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;listings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-  &lt;span class=&quot;nx&quot;&gt;renderRow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;rowData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sectionID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;rowID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;TouchableHighlight&lt;/span&gt;
-          &lt;span class=&quot;na&quot;&gt;underlayColor=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'#dddddd'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;View&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
-          &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;rowData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;View&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;TouchableHighlight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-  &lt;span class=&quot;nx&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;ListView&lt;/span&gt;
-        &lt;span class=&quot;na&quot;&gt;dataSource=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;dataSource&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;na&quot;&gt;renderRow=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;renderRow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;bind&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;/&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;以上代码使用到了更加特殊的组件 —— &lt;code class=&quot;highlighter-rouge&quot;&gt;ListView&lt;/code&gt; —— 它在一个可滚动的容器中展现多排数据，类似 &lt;code class=&quot;highlighter-rouge&quot;&gt;UITableView&lt;/code&gt;。你可以通过 &lt;code class=&quot;highlighter-rouge&quot;&gt;ListView.DataSource&lt;/code&gt; 和一个方法来向 &lt;code class=&quot;highlighter-rouge&quot;&gt;ListView&lt;/code&gt; 提供数据，这个方法每一行数据提供 UI 的实现。&lt;/p&gt;
-
-&lt;p&gt;构建数据源时，你应当提供一个能两两比较行 id 的方法。&lt;code class=&quot;highlighter-rouge&quot;&gt;ListView&lt;/code&gt; 用此在核对进程中来明确列表数据的具体改动。在这种情况下，Nestoria 房产的 API 所返回的 &lt;code class=&quot;highlighter-rouge&quot;&gt;guid&lt;/code&gt; 属性，正好符合这一目的。&lt;/p&gt;
-
-&lt;p&gt;现在增加模块输出定义在文件底部：&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;exports&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;SearchResults&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;增加以下代码至 &lt;code class=&quot;highlighter-rouge&quot;&gt;SearchPage.js&lt;/code&gt; 文件顶部位置，插入在用以请求 React 的 &lt;code class=&quot;highlighter-rouge&quot;&gt;require&lt;/code&gt; 之下：&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;SearchResults&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;./SearchResults&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;这样做使得我们在 &lt;code class=&quot;highlighter-rouge&quot;&gt;SearchPage&lt;/code&gt; 中得以运用刚才添加的 &lt;code class=&quot;highlighter-rouge&quot;&gt;SearchResults&lt;/code&gt; 类。&lt;/p&gt;
-
-&lt;p&gt;修改当前的 &lt;code class=&quot;highlighter-rouge&quot;&gt;_handleResponse&lt;/code&gt; 方法，将 &lt;code class=&quot;highlighter-rouge&quot;&gt;console.log&lt;/code&gt; 语句替换为下列代码：&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;props&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;navigator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;Results&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;component&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;SearchResults&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;passProps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;listings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;listings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;以上代码将为你导航到新增的 &lt;code class=&quot;highlighter-rouge&quot;&gt;SearchResults&lt;/code&gt; 组件并通过 API 请求来为列表传递数据。使用 &lt;code class=&quot;highlighter-rouge&quot;&gt;push&lt;/code&gt; 方法可保证搜索结果页被推入之导航栈中，这意味着你可以通过返回按钮来回到根目录。&lt;/p&gt;
-
-&lt;p&gt;回到模拟器刷新并搜索，展现在你面前的是一份房产列表：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;//cdn4.raywenderlich.com/wp-content/uploads/2015/03/react-searchresults1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;很高兴得到了我们期望已久的房产列表，但这列表展示略挫，让我们来让它变的更好一些。&lt;/p&gt;
-
-&lt;h2 id=&quot;接触样式&quot;&gt;接触样式&lt;/h2&gt;
-
-&lt;p&gt;这些 React Native 代码自此应该一回生二回熟了，以此以下教程可以两步并作一步来快速讲解。&lt;/p&gt;
-
-&lt;p&gt;在 &lt;code class=&quot;highlighter-rouge&quot;&gt;SearchResults.js&lt;/code&gt; 中的解构赋值语句后添加以下样式定义：&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;styles&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;StyleSheet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;thumb&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;80&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;80&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;marginRight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;textContainer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;flex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;separator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;backgroundColor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;#dddddd&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;price&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;fontSize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;25&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;fontWeight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;bold&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;#48BBEC&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;fontSize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;#656565&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;rowContainer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;flexDirection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;row&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;padding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;以上定义了每一行即将要被渲染的列表样式。&lt;/p&gt;
-
-&lt;p&gt;接着用以下代码替换 &lt;code class=&quot;highlighter-rouge&quot;&gt;renderRow()&lt;/code&gt; 方法：&lt;/p&gt;
-
-&lt;div class=&quot;language-jsx highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;renderRow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;rowData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sectionID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;rowID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;price&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;rowData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;price_formatted&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-
-  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;TouchableHighlight&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;onPress=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;rowPressed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;rowData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;guid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;na&quot;&gt;underlayColor=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'#dddddd'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;View&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;View&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;styles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;rowContainer&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
-          &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Image&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;styles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;thumb&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;source=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;uri&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;rowData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;img_url&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;/&amp;gt;&lt;/span&gt;
-          &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;View&lt;/span&gt;  &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;styles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;textContainer&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
-            &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Text&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;styles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;price&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;£&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;price&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
-            &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Text&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;styles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;
-                  &lt;span class=&quot;na&quot;&gt;numberOfLines=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;rowData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
-          &lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;View&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;View&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;View&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;styles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;separator&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;/&amp;gt;&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;View&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;TouchableHighlight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;这对返回的价格数据做了一点操作，将其 “300,000 GBP” 固定格式中的 GBP 后缀给去掉。然后渲染每一行 UI 采用的是你已熟烂于心的技术了。这一次，略缩图的数据是以 URL 的方式提供的，React Native 不会在主线程对其进行解码。&lt;/p&gt;
-
-&lt;p&gt;注意 &lt;code class=&quot;highlighter-rouge&quot;&gt;TouchableHighlight&lt;/code&gt; 组件的 &lt;code class=&quot;highlighter-rouge&quot;&gt;onPress&lt;/code&gt; 属性，它利用了箭头函数来获取每一行的 &lt;code class=&quot;highlighter-rouge&quot;&gt;guid&lt;/code&gt;。&lt;/p&gt;
-
-&lt;p&gt;最后我们增加 press 的处理方法：&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;rowPressed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;propertyGuid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;props&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;listings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;prop&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;prop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;guid&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;propertyGuid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;这个方法能定位哪一行房产正被用户点击中。目前它还起不了作用，一会我们再来修复它。但现在，我们来欣赏下你的作品吧。&lt;/p&gt;
-
-&lt;p&gt;回到模拟器刷新，来看看你的搜索结果页吧：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;//cdn4.raywenderlich.com/wp-content/uploads/2015/03/react-searchresults2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;看上去好很多了 —— 虽然这让人感到惊奇谁能住的起伦敦！&lt;/p&gt;
-
-&lt;p&gt;到了添加应用最后的视图的时候了。&lt;/p&gt;
-
-&lt;h2 id=&quot;房产详细页视图&quot;&gt;房产详细页视图&lt;/h2&gt;
-
-&lt;p&gt;增加新文件 &lt;code class=&quot;highlighter-rouge&quot;&gt;PropertyView.js&lt;/code&gt; 到项目中，接着在文件中加入代码：&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;use strict&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;React&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;react-native&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;StyleSheet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;Image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;View&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;Text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;Component&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;React&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;我敢确定这些都已无需再过多介绍，你在梦里都做到了！:]&lt;/p&gt;
-
-&lt;p&gt;接下来增添下列样式：&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;styles&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;StyleSheet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;container&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;marginTop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;65&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;heading&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;backgroundColor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;#F8F8F8&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;separator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;backgroundColor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;#DDDDDD&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;400&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;300&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;price&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;fontSize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;25&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;fontWeight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;bold&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;margin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;#48BBEC&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;fontSize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;margin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;#656565&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;fontSize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;18&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;margin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;#656565&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;再来增加组件：&lt;/p&gt;
-
-&lt;div class=&quot;language-jsx highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;PropertyView&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Component&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-
-  &lt;span class=&quot;nx&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;props&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;property&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;stats&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;property&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;bedroom_number&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt; bed &lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;property&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;property_type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;property&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;bathroom_number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;stats&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;, &lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;property&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;bathroom_number&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;property&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;bathroom_number&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;bathrooms&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;bathroom&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;price&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;property&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;price_formatted&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt; &lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;View&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;styles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;container&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Image&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;styles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;
-            &lt;span class=&quot;na&quot;&gt;source=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;uri&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;property&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;img_url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;/&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;View&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;styles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;heading&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
-          &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Text&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;styles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;price&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;£&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;price&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
-          &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Text&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;styles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;property&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
-          &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;View&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;styles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;separator&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;/&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;View&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Text&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;styles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;stats&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Text&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;styles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;property&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;summary&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;View&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;第一部分的 &lt;code class=&quot;highlighter-rouge&quot;&gt;render()&lt;/code&gt; 方法处理数据操作。通常来讲，由 API 返回来的数据往往不是很完美，所以我们要写一些简单的逻辑来处理得到我们想要的数据格式。&lt;/p&gt;
-
-&lt;p&gt;其余的 &lt;code class=&quot;highlighter-rouge&quot;&gt;render&lt;/code&gt; 不用说也很简单，它是一个组件的不可变状态的方法。&lt;/p&gt;
-
-&lt;p&gt;最后我们在文件底部加上输出：&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;exports&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;PropertyView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;回到 &lt;code class=&quot;highlighter-rouge&quot;&gt;SearchResults.js&lt;/code&gt; 并增加 &lt;code class=&quot;highlighter-rouge&quot;&gt;require&lt;/code&gt; 语句在文件头部，紧随 React &lt;code class=&quot;highlighter-rouge&quot;&gt;require&lt;/code&gt; 这一行：&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;PropertyView&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;./PropertyView&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;接下来更新 &lt;code class=&quot;highlighter-rouge&quot;&gt;rowPressed()&lt;/code&gt; 将导航转向你新增的 &lt;code class=&quot;highlighter-rouge&quot;&gt;PropertyView&lt;/code&gt;：&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;rowPressed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;propertyGuid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;props&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;listings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;prop&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;prop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;guid&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;propertyGuid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-
-  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;props&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;navigator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Property&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;component&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;PropertyView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;passProps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;property&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;property&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;你懂的，回到模拟器按下 &lt;code class=&quot;highlighter-rouge&quot;&gt;Cmd+R&lt;/code&gt;，一路搜索查看下来，你会看到：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;//cdn4.raywenderlich.com/wp-content/uploads/2015/03/react-property.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;负担的起的生活才是最好滴 —— 那个软垫真好看！（译者注：作者你又调皮了）&lt;/p&gt;
-
-&lt;p&gt;至此你的应用已基本完成。还差一步就是允许用户搜索其周边房产。&lt;/p&gt;
-
-&lt;h2 id=&quot;基于地理位置的搜索&quot;&gt;基于地理位置的搜索&lt;/h2&gt;
-
-&lt;p&gt;在 Xcode 中，打开 &lt;code class=&quot;highlighter-rouge&quot;&gt;Info.plist&lt;/code&gt; 新增一个键，通过点击右键选择 &lt;code class=&quot;highlighter-rouge&quot;&gt;Add Row&lt;/code&gt; 来完成。键名为 &lt;code class=&quot;highlighter-rouge&quot;&gt;NSLocationWhenInUseUsageDescription&lt;/code&gt;，并用取值为：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PropertyFinder would like to use your location to find nearby properties
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;这是你完成后 plist 文件的样子：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;//cdn5.raywenderlich.com/wp-content/uploads/2015/03/Screen-Shot-2015-03-20-at-21.49.06.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;这副键值是用来提示用户确认是否要使用他们的地理位置的。&lt;/p&gt;
-
-&lt;p&gt;打开 &lt;code class=&quot;highlighter-rouge&quot;&gt;SearchPage.js&lt;/code&gt;，定位到 “Location” 按钮的 &lt;code class=&quot;highlighter-rouge&quot;&gt;TouchableHighlight&lt;/code&gt; 上，加入以下属性值：&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;onPress&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;onLocationPressed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;bind&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;当你点击这个按钮时，它将执行 &lt;code class=&quot;highlighter-rouge&quot;&gt;onLocationPressed&lt;/code&gt; —— 接下来要添加的。&lt;/p&gt;
-
-&lt;p&gt;在 &lt;code class=&quot;highlighter-rouge&quot;&gt;SearchPage&lt;/code&gt; 类中添加：&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;onLocationPressed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;navigator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;geolocation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getCurrentPosition&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;location&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;search&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;location&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;coords&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;latitude&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;location&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;coords&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;longitude&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;searchString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;search&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-      &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;query&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;urlForQueryAndPage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;centre_point&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;search&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;_executeQuery&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-        &lt;span class=&quot;na&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;There was a problem with obtaining your location: &lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;用户当前位置通过 &lt;code class=&quot;highlighter-rouge&quot;&gt;navigator.geolocation&lt;/code&gt; 被取回，这是一个被 &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/Using_geolocation&quot;&gt;Web API 定义&lt;/a&gt;的接口，所以它对于曾在浏览器当中用过定位服务的人来说非常熟悉了。React Native 框架提供了自身对原生 iOS 定位服务的 API 实现。&lt;/p&gt;
-
-&lt;p&gt;如果当前位置被成功捕获，将执行第一个箭头函数，它向 Nestoria 发起了一个查询请求。如果出错，它将显示一个基本的报错信息。&lt;/p&gt;
-
-&lt;p&gt;一旦你更改了 plist 文件，就必须重启应用才能生效。&lt;code class=&quot;highlighter-rouge&quot;&gt;Cmd+R&lt;/code&gt; 无效了这回 —— 抱歉。在 Xcode 停止运行应用，重新构建运行。&lt;/p&gt;
-
-&lt;p&gt;在使用基于定位服务的搜索时，你的具体位置必须是在 Nestoria 房产公司的数据库中。从模拟器的菜单选项中选择 &lt;code class=&quot;highlighter-rouge&quot;&gt;Debug\Location\Custom Location...&lt;/code&gt; 并输入维度 &lt;code class=&quot;highlighter-rouge&quot;&gt;55.02&lt;/code&gt; 和经度 &lt;code class=&quot;highlighter-rouge&quot;&gt;-1.42&lt;/code&gt;，这坐标来自英格兰北部的一座海滨小镇，我称之为故乡！&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;//cdn1.raywenderlich.com/wp-content/uploads/2015/03/WhitleyBaySearch-647x500.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;虽然不如伦敦 —— 但起码住的起！:]&lt;/p&gt;
-
-&lt;h2 id=&quot;接下来该做什么&quot;&gt;接下来该做什么？&lt;/h2&gt;
-
-&lt;p&gt;恭喜你完成了第一个 React Native 应用！你可以&lt;a href=&quot;//cdn1.raywenderlich.com/wp-content/uploads/2015/03/PropertyFinder-Final1.zip&quot;&gt;下载本教程的最终完成项目&lt;/a&gt;跑起来试试。&lt;/p&gt;
-
-&lt;p&gt;如果你来自 Web 界，你会发现用 JavaScript 和 React定义界面和导航并从中获得完整的原生 UI 是多么地容易。但如果你是原生应用的开发者，我希望你能从 React Native 获得一点感官上的启发：快速应用迭代，现代的 JavaScript 语言和清晰的 CSS 样式。&lt;/p&gt;
-
-&lt;p&gt;也许你希望用这套框架来写你下一个应用？亦或，你仍坚持 Swift 或 Objective-C? 无论你选择哪条路，我都希望你能从这篇文章中受益，并且能为你今后的项目中带来一些想法。&lt;/p&gt;
-
-&lt;p&gt;如果对本篇教程有任何的意见或建议，请加入论坛&lt;sup id=&quot;fnref:1&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;来讨论。&lt;/p&gt;
-
-&lt;div class=&quot;footnotes&quot; role=&quot;doc-endnotes&quot;&gt;
-  &lt;ol&gt;
-    &lt;li id=&quot;fn:1&quot; role=&quot;doc-endnote&quot;&gt;
-      &lt;p&gt;译者注：抱歉，根本没发现任何的论坛链接，估计作者说的是文章下方的留言区。 &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-  &lt;/ol&gt;
-&lt;/div&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;roshan_wu&quot;}</name></author><category term="javascript" /><category term="react" /><category term="translate" /><summary type="html">此文为原创翻译，转载请注明出处。</summary></entry></feed>
+&lt;p&gt;而回头看我们的互联网世界，恰巧碰上富应用的时代，而且随着这几年计算机硬件性能提升，加上 JavaScript 自身的不断优化，我相信我们的应用还会对交互的要求越来越高，对代码的复杂程度也会越来越高。应用自身的规模也越来越大，特别是一些跨平台的应用。这些都让 TypeScript 的优势愈加明显。&lt;/p&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;roshan_wu&quot;}</name></author><category term="javascript" /><category term="typescript" /><category term="game" /><summary type="html">TypeScript &amp;amp; VS code</summary></entry></feed>
