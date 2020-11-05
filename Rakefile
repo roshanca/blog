@@ -110,7 +110,7 @@ namespace :post do
       exit -1
     end
 
-    filename = File.join("site/_posts", "#{date}-#{slug}.md")
+    filename = File.join("_posts", "#{date}-#{slug}.md")
     if File.exist?(filename)
       puts "Error: post already exists"
       exit -1
