@@ -14,6 +14,8 @@ body {
   color: $text-color;
   @extend %word-break;
   text-rendering: optimizelegibility;
+  -moz-osx-font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
   display: flex;
   flex-direction: column;
   overflow: hidden;

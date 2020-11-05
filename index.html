@@ -5,7 +5,7 @@ index: true
 
 <main role="main">
   <section class="index-section">
-    <h2>sticky posts</h2>
+    <!-- <h2>sticky posts</h2>
     <ul class="article">
     {% assign sticky_posts = site.posts | where_exp: "p", "p.sticky == true" %}
     {% for post in sticky_posts limit: 5 %}
@@ -14,7 +14,7 @@ index: true
       <a class="post-link" href="{{ post.url | prepend: site.baseurl }}" rel="full-article">{{ post.title }}</a> <i class="fa fa-thumb-tack"></i>
     </li>
     {% endfor %}
-    </ul>
+    </ul> -->
   </section>
   <section class="index-section">
     <h2>latest updates</h2>
@@ -38,11 +38,11 @@ index: true
         height="48"
         alt="author's avatar"
       />
-      <div class="about-detail">
-        <span class="about-author">Roshan Wu</span>
-        <span class="about-social">{% include social-service.html %}</span>
-        <small class="about-desc">A web developer living in Hangzhou, China.</small>
-      </div>
+      <dl class="about-detail">
+        <dt class="about-author">Roshan Wu</dt>
+        <dd class="about-social">{% include social-service.html %}</dd>
+        <dd><small class="about-desc">A web developer living in Hangzhou, China.</small></dd>
+      </dl>
     </div>
   </section>
   <div class="index-section">

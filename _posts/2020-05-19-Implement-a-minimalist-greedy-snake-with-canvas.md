@@ -7,9 +7,11 @@ toc: true
 comments: false
 ---
 
-👉 [Demo](https://lab.roshanca.com/greedy-snake/)
+## 前言
 
 笔者曾经在学习 TS 时写过一个[贪食蛇小游戏](/2015/write-a-simple-snake-game-with-typescript/)，但那是基于 DOM 的，代码较为啰唆（毕竟是用来学习基于静态类型的 TS）。这次无意间看见网上某位高人写的贪食蛇小游戏，寥寥几行代码搞定，叹为观止。初看代码，是很大程度地利用了 JS 弱语言的灵活度，以少量代码做了大量的工作，是真正体现了 JS 在脚本领域无人能敌的强大本领。
+
+先来看看 👉 [Demo](https://lab.roshanca.com/greedy-snake/)。
 
 接下来晒下代码，然后做一些思路解读，以便于理解其原理。
 

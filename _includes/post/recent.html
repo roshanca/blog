@@ -1,6 +1,5 @@
 <section class="post-recent">
   {% if page.previous %}
-  <i class="fa fa-angle-double-left"></i>
   <a class="relative-post previous" href="{{ page.previous.url | prepend: site.baseurl }}"
     ><span>{{ page.previous.title }}</span></a
   >
@@ -8,6 +7,5 @@
   <a class="relative-post next" href="{{ page.next.url | prepend: site.baseurl }}"
     ><span>{{ page.next.title }}</span></a
   >
-  <i class="fa fa-angle-double-right"></i>
   {% endif %}
 </section>
