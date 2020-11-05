@@ -21,10 +21,17 @@ body {
   overflow: hidden;
 
   .scroll-view {
+    display: flex;
+    flex-direction: column;
     flex: 1;
     flex-grow: 1;
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
+
+    main {
+      flex: 1;
+      flex-grow: 1;
+    }
   }
 }
 

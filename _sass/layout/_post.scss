@@ -146,7 +146,7 @@
       top: 0;
       content: '\f10d';
       font-family: FontAwesome;
-      color: lighten($quote-color, 20%);
+      color: lighten($quote-color, 30%);
     }
     p {
       margin-bottom: 0.5rem;
@@ -158,7 +158,7 @@
   code {
     padding: 0.1rem 0.3rem;
     font-family: $mono;
-    color: #808080;
+    color: lighten($text-color, 26%);
     // background-color: $code-bg-color;
     white-space: nowrap;
     hyphens: auto;
@@ -166,12 +166,13 @@
   pre {
     padding: 0.8rem 1.6rem;
     // font-size: 90%;
-    line-height: 1.5;
+    line-height: 1.4;
     // border-left: 4px solid #dadada;
     background-color: $pre-bg-color;
     // white-space: pre-wrap;
     // background-image: url(https://sf-static.b0.upaiyun.com/v-583bf474/global/img/blueprint.png);
     // background-repeat: repeat;
+    border-radius: 6px;
     overflow-x: auto;
     code {
       padding: 0;
@@ -310,7 +311,7 @@
       text-overflow: ellipsis;
     }
     &.previous {
-      margin-left: 1rem;
+      margin-right: 1rem;
       text-align: left;
       &::before {
         content: 'Previous Post';
@@ -318,7 +319,7 @@
       }
     }
     &.next {
-      margin-right: 1rem;
+      margin-left: 1rem;
       text-align: right;
       &::before {
         content: 'Next Post';

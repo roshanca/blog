@@ -2,7 +2,7 @@
 layout: post
 title: 【译】前端编码风格规范之 JavaScript 规范
 data: 2014-09-12
-tags: code javascript translate
+tags: translate
 toc: true
 comments: true
 ---

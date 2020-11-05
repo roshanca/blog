@@ -4,10 +4,20 @@
     <h1 class="blog-title">{{ site.title }}</h1>
     <h2 class="blog-desc">{{ site.description }}</h2>
   </div>
-  <a href="/archives" class="archive tip--top" data-tip="true" data-tip-content="Archives">
-    <i class="fa fa-inbox"></i>
-    <span hidden>inbox</span>
-  </a>
+  <ul class="header-nav">
+    <li>
+      <a href="/archives" class="circle-nav tip--top" data-tip="true" data-tip-content="Archives">
+        <i class="fa fa-inbox" aria-hidden="true"></i>
+        <span hidden>archives</span>
+      </a>
+    </li>
+    <li>
+      <a href="/tags" class="circle-nav tip--top" data-tip="true" data-tip-content="Tags">
+        <i class="fa fa-tags" aria-hidden="true"></i>
+        <span hidden>tags</span>
+      </a>
+    </li>
+  </ul>
   {% else %}
   <div class="header-inner">
     <a href="/" class="blog-title home">{{ site.title }}</a>

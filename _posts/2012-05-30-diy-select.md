@@ -2,7 +2,7 @@
 layout: post
 title: "Diy Select"
 date: 2012-05-30 13:22
-tags: javascript jquery
+tags: javascript
 toc: true
 comments: true
 ---

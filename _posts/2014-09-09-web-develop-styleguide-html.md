@@ -2,7 +2,7 @@
 layout: post
 title: 【译】前端编码风格规范之 HTML 规范
 data: 2014-09-09
-tags: code html translate
+tags: translate
 toc: true
 comments: true
 ---

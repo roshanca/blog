@@ -2,7 +2,7 @@
 layout: post
 title: "更新公司电子门禁密码"
 date: 2012-12-06 10:12
-tags: life note
+tags: life
 toc: true
 comments: true
 ---

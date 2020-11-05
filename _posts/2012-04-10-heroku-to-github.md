@@ -2,7 +2,7 @@
 layout: post
 title: "从 Heroku 迁移至 GitHub"
 date: 2012-04-10 17:00
-tags: octopress github
+tags: octopress
 toc: true
 comments: false
 ---

@@ -2,7 +2,7 @@
 layout: post
 title: Node APP 布署简易教程
 data: 2016-11-30
-tags: node deploy centos
+tags: node centos engineering
 toc: true
 comments: true
 ---

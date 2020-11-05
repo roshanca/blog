@@ -2,7 +2,7 @@
 layout: post
 title: "如何屏蔽优酷和土豆的 Flash 广告"
 date: 2012-09-13 13:17
-tags: flash video
+tags: tip
 toc: true
 comments: true
 ---

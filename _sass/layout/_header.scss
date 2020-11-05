@@ -89,24 +89,30 @@
     text-transform: capitalize;
     color: lighten($heading-color, 36%);
   }
-  .archive {
+  .header-nav {
     position: absolute;
     left: 50%;
     bottom: -1.5rem;
     z-index: 9;
-    display: block;
-    width: 2.8rem;
-    height: 2.8rem;
-    line-height: 2.8rem;
-    color: lighten($heading-color, 36%);
-    border: 1px solid #e0e0e0;
-    border-radius: 100%;
-    background-color: #fff;
     transform: translateX(-50%);
-    .fa {
-      color: #666;
-      font-size: 1.4rem;
-      vertical-align: 2px;
+    display: flex;
+    li {
+      margin: 0 0.5rem;
+    }
+    .circle-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 2.8rem;
+      height: 2.8rem;
+      color: lighten($heading-color, 36%);
+      border: 1px solid #e0e0e0;
+      border-radius: 100%;
+      background-color: #fff;
+      .fa {
+        color: #666;
+        font-size: 1.4rem;
+      }
     }
   }
   .author {
@@ -114,9 +120,10 @@
     left: 50%;
     bottom: -1.5rem;
     z-index: 9;
+    transform: translateX(-50%);
+    display: block;
     width: 2.8rem;
     height: 2.8rem;
-    transform: translateX(-50%);
     border-radius: 100%;
     background-color: #fff;
     background-image: url(https://s10.mogucdn.com/mlcdn/c024f5/180222_2h5h9g9li42049l6b6fa7280gh09c_1024x1024.jpg_50x50.v1cS5.81.jpg);

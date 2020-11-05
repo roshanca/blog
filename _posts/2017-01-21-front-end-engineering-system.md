@@ -2,7 +2,7 @@
 layout: post
 title: 前端工程化体系
 data: 2017-01-21
-tags: frontend node engineering
+tags: node engineering
 toc: true
 comments: true
 sticky: true
@@ -19,11 +19,11 @@ sticky: true
 
 根据以上思考，大致将自己理解的前端工程体系分为三大块：
 
-- Node 服务层：主要做数据的代理和 Mock，url 的路由分发，还有模板渲染
-- Web 应用开发层：主要专注 Web 交互体验
-- 前端运维层：构建布署、日志监控等
+- **Node 服务层**：主要做数据的代理和 Mock，url 的路由分发，还有模板渲染
+- **Web 应用开发层**：主要专注 Web 交互体验
+- **前端运维层**：构建布署、日志监控等
 
-{% figure caption:"点击查看原图" %}
+{% figure caption:"图1: 点击查看原图" %}
 [![](https://s10.mogucdn.com/mlcdn/c45406/191209_40l28id1i239ji26d686icbbb5jed_1001x537.png)](https://s10.mogucdn.com/mlcdn/c45406/191209_40l28id1i239ji26d686icbbb5jed_1001x537.png)
 {% endfigure %}
 
@@ -38,9 +38,11 @@ sticky: true
 - 用户交互产生的 ajax 请求（客户端发起）
 - 服务端模板渲染所需初始数据
 
+{% figure caption:"图2: 页面数据的两种来源" %}
 ![](https://s10.mogucdn.com/mlcdn/c45406/191209_50j4je49cc5hk95kf52c012kc46b6_1259x734.png)
+{% endfigure %}
 
-前者来说，传统的做法是后端直接提供 api 以供客户端调用，但面临微服务化逐渐成为主流的今天，后端系统也趋于拆分为众多后端服务，提供不同的 api，直接调用面临请求认证和跨域等众多问题，Node 做为中转站利用 `http-proxy` 将 http 请求和响应传输于前后两端，起到桥梁作用。
+前者来说，传统的做法是后端直接提供接口给供客户端调用，但面临微服务化逐渐成为主流的今天，后端系统也趋于拆分为众多后端服务，提供不同的 api，直接调用面临请求认证和跨域等众多问题，Node 做为中转站利用 `http-proxy` 将 http 请求和响应传输于前后两端，起到桥梁作用。
 
 有人说直接请求后端 api 岂不是性能更佳？跨域问题直接用 CORS（Cross-origin resource sharing）不是也能解决？
 
@@ -114,14 +116,14 @@ app.use('/api/trade', proxy(config.api.trade, {
 
 - 更好的了解业务
 - 做为数据接口的第一级消费者，前端应该更清楚怎样的数据结构，适合页面展示。比如某个字段，用数组好，还是用字符串拼接好等等
-- mock 效率更高，实现简单：json-server，mockjs
+- mock 效率更高，实现简单：[json-server](https://github.com/typicode/json-server)，[mockjs](http://mockjs.com/)
 
 但目前这两种简单的 mock 工具都不是太适合当前公司的项目场景，因为我们公司大部分接口都不是 restful 的，所以用下来遇到两个问题：
 
 - json-server 只支持 restful，而且只能生成 json 文件不够灵活
 - mockjs 是比较灵活高效，但做不到数据的持久化
 
-比较完美的方案是两者结合再加上支持非 restful 的 mock，这个可能需要以后自己定制了。PS. 最近 github 上看到了一个利用 service workers 搞出来的一个 mock 服务： [service-mocker](https://github.com/service-mocker/service-mocker)，不管是否适用，但要为这样的思路点赞。
+比较完美的方案是两者结合再加上支持非 restful 的 mock，这个可能需要以后自己定制了。PS. 最近 github 上看到了一个以 service workers 为出发点创造出来的一个 mock 服务： [service-mocker](https://github.com/service-mocker/service-mocker)，不管是否适用，要为这样的思路点赞。
 
 ### url 路由
 
@@ -237,6 +239,7 @@ JSX 写法：
 
 ```jsx
 import React, { PropTypes } from 'react';
+import { Profile } from '../components/Profile';
 import styles from './Preview.css';
 
 const Preview = ({url, user}) => {
@@ -261,34 +264,33 @@ Vue 的单文件形式：
 {% raw %}
 ```vue
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <h1>{{ msg }}</h1>
+  <div class="card">
+    <img :src="url" alt="" class="normal">
+    <Profile :user="user" />
   </div>
 </template>
 
 <script>
 export default {
-  name: 'app',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
+  name: 'card',
+  props: {
+    url: String,
+    user: {
+      type: Object,
+      default: () => {}
     }
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.card {
+  padding: 10px 15px;
+  border: 1px solid #333;
 }
-h1 {
-  font-weight: normal;
+
+.normal {
+  color: #666;
 }
 </style>
 ```
@@ -317,7 +319,7 @@ React 首创的虚拟 DOM 有两大杀手锏大大提升了原生 DOM 操作效�
 
 [^2]: React 只会逐层对比两颗随机树，这大大降低了 diff 算法的复杂度。并且在 web 组件中很少会将节点移动到不同的层级，经常只会在同一层级中移动。
 
-除了性能提升之外，由于思路的转变，在开发效率上也有很大提升：MDV 模式下很自然的就将 web 页面看做是一台状态机（State Machine），UI = f(state)， 界面上的变化皆由状态变化所导致，状态的变化来源一定为 M，即数据模型。我们将手动操作 DOM 的工作交给 MVVM 框架的数据绑定来做，界面的改变由数据的变化而自动完成，不仅十分高效，而且我们对于数据的流向更加清晰可控。在引入严格的函数式编程与不可变数据（immutable.js）后，还能使得结果可预测，方便做单元测试。
+除了性能提升之外，由于思路的转变，在开发效率上也有很大提升：MDV 模式下很自然的就将 web 页面看做是一台状态机（State Machine），**UI = f(state)**， 界面上的变化皆由状态变化所导致，状态的变化来源一定为 M，即数据模型。我们将手动操作 DOM 的工作交给 MVVM 框架的数据绑定来做，界面的改变由数据的变化而自动完成，不仅十分高效，而且我们对于数据的流向更加清晰可控。在引入严格的函数式编程与不可变数据（immutable.js）后，还能使得结果可预测，方便做单元测试。
 
 当然，除了许多新的概念需要学习之外，组件间如何通信，异步数据如何管理等一系列问题也是随之而来的一些挑战。
 
@@ -333,8 +335,15 @@ React 首创的虚拟 DOM 有两大杀手锏大大提升了原生 DOM 操作效�
 
 根据浏览器内核来分，前端应该关注的浏览器环境应该包括：
 
-- 移动端：微信 X5 内核，iOS Webkit，Android Webkit
-- PC 端：Trident（IE），Gecko（FireFox），Webkit（Safari），Bink（Chrome），Presto（Opera，已放弃）
+- 移动端：
+  - 微信 X5 内核
+  - Android: Webview
+  - iOS: WK, UIWebview
+- PC 端：
+  - Trident（IE）
+  - Webkit（Safari），Blink（Chrome）
+  - Gecko（FireFox，已放弃）
+  - Presto（Opera，已放弃）
 
 可以看出来，最主要的战场，是 Webkit（移动端上的 Webkit 主要看系统 SDK）。在国内来说，由于微信的关系，我们还需要比较关注的是 X5（特别是近期的微信小程序推出）。
 

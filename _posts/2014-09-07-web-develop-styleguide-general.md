@@ -2,7 +2,7 @@
 layout: post
 title: 【译】前端编码风格规范之一般规范
 data: 2014-09-07
-tags: code translate
+tags: translate
 toc: true
 comments: true
 ---

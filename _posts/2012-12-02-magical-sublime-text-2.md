@@ -2,7 +2,7 @@
 layout: post
 title: "编辑神器：Sublime Text 2"
 date: 2012-12-02 22:49
-tags: sublime editor ide
+tags: tool
 toc: true
 comments: true
 ---
