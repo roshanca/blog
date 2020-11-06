@@ -27,9 +27,19 @@
         padding-left: 1rem;
       }
     }
+    &.tag-list {
+      @include responsive(480px) {
+        time {
+          display: none;
+        }
+      }
+    }
     @include responsive(480px) {
       time {
         text-align: justify;
+      }
+      .post-link {
+        border-bottom: 0 none;
       }
     }
     li {

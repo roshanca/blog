@@ -30,7 +30,7 @@
     font-weight: 500;
     @include responsive(480px) {
       position: absolute;
-      top: 20px;
+      top: -3px;
       left: 58px;
     }
   }
@@ -43,7 +43,7 @@
     display: inline;
     @include responsive(480px) {
       position: absolute;
-      top: -3px;
+      top: 20px;
       left: 58px;
     }
   }
@@ -54,6 +54,8 @@
     margin-bottom: 1rem;
     @include responsive(480px) {
       margin: 0 0 1rem 0;
+      display: flex;
+      flex-direction: column-reverse;
     }
     // a[rel] {
     //   margin-left: 1rem;
@@ -65,14 +67,22 @@
       font-family: $grace;
       font-size: 90%;
       color: lighten($link-color, 16%);
-      text-align: right;
       &:after {
         content: "—";
         margin: 0 1rem;
       }
       @include responsive(480px) {
         display: block;
-        @include tailhook(.5rem);
+        font-size: 90%;
+        // @include tailhook(.5rem);
+        &::after {
+          content: "";
+        }
+      }
+    }
+    .post-link {
+      @include responsive(480px) {
+        border-bottom: 0 none;
       }
     }
   }

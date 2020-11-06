@@ -29,6 +29,7 @@ body {
     -webkit-overflow-scrolling: touch;
 
     main {
+      padding: 0 3rem;
       flex: 1;
       flex-grow: 1;
     }
@@ -87,11 +88,6 @@ input,
 select,
 textarea {
   font-family: $sans;
-}
-
-.fluid {
-  max-width: 960px;
-  margin: 0 auto;
 }
 
 .social-link {
